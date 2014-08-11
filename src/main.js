@@ -62,7 +62,7 @@ const MyApplication = new Lang.Class({
 
     _initAppMenu: function() {
         let builder = new Gtk.Builder();
-        builder.add_from_resource('/com/example/Gtk/JSApplication/app-menu.ui');
+        builder.add_from_resource('/org/gnome/Characters/app-menu.ui');
 
         let menu = builder.get_object('app-menu');
         this.set_app_menu(menu);
@@ -71,7 +71,7 @@ const MyApplication = new Lang.Class({
     vfunc_startup: function() {
         this.parent();
 
-        Util.loadStyleSheet('/com/example/Gtk/JSApplication/application.css');
+        Util.loadStyleSheet('/org/gnome/Characters/application.css');
 
         Util.initActions(this,
                          [{ name: 'quit',

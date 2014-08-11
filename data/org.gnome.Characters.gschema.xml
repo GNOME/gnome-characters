@@ -1,5 +1,5 @@
-<schemalist gettext-domain="com.example.Gtk.JSApplication">
-  <schema id="com.example.Gtk.JSApplication" path="/com/example/Gtk/JSApplication/">
+<schemalist gettext-domain="org.gnome.Characters">
+  <schema id="org.gnome.Characters" path="/org/gnome/Characters/">
     <key name="show-exclamation-mark" type="b">
       <default>true</default>
       <summary>Show exclamation mark</summary>

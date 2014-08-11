@@ -1,16 +1,16 @@
 NULL =
 
 appdir = $(pkgdatadir)
-nodist_app_SCRIPTS = com.example.Gtk.JSApplication
+nodist_app_SCRIPTS = org.gnome.Characters
 
-app_resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/com.example.Gtk.JSApplication.src.gresource.xml)
-com.example.Gtk.JSApplication.src.gresource: com.example.Gtk.JSApplication.src.gresource.xml $(app_resource_files)
+app_resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/org.gnome.Characters.src.gresource.xml)
+org.gnome.Characters.src.gresource: org.gnome.Characters.src.gresource.xml $(app_resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) $<
 
 resourcedir = $(pkgdatadir)
-resource_DATA = com.example.Gtk.JSApplication.src.gresource
+resource_DATA = org.gnome.Characters.src.gresource
 
-com.example.Gtk.JSApplication: com.example.Gtk.JSApplication.in
+org.gnome.Characters: org.gnome.Characters.in
 	$(AM_V_GEN) sed \
 		-e "s|[@]GJS@|$(GJS)|g" \
 		-e "s|[@]PACKAGE_VERSION@|$(PACKAGE_VERSION)|g" \
@@ -21,20 +21,20 @@ com.example.Gtk.JSApplication: com.example.Gtk.JSApplication.in
 	@chmod +x $@
 
 EXTRA_DIST = \
-	com.example.Gtk.JSApplication.in \
-	com.example.Gtk.JSApplication.src.gresource.xml \
+	org.gnome.Characters.in \
+	org.gnome.Characters.src.gresource.xml \
 	$(app_resource_files) \
 	$(service_resource_files) \
 	$(NULL)
 
 CLEANFILES = \
-	com.example.Gtk.JSApplication \
-	com.example.Gtk.JSApplication.src.gresource \
+	org.gnome.Characters \
+	org.gnome.Characters.src.gresource \
 	$(NULL)
 
 install-exec-hook:
 	$(MKDIR_P) $(DESTDIR)$(bindir)
-	$(LN_S) $(appdir)/com.example.Gtk.JSApplication $(DESTDIR)$(bindir)/$(PACKAGE_TARNAME)
+	$(LN_S) $(appdir)/org.gnome.Characters $(DESTDIR)$(bindir)/$(PACKAGE_TARNAME)
 uninstall-hook:
 	-rm -f $(DESTDIR)$(bindir)/$(PACKAGE_TARNAME)
 

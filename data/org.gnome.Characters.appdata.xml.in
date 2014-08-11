@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>com.example.Gtk.JSApplication.desktop</id>
+  <id>org.gnome.Characters.desktop</id>
   <licence>CC0</licence>
   <description>
     <_p>

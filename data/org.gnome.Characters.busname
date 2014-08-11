@@ -1,11 +1,11 @@
 [Unit]
 # Optional
-Description=com.example.Gtk.JSApplication
+Description=org.gnome.Characters
 # Optional (obviously)
 Documentation=http://www.example.com/gtk-js-app/
 
 [BusName]
 # Optional
-Name=com.example.Gtk.JSApplication
+Name=org.gnome.Characters
 # Optional
-Service=com.example.Gtk.JSApplication.service
+Service=org.gnome.Characters.service

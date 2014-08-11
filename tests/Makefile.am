@@ -15,7 +15,7 @@ if ENABLE_COVERAGE
 lcov:
 	( cd $(abs_top_builddir) ; $(TESTS_ENVIRONMENT) $(GJS) --coverage-output=$(abs_builddir) \
 	$(foreach source,$(wildcard $(abs_top_srcdir)/src/*.js),-C $(abs_top_srcdir)/src/$(notdir $(source))) \
-	$(abs_top_builddir)/src/com.example.Gtk.JSApplication --gapplication-service ) & \
+	$(abs_top_builddir)/src/org.gnome.Characters --gapplication-service ) & \
 	sleep 2 && TESTUTIL_DONT_START=1 $(MAKE) $(AM_MAKEFLAGS) check
 	$(GENHTML) $(builddir)/coverage.lcov
 

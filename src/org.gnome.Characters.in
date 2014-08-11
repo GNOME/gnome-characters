@@ -1,5 +1,5 @@
 #!@GJS@
-imports.package.init({ name: "com.example.Gtk.JSApplication",
+imports.package.init({ name: "org.gnome.Characters",
                        version: "@PACKAGE_VERSION@",
                        prefix: "@prefix@",
                        libdir: "@libdir@" });

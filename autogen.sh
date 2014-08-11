@@ -5,11 +5,11 @@ srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
 
 ACLOCAL_FLAGS="${ACLOCAL_FLAGS}"
-PKG_NAME="gtk-js-app"
+PKG_NAME="gnome-characters"
 
 test -f $srcdir/configure.ac || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
-    echo " top-level gtk-js-app directory"
+    echo " top-level gnome-characters directory"
     exit 1
 }
 

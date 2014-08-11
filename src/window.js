@@ -29,6 +29,8 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Params = imports.params;
+const Characters = imports.characters;
+const Gc = imports.gi.Gc;
 
 const Util = imports.util;
 
@@ -56,9 +58,10 @@ const MainWindow = new Lang.Class({
                             state: new GLib.Variant('b', false) }]);
 
         let builder = new Gtk.Builder();
-        builder.add_from_resource('/com/example/Gtk/JSApplication/main.ui');
+        builder.add_from_resource('/org/gnome/Characters/main.ui');
 
-        this.set_titlebar(builder.get_object('main-header'));
+        this._headerBar = builder.get_object('main-header');
+        this.set_titlebar(this._headerBar);
 
         let searchBtn = builder.get_object('search-active-button');
         this.bind_property('search-active', searchBtn, 'active',
@@ -72,9 +75,45 @@ const MainWindow = new Lang.Class({
         this._searchBar.connect_entry(searchEntry);
 
         let grid = builder.get_object('main-grid');
-        this._view = new MainView();
-        this._view.visible_child_name = (Math.random() <= 0.5) ? 'one' : 'two';
-        grid.add(this._view);
+        let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
+
+        this._categoryListBox = new Gtk.ListBox({});
+        this._categoryListBox.get_style_context().add_class('categories');
+        this._categoryListRows = {};
+        this._mainView = new MainView();
+
+        this._addCategory(_("Punctuations"),
+                          'punctuation-page',
+                          Gc.Category.PUNCTUATION);
+        this._addCategory(_("Arrows"),
+                          'arrow-page',
+                          Gc.Category.ARROW);
+        this._addCategory(_("Bullets"),
+                          'bullet-page',
+                          Gc.Category.BULLET);
+        this._addCategory(_("Picture"),
+                          'picture-page',
+                          Gc.Category.PICTURE);
+        this._addCategory(_("Currencies"),
+                          'currency-page',
+                          Gc.Category.CURRENCY);
+        this._addCategory(_("Math"),
+                          'math-page',
+                          Gc.Category.MATH);
+        // this._addCategory(_("Latin"),
+        //                   'latin-page',
+        //                   Gc.Category.LATIN);
+        this._addCategory(_("Emoticons"),
+                          'emoticon-page',
+                          Gc.Category.EMOTICON);
+        this._mainView.addPage('search-page',
+                               Gc.Category.NONE);
+        this._mainView.addPage('recent-page',
+                               Gc.Category.NONE);
+
+        hbox.pack_start(this._categoryListBox, false, false, 2);
+        hbox.pack_start(this._mainView, true, true, 0);
+        grid.add(hbox);
 
         this.add(grid);
         grid.show_all();
@@ -82,6 +121,28 @@ const MainWindow = new Lang.Class({
         // Due to limitations of gobject-introspection wrt GdkEvent and GdkEventKey,
         // this needs to be a signal handler
         this.connect('key-press-event', Lang.bind(this, this._handleKeyPress));
+    },
+
+    _handleRowSelected: function(listBox, row) {
+        if (row == null)
+            return;
+
+        this._mainView.visible_child_name = row.page_name;
+        this._headerBar.title = row.label;
+    },
+
+    _addCategory: function(label, page_name, category) {
+        let row = new Gtk.ListBoxRow({});
+        row.add(new Gtk.Label({ label: label,
+                                halign: Gtk.Align.START }));
+        row.get_style_context().add_class('category');
+        row.label = label;
+        row.page_name = page_name;
+        this._categoryListBox.add(row);
+        this._mainView.addPage(page_name, category);
+        this._categoryListBox.connect('row-selected',
+                                      Lang.bind(this, this._handleRowSelected));
+        return row;
     },
 
     get search_active() {
@@ -107,13 +168,13 @@ const MainWindow = new Lang.Class({
 
     _about: function() {
         let aboutDialog = new Gtk.AboutDialog(
-            { authors: [ 'Giovanni Campagna <gcampagna@src.gnome.org>' ],
+            { authors: [ 'Daiki Ueno <dueno@src.gnome.org>' ],
               translator_credits: _("translator-credits"),
-              program_name: _("JS Application"),
-              comments: _("Demo JS Application and template"),
-              copyright: 'Copyright 2013 The gjs developers',
+              program_name: _("GNOME Characters"),
+              comments: _("Character Map"),
+              copyright: 'Copyright 2014 Daiki Ueno',
               license_type: Gtk.License.GPL_2_0,
-              logo_icon_name: 'com.example.Gtk.JSApplication',
+              logo_icon_name: 'org.gnome.Characters',
               version: pkg.version,
               website: 'http://www.example.com/gtk-js-app/',
               wrap_license: true,
@@ -136,41 +197,27 @@ const MainView = new Lang.Class({
         params = Params.fill(params, { hexpand: true,
                                        vexpand: true });
         this.parent(params);
-
-        this._settings = Util.getSettings(pkg.name);
-
-        this._buttonOne = this._addPage('one', _("First page"), '');
-        this._buttonOne.connect('clicked', Lang.bind(this, function() {
-            this.visible_child_name = 'two';
-        }));
-        this._syncLabel();
-        this._settings.connect('changed::show-exclamation-mark', Lang.bind(this, this._syncLabel));
-
-        let two = this._addPage('two', _("Second page"), _("What did you expect?"));
-        two.connect('clicked', Lang.bind(this, function() {
-            this.visible_child_name = 'one';
-        }));
     },
 
-    _addPage: function(name, label, button) {
-        let labelWidget = new Gtk.Label({ label: label });
-        labelWidget.get_style_context().add_class('big-label');
-        let buttonWidget = new Gtk.Button({ label: button });
+    addPage: function(name, category) {
+        let characters = []
+        let iter = Gc.enumerate_character_by_category (category);
+        while (iter.next ()) {
+            characters.push(iter.get());
+        }
 
-        let grid = new Gtk.Grid({ orientation: Gtk.Orientation.VERTICAL,
-                                  halign: Gtk.Align.CENTER,
-                                  valign: Gtk.Align.CENTER });
-        grid.add(labelWidget);
-        grid.add(buttonWidget);
+        let charactersWidget =
+            new Characters.CharacterListWidget({ hexpand: true,
+                                                 vexpand: true },
+                                               characters);
+        let viewport = new Gtk.Viewport({});
+        viewport.add(charactersWidget);
 
-        this.add_named(grid, name);
-        return buttonWidget;
-    },
+        let scroll = new Gtk.ScrolledWindow({
+            hscrollbar_policy: Gtk.PolicyType.NEVER
+        });
+        scroll.add(viewport);
 
-    _syncLabel: function() {
-        if (this._settings.get_boolean('show-exclamation-mark'))
-            this._buttonOne.label = _("Hello, world!");
-        else
-            this._buttonOne.label = _("Hello world");
-    },
+        this.add_named(scroll, name);
+    }
 });

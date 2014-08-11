@@ -1,3 +1,11 @@
+.categories {
+    background-color: @theme_bg_color;
+}
+
+.category {
+    padding: 10px;
+}
+
 .big-label {
     font-size: 4em;
     font-weight: bold;
