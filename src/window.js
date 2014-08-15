@@ -82,6 +82,10 @@ const MainWindow = new Lang.Class({
         this._categoryListRows = {};
         this._mainView = new MainView();
 
+        // FIXME: should use GtkRecentManager?
+        this._addCategory(_("Recently Used"),
+                          'recent-page',
+                          Gc.Category.NONE);
         this._addCategory(_("Punctuations"),
                           'punctuation-page',
                           Gc.Category.PUNCTUATION);
@@ -108,8 +112,6 @@ const MainWindow = new Lang.Class({
                           Gc.Category.EMOTICON);
         this._mainView.addPage('search-page',
                                Gc.Category.NONE);
-        this._mainView.addPage('recent-page',
-                               Gc.Category.NONE);
 
         hbox.pack_start(this._categoryListBox, false, false, 2);
         hbox.pack_start(this._mainView, true, true, 0);
@@ -129,6 +131,7 @@ const MainWindow = new Lang.Class({
 
         this._mainView.visible_child_name = row.page_name;
         this._headerBar.title = row.label;
+        this.show_all();
     },
 
     _addCategory: function(label, page_name, category) {
@@ -159,6 +162,7 @@ const MainWindow = new Lang.Class({
     },
 
     _handleKeyPress: function(self, event) {
+        this._grid.show_all();
         return this._searchBar.handle_event(event);
     },
 
@@ -197,6 +201,7 @@ const MainView = new Lang.Class({
         params = Params.fill(params, { hexpand: true,
                                        vexpand: true });
         this.parent(params);
+        this.recentCharacters = [];
     },
 
     addPage: function(name, category) {
@@ -210,8 +215,16 @@ const MainView = new Lang.Class({
             new Characters.CharacterListWidget({ hexpand: true,
                                                  vexpand: true },
                                                characters);
+        if (name == 'recent-page')
+            this.recentCharactersWidget = charactersWidget;
+        charactersWidget.connect('character-selected',
+                                 Lang.bind(this, this._addToRecentCharacters));
+        this._addPage(name, charactersWidget);
+    },
+
+    _addPage: function(name, widget) {
         let viewport = new Gtk.Viewport({});
-        viewport.add(charactersWidget);
+        viewport.add(widget);
 
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER
@@ -219,5 +232,12 @@ const MainView = new Lang.Class({
         scroll.add(viewport);
 
         this.add_named(scroll, name);
+    },
+
+    _addToRecentCharacters: function(widget, uc) {
+        if (this.recentCharacters.indexOf(uc) < 0) {
+            this.recentCharacters.push(uc);
+            this.recentCharactersWidget.setCharacters(this.recentCharacters);
+        }
     }
 });

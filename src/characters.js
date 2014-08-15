@@ -15,6 +15,9 @@ const CELLS_PER_ROW = 5;
 const CharacterListRowWidget = new Lang.Class({
     Name: 'CharacterListRowWidget',
     Extends: Gtk.DrawingArea,
+    Signals: {
+	'character-selected': { param_types: [ GObject.TYPE_STRING ] }
+    },
 
     _init: function(params, characters) {
         params = Params.fill(params, {});
@@ -39,6 +42,8 @@ const CharacterListRowWidget = new Lang.Class({
 		dialog.destroy();
 		break;
 	    }
+	    this.emit('character-selected', this.selectedCharacter);
+	    this.selectedCharacter = null;
 	}
     },
 
@@ -52,7 +57,8 @@ const CharacterListRowWidget = new Lang.Class({
 	let codePointHex = codePoint.toString(16).toUpperCase();
 	detailLabel.label = _("Unicode: U+%s".format(codePointHex));
 	let copyCharacterButton = builder.get_object('copy-character-button');
-	copyCharacterButton.connect('clicked', Lang.bind(this, this._copyCharacter));
+	copyCharacterButton.connect('clicked',
+				    Lang.bind(this, this._copyCharacter));
 	let dialog = builder.get_object('character-dialog');
 	dialog.transient_for = this.get_toplevel();
 	let name = Gc.character_name(this.selectedCharacter);
@@ -118,25 +124,40 @@ const CharacterListRowWidget = new Lang.Class({
 const CharacterListWidget = new Lang.Class({
     Name: 'CharacterListWidget',
     Extends: Gtk.Box,
+    Signals: {
+	'character-selected': { param_types: [ GObject.TYPE_STRING ] }
+    },
 
     _init: function(params, characters) {
         params = Params.fill(params, { orientation: Gtk.Orientation.VERTICAL,
 				       homogeneous: true });
         this.parent(params);
-	this._setCharacters(characters);
+	this.setCharacters(characters);
     },
 
     vfunc_size_allocate: function(allocation) {
 	this.parent(allocation);
 
 	// Make each row have the same height.
+	let allocation = this.get_allocation();
+	let rowHeight = allocation.width * CELL_SIZE;
 	let children = this.get_children();
-	for (let index in children)
-	    children[index].set_size_request(allocation.width,
-					     allocation.width * CELL_SIZE);
+	for (let index in children) {
+	    let child = children[index];
+	    var childAllocation = child.get_allocation();
+	    childAllocation.x = allocation.x;
+	    childAllocation.y = allocation.y + rowHeight * index;
+	    childAllocation.width = allocation.width;
+	    childAllocation.height = rowHeight;
+	    child.size_allocate(childAllocation);
+	}
     },
 
-    _setCharacters: function(characters) {
+    setCharacters: function(characters) {
+	let children = this.get_children();
+	for (let index in children)
+	    this.remove(children[index]);
+
 	if (characters.length == 0)
 	    return;
 
@@ -145,6 +166,10 @@ const CharacterListWidget = new Lang.Class({
             if (stop % CELLS_PER_ROW == 0) {
 		let rowCharacters = characters.slice(start, stop);
 		let rowWidget = new CharacterListRowWidget({}, rowCharacters);
+		rowWidget.connect('character-selected',
+				  Lang.bind(this, function(row, uc) {
+				      this.emit('character-selected', uc);
+				  }));
 		this.pack_start(rowWidget, true, true, 0);
                 start = stop;
             }
@@ -152,6 +177,10 @@ const CharacterListWidget = new Lang.Class({
         if (stop % CELLS_PER_ROW != 0) {
 	    let rowCharacters = characters.slice(start, stop);
 	    let rowWidget = new CharacterListRowWidget({}, rowCharacters);
+	    rowWidget.connect('character-selected',
+			      Lang.bind(this, function(row, uc) {
+				  this.emit('character-selected', uc);
+			      }));
 	    this.pack_start(rowWidget, true, true, 0);
         }
     },
