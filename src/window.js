@@ -213,6 +213,7 @@ const MainView = new Lang.Class({
             new Characters.CharacterListWidget({ hexpand: true,
                                                  vexpand: true },
                                                characters);
+        charactersWidget.get_style_context().add_class('characters');
         if (name == 'recent-page')
             this.recentCharactersWidget = charactersWidget;
         charactersWidget.connect('character-selected',
