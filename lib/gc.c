@@ -328,9 +328,15 @@ gc_enumerate_character_by_keywords (const gchar * const * keywords)
   return iter;
 }
 
-const gchar *
-gc_character_name (gunichar uc,
-                   gchar   *buffer)
+/**
+ * gc_character_name:
+ * @uc: a UCS-4 character
+ *
+ * Returns: (nullable): a newly allocated character name of @uc.
+ */
+gchar *
+gc_character_name (gunichar uc)
 {
+  gchar *buffer = g_new0 (gchar, UNINAME_MAX);
   return unicode_character_name (uc, buffer);
 }

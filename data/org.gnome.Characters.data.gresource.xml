@@ -3,6 +3,7 @@
   <gresource prefix="/org/gnome/Characters">
     <file preprocess="xml-stripblanks">app-menu.ui</file>
     <file preprocess="xml-stripblanks">main.ui</file>
+    <file preprocess="xml-stripblanks">character-dialog.ui</file>
     <file>application.css</file>
   </gresource>
 </gresources>

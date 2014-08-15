@@ -31,8 +31,7 @@ GcCharacterIter *gc_enumerate_character_by_category
 GcCharacterIter *gc_enumerate_character_by_keywords
                                             (const gchar * const * keywords);
 
-const gchar     *gc_character_name          (gunichar              uc,
-                                             gchar                *buffer);
+gchar           *gc_character_name          (gunichar              uc);
 
 G_END_DECLS
 
