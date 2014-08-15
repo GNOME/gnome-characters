@@ -26,6 +26,15 @@ const CharacterListRowWidget = new Lang.Class({
 	this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK);
     },
 
+    vfunc_get_preferred_height: function() {
+	return this.vfunc_get_preferred_height_for_width (500);
+    },
+
+    vfunc_get_preferred_height_for_width: function(width) {
+	let rowHeight = width * CELL_SIZE;
+	return [rowHeight, rowHeight];
+    },
+
     vfunc_button_press_event: function(event) {
 	let allocation = this.get_allocation();
 	let cell_width = allocation.width * CELL_SIZE;
@@ -139,7 +148,6 @@ const CharacterListWidget = new Lang.Class({
 	this.parent(allocation);
 
 	// Make each row have the same height.
-	let allocation = this.get_allocation();
 	let rowHeight = allocation.width * CELL_SIZE;
 	let children = this.get_children();
 	for (let index in children) {

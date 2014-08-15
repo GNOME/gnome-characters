@@ -131,7 +131,6 @@ const MainWindow = new Lang.Class({
 
         this._mainView.visible_child_name = row.page_name;
         this._headerBar.title = row.label;
-        this.show_all();
     },
 
     _addCategory: function(label, page_name, category) {
@@ -162,7 +161,6 @@ const MainWindow = new Lang.Class({
     },
 
     _handleKeyPress: function(self, event) {
-        this._grid.show_all();
         return this._searchBar.handle_event(event);
     },
 
@@ -238,6 +236,7 @@ const MainView = new Lang.Class({
         if (this.recentCharacters.indexOf(uc) < 0) {
             this.recentCharacters.push(uc);
             this.recentCharactersWidget.setCharacters(this.recentCharacters);
+            this.show_all();
         }
     }
 });
