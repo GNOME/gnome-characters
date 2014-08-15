@@ -155,6 +155,24 @@ gc_character_iter_new_for_blocks (const uc_block_t *blocks,
   return iter;
 }
 
+static gboolean
+filter_script (ucs4_t uc, gpointer data)
+{
+  uc_script_t *script = data;
+  return uc_is_print (uc) && uc_is_script (uc, script);
+}
+
+static GcCharacterIter *
+gc_character_iter_new_for_script (const uc_script_t *script)
+{
+  GcCharacterIter *iter = gc_character_iter_new ();
+  iter->blocks = all_blocks;
+  iter->block_count = all_block_count;
+  iter->filter = filter_script;
+  iter->data = (gpointer) script;
+  return iter;
+}
+
 /**
  * gc_enumerate_character_by_category:
  * @category: a #GcCategory.
@@ -178,16 +196,31 @@ gc_enumerate_character_by_category (GcCategory       category)
     case GC_CATEGORY_ARROW:
       {
 	static uc_block_t arrow_blocks[3];
+	static gsize arrow_blocks_size = 0;
 	static gsize arrow_blocks_initialized = 0;
 	if (g_once_init_enter (&arrow_blocks_initialized))
 	  {
-	    memcpy (&arrow_blocks[0], uc_block (0x2190), sizeof (uc_block_t));
-	    memcpy (&arrow_blocks[1], uc_block (0x27F0), sizeof (uc_block_t));
-	    memcpy (&arrow_blocks[2], uc_block (0x2900), sizeof (uc_block_t));
+	    const uc_block_t *block;
+
+	    /* 2190..21FF; Arrows */
+	    block = uc_block (0x2190);
+	    if (block)
+	      memcpy (&arrow_blocks[arrow_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    /* 27F0..27FF; Supplemental Arrows-A */
+	    block = uc_block (0x27F0);
+	    if (block)
+	      memcpy (&arrow_blocks[arrow_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    /* 2900..297F; Supplemental Arrows-B */
+	    block = uc_block (0x2900);
+	    if (block)
+	      memcpy (&arrow_blocks[arrow_blocks_size++], block,
+		      sizeof (uc_block_t));
 	    g_once_init_leave (&arrow_blocks_initialized, 1);
 	  }
 	return gc_character_iter_new_for_blocks (arrow_blocks,
-						 G_N_ELEMENTS (arrow_blocks));
+						 arrow_blocks_size);
       }
 
     case GC_CATEGORY_BULLET:
@@ -195,7 +228,29 @@ gc_enumerate_character_by_category (GcCategory       category)
       break;
 
     case GC_CATEGORY_PICTURE:
-      /* Not implemented.  */
+      {
+	static uc_block_t picture_blocks[2];
+	static gsize picture_blocks_size = 0;
+	static gsize picture_blocks_initialized = 0;
+	if (g_once_init_enter (&picture_blocks_initialized))
+	  {
+	    const uc_block_t *block;
+
+	    /* 2600..26FF; Miscellaneous Symbols */
+	    block = uc_block (0x2600);
+	    if (block)
+	      memcpy (&picture_blocks[picture_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    /* 2700..27BF; Dingbats */
+	    block = uc_block (0x2700);
+	    if (block)
+	      memcpy (&picture_blocks[picture_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    g_once_init_leave (&picture_blocks_initialized, 1);
+	  }
+	return gc_character_iter_new_for_blocks (picture_blocks,
+						 picture_blocks_size);
+      }
       break;
 
     case GC_CATEGORY_CURRENCY:
@@ -205,11 +260,27 @@ gc_enumerate_character_by_category (GcCategory       category)
       return gc_character_iter_new_for_general_category (UC_CATEGORY_Sm);
 
     case GC_CATEGORY_LATIN:
-      return gc_character_iter_new_for_general_category (UC_CATEGORY_L);
+      return gc_character_iter_new_for_script (uc_script ('A'));
 
     case GC_CATEGORY_EMOTICON:
-      /* Not implemented.  */
-      break;
+      {
+	static uc_block_t emoticon_blocks[1];
+	static gsize emoticon_blocks_size = 0;
+	static gsize emoticon_blocks_initialized = 0;
+	if (g_once_init_enter (&emoticon_blocks_initialized))
+	  {
+	    const uc_block_t *block;
+
+	    /* 1F600..1F64F; Emoticons */
+	    block = uc_block (0x1F600);
+	    if (block)
+	      memcpy (&emoticon_blocks[emoticon_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    g_once_init_leave (&emoticon_blocks_initialized, 1);
+	  }
+	return gc_character_iter_new_for_blocks (emoticon_blocks,
+						 emoticon_blocks_size);
+      }
     }
 
   return gc_character_iter_new ();

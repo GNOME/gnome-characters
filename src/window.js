@@ -100,9 +100,9 @@ const MainWindow = new Lang.Class({
         this._addCategory(_("Math"),
                           'math-page',
                           Gc.Category.MATH);
-        // this._addCategory(_("Latin"),
-        //                   'latin-page',
-        //                   Gc.Category.LATIN);
+        this._addCategory(_("Latin"),
+                          'latin-page',
+                          Gc.Category.LATIN);
         this._addCategory(_("Emoticons"),
                           'emoticon-page',
                           Gc.Category.EMOTICON);
