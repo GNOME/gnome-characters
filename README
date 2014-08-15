@@ -1,7 +1,7 @@
 About gnome-characters
 =======================
 
-gnome-characters, is an attempt to implement the design:
+gnome-characters is an attempt to implement the design:
 https://wiki.gnome.org/Design/Apps/CharacterMap
 using the GNU libunistring library as the backend:
 https://www.gnu.org/software/libunistring/
