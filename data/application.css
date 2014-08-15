@@ -3,7 +3,12 @@
 }
 
 .category {
+    background-color: @theme_bg_color;
     padding: 10px;
+}
+
+.category:selected {
+    background-color: @theme_selected_bg_color;
 }
 
 .characters {
