@@ -11,10 +11,6 @@
     background-color: @theme_selected_bg_color;
 }
 
-.characters {
-    background-color: white;
-}
-
 .big-label {
     font-size: 5em;
     font-weight: bold;
