@@ -11,6 +11,8 @@ const Gc = imports.gi.Gc;
 const BASELINE_OFFSET = 0.15;
 const CELL_SIZE = 0.20;
 const CELLS_PER_ROW = 5;
+const FONT_SIZE = 90;		// in px
+const CELL_PIXEL_SIZE = FONT_SIZE + 10;
 
 const CharacterListRowWidget = new Lang.Class({
     Name: 'CharacterListRowWidget',
@@ -27,12 +29,22 @@ const CharacterListRowWidget = new Lang.Class({
     },
 
     vfunc_get_preferred_height: function() {
-	return this.vfunc_get_preferred_height_for_width (500);
+	let [minWidth, natWidth] = this.vfunc_get_preferred_width();
+	return this.vfunc_get_preferred_height_for_width(minWidth);
     },
 
     vfunc_get_preferred_height_for_width: function(width) {
 	let rowHeight = width * CELL_SIZE;
 	return [rowHeight, rowHeight];
+    },
+
+    vfunc_get_preferred_width: function() {
+	return this.vfunc_get_preferred_width_for_height(0);
+    },
+
+    vfunc_get_preferred_width_for_height: function(height) {
+	let rowWidth = CELL_PIXEL_SIZE * CELLS_PER_ROW;
+	return [rowWidth, rowWidth];
     },
 
     vfunc_button_press_event: function(event) {
@@ -107,7 +119,7 @@ const CharacterListRowWidget = new Lang.Class({
         layout.set_font_description(description);
 
         // Draw baseline.
-        let distance = cr.deviceToUserDistance (1, 1);
+        let distance = cr.deviceToUserDistance(1, 1);
         let px = Math.max(distance[0], distance[1]);
 
         cr.setSourceRGBA(0.0, 0.0, 1.0, 0.2);
@@ -142,6 +154,37 @@ const CharacterListWidget = new Lang.Class({
 				       homogeneous: true });
         this.parent(params);
 	this.setCharacters(characters);
+    },
+
+    vfunc_get_preferred_height: function() {
+	let [minWidth, natWidth] = this.vfunc_get_preferred_width();
+	return this.vfunc_get_preferred_height_for_width(minWidth);
+    },
+
+    vfunc_get_preferred_height_for_width: function(width) {
+	let height = 0;
+	let children = this.get_children();
+	for (let index in children) {
+	    let [minHeight, natHeight] =
+		children[index].get_preferred_height_for_width(width);
+	    height += minHeight;
+	}
+	return [height, height];
+    },
+
+    vfunc_get_preferred_width: function() {
+	return this.vfunc_get_preferred_width_for_height(0);
+    },
+
+    vfunc_get_preferred_width_for_height: function(height) {
+	let width = 0;
+	let children = this.get_children();
+	for (let index in children) {
+	    let [minWidth, natWidth] =
+		children[index].get_preferred_width_for_height(height);
+	    width = Math.max(width, minWidth);
+	}
+	return [width, width];
     },
 
     vfunc_size_allocate: function(allocation) {
