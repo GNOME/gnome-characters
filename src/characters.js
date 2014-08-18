@@ -3,7 +3,6 @@ const Params = imports.params;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
-const Cairo = imports.cairo;
 const Pango = imports.gi.Pango;
 const PangoCairo = imports.gi.PangoCairo;
 const Gc = imports.gi.Gc;
@@ -11,8 +10,8 @@ const Gc = imports.gi.Gc;
 const BASELINE_OFFSET = 0.15;
 const CELL_SIZE = 0.20;
 const CELLS_PER_ROW = 5;
-const FONT_SIZE = 90;		// in px
-const CELL_PIXEL_SIZE = FONT_SIZE + 10;
+const FONT_PIXEL_SIZE = 90;
+const CELL_PIXEL_SIZE = FONT_PIXEL_SIZE + 10;
 
 const CharacterListRowWidget = new Lang.Class({
     Name: 'CharacterListRowWidget',
@@ -115,7 +114,7 @@ const CharacterListRowWidget = new Lang.Class({
         let layout = PangoCairo.create_layout(cr);
 	// FIXME: Move this to settings
         let description = Pango.FontDescription.from_string("Cantarell");
-        description.set_size(90);
+        description.set_absolute_size(FONT_PIXEL_SIZE);
         layout.set_font_description(description);
 
         // Draw baseline.
