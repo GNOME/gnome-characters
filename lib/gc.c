@@ -21,12 +21,6 @@ struct GcCharacterIter
   gpointer data;
 };
 
-/**
- * gc_character_iter_copy:
- * @boxed: a #GcCharacterIter.
- *
- * Returns: (transfer full): a new #GcCharacterIter.
- */
 static GcCharacterIter *
 gc_character_iter_copy (GcCharacterIter *src)
 {
@@ -328,6 +322,18 @@ gc_enumerate_character_by_keywords (const gchar * const * keywords)
   return iter;
 }
 
+GcCharacterIter *
+gc_enumerate_character (void)
+{
+  GcCharacterIter *iter = gc_character_iter_new ();
+
+  iter->blocks = all_blocks;
+  iter->block_count = all_block_count;
+  iter->filter = filter_is_print;
+
+  return iter;
+}
+
 /**
  * gc_character_name:
  * @uc: a UCS-4 character
@@ -339,4 +345,99 @@ gc_character_name (gunichar uc)
 {
   gchar *buffer = g_new0 (gchar, UNINAME_MAX);
   return unicode_character_name (uc, buffer);
+}
+
+static GcSearchResult *
+gc_search_result_copy (GcSearchResult *src)
+{
+  GcSearchResult *dest = g_slice_dup (GcSearchResult, src);
+  if (src->chars)
+    dest->chars = g_memdup (src->chars, sizeof (gunichar) * src->nchars);
+  return dest;
+}
+
+static void
+gc_search_result_free (GcSearchResult *result)
+{
+  if (result->chars)
+    g_free (result->chars);
+
+  g_slice_free (GcSearchResult, result);
+}
+
+G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
+		     gc_search_result_copy,
+		     gc_search_result_free);
+
+struct SearchCharacterData
+{
+  GcSearchFunc func;
+  gint max_matches;
+};
+
+static void
+gc_search_character_thread (GTask         *task,
+			    gpointer       source_object,
+			    gpointer       task_data,
+			    GCancellable  *cancellable)
+{
+  GcCharacterIter *iter;
+  GcSearchResult *result;
+  struct SearchCharacterData *data = task_data;
+
+  result = g_new0 (GcSearchResult, 1);
+  iter = gc_enumerate_character ();
+  while (gc_character_iter_next (iter))
+    {
+      gunichar uc = gc_character_iter_get (iter);
+      if (data->func (uc)
+	  && (data->max_matches < 0 || result->nchars < data->max_matches))
+	{
+	  if (result->nchars == result->maxchars)
+	    {
+	      result->maxchars = 100 + result->maxchars * 2;
+	      result->chars = g_realloc (result->chars, result->maxchars);
+	    }
+	  result->chars[result->nchars++] = uc;
+	}
+    }
+  g_task_return_pointer (task, result, g_free);
+}
+
+/**
+ * gc_search_character:
+ * @func: (scope call): a #GcSearchFunc.
+ * @max_matches: the maximum number of matches, or -1 to unlimit.
+ * @cancellable: a #GCancellable.
+ * @callback: a #GAsyncReadyCallback.
+ * @user_data: a data passed to @callback.
+ *
+ * Search characters by a matching function @func.
+ */
+void
+gc_search_character (GcSearchFunc        func,
+                     gint                max_matches,
+                     GCancellable       *cancellable,
+                     GAsyncReadyCallback callback,
+                     gpointer            user_data)
+{
+  GTask *task;
+  struct SearchCharacterData *data;
+
+  task = g_task_new (NULL, cancellable, callback, user_data);
+
+  data = g_new0 (struct SearchCharacterData, 1);
+  data->func = func;
+  data->max_matches = max_matches;
+  g_task_set_task_data (task, data, g_free);
+  g_task_run_in_thread (task, gc_search_character_thread);
+}
+
+GcSearchResult *
+gc_search_character_finish (GAsyncResult *result,
+                            GError      **error)
+{
+  g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+  return g_task_propagate_pointer (G_TASK (result), error);
 }

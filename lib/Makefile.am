@@ -21,6 +21,7 @@ Gc_1_0_gir_NAMESPACE = Gc
 Gc_1_0_gir_VERSION = 1.0
 Gc_1_0_gir_LIBS = libgc.la
 Gc_1_0_gir_CFLAGS = $(AM_CPPFLAGS)
+Gc_1_0_gir_INCLUDES = Gio-2.0
 Gc_1_0_gir_SCANNERFLAGS =			\
        --warn-all				\
        --symbol-prefix=gc			\
