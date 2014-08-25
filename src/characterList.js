@@ -1,5 +1,6 @@
 const Lang = imports.lang;
 const Params = imports.params;
+const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
@@ -92,13 +93,12 @@ const CharacterListRowWidget = new Lang.Class({
     },
 
     _copyCharacter: function() {
-	// FIXME
-	print('not implemented');
-
-	// let atom = Gdk.atom_intern("CLIPBOARD", false);
-	// let clipboard = Gtk.Clipboard.get(atom);
-	// clipboard.set_text(this.selectedCharacter,
-	// 		   this.selectedCharacter.length);
+	let clipboard = Gc.gtk_clipboard_get();
+	// FIXME: GLib.unichar_to_utf8() has missing (nullable)
+	// annotation to the outbuf argument.
+	let outbuf = '      ';
+	let length = GLib.unichar_to_utf8(this.selectedCharacter, outbuf);
+	clipboard.set_text(this.selectedCharacter, length);
     },
 
     vfunc_draw: function(cr) {

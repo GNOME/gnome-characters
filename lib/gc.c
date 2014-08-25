@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unictype.h>
 #include <uniname.h>
+#include <unistr.h>
 
 static const uc_block_t *all_blocks;
 static size_t all_block_count;
@@ -286,10 +287,22 @@ filter_keywords (ucs4_t uc, gpointer data)
   const gchar * const * keywords = data;
   gchar buffer[UNINAME_MAX];
 
-  if (!unicode_character_name (uc, buffer))
+  if (!uc_is_print (uc))
     return FALSE;
 
-  if (!uc_is_print (uc))
+  /* Match against the character itself.  */
+  if (*keywords)
+    {
+      uint8_t utf8[6];
+      size_t length;
+
+      u32_to_u8 (&uc, 1, utf8, &length);
+      if (memcmp (*keywords, utf8, length) == 0)
+	return TRUE;
+    }
+
+  /* Match against the name.  */
+  if (!unicode_character_name (uc, buffer))
     return FALSE;
 
   while (*keywords)
@@ -426,4 +439,25 @@ gc_search_character_finish (GAsyncResult *result,
   g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
 
   return g_task_propagate_pointer (G_TASK (result), error);
+}
+
+/**
+ * gc_gtk_clipboard_get:
+ *
+ * Returns: (transfer none): a #GtkClipboard.
+ */
+GtkClipboard *
+gc_gtk_clipboard_get (void)
+{
+  return gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
+}
+
+void
+gc_pango_layout_disable_fallback (PangoLayout *layout)
+{
+  PangoAttrList *attr_list;
+
+  attr_list = pango_attr_list_new ();
+  pango_attr_list_insert (attr_list, pango_attr_fallback_new (FALSE));
+  pango_layout_set_attributes (layout, attr_list);
 }
