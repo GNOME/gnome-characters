@@ -20,6 +20,11 @@ typedef enum
 
 typedef struct GcCharacterIter GcCharacterIter;
 
+/**
+ * GcSearchResult:
+ * @chars: (array zero-terminated=1) (element-type guint32): an array of #gunichar.
+ * @nchars: length of @chars.
+ */
 struct GcSearchResult
 {
   gunichar *chars;
@@ -28,15 +33,12 @@ struct GcSearchResult
 };
 
 typedef struct GcSearchResult GcSearchResult;
-typedef gboolean (*GcSearchFunc) (gunichar uc);
+typedef gboolean (*GcSearchFunc) (gunichar uc, gpointer user_data);
 
 GType            gc_character_iter_get_type (void);
 
 gboolean         gc_character_iter_next     (GcCharacterIter      *iter);
 gunichar         gc_character_iter_get      (GcCharacterIter      *iter);
-
-GcCharacterIter *gc_enumerate_character
-                                            (void);
 
 GcCharacterIter *gc_enumerate_character_by_category
                                             (GcCategory            category);
@@ -48,7 +50,7 @@ gchar           *gc_character_name          (gunichar              uc);
 
 GType            gc_search_result_get_type  (void);
 
-void             gc_search_character        (GcSearchFunc          func,
+void             gc_search_character        (const gchar * const * keywords,
                                              gint                  max_matches,
                                              GCancellable         *cancellable,
                                              GAsyncReadyCallback   callback,

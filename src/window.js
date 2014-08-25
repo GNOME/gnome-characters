@@ -24,6 +24,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
@@ -46,6 +47,8 @@ const MainWindow = new Lang.Class({
         this.parent(params);
 
         this._searchActive = false;
+        this._searchCancellable = new Gio.Cancellable();
+        this._searchKeywords = [];
 
         Util.initActions(this,
                          [{ name: 'new',
@@ -73,6 +76,8 @@ const MainWindow = new Lang.Class({
                            GObject.BindingFlags.BIDIRECTIONAL);
         let searchEntry = builder.get_object('main-search-entry');
         this._searchBar.connect_entry(searchEntry);
+        searchEntry.connect('search-changed',
+                            Lang.bind(this, this._handleSearchChanged));
 
         let grid = builder.get_object('main-grid');
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
@@ -156,12 +161,46 @@ const MainWindow = new Lang.Class({
             return;
 
         this._searchActive = v;
-        // do something with v
+        if (this._searchActive) {
+            this._mainView.visible_child_name = 'search-page';
+        }
         this.notify('search-active');
+    },
+
+    _handleSearchChanged: function(entry) {
+        let text = entry.get_text().replace(/^\s+|\s+$/g, '');
+        let keywords = text == '' ? [] : text.split(/\s+/);
+        if (keywords != this._searchKeywords) {
+            this._searchCancellable.cancel();
+            this._searchCancellable.reset();
+            this._searchKeywords = keywords;
+            if (this._searchKeywords.length > 0) {
+                Gc.search_character(this._searchKeywords,
+                                    20,
+                                    this._searchCancellable,
+                                    Lang.bind(this, this._searchReadyCallback));
+            } else {
+                let widget = this._mainView.getCharacterList('search-page');
+                widget.setCharacters([]);
+                this._mainView.show_all();
+            }
+        }
+        return true;
     },
 
     _handleKeyPress: function(self, event) {
         return this._searchBar.handle_event(event);
+    },
+
+    _searchReadyCallback: function(source_object, res, user_data) {
+        let result = Gc.search_character_finish(res);
+        let resultCharacters = [];
+        for (let index = 0; index < result.nchars; index++) {
+            resultCharacters.push(String.fromCharCode(result.chars[index]));
+        }
+        let widget = this._mainView.getCharacterList('search-page');
+        widget.setCharacters(resultCharacters);
+        this._mainView.show_all();
     },
 
     _new: function() {
@@ -200,6 +239,23 @@ const MainView = new Lang.Class({
                                        vexpand: true });
         this.parent(params);
         this.recentCharacters = [];
+        this.connect('notify::visible-child-name',
+                     Lang.bind(this, this._handleVisibleChildName));
+    },
+
+    getCharacterList: function(name) {
+        let scrolledWindow = this.get_child_by_name(name);
+        if (!scrolledWindow)
+            return null;
+        return scrolledWindow.get_child().get_child();
+    },
+
+    _handleVisibleChildName: function() {
+        if (this.visible_child_name == 'recent-page') {
+            let widget = this.getCharacterList('recent-page');
+            widget.setCharacters(this.recentCharacters);
+            this.show_all();
+        }
     },
 
     addPage: function(name, category) {
@@ -214,11 +270,14 @@ const MainView = new Lang.Class({
                                                  vexpand: true },
                                                characters);
         charactersWidget.get_style_context().add_class('characters');
-        if (name == 'recent-page')
-            this.recentCharactersWidget = charactersWidget;
         charactersWidget.connect('character-selected',
                                  Lang.bind(this, this._addToRecentCharacters));
         this._addPage(name, charactersWidget);
+    },
+
+    _addToRecentCharacters: function(widget, uc) {
+        if (this.recentCharacters.indexOf(uc) < 0)
+            this.recentCharacters.push(uc);
     },
 
     _addPage: function(name, widget) {
@@ -232,12 +291,4 @@ const MainView = new Lang.Class({
 
         this.add_named(scroll, name);
     },
-
-    _addToRecentCharacters: function(widget, uc) {
-        if (this.recentCharacters.indexOf(uc) < 0) {
-            this.recentCharacters.push(uc);
-            this.recentCharactersWidget.setCharacters(this.recentCharacters);
-            this.show_all();
-        }
-    }
 });

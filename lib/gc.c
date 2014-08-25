@@ -292,7 +292,7 @@ filter_keywords (ucs4_t uc, gpointer data)
   if (!uc_is_print (uc))
     return FALSE;
 
-  while (keywords)
+  while (*keywords)
     if (g_strstr_len (buffer, UNINAME_MAX, *keywords++) == NULL)
       return FALSE;
 
@@ -322,18 +322,6 @@ gc_enumerate_character_by_keywords (const gchar * const * keywords)
   return iter;
 }
 
-GcCharacterIter *
-gc_enumerate_character (void)
-{
-  GcCharacterIter *iter = gc_character_iter_new ();
-
-  iter->blocks = all_blocks;
-  iter->block_count = all_block_count;
-  iter->filter = filter_is_print;
-
-  return iter;
-}
-
 /**
  * gc_character_name:
  * @uc: a UCS-4 character
@@ -352,7 +340,9 @@ gc_search_result_copy (GcSearchResult *src)
 {
   GcSearchResult *dest = g_slice_dup (GcSearchResult, src);
   if (src->chars)
-    dest->chars = g_memdup (src->chars, sizeof (gunichar) * src->nchars);
+    dest->chars = g_memdup (src->chars, sizeof (gunichar) * src->maxchars);
+  dest->nchars = src->nchars;
+  dest->maxchars = src->maxchars;
   return dest;
 }
 
@@ -371,9 +361,16 @@ G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
 
 struct SearchCharacterData
 {
-  GcSearchFunc func;
+  gchar **keywords;
   gint max_matches;
 };
+
+static void
+search_character_data_free (struct SearchCharacterData *data)
+{
+  g_strfreev (data->keywords);
+  g_slice_free (struct SearchCharacterData, data);
+}
 
 static void
 gc_search_character_thread (GTask         *task,
@@ -384,14 +381,15 @@ gc_search_character_thread (GTask         *task,
   GcCharacterIter *iter;
   GcSearchResult *result;
   struct SearchCharacterData *data = task_data;
+  const gchar * const * keywords = (const gchar * const *) data->keywords;
 
-  result = g_new0 (GcSearchResult, 1);
-  iter = gc_enumerate_character ();
-  while (gc_character_iter_next (iter))
+  result = g_slice_new0 (GcSearchResult);
+  iter = gc_enumerate_character_by_keywords (keywords);
+  while (!g_cancellable_is_cancelled (cancellable)
+	 && gc_character_iter_next (iter))
     {
       gunichar uc = gc_character_iter_get (iter);
-      if (data->func (uc)
-	  && (data->max_matches < 0 || result->nchars < data->max_matches))
+      if (data->max_matches < 0 || result->nchars < data->max_matches)
 	{
 	  if (result->nchars == result->maxchars)
 	    {
@@ -401,35 +399,34 @@ gc_search_character_thread (GTask         *task,
 	  result->chars[result->nchars++] = uc;
 	}
     }
-  g_task_return_pointer (task, result, g_free);
+  g_task_return_pointer (task, result, (GDestroyNotify) gc_search_result_free);
 }
 
 /**
  * gc_search_character:
- * @func: (scope call): a #GcSearchFunc.
- * @max_matches: the maximum number of matches, or -1 to unlimit.
+ * @keywords: (array zero-terminated=1) (element-type utf8): an array of keywords
+ * @max_matches: the maximum number of results.
  * @cancellable: a #GCancellable.
  * @callback: a #GAsyncReadyCallback.
- * @user_data: a data passed to @callback.
- *
- * Search characters by a matching function @func.
+ * @user_data: a user data passed to @callback.
  */
 void
-gc_search_character (GcSearchFunc        func,
-                     gint                max_matches,
-                     GCancellable       *cancellable,
-                     GAsyncReadyCallback callback,
-                     gpointer            user_data)
+gc_search_character (const gchar * const * keywords,
+                     gint                  max_matches,
+                     GCancellable         *cancellable,
+                     GAsyncReadyCallback   callback,
+                     gpointer              user_data)
 {
   GTask *task;
   struct SearchCharacterData *data;
 
   task = g_task_new (NULL, cancellable, callback, user_data);
 
-  data = g_new0 (struct SearchCharacterData, 1);
-  data->func = func;
+  data = g_slice_new0 (struct SearchCharacterData);
+  data->keywords = g_strdupv ((gchar **) keywords);
   data->max_matches = max_matches;
-  g_task_set_task_data (task, data, g_free);
+  g_task_set_task_data (task, data,
+			(GDestroyNotify) search_character_data_free);
   g_task_run_in_thread (task, gc_search_character_thread);
 }
 
