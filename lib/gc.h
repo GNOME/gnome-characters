@@ -20,6 +20,8 @@ typedef enum
 
 typedef struct GcCharacterIter GcCharacterIter;
 
+/* FIXME: actually, @chars is not zero-terminated, but GJS does not
+   support variable length array other than that.  */
 /**
  * GcSearchResult:
  * @chars: (array zero-terminated=1) (element-type guint32): an array of #gunichar.
@@ -29,7 +31,6 @@ struct GcSearchResult
 {
   gunichar *chars;
   gsize nchars;
-  gsize maxchars;
 };
 
 typedef struct GcSearchResult GcSearchResult;

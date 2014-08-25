@@ -340,9 +340,7 @@ gc_search_result_copy (GcSearchResult *src)
 {
   GcSearchResult *dest = g_slice_dup (GcSearchResult, src);
   if (src->chars)
-    dest->chars = g_memdup (src->chars, sizeof (gunichar) * src->maxchars);
-  dest->nchars = src->nchars;
-  dest->maxchars = src->maxchars;
+    dest->chars = g_memdup (src->chars, sizeof (gunichar) * src->nchars);
   return dest;
 }
 
@@ -380,25 +378,23 @@ gc_search_character_thread (GTask         *task,
 {
   GcCharacterIter *iter;
   GcSearchResult *result;
+  GArray *array;
   struct SearchCharacterData *data = task_data;
   const gchar * const * keywords = (const gchar * const *) data->keywords;
 
-  result = g_slice_new0 (GcSearchResult);
+  array = g_array_new (FALSE, FALSE, sizeof (gunichar));
   iter = gc_enumerate_character_by_keywords (keywords);
   while (!g_cancellable_is_cancelled (cancellable)
 	 && gc_character_iter_next (iter))
     {
       gunichar uc = gc_character_iter_get (iter);
-      if (data->max_matches < 0 || result->nchars < data->max_matches)
-	{
-	  if (result->nchars == result->maxchars)
-	    {
-	      result->maxchars = 100 + result->maxchars * 2;
-	      result->chars = g_realloc (result->chars, result->maxchars);
-	    }
-	  result->chars[result->nchars++] = uc;
-	}
+      if (data->max_matches < 0 || array->len < data->max_matches)
+	g_array_append_val (array, uc);
     }
+
+  result = g_slice_new0 (GcSearchResult);
+  result->nchars = array->len;
+  result->chars = (gunichar *) g_array_free (array, FALSE);
   g_task_return_pointer (task, result, (GDestroyNotify) gc_search_result_free);
 }
 

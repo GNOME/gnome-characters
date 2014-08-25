@@ -35,6 +35,8 @@ const Gc = imports.gi.Gc;
 
 const Util = imports.util;
 
+const MAX_SEARCH_RESULTS = 100;
+
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
     Extends: Gtk.ApplicationWindow,
@@ -176,7 +178,7 @@ const MainWindow = new Lang.Class({
             this._searchKeywords = keywords;
             if (this._searchKeywords.length > 0) {
                 Gc.search_character(this._searchKeywords,
-                                    20,
+                                    MAX_SEARCH_RESULTS,
                                     this._searchCancellable,
                                     Lang.bind(this, this._searchReadyCallback));
             } else {
