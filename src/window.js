@@ -53,9 +53,7 @@ const MainWindow = new Lang.Class({
         this._searchKeywords = [];
 
         Util.initActions(this,
-                         [{ name: 'new',
-                             activate: this._new },
-                          { name: 'about',
+                         [{ name: 'about',
                             activate: this._about },
                           { name: 'search-active',
                             activate: this._toggleSearch,
@@ -203,10 +201,6 @@ const MainWindow = new Lang.Class({
         let widget = this._mainView.getCharacterList('search-page');
         widget.setCharacters(resultCharacters);
         this._mainView.show_all();
-    },
-
-    _new: function() {
-        log(_("New something"));
     },
 
     _about: function() {
