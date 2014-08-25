@@ -20,20 +20,7 @@ typedef enum
 
 typedef struct GcCharacterIter GcCharacterIter;
 
-/* FIXME: actually, @chars is not zero-terminated, but GJS does not
-   support variable length array other than that.  */
-/**
- * GcSearchResult:
- * @chars: (array zero-terminated=1) (element-type guint32): an array of #gunichar.
- * @nchars: length of @chars.
- */
-struct GcSearchResult
-{
-  gunichar *chars;
-  gsize nchars;
-};
-
-typedef struct GcSearchResult GcSearchResult;
+typedef GArray GcSearchResult;
 typedef gboolean (*GcSearchFunc) (gunichar uc, gpointer user_data);
 
 GType            gc_character_iter_get_type (void);
@@ -50,6 +37,9 @@ GcCharacterIter *gc_enumerate_character_by_keywords
 gchar           *gc_character_name          (gunichar              uc);
 
 GType            gc_search_result_get_type  (void);
+gunichar         gc_search_result_get       (GcSearchResult       *result,
+                                             gint                  index);
+void             gc_search_result_size      (GcSearchResult       *result);
 
 void             gc_search_character        (const gchar * const * keywords,
                                              gint                  max_matches,

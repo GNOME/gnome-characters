@@ -197,8 +197,8 @@ const MainWindow = new Lang.Class({
     _searchReadyCallback: function(source_object, res, user_data) {
         let result = Gc.search_character_finish(res);
         let resultCharacters = [];
-        for (let index = 0; index < result.nchars; index++) {
-            resultCharacters.push(String.fromCharCode(result.chars[index]));
+        for (let index = 0; index < result.len; index++) {
+            resultCharacters.push(Gc.search_result_get(result, index));
         }
         let widget = this._mainView.getCharacterList('search-page');
         widget.setCharacters(resultCharacters);

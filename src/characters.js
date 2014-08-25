@@ -212,7 +212,7 @@ const CharacterListWidget = new Lang.Class({
 	    return;
 
         let start = 0, stop = 1;
-        for (; stop < characters.length; stop++) {
+        for (; stop <= characters.length; stop++) {
             if (stop % CELLS_PER_ROW == 0) {
 		let rowCharacters = characters.slice(start, stop);
 		let rowWidget = new CharacterListRowWidget({}, rowCharacters);
@@ -224,7 +224,7 @@ const CharacterListWidget = new Lang.Class({
                 start = stop;
             }
         }
-        if (stop % CELLS_PER_ROW != 0) {
+        if (start != stop - 1) {
 	    let rowCharacters = characters.slice(start, stop);
 	    let rowWidget = new CharacterListRowWidget({}, rowCharacters);
 	    rowWidget.connect('character-selected',

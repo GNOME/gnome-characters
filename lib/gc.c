@@ -335,27 +335,17 @@ gc_character_name (gunichar uc)
   return unicode_character_name (uc, buffer);
 }
 
-static GcSearchResult *
-gc_search_result_copy (GcSearchResult *src)
-{
-  GcSearchResult *dest = g_slice_dup (GcSearchResult, src);
-  if (src->chars)
-    dest->chars = g_memdup (src->chars, sizeof (gunichar) * src->nchars);
-  return dest;
-}
-
-static void
-gc_search_result_free (GcSearchResult *result)
-{
-  if (result->chars)
-    g_free (result->chars);
-
-  g_slice_free (GcSearchResult, result);
-}
-
 G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
-		     gc_search_result_copy,
-		     gc_search_result_free);
+		     g_array_ref, g_array_unref);
+
+gunichar
+gc_search_result_get (GcSearchResult *result, gint index)
+{
+  g_return_val_if_fail (result, G_MAXUINT32);
+  g_return_val_if_fail (0 <= index && index < result->len, G_MAXUINT32);
+
+  return g_array_index (result, gunichar, index);
+}
 
 struct SearchCharacterData
 {
@@ -377,25 +367,21 @@ gc_search_character_thread (GTask         *task,
 			    GCancellable  *cancellable)
 {
   GcCharacterIter *iter;
-  GcSearchResult *result;
-  GArray *array;
+  GArray *result;
   struct SearchCharacterData *data = task_data;
   const gchar * const * keywords = (const gchar * const *) data->keywords;
 
-  array = g_array_new (FALSE, FALSE, sizeof (gunichar));
+  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
   iter = gc_enumerate_character_by_keywords (keywords);
   while (!g_cancellable_is_cancelled (cancellable)
 	 && gc_character_iter_next (iter))
     {
       gunichar uc = gc_character_iter_get (iter);
-      if (data->max_matches < 0 || array->len < data->max_matches)
-	g_array_append_val (array, uc);
+      if (data->max_matches < 0 || result->len < data->max_matches)
+	g_array_append_val (result, uc);
     }
 
-  result = g_slice_new0 (GcSearchResult);
-  result->nchars = array->len;
-  result->chars = (gunichar *) g_array_free (array, FALSE);
-  g_task_return_pointer (task, result, (GDestroyNotify) gc_search_result_free);
+  g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
 }
 
 /**
@@ -426,6 +412,13 @@ gc_search_character (const gchar * const * keywords,
   g_task_run_in_thread (task, gc_search_character_thread);
 }
 
+/**
+ * gc_search_character_finish:
+ * @result: a #GAsyncResult.
+ * @error: return location of an error.
+ *
+ * Returns: (transfer full): an array of characters.
+ */
 GcSearchResult *
 gc_search_character_finish (GAsyncResult *result,
                             GError      **error)
