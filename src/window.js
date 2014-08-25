@@ -30,7 +30,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Params = imports.params;
-const Characters = imports.characters;
+const CharacterList = imports.characterList;
 const Gc = imports.gi.Gc;
 
 const Util = imports.util;
@@ -136,6 +136,7 @@ const MainWindow = new Lang.Class({
 
         this._mainView.visible_child_name = row.page_name;
         this._headerBar.title = row.label;
+        this.search_active = false;
     },
 
     _addCategory: function(label, page_name, category) {
@@ -261,14 +262,14 @@ const MainView = new Lang.Class({
             characters.push(iter.get());
         }
 
-        let charactersWidget =
-            new Characters.CharacterListWidget({ hexpand: true,
-                                                 vexpand: true },
-                                               characters);
-        charactersWidget.get_style_context().add_class('characters');
-        charactersWidget.connect('character-selected',
-                                 Lang.bind(this, this._addToRecentCharacters));
-        this._addPage(name, charactersWidget);
+        let widget =
+            new CharacterList.CharacterListWidget({ hexpand: true,
+                                                    vexpand: true },
+                                                  characters);
+        widget.get_style_context().add_class('characters');
+        widget.connect('character-selected',
+                       Lang.bind(this, this._addToRecentCharacters));
+        this._addPageWidget(name, widget);
     },
 
     _addToRecentCharacters: function(widget, uc) {
@@ -276,7 +277,7 @@ const MainView = new Lang.Class({
             this.recentCharacters.push(uc);
     },
 
-    _addPage: function(name, widget) {
+    _addPageWidget: function(name, widget) {
         let viewport = new Gtk.Viewport({});
         viewport.add(widget);
 
