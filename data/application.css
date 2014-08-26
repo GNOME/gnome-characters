@@ -2,18 +2,30 @@
     background-color: @theme_bg_color;
 }
 
-.category {
+.list-row.category {
     background-color: @theme_bg_color;
+    border-style: groove;
+    border-width: 1pt;
     padding: 10px;
 }
 
-.category:selected {
+.list-row.category:selected {
     background-color: @theme_selected_bg_color;
 }
 
-.big-label {
-    font-size: 5em;
-    font-weight: bold;
+.list-row.category .category-image {
+    color: #888a85;
+}
+
+.list-row.category:active .category-image,
+.list-row.category:selected .category-image {
+    color: @theme_selected_fg_color;
+}
+
+.list-row.category .category-label {
+    background-color: inherit;
+    color: inherit;
+    padding: 10pt;
 }
 
 .character-label {

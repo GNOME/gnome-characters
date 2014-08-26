@@ -30,19 +30,6 @@
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkSearchBar" id="main-search-bar">
-        <property name="visible">True</property>
-        <property name="hexpand">True</property>
-        <child>
-          <object class="GtkSearchEntry" id="main-search-entry">
-            <property name="can_focus">True</property>
-            <property name="width-request">500</property>
-            <property name="halign">center</property>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
       <placeholder/>
     </child>
   </object>

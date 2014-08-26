@@ -107,12 +107,13 @@ const CharacterListRowWidget = new Lang.Class({
         cr.scale(extents[2], extents[2]);
 
 	// Clear the canvas.
+	// FIXME: Pick the background color from CSS.
         cr.setSourceRGBA(1, 1, 1, 1);
         cr.paint();
         cr.setSourceRGBA(0, 0, 0, 1);
 
         let layout = PangoCairo.create_layout(cr);
-	// FIXME: Move this to settings
+	// FIXME: Move this to settings.
         let description = Pango.FontDescription.from_string("Cantarell");
         description.set_absolute_size(FONT_PIXEL_SIZE);
         layout.set_font_description(description);
@@ -121,7 +122,8 @@ const CharacterListRowWidget = new Lang.Class({
         let distance = cr.deviceToUserDistance(1, 1);
         let px = Math.max(distance[0], distance[1]);
 
-        cr.setSourceRGBA(0.0, 0.0, 1.0, 0.2);
+	// FIXME: Pick the baseline color from CSS.
+        cr.setSourceRGBA(114.0 / 255.0, 159.0 / 255.0, 207.0 / 255.0, 1.0);
         cr.setLineWidth(0.5 * px);
         cr.moveTo(0, BASELINE_OFFSET);
         cr.relLineTo(1.0, 0);

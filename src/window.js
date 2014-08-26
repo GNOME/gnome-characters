@@ -62,6 +62,7 @@ const MainWindow = new Lang.Class({
 
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/main.ui');
+        builder.add_from_resource('/org/gnome/Characters/sidebar.ui');
 
         this._headerBar = builder.get_object('main-header');
         this.set_titlebar(this._headerBar);
@@ -82,43 +83,55 @@ const MainWindow = new Lang.Class({
         let grid = builder.get_object('main-grid');
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
-        this._categoryListBox = new Gtk.ListBox({});
-        this._categoryListBox.get_style_context().add_class('categories');
-        this._categoryListRows = {};
+        let categoryGrid = builder.get_object('category-grid');
+        this._categoryListBox = builder.get_object('category-listbox');
         this._mainView = new MainView();
 
         // FIXME: should use GtkRecentManager?
-        this._addCategory(_("Recently Used"),
-                          'recent-page',
-                          Gc.Category.NONE);
-        this._addCategory(_("Punctuations"),
-                          'punctuation-page',
-                          Gc.Category.PUNCTUATION);
-        this._addCategory(_("Arrows"),
-                          'arrow-page',
-                          Gc.Category.ARROW);
-        this._addCategory(_("Bullets"),
-                          'bullet-page',
-                          Gc.Category.BULLET);
-        this._addCategory(_("Picture"),
-                          'picture-page',
-                          Gc.Category.PICTURE);
-        this._addCategory(_("Currencies"),
-                          'currency-page',
-                          Gc.Category.CURRENCY);
-        this._addCategory(_("Math"),
-                          'math-page',
-                          Gc.Category.MATH);
-        this._addCategory(_("Latin"),
-                          'latin-page',
-                          Gc.Category.LATIN);
-        this._addCategory(_("Emoticons"),
-                          'emoticon-page',
-                          Gc.Category.EMOTICON);
+        let recent_row = builder.get_object('category-recent-listboxrow');
+        recent_row.page = this._mainView.addPage('recent-page',
+                                                 Gc.Category.NONE);
+;
+
+        let punctuation_row = builder.get_object('category-punctuation-listboxrow');
+        punctuation_row.page = this._mainView.addPage('punctuation-page',
+                                                      Gc.Category.PUNCTUATION);
+
+        let arrow_row = builder.get_object('category-arrow-listboxrow');
+        arrow_row.page = this._mainView.addPage('arrow-page',
+                                                Gc.Category.ARROW);
+
+        let bullet_row = builder.get_object('category-bullet-listboxrow');
+        bullet_row.page = this._mainView.addPage('bullet-page',
+                                                 Gc.Category.BULLET);
+
+        let picture_row = builder.get_object('category-picture-listboxrow');
+        picture_row.page = this._mainView.addPage('picture-page',
+                                                  Gc.Category.PICTURE);
+
+        let currency_row = builder.get_object('category-currency-listboxrow');
+        currency_row.page = this._mainView.addPage('currency-page',
+                                                   Gc.Category.CURRENCY);
+
+        let math_row = builder.get_object('category-math-listboxrow');
+        math_row.page = this._mainView.addPage('math-page',
+                                               Gc.Category.MATH);
+
+        let latin_row = builder.get_object('category-latin-listboxrow');
+        latin_row.page = this._mainView.addPage('latin-page',
+                                                Gc.Category.LATIN);
+
+        let emoticon_row = builder.get_object('category-emoticon-listboxrow');
+        emoticon_row.page = this._mainView.addPage('emoticon-page',
+                                                   Gc.Category.EMOTICON);
+
         this._mainView.addPage('search-page',
                                Gc.Category.NONE);
 
-        hbox.pack_start(this._categoryListBox, false, false, 2);
+        this._categoryListBox.connect('row-selected',
+                                      Lang.bind(this, this._handleRowSelected));
+
+        hbox.pack_start(categoryGrid, false, false, 2);
         hbox.pack_start(this._mainView, true, true, 0);
         grid.add(hbox);
 
@@ -131,26 +144,15 @@ const MainWindow = new Lang.Class({
     },
 
     _handleRowSelected: function(listBox, row) {
-        if (row == null)
-            return;
-
-        this._mainView.visible_child_name = row.page_name;
-        this._headerBar.title = row.label;
-        this.search_active = false;
+        if (row != null) {
+            this._mainView.visible_child = row.page;
+            //this._headerBar.title = row.label;
+            this.search_active = false;
+        }
     },
 
-    _addCategory: function(label, page_name, category) {
-        let row = new Gtk.ListBoxRow({});
-        row.add(new Gtk.Label({ label: label,
-                                halign: Gtk.Align.START }));
-        row.get_style_context().add_class('category');
-        row.label = label;
-        row.page_name = page_name;
-        this._categoryListBox.add(row);
-        this._mainView.addPage(page_name, category);
-        this._categoryListBox.connect('row-selected',
-                                      Lang.bind(this, this._handleRowSelected));
-        return row;
+    _addCategory: function(category_name, page_name, category, image) {
+        let recent_row = builder.get_object('category-recent-listboxrow');
     },
 
     get search_active() {
@@ -269,7 +271,7 @@ const MainView = new Lang.Class({
         widget.get_style_context().add_class('characters');
         widget.connect('character-selected',
                        Lang.bind(this, this._addToRecentCharacters));
-        this._addPageWidget(name, widget);
+        return this._addPageWidget(name, widget);
     },
 
     _addToRecentCharacters: function(widget, uc) {
@@ -287,5 +289,6 @@ const MainView = new Lang.Class({
         scroll.add(viewport);
 
         this.add_named(scroll, name);
+        return scroll;
     },
 });

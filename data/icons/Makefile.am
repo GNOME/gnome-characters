@@ -1,14 +1,14 @@
-icondir = $(datadir)/icons/
+icondir = $(datadir)/icons
 
-# ##example## Uncomment when an icon actually exists
-
-#nobase_icon_DATA = \
-#	hicolor/16x16/apps/$(PACKAGE_NAME).png \
-#	hicolor/22x22/apps/$(PACKAGE_NAME).png \
-#	hicolor/32x32/apps/$(PACKAGE_NAME).png \
-#	hicolor/48x48/apps/$(PACKAGE_NAME).png \
-#	hicolor/256x256/apps/$(PACKAGE_NAME).png
-#EXTRA_DIST = $(nobase_icon_DATA) hicolor/$(PACKAGE_NAME).svg
+nobase_icon_DATA = \
+	hicolor/scalable/categories/characters-punctuation-symbolic.svg \
+	hicolor/scalable/categories/characters-arrow-symbolic.svg \
+	hicolor/scalable/categories/characters-bullet-symbolic.svg \
+	hicolor/scalable/categories/characters-picture-symbolic.svg \
+	hicolor/scalable/categories/characters-currency-symbolic.svg \
+	hicolor/scalable/categories/characters-math-symbolic.svg \
+	hicolor/scalable/categories/characters-latin-symbolic.svg
+EXTRA_DIST = $(icon_DATA)
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor; gtk-update-icon-cache -f -t $(datadir)/icons/HighContrast
 
