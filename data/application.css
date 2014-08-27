@@ -1,30 +1,17 @@
-.categories {
-    background-color: @theme_bg_color;
-}
-
 .list-row.category {
-    background-color: @theme_bg_color;
     border-style: groove;
     border-width: 1pt;
     padding: 10px;
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
 }
 
 .list-row.category:selected {
     background-color: @theme_selected_bg_color;
-}
-
-.list-row.category .category-image {
-    color: #888a85;
-}
-
-.list-row.category:active .category-image,
-.list-row.category:selected .category-image {
     color: @theme_selected_fg_color;
 }
 
 .list-row.category .category-label {
-    background-color: inherit;
-    color: inherit;
     padding: 10pt;
 }
 
