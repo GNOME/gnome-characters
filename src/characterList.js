@@ -151,11 +151,10 @@ const CharacterListWidget = new Lang.Class({
 	'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
 
-    _init: function(params, characters) {
+    _init: function(params) {
         params = Params.fill(params, { orientation: Gtk.Orientation.VERTICAL,
 				       homogeneous: true });
         this.parent(params);
-	this.setCharacters(characters);
         this.get_style_context().add_class('character-list');
     },
 
@@ -182,10 +181,14 @@ const CharacterListWidget = new Lang.Class({
     vfunc_get_preferred_width_for_height: function(height) {
 	let width = 0;
 	let children = this.get_children();
-	for (let index in children) {
-	    let [minWidth, natWidth] =
-		children[index].get_preferred_width_for_height(height);
-	    width = Math.max(width, minWidth);
+	if (children.length == 0)
+	    width = CELL_PIXEL_SIZE * CELLS_PER_ROW;
+	else {
+	    for (let index in children) {
+		let [minWidth, natWidth] =
+		    children[index].get_preferred_width_for_height(height);
+		width = Math.max(width, minWidth);
+	    }
 	}
 	return [width, width];
     },

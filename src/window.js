@@ -228,22 +228,31 @@ const MainView = new Lang.Class({
     },
 
     _handleVisibleChildName: function() {
+        let characterList = this._characterListWidgets[this.visible_child_name];
         if (this.visible_child_name == 'recent') {
-            let characterList = this._characterListWidgets['recent'];
             characterList.setCharacters(this.recentCharacters);
+            characterList.show_all();
+        } else if (characterList) {
+            let category = null;
+            for (let index in CategoryList.Category) {
+                category = CategoryList.Category[index];
+                if (category.name == this.visible_child_name)
+                    break;
+            }
+
+            Util.assertNotEqual(category, null);
+            let characters = []
+            let iter = Gc.enumerate_character_by_category(category.category);
+            while (iter.next ())
+                characters.push(iter.get());
+            characterList.setCharacters(characters);
             characterList.show_all();
         }
     },
 
     _createCharacterList: function(category) {
-        let characters = []
-        let iter = Gc.enumerate_character_by_category (category);
-        while (iter.next ())
-            characters.push(iter.get());
-
         let widget = new CharacterList.CharacterListWidget({ hexpand: true,
-                                                             vexpand: true },
-                                                          characters);
+                                                             vexpand: true });
         widget.connect('character-selected',
                        Lang.bind(this, this._addToRecentCharacters));
         return widget;

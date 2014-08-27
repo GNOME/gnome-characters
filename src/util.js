@@ -112,3 +112,13 @@ function loadIcon(iconName, size) {
                            size,
                            Gtk.IconLookupFlags.GENERIC_FALLBACK);
 }
+
+function assertEqual(one, two) {
+    if (one != two)
+        throw Error('Assertion failed: ' + one + ' != ' + two);
+}
+
+function assertNotEqual(one, two) {
+    if (one == two)
+        throw Error('Assertion failed: ' + one + ' == ' + two);
+}
