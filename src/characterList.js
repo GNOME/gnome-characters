@@ -26,6 +26,7 @@ const CharacterListRowWidget = new Lang.Class({
         this.parent(params);
 	this.characters = characters;
 	this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK);
+        this.get_style_context().add_class('character-list-row');
     },
 
     vfunc_get_preferred_height: function() {
@@ -155,6 +156,7 @@ const CharacterListWidget = new Lang.Class({
 				       homogeneous: true });
         this.parent(params);
 	this.setCharacters(characters);
+        this.get_style_context().add_class('character-list');
     },
 
     vfunc_get_preferred_height: function() {

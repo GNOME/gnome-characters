@@ -1,4 +1,4 @@
-.list-row.category {
+.list-row.category-list-row {
     border-style: groove;
     border-width: 1pt;
     padding: 10px;
@@ -6,12 +6,21 @@
     color: @theme_fg_color;
 }
 
-.list-row.category:selected {
+.list-row.category-list-row:selected,
+.list-row.category-list-row:selected:focus {
     background-color: @theme_selected_bg_color;
     color: @theme_selected_fg_color;
 }
 
-.list-row.category .category-label {
+.list-row.category-list-row .category-label {
+    padding: 10pt;
+}
+
+.search-prompt {
+    color: @insensitive_fg_color;
+}
+
+.search-prompt-label {
     padding: 10pt;
 }
 

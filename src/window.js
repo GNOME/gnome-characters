@@ -31,7 +31,9 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Params = imports.params;
 const CharacterList = imports.characterList;
+const CategoryList = imports.categoryList;
 const Gc = imports.gi.Gc;
+const Gettext = imports.gettext;
 
 const Util = imports.util;
 
@@ -58,7 +60,11 @@ const MainWindow = new Lang.Class({
                           { name: 'search-active',
                             activate: this._toggleSearch,
                             parameter_type: new GLib.VariantType('b'),
-                            state: new GLib.Variant('b', false) }]);
+                            state: new GLib.Variant('b', false) },
+                          { name: 'category',
+                            activate: this._category,
+                            parameter_type: new GLib.VariantType('s'),
+                            state: new GLib.Variant('s', 'punctuation') }]);
 
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/main.ui');
@@ -71,11 +77,11 @@ const MainWindow = new Lang.Class({
         this.bind_property('search-active', searchBtn, 'active',
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
-        this._searchBar = builder.get_object('main-search-bar');
+        this._searchBar = builder.get_object('search-bar');
         this.bind_property('search-active', this._searchBar, 'search-mode-enabled',
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
-        let searchEntry = builder.get_object('main-search-entry');
+        let searchEntry = builder.get_object('search-entry');
         this._searchBar.connect_entry(searchEntry);
         searchEntry.connect('search-changed',
                             Lang.bind(this, this._handleSearchChanged));
@@ -83,56 +89,14 @@ const MainWindow = new Lang.Class({
         let grid = builder.get_object('main-grid');
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
-        let categoryGrid = builder.get_object('category-grid');
-        this._categoryListBox = builder.get_object('category-listbox');
+        let sidebarGrid = builder.get_object('sidebar-grid');
+        this._categoryList = new CategoryList.CategoryListWidget();
+        sidebarGrid.add(this._categoryList);
+        hbox.pack_start(sidebarGrid, false, false, 2);
+
         this._mainView = new MainView();
-
-        // FIXME: should use GtkRecentManager?
-        let recent_row = builder.get_object('category-recent-listboxrow');
-        recent_row.page = this._mainView.addPage('recent-page',
-                                                 Gc.Category.NONE);
-;
-
-        let punctuation_row = builder.get_object('category-punctuation-listboxrow');
-        punctuation_row.page = this._mainView.addPage('punctuation-page',
-                                                      Gc.Category.PUNCTUATION);
-
-        let arrow_row = builder.get_object('category-arrow-listboxrow');
-        arrow_row.page = this._mainView.addPage('arrow-page',
-                                                Gc.Category.ARROW);
-
-        let bullet_row = builder.get_object('category-bullet-listboxrow');
-        bullet_row.page = this._mainView.addPage('bullet-page',
-                                                 Gc.Category.BULLET);
-
-        let picture_row = builder.get_object('category-picture-listboxrow');
-        picture_row.page = this._mainView.addPage('picture-page',
-                                                  Gc.Category.PICTURE);
-
-        let currency_row = builder.get_object('category-currency-listboxrow');
-        currency_row.page = this._mainView.addPage('currency-page',
-                                                   Gc.Category.CURRENCY);
-
-        let math_row = builder.get_object('category-math-listboxrow');
-        math_row.page = this._mainView.addPage('math-page',
-                                               Gc.Category.MATH);
-
-        let latin_row = builder.get_object('category-latin-listboxrow');
-        latin_row.page = this._mainView.addPage('latin-page',
-                                                Gc.Category.LATIN);
-
-        let emoticon_row = builder.get_object('category-emoticon-listboxrow');
-        emoticon_row.page = this._mainView.addPage('emoticon-page',
-                                                   Gc.Category.EMOTICON);
-
-        this._mainView.addPage('search-page',
-                               Gc.Category.NONE);
-
-        this._categoryListBox.connect('row-selected',
-                                      Lang.bind(this, this._handleRowSelected));
-
-        hbox.pack_start(categoryGrid, false, false, 2);
         hbox.pack_start(this._mainView, true, true, 0);
+
         grid.add(hbox);
 
         this.add(grid);
@@ -141,18 +105,6 @@ const MainWindow = new Lang.Class({
         // Due to limitations of gobject-introspection wrt GdkEvent and GdkEventKey,
         // this needs to be a signal handler
         this.connect('key-press-event', Lang.bind(this, this._handleKeyPress));
-    },
-
-    _handleRowSelected: function(listBox, row) {
-        if (row != null) {
-            this._mainView.visible_child = row.page;
-            //this._headerBar.title = row.label;
-            this.search_active = false;
-        }
-    },
-
-    _addCategory: function(category_name, page_name, category, image) {
-        let recent_row = builder.get_object('category-recent-listboxrow');
     },
 
     get search_active() {
@@ -165,7 +117,9 @@ const MainWindow = new Lang.Class({
 
         this._searchActive = v;
         if (this._searchActive) {
-            this._mainView.visible_child_name = 'search-page';
+            this._mainView.visible_child_name = 'search-prompt';
+        } else {
+            this._mainView.visible_child_name = 'punctuation';
         }
         this.notify('search-active');
     },
@@ -182,11 +136,8 @@ const MainWindow = new Lang.Class({
                                     MAX_SEARCH_RESULTS,
                                     this._searchCancellable,
                                     Lang.bind(this, this._searchReadyCallback));
-            } else {
-                let widget = this._mainView.getCharacterList('search-page');
-                widget.setCharacters([]);
-                this._mainView.show_all();
-            }
+            } else
+                this._mainView.setSearchResult([]);
         }
         return true;
     },
@@ -201,9 +152,7 @@ const MainWindow = new Lang.Class({
         for (let index = 0; index < result.len; index++) {
             resultCharacters.push(Gc.search_result_get(result, index));
         }
-        let widget = this._mainView.getCharacterList('search-page');
-        widget.setCharacters(resultCharacters);
-        this._mainView.show_all();
+        this._mainView.setSearchResult(resultCharacters);
     },
 
     _about: function() {
@@ -227,6 +176,11 @@ const MainWindow = new Lang.Class({
             aboutDialog.destroy();
         });
     },
+
+    _category: function(action, v) {
+        let [name, length] = v.get_string()
+        this._mainView.visible_child_name = name;
+    },
 });
 
 const MainView = new Lang.Class({
@@ -237,49 +191,65 @@ const MainView = new Lang.Class({
         params = Params.fill(params, { hexpand: true,
                                        vexpand: true });
         this.parent(params);
+        this._characterListWidgets = {};
+
+        for (let index in CategoryList.Category) {
+            let category = CategoryList.Category[index];
+            let characterList = this._createCharacterList(category.category);
+            this._characterListWidgets[category.name] = characterList;
+            this.add_named(this._createScrolledWindow(characterList),
+                           category.name);
+        }
+
+        this._searchResultCharacterList =
+            this._createCharacterList(Gc.Category.NONE);
+        this.add_named(
+            this._createScrolledWindow(this._searchResultCharacterList),
+            'search-result');
+
+        let searchPromptGrid =
+            new Gtk.Grid({ orientation: Gtk.Orientation.HORIZONTAL,
+                           halign: Gtk.Align.CENTER,
+                           valign: Gtk.Align.CENTER });
+        searchPromptGrid.get_style_context().add_class('search-prompt');
+        let searchPromptIcon =
+            new Gio.ThemedIcon({ name: 'edit-find-symbolic' });
+        let searchPromptImage =
+            Gtk.Image.new_from_gicon(searchPromptIcon, Gtk.IconSize.DIALOG);
+        searchPromptGrid.add(searchPromptImage);
+        let searchPromptLabel = new Gtk.Label({ label: _('Type to Search') });
+        searchPromptLabel.get_style_context().add_class('search-prompt-label');
+        searchPromptGrid.add(searchPromptLabel);
+        this.add_named(searchPromptGrid, 'search-prompt');
+
         this.recentCharacters = [];
         this.connect('notify::visible-child-name',
                      Lang.bind(this, this._handleVisibleChildName));
     },
 
-    getCharacterList: function(name) {
-        let scrolledWindow = this.get_child_by_name(name);
-        if (!scrolledWindow)
-            return null;
-        return scrolledWindow.get_child().get_child();
-    },
-
     _handleVisibleChildName: function() {
-        if (this.visible_child_name == 'recent-page') {
-            let widget = this.getCharacterList('recent-page');
-            widget.setCharacters(this.recentCharacters);
-            this.show_all();
+        if (this.visible_child_name == 'recent') {
+            let characterList = this._characterListWidgets['recent'];
+            characterList.setCharacters(this.recentCharacters);
+            characterList.show_all();
         }
     },
 
-    addPage: function(name, category) {
+    _createCharacterList: function(category) {
         let characters = []
         let iter = Gc.enumerate_character_by_category (category);
-        while (iter.next ()) {
+        while (iter.next ())
             characters.push(iter.get());
-        }
 
-        let widget =
-            new CharacterList.CharacterListWidget({ hexpand: true,
-                                                    vexpand: true },
-                                                  characters);
-        widget.get_style_context().add_class('characters');
+        let widget = new CharacterList.CharacterListWidget({ hexpand: true,
+                                                             vexpand: true },
+                                                          characters);
         widget.connect('character-selected',
                        Lang.bind(this, this._addToRecentCharacters));
-        return this._addPageWidget(name, widget);
+        return widget;
     },
 
-    _addToRecentCharacters: function(widget, uc) {
-        if (this.recentCharacters.indexOf(uc) < 0)
-            this.recentCharacters.push(uc);
-    },
-
-    _addPageWidget: function(name, widget) {
+    _createScrolledWindow: function(widget) {
         let viewport = new Gtk.Viewport({});
         viewport.add(widget);
 
@@ -287,8 +257,21 @@ const MainView = new Lang.Class({
             hscrollbar_policy: Gtk.PolicyType.NEVER
         });
         scroll.add(viewport);
-
-        this.add_named(scroll, name);
         return scroll;
     },
+
+    setSearchResult: function(result) {
+        this._searchResultCharacterList.setCharacters(result);
+        if (result.length == 0)
+            this.visible_child_name = 'search-prompt';
+        else {
+            this.visible_child_name = 'search-result';
+            this._searchResultCharacterList.show_all();
+        }
+    },
+
+    _addToRecentCharacters: function(widget, uc) {
+        if (this.recentCharacters.indexOf(uc) < 0)
+            this.recentCharacters.push(uc);
+    }
 });

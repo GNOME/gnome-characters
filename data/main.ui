@@ -33,4 +33,46 @@
       <placeholder/>
     </child>
   </object>
+  <object class="GtkGrid" id="search-prompt-grid">
+    <property name="can_focus">False</property>
+    <property name="visible">True</property>
+    <property name="orientation">horizontal</property>
+    <property name="halign">center</property>
+    <property name="valign">center</property>
+    <child>
+      <object class="GtkImage" id="search-prompt-image">
+	<property name="can_focus">False</property>
+	<property name="visible">True</property>
+	<property name="icon_name">edit-find-symbolic</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="search-prompt-label">
+	<property name="can_focus">False</property>
+	<property name="visible">True</property>
+	<property name="label" translatable="yes">Type to Search</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkGrid" id="empty-grid">
+    <property name="can_focus">False</property>
+    <property name="visible">True</property>
+    <property name="orientation">horizontal</property>
+    <property name="halign">center</property>
+    <property name="valign">center</property>
+    <child>
+      <object class="GtkImage" id="empty-image">
+	<property name="can_focus">False</property>
+	<property name="visible">True</property>
+	<property name="icon_name">dialog-error-symbolic</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="empty-label">
+	<property name="can_focus">False</property>
+	<property name="visible">True</property>
+	<property name="label" translatable="yes">No characters</property>
+      </object>
+    </child>
+  </object>
 </interface>
