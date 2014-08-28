@@ -122,3 +122,11 @@ function assertNotEqual(one, two) {
     if (one == two)
         throw Error('Assertion failed: ' + one + ' == ' + two);
 }
+
+function capitalize(s) {
+    return s.split(/\s+/).map(function(w) {
+        if (w.length > 0)
+            return w[0].toUpperCase() + w.slice(1).toLowerCase();
+        return w;
+    }).join(' ');
+}

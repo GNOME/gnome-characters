@@ -7,6 +7,7 @@ const Gdk = imports.gi.Gdk;
 const Pango = imports.gi.Pango;
 const PangoCairo = imports.gi.PangoCairo;
 const Gc = imports.gi.Gc;
+const Util = imports.util;
 
 const BASELINE_OFFSET = 0.15;
 const CELL_SIZE = 0.20;
@@ -73,11 +74,14 @@ const CharacterListRowWidget = new Lang.Class({
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/character-dialog.ui');
         let characterLabel = builder.get_object('character-label');
+	// FIXME: Move this to settings.
+        let description = Pango.FontDescription.from_string("Cantarell");
+	characterLabel.override_font(description);
 	characterLabel.label = this.selectedCharacter;
         let detailLabel = builder.get_object('detail-label');
 	let codePoint = this.selectedCharacter.charCodeAt(0);
 	let codePointHex = codePoint.toString(16).toUpperCase();
-	detailLabel.label = _("Unicode: U+%s".format(codePointHex));
+	detailLabel.label = _("Unicode U+%04s".format(codePointHex));
 	let copyCharacterButton = builder.get_object('copy-character-button');
 	copyCharacterButton.connect('clicked',
 				    Lang.bind(this, this._copyCharacter));
@@ -86,10 +90,11 @@ const CharacterListRowWidget = new Lang.Class({
 	let name = Gc.character_name(this.selectedCharacter);
 	if (name != null) {
 	    let headerBar = dialog.get_header_bar();
-	    headerBar.set_title(name);
+	    headerBar.title = Util.capitalize(name);
 	}
 	dialog.add_button(_("See also"), Gtk.ResponseType.HELP);
-	dialog.add_button(_("Done"), Gtk.ResponseType.CLOSE);
+	let button = dialog.add_button(_("Done"), Gtk.ResponseType.CLOSE);
+	button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 	return dialog;
     },
 
