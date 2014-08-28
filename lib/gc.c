@@ -175,7 +175,7 @@ gc_character_iter_new_for_script (const uc_script_t *script)
  * Returns: a #GcCharacterIter.
  */
 GcCharacterIter *
-gc_enumerate_character_by_category (GcCategory       category)
+gc_enumerate_character_by_category (GcCategory category)
 {
   if (!all_blocks)
     uc_all_blocks (&all_blocks, &all_block_count);
@@ -383,6 +383,9 @@ gc_search_character_thread (GTask         *task,
   GArray *result;
   struct SearchCharacterData *data = task_data;
   const gchar * const * keywords = (const gchar * const *) data->keywords;
+
+  if (!all_blocks)
+    uc_all_blocks (&all_blocks, &all_block_count);
 
   result = g_array_new (FALSE, FALSE, sizeof (gunichar));
   iter = gc_enumerate_character_by_keywords (keywords);

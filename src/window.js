@@ -116,11 +116,6 @@ const MainWindow = new Lang.Class({
             return;
 
         this._searchActive = v;
-        if (this._searchActive) {
-            this._mainView.visible_child_name = 'search-prompt';
-        } else {
-            this._mainView.visible_child_name = 'punctuation';
-        }
         this.notify('search-active');
     },
 
@@ -132,6 +127,7 @@ const MainWindow = new Lang.Class({
             this._searchCancellable.reset();
             this._searchKeywords = keywords;
             if (this._searchKeywords.length > 0) {
+                this._mainView.startSearch();
                 Gc.search_character(this._searchKeywords,
                                     MAX_SEARCH_RESULTS,
                                     this._searchCancellable,
@@ -179,7 +175,6 @@ const MainWindow = new Lang.Class({
 
     _category: function(action, v) {
         let [name, length] = v.get_string()
-        this._mainView.visible_child_name = name;
         let category = null;
         for (let index in CategoryList.Category) {
             category = CategoryList.Category[index];
@@ -188,6 +183,7 @@ const MainWindow = new Lang.Class({
         }
 
         Util.assertNotEqual(category, null);
+        this._mainView.showCharacterList(category.name);
         this._headerBar.title = Gettext.gettext(category.label);
     },
 });
@@ -216,47 +212,36 @@ const MainView = new Lang.Class({
             this._createScrolledWindow(this._searchResultCharacterList),
             'search-result');
 
-        let searchPromptGrid =
+        let searchBannerGrid =
             new Gtk.Grid({ orientation: Gtk.Orientation.HORIZONTAL,
                            halign: Gtk.Align.CENTER,
                            valign: Gtk.Align.CENTER });
-        searchPromptGrid.get_style_context().add_class('search-prompt');
-        let searchPromptIcon =
+        searchBannerGrid.get_style_context().add_class('banner');
+        let searchBannerIcon =
             new Gio.ThemedIcon({ name: 'edit-find-symbolic' });
-        let searchPromptImage =
-            Gtk.Image.new_from_gicon(searchPromptIcon, Gtk.IconSize.DIALOG);
-        searchPromptGrid.add(searchPromptImage);
-        let searchPromptLabel = new Gtk.Label({ label: _('Type to Search') });
-        searchPromptLabel.get_style_context().add_class('search-prompt-label');
-        searchPromptGrid.add(searchPromptLabel);
-        this.add_named(searchPromptGrid, 'search-prompt');
+        let searchBannerImage =
+            Gtk.Image.new_from_gicon(searchBannerIcon, Gtk.IconSize.DIALOG);
+        searchBannerGrid.add(searchBannerImage);
+        let searchBannerLabel = new Gtk.Label({ label: _('Type to Search') });
+        searchBannerLabel.get_style_context().add_class('banner-label');
+        searchBannerGrid.add(searchBannerLabel);
+        this.add_named(searchBannerGrid, 'search-banner');
+
+        let loadingBannerGrid =
+            new Gtk.Grid({ orientation: Gtk.Orientation.HORIZONTAL,
+                           halign: Gtk.Align.CENTER,
+                           valign: Gtk.Align.CENTER });
+        loadingBannerGrid.get_style_context().add_class('banner');
+        const SPINNER_SIZE = 128;
+        this._spinner = new Gtk.Spinner({ height_request: SPINNER_SIZE,
+                                          width_request: SPINNER_SIZE });
+        loadingBannerGrid.add(this._spinner);
+        let loadingBannerLabel = new Gtk.Label({ label: _('Loading...') });
+        loadingBannerLabel.get_style_context().add_class('banner-label');
+        loadingBannerGrid.add(loadingBannerLabel);
+        this.add_named(loadingBannerGrid, 'loading-banner');
 
         this.recentCharacters = [];
-        this.connect('notify::visible-child-name',
-                     Lang.bind(this, this._handleVisibleChildName));
-    },
-
-    _handleVisibleChildName: function() {
-        let characterList = this._characterListWidgets[this.visible_child_name];
-        if (this.visible_child_name == 'recent') {
-            characterList.setCharacters(this.recentCharacters);
-            characterList.show_all();
-        } else if (characterList) {
-            let category = null;
-            for (let index in CategoryList.Category) {
-                category = CategoryList.Category[index];
-                if (category.name == this.visible_child_name)
-                    break;
-            }
-
-            Util.assertNotEqual(category, null);
-            let characters = []
-            let iter = Gc.enumerate_character_by_category(category.category);
-            while (iter.next ())
-                characters.push(iter.get());
-            characterList.setCharacters(characters);
-            characterList.show_all();
-        }
     },
 
     _createCharacterList: function(category) {
@@ -278,13 +263,56 @@ const MainView = new Lang.Class({
         return scroll;
     },
 
+    startSearch: function() {
+        this._spinner.start();
+        this.visible_child_name = 'loading-banner';
+        this.show_all();
+    },
+
     setSearchResult: function(result) {
+        this._spinner.stop();
         this._searchResultCharacterList.setCharacters(result);
         if (result.length == 0)
-            this.visible_child_name = 'search-prompt';
+            this.visible_child_name = 'search-banner';
         else {
             this.visible_child_name = 'search-result';
             this._searchResultCharacterList.show_all();
+        }
+    },
+
+    showCharacterList: function(name) {
+        if (!(name in this._characterListWidgets))
+            return;
+
+        let characterList = this._characterListWidgets[name];
+        if (name == 'recent') {
+            if (this.recentCharacters.length == 0)
+                this.visible_child_name = 'search-banner';
+            else {
+                characterList.setCharacters(this.recentCharacters);
+                characterList.show_all();
+                this.visible_child_name = name;
+            }
+        } else {
+            let category = null;
+            for (let index in CategoryList.Category) {
+                category = CategoryList.Category[index];
+                if (category.name == name)
+                    break;
+            }
+
+            Util.assertNotEqual(category, null);
+            let characters = []
+            let iter = Gc.enumerate_character_by_category(category.category);
+            while (iter.next())
+                characters.push(iter.get());
+            if (characters.length == 0)
+                this.visible_child_name = 'search-banner';
+            else {
+                characterList.setCharacters(characters);
+                characterList.show_all();
+                this.visible_child_name = name;
+            }
         }
     },
 

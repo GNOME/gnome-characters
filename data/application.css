@@ -16,12 +16,13 @@
     padding: 10pt;
 }
 
-.search-prompt {
+.banner {
     color: @insensitive_fg_color;
 }
 
-.search-prompt-label {
+.banner-label {
     padding: 10pt;
+    font-size: large;
 }
 
 .character-label {

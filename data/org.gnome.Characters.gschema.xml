@@ -1,10 +1,10 @@
 <schemalist gettext-domain="org.gnome.Characters">
   <schema id="org.gnome.Characters" path="/org/gnome/Characters/">
-    <key name="show-exclamation-mark" type="b">
-      <default>true</default>
-      <summary>Show exclamation mark</summary>
+    <key name="font" type="s">
+      <default>'Cantarell'</default>
+      <summary>Font to display characters</summary>
       <description>
-        Use the exclamation mark at the end of "Hello world".
+	Use the font to render characters on the character list.
       </description>
     </key>
   </schema>

@@ -1,5 +1,6 @@
 const Lang = imports.lang;
 const Params = imports.params;
+const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
@@ -18,6 +19,12 @@ const CELL_PIXEL_SIZE = FONT_PIXEL_SIZE + 10;
 const CharacterListRowWidget = new Lang.Class({
     Name: 'CharacterListRowWidget',
     Extends: Gtk.DrawingArea,
+    Properties: {
+	'font': GObject.ParamSpec.string('font', 'font', 'font',
+					 GObject.ParamFlags.READABLE |
+					 GObject.ParamFlags.WRITABLE,
+					 'Cantarell')
+    },
     Signals: {
 	'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
@@ -28,6 +35,9 @@ const CharacterListRowWidget = new Lang.Class({
 	this.characters = characters;
 	this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK);
         this.get_style_context().add_class('character-list-row');
+	let settings = Util.getSettings('org.gnome.Characters',
+					'/org/gnome/Characters/');
+	settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
     },
 
     vfunc_get_preferred_height: function() {
@@ -74,8 +84,7 @@ const CharacterListRowWidget = new Lang.Class({
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/character-dialog.ui');
         let characterLabel = builder.get_object('character-label');
-	// FIXME: Move this to settings.
-        let description = Pango.FontDescription.from_string("Cantarell");
+        let description = Pango.FontDescription.from_string(this.font);
 	characterLabel.override_font(description);
 	characterLabel.label = this.selectedCharacter;
         let detailLabel = builder.get_object('detail-label');
@@ -119,8 +128,7 @@ const CharacterListRowWidget = new Lang.Class({
         cr.setSourceRGBA(0, 0, 0, 1);
 
         let layout = PangoCairo.create_layout(cr);
-	// FIXME: Move this to settings.
-        let description = Pango.FontDescription.from_string("Cantarell");
+        let description = Pango.FontDescription.from_string(this.font);
         description.set_absolute_size(FONT_PIXEL_SIZE);
         layout.set_font_description(description);
 
