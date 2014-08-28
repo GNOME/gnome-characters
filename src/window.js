@@ -180,6 +180,15 @@ const MainWindow = new Lang.Class({
     _category: function(action, v) {
         let [name, length] = v.get_string()
         this._mainView.visible_child_name = name;
+        let category = null;
+        for (let index in CategoryList.Category) {
+            category = CategoryList.Category[index];
+            if (category.name == name)
+                break;
+        }
+
+        Util.assertNotEqual(category, null);
+        this._headerBar.title = Gettext.gettext(category.label);
     },
 });
 
