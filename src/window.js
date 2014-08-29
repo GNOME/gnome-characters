@@ -122,18 +122,19 @@ const MainWindow = new Lang.Class({
     _handleSearchChanged: function(entry) {
         let text = entry.get_text().replace(/^\s+|\s+$/g, '');
         let keywords = text == '' ? [] : text.split(/\s+/);
+        keywords = keywords.map(String.toUpperCase);
         if (keywords != this._searchKeywords) {
             this._searchCancellable.cancel();
             this._searchCancellable.reset();
             this._searchKeywords = keywords;
             if (this._searchKeywords.length > 0) {
                 this._mainView.startSearch();
-                Gc.search_character(this._searchKeywords,
-                                    MAX_SEARCH_RESULTS,
-                                    this._searchCancellable,
-                                    Lang.bind(this, this._searchReadyCallback));
+                Gc.search_by_keywords(this._searchKeywords,
+                                      MAX_SEARCH_RESULTS,
+                                      this._searchCancellable,
+                                      Lang.bind(this, this._searchReadyCallback));
             } else
-                this._mainView.setSearchResult([]);
+                this._mainView.setSearchResult('search-result', []);
         }
         return true;
     },
@@ -143,12 +144,8 @@ const MainWindow = new Lang.Class({
     },
 
     _searchReadyCallback: function(source_object, res, user_data) {
-        let result = Gc.search_character_finish(res);
-        let resultCharacters = [];
-        for (let index = 0; index < result.len; index++) {
-            resultCharacters.push(Gc.search_result_get(result, index));
-        }
-        this._mainView.setSearchResult(resultCharacters);
+        let result = Gc.search_finish(res);
+        this._mainView.setSearchResult('search-result', result);
     },
 
     _about: function() {
@@ -198,19 +195,19 @@ const MainView = new Lang.Class({
         this.parent(params);
         this._characterListWidgets = {};
 
+        let characterList;
         for (let index in CategoryList.Category) {
             let category = CategoryList.Category[index];
-            let characterList = this._createCharacterList(category.category);
+            characterList = this._createCharacterList(category.category);
             this._characterListWidgets[category.name] = characterList;
             this.add_named(this._createScrolledWindow(characterList),
                            category.name);
         }
 
-        this._searchResultCharacterList =
-            this._createCharacterList(Gc.Category.NONE);
-        this.add_named(
-            this._createScrolledWindow(this._searchResultCharacterList),
-            'search-result');
+        characterList = this._createCharacterList(Gc.Category.NONE);
+        this.add_named(this._createScrolledWindow(characterList),
+                       'search-result');
+        this._characterListWidgets['search-result'] = characterList;
 
         let searchBannerGrid =
             new Gtk.Grid({ orientation: Gtk.Orientation.HORIZONTAL,
@@ -269,14 +266,21 @@ const MainView = new Lang.Class({
         this.show_all();
     },
 
-    setSearchResult: function(result) {
+    setSearchResult: function(name, result) {
         this._spinner.stop();
-        this._searchResultCharacterList.setCharacters(result);
+
+        let characters = [];
+        for (let index = 0; index < result.len; index++) {
+            characters.push(Gc.search_result_get(result, index));
+        }
+
+        let characterList = this._characterListWidgets[name];
+        characterList.setCharacters(characters);
         if (result.length == 0)
             this.visible_child_name = 'search-banner';
         else {
-            this.visible_child_name = 'search-result';
-            this._searchResultCharacterList.show_all();
+            this.visible_child_name = name;
+            characterList.show_all();
         }
     },
 
@@ -302,17 +306,16 @@ const MainView = new Lang.Class({
             }
 
             Util.assertNotEqual(category, null);
-            let characters = []
-            let iter = Gc.enumerate_character_by_category(category.category);
-            while (iter.next())
-                characters.push(iter.get());
-            if (characters.length == 0)
-                this.visible_child_name = 'search-banner';
-            else {
-                characterList.setCharacters(characters);
-                characterList.show_all();
-                this.visible_child_name = name;
-            }
+            this.startSearch();
+            Gc.search_by_category(
+                category.category,
+                    -1,
+                null,
+                Lang.bind(this,
+                          function(source_object, res, user_data) {
+                              let result = Gc.search_finish(res);
+                              this.setSearchResult(name, result);
+                          }));
         }
     },
 

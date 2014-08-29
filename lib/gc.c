@@ -8,6 +8,8 @@
 static const uc_block_t *all_blocks;
 static size_t all_block_count;
 
+typedef struct GcCharacterIter GcCharacterIter;
+
 struct GcCharacterIter
 {
   ucs4_t uc;
@@ -16,33 +18,23 @@ struct GcCharacterIter
   size_t block_index;
   size_t block_count;
 
-  gboolean (* filter) (ucs4_t uc, gpointer data);
-  GBoxedFreeFunc free_data;
-  GBoxedCopyFunc copy_data;
-  gpointer data;
+  const uc_script_t *script;
+  uc_general_category_t category;
+  const gchar * const * keywords;
+
+  gboolean (* filter) (GcCharacterIter *iter, ucs4_t uc);
 };
 
-static GcCharacterIter *
-gc_character_iter_copy (GcCharacterIter *src)
-{
-  GcCharacterIter *dest = g_slice_dup (GcCharacterIter, src);
-  if (src->data && src->copy_data)
-    dest->data = src->copy_data (src->data);
-  return dest;
-}
+static gboolean gc_character_iter_next (GcCharacterIter      *iter);
+static gunichar gc_character_iter_get  (GcCharacterIter      *iter);
 
-static void
-gc_character_iter_free (GcCharacterIter *iter)
-{
-  if (iter->data && iter->free_data)
-    iter->free_data (iter->data);
+static void     gc_enumerate_character_by_category
+                                       (GcCharacterIter      *iter,
+                                        GcCategory            category);
 
-  g_slice_free (GcCharacterIter, iter);
-}
-
-G_DEFINE_BOXED_TYPE (GcCharacterIter, gc_character_iter,
-		     gc_character_iter_copy,
-		     gc_character_iter_free);
+static void     gc_enumerate_character_by_keywords
+                                       (GcCharacterIter      *iter,
+                                        const gchar * const * keywords);
 
 gboolean
 gc_character_iter_next (GcCharacterIter *iter)
@@ -74,7 +66,7 @@ gc_character_iter_next (GcCharacterIter *iter)
 	uc++;
 
       while (uc < iter->blocks[iter->block_index].end
-	     && !iter->filter (uc, iter->data))
+	     && !iter->filter (iter, uc))
 	uc++;
 
       if (uc < iter->blocks[iter->block_index].end)
@@ -93,89 +85,67 @@ gc_character_iter_get (GcCharacterIter *iter)
   return iter->uc;
 }
 
-static GcCharacterIter *
-gc_character_iter_new (void)
+static void
+gc_character_iter_init (GcCharacterIter *iter)
 {
-  GcCharacterIter *iter = g_slice_new0 (GcCharacterIter);
+  memset (iter, 0, sizeof (GcCharacterIter));
   iter->uc = UNINAME_INVALID;
-  return iter;
 }
 
 static gboolean
-filter_category (ucs4_t uc, gpointer data)
+filter_category (GcCharacterIter *iter, ucs4_t uc)
 {
-  uc_general_category_t *category = data;
-  return uc_is_print (uc) && uc_is_general_category (uc, *category);
-}
-
-static gpointer
-copy_category (gpointer data)
-{
-  return g_slice_dup (uc_general_category_t, data);
+  return uc_is_print (uc) && uc_is_general_category (uc, iter->category);
 }
 
 static void
-free_category (gpointer data)
+gc_character_iter_init_for_general_category (GcCharacterIter      *iter,
+                                             uc_general_category_t category)
 {
-  g_slice_free (uc_general_category_t, data);
-}
-
-static GcCharacterIter *
-gc_character_iter_new_for_general_category (uc_general_category_t category)
-{
-  GcCharacterIter *iter = gc_character_iter_new ();
+  gc_character_iter_init (iter);
   iter->blocks = all_blocks;
   iter->block_count = all_block_count;
   iter->filter = filter_category;
-  iter->copy_data = copy_category;
-  iter->free_data = free_category;
-  iter->data = g_slice_dup (uc_general_category_t, &category);
-  return iter;
+  iter->category = category;
 }
 
 static gboolean
-filter_is_print (ucs4_t uc, gpointer data)
+filter_is_print (GcCharacterIter *iter, ucs4_t uc)
 {
   return uc_is_print (uc);
 }
 
-static GcCharacterIter *
-gc_character_iter_new_for_blocks (const uc_block_t *blocks,
-                                  size_t            block_count)
+static void
+gc_character_iter_init_for_blocks (GcCharacterIter  *iter,
+                                   const uc_block_t *blocks,
+                                   size_t            block_count)
 {
-  GcCharacterIter *iter = gc_character_iter_new ();
+  gc_character_iter_init (iter);
   iter->blocks = blocks;
   iter->block_count = block_count;
   iter->filter = filter_is_print;
-  return iter;
 }
 
 static gboolean
-filter_script (ucs4_t uc, gpointer data)
+filter_script (GcCharacterIter *iter, ucs4_t uc)
 {
-  uc_script_t *script = data;
-  return uc_is_print (uc) && uc_is_script (uc, script);
+  return uc_is_print (uc) && uc_is_script (uc, iter->script);
 }
 
-static GcCharacterIter *
-gc_character_iter_new_for_script (const uc_script_t *script)
+static void
+gc_character_iter_init_for_script (GcCharacterIter   *iter,
+                                   const uc_script_t *script)
 {
-  GcCharacterIter *iter = gc_character_iter_new ();
+  gc_character_iter_init (iter);
   iter->blocks = all_blocks;
   iter->block_count = all_block_count;
   iter->filter = filter_script;
-  iter->data = (gpointer) script;
-  return iter;
+  iter->script = script;
 }
 
-/**
- * gc_enumerate_character_by_category:
- * @category: a #GcCategory.
- *
- * Returns: a #GcCharacterIter.
- */
-GcCharacterIter *
-gc_enumerate_character_by_category (GcCategory category)
+static void
+gc_enumerate_character_by_category (GcCharacterIter *iter,
+                                    GcCategory       category)
 {
   if (!all_blocks)
     uc_all_blocks (&all_blocks, &all_block_count);
@@ -186,7 +156,8 @@ gc_enumerate_character_by_category (GcCategory category)
       break;
 
     case GC_CATEGORY_PUNCTUATION:
-      return gc_character_iter_new_for_general_category (UC_CATEGORY_P);
+      gc_character_iter_init_for_general_category (iter, UC_CATEGORY_P);
+      return;
 
     case GC_CATEGORY_ARROW:
       {
@@ -214,8 +185,10 @@ gc_enumerate_character_by_category (GcCategory category)
 		      sizeof (uc_block_t));
 	    g_once_init_leave (&arrow_blocks_initialized, 1);
 	  }
-	return gc_character_iter_new_for_blocks (arrow_blocks,
-						 arrow_blocks_size);
+	gc_character_iter_init_for_blocks (iter,
+					   arrow_blocks,
+					   arrow_blocks_size);
+	return;
       }
 
     case GC_CATEGORY_BULLET:
@@ -243,19 +216,24 @@ gc_enumerate_character_by_category (GcCategory category)
 		      sizeof (uc_block_t));
 	    g_once_init_leave (&picture_blocks_initialized, 1);
 	  }
-	return gc_character_iter_new_for_blocks (picture_blocks,
-						 picture_blocks_size);
+	gc_character_iter_init_for_blocks (iter,
+					   picture_blocks,
+					   picture_blocks_size);
+	return;
       }
       break;
 
     case GC_CATEGORY_CURRENCY:
-      return gc_character_iter_new_for_general_category (UC_CATEGORY_Sc);
+      gc_character_iter_init_for_general_category (iter, UC_CATEGORY_Sc);
+      return;
 
     case GC_CATEGORY_MATH:
-      return gc_character_iter_new_for_general_category (UC_CATEGORY_Sm);
+      gc_character_iter_init_for_general_category (iter, UC_CATEGORY_Sm);
+      return;
 
     case GC_CATEGORY_LATIN:
-      return gc_character_iter_new_for_script (uc_script ('A'));
+      gc_character_iter_init_for_script (iter, uc_script ('A'));
+      return;
 
     case GC_CATEGORY_EMOTICON:
       {
@@ -273,18 +251,21 @@ gc_enumerate_character_by_category (GcCategory category)
 		      sizeof (uc_block_t));
 	    g_once_init_leave (&emoticon_blocks_initialized, 1);
 	  }
-	return gc_character_iter_new_for_blocks (emoticon_blocks,
-						 emoticon_blocks_size);
+	gc_character_iter_init_for_blocks (iter,
+					   emoticon_blocks,
+					   emoticon_blocks_size);
+	return;
       }
     }
 
-  return gc_character_iter_new ();
+  gc_character_iter_init (iter);
+  return;
 }
 
 static gboolean
-filter_keywords (ucs4_t uc, gpointer data)
+filter_keywords (GcCharacterIter *iter, ucs4_t uc)
 {
-  const gchar * const * keywords = data;
+  const gchar * const * keywords = iter->keywords;
   gchar buffer[UNINAME_MAX];
 
   if (!uc_is_print (uc))
@@ -312,27 +293,15 @@ filter_keywords (ucs4_t uc, gpointer data)
   return TRUE;
 }
 
-GcCharacterIter *
-gc_enumerate_character_by_keywords (const gchar * const * keywords)
+void
+gc_enumerate_character_by_keywords (GcCharacterIter      *iter,
+                                    const gchar * const * keywords)
 {
-  GcCharacterIter *iter = gc_character_iter_new ();
-  gchar **keywords_upper = g_strdupv ((gchar **) keywords), **p;
-
-  for (p = keywords_upper; *p != NULL; p++)
-    {
-      gchar *upper = g_ascii_strup (*p, strlen (*p));
-      g_free (*p);
-      *p = upper;
-    }
-
+  gc_character_iter_init (iter);
   iter->blocks = all_blocks;
   iter->block_count = all_block_count;
   iter->filter = filter_keywords;
-  iter->copy_data = (GBoxedCopyFunc) g_strdupv;
-  iter->free_data = (GBoxedFreeFunc) g_strfreev;
-  iter->data = keywords_upper;
-
-  return iter;
+  iter->keywords = keywords;
 }
 
 /**
@@ -360,39 +329,40 @@ gc_search_result_get (GcSearchResult *result, gint index)
   return g_array_index (result, gunichar, index);
 }
 
-struct SearchCharacterData
+struct SearchData
 {
+  GcCategory category;
   gchar **keywords;
   gint max_matches;
 };
 
 static void
-search_character_data_free (struct SearchCharacterData *data)
+search_data_free (struct SearchData *data)
 {
-  g_strfreev (data->keywords);
-  g_slice_free (struct SearchCharacterData, data);
+  if (data->keywords)
+    g_strfreev (data->keywords);
+  g_slice_free (struct SearchData, data);
 }
 
 static void
-gc_search_character_thread (GTask         *task,
-			    gpointer       source_object,
-			    gpointer       task_data,
-			    GCancellable  *cancellable)
+gc_search_by_category_thread (GTask        *task,
+                              gpointer      source_object,
+                              gpointer      task_data,
+                              GCancellable *cancellable)
 {
-  GcCharacterIter *iter;
+  GcCharacterIter iter;
   GArray *result;
-  struct SearchCharacterData *data = task_data;
-  const gchar * const * keywords = (const gchar * const *) data->keywords;
+  struct SearchData *data = task_data;
 
   if (!all_blocks)
     uc_all_blocks (&all_blocks, &all_block_count);
 
   result = g_array_new (FALSE, FALSE, sizeof (gunichar));
-  iter = gc_enumerate_character_by_keywords (keywords);
+  gc_enumerate_character_by_category (&iter, data->category);
   while (!g_cancellable_is_cancelled (cancellable)
-	 && gc_character_iter_next (iter))
+	 && gc_character_iter_next (&iter))
     {
-      gunichar uc = gc_character_iter_get (iter);
+      gunichar uc = gc_character_iter_get (&iter);
       if (data->max_matches < 0 || result->len < data->max_matches)
 	g_array_append_val (result, uc);
     }
@@ -401,7 +371,62 @@ gc_search_character_thread (GTask         *task,
 }
 
 /**
- * gc_search_character:
+ * gc_search_by_category:
+ * @category: a #GcCategory.
+ * @max_matches: the maximum number of results.
+ * @cancellable: a #GCancellable.
+ * @callback: a #GAsyncReadyCallback.
+ * @user_data: a user data passed to @callback.
+ */
+void
+gc_search_by_category (GcCategory          category,
+                       gint                max_matches,
+                       GCancellable       *cancellable,
+                       GAsyncReadyCallback callback,
+                       gpointer            user_data)
+{
+  GTask *task;
+  struct SearchData *data;
+
+  task = g_task_new (NULL, cancellable, callback, user_data);
+
+  data = g_slice_new0 (struct SearchData);
+  data->category = category;
+  data->max_matches = max_matches;
+  g_task_set_task_data (task, data,
+			(GDestroyNotify) search_data_free);
+  g_task_run_in_thread (task, gc_search_by_category_thread);
+}
+
+static void
+gc_search_by_keywords_thread (GTask        *task,
+                              gpointer      source_object,
+                              gpointer      task_data,
+                              GCancellable *cancellable)
+{
+  GcCharacterIter iter;
+  GArray *result;
+  struct SearchData *data = task_data;
+  const gchar * const * keywords = (const gchar * const *) data->keywords;
+
+  if (!all_blocks)
+    uc_all_blocks (&all_blocks, &all_block_count);
+
+  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
+  gc_enumerate_character_by_keywords (&iter, keywords);
+  while (!g_cancellable_is_cancelled (cancellable)
+	 && gc_character_iter_next (&iter))
+    {
+      gunichar uc = gc_character_iter_get (&iter);
+      if (data->max_matches < 0 || result->len < data->max_matches)
+	g_array_append_val (result, uc);
+    }
+
+  g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
+}
+
+/**
+ * gc_search_by_keywords:
  * @keywords: (array zero-terminated=1) (element-type utf8): an array of keywords
  * @max_matches: the maximum number of results.
  * @cancellable: a #GCancellable.
@@ -409,34 +434,34 @@ gc_search_character_thread (GTask         *task,
  * @user_data: a user data passed to @callback.
  */
 void
-gc_search_character (const gchar * const * keywords,
-                     gint                  max_matches,
-                     GCancellable         *cancellable,
-                     GAsyncReadyCallback   callback,
-                     gpointer              user_data)
+gc_search_by_keywords (const gchar * const * keywords,
+		       gint                  max_matches,
+		       GCancellable         *cancellable,
+		       GAsyncReadyCallback   callback,
+		       gpointer              user_data)
 {
   GTask *task;
-  struct SearchCharacterData *data;
+  struct SearchData *data;
 
   task = g_task_new (NULL, cancellable, callback, user_data);
 
-  data = g_slice_new0 (struct SearchCharacterData);
+  data = g_slice_new0 (struct SearchData);
   data->keywords = g_strdupv ((gchar **) keywords);
   data->max_matches = max_matches;
   g_task_set_task_data (task, data,
-			(GDestroyNotify) search_character_data_free);
-  g_task_run_in_thread (task, gc_search_character_thread);
+			(GDestroyNotify) search_data_free);
+  g_task_run_in_thread (task, gc_search_by_keywords_thread);
 }
 
 /**
- * gc_search_character_finish:
+ * gc_search_finish:
  * @result: a #GAsyncResult.
  * @error: return location of an error.
  *
  * Returns: (transfer full): an array of characters.
  */
 GcSearchResult *
-gc_search_character_finish (GAsyncResult *result,
+gc_search_finish (GAsyncResult *result,
                             GError      **error)
 {
   g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
@@ -453,14 +478,4 @@ GtkClipboard *
 gc_gtk_clipboard_get (void)
 {
   return gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
-}
-
-void
-gc_pango_layout_disable_fallback (PangoLayout *layout)
-{
-  PangoAttrList *attr_list;
-
-  attr_list = pango_attr_list_new ();
-  pango_attr_list_insert (attr_list, pango_attr_fallback_new (FALSE));
-  pango_layout_set_attributes (layout, attr_list);
 }
