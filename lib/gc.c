@@ -294,7 +294,7 @@ filter_keywords (ucs4_t uc, gpointer data)
   if (*keywords)
     {
       uint8_t utf8[6];
-      size_t length;
+      size_t length = G_N_ELEMENTS (utf8);
 
       u32_to_u8 (&uc, 1, utf8, &length);
       if (length == strlen (*keywords) && memcmp (*keywords, utf8, length) == 0)
