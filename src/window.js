@@ -30,8 +30,10 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Params = imports.params;
-const CharacterList = imports.characterList;
 const CategoryList = imports.categoryList;
+const Character = imports.character;
+const CharacterList = imports.characterList;
+const Pango = imports.gi.Pango;
 const Gc = imports.gi.Gc;
 const Gettext = imports.gettext;
 
@@ -245,7 +247,7 @@ const MainView = new Lang.Class({
         let widget = new CharacterList.CharacterListWidget({ hexpand: true,
                                                              vexpand: true });
         widget.connect('character-selected',
-                       Lang.bind(this, this._addToRecentCharacters));
+                       Lang.bind(this, this._handleCharacterSelected));
         return widget;
     },
 
@@ -319,8 +321,22 @@ const MainView = new Lang.Class({
         }
     },
 
-    _addToRecentCharacters: function(widget, uc) {
+    _handleCharacterSelected: function(widget, uc) {
         if (this.recentCharacters.indexOf(uc) < 0)
             this.recentCharacters.push(uc);
+
+	    let dialog = new Character.CharacterDialog({
+            character: uc,
+            modal: true,
+            transient_for: this.get_toplevel()
+        });
+
+        let description = Pango.FontDescription.from_string('Cantarell');
+        dialog.characterLabel.override_font(description);
+
+        dialog.show();
+        dialog.connect('response', function() {
+            dialog.destroy();
+        });
     }
 });

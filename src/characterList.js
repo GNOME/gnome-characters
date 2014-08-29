@@ -63,57 +63,8 @@ const CharacterListRowWidget = new Lang.Class({
 	let allocation = this.get_allocation();
 	let cell_width = allocation.width * CELL_SIZE;
 	let cell_index = Math.floor(event.x / cell_width);
-	if (cell_index < this.characters.length) {
-	    this.selectedCharacter = this.characters[cell_index];
-	    let dialog = this._createCharacterDialog();
-	    switch (dialog.run()) {
-	    case Gtk.ResponseType.HELP:
-		print('not implemented');
-		dialog.destroy();
-		break;
-	    case Gtk.ResponseType.CLOSE:
-		dialog.destroy();
-		break;
-	    }
-	    this.emit('character-selected', this.selectedCharacter);
-	    this.selectedCharacter = null;
-	}
-    },
-
-    _createCharacterDialog: function() {
-        let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/Characters/character-dialog.ui');
-        let characterLabel = builder.get_object('character-label');
-        let description = Pango.FontDescription.from_string(this.font);
-	characterLabel.override_font(description);
-	characterLabel.label = this.selectedCharacter;
-        let detailLabel = builder.get_object('detail-label');
-	let codePoint = this.selectedCharacter.charCodeAt(0);
-	let codePointHex = codePoint.toString(16).toUpperCase();
-	detailLabel.label = _("Unicode U+%04s".format(codePointHex));
-	let copyCharacterButton = builder.get_object('copy-character-button');
-	copyCharacterButton.connect('clicked',
-				    Lang.bind(this, this._copyCharacter));
-	let dialog = builder.get_object('character-dialog');
-	dialog.transient_for = this.get_toplevel();
-	let name = Gc.character_name(this.selectedCharacter);
-	if (name != null) {
-	    let headerBar = dialog.get_header_bar();
-	    headerBar.title = Util.capitalize(name);
-	}
-	dialog.add_button(_("See also"), Gtk.ResponseType.HELP);
-	let button = dialog.add_button(_("Done"), Gtk.ResponseType.CLOSE);
-	button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-	return dialog;
-    },
-
-    _copyCharacter: function() {
-	let clipboard = Gc.gtk_clipboard_get();
-	// FIXME: GLib.unichar_to_utf8() has missing (nullable)
-	// annotation to the outbuf argument.
-	let outbuf = '      ';
-	let length = GLib.unichar_to_utf8(this.selectedCharacter, outbuf);
-	clipboard.set_text(this.selectedCharacter, length);
+	if (cell_index < this.characters.length)
+	    this.emit('character-selected', this.characters[cell_index]);
     },
 
     vfunc_draw: function(cr) {
