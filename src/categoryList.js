@@ -8,55 +8,55 @@ const Gc = imports.gi.Gc;
 
 const Category = [
     {
-	name: 'recent',
+        name: 'recent',
         category: Gc.Category.NONE,
         label: N_('Recently Used'),
         icon_name: 'document-open-recent-symbolic'
     },
     {
-	name: 'punctuation',
+        name: 'punctuation',
         category: Gc.Category.PUNCTUATION,
         label: N_('Punctuations'),
         icon_name: 'characters-punctuation-symbolic'
     },
     {
-	name: 'arrow',
+        name: 'arrow',
         category: Gc.Category.ARROW,
         label: N_('Arrows'),
         icon_name: 'characters-arrow-symbolic'
     },
     {
-	name: 'bullet',
+        name: 'bullet',
         category: Gc.Category.BULLET,
         label: N_('Bullets'),
         icon_name: 'characters-bullet-symbolic'
     },
     {
-	name: 'picture',
+        name: 'picture',
         category: Gc.Category.PICTURE,
         label: N_('Picture'),
         icon_name: 'characters-picture-symbolic'
     },
     {
-	name: 'currency',
+        name: 'currency',
         category: Gc.Category.CURRENCY,
         label: N_('Currencies'),
         icon_name: 'characters-currency-symbolic'
     },
     {
-	name: 'math',
+        name: 'math',
         category: Gc.Category.MATH,
         label: N_('Math'),
         icon_name: 'characters-math-symbolic'
     },
     {
-	name: 'latin',
+        name: 'latin',
         category: Gc.Category.LATIN,
         label: N_('Latin'),
         icon_name: 'characters-latin-symbolic'
     },
     {
-	name: 'emoticon',
+        name: 'emoticon',
         category: Gc.Category.EMOTICON,
         label: N_('Emoticons'),
         icon_name: 'face-smile-symbolic'
@@ -70,7 +70,7 @@ const CategoryListRowWidget = new Lang.Class({
     _init: function(params, category) {
         params = Params.fill(params, {});
         this.parent(params);
-	this.category = category;
+        this.category = category;
         this.get_style_context().add_class('category-list-row');
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
@@ -97,16 +97,16 @@ const CategoryListWidget = new Lang.Class({
         this.parent(params);
 
         for (let index in Category) {
-	    let category = Category[index];
+            let category = Category[index];
             this.add(new CategoryListRowWidget({}, category));
         }
     },
 
     vfunc_row_selected: function(row) {
         if (row != null) {
-	    let toplevel = row.get_toplevel();
-	    let category = toplevel.lookup_action('category');
-	    category.activate(new GLib.Variant('s', row.category.name));
+            let toplevel = row.get_toplevel();
+            let category = toplevel.lookup_action('category');
+            category.activate(new GLib.Variant('s', row.category.name));
         }
     },
 });

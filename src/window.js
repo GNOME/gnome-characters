@@ -325,7 +325,7 @@ const MainView = new Lang.Class({
         if (this.recentCharacters.indexOf(uc) < 0)
             this.recentCharacters.push(uc);
 
-	    let dialog = new Character.CharacterDialog({
+        let dialog = new Character.CharacterDialog({
             character: uc,
             modal: true,
             transient_for: this.get_toplevel()
