@@ -44,7 +44,11 @@ const MAX_SEARCH_RESULTS = 100;
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
     Extends: Gtk.ApplicationWindow,
-    Properties: { 'search-active': GObject.ParamSpec.boolean('search-active', '', '', GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false) },
+    Properties: {
+        'search-active': GObject.ParamSpec.boolean(
+            'search-active', '', '',
+            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
+    },
 
     _init: function(params) {
         params = Params.fill(params, { title: GLib.get_application_name(),
@@ -53,7 +57,6 @@ const MainWindow = new Lang.Class({
         this.parent(params);
 
         this._searchActive = false;
-        this._searchCancellable = new Gio.Cancellable();
         this._searchKeywords = [];
 
         Util.initActions(this,
@@ -80,7 +83,9 @@ const MainWindow = new Lang.Class({
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
         this._searchBar = builder.get_object('search-bar');
-        this.bind_property('search-active', this._searchBar, 'search-mode-enabled',
+        this.bind_property('search-active',
+                           this._searchBar,
+                           'search-mode-enabled',
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
         let searchEntry = builder.get_object('search-entry');
@@ -104,8 +109,8 @@ const MainWindow = new Lang.Class({
         this.add(grid);
         grid.show_all();
 
-        // Due to limitations of gobject-introspection wrt GdkEvent and GdkEventKey,
-        // this needs to be a signal handler
+        // Due to limitations of gobject-introspection wrt GdkEvent
+        // and GdkEventKey, this needs to be a signal handler
         this.connect('key-press-event', Lang.bind(this, this._handleKeyPress));
     },
 
@@ -126,28 +131,17 @@ const MainWindow = new Lang.Class({
         let keywords = text == '' ? [] : text.split(/\s+/);
         keywords = keywords.map(String.toUpperCase);
         if (keywords != this._searchKeywords) {
-            this._searchCancellable.cancel();
-            this._searchCancellable.reset();
             this._searchKeywords = keywords;
-            if (this._searchKeywords.length > 0) {
-                this._mainView.startSearch();
-                Gc.search_by_keywords(this._searchKeywords,
-                                      MAX_SEARCH_RESULTS,
-                                      this._searchCancellable,
-                                      Lang.bind(this, this._searchReadyCallback));
-            } else
-                this._mainView.setSearchResult('search-result', []);
+            if (this._searchKeywords.length > 0)
+                this._mainView.startSearch(this._searchKeywords);
+            else
+                this._mainView.cancelSearch();
         }
         return true;
     },
 
     _handleKeyPress: function(self, event) {
         return this._searchBar.handle_event(event);
-    },
-
-    _searchReadyCallback: function(source_object, res, user_data) {
-        let result = Gc.search_finish(res);
-        this._mainView.setSearchResult('search-result', result);
     },
 
     _about: function() {
@@ -182,7 +176,7 @@ const MainWindow = new Lang.Class({
         }
 
         Util.assertNotEqual(category, null);
-        this._mainView.showCharacterList(category.name);
+        this._mainView.setPage(category.name);
         this._headerBar.title = Gettext.gettext(category.label);
     },
 });
@@ -192,9 +186,9 @@ const MainView = new Lang.Class({
     Extends: Gtk.Stack,
 
     _init: function(params) {
-        params = Params.fill(params, { hexpand: true,
-                                       vexpand: true });
+        params = Params.fill(params, { hexpand: true, vexpand: true });
         this.parent(params);
+
         this._characterListWidgets = {};
 
         let characterList;
@@ -211,36 +205,16 @@ const MainView = new Lang.Class({
                        'search-result');
         this._characterListWidgets['search-result'] = characterList;
 
-        let searchBannerGrid =
-            new Gtk.Grid({ orientation: Gtk.Orientation.HORIZONTAL,
-                           halign: Gtk.Align.CENTER,
-                           valign: Gtk.Align.CENTER });
-        searchBannerGrid.get_style_context().add_class('banner');
-        let searchBannerIcon =
-            new Gio.ThemedIcon({ name: 'edit-find-symbolic' });
-        let searchBannerImage =
-            Gtk.Image.new_from_gicon(searchBannerIcon, Gtk.IconSize.DIALOG);
-        searchBannerGrid.add(searchBannerImage);
-        let searchBannerLabel = new Gtk.Label({ label: _('Type to Search') });
-        searchBannerLabel.get_style_context().add_class('banner-label');
-        searchBannerGrid.add(searchBannerLabel);
+        let builder = new Gtk.Builder();
+        builder.add_from_resource('/org/gnome/Characters/main.ui');
+        let searchBannerGrid = builder.get_object('search-banner-grid');
         this.add_named(searchBannerGrid, 'search-banner');
-
-        let loadingBannerGrid =
-            new Gtk.Grid({ orientation: Gtk.Orientation.HORIZONTAL,
-                           halign: Gtk.Align.CENTER,
-                           valign: Gtk.Align.CENTER });
-        loadingBannerGrid.get_style_context().add_class('banner');
-        const SPINNER_SIZE = 128;
-        this._spinner = new Gtk.Spinner({ height_request: SPINNER_SIZE,
-                                          width_request: SPINNER_SIZE });
-        loadingBannerGrid.add(this._spinner);
-        let loadingBannerLabel = new Gtk.Label({ label: _('Loading...') });
-        loadingBannerLabel.get_style_context().add_class('banner-label');
-        loadingBannerGrid.add(loadingBannerLabel);
+        let loadingBannerGrid = builder.get_object('loading-banner-grid');
+        this._spinner = builder.get_object('loading-banner-spinner');
         this.add_named(loadingBannerGrid, 'loading-banner');
 
-        this.recentCharacters = [];
+        this._recentCharacters = [];
+        this._cancellable = new Gio.Cancellable();
     },
 
     _createCharacterList: function(category) {
@@ -262,13 +236,15 @@ const MainView = new Lang.Class({
         return scroll;
     },
 
-    startSearch: function() {
+    _startSearch: function() {
+        this._cancellable.cancel();
+        this._cancellable.reset();
         this._spinner.start();
         this.visible_child_name = 'loading-banner';
         this.show_all();
     },
 
-    setSearchResult: function(name, result) {
+    _finishSearch: function(name, result) {
         this._spinner.stop();
 
         let characters = [];
@@ -282,23 +258,41 @@ const MainView = new Lang.Class({
             this.visible_child_name = 'search-banner';
         else {
             this.visible_child_name = name;
-            characterList.show_all();
         }
+        this.show_all();
     },
 
-    showCharacterList: function(name) {
+    startSearch: function(keywords) {
+        this._startSearch();
+        Gc.search_by_keywords(
+            keywords,
+            MAX_SEARCH_RESULTS,
+            this._cancellable,
+            Lang.bind(this, function(source_object, res, user_data) {
+                let result = Gc.search_finish(res);
+                this._finishSearch('search-result', result);
+            }));
+    },
+
+    cancelSearch: function() {
+        this._cancellable.cancel();
+        this._finishSearch('search-result', []);
+    },
+
+    setPage: function(name) {
         if (!(name in this._characterListWidgets))
             return;
 
         let characterList = this._characterListWidgets[name];
         if (name == 'recent') {
-            if (this.recentCharacters.length == 0)
+            if (this._recentCharacters.length == 0)
                 this.visible_child_name = 'search-banner';
             else {
-                characterList.setCharacters(this.recentCharacters);
+                characterList.setCharacters(this._recentCharacters);
                 characterList.show_all();
                 this.visible_child_name = name;
             }
+            this.show_all();
         } else {
             let category = null;
             for (let index in CategoryList.Category) {
@@ -308,22 +302,22 @@ const MainView = new Lang.Class({
             }
 
             Util.assertNotEqual(category, null);
-            this.startSearch();
+            this._startSearch();
             Gc.search_by_category(
                 category.category,
-                    -1,
-                null,
+                -1,
+                this._cancellable,
                 Lang.bind(this,
                           function(source_object, res, user_data) {
                               let result = Gc.search_finish(res);
-                              this.setSearchResult(name, result);
+                              this._finishSearch(name, result);
                           }));
         }
     },
 
     _handleCharacterSelected: function(widget, uc) {
-        if (this.recentCharacters.indexOf(uc) < 0)
-            this.recentCharacters.push(uc);
+        if (this._recentCharacters.indexOf(uc) < 0)
+            this._recentCharacters.push(uc);
 
         let dialog = new Character.CharacterDialog({
             character: uc,

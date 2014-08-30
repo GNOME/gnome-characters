@@ -46,45 +46,58 @@
       <placeholder/>
     </child>
   </object>
-  <object class="GtkGrid" id="search-prompt-grid">
+  <object class="GtkGrid" id="search-banner-grid">
     <property name="can_focus">False</property>
     <property name="visible">True</property>
     <property name="orientation">horizontal</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
+    <style>
+      <class name="banner"/>
+    </style>
     <child>
-      <object class="GtkImage" id="search-prompt-image">
+      <object class="GtkImage" id="search-banner-image">
 	<property name="can_focus">False</property>
 	<property name="visible">True</property>
 	<property name="icon_name">edit-find-symbolic</property>
       </object>
     </child>
     <child>
-      <object class="GtkLabel" id="search-prompt-label">
+      <object class="GtkLabel" id="search-banner-label">
 	<property name="can_focus">False</property>
 	<property name="visible">True</property>
 	<property name="label" translatable="yes">Type to Search</property>
+        <style>
+          <class name="banner-label"/>
+        </style>
       </object>
     </child>
   </object>
-  <object class="GtkGrid" id="empty-grid">
+  <object class="GtkGrid" id="loading-banner-grid">
     <property name="can_focus">False</property>
     <property name="visible">True</property>
     <property name="orientation">horizontal</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
+    <style>
+      <class name="banner"/>
+    </style>
     <child>
-      <object class="GtkImage" id="empty-image">
+      <object class="GtkSpinner" id="loading-banner-spinner">
 	<property name="can_focus">False</property>
 	<property name="visible">True</property>
-	<property name="icon_name">dialog-error-symbolic</property>
+	<property name="width-request">128</property>
+	<property name="height-request">128</property>
       </object>
     </child>
     <child>
-      <object class="GtkLabel" id="empty-label">
+      <object class="GtkLabel" id="loading-banner-label">
 	<property name="can_focus">False</property>
 	<property name="visible">True</property>
-	<property name="label" translatable="yes">No characters</property>
+	<property name="label" translatable="yes">Loading...</property>
+        <style>
+          <class name="banner-label"/>
+        </style>
       </object>
     </child>
   </object>
