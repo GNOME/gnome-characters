@@ -8,6 +8,7 @@ const Gdk = imports.gi.Gdk;
 const Pango = imports.gi.Pango;
 const PangoCairo = imports.gi.PangoCairo;
 const Gc = imports.gi.Gc;
+const Main = imports.main;
 const Util = imports.util;
 
 const BASELINE_OFFSET = 0.15;
@@ -19,25 +20,19 @@ const CELL_PIXEL_SIZE = FONT_PIXEL_SIZE + 10;
 const CharacterListRowWidget = new Lang.Class({
     Name: 'CharacterListRowWidget',
     Extends: Gtk.DrawingArea,
-    Properties: {
-        'font': GObject.ParamSpec.string('font', 'font', 'font',
-                                         GObject.ParamFlags.READABLE |
-                                         GObject.ParamFlags.WRITABLE,
-                                         'Cantarell')
-    },
     Signals: {
         'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
 
-    _init: function(params, characters) {
+    _init: function(params) {
+	let filtered = Params.filter(params, { characters: null,
+					       font: null });
         params = Params.fill(params, {});
         this.parent(params);
-        this.characters = characters;
+        this._characters = filtered.characters;
+        this._font = filtered.font;
         this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK);
         this.get_style_context().add_class('character-list-row');
-        let settings = Util.getSettings('org.gnome.Characters',
-                                        '/org/gnome/Characters/');
-        settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
     },
 
     vfunc_get_preferred_height: function() {
@@ -63,8 +58,8 @@ const CharacterListRowWidget = new Lang.Class({
         let allocation = this.get_allocation();
         let cell_width = allocation.width * CELL_SIZE;
         let cell_index = Math.floor(event.x / cell_width);
-        if (cell_index < this.characters.length)
-            this.emit('character-selected', this.characters[cell_index]);
+        if (cell_index < this._characters.length)
+            this.emit('character-selected', this._characters[cell_index]);
     },
 
     vfunc_draw: function(cr) {
@@ -79,7 +74,7 @@ const CharacterListRowWidget = new Lang.Class({
         cr.setSourceRGBA(0, 0, 0, 1);
 
         let layout = PangoCairo.create_layout(cr);
-        let description = Pango.FontDescription.from_string(this.font);
+        let description = Pango.FontDescription.from_string(this._font);
         description.set_absolute_size(FONT_PIXEL_SIZE);
         layout.set_font_description(description);
 
@@ -96,8 +91,8 @@ const CharacterListRowWidget = new Lang.Class({
         cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
 
         // Draw characters.  Do centering and attach to the baseline.
-        for (let i in this.characters) {
-            layout.set_text(this.characters[i], -1);
+        for (let i in this._characters) {
+            layout.set_text(this._characters[i], -1);
             let layout_baseline = layout.get_baseline() / Pango.SCALE;
             let [logical_rect, ink_rect] = layout.get_extents();
             cr.moveTo(CELL_SIZE * i - logical_rect.x / Pango.SCALE +
@@ -114,12 +109,34 @@ const CharacterListWidget = new Lang.Class({
     Signals: {
         'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
+    Properties: {
+        'font': GObject.ParamSpec.string(
+	    'font', '', '',
+            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
+            'Cantarell')
+    },
+
+    get font() {
+	return this._font;
+    },
+
+    set font(v) {
+	if (v == this._font)
+	    return;
+
+	this._font = v;
+	if (this._characters) {
+	    this.setCharacters(this._characters);
+	    this.show_all();
+	}
+    },
 
     _init: function(params) {
         params = Params.fill(params, { orientation: Gtk.Orientation.VERTICAL,
                                        homogeneous: true });
         this.parent(params);
         this.get_style_context().add_class('character-list');
+        Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
     },
 
     vfunc_get_preferred_height: function() {
@@ -174,10 +191,24 @@ const CharacterListWidget = new Lang.Class({
         }
     },
 
+    _createCharacterListRow: function(characters) {
+        let rowWidget = new CharacterListRowWidget({
+	    characters: characters,
+	    font: this._font
+	});
+        rowWidget.connect('character-selected',
+                          Lang.bind(this, function(row, uc) {
+                              this.emit('character-selected', uc);
+                          }));
+	return rowWidget;
+    },
+
     setCharacters: function(characters) {
         let children = this.get_children();
         for (let index in children)
             this.remove(children[index]);
+
+	this._characters = characters;
 
         if (characters.length == 0)
             return;
@@ -186,22 +217,14 @@ const CharacterListWidget = new Lang.Class({
         for (; stop <= characters.length; stop++) {
             if (stop % CELLS_PER_ROW == 0) {
                 let rowCharacters = characters.slice(start, stop);
-                let rowWidget = new CharacterListRowWidget({}, rowCharacters);
-                rowWidget.connect('character-selected',
-                                  Lang.bind(this, function(row, uc) {
-                                      this.emit('character-selected', uc);
-                                  }));
-                this.pack_start(rowWidget, true, true, 0);
+                let rowWidget = this._createCharacterListRow(rowCharacters);
+		this.pack_start(rowWidget, true, true, 0);
                 start = stop;
             }
         }
         if (start != stop - 1) {
             let rowCharacters = characters.slice(start, stop);
-            let rowWidget = new CharacterListRowWidget({}, rowCharacters);
-            rowWidget.connect('character-selected',
-                              Lang.bind(this, function(row, uc) {
-                                  this.emit('character-selected', uc);
-                              }));
+            let rowWidget = this._createCharacterListRow(rowCharacters);
             this.pack_start(rowWidget, true, true, 0);
         }
     },

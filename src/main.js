@@ -40,6 +40,8 @@ const Lang = imports.lang;
 const Util = imports.util;
 const Window = imports.window;
 
+let settings = null;
+
 function initEnvironment() {
     window.getApp = function() {
         return Gio.Application.get_default();
@@ -77,6 +79,9 @@ const MyApplication = new Lang.Class({
                          [{ name: 'quit',
                             activate: this._onQuit }]);
         this._initAppMenu();
+
+        settings = Util.getSettings('org.gnome.Characters',
+                                    '/org/gnome/Characters/');
 
         log(_("My JS Application started"));
     },

@@ -325,9 +325,6 @@ const MainView = new Lang.Class({
             transient_for: this.get_toplevel()
         });
 
-        let description = Pango.FontDescription.from_string('Cantarell');
-        dialog.characterLabel.override_font(description);
-
         dialog.show();
         dialog.connect('response', function() {
             dialog.destroy();

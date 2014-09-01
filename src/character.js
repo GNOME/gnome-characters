@@ -1,14 +1,36 @@
 const Lang = imports.lang;
 const Params = imports.params;
+const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
 const Gc = imports.gi.Gc;
+const Main = imports.main;
 const Util = imports.util;
 
 const CharacterDialog = new Lang.Class({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
+    Properties: {
+	'font': GObject.ParamSpec.string(
+	    'font', '', '',
+	    GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
+	    'Cantarell')
+    },
+
+    get font() {
+	return this._font;
+    },
+
+    set font(v) {
+	if (v == this._font)
+	    return;
+
+	this._font = v;
+        let description = Pango.FontDescription.from_string(this._font);
+        this._characterLabel.override_font(description);
+    },
 
     _init: function(params) {
         let filtered = Params.filter(params, { character: null });
@@ -21,8 +43,8 @@ const CharacterDialog = new Lang.Class({
         this.get_content_area().add(grid);
 
         this._character = filtered.character;
-        this.characterLabel = builder.get_object('character-label');
-        this.characterLabel.label = this._character;
+        this._characterLabel = builder.get_object('character-label');
+        this._characterLabel.label = this._character;
 
         let detailLabel = builder.get_object('detail-label');
         let codePoint = filtered.character.charCodeAt(0);
@@ -41,6 +63,9 @@ const CharacterDialog = new Lang.Class({
         this.add_button(_("See also"), Gtk.ResponseType.HELP);
         let doneBtn = this.add_button(_("Done"), Gtk.ResponseType.CLOSE);
         doneBtn.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+
+	Main.settings.bind('font', this, 'font',
+			   Gio.SettingsBindFlags.DEFAULT);
     },
 
     _copyCharacter: function() {
