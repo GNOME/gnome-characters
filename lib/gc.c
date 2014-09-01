@@ -8,11 +8,68 @@
 static const uc_block_t *all_blocks;
 static size_t all_block_count;
 
+/* libunistring <= 0.9.4 doesn't have Emoticons block defined.  */
+static const uc_block_t emoticon_block =
+  {
+    0x1F600,
+    0x1F64F,
+    "Emoticons"
+  };
+
+/* Bullets are not specially treated in the Unicode standaerd.
+   Use the character list from UTR#25 "Unicode Support for Mathematics".  */
+static const gunichar bullet_characters[] =
+  {
+    /* triangle left */
+    0x25C2, 0x25C3,
+    0x25C0, 0x25C1,
+    /* triangle right */
+    0x25B8, 0x2023, 0x25B9,
+    0x25B6, 0x25B7,
+    /* triangle up */
+    0x25B4, 0x25B5,
+    0x25B2, 0x25B3,
+    /* triangle down */
+    0x25BE, 0x25BF,
+    0x25BC, 0x25BD,
+    /* square */
+    0x2B1D, 0x2B1E, 0x25AA, 0x25AB, 0x25FD, 0x25FE, 0x25FC, 0x25FB,
+    0x25A0, 0x25A1, 0x2B1B, 0x2B1C,
+    /* diamond */
+    0x2B29, 0x22C4, 0x2B25, 0x2B26, 0x25C6, 0x25C7,
+    /* lozenge */
+    0x2B2A, 0x2B2B, 0x2B27, 0x2B28, 0x29EB, 0x25CA,
+    /* pentagon */
+    0x2B1F, 0x2B20,
+    /* pentagon right */
+    0x2B53, 0x2B54,
+    /* hexagon horizontal */
+    0x2B23, 0x2394,
+    /* hexagon vertical */
+    0x2B22, 0x2B21,
+    /* arabic star */
+    0x2B51, 0x2B52, 0x22C6, 0x2B50, 0x2605, 0x2606,
+    /* ellipse horizontal */
+    0x2B2C, 0x2B2D,
+    /* ellipse vertical */
+    0x2B2E, 0x2B2F,
+    /* circle */
+    0x22C5, 0x2219, 0x00B7, 0x2218, 0x2022, 0x25E6, 0x2981, 0x26AC,
+    0x26AB, 0x26AA, 0x25CF, 0x25CB, 0x2B24, 0x25EF,
+    /* circled circles */
+    0x2299, 0x2609, 0x233E, 0x2A00, 0x29BF, 0x229A, 0x29BE, 0x25C9, 0x25CE
+  };
+static size_t bullet_character_count = G_N_ELEMENTS (bullet_characters);
+
 typedef struct GcCharacterIter GcCharacterIter;
 
 struct GcCharacterIter
 {
   ucs4_t uc;
+
+  const gunichar *characters;
+  gssize character_index;
+  gssize character_count;
 
   const uc_block_t *blocks;
   size_t block_index;
@@ -41,6 +98,14 @@ gc_character_iter_next (GcCharacterIter *iter)
 {
   ucs4_t uc = iter->uc;
 
+  /* First search in the explicit character list.  */
+  if (iter->character_index + 1 < iter->character_count)
+    {
+      iter->uc = iter->characters[iter->character_index++];
+      return TRUE;
+    }
+
+  /* Then go through the Unicode blocks.  */
   if (!iter->blocks)
     return FALSE;
 
@@ -113,6 +178,12 @@ static gboolean
 filter_is_print (GcCharacterIter *iter, ucs4_t uc)
 {
   return uc_is_print (uc);
+}
+
+static gboolean
+filter_all (GcCharacterIter *iter, ucs4_t uc)
+{
+  return TRUE;
 }
 
 static void
@@ -192,8 +263,11 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
       }
 
     case GC_CATEGORY_BULLET:
-      /* Not implemented.  */
-      break;
+      gc_character_iter_init (iter);
+      iter->characters = bullet_characters;
+      iter->character_count = bullet_character_count;
+      iter->filter = filter_all;
+      return;
 
     case GC_CATEGORY_PICTURE:
       {
@@ -246,14 +320,20 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 
 	    /* 1F600..1F64F; Emoticons */
 	    block = uc_block (0x1F600);
-	    if (block)
-	      memcpy (&emoticon_blocks[emoticon_blocks_size++], block,
-		      sizeof (uc_block_t));
+
+	    /* libunistring <= 0.9.4 doesn't have Emoticons block defined.  */
+	    if (!block)
+	      block = &emoticon_block;
+
+	    memcpy (&emoticon_blocks[emoticon_blocks_size++], block,
+		    sizeof (uc_block_t));
 	    g_once_init_leave (&emoticon_blocks_initialized, 1);
 	  }
 	gc_character_iter_init_for_blocks (iter,
 					   emoticon_blocks,
 					   emoticon_blocks_size);
+	/* libunistring <= 0.9.4 doesn't have Emoticons block defined.  */
+	iter->filter = filter_all;
 	return;
       }
     }
