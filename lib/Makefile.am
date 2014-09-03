@@ -11,7 +11,8 @@ pkglib_LTLIBRARIES = libgc.la
 
 libgc_la_LIBADD = $(LIBGC_LIBS)
 libgc_la_LDFLAGS = -avoid-version
-libgc_la_SOURCES = gc.h gc.c
+libgc_la_sources = gc.h gc.c
+libgc_la_SOURCES = $(libgc_la_sources) confusables.h
 
 include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = Gc-1.0.gir
@@ -28,7 +29,7 @@ Gc_1_0_gir_SCANNERFLAGS =			\
        --identifier-prefix=Gc			\
         --c-include="gc.h"			\
        $(NULL)
-Gc_1_0_gir_FILES = $(libgc_la_SOURCES)
+Gc_1_0_gir_FILES = $(libgc_la_sources)
 
 girdir= $(pkgdatadir)/gir-1.0
 typelibdir= $(pkglibdir)/girepository-1.0
@@ -36,7 +37,7 @@ typelibdir= $(pkglibdir)/girepository-1.0
 gir_DATA = $(INTROSPECTION_GIRS)
 typelib_DATA = $(gir_DATA:.gir=.typelib)
 
-EXTRA_DIST = $(gir_DATA)
+EXTRA_DIST = $(gir_DATA) gen-confusables.py
 CLEANFILES = $(typelib_DATA)
 
 -include $(top_srcdir)/git.mk
