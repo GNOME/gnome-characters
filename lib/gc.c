@@ -567,10 +567,41 @@ gc_add_confusables (struct SearchData *data,
 	     && !g_cancellable_is_cancelled (cancellable); i++)
 	{
 	  gunichar uc = confusable_characters[klass->offset + i];
-	  if (uc != data->uc
-	      && (data->max_matches < 0 || result->len < data->max_matches))
+	  if (data->max_matches < 0 || result->len < data->max_matches)
 	    g_array_append_val (result, uc);
 	}
+    }
+}
+
+static gint
+compare_unichar (gconstpointer a,
+                 gconstpointer b)
+{
+  const gunichar *auc = a, *buc = b;
+  return *auc == *buc ? 0 : (*auc < *buc ? -1 : 1);
+}
+
+static void
+remove_duplicates (GArray *array)
+{
+  gint i;
+
+  for (i = 0; i < array->len; i++)
+    {
+      gunichar *start;
+      gint j;
+
+      start = &g_array_index (array, gunichar, i);
+      for (j = i + 1; j < array->len; j++)
+	{
+	  gunichar *stop;
+
+	  stop = &g_array_index (array, gunichar, j);
+	  if (*start != *stop)
+	    break;
+	}
+      if (j != i + 1)
+	g_array_remove_range (array, i + 1, j - (i + 1));
     }
 }
 
@@ -582,11 +613,42 @@ gc_search_related_thread (GTask        *task,
 {
   GArray *result;
   struct SearchData *data = task_data;
+  ucs4_t mirror;
+  gunichar uc;
+  gint i;
 
   result = g_array_new (FALSE, FALSE, sizeof (gunichar));
 
-  /* FIXME: add lower/upper/title/mirrored of data->uc.  */
+  uc = uc_toupper (data->uc);
+  g_array_append_val (result, uc);
+
+  uc = uc_tolower (data->uc);
+  g_array_append_val (result, uc);
+
+  uc = uc_totitle (data->uc);
+  g_array_append_val (result, uc);
+
+  if (uc_mirror_char (data->uc, &mirror))
+    {
+      uc = mirror;
+      g_array_append_val (result, uc);
+    }
+
   gc_add_confusables (data, result, cancellable);
+  g_array_sort (result, compare_unichar);
+  remove_duplicates (result);
+
+  for (i = 0; i < result->len; i++)
+    {
+      gunichar *puc;
+
+      puc = &g_array_index (result, gunichar, i);
+      if (*puc == data->uc)
+	{
+	  g_array_remove_index (result, i);
+	  break;
+	}
+    }
 
   g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
 }
