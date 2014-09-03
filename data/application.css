@@ -33,3 +33,12 @@
 .detail-label {
     font-size: small;
 }
+
+.related .character {
+    font-size: 3em;
+}
+
+.related .list-row {
+    border-style: groove;
+    border-width: 2pt;
+}

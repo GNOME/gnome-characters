@@ -69,7 +69,10 @@ const MainWindow = new Lang.Class({
                           { name: 'category',
                             activate: this._category,
                             parameter_type: new GLib.VariantType('s'),
-                            state: new GLib.Variant('s', 'punctuation') }]);
+                            state: new GLib.Variant('s', 'punctuation') },
+                          { name: 'character',
+                            activate: this._character,
+                            parameter_type: new GLib.VariantType('s') }]);
 
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/main.ui');
@@ -178,6 +181,11 @@ const MainWindow = new Lang.Class({
         Util.assertNotEqual(category, null);
         this._mainView.setPage(category.name);
         this._headerBar.title = Gettext.gettext(category.label);
+    },
+
+    _character: function(action, v) {
+        let [uc, length] = v.get_string()
+        this._mainView.selectCharacter(uc);
     },
 });
 
@@ -315,9 +323,17 @@ const MainView = new Lang.Class({
         }
     },
 
-    _handleCharacterSelected: function(widget, uc) {
-        if (this._recentCharacters.indexOf(uc) < 0)
+    selectCharacter: function(uc) {
+        if (this._recentCharacters.indexOf(uc) < 0) {
             this._recentCharacters.push(uc);
+
+            if (this.visible_child_name == 'recent')
+                this.setPage('recent');
+        }
+    },
+
+    _handleCharacterSelected: function(widget, uc) {
+        this.selectCharacter(uc);
 
         let dialog = new Character.CharacterDialog({
             character: uc,
@@ -326,8 +342,9 @@ const MainView = new Lang.Class({
         });
 
         dialog.show();
-        dialog.connect('response', function() {
-            dialog.destroy();
+        dialog.connect('response', function(self, response_id) {
+            if (response_id == Gtk.ResponseType.CLOSE)
+                dialog.destroy();
         });
     }
 });

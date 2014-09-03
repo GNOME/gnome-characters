@@ -1,9 +1,13 @@
+#include <config.h>
+
 #include "gc.h"
 
+#include <stdlib.h>
 #include <string.h>
 #include <unictype.h>
 #include <uniname.h>
 #include <unistr.h>
+#include "confusables.h"
 
 static const uc_block_t *all_blocks;
 static size_t all_block_count;
@@ -413,6 +417,7 @@ struct SearchData
 {
   GcCategory category;
   gchar **keywords;
+  gunichar uc;
   gint max_matches;
 };
 
@@ -531,6 +536,87 @@ gc_search_by_keywords (const gchar * const * keywords,
   g_task_set_task_data (task, data,
 			(GDestroyNotify) search_data_free);
   g_task_run_in_thread (task, gc_search_by_keywords_thread);
+}
+
+static int
+confusable_character_class_compare (const void *a,
+				    const void *b)
+{
+  const struct ConfusableCharacterClass *ac = a, *bc = b;
+  return ac->uc == bc->uc ? 0 : (ac->uc < bc->uc ? -1 : 1);
+}
+
+static void
+gc_add_confusables (struct SearchData *data,
+                    GArray            *result,
+                    GCancellable      *cancellable)
+{
+  struct ConfusableCharacterClass key, *res;
+
+  key.uc = data->uc;
+  res = bsearch (&key, confusable_character_classes,
+		 G_N_ELEMENTS (confusable_character_classes),
+		 sizeof (*confusable_character_classes),
+		 confusable_character_class_compare);
+  if (res)
+    {
+      const struct ConfusableClass *klass = &confusable_classes[res->index];
+      uint16_t i;
+
+      for (i = 0; i < klass->length
+	     && !g_cancellable_is_cancelled (cancellable); i++)
+	{
+	  gunichar uc = confusable_characters[klass->offset + i];
+	  if (uc != data->uc
+	      && (data->max_matches < 0 || result->len < data->max_matches))
+	    g_array_append_val (result, uc);
+	}
+    }
+}
+
+static void
+gc_search_related_thread (GTask        *task,
+			  gpointer      source_object,
+			  gpointer      task_data,
+			  GCancellable *cancellable)
+{
+  GArray *result;
+  struct SearchData *data = task_data;
+
+  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
+
+  /* FIXME: add lower/upper/title/mirrored of data->uc.  */
+  gc_add_confusables (data, result, cancellable);
+
+  g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
+}
+
+/**
+ * gc_search_related:
+ * @uc: a #gunichar.
+ * @max_matches: the maximum number of results.
+ * @cancellable: a #GCancellable.
+ * @callback: a #GAsyncReadyCallback.
+ * @user_data: a user data passed to @callback.
+ */
+void
+gc_search_related (gunichar            uc,
+                   gint                max_matches,
+                   GCancellable       *cancellable,
+                   GAsyncReadyCallback callback,
+                   gpointer            user_data)
+{
+  GTask *task;
+  struct SearchData *data;
+
+  task = g_task_new (NULL, cancellable, callback, user_data);
+
+  data = g_slice_new0 (struct SearchData);
+  data->uc = uc;
+  data->max_matches = max_matches;
+  g_task_set_task_data (task, data,
+			(GDestroyNotify) search_data_free);
+  g_task_run_in_thread (task, gc_search_related_thread);
 }
 
 /**
