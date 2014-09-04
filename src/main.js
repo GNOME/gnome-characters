@@ -55,7 +55,7 @@ const MyApplication = new Lang.Class({
     _init: function() {
         this.parent({ application_id: pkg.name });
 
-        GLib.set_application_name(_("My JS Application"));
+        GLib.set_application_name(_("Characters Application"));
     },
 
     _onQuit: function() {
@@ -83,7 +83,7 @@ const MyApplication = new Lang.Class({
         settings = Util.getSettings('org.gnome.Characters',
                                     '/org/gnome/Characters/');
 
-        log(_("My JS Application started"));
+        log(_("Characters Application started"));
     },
 
     vfunc_activate: function() {
@@ -91,7 +91,7 @@ const MyApplication = new Lang.Class({
     },
 
     vfunc_shutdown: function() {
-        log(_("My JS Application exiting"));
+        log(_("Characters Application exiting"));
 
         this.parent();
     }

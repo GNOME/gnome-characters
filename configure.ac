@@ -1,6 +1,6 @@
 AC_PREREQ(2.63)
 AC_INIT([org.gnome.Characters], [0.1],
-        [bugs@js-app.example.com],
+        [bugs@example.com],
         [gnome-characters],
         [http://www.example.com/gnome-characters/])
 
