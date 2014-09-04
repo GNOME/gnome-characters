@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <unicase.h>
 #include <unictype.h>
 #include <uniname.h>
 #include <unistr.h>
