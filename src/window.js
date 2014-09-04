@@ -277,8 +277,12 @@ const MainView = new Lang.Class({
             MAX_SEARCH_RESULTS,
             this._cancellable,
             Lang.bind(this, function(source_object, res, user_data) {
-                let result = Gc.search_finish(res);
-                this._finishSearch('search-result', result);
+                try {
+                    let result = Gc.search_finish(res);
+                    this._finishSearch('search-result', result);
+                } catch (e) {
+                    log("Failed to search by keywords: " + e);
+                }
             }));
     },
 
@@ -317,8 +321,12 @@ const MainView = new Lang.Class({
                 this._cancellable,
                 Lang.bind(this,
                           function(source_object, res, user_data) {
-                              let result = Gc.search_finish(res);
-                              this._finishSearch(name, result);
+                              try {
+                                  let result = Gc.search_finish(res);
+                                  this._finishSearch(name, result);
+                              } catch (e) {
+                                  log("Failed to search by category: " + e);
+                              }
                           }));
         }
     },

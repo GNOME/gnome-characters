@@ -138,8 +138,12 @@ const CharacterDialog = new Lang.Class({
             -1,
 	    this._cancellable,
 	    Lang.bind(this, function(source_object, res, user_data) {
-		let result = Gc.search_finish(res);
-		this._finishSearch(result);
+		try {
+		    let result = Gc.search_finish(res);
+		    this._finishSearch(result);
+		} catch (e) {
+                    log("Failed to search related: " + e);
+		}
 	    }));
 
 	this._relatedButton.active = false;
