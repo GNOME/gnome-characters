@@ -66,7 +66,7 @@ const CharacterDialog = new Lang.Class({
         this._doneButton.get_style_context().add_class(
 	    Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-	this._relatedButton = new Gtk.ToggleButton({ label: _("See also") });
+	this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
 	this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
 	this._relatedButton.show();
 

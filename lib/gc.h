@@ -27,9 +27,10 @@ typedef enum
   GC_CATEGORY_EMOTICON
 } GcCategory;
 
-/* Provides asynchronous access to Unicode characters in the given
-   criteria.  It could support user-defined search criteria written in
-   JS, but it would need to be run in the main thread.  */
+/* Provides asynchronous access to Unicode characters with the given
+   criteria.  Note that it is not feasible to support user-defined
+   search criteria written in JS, because the JS code needs to be run
+   in the main thread.  */
 
 typedef GArray GcSearchResult;
 typedef gboolean (*GcSearchFunc) (gunichar uc, gpointer user_data);

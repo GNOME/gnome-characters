@@ -3,7 +3,7 @@ About gnome-characters
 
 gnome-characters is an attempt to implement the design:
 https://wiki.gnome.org/Design/Apps/CharacterMap
-using the GNU libunistring library as the backend:
+using the GNU libunistring library as its data source:
 https://www.gnu.org/software/libunistring/
 
 Still very much work in progress.
@@ -13,5 +13,6 @@ License
 
 This is based on gtk-js-app:
 https://github.com/gcampax/gtk-js-app
-Files coming from the package are under a 3-clause BSD license.
-Others are GPL 2.0 or later.
+
+Files from the gtk-js-app are licensed under 3-clause BSD.
+Other files are GPL 2.0 or later.

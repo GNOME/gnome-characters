@@ -21,7 +21,7 @@ static const uc_block_t emoticon_block =
     "Emoticons"
   };
 
-/* Bullets are not specially treated in the Unicode standaerd.
+/* Bullets are not specially categorized in the Unicode standard.
    Use the character list from UTR#25 "Unicode Support for Mathematics".  */
 static const gunichar bullet_characters[] =
   {
@@ -337,7 +337,8 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 	gc_character_iter_init_for_blocks (iter,
 					   emoticon_blocks,
 					   emoticon_blocks_size);
-	/* libunistring <= 0.9.4 doesn't have Emoticons block defined.  */
+	/* libunistring <= 0.9.4 doesn't have Emoticons block defined
+	   and we can't use uc_is_print() here.  */
 	iter->filter = filter_all;
 	return;
       }
