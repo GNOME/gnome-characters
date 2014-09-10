@@ -9,6 +9,7 @@ import pyatspi
 from dogtail import tree
 from dogtail import utils
 from dogtail.procedural import *
+from dogtail.rawinput import click
 
 def active(widget):
     return widget.getState().contains(pyatspi.STATE_ARMED)
@@ -61,6 +62,19 @@ try:
             if label2 == label1:
                 continue
             assert not pages[label2].character_list.showing
+
+    # character dialog
+    page = pages['Punctuations']
+    page.button.click()
+    x, y = page.character_list.position
+    click(x + 10, y + 10)
+    assert len(app.children) == 2
+    character_dialog = app.children[-1]
+    assert character_dialog.name == 'Exclamation Mark'
+    see_also_button = character_dialog.child('See Also')
+    done_button = character_dialog.child('Done')
+    assert see_also_button.showing
+    assert done_button.showing
 finally:
     print "tearing down"
     fini()
