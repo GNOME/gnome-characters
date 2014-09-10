@@ -75,6 +75,14 @@ try:
     done_button = character_dialog.child('Done')
     assert see_also_button.showing
     assert done_button.showing
+
+    see_also_button.click()
+    done_button.click()
+
+    # recently used characters
+    recently_used_page = Page(app, 'Recently Used')
+    recently_used_page.button.click()
+    assert len(recently_used_page.character_list.children) > 0
 finally:
     print "tearing down"
     fini()
