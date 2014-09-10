@@ -203,12 +203,16 @@ const MainView = new Lang.Class({
         for (let index in CategoryList.Category) {
             let category = CategoryList.Category[index];
             characterList = this._createCharacterList();
+            characterList.get_accessible().accessible_name =
+                _('%s Character List').format(category.label);
             this._characterListWidgets[category.name] = characterList;
             this.add_named(this._createScrolledWindow(characterList),
                            category.name);
         }
 
         characterList = this._createCharacterList();
+        characterList.get_accessible().accessible_name =
+            _('Search Result Character List');
         this.add_named(this._createScrolledWindow(characterList),
                        'search-result');
         this._characterListWidgets['search-result'] = characterList;
