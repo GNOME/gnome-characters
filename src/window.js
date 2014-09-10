@@ -202,13 +202,13 @@ const MainView = new Lang.Class({
         let characterList;
         for (let index in CategoryList.Category) {
             let category = CategoryList.Category[index];
-            characterList = this._createCharacterList(category.category);
+            characterList = this._createCharacterList();
             this._characterListWidgets[category.name] = characterList;
             this.add_named(this._createScrolledWindow(characterList),
                            category.name);
         }
 
-        characterList = this._createCharacterList(Gc.Category.NONE);
+        characterList = this._createCharacterList();
         this.add_named(this._createScrolledWindow(characterList),
                        'search-result');
         this._characterListWidgets['search-result'] = characterList;
@@ -225,7 +225,7 @@ const MainView = new Lang.Class({
         this._cancellable = new Gio.Cancellable();
     },
 
-    _createCharacterList: function(category) {
+    _createCharacterList: function() {
         let widget = new CharacterList.CharacterListWidget({ hexpand: true,
                                                              vexpand: true });
         widget.connect('character-selected',
