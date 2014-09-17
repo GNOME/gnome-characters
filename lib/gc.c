@@ -98,7 +98,7 @@ static void     gc_enumerate_character_by_keywords
                                        (GcCharacterIter      *iter,
                                         const gchar * const * keywords);
 
-gboolean
+static gboolean
 gc_character_iter_next (GcCharacterIter *iter)
 {
   ucs4_t uc = iter->uc;
@@ -149,7 +149,7 @@ gc_character_iter_next (GcCharacterIter *iter)
   return FALSE;
 }
 
-gunichar
+static gunichar
 gc_character_iter_get (GcCharacterIter *iter)
 {
   return iter->uc;
@@ -379,7 +379,7 @@ filter_keywords (GcCharacterIter *iter, ucs4_t uc)
   return TRUE;
 }
 
-void
+static void
 gc_enumerate_character_by_keywords (GcCharacterIter      *iter,
                                     const gchar * const * keywords)
 {
