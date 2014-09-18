@@ -63,7 +63,8 @@ const CharacterListRowWidget = new Lang.Class({
 
     vfunc_draw: function(cr) {
 	// Use device coordinates directly, since PangoCairo doesn't
-	// work well with scaled matrix.
+	// work well with scaled matrix:
+	// https://bugzilla.gnome.org/show_bug.cgi?id=700592
         let allocation = this.get_allocation();
         let cell_pixel_size = allocation.width * CELL_SIZE;
 
