@@ -14,8 +14,7 @@ const Util = imports.util;
 const BASELINE_OFFSET = 0.15;
 const CELL_SIZE = 0.20;
 const CELLS_PER_ROW = 5;
-const FONT_PIXEL_SIZE = 90;
-const CELL_PIXEL_SIZE = FONT_PIXEL_SIZE + 10;
+const CELL_PIXEL_SIZE = 100;
 
 const CharacterListRowWidget = new Lang.Class({
     Name: 'CharacterListRowWidget',
@@ -63,9 +62,10 @@ const CharacterListRowWidget = new Lang.Class({
     },
 
     vfunc_draw: function(cr) {
-        // Use [0.0, 1.0] coordinates.
-        let extents = cr.clipExtents()
-        cr.scale(extents[2], extents[2]);
+	// Use device coordinates directly, since PangoCairo doesn't
+	// work well with scaled matrix.
+        let allocation = this.get_allocation();
+        let cell_pixel_size = allocation.width * CELL_SIZE;
 
         // Clear the canvas.
         // FIXME: Pick the background color from CSS.
@@ -75,18 +75,15 @@ const CharacterListRowWidget = new Lang.Class({
 
         let layout = PangoCairo.create_layout(cr);
         let description = Pango.FontDescription.from_string(this._font);
-        description.set_absolute_size(FONT_PIXEL_SIZE);
+        description.set_absolute_size(cell_pixel_size / 2 * Pango.SCALE);
         layout.set_font_description(description);
 
         // Draw baseline.
-        let distance = cr.deviceToUserDistance(1, 1);
-        let px = Math.max(distance[0], distance[1]);
-
         // FIXME: Pick the baseline color from CSS.
         cr.setSourceRGBA(114.0 / 255.0, 159.0 / 255.0, 207.0 / 255.0, 1.0);
-        cr.setLineWidth(0.5 * px);
-        cr.moveTo(0, BASELINE_OFFSET);
-        cr.relLineTo(1.0, 0);
+        cr.setLineWidth(0.5);
+        cr.moveTo(0, BASELINE_OFFSET * allocation.width);
+        cr.relLineTo(allocation.width, 0);
         cr.stroke();
         cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
 
@@ -95,9 +92,9 @@ const CharacterListRowWidget = new Lang.Class({
             layout.set_text(this._characters[i], -1);
             let layout_baseline = layout.get_baseline() / Pango.SCALE;
             let [logical_rect, ink_rect] = layout.get_extents();
-            cr.moveTo(CELL_SIZE * i - logical_rect.x / Pango.SCALE +
-                      (CELL_SIZE - logical_rect.width / Pango.SCALE) / 2,
-                      BASELINE_OFFSET - layout_baseline);
+            cr.moveTo(cell_pixel_size * i - logical_rect.x / Pango.SCALE +
+                      (cell_pixel_size - logical_rect.width / Pango.SCALE) / 2,
+                      BASELINE_OFFSET * allocation.width - layout_baseline);
             PangoCairo.show_layout(cr, layout);
         }
     },
