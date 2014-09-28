@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Yosef Or Boczko <yoseforb@gnome.org>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-control-center.HEAD.he\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-28 02:53+0300\n"
+"PO-Revision-Date: 2014-09-28 03:01+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
+"Language-Team: עברית <>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural= (n!=1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "_New"
+msgstr "_חדש"
+
+#: ../data/app-menu.ui.h:2
+msgid "About Example"
+msgstr "על אודות דוגמה"
+
+#: ../data/app-menu.ui.h:3
+msgid "Quit"
+msgstr "יציאה"
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "העתקת תו"
+
+#: ../data/main.ui.h:1
+msgid "Current page"
+msgstr "דף נוכחי"
+
+#: ../data/main.ui.h:2
+msgid "Type to Search"
+msgstr "יש להקליד כדי לחפש"
+
+#: ../data/main.ui.h:3
+msgid "Loading..."
+msgstr "בטעינה..."
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"A small but complete template to build a Gtk+ JS application, using all the "
+"GNOME technologies expected from a modern app, as well as gjs as the "
+"underlying language."
+msgstr ""
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+msgid ""
+"It is meant to showcase working examples (that can be readily transfered "
+"into a real application) for the following GNOME and Freedesktop techologies:"
+msgstr ""
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:3
+msgid "The build system (autotools based)"
+msgstr ""
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:4
+msgid "Configuring and using GSettings"
+msgstr ""
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:5
+msgid "Using GResources for source and data"
+msgstr ""
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:6
+msgid "Desktop file and appdata"
+msgstr ""
+
+#: ../data/org.gnome.Characters.desktop.in.h:1
+msgid "JS Application"
+msgstr ""
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Demo JS Application and template"
+msgstr ""
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "gtk;gjs;demo;development;"
+msgstr ""
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "Font to display characters"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr "Use the font to render characters on the character list."
+
+#: ../src/categoryList.js:13
+msgid "Recently Used"
+msgstr "בשימוש לאחרונה"
+
+#: ../src/categoryList.js:19
+msgid "Punctuations"
+msgstr "פִּסּוּק"
+
+#: ../src/categoryList.js:25
+msgid "Arrows"
+msgstr "חצים"
+
+#: ../src/categoryList.js:31
+msgid "Bullets"
+msgstr "תבליטים"
+
+#: ../src/categoryList.js:37
+msgid "Picture"
+msgstr "תמונות"
+
+#: ../src/categoryList.js:43
+msgid "Currencies"
+msgstr "מטבעות"
+
+#: ../src/categoryList.js:49
+msgid "Math"
+msgstr "מתמטיקה"
+
+#: ../src/categoryList.js:55
+msgid "Latin"
+msgstr "לטינית"
+
+#: ../src/categoryList.js:61
+msgid "Emoticons"
+msgstr "פרצופונים"
+
+#: ../src/character.js:65
+msgid "Done"
+msgstr "בוצע"
+
+#: ../src/character.js:69
+msgid "See Also"
+msgstr ""
+
+#: ../src/character.js:128
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "יוניקוד ‎U+‎%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr "יישום תווים"
+
+#: ../src/main.js:86
+msgid "Characters Application started"
+msgstr "Characters Application started"
+
+#: ../src/main.js:94
+msgid "Characters Application exiting"
+msgstr "Characters Application exiting"
+
+#: ../src/window.js:153
+msgid "translator-credits"
+msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
+
+#: ../src/window.js:154
+msgid "GNOME Characters"
+msgstr "‏GNOME תווים"
+
+#: ../src/window.js:155
+msgid "Character Map"
+msgstr "מפת תווים"
+
+#: ../src/window.js:207
+#, javascript-format
+msgid "%s Character List"
+msgstr "%s רשימת תווים"
+
+#: ../src/window.js:215
+msgid "Search Result Character List"
+msgstr "תוצאות חיפוש תווים"
