@@ -251,13 +251,21 @@ const MainView = new Lang.Class({
     _startSearch: function() {
         this._cancellable.cancel();
         this._cancellable.reset();
-        this._spinner.start();
-        this.visible_child_name = 'loading-banner';
-        this.show_all();
+        this._spinnerTimeoutId =
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
+                             Lang.bind(this, function () {
+                                 this._spinnerTimeoutId = 0;
+                                 this._spinner.start();
+                                 this.visible_child_name = 'loading-banner';
+                                 this.show_all();
+                             }));
     },
 
     _finishSearch: function(name, result) {
-        this._spinner.stop();
+        if (this._spinnerTimeoutId > 0) {
+            GLib.source_remove(this._spinnerTimeoutId);
+            this._spinner.stop();
+        }
 
         let characters = [];
         for (let index = 0; index < result.len; index++) {
