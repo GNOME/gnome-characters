@@ -251,6 +251,11 @@ const MainView = new Lang.Class({
     _startSearch: function() {
         this._cancellable.cancel();
         this._cancellable.reset();
+
+        if (this.visible_child_name != 'search-banner' &&
+            this.visible_child_name != 'search-result')
+            this._lastPage = this.visible_child_name;
+
         this._spinnerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
                              Lang.bind(this, function () {
@@ -274,9 +279,12 @@ const MainView = new Lang.Class({
 
         let characterList = this._characterListWidgets[name];
         characterList.setCharacters(characters);
-        if (result.length == 0)
-            this.visible_child_name = 'search-banner';
-        else {
+        if (result.length == 0) {
+            if (this._lastPage)
+                this.visible_child_name = this._lastPage;
+            else
+                this.visible_child_name = 'search-banner';
+        } else {
             this.visible_child_name = name;
         }
         this.show_all();
