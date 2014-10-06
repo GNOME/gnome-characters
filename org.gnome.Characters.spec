@@ -1,15 +1,16 @@
 Name:		%{_name}
 Version:	%{_version}
 Release:	1%{?dist}
-Summary:	JS Application
+Summary:	Character map application for GNOME
 
-License:	BSD
-URL:		http://www.example.com/gtk-js-app
+License:	BSD and GPLv2+
+URL:		http://www.example.com/gnome-characters
 Source0:        %{_distdir}-%{version}.tar.xz
 BuildArch:      noarch
 
 %description
-Demo JS Application and template
+Characters is a simple utility application to find and insert unusual
+characters.
 
 %prep
 %setup -q -n %{_distdir}-%{version}
