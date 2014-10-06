@@ -224,6 +224,7 @@ const MainView = new Lang.Class({
         let loadingBannerGrid = builder.get_object('loading-banner-grid');
         this._spinner = builder.get_object('loading-banner-spinner');
         this.add_named(loadingBannerGrid, 'loading-banner');
+        this._spinnerTimeoutId = 0;
 
         this._recentCharacters = [];
         this._cancellable = new Gio.Cancellable();
@@ -259,7 +260,6 @@ const MainView = new Lang.Class({
         this._spinnerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
                              Lang.bind(this, function () {
-                                 this._spinnerTimeoutId = 0;
                                  this._spinner.start();
                                  this.visible_child_name = 'loading-banner';
                                  this.show_all();
@@ -269,6 +269,7 @@ const MainView = new Lang.Class({
     _finishSearch: function(name, result) {
         if (this._spinnerTimeoutId > 0) {
             GLib.source_remove(this._spinnerTimeoutId);
+            this._spinnerTimeoutId = 0;
             this._spinner.stop();
         }
 
