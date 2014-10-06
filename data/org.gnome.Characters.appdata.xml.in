@@ -4,24 +4,12 @@
   <licence>CC0</licence>
   <description>
     <_p>
-      A small but complete template to build a Gtk+ JS application,
-      using all the GNOME technologies expected from a modern app,
-      as well as gjs as the underlying language.
+      Characters is a simple utility application to find and insert unusual characters.
     </_p>
-    <_p>
-      It is meant to showcase working examples (that can be readily transfered into
-      a real application) for the following GNOME and Freedesktop techologies:
-    </_p>
-    <ul>
-      <_li>The build system (autotools based)</_li>
-      <_li>Configuring and using GSettings</_li>
-      <_li>Using GResources for source and data</_li>
-      <_li>Desktop file and appdata</_li>
-    </ul>
   </description>
   <screenshots>
-    <screenshot type="default" width="1024" height="768">https://www.example.com/gtk-js-app/screenshots/large.png</screenshot>
+    <screenshot type="default" width="1024" height="768">https://raw.github.com/gnome-design-team/gnome-mockups/master/character-map/png/grid.png</screenshot>
   </screenshots>
-  <url type="homepage">https://www.example.com/gtk-js-app</url>
-  <updatecontact>gcampagna_at_src.gnome.org</updatecontact>
+  <url type="homepage">https://wiki.gnome.org/Design/Apps/CharacterMap</url>
+  <updatecontact>dueno_at_src.gnome.org</updatecontact>
 </component>
