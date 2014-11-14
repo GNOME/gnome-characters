@@ -16,7 +16,7 @@ const Category = [
     {
         name: 'punctuation',
         category: Gc.Category.PUNCTUATION,
-        label: N_('Punctuations'),
+        label: N_('Punctuation'),
         icon_name: 'characters-punctuation-symbolic'
     },
     {
@@ -34,7 +34,7 @@ const Category = [
     {
         name: 'picture',
         category: Gc.Category.PICTURE,
-        label: N_('Picture'),
+        label: N_('Pictures'),
         icon_name: 'characters-picture-symbolic'
     },
     {
