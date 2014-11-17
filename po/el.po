@@ -1,0 +1,164 @@
+# Greek translation for gnome-characters.
+# Copyright (C) 2014 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# Dimitris Spingos <dmtrs32@gmail.com>, 2014.
+# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-11-14 14:57+0000\n"
+"PO-Revision-Date: 2014-11-15 10:56+0300\n"
+"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"Language-Team: www.gnome.gr\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "_New"
+msgstr "_Νέο"
+
+#: ../data/app-menu.ui.h:2
+msgid "About Example"
+msgstr "Παράδειγμα για το περί"
+
+#: ../data/app-menu.ui.h:3
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "Αντιγραφή χαρακτήρα"
+
+#: ../data/main.ui.h:1
+msgid "Current page"
+msgstr "Τρέχουσα σελίδα"
+
+#: ../data/main.ui.h:2
+msgid "Type to Search"
+msgstr "Πληκτρολογήστε για αναζήτηση"
+
+#: ../data/main.ui.h:3
+msgid "Loading..."
+msgstr "Φορτώνει..."
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters."
+msgstr ""
+"Οι χαρακτήρες είναι μια απλή βοηθητική εφαρμογή εύρεσης και εισαγωγής "
+"σπάνιων χαρακτήρων."
+
+#: ../data/org.gnome.Characters.desktop.in.h:1
+msgid "JS Application"
+msgstr "Εφαρμογή JS"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Demo JS Application and template"
+msgstr "Παρουσίαση εφαρμογής JS και προτύπου"
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "gtk;gjs;demo;development;"
+msgstr "gtk;gjs;παρουσίαση;ανάπτυξη;"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "Γραμματοσειρά που θα εμφανίσει χαρακτήρες"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr ""
+"Χρήση της γραμματοσειράς που θα αποδώσει τους χαρακτήρες στον κατάλογο "
+"χαρακτήρων."
+
+#: ../src/categoryList.js:13
+msgid "Recently Used"
+msgstr "Πρόσφατα χρησιμοποιημένες"
+
+#: ../src/categoryList.js:19
+msgid "Punctuation"
+msgstr "Στίξη"
+
+#: ../src/categoryList.js:25
+msgid "Arrows"
+msgstr "Βέλη"
+
+#: ../src/categoryList.js:31
+msgid "Bullets"
+msgstr "Κουκκίδες"
+
+#: ../src/categoryList.js:37
+msgid "Pictures"
+msgstr "Εικόνες"
+
+#: ../src/categoryList.js:43
+msgid "Currencies"
+msgstr "Νομίσματα"
+
+#: ../src/categoryList.js:49
+msgid "Math"
+msgstr "Μαθηματικά"
+
+#: ../src/categoryList.js:55
+msgid "Latin"
+msgstr "Λατινικά"
+
+#: ../src/categoryList.js:61
+msgid "Emoticons"
+msgstr "Εικονίδια διάθεσης"
+
+#: ../src/character.js:65
+msgid "Done"
+msgstr "Έτοιμο"
+
+#: ../src/character.js:69
+msgid "See Also"
+msgstr "Δείτε επίσης"
+
+#: ../src/character.js:128
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Unicode U+%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr "Εφαρμογή χαρακτήρων "
+
+#: ../src/main.js:86
+msgid "Characters Application started"
+msgstr "Άρχισε η εφαρμογή χαρακτήρων"
+
+#: ../src/main.js:94
+msgid "Characters Application exiting"
+msgstr "Έξοδος από την εφαρμογή χαρακτήρων"
+
+#: ../src/window.js:153
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα του GNOME\n"
+" Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
+"Για περισσότερα δείτε: http://gnome.gr"
+
+#: ../src/window.js:154
+msgid "GNOME Characters"
+msgstr "Χαρακτήρες GNOME"
+
+#: ../src/window.js:155
+msgid "Character Map"
+msgstr "Πίνακας χαρακτήρων"
+
+#: ../src/window.js:207
+#, javascript-format
+msgid "%s Character List"
+msgstr "Κατάλογος χαρακτήρων %s"
+
+#: ../src/window.js:215
+msgid "Search Result Character List"
+msgstr "Αναζήτηση αποτελέσματος καταλόγου χαρακτήρων"
