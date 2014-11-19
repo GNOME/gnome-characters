@@ -30,6 +30,9 @@ const Util = imports.util;
 const CharacterDialog = new Lang.Class({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
+    Template: 'resource:///org/gnome/Characters/character.ui',
+    InternalChildren: ['main-stack', 'character-label', 'detail-label',
+                       'copy-button', 'related-listbox'],
     Properties: {
         'font': GObject.ParamSpec.string(
             'font', '', '',
@@ -47,9 +50,9 @@ const CharacterDialog = new Lang.Class({
 
         this._font = v;
         let description = Pango.FontDescription.from_string(this._font);
-        this._characterLabel.override_font(description);
+        this._character_label.override_font(description);
 
-        let children = this._relatedList.get_children();
+        let children = this._related_listbox.get_children();
         for (let index in children) {
             let label = children[index].get_children()[0];
             label.override_font(description);
@@ -65,20 +68,10 @@ const CharacterDialog = new Lang.Class({
 
         this._cancellable = new Gio.Cancellable();
 
-        let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/Characters/character.ui');
-        this._stack = builder.get_object('main-stack')
-        this.get_content_area().add(this._stack);
+        this._copy_button.connect('clicked', Lang.bind(this, this._copyCharacter));
 
-        this._characterLabel = builder.get_object('character-label');
-        this._detailLabel = builder.get_object('detail-label');
-
-        let copyButton = builder.get_object('copy-button');
-        copyButton.connect('clicked', Lang.bind(this, this._copyCharacter));
-
-        this._relatedList = builder.get_object('related-listbox');
-        this._relatedList.connect('row-selected',
-                                  Lang.bind(this, this._handleRowSelected));
+        this._related_listbox.connect('row-selected',
+                                      Lang.bind(this, this._handleRowSelected));
 
         this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
         this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
@@ -87,10 +80,10 @@ const CharacterDialog = new Lang.Class({
         this._relatedButton.connect(
             'toggled',
             Lang.bind(this, function() {
-                if (this._stack.visible_child_name == 'character')
-                    this._stack.visible_child_name = 'related';
+                if (this._main_stack.visible_child_name == 'character')
+                    this._main_stack.visible_child_name = 'related';
                 else
-                    this._stack.visible_child_name = 'character';
+                    this._main_stack.visible_child_name = 'character';
             }));
 
         Main.settings.bind('font', this, 'font',
@@ -124,26 +117,26 @@ const CharacterDialog = new Lang.Class({
             row.add(hbox);
             row.show_all();
 
-            this._relatedList.add(row);
+            this._related_listbox.add(row);
         }
 
         this._relatedButton.visible =
-            this._relatedList.get_children().length > 0;
+            this._related_listbox.get_children().length > 0;
     },
 
     _setCharacter: function(uc) {
         this._character = uc;
 
         this._character = this._character;
-        this._characterLabel.label = this._character;
+        this._character_label.label = this._character;
 
         let codePoint = this._character.charCodeAt(0);
         let codePointHex = codePoint.toString(16).toUpperCase();
-        this._detailLabel.label = _("Unicode U+%04s").format(codePointHex);
+        this._detail_label.label = _("Unicode U+%04s").format(codePointHex);
 
-        let children = this._relatedList.get_children();
+        let children = this._related_listbox.get_children();
         for (let index in children)
-            this._relatedList.remove(children[index]);
+            this._related_listbox.remove(children[index]);
 
         this._cancellable.cancel();
         this._cancellable.reset();
@@ -161,8 +154,8 @@ const CharacterDialog = new Lang.Class({
             }));
 
         this._relatedButton.active = false;
-        this._stack.visible_child_name = 'character';
-        this._stack.show_all();
+        this._main_stack.visible_child_name = 'character';
+        this._main_stack.show_all();
 
         let headerBar = this.get_header_bar();
         let name = Gc.character_name(this._character);
