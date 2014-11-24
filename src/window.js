@@ -75,10 +75,9 @@ const MainWindow = new Lang.Class({
                             parameter_type: new GLib.VariantType('s') }]);
 
         let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/Characters/main.ui');
-        builder.add_from_resource('/org/gnome/Characters/sidebar.ui');
+        builder.add_from_resource('/org/gnome/Characters/mainwindow.ui');
 
-        this._headerBar = builder.get_object('main-header');
+        this._headerBar = builder.get_object('main-headerbar');
         this.set_titlebar(this._headerBar);
 
         let searchBtn = builder.get_object('search-active-button');
@@ -97,17 +96,14 @@ const MainWindow = new Lang.Class({
                             Lang.bind(this, this._handleSearchChanged));
 
         let grid = builder.get_object('main-grid');
-        let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
         let sidebarGrid = builder.get_object('sidebar-grid');
         this._categoryList = new CategoryList.CategoryListWidget();
         sidebarGrid.add(this._categoryList);
-        hbox.pack_start(sidebarGrid, false, false, 2);
 
+        let hbox = builder.get_object('main-hbox');
         this._mainView = new MainView();
         hbox.pack_start(this._mainView, true, true, 0);
-
-        grid.add(hbox);
 
         this.add(grid);
         grid.show_all();
@@ -218,7 +214,7 @@ const MainView = new Lang.Class({
         this._characterListWidgets['search-result'] = characterList;
 
         let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/Characters/main.ui');
+        builder.add_from_resource('/org/gnome/Characters/mainview.ui');
         let searchBannerGrid = builder.get_object('search-banner-grid');
         this.add_named(searchBannerGrid, 'search-banner');
         let loadingBannerGrid = builder.get_object('loading-banner-grid');
