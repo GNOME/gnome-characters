@@ -1,5 +1,5 @@
 AC_PREREQ(2.63)
-AC_INIT([org.gnome.Characters], [0.1],
+AC_INIT([org.gnome.Characters], [3.15.2],
         [bugs@example.com],
         [gnome-characters],
         [http://www.example.com/gnome-characters/])

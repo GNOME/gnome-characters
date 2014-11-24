@@ -1,4 +1,15 @@
-0.1
+3.15.2
 ===
 
-* Initial release
+- Initial release
+- Bug 740189 - #!/bin/bash in autogen.sh
+- Bug 740257 - Characters scale when the window is resized
+- Bug 740258 - Character dialogs should use a standard X button to close
+- Bug 740259 - Background color doesn't fill the entire character pane
+
+New And Updated Translations
+============================
+- Dimitris Spingos (el)
+- Yosef Or Boczko (he)
+- Enrico Nicoletto (pt_BR)
+- Мирослав Николић (sr)
