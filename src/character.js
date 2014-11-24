@@ -1,3 +1,21 @@
+// -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
+//
+// Copyright (C) 2014  Daiki Ueno <dueno@src.gnome.org>
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 const Lang = imports.lang;
 const Params = imports.params;
 const Gio = imports.gi.Gio;
@@ -13,43 +31,43 @@ const CharacterDialog = new Lang.Class({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
     Properties: {
-	'font': GObject.ParamSpec.string(
-	    'font', '', '',
-	    GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-	    'Cantarell')
+        'font': GObject.ParamSpec.string(
+            'font', '', '',
+            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
+            'Cantarell')
     },
 
     get font() {
-	return this._font;
+        return this._font;
     },
 
     set font(v) {
-	if (v == this._font)
-	    return;
+        if (v == this._font)
+            return;
 
-	this._font = v;
+        this._font = v;
         let description = Pango.FontDescription.from_string(this._font);
         this._characterLabel.override_font(description);
 
-	let children = this._relatedList.get_children();
-	for (let index in children) {
-	    let label = children[index].get_children()[0];
-	    label.override_font(description);
-	}
+        let children = this._relatedList.get_children();
+        for (let index in children) {
+            let label = children[index].get_children()[0];
+            label.override_font(description);
+        }
     },
 
     _init: function(params) {
         let filtered = Params.filter(params, { character: null });
         params = Params.fill(params, { use_header_bar: true,
-				       width_request: 400,
-				       height_request: 400 });
+                                       width_request: 400,
+                                       height_request: 400 });
         this.parent(params);
 
-	this._cancellable = new Gio.Cancellable();
+        this._cancellable = new Gio.Cancellable();
 
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/character.ui');
-	this._stack = builder.get_object('main-stack')
+        this._stack = builder.get_object('main-stack')
         this.get_content_area().add(this._stack);
 
         this._characterLabel = builder.get_object('character-label');
@@ -58,63 +76,63 @@ const CharacterDialog = new Lang.Class({
         let copyButton = builder.get_object('copy-button');
         copyButton.connect('clicked', Lang.bind(this, this._copyCharacter));
 
-	this._relatedList = builder.get_object('related-listbox');
-	this._relatedList.connect('row-selected',
-				  Lang.bind(this, this._handleRowSelected));
+        this._relatedList = builder.get_object('related-listbox');
+        this._relatedList.connect('row-selected',
+                                  Lang.bind(this, this._handleRowSelected));
 
-	this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
-	this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
-	this._relatedButton.show();
+        this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
+        this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
+        this._relatedButton.show();
 
-	this._relatedButton.connect(
-	    'toggled',
-	    Lang.bind(this, function() {
-		if (this._stack.visible_child_name == 'character')
-		    this._stack.visible_child_name = 'related';
-		else
-		    this._stack.visible_child_name = 'character';
-	    }));
+        this._relatedButton.connect(
+            'toggled',
+            Lang.bind(this, function() {
+                if (this._stack.visible_child_name == 'character')
+                    this._stack.visible_child_name = 'related';
+                else
+                    this._stack.visible_child_name = 'character';
+            }));
 
-	Main.settings.bind('font', this, 'font',
-			   Gio.SettingsBindFlags.DEFAULT);
+        Main.settings.bind('font', this, 'font',
+                           Gio.SettingsBindFlags.DEFAULT);
 
-	this._setCharacter(filtered.character);
+        this._setCharacter(filtered.character);
     },
 
     _finishSearch: function(result) {
         for (let index = 0; index < result.len; index++) {
-	    let uc = Gc.search_result_get(result, index);
-	    let name = Gc.character_name(uc);
-	    if (name == null)
-		continue;
+            let uc = Gc.search_result_get(result, index);
+            let name = Gc.character_name(uc);
+            if (name == null)
+                continue;
 
-	    let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
+            let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
-	    let characterLabel = new Gtk.Label({ label: uc,
-						 valign: Gtk.Align.CENTER,
-						 halign: Gtk.Align.CENTER,
-						 width_request: 45 });
-	    characterLabel.get_style_context().add_class('character');
-	    hbox.pack_start(characterLabel, false, false, 2);
+            let characterLabel = new Gtk.Label({ label: uc,
+                                                 valign: Gtk.Align.CENTER,
+                                                 halign: Gtk.Align.CENTER,
+                                                 width_request: 45 });
+            characterLabel.get_style_context().add_class('character');
+            hbox.pack_start(characterLabel, false, false, 2);
 
-	    let nameLabel = new Gtk.Label({ label: Util.capitalize(name),
-					    halign: Gtk.Align.START });
-	    hbox.pack_start(nameLabel, true, true, 0);
+            let nameLabel = new Gtk.Label({ label: Util.capitalize(name),
+                                            halign: Gtk.Align.START });
+            hbox.pack_start(nameLabel, true, true, 0);
 
-	    let row = new Gtk.ListBoxRow();
-	    row._character = uc;
-	    row.add(hbox);
-	    row.show_all();
+            let row = new Gtk.ListBoxRow();
+            row._character = uc;
+            row.add(hbox);
+            row.show_all();
 
-	    this._relatedList.add(row);
-	}
+            this._relatedList.add(row);
+        }
 
-	this._relatedButton.visible =
-	    this._relatedList.get_children().length > 0;
+        this._relatedButton.visible =
+            this._relatedList.get_children().length > 0;
     },
 
     _setCharacter: function(uc) {
-	this._character = uc;
+        this._character = uc;
 
         this._character = this._character;
         this._characterLabel.label = this._character;
@@ -127,24 +145,24 @@ const CharacterDialog = new Lang.Class({
         for (let index in children)
             this._relatedList.remove(children[index]);
 
-	this._cancellable.cancel();
-	this._cancellable.reset();
-	Gc.search_related(
-	    this._character,
+        this._cancellable.cancel();
+        this._cancellable.reset();
+        Gc.search_related(
+            this._character,
             -1,
-	    this._cancellable,
-	    Lang.bind(this, function(source_object, res, user_data) {
-		try {
-		    let result = Gc.search_finish(res);
-		    this._finishSearch(result);
-		} catch (e) {
+            this._cancellable,
+            Lang.bind(this, function(source_object, res, user_data) {
+                try {
+                    let result = Gc.search_finish(res);
+                    this._finishSearch(result);
+                } catch (e) {
                     log("Failed to search related: " + e);
-		}
-	    }));
+                }
+            }));
 
-	this._relatedButton.active = false;
-	this._stack.visible_child_name = 'character';
-	this._stack.show_all();
+        this._relatedButton.active = false;
+        this._stack.visible_child_name = 'character';
+        this._stack.show_all();
 
         let headerBar = this.get_header_bar();
         let name = Gc.character_name(this._character);
@@ -163,10 +181,10 @@ const CharacterDialog = new Lang.Class({
 
     _handleRowSelected: function(listBox, row) {
         if (row != null) {
-	    this._setCharacter(row._character);
+            this._setCharacter(row._character);
             let toplevel = this.get_transient_for();
             let action = toplevel.lookup_action('character');
             action.activate(new GLib.Variant('s', row._character));
-	}
+        }
     },
 });

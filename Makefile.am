@@ -47,6 +47,6 @@ rpm: dist
 clean-local:
 	rm -fR $(builddir)/rpms
 
-EXTRA_DIST = $(PACKAGE_NAME).spec
+EXTRA_DIST = COPYINGv2 $(PACKAGE_NAME).spec
 
 -include $(top_srcdir)/git.mk
