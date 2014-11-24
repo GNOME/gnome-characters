@@ -8,7 +8,7 @@ nobase_icon_DATA = \
 	gnome/scalable/categories/characters-currency-symbolic.svg \
 	gnome/scalable/categories/characters-math-symbolic.svg \
 	gnome/scalable/categories/characters-latin-symbolic.svg
-EXTRA_DIST = $(icon_DATA) characters-stencils.svg render-symbolic.rb
+EXTRA_DIST = $(nobase_icon_DATA) characters-stencils.svg render-symbolic.rb
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/gnome -t $(datadir)/icons/hicolor; gtk-update-icon-cache -f -t $(datadir)/icons/HighContrast
 
