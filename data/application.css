@@ -25,6 +25,10 @@
     font-size: large;
 }
 
+.character-list {
+    background-color: rgb(255, 255, 255);
+}
+
 .character-label {
     font-size: 7em;
     font-weight: bold;
