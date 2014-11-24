@@ -25,11 +25,13 @@ const CharacterListRowWidget = new Lang.Class({
 
     _init: function(params) {
 	let filtered = Params.filter(params, { characters: null,
-					       font: null });
+					       font: null,
+					       cellWidth: null });
         params = Params.fill(params, {});
         this.parent(params);
         this._characters = filtered.characters;
         this._font = filtered.font;
+	this._cellWidth = filtered.cellWidth;
         this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK);
         this.get_style_context().add_class('character-list-row');
     },
@@ -53,12 +55,18 @@ const CharacterListRowWidget = new Lang.Class({
         return [rowWidth, rowWidth];
     },
 
+    vfunc_size_allocate: function(allocation) {
+        this.parent(allocation);
+
+	if (this._cellWidth < 0)
+	    this._cellWidth = allocation.width * CELL_SIZE;
+    },
+
     vfunc_button_press_event: function(event) {
         let allocation = this.get_allocation();
-        let cell_width = allocation.width * CELL_SIZE;
-        let cell_index = Math.floor(event.x / cell_width);
-        if (cell_index < this._characters.length)
-            this.emit('character-selected', this._characters[cell_index]);
+        let cellIndex = Math.floor(event.x / this._cellWidth);
+        if (cellIndex < this._characters.length)
+            this.emit('character-selected', this._characters[cellIndex]);
     },
 
     vfunc_draw: function(cr) {
@@ -66,7 +74,6 @@ const CharacterListRowWidget = new Lang.Class({
 	// work well with scaled matrix:
 	// https://bugzilla.gnome.org/show_bug.cgi?id=700592
         let allocation = this.get_allocation();
-        let cell_pixel_size = allocation.width * CELL_SIZE;
 
         // Clear the canvas.
         // FIXME: Pick the background color from CSS.
@@ -76,7 +83,7 @@ const CharacterListRowWidget = new Lang.Class({
 
         let layout = PangoCairo.create_layout(cr);
         let description = Pango.FontDescription.from_string(this._font);
-        description.set_absolute_size(cell_pixel_size / 2 * Pango.SCALE);
+        description.set_absolute_size(this._cellWidth / 2 * Pango.SCALE);
         layout.set_font_description(description);
 
         // Draw baseline.
@@ -91,11 +98,11 @@ const CharacterListRowWidget = new Lang.Class({
         // Draw characters.  Do centering and attach to the baseline.
         for (let i in this._characters) {
             layout.set_text(this._characters[i], -1);
-            let layout_baseline = layout.get_baseline() / Pango.SCALE;
-            let [logical_rect, ink_rect] = layout.get_extents();
-            cr.moveTo(cell_pixel_size * i - logical_rect.x / Pango.SCALE +
-                      (cell_pixel_size - logical_rect.width / Pango.SCALE) / 2,
-                      BASELINE_OFFSET * allocation.height - layout_baseline);
+            let layoutBaseline = layout.get_baseline() / Pango.SCALE;
+            let [logicalRect, inkRect] = layout.get_extents();
+            cr.moveTo(this._cellWidth * i - logicalRect.x / Pango.SCALE +
+                      (this._cellWidth - logicalRect.width / Pango.SCALE) / 2,
+                      BASELINE_OFFSET * allocation.height - layoutBaseline);
             PangoCairo.show_layout(cr, layout);
         }
     },
@@ -135,6 +142,8 @@ const CharacterListWidget = new Lang.Class({
         this.parent(params);
         this.get_style_context().add_class('character-list');
         Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
+	this._cellWidth = -1;
+	this._cellsPerRow = CELLS_PER_ROW;
     },
 
     vfunc_get_preferred_height: function() {
@@ -175,8 +184,19 @@ const CharacterListWidget = new Lang.Class({
     vfunc_size_allocate: function(allocation) {
         this.parent(allocation);
 
+	if (this._cellWidth < 0)
+	    this._cellWidth = allocation.width * CELL_SIZE;
+
+	// Reflow if the number of cells per row has changed.
+	let cellsPerRow = Math.floor(allocation.width / this._cellWidth);
+	if (cellsPerRow != this._cellsPerRow) {
+	    this._cellsPerRow = cellsPerRow;
+	    this.setCharacters(this._characters);
+	    this.show_all();
+	}
+
         // Make each row have the same height.
-        let rowHeight = allocation.width * CELL_SIZE;
+        let rowHeight = this._cellWidth;
         let children = this.get_children();
         for (let index in children) {
             let child = children[index];
@@ -192,7 +212,8 @@ const CharacterListWidget = new Lang.Class({
     _createCharacterListRow: function(characters) {
         let rowWidget = new CharacterListRowWidget({
 	    characters: characters,
-	    font: this._font
+	    font: this._font,
+	    cellWidth: this._cellWidth
 	});
         rowWidget.connect('character-selected',
                           Lang.bind(this, function(row, uc) {
@@ -213,7 +234,7 @@ const CharacterListWidget = new Lang.Class({
 
         let start = 0, stop = 1;
         for (; stop <= characters.length; stop++) {
-            if (stop % CELLS_PER_ROW == 0) {
+            if (stop % this._cellsPerRow == 0) {
                 let rowCharacters = characters.slice(start, stop);
                 let rowWidget = this._createCharacterListRow(rowCharacters);
 		this.pack_start(rowWidget, true, true, 0);
