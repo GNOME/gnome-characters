@@ -17,10 +17,10 @@ def visible(widget):
     return widget.getState().contains(pyatspi.STATE_VISIBLE)
 
 PAGE_LABELS = [
-    'Punctuations',
+    'Punctuation',
     'Arrows',
     'Bullets',
-    'Picture',
+    'Pictures',
     'Currencies',
     'Math',
     'Latin',
@@ -64,7 +64,7 @@ try:
             assert not pages[label2].character_list.showing
 
     # character dialog
-    page = pages['Punctuations']
+    page = pages['Punctuation']
     page.button.click()
     x, y = page.character_list.position
     click(x + 10, y + 10)
@@ -72,12 +72,10 @@ try:
     character_dialog = app.children[-1]
     assert character_dialog.name == 'Exclamation Mark'
     see_also_button = character_dialog.child('See Also')
-    done_button = character_dialog.child('Done')
     assert see_also_button.showing
-    assert done_button.showing
 
     see_also_button.click()
-    done_button.click()
+    keyCombo('Escape')
 
     # recently used characters
     recently_used_page = Page(app, 'Recently Used')
