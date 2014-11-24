@@ -39,5 +39,6 @@ typelib_DATA = $(gir_DATA:.gir=.typelib)
 
 EXTRA_DIST = $(gir_DATA) gen-confusables.py
 CLEANFILES = $(typelib_DATA)
+DISTCLEANFILES = $(gir_DATA)
 
 -include $(top_srcdir)/git.mk
