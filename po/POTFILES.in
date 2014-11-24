@@ -1,10 +1,14 @@
 [type: gettext/glade]data/app-menu.ui
 [type: gettext/glade]data/character.ui
-[type: gettext/glade]data/main.ui
+[type: gettext/glade]data/mainwindow.ui
+[type: gettext/glade]data/mainview.ui
 data/org.gnome.Characters.appdata.xml.in
 data/org.gnome.Characters.desktop.in
 data/org.gnome.Characters.gschema.xml
 src/categoryList.js
+src/characterList.js
 src/character.js
 src/main.js
+src/params.js
+src/util.js
 src/window.js
