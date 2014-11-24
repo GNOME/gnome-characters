@@ -11,7 +11,7 @@ const Gc = imports.gi.Gc;
 const Main = imports.main;
 const Util = imports.util;
 
-const BASELINE_OFFSET = 0.15;
+const BASELINE_OFFSET = 0.85;
 const CELL_SIZE = 0.20;
 const CELLS_PER_ROW = 5;
 const CELL_PIXEL_SIZE = 100;
@@ -83,7 +83,7 @@ const CharacterListRowWidget = new Lang.Class({
         // FIXME: Pick the baseline color from CSS.
         cr.setSourceRGBA(114.0 / 255.0, 159.0 / 255.0, 207.0 / 255.0, 1.0);
         cr.setLineWidth(0.5);
-        cr.moveTo(0, BASELINE_OFFSET * allocation.width);
+        cr.moveTo(0, BASELINE_OFFSET * allocation.height);
         cr.relLineTo(allocation.width, 0);
         cr.stroke();
         cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
@@ -95,7 +95,7 @@ const CharacterListRowWidget = new Lang.Class({
             let [logical_rect, ink_rect] = layout.get_extents();
             cr.moveTo(cell_pixel_size * i - logical_rect.x / Pango.SCALE +
                       (cell_pixel_size - logical_rect.width / Pango.SCALE) / 2,
-                      BASELINE_OFFSET * allocation.width - layout_baseline);
+                      BASELINE_OFFSET * allocation.height - layout_baseline);
             PangoCairo.show_layout(cr, layout);
         }
     },
