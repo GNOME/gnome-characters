@@ -1,9 +1,10 @@
 [Desktop Entry]
 Type=Application
-_Name=JS Application
-_Comment=Demo JS Application and template
+_Name=Characters
+_Comment=Utility application to find and insert unusual characters
 Icon=org.gnome.Characters
 Exec=gapplication launch org.gnome.Characters
 DBusActivatable=true
 StartupNotify=true
-_Keywords=gtk;gjs;demo;development;
+Categories=GNOME;GTK;Utility;
+_Keywords=characters;unicode;
