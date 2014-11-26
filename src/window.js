@@ -167,6 +167,9 @@ const MainWindow = new Lang.Class({
 
     _category: function(action, v) {
         let [name, length] = v.get_string()
+
+        // FIXME: we could use Gtk.Container.get_child to obtain the
+        // title, but it is not introspectable.
         let category = null;
         for (let index in CategoryList.Category) {
             category = CategoryList.Category[index];
@@ -176,7 +179,7 @@ const MainWindow = new Lang.Class({
 
         Util.assertNotEqual(category, null);
         this._mainView.setPage(category.name);
-        this._headerBar.title = Gettext.gettext(category.label);
+        this._headerBar.title = Gettext.gettext(category.title);
     },
 
     _character: function(action, v) {
@@ -202,8 +205,9 @@ const MainView = new Lang.Class({
             characterList.get_accessible().accessible_name =
                 _('%s Character List').format(category.label);
             this._characterListWidgets[category.name] = characterList;
-            this.add_named(this._createScrolledWindow(characterList),
-                           category.name);
+            this.add_titled(this._createScrolledWindow(characterList),
+                            category.name,
+                            category.title);
         }
 
         characterList = this._createCharacterList();

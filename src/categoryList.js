@@ -28,55 +28,55 @@ const Category = [
     {
         name: 'recent',
         category: Gc.Category.NONE,
-        label: N_('Recently Used'),
+        title: N_('Recently Used'),
         icon_name: 'document-open-recent-symbolic'
     },
     {
         name: 'punctuation',
         category: Gc.Category.PUNCTUATION,
-        label: N_('Punctuation'),
+        title: N_('Punctuation'),
         icon_name: 'characters-punctuation-symbolic'
     },
     {
         name: 'arrow',
         category: Gc.Category.ARROW,
-        label: N_('Arrows'),
+        title: N_('Arrows'),
         icon_name: 'characters-arrow-symbolic'
     },
     {
         name: 'bullet',
         category: Gc.Category.BULLET,
-        label: N_('Bullets'),
+        title: N_('Bullets'),
         icon_name: 'characters-bullet-symbolic'
     },
     {
         name: 'picture',
         category: Gc.Category.PICTURE,
-        label: N_('Pictures'),
+        title: N_('Pictures'),
         icon_name: 'characters-picture-symbolic'
     },
     {
         name: 'currency',
         category: Gc.Category.CURRENCY,
-        label: N_('Currencies'),
+        title: N_('Currencies'),
         icon_name: 'characters-currency-symbolic'
     },
     {
         name: 'math',
         category: Gc.Category.MATH,
-        label: N_('Math'),
+        title: N_('Math'),
         icon_name: 'characters-math-symbolic'
     },
     {
         name: 'latin',
         category: Gc.Category.LATIN,
-        label: N_('Latin'),
+        title: N_('Latin'),
         icon_name: 'characters-latin-symbolic'
     },
     {
         name: 'emoticon',
         category: Gc.Category.EMOTICON,
-        label: N_('Emoticons'),
+        title: N_('Emoticons'),
         icon_name: 'face-smile-symbolic'
     }
 ];
@@ -99,7 +99,7 @@ const CategoryListRowWidget = new Lang.Class({
         image.get_style_context().add_class('category-image');
         hbox.pack_start(image, false, false, 2);
 
-        let label = new Gtk.Label({ label: Gettext.gettext(category.label),
+        let label = new Gtk.Label({ label: Gettext.gettext(category.title),
                                     halign: Gtk.Align.START });
         label.get_style_context().add_class('category-label');
         hbox.pack_start(label, true, true, 0);
