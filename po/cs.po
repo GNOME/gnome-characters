@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-11-25 09:09+0000\n"
+"POT-Creation-Date: 2014-11-25 22:41+0000\n"
 "PO-Revision-Date: 2014-11-25 10:34+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -24,8 +24,8 @@ msgid "_New"
 msgstr "_Nový"
 
 #: ../data/app-menu.ui.h:2
-msgid "About Example"
-msgstr "O příkladu"
+msgid "About Characters"
+msgstr "O aplikaci"
 
 #: ../data/app-menu.ui.h:3
 msgid "Quit"
