@@ -1,0 +1,157 @@
+# Hungarian translation for gnome-characters.
+# Copyright (C) 2014 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+#
+# Balázs Úr <urbalazs@gmail.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-12-21 07:06+0000\n"
+"PO-Revision-Date: 2014-12-21 17:34+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <gnome-hu-list@gnome.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "_New"
+msgstr "Ú_j"
+
+#: ../data/app-menu.ui.h:2
+msgid "About Characters"
+msgstr "A Karakterek névjegye"
+
+#: ../data/app-menu.ui.h:3
+msgid "Quit"
+msgstr "Kilépés"
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "Karakter másolása"
+
+#: ../data/mainwindow.ui.h:1
+msgid "Current page"
+msgstr "Jelenlegi oldal"
+
+#: ../data/mainview.ui.h:1
+msgid "Type to Search"
+msgstr "Gépeljen a kereséshez"
+
+#: ../data/mainview.ui.h:2
+msgid "Loading..."
+msgstr "Betöltés…"
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters."
+msgstr ""
+"A Karakterek egy egyszerű segédprogram alkalmazás szokatlan karakterek "
+"kereséséhez és beszúrásához."
+
+#: ../data/org.gnome.Characters.desktop.in.h:1
+msgid "Characters"
+msgstr "Karakterek"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+"Segédprogram alkalmazás szokatlan karakterek kereséséhez és beszúrásához"
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "characters;unicode;"
+msgstr "karakterek;unicode;"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "Betűkészlet a karakterek megjelenítéséhez"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr ""
+"A betűkészlet használata a karakterek megjelenítéséhez a karakterlistán."
+
+#: ../src/categoryList.js:31
+msgid "Recently Used"
+msgstr "Legutóbb használt"
+
+#: ../src/categoryList.js:37
+msgid "Punctuation"
+msgstr "Központozás"
+
+#: ../src/categoryList.js:43
+msgid "Arrows"
+msgstr "Nyilak"
+
+#: ../src/categoryList.js:49
+msgid "Bullets"
+msgstr "Felsorolás"
+
+#: ../src/categoryList.js:55
+msgid "Pictures"
+msgstr "Képek"
+
+#: ../src/categoryList.js:61
+msgid "Currencies"
+msgstr "Pénznemek"
+
+#: ../src/categoryList.js:67
+msgid "Math"
+msgstr "Matematika"
+
+#: ../src/categoryList.js:73
+msgid "Latin"
+msgstr "Latin"
+
+#: ../src/categoryList.js:79
+msgid "Emoticons"
+msgstr "Hangulatjelek"
+
+#: ../src/character.js:83
+msgid "See Also"
+msgstr "Lásd még"
+
+#: ../src/character.js:142
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Unicode U+%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr "Karakterek alkalmazás"
+
+#: ../src/main.js:86
+msgid "Characters Application started"
+msgstr "Karakterek alkalmazás elindítva"
+
+#: ../src/main.js:94
+msgid "Characters Application exiting"
+msgstr "Karakterek alkalmazás kilépés"
+
+#: ../src/window.js:149
+msgid "translator-credits"
+msgstr "Úr Balázs <urbalazs@gmail.com>, 2014."
+
+#: ../src/window.js:150
+msgid "GNOME Characters"
+msgstr "GNOME Karakterek"
+
+#: ../src/window.js:151
+msgid "Character Map"
+msgstr "Karaktertábla"
+
+#: ../src/window.js:203
+#, javascript-format
+msgid "%s Character List"
+msgstr "%s karakterlista"
+
+#: ../src/window.js:211
+msgid "Search Result Character List"
+msgstr "Keresési eredmény karakterlista"
+
