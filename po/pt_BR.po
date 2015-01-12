@@ -1,15 +1,15 @@
 # Brazilian Portuguese translation for gnome-characters.
-# Copyright (C) 2014 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2014-2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Enrico Nicoletto <liverig@gmail.com>, 2014.
+# Enrico Nicoletto <liverig@gmail.com>, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-10-31 19:00+0000\n"
-"PO-Revision-Date: 2014-10-31 22:53-0300\n"
+"POT-Creation-Date: 2014-11-25 22:41+0000\n"
+"PO-Revision-Date: 2015-01-12 13:21-0300\n"
 "Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.7.3\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "_New"
 msgstr "_Novo"
 
 #: ../data/app-menu.ui.h:2
-msgid "About Example"
-msgstr "Sobre o exemplo"
+msgid "About Characters"
+msgstr "Sobre o Caracteres"
 
 #: ../data/app-menu.ui.h:3
 msgid "Quit"
@@ -35,15 +35,15 @@ msgstr "Sair"
 msgid "Copy Character"
 msgstr "Copiar caractere"
 
-#: ../data/main.ui.h:1
+#: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Página atual"
 
-#: ../data/main.ui.h:2
+#: ../data/mainview.ui.h:1
 msgid "Type to Search"
 msgstr "Digite para pesquisar"
 
-#: ../data/main.ui.h:3
+#: ../data/mainview.ui.h:2
 msgid "Loading..."
 msgstr "Carregando..."
 
@@ -56,16 +56,16 @@ msgstr ""
 "caracteres incomuns."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1
-msgid "JS Application"
-msgstr "Aplicativo de JS"
+msgid "Characters"
+msgstr "Caracteres"
 
 #: ../data/org.gnome.Characters.desktop.in.h:2
-msgid "Demo JS Application and template"
-msgstr "Demonstração de modelo e aplicativo de JS"
+msgid "Utility application to find and insert unusual characters"
+msgstr "Aplicativo utilitário para localizar e inserir caracteres incomuns"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "gtk;gjs;demo;development;"
-msgstr "gtk;gjs;demonstração;desenvolvimento;"
+msgid "characters;unicode;"
+msgstr "caracteres;unicode;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -75,51 +75,47 @@ msgstr "A fonte para exibição de caracteres"
 msgid "Use the font to render characters on the character list."
 msgstr "Use a fonte para renderizar caracteres na lista de caracteres."
 
-#: ../src/categoryList.js:13
+#: ../src/categoryList.js:31
 msgid "Recently Used"
 msgstr "Usados recentemente"
 
-#: ../src/categoryList.js:19
-msgid "Punctuations"
-msgstr "Pontuações"
+#: ../src/categoryList.js:37
+msgid "Punctuation"
+msgstr "Pontuação"
 
-#: ../src/categoryList.js:25
+#: ../src/categoryList.js:43
 msgid "Arrows"
 msgstr "Setas"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:49
 msgid "Bullets"
 msgstr "Marcadores"
 
-#: ../src/categoryList.js:37
-msgid "Picture"
+#: ../src/categoryList.js:55
+msgid "Pictures"
 msgstr "Figuras"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:61
 msgid "Currencies"
 msgstr "Moedas"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:67
 msgid "Math"
 msgstr "Matemática"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:73
 msgid "Latin"
 msgstr "Latino"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:79
 msgid "Emoticons"
 msgstr "Carinhas"
 
-#: ../src/character.js:65
-msgid "Done"
-msgstr "Concluído"
-
-#: ../src/character.js:69
+#: ../src/character.js:83
 msgid "See Also"
 msgstr "Veja também"
 
-#: ../src/character.js:128
+#: ../src/character.js:142
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
@@ -136,23 +132,38 @@ msgstr "O Aplicativo de caracteres foi iniciado"
 msgid "Characters Application exiting"
 msgstr "Encerrando o aplicativo de caracteres"
 
-#: ../src/window.js:153
+#: ../src/window.js:149
 msgid "translator-credits"
 msgstr "Enrico Nicoletto <liverig@gmail.com>"
 
-#: ../src/window.js:154
+#: ../src/window.js:150
 msgid "GNOME Characters"
 msgstr "Caracteres do GNOME"
 
-#: ../src/window.js:155
+#: ../src/window.js:151
 msgid "Character Map"
 msgstr "Mapa de caracteres"
 
-#: ../src/window.js:207
+#: ../src/window.js:203
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
-#: ../src/window.js:215
+#: ../src/window.js:211
 msgid "Search Result Character List"
 msgstr "Resultado da pesquisa da lista de caracteres"
+
+#~ msgid "About Example"
+#~ msgstr "Sobre o exemplo"
+
+#~ msgid "JS Application"
+#~ msgstr "Aplicativo de JS"
+
+#~ msgid "Demo JS Application and template"
+#~ msgstr "Demonstração de modelo e aplicativo de JS"
+
+#~ msgid "gtk;gjs;demo;development;"
+#~ msgstr "gtk;gjs;demonstração;desenvolvimento;"
+
+#~ msgid "Done"
+#~ msgstr "Concluído"
