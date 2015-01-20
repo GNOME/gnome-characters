@@ -22,6 +22,23 @@ which gnome-autogen.sh || {
 (cd "$srcdir" ;
 test -d m4 || mkdir m4/ ;
 git submodule update --init --recursive ;
+test -z "$GNULIB_SRCDIR" || \
+    "$GNULIB_SRCDIR"/gnulib-tool --import \
+		    --source-base=gllib --m4-base=glm4 --tests-base=gltests \
+		    --libtool --no-vc-files \
+		    libunistring-optional \
+		    unicase/tolower \
+		    unicase/toupper \
+		    unicase/totitle \
+		    unictype/block-all \
+		    unictype/category-all \
+		    unictype/ctype-print \
+		    unictype/mirror \
+		    unictype/property-all \
+		    unictype/scripts-all \
+		    unistr/u32-to-u8 \
+		    unitypes \
+		    uniname/uniname ;
 )
 . gnome-autogen.sh
 
