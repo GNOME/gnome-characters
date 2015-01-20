@@ -1,7 +1,7 @@
-ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+ACLOCAL_AMFLAGS = -I m4 -I glm4 ${ACLOCAL_FLAGS}
 DISTCHECK_CONFIGURE_FLAGS = --disable-dogtail
 
-SUBDIRS = po data lib src tests
+SUBDIRS = po data gllib lib src tests
 
 MAINTAINERCLEANFILES = \
 	$(srcdir)/INSTALL \
@@ -47,6 +47,6 @@ rpm: dist
 clean-local:
 	rm -fR $(builddir)/rpms
 
-EXTRA_DIST = COPYINGv2 $(PACKAGE_NAME).spec
+EXTRA_DIST = COPYINGv2 $(PACKAGE_NAME).spec  glm4/gnulib-cache.m4
 
 -include $(top_srcdir)/git.mk

@@ -23,6 +23,9 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
 IT_PROG_INTLTOOL([0.50.1])
 
 AC_PROG_CC
+gl_EARLY
+gl_INIT
+
 AM_PROG_CC_C_O
 LT_INIT([disable-static])
 
@@ -77,16 +80,12 @@ GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`
 AC_SUBST(GLIB_COMPILE_RESOURCES)
 
 PKG_CHECK_MODULES([LIBGC], [gio-2.0 gtk+-3.0 pango])
-AC_CHECK_HEADERS([unictype.h uniname.h], ,
-  [AC_MSG_ERROR([can't find libunistring headers])])
-AC_CHECK_LIB([unistring], [unicode_character_name],
-  LIBGC_LIBS="$LIBGC_LIBS -lunistring",
-  [AC_MSG_ERROR([can't find libunistring])])
 
 AC_CONFIG_FILES([
   Makefile
   data/Makefile
   data/icons/Makefile
+  gllib/Makefile
   lib/Makefile
   src/Makefile
   tests/Makefile

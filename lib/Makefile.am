@@ -9,7 +9,7 @@ AM_CPPFLAGS =					\
 
 pkglib_LTLIBRARIES = libgc.la
 
-libgc_la_LIBADD = $(LIBGC_LIBS)
+libgc_la_LIBADD = $(LIBGC_LIBS) $(LTLIBICONV) $(LTLIBUNISTRING) $(builddir)/../gllib/libgnu.la
 libgc_la_LDFLAGS = -avoid-version
 libgc_la_sources = gc.h gc.c
 libgc_la_SOURCES = $(libgc_la_sources) confusables.h
