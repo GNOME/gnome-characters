@@ -1,0 +1,157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-01-23 07:04+0000\n"
+"PO-Revision-Date: 2015-01-23 11:26+0100\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "_New"
+msgstr "_Nuevo"
+
+#: ../data/app-menu.ui.h:2
+msgid "About Characters"
+msgstr "Acerca de Caracteres"
+
+#: ../data/app-menu.ui.h:3
+msgid "Quit"
+msgstr "Salir"
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "Copiar carácter"
+
+#: ../data/mainwindow.ui.h:1
+msgid "Current page"
+msgstr "Página actual"
+
+#: ../data/mainview.ui.h:1
+msgid "Type to Search"
+msgstr "Escribir para buscar"
+
+#: ../data/mainview.ui.h:2
+msgid "Loading..."
+msgstr "Cargando…"
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters."
+msgstr ""
+"Caracteres es una sencilla aplicación para buscar e insertar caracteres poco "
+"habituales."
+
+#: ../data/org.gnome.Characters.desktop.in.h:1
+msgid "Characters"
+msgstr "Caracteres"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+"Aplicación de utilidad para buscar y encontrar caracteres poco habituales"
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "characters;unicode;"
+msgstr "caracteres;unicode;"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "Tipografía para mostrar los caracteres"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr ""
+"Usar la tipografía para renderizar los caracteres en la lista de caracteres."
+
+#: ../src/categoryList.js:31
+msgid "Recently Used"
+msgstr "Usados recientemente"
+
+#: ../src/categoryList.js:37
+msgid "Punctuation"
+msgstr "Puntuación"
+
+#: ../src/categoryList.js:43
+msgid "Arrows"
+msgstr "Flechas"
+
+#: ../src/categoryList.js:49
+msgid "Bullets"
+msgstr "Topos"
+
+#: ../src/categoryList.js:55
+msgid "Pictures"
+msgstr "Imágenes"
+
+#: ../src/categoryList.js:61
+msgid "Currencies"
+msgstr "Monedas"
+
+#: ../src/categoryList.js:67
+msgid "Math"
+msgstr "Matemáticas"
+
+#: ../src/categoryList.js:73
+msgid "Latin"
+msgstr "Latín"
+
+#: ../src/categoryList.js:79
+msgid "Emoticons"
+msgstr "Emoticonos"
+
+#: ../src/character.js:83
+msgid "See Also"
+msgstr "Consulte también"
+
+#: ../src/character.js:142
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Unicode U+%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr "Aplicación Caracteres"
+
+#: ../src/main.js:86
+msgid "Characters Application started"
+msgstr "Aplicación Caracteres iniciada"
+
+#: ../src/main.js:94
+msgid "Characters Application exiting"
+msgstr "Saliendo de la aplicación Caracteres"
+
+#: ../src/window.js:149
+msgid "translator-credits"
+msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2015"
+
+#: ../src/window.js:150
+msgid "GNOME Characters"
+msgstr "Caracteres de GNOME"
+
+#: ../src/window.js:151
+msgid "Character Map"
+msgstr "Mapa de caracteres"
+
+#: ../src/window.js:206
+#, javascript-format
+msgid "%s Character List"
+msgstr "Lista de caracteres %s"
+
+#: ../src/window.js:215
+msgid "Search Result Character List"
+msgstr "Buscar en la lista de resultados de caracteres"
