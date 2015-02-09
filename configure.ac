@@ -34,13 +34,14 @@ PKG_PROG_PKG_CONFIG([0.22])
 APPSTREAM_XML
 GLIB_GSETTINGS
 GOBJECT_INTROSPECTION_REQUIRE([1.35.9])
-GJS_MIN_VERSION=1.39.91
+GJS_MIN_VERSION=1.43.3
 PKG_CHECK_MODULES([DEPS], [gdk-3.0
                            gdk-pixbuf-2.0
                            gio-2.0
                            glib-2.0
                            gobject-2.0
-                           gtk+-3.0])
+                           gtk+-3.0
+                           gjs-1.0 >= $GJS_MIN_VERSION])
 
 AC_PATH_PROG([GJS],[gjs])
 
