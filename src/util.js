@@ -131,3 +131,8 @@ function capitalize(s) {
         return w;
     }).join(' ');
 }
+
+function hexCodepoint(uc) {
+    let codePoint = uc.charCodeAt(0);
+    return codePoint.toString(16).toUpperCase();
+}

@@ -126,18 +126,54 @@ const CharacterDialog = new Lang.Class({
             this._related_listbox.get_children().length > 0;
     },
 
+    _activateLink: function(label, uri) {
+        let match = uri.match(/^character:([0-9A-F]+)/);
+        if (match) {
+            let uc = String.fromCharCode(parseInt(match[1], 16));
+            this._setCharacter(uc);
+            let toplevel = this.get_transient_for();
+            let action = toplevel.lookup_action('character');
+            action.activate(new GLib.Variant('s', uc));
+        }
+    },
+
     _setCharacter: function(uc) {
         this._character = uc;
 
         this._character = this._character;
         this._character_label.label = this._character;
 
-        let codePoint = this._character.charCodeAt(0);
-        let codePointHex = codePoint.toString(16).toUpperCase();
-        this._codepoint_label.label = _("U+%04s").format(codePointHex);
+        this._codepoint_label.label =
+            _("U+%04s").format(Util.hexCodepoint(uc));
         this._category_label.label = Gc.character_category(uc);
         this._script_label.label = Gc.character_script(uc);
         this._block_label.label = Gc.character_block(uc);
+        let result = Gc.character_decomposition(uc);
+        if (result.len > 0) {
+            let decomposition = [];
+            for (let index = 0; index < result.len; index++) {
+                decomposition.push(Gc.search_result_get(result, index));
+            }
+            let title = new Gtk.Label({ halign: Gtk.Align.START,
+                                        label: _("Decomposition: ") });
+            this._detail_grid.attach(title, 0, 4, 1, 1);
+            let label = new Gtk.Label({ halign: Gtk.Align.START,
+                                        wrap: true,
+                                        max_width_chars: 30,
+                                        use_markup: true });
+            label.label = decomposition.map(function(d) {
+                let hex = Util.hexCodepoint(d);
+                return _("<a href=\"character:%s\">U+%04s %s</a>").format(
+                    hex, hex, Gc.character_name(d));
+            }).join(', ');
+            label.connect('activate-link', Lang.bind(this, this._activateLink));
+            this._detail_grid.attach_next_to(label,
+                                            title,
+                                            Gtk.PositionType.RIGHT,
+                                            1, 1);
+        } else {
+            this._detail_grid.remove_row(4);
+        }
 
         let children = this._related_listbox.get_children();
         for (let index in children)
