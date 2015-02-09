@@ -34,8 +34,7 @@
     font-weight: bold;
 }
 
-.detail {
-    margin-left: 20px;
+.detail .label {
     font-size: small;
 }
 
