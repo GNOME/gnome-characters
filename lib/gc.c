@@ -403,6 +403,45 @@ gc_character_name (gunichar uc)
   return unicode_character_name (uc, buffer);
 }
 
+/**
+ * gc_character_category:
+ * @uc: a UCS-4 character
+ *
+ * Returns: (nullable): character category name of @uc.
+ */
+const gchar *
+gc_character_category (gunichar uc)
+{
+  uc_general_category_t category = uc_general_category (uc);
+  return uc_general_category_long_name (category);
+}
+
+/**
+ * gc_character_script:
+ * @uc: a UCS-4 character
+ *
+ * Returns: (nullable): the name of script which @uc belongs to.
+ */
+const gchar *
+gc_character_script (gunichar uc)
+{
+  const uc_script_t *script = uc_script (uc);
+  return script->name;
+}
+
+/**
+ * gc_character_group:
+ * @uc: a UCS-4 character
+ *
+ * Returns: (nullable): the name of Unicode block which @uc belongs to.
+ */
+const gchar *
+gc_character_block (gunichar uc)
+{
+  const uc_block_t *block = uc_block (uc);
+  return block->name;
+}
+
 G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
 		     g_array_ref, g_array_unref);
 

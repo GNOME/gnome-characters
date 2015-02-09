@@ -58,6 +58,9 @@ GcSearchResult *gc_search_finish          (GAsyncResult         *result,
                                            GError              **error);
 
 gchar          *gc_character_name         (gunichar              uc);
+const gchar    *gc_character_category     (gunichar              uc);
+const gchar    *gc_character_script       (gunichar              uc);
+const gchar    *gc_character_block        (gunichar              uc);
 
 /* GTK+ support.  gtk_clipboard_get() takes an GdkAtom as the first
    argument, but GdkAtom is not accessible through GI.  */
