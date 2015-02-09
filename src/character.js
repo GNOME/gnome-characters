@@ -31,7 +31,9 @@ const CharacterDialog = new Lang.Class({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Characters/character.ui',
-    InternalChildren: ['main-stack', 'character-label', 'detail-label',
+    InternalChildren: ['main-stack', 'character-label', 'detail-grid',
+                       'codepoint-label', 'category-label', 'script-label',
+                       'block-label',
                        'copy-button', 'related-listbox'],
     Properties: {
         'font': GObject.ParamSpec.string(
@@ -132,7 +134,10 @@ const CharacterDialog = new Lang.Class({
 
         let codePoint = this._character.charCodeAt(0);
         let codePointHex = codePoint.toString(16).toUpperCase();
-        this._detail_label.label = _("Unicode U+%04s").format(codePointHex);
+        this._codepoint_label.label = _("U+%04s").format(codePointHex);
+        this._category_label.label = Gc.character_category(uc);
+        this._script_label.label = Gc.character_script(uc);
+        this._block_label.label = Gc.character_block(uc);
 
         let children = this._related_listbox.get_children();
         for (let index in children)

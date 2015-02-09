@@ -4,6 +4,8 @@
   <template class="Gjs_CharacterDialog" parent="GtkDialog">
     <child internal-child="vbox">
       <object class="GtkBox" id="vbox1">
+	<property name="halign">fill</property>
+	<property name="valign">fill</property>
 	<child>
 	  <object class="GtkStack" id="main-stack">
 	    <property name="visible">True</property>
@@ -11,17 +13,17 @@
 	      <object class="GtkGrid" id="character-grid">
 		<property name="visible">True</property>
 		<property name="can_focus">False</property>
-		<property name="halign">center</property>
-		<property name="valign">center</property>
+		<property name="halign">fill</property>
+		<property name="valign">fill</property>
 		<property name="border_width">5</property>
 		<property name="orientation">vertical</property>
-		<property name="row_spacing">50</property>
+		<property name="row_spacing">20</property>
 		<child>
 		  <object class="GtkLabel" id="character-label">
 		    <property name="visible">True</property>
 		    <property name="can_focus">False</property>
 		    <property name="ellipsize">end</property>
-		    <property name="halign">center</property>
+		    <property name="halign">fill</property>
 		    <property name="valign">center</property>
 		    <style>
 		      <class name="character-label"/>
@@ -33,11 +35,92 @@
 		  </packing>
 		</child>
 		<child>
-		  <object class="GtkButton" id="copy-button">
-		    <property name="label" translatable="yes">Copy Character</property>
+		  <object class="GtkGrid" id="detail-grid">
 		    <property name="visible">True</property>
-		    <property name="can_focus">True</property>
-		    <property name="receives_default">False</property>
+		    <property name="can_focus">False</property>
+		    <property name="halign">fill</property>
+		    <property name="valign">fill</property>
+		    <property name="column-spacing">20</property>
+		    <property name="margin-left">20</property>
+		    <style>
+		      <class name="detail"/>
+		    </style>
+		    <child>
+		      <object class="GtkLabel" id="codepoint-title-label">
+			<property name="label" translatable="yes">Codepoint: </property>
+			<property name="halign">start</property>
+		      </object>
+		      <packing>
+			<property name="left_attach">0</property>
+			<property name="top_attach">0</property>
+		      </packing>
+		    </child>
+		    <child>
+		      <object class="GtkLabel" id="codepoint-label">
+			<property name="halign">start</property>
+		      </object>
+		      <packing>
+			<property name="left_attach">1</property>
+			<property name="top_attach">0</property>
+		      </packing>
+		    </child>
+		    <child>
+		      <object class="GtkLabel" id="category-title-label">
+			<property name="label" translatable="yes">Category: </property>
+			<property name="halign">start</property>
+		      </object>
+		      <packing>
+			<property name="left_attach">0</property>
+			<property name="top_attach">1</property>
+		      </packing>
+		    </child>
+		    <child>
+		      <object class="GtkLabel" id="category-label">
+			<property name="halign">start</property>
+		      </object>
+		      <packing>
+			<property name="left_attach">1</property>
+			<property name="top_attach">1</property>
+		      </packing>
+		    </child>
+		    <child>
+		      <object class="GtkLabel" id="script-title-label">
+			<property name="label" translatable="yes">Script: </property>
+			<property name="halign">start</property>
+		      </object>
+		      <packing>
+			<property name="left_attach">0</property>
+			<property name="top_attach">2</property>
+		      </packing>
+		    </child>
+		    <child>
+		      <object class="GtkLabel" id="script-label">
+			<property name="halign">start</property>
+		      </object>
+		      <packing>
+			<property name="left_attach">1</property>
+			<property name="top_attach">2</property>
+		      </packing>
+		    </child>
+		    <child>
+		      <object class="GtkLabel" id="block-title-label">
+			<property name="label" translatable="yes">Block: </property>
+			<property name="halign">start</property>
+		      </object>
+		      <packing>
+			<property name="left_attach">0</property>
+			<property name="top_attach">3</property>
+		      </packing>
+		    </child>
+		    <child>
+		      <object class="GtkLabel" id="block-label">
+			<property name="halign">start</property>
+		      </object>
+		      <packing>
+			<property name="left_attach">1</property>
+			<property name="top_attach">3</property>
+		      </packing>
+		    </child>
 		  </object>
 		  <packing>
 		    <property name="left_attach">0</property>
@@ -45,13 +128,11 @@
 		  </packing>
 		</child>
 		<child>
-		  <object class="GtkLabel" id="detail-label">
+		  <object class="GtkButton" id="copy-button">
+		    <property name="label" translatable="yes">Copy Character</property>
 		    <property name="visible">True</property>
-		    <property name="can_focus">False</property>
-		    <property name="halign">center</property>
-		    <style>
-		      <class name="detail-label"/>
-		    </style>
+		    <property name="can_focus">True</property>
+		    <property name="receives_default">False</property>
 		  </object>
 		  <packing>
 		    <property name="left_attach">0</property>
