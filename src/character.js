@@ -150,6 +150,8 @@ const CharacterDialog = new Lang.Class({
         this._category_label.label = Gc.character_category(uc);
         this._script_label.label = Gc.character_script(uc);
         this._block_label.label = Gc.character_block(uc);
+
+        this._detail_grid.remove_row(4);
         let result = Gc.character_decomposition(uc);
         if (result.len > 0) {
             let decomposition = [];
@@ -173,8 +175,6 @@ const CharacterDialog = new Lang.Class({
                                             title,
                                             Gtk.PositionType.RIGHT,
                                             1, 1);
-        } else {
-            this._detail_grid.remove_row(4);
         }
 
         let children = this._related_listbox.get_children();
