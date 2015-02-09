@@ -61,6 +61,8 @@ gchar          *gc_character_name         (gunichar              uc);
 const gchar    *gc_character_category     (gunichar              uc);
 const gchar    *gc_character_script       (gunichar              uc);
 const gchar    *gc_character_block        (gunichar              uc);
+GcSearchResult *gc_character_decomposition
+                                          (gunichar              uc);
 
 /* GTK+ support.  gtk_clipboard_get() takes an GdkAtom as the first
    argument, but GdkAtom is not accessible through GI.  */

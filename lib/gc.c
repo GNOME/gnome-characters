@@ -442,6 +442,34 @@ gc_character_block (gunichar uc)
   return block->name;
 }
 
+/**
+ * gc_character_decomposition:
+ * @uc: a UCS-4 character
+ *
+ * Returns: (transfer full): the canonical charactera decomposition
+ * mapping of @uc.
+ */
+GcSearchResult *
+gc_character_decomposition (gunichar uc)
+{
+  ucs4_t decomposition[UC_DECOMPOSITION_MAX_LENGTH];
+  int retval, i;
+  GArray *result;
+
+  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
+
+  retval = uc_canonical_decomposition (uc, decomposition);
+  if (retval > 0)
+    {
+      /* Don't use g_array_append_vals, since the size of ucs4_t may
+	 differ from gunichar's.  */
+      for (i = 0; i < retval; i++)
+	g_array_append_val (result, decomposition[i]);
+    }
+
+  return result;
+}
+
 G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
 		     g_array_ref, g_array_unref);
 
