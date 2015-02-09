@@ -238,7 +238,7 @@ AC_DEFUN([gl_INIT],
   gl_STDINT_H
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
-  gl_LIBUNISTRING_LIBHEADER([0.9.1], [unicase.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.4], [unicase.h])
   gl_LIBUNISTRING_MODULE([0.9.5], [unicase/tolower])
   gl_LIBUNISTRING_MODULE([0.9.5], [unicase/totitle])
   gl_LIBUNISTRING_MODULE([0.9.5], [unicase/toupper])
@@ -475,8 +475,8 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_MODULE([0.9.5], [unictype/scripts])
   gl_LIBUNISTRING_LIBHEADER([0.9.5], [uniname.h])
   gl_LIBUNISTRING_MODULE([0.9.5], [uniname/uniname])
-  gl_LIBUNISTRING_LIBHEADER([0.9], [uninorm.h])
-  gl_LIBUNISTRING_LIBHEADER([0.9.2], [unistr.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.4], [uninorm.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.4], [unistr.h])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u32-to-u8])
   gl_MODULE_INDICATOR([unistr/u8-uctomb])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-uctomb])
