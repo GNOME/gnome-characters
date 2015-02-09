@@ -1,5 +1,6 @@
 AM_CPPFLAGS =					\
         -I$(top_srcdir)				\
+        -I$(top_srcdir)/gllib			\
         -DPREFIX=\"$(prefix)\"			\
         -DLIBDIR=\"$(libdir)\"			\
         -DG_LOG_DOMAIN=\"libgc\"		\
