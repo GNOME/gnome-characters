@@ -44,6 +44,10 @@ const MAX_SEARCH_RESULTS = 100;
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
     Extends: Gtk.ApplicationWindow,
+    Template: 'resource:///org/gnome/Characters/mainwindow.ui',
+    InternalChildren: ['main-headerbar', 'search-active-button',
+                       'search-bar', 'search-entry',
+                       'main-grid', 'main-hbox', 'sidebar-grid'],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
             'search-active', '', '',
@@ -74,39 +78,24 @@ const MainWindow = new Lang.Class({
                             activate: this._character,
                             parameter_type: new GLib.VariantType('s') }]);
 
-        let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/Characters/mainwindow.ui');
-
-        this._headerBar = builder.get_object('main-headerbar');
-        this.set_titlebar(this._headerBar);
-
-        let searchBtn = builder.get_object('search-active-button');
-        this.bind_property('search-active', searchBtn, 'active',
+        this.bind_property('search-active', this._search_active_button, 'active',
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
-        this._searchBar = builder.get_object('search-bar');
         this.bind_property('search-active',
-                           this._searchBar,
+                           this._search_bar,
                            'search-mode-enabled',
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
-        let searchEntry = builder.get_object('search-entry');
-        this._searchBar.connect_entry(searchEntry);
-        searchEntry.connect('search-changed',
-                            Lang.bind(this, this._handleSearchChanged));
+        this._search_bar.connect_entry(this._search_entry);
+        this._search_entry.connect('search-changed',
+                                   Lang.bind(this, this._handleSearchChanged));
 
-        let grid = builder.get_object('main-grid');
-
-        let sidebarGrid = builder.get_object('sidebar-grid');
         this._categoryList = new CategoryList.CategoryListWidget();
-        sidebarGrid.add(this._categoryList);
+        this._sidebar_grid.add(this._categoryList);
 
-        let hbox = builder.get_object('main-hbox');
         this._mainView = new MainView();
-        hbox.pack_start(this._mainView, true, true, 0);
-
-        this.add(grid);
-        grid.show_all();
+        this._main_hbox.pack_start(this._mainView, true, true, 0);
+        this._main_grid.show_all();
 
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
@@ -140,7 +129,7 @@ const MainWindow = new Lang.Class({
     },
 
     _handleKeyPress: function(self, event) {
-        return this._searchBar.handle_event(event);
+        return this._search_bar.handle_event(event);
     },
 
     _about: function() {
@@ -179,7 +168,7 @@ const MainWindow = new Lang.Class({
 
         Util.assertNotEqual(category, null);
         this._mainView.setPage(category.name);
-        this._headerBar.title = Gettext.gettext(category.title);
+        this._main_headerbar.title = Gettext.gettext(category.title);
     },
 
     _character: function(action, v) {
@@ -191,6 +180,8 @@ const MainWindow = new Lang.Class({
 const MainView = new Lang.Class({
     Name: 'MainView',
     Extends: Gtk.Stack,
+    Template: 'resource:///org/gnome/Characters/mainview.ui',
+    InternalChildren: ['loading-banner-spinner'],
 
     _init: function(params) {
         params = Params.fill(params, { hexpand: true, vexpand: true });
@@ -217,13 +208,6 @@ const MainView = new Lang.Class({
                        'search-result');
         this._characterListWidgets['search-result'] = characterList;
 
-        let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/Characters/mainview.ui');
-        let searchBannerGrid = builder.get_object('search-banner-grid');
-        this.add_named(searchBannerGrid, 'search-banner');
-        let loadingBannerGrid = builder.get_object('loading-banner-grid');
-        this._spinner = builder.get_object('loading-banner-spinner');
-        this.add_named(loadingBannerGrid, 'loading-banner');
         this._spinnerTimeoutId = 0;
 
         this._recentCharacters = [];
@@ -260,7 +244,7 @@ const MainView = new Lang.Class({
         this._spinnerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
                              Lang.bind(this, function () {
-                                 this._spinner.start();
+                                 this._loading_banner_spinner.start();
                                  this.visible_child_name = 'loading-banner';
                                  this.show_all();
                              }));
@@ -270,7 +254,7 @@ const MainView = new Lang.Class({
         if (this._spinnerTimeoutId > 0) {
             GLib.source_remove(this._spinnerTimeoutId);
             this._spinnerTimeoutId = 0;
-            this._spinner.stop();
+            this._loading_banner_spinner.stop();
         }
 
         let characters = [];
