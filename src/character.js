@@ -134,7 +134,9 @@ const CharacterDialog = new Lang.Class({
             let toplevel = this.get_transient_for();
             let action = toplevel.lookup_action('character');
             action.activate(new GLib.Variant('s', uc));
+            return true;
         }
+        return false;
     },
 
     _setCharacter: function(uc) {
