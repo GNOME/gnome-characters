@@ -127,7 +127,7 @@ const CharacterDialog = new Lang.Class({
     },
 
     _activateLink: function(label, uri) {
-        let match = uri.match(/^character:([0-9A-F]+)/);
+        let match = uri.match(/^character:\/\/([0-9A-F]+)/);
         if (match) {
             let uc = String.fromCharCode(parseInt(match[1], 16));
             this._setCharacter(uc);
@@ -162,14 +162,14 @@ const CharacterDialog = new Lang.Class({
                                         label: _("Decomposition: ") });
             this._detail_grid.attach(title, 0, 4, 1, 1);
             let label = new Gtk.Label({ halign: Gtk.Align.START,
-                                        wrap: true,
                                         max_width_chars: 30,
-                                        use_markup: true });
+                                        use_markup: true,
+                                        ellipsize: Pango.EllipsizeMode.END });
             label.label = decomposition.map(function(d) {
                 let hex = Util.hexCodepoint(d);
-                return _("<a href=\"character:%s\">U+%04s %s</a>").format(
-                    hex, hex, Gc.character_name(d));
-            }).join(', ');
+                return _("<a href=\"character://%s\">%s</a>").format(
+                    hex, Util.capitalize(Gc.character_name(d)));
+            }).join('\n');
             label.connect('activate-link', Lang.bind(this, this._activateLink));
             this._detail_grid.attach_next_to(label,
                                             title,

@@ -59,6 +59,7 @@
 		    <child>
 		      <object class="GtkLabel" id="codepoint-label">
 			<property name="halign">start</property>
+			<property name="ellipsize">end</property>
 		      </object>
 		      <packing>
 			<property name="left_attach">1</property>
@@ -78,6 +79,7 @@
 		    <child>
 		      <object class="GtkLabel" id="category-label">
 			<property name="halign">start</property>
+			<property name="ellipsize">end</property>
 		      </object>
 		      <packing>
 			<property name="left_attach">1</property>
@@ -97,6 +99,7 @@
 		    <child>
 		      <object class="GtkLabel" id="script-label">
 			<property name="halign">start</property>
+			<property name="ellipsize">end</property>
 		      </object>
 		      <packing>
 			<property name="left_attach">1</property>
@@ -116,6 +119,7 @@
 		    <child>
 		      <object class="GtkLabel" id="block-label">
 			<property name="halign">start</property>
+			<property name="ellipsize">end</property>
 		      </object>
 		      <packing>
 			<property name="left_attach">1</property>
