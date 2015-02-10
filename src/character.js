@@ -177,8 +177,11 @@ const CharacterDialog = new Lang.Class({
                                         ellipsize: Pango.EllipsizeMode.END });
             label.label = decomposition.map(function(d) {
                 let hex = Util.hexCodepoint(d);
+                // Characters in CJK Compatibility Ideographs may not
+                // have a name.
+                let name = Gc.character_name(d);
                 return _("<a href=\"character://%s\">%s</a>").format(
-                    hex, Util.capitalize(Gc.character_name(d)));
+                    hex, name ? Util.capitalize(name) : _("Unknown"));
             }).join('\n');
             label.connect('activate-link', Lang.bind(this, this._activateLink));
             this._detail_grid.attach_next_to(label,
