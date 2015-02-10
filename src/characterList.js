@@ -31,7 +31,7 @@ const Util = imports.util;
 
 const BASELINE_OFFSET = 0.85;
 const CELLS_PER_ROW = 5;
-const CELL_SIZE = 100;
+const CELL_SIZE = 50;
 
 function getCellSize(fontDescription) {
     if (fontDescription == null
@@ -90,7 +90,7 @@ const CharacterListWidget = new Lang.Class({
         'font': GObject.ParamSpec.string(
             'font', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            'Cantarell 100')
+            'Cantarell 50')
     },
 
     get font() {
@@ -101,9 +101,6 @@ const CharacterListWidget = new Lang.Class({
         let fontDescription = Pango.FontDescription.from_string(v);
         if (fontDescription.get_size() == 0)
             fontDescription.set_size(CELL_SIZE);
-
-        fontDescription.set_absolute_size(
-            fontDescription.get_size() / 2 * Pango.SCALE);
 
         if (this._fontDescription &&
             fontDescription.equal(this._fontDescription))
