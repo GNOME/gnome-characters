@@ -215,8 +215,8 @@ const CharacterListWidget = new Lang.Class({
         // Redraw rows within the clipped region.
         let [x1, y1, x2, y2] = cr.clipExtents();
         let cellSize = getCellSize(this._fontDescription);
-        let start = Math.floor(y1 / cellSize);
-        let end = Math.ceil(y2 / cellSize);
+        let start = Math.max(0, Math.floor(y1 / cellSize));
+        let end = Math.min(this._rows.length, Math.ceil(y2 / cellSize));
         for (let index = start; index < end; index++) {
             this._rows[index].draw(cr, 0, index * cellSize,
                                    allocation.width, cellSize);
