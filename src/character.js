@@ -148,9 +148,18 @@ const CharacterDialog = new Lang.Class({
 
         this._codepoint_label.label =
             _("U+%04s").format(Util.hexCodepoint(uc));
-        this._category_label.label = Gettext.gettext(Gc.character_category(uc));
-        this._script_label.label = Gettext.gettext(Gc.character_script(uc));
-        this._block_label.label = Gettext.gettext(Gc.character_block(uc));
+
+        let category = Gc.character_category(uc);
+        this._category_label.label =
+            category ? Gettext.gettext(category) : _("Unknown");
+
+        let script = Gc.character_script(uc);
+        this._script_label.label =
+            script ? Gettext.gettext(script) : _("Unknown");
+
+        let block = Gc.character_block(uc);
+        this._block_label.label =
+            block ? Gettext.gettext(block) : _("Unknown");
 
         this._detail_grid.remove_row(4);
         let result = Gc.character_decomposition(uc);

@@ -426,6 +426,10 @@ const gchar *
 gc_character_script (gunichar uc)
 {
   const uc_script_t *script = uc_script (uc);
+
+  if (!script)
+      return NULL;
+
   return script->name;
 }
 
@@ -439,6 +443,10 @@ const gchar *
 gc_character_block (gunichar uc)
 {
   const uc_block_t *block = uc_block (uc);
+
+  if (!block)
+      return NULL;
+
   return block->name;
 }
 
