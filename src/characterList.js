@@ -215,8 +215,12 @@ const CharacterListWidget = new Lang.Class({
         // https://bugzilla.gnome.org/show_bug.cgi?id=700592
         let allocation = this.get_allocation();
 
+        // Redraw rows within the clipped region.
+        let [x1, y1, x2, y2] = cr.clipExtents();
         let cellSize = getCellSize(this._fontDescription);
-        for (let index in this._rows) {
+        let start = Math.floor(y1 / cellSize);
+        let end = Math.ceil(y2 / cellSize);
+        for (let index = start; index < end; index++) {
             this._rows[index].draw(cr, 0, index * cellSize,
                                    allocation.width, cellSize);
         }
