@@ -1,7 +1,7 @@
 <schemalist gettext-domain="org.gnome.Characters">
   <schema id="org.gnome.Characters" path="/org/gnome/Characters/">
     <key name="font" type="s">
-      <default>'Cantarell'</default>
+      <default>'Cantarell 100'</default>
       <summary>Font to display characters</summary>
       <description>
 	Use the font to render characters on the character list.
