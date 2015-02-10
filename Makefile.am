@@ -24,6 +24,25 @@ GITIGNOREFILES = \
 	m4/intltool.m4 \
 	m4/libtool.m4 \
 	m4/lt* \
+	gllib/Makefile \
+	gllib/Makefile.in \
+	gllib/**/*.lo \
+	gllib/**/*.la \
+	gllib/**/.deps \
+	gllib/**/.libs \
+	gllib/.libs \
+	gllib/sys \
+	gllib/unicase.h \
+	gllib/unictype.h \
+	gllib/unictype/categ_byname.h \
+	gllib/unictype/pr_byname.h \
+	gllib/unictype/scripts_byname.h \
+	gllib/uniname.h \
+	gllib/uninorm.h \
+	gllib/unistr.h \
+	gllib/unitypes.h \
+	gllib/unused-parameter.h \
+	gllib/**/.dirstamp \
 	rpms/
 
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
