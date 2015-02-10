@@ -24,6 +24,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
 const Gc = imports.gi.Gc;
+const Gettext = imports.gettext;
 const Main = imports.main;
 const Util = imports.util;
 
@@ -147,9 +148,9 @@ const CharacterDialog = new Lang.Class({
 
         this._codepoint_label.label =
             _("U+%04s").format(Util.hexCodepoint(uc));
-        this._category_label.label = Gc.character_category(uc);
-        this._script_label.label = Gc.character_script(uc);
-        this._block_label.label = Gc.character_block(uc);
+        this._category_label.label = Gettext.gettext(Gc.character_category(uc));
+        this._script_label.label = Gettext.gettext(Gc.character_script(uc));
+        this._block_label.label = Gettext.gettext(Gc.character_block(uc));
 
         this._detail_grid.remove_row(4);
         let result = Gc.character_decomposition(uc);
