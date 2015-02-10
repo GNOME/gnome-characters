@@ -199,6 +199,8 @@ const CharacterListWidget = new Lang.Class({
             let row = this._createCharacterListRow(rowCharacters);
             this._rows.push(row);
         }
+
+        this.queue_draw();
     },
 
     vfunc_draw: function(cr) {
