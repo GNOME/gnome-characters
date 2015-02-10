@@ -45,6 +45,8 @@ PKG_CHECK_MODULES([DEPS], [gdk-3.0
 
 AC_PATH_PROG([GJS],[gjs])
 
+AC_PATH_PROG([MSGUNIQ],[msguniq],[AC_MSG_ERROR([msguniq is required])])
+
 AC_ARG_ENABLE(dogtail,
               [AS_HELP_STRING([--enable-dogtail],
                               [test using dogtail [default=yes]])],,

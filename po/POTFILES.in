@@ -12,3 +12,4 @@ src/main.js
 src/params.js
 src/util.js
 src/window.js
+lib/libunistring.pot
