@@ -202,10 +202,13 @@ const CharacterListWidget = new Lang.Class({
 
     vfunc_draw: function(cr) {
         // Clear the canvas.
-        // FIXME: Pick the background color from CSS.
-        cr.setSourceRGBA(1, 1, 1, 1);
+        let context = this.get_style_context();
+        let fg = context.get_color(Gtk.StateFlags.NORMAL);
+        let bg = context.get_background_color(Gtk.StateFlags.NORMAL);
+
+        cr.setSourceRGBA(bg.red, bg.green, bg.blue, bg.alpha);
         cr.paint();
-        cr.setSourceRGBA(0, 0, 0, 1);
+        cr.setSourceRGBA(fg.red, fg.green, fg.blue, fg.alpha);
 
         // Use device coordinates directly, since PangoCairo doesn't
         // work well with scaled matrix:
