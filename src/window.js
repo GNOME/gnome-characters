@@ -37,6 +37,7 @@ const Pango = imports.gi.Pango;
 const Gc = imports.gi.Gc;
 const Gettext = imports.gettext;
 
+const Main = imports.main;
 const Util = imports.util;
 
 const MAX_SEARCH_RESULTS = 100;
@@ -182,6 +183,23 @@ const MainView = new Lang.Class({
     Extends: Gtk.Stack,
     Template: 'resource:///org/gnome/Characters/mainview.ui',
     InternalChildren: ['loading-banner-spinner'],
+    Properties: {
+        'max-recent-characters': GObject.ParamSpec.uint(
+            'max-recent-characters', '', '',
+            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
+            0, GLib.MAXUINT32, 100)
+    },
+
+    get max_recent_characters() {
+        return this._maxRecentCharacters;
+    },
+
+    set max_recent_characters(v) {
+        this._maxRecentCharacters = v;
+        if (this._recentCharacters.length > this._maxRecentCharacters)
+            this._recentCharacters = this._recentCharacters.slice(
+                0, this._maxRecentCharacters);
+    },
 
     _init: function(params) {
         params = Params.fill(params, { hexpand: true, vexpand: true });
@@ -210,7 +228,14 @@ const MainView = new Lang.Class({
 
         this._spinnerTimeoutId = 0;
 
-        this._recentCharacters = [];
+        // FIXME: Can't use GSettings.bind with 'as' from Gjs
+        let recentCharacters = Main.settings.get_value('recent-characters');
+        this._recentCharacters = recentCharacters.get_strv();
+        this._maxRecentCharacters = 100;
+        Main.settings.bind('max-recent-characters', this,
+                           'max-recent-characters',
+                           Gio.SettingsBindFlags.DEFAULT);
+
         this._cancellable = new Gio.Cancellable();
     },
 
@@ -339,6 +364,12 @@ const MainView = new Lang.Class({
     selectCharacter: function(uc) {
         if (this._recentCharacters.indexOf(uc) < 0) {
             this._recentCharacters.push(uc);
+            if (this._recentCharacters.length > this._maxRecentCharacters)
+                this._recentCharacters = this._recentCharacters.slice(
+                    0, this._maxRecentCharacters);
+            Main.settings.set_value(
+                'recent-characters',
+                GLib.Variant.new_strv(this._recentCharacters));
 
             if (this.visible_child_name == 'recent')
                 this.setPage('recent');
