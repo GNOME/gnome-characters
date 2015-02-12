@@ -100,7 +100,7 @@ const CharacterListWidget = new Lang.Class({
     set font(v) {
         let fontDescription = Pango.FontDescription.from_string(v);
         if (fontDescription.get_size() == 0)
-            fontDescription.set_size(CELL_SIZE);
+            fontDescription.set_size(CELL_SIZE * Pango.SCALE);
 
         if (this._fontDescription &&
             fontDescription.equal(this._fontDescription))
