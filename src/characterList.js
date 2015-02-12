@@ -179,9 +179,6 @@ const CharacterListWidget = new Lang.Class({
         this._rows = [];
         this._characters = characters;
 
-        if (characters.length == 0)
-            return;
-
         let start = 0, stop = 1;
         for (; stop <= characters.length; stop++) {
             if (stop % this._cellsPerRow == 0) {

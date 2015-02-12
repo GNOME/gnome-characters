@@ -264,11 +264,9 @@ const MainView = new Lang.Class({
 
         let characterList = this._characterListWidgets[name];
         characterList.setCharacters(characters);
-        if (result.length == 0) {
-            if (this._lastPage)
-                this.visible_child_name = this._lastPage;
-            else
-                this.visible_child_name = 'search-banner';
+
+        if (characters.length == 0) {
+            this.visible_child_name = 'search-banner';
         } else {
             this.visible_child_name = name;
         }
@@ -294,6 +292,8 @@ const MainView = new Lang.Class({
     cancelSearch: function() {
         this._cancellable.cancel();
         this._finishSearch('search-result', []);
+        if (this._lastPage)
+            this.visible_child_name = this._lastPage;
     },
 
     setPage: function(name) {
