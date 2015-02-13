@@ -212,7 +212,7 @@ const MainView = new Lang.Class({
             let category = CategoryList.Category[index];
             characterList = this._createCharacterList();
             characterList.get_accessible().accessible_name =
-                _('%s Character List').format(category.label);
+                _('%s Character List').format(category.title);
             this._characterListWidgets[category.name] = characterList;
             this.add_titled(this._createScrolledWindow(characterList),
                             category.name,

@@ -80,7 +80,13 @@ try:
     # recently used characters
     recently_used_page = Page(app, 'Recently Used')
     recently_used_page.button.click()
-    assert len(recently_used_page.character_list.children) > 0
+    x, y = recently_used_page.character_list.position
+    click(x + 10, y + 10)
+    assert len(app.children) == 2
+    character_dialog = app.children[-1]
+    assert character_dialog.name == 'Exclamation Mark'
+    see_also_button = character_dialog.child('See Also')
+    assert see_also_button.showing
 finally:
     print "tearing down"
     fini()

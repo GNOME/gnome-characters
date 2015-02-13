@@ -3,7 +3,7 @@ include $(top_srcdir)/glib-tap.mk
 dogtail_tests = \
 	smoke_test.py
 
-TESTS_ENVIRONMENT += LC_ALL=C
+TESTS_ENVIRONMENT += LC_ALL=C GSETTINGS_BACKEND=memory
 
 if ENABLE_DOGTAIL
 dist_test_scripts = $(dogtail_tests)
