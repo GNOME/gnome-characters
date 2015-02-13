@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>org.gnome.Characters.desktop</id>
+  <name>GNOME Characters</name>
+  <summary>Character map application</summary>
   <licence>CC0</licence>
   <description>
     <_p>
-      Characters is a simple utility application to find and insert unusual characters.
+      Characters is a simple utility application to find and insert unusual characters.  It allows you to quickly find the charactrer you are looking for by searching for keywords.
+    </_p>
+    <_p>
+      You can also browse characters by categories, such as Punctuation, Pictures, etc.
     </_p>
   </description>
   <screenshots>
