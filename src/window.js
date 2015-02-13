@@ -248,13 +248,10 @@ const MainView = new Lang.Class({
     },
 
     _createScrolledWindow: function(widget) {
-        let viewport = new Gtk.Viewport({});
-        viewport.add(widget);
-
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER
         });
-        scroll.add(viewport);
+        scroll.add(widget);
         return scroll;
     },
 
