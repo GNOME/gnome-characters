@@ -40,8 +40,6 @@ const Gettext = imports.gettext;
 const Main = imports.main;
 const Util = imports.util;
 
-const MAX_SEARCH_RESULTS = 100;
-
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
     Extends: Gtk.ApplicationWindow,
@@ -122,7 +120,7 @@ const MainWindow = new Lang.Class({
         if (keywords != this._searchKeywords) {
             this._searchKeywords = keywords;
             if (this._searchKeywords.length > 0)
-                this._mainView.startSearch(this._searchKeywords);
+                this._mainView.searchByKeywords(this._searchKeywords);
             else
                 this._mainView.cancelSearch();
         }
@@ -181,8 +179,6 @@ const MainWindow = new Lang.Class({
 const MainView = new Lang.Class({
     Name: 'MainView',
     Extends: Gtk.Stack,
-    Template: 'resource:///org/gnome/Characters/mainview.ui',
-    InternalChildren: ['loading-banner-spinner'],
     Properties: {
         'max-recent-characters': GObject.ParamSpec.uint(
             'max-recent-characters', '', '',
@@ -210,23 +206,14 @@ const MainView = new Lang.Class({
         let characterList;
         for (let index in CategoryList.Category) {
             let category = CategoryList.Category[index];
-            characterList = this._createCharacterList();
-            characterList.get_accessible().accessible_name =
-                _('%s Character List').format(category.title);
-            this._characterListWidgets[category.name] = characterList;
-            this.add_titled(this._createScrolledWindow(characterList),
-                            category.name,
-                            category.title);
+            characterList = this._createCharacterList(
+                category.name, _('%s Character List').format(category.title));
+            this.add_titled(characterList, category.name, category.title);
         }
 
-        characterList = this._createCharacterList();
-        characterList.get_accessible().accessible_name =
-            _('Search Result Character List');
-        this.add_named(this._createScrolledWindow(characterList),
-                       'search-result');
-        this._characterListWidgets['search-result'] = characterList;
-
-        this._spinnerTimeoutId = 0;
+        characterList = this._createCharacterList(
+            'search-result', _('Search Result Character List'));
+        this.add_named(characterList, 'search-result');
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
         let recentCharacters = Main.settings.get_value('recent-characters');
@@ -235,103 +222,36 @@ const MainView = new Lang.Class({
         Main.settings.bind('max-recent-characters', this,
                            'max-recent-characters',
                            Gio.SettingsBindFlags.DEFAULT);
-
-        this._cancellable = new Gio.Cancellable();
     },
 
-    _createCharacterList: function() {
+    _createCharacterList: function(name, accessible_name) {
         let widget = new CharacterList.CharacterListWidget({ hexpand: true,
                                                              vexpand: true });
         widget.connect('character-selected',
                        Lang.bind(this, this._handleCharacterSelected));
-        return widget;
+        this._characterListWidgets[name] = widget;
+        widget.get_accessible().accessible_name = accessible_name;
+        return new CharacterList.CharacterListView({ characterList: widget });
     },
 
-    _createScrolledWindow: function(widget) {
-        let scroll = new Gtk.ScrolledWindow({
-            hscrollbar_policy: Gtk.PolicyType.NEVER
-        });
-        scroll.add(widget);
-        return scroll;
-    },
-
-    _startSearch: function() {
-        this._cancellable.cancel();
-        this._cancellable.reset();
-
-        if (this.visible_child_name != 'search-banner' &&
-            this.visible_child_name != 'search-result')
-            this._lastPage = this.visible_child_name;
-
-        this._spinnerTimeoutId =
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
-                             Lang.bind(this, function () {
-                                 this._loading_banner_spinner.start();
-                                 this.visible_child_name = 'loading-banner';
-                                 this.show_all();
-                             }));
-    },
-
-    _finishSearch: function(name, result) {
-        if (this._spinnerTimeoutId > 0) {
-            GLib.source_remove(this._spinnerTimeoutId);
-            this._spinnerTimeoutId = 0;
-            this._loading_banner_spinner.stop();
-        }
-
-        let characters = [];
-        for (let index = 0; index < result.len; index++) {
-            characters.push(Gc.search_result_get(result, index));
-        }
-
-        let characterList = this._characterListWidgets[name];
-        characterList.setCharacters(characters);
-
-        if (characters.length == 0) {
-            this.visible_child_name = 'search-banner';
-        } else {
-            this.visible_child_name = name;
-        }
-        this.show_all();
-    },
-
-    startSearch: function(keywords) {
-        this._startSearch();
-        Gc.search_by_keywords(
-            keywords,
-            MAX_SEARCH_RESULTS,
-            this._cancellable,
-            Lang.bind(this, function(source_object, res, user_data) {
-                try {
-                    let result = Gc.search_finish(res);
-                    this._finishSearch('search-result', result);
-                } catch (e) {
-                    log("Failed to search by keywords: " + e);
-                }
-            }));
+    searchByKeywords: function(keywords) {
+        this.visible_child_name = 'search-result';
+        this.visible_child.searchByKeywords(keywords);
     },
 
     cancelSearch: function() {
-        this._cancellable.cancel();
-        this._finishSearch('search-result', []);
-        if (this._lastPage)
-            this.visible_child_name = this._lastPage;
+        this.visible_child.cancelSearch();
     },
 
     setPage: function(name) {
         if (!(name in this._characterListWidgets))
             return;
 
+        this.visible_child_name = name;
+
         let characterList = this._characterListWidgets[name];
         if (name == 'recent') {
-            if (this._recentCharacters.length == 0)
-                this.visible_child_name = 'search-banner';
-            else {
-                characterList.setCharacters(this._recentCharacters);
-                characterList.show_all();
-                this.visible_child_name = name;
-            }
-            this.show_all();
+            this.visible_child.setCharacters(this._recentCharacters);
         } else {
             let category = null;
             for (let index in CategoryList.Category) {
@@ -341,20 +261,7 @@ const MainView = new Lang.Class({
             }
 
             Util.assertNotEqual(category, null);
-            this._startSearch();
-            Gc.search_by_category(
-                category.category,
-                -1,
-                this._cancellable,
-                Lang.bind(this,
-                          function(source_object, res, user_data) {
-                              try {
-                                  let result = Gc.search_finish(res);
-                                  this._finishSearch(name, result);
-                              } catch (e) {
-                                  log("Failed to search by category: " + e);
-                              }
-                          }));
+            this.visible_child.searchByCategory(category);
         }
     },
 

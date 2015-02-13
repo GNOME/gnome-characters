@@ -223,3 +223,104 @@ const CharacterListWidget = new Lang.Class({
         }
     }
 });
+
+const MAX_SEARCH_RESULTS = 100;
+
+const CharacterListView = new Lang.Class({
+    Name: 'CharacterListView',
+    Extends: Gtk.Stack,
+    Template: 'resource:///org/gnome/Characters/characterlist.ui',
+    InternalChildren: ['loading-banner-spinner'],
+
+    _init: function(params) {
+        let filtered = Params.filter(params, { characterList: null });
+        params = Params.fill(params, { hexpand: true, vexpand: true });
+        this.parent(params);
+
+        this._characterList = filtered.characterList;
+        let scroll = new Gtk.ScrolledWindow({
+            hscrollbar_policy: Gtk.PolicyType.NEVER
+        });
+        scroll.add(this._characterList);
+        this.add_named(scroll, 'character-list');
+
+        this._spinnerTimeoutId = 0;
+        this._cancellable = new Gio.Cancellable();
+    },
+
+    _startSearch: function() {
+        this._cancellable.cancel();
+        this._cancellable.reset();
+
+        this._spinnerTimeoutId =
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
+                             Lang.bind(this, function () {
+                                 this._loading_banner_spinner.start();
+                                 this.visible_child_name = 'loading-banner';
+                                 this.show_all();
+                             }));
+    },
+
+    _finishSearch: function(result) {
+        if (this._spinnerTimeoutId > 0) {
+            GLib.source_remove(this._spinnerTimeoutId);
+            this._spinnerTimeoutId = 0;
+            this._loading_banner_spinner.stop();
+        }
+
+        let characters = [];
+        for (let index = 0; index < result.len; index++) {
+            characters.push(Gc.search_result_get(result, index));
+        }
+
+        this.setCharacters(characters)
+    },
+
+    setCharacters: function(characters) {
+        this._characterList.setCharacters(characters);
+        if (characters.length == 0) {
+            this.visible_child_name = 'search-banner';
+        } else {
+            this.visible_child_name = 'character-list';
+        }
+        this.show_all();
+    },
+
+    searchByCategory: function(category) {
+        this._startSearch();
+        Gc.search_by_category(
+            category.category,
+            -1,
+            this._cancellable,
+            Lang.bind(this,
+                      function(source_object, res, user_data) {
+                          try {
+                              let result = Gc.search_finish(res);
+                              this._finishSearch(result);
+                          } catch (e) {
+                              log("Failed to search by category: " + e);
+                          }
+                      }));
+    },
+
+    searchByKeywords: function(keywords) {
+        this._startSearch()
+        Gc.search_by_keywords(
+            keywords,
+            MAX_SEARCH_RESULTS,
+            this._cancellable,
+            Lang.bind(this, function(source_object, res, user_data) {
+                try {
+                    let result = Gc.search_finish(res);
+                    this._finishSearch(result);
+                } catch (e) {
+                    log("Failed to search by keywords: " + e);
+                }
+            }));
+    },
+
+    cancelSearch: function() {
+        this._cancellable.cancel();
+        this._finishSearch([]);
+    }
+});
