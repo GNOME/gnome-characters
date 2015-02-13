@@ -274,9 +274,6 @@ const MainView = new Lang.Class({
             Main.settings.set_value(
                 'recent-characters',
                 GLib.Variant.new_strv(this._recentCharacters));
-
-            if (this.visible_child_name == 'recent')
-                this.setPage('recent');
         }
     },
 
