@@ -86,43 +86,16 @@ const CharacterListWidget = new Lang.Class({
     Signals: {
         'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
-    Properties: {
-        'font': GObject.ParamSpec.string(
-            'font', '', '',
-            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            'Cantarell 50')
-    },
-
-    get font() {
-        return this._font;
-    },
-
-    set font(v) {
-        let fontDescription = Pango.FontDescription.from_string(v);
-        if (fontDescription.get_size() == 0)
-            fontDescription.set_size(CELL_SIZE * Pango.SCALE);
-
-        if (this._fontDescription &&
-            fontDescription.equal(this._fontDescription))
-            return;
-
-        this._font = v;
-        this._fontDescription = fontDescription;
-        if (this._characters) {
-            this.setCharacters(this._characters);
-            this.show_all();
-        }
-    },
 
     _init: function(params) {
+        let filtered = Params.filter(params, { fontDescription: null });
         params = Params.fill(params, {});
         this.parent(params);
         this.get_style_context().add_class('character-list');
         this._cellsPerRow = CELLS_PER_ROW;
-        this._font = null;
-        this._fontDescription = null;
+        this._fontDescription = filtered.fontDescription;
+        this._characters = [];
         this._rows = [];
-        Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
         this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK);
     },
 
@@ -173,6 +146,10 @@ const CharacterListWidget = new Lang.Class({
             fontDescription: this._fontDescription
         });
         return row;
+    },
+
+    setFontDescription: function(fontDescription) {
+        this._fontDescription = fontDescription;
     },
 
     setCharacters: function(characters) {
@@ -231,19 +208,50 @@ const CharacterListView = new Lang.Class({
     Extends: Gtk.Stack,
     Template: 'resource:///org/gnome/Characters/characterlist.ui',
     InternalChildren: ['loading-banner-spinner'],
+    Properties: {
+        'font': GObject.ParamSpec.string(
+            'font', '', '',
+            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
+            'Cantarell 50')
+    },
+
+    get font() {
+        return this._font;
+    },
+
+    set font(v) {
+        let fontDescription = Pango.FontDescription.from_string(v);
+        if (fontDescription.get_size() == 0)
+            fontDescription.set_size(CELL_SIZE * Pango.SCALE);
+
+        if (this._fontDescription &&
+            fontDescription.equal(this._fontDescription))
+            return;
+
+        this._font = v;
+        this._fontDescription = fontDescription;
+        if (this.mapped) {
+            this.setCharacters(this._characters);
+            this.show_all();
+        }
+    },
 
     _init: function(params) {
-        let filtered = Params.filter(params, { characterList: null });
         params = Params.fill(params, { hexpand: true, vexpand: true });
         this.parent(params);
 
-        this._characterList = filtered.characterList;
+        Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
+
+        this._characterList = new CharacterListWidget({ hexpand: true,
+                                                        vexpand: true,
+                                                        fontDescription: this._fontDescription });
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER
         });
         scroll.add(this._characterList);
         this.add_named(scroll, 'character-list');
 
+        this._characters = [];
         this._spinnerTimeoutId = 0;
         this._cancellable = new Gio.Cancellable();
     },
@@ -273,10 +281,31 @@ const CharacterListView = new Lang.Class({
             characters.push(Gc.search_result_get(result, index));
         }
 
-        this.setCharacters(characters)
+        this._characters = characters;
+        this.updateCharacterList()
     },
 
     setCharacters: function(characters) {
+        this._characters = characters;
+    },
+
+    updateCharacterList: function() {
+        let characters = this._characters;
+        let fontDescription = this._fontDescription;
+        if (this._filterFontDescription) {
+            let context = this.get_pango_context();
+            let filterFont = context.load_font(this._filterFontDescription);
+            let filteredCharacters = [];
+            for (let index = 0; index < characters.length; index++) {
+                let uc = characters[index];
+                if (Gc.pango_context_font_has_glyph(context, filterFont, uc))
+                    filteredCharacters.push(uc);
+            }
+            characters = filteredCharacters;
+            fontDescription = this._filterFontDescription;
+        }
+
+        this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
         if (characters.length == 0) {
             this.visible_child_name = 'search-banner';
@@ -322,5 +351,21 @@ const CharacterListView = new Lang.Class({
     cancelSearch: function() {
         this._cancellable.cancel();
         this._finishSearch([]);
-    }
+    },
+
+    setFilterFont: function(family) {
+        if (family == null) {
+            this._filterFontDescription = null;
+            return;
+        }
+
+        let fontDescription = Pango.FontDescription.from_string(family);
+        fontDescription.set_size(this._fontDescription.get_size());
+
+        if (!(this._filterFontDescription &&
+              fontDescription.equal(this._filterFontDescription))) {
+            this._filterFontDescription = fontDescription;
+            this.updateCharacterList();
+        }
+    },
 });

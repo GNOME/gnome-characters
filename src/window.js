@@ -33,8 +33,7 @@ const Params = imports.params;
 const CategoryList = imports.categoryList;
 const Character = imports.character;
 const CharacterList = imports.characterList;
-const Pango = imports.gi.Pango;
-const Gc = imports.gi.Gc;
+const Menu = imports.menu;
 const Gettext = imports.gettext;
 
 const Main = imports.main;
@@ -46,6 +45,7 @@ const MainWindow = new Lang.Class({
     Template: 'resource:///org/gnome/Characters/mainwindow.ui',
     InternalChildren: ['main-headerbar', 'search-active-button',
                        'search-bar', 'search-entry',
+                       'menu-button',
                        'main-grid', 'main-hbox', 'sidebar-grid'],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
@@ -75,6 +75,9 @@ const MainWindow = new Lang.Class({
                             state: new GLib.Variant('s', 'punctuation') },
                           { name: 'character',
                             activate: this._character,
+                            parameter_type: new GLib.VariantType('s') },
+                          { name: 'filter-font',
+                            activate: this._filterFont,
                             parameter_type: new GLib.VariantType('s') }]);
 
         this.bind_property('search-active', this._search_active_button, 'active',
@@ -88,6 +91,9 @@ const MainWindow = new Lang.Class({
         this._search_bar.connect_entry(this._search_entry);
         this._search_entry.connect('search-changed',
                                    Lang.bind(this, this._handleSearchChanged));
+
+        this._menu_popover = new Menu.MenuPopover({});
+        this._menu_button.set_popover(this._menu_popover);
 
         this._categoryList = new CategoryList.CategoryListWidget();
         this._sidebar_grid.add(this._categoryList);
@@ -128,6 +134,8 @@ const MainWindow = new Lang.Class({
     },
 
     _handleKeyPress: function(self, event) {
+        if (this._menu_popover.visible)
+            return false;
         return this._search_bar.handle_event(event);
     },
 
@@ -153,6 +161,15 @@ const MainWindow = new Lang.Class({
         });
     },
 
+    _updateTitle: function(title, filterFont) {
+        if (filterFont) {
+            this._main_headerbar.title =
+                _("%s (%s only)").format(Gettext.gettext(title), filterFont);
+        } else {
+            this._main_headerbar.title = Gettext.gettext(title);
+        }
+    },
+
     _category: function(action, v) {
         let [name, length] = v.get_string()
 
@@ -167,12 +184,18 @@ const MainWindow = new Lang.Class({
 
         Util.assertNotEqual(category, null);
         this._mainView.setPage(category.name);
-        this._main_headerbar.title = Gettext.gettext(category.title);
+        this._updateTitle(category.title, null);
     },
 
     _character: function(action, v) {
         let [uc, length] = v.get_string()
         this._mainView.selectCharacter(uc);
+    },
+
+    _filterFont: function(action, v) {
+        let [family, length] = v.get_string()
+        this._mainView.setFilterFont(family);
+        this._updateTitle(this._mainView.visible_child.title, family);
     },
 });
 
@@ -201,18 +224,22 @@ const MainView = new Lang.Class({
         params = Params.fill(params, { hexpand: true, vexpand: true });
         this.parent(params);
 
-        this._characterListWidgets = {};
+        this._characterLists = {};
 
         let characterList;
         for (let index in CategoryList.Category) {
             let category = CategoryList.Category[index];
             characterList = this._createCharacterList(
                 category.name, _('%s Character List').format(category.title));
+            // FIXME: Can't use GtkContainer.child_get_property.
+            characterList.title = category.title;
             this.add_titled(characterList, category.name, category.title);
         }
 
         characterList = this._createCharacterList(
             'search-result', _('Search Result Character List'));
+        // FIXME: Can't use GtkContainer.child_get_property.
+        characterList.title = "Search Result";
         this.add_named(characterList, 'search-result');
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
@@ -225,13 +252,16 @@ const MainView = new Lang.Class({
     },
 
     _createCharacterList: function(name, accessible_name) {
-        let widget = new CharacterList.CharacterListWidget({ hexpand: true,
-                                                             vexpand: true });
+        let characterList = new CharacterList.CharacterListView({});
+        characterList.get_accessible().accessible_name = accessible_name;
+
+        let scroll = characterList.get_child_by_name('character-list');
+        let widget = scroll.get_child().get_child();
         widget.connect('character-selected',
                        Lang.bind(this, this._handleCharacterSelected));
-        this._characterListWidgets[name] = widget;
-        widget.get_accessible().accessible_name = accessible_name;
-        return new CharacterList.CharacterListView({ characterList: widget });
+
+        this._characterLists[name] = characterList;
+        return characterList;
     },
 
     searchByKeywords: function(keywords) {
@@ -244,14 +274,15 @@ const MainView = new Lang.Class({
     },
 
     setPage: function(name) {
-        if (!(name in this._characterListWidgets))
+        if (!(name in this._characterLists))
             return;
 
         this.visible_child_name = name;
+        this.visible_child.setFilterFont(null);
 
-        let characterList = this._characterListWidgets[name];
         if (name == 'recent') {
             this.visible_child.setCharacters(this._recentCharacters);
+            this.visible_child.updateCharacterList();
         } else {
             let category = null;
             for (let index in CategoryList.Category) {
@@ -291,5 +322,9 @@ const MainView = new Lang.Class({
             if (response_id == Gtk.ResponseType.CLOSE)
                 dialog.destroy();
         });
+    },
+
+    setFilterFont: function(family) {
+        this.visible_child.setFilterFont(family);
     }
 });

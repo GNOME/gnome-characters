@@ -26,6 +26,25 @@
             <property name="pack-type">start</property>
 	  </packing>
 	</child>
+	<child>
+	  <object class="GtkMenuButton" id="menu-button">
+            <property name="can_focus">False</property>
+            <property name="visible">True</property>
+	    <property name="use_popover">True</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="menu-button-image">
+		<property name="visible">True</property>
+		<property name="icon-name">open-menu-symbolic</property>
+              </object>
+            </child>
+	  </object>
+	  <packing>
+            <property name="pack-type">end</property>
+	  </packing>
+	</child>
       </object>
     </child>
     <child>

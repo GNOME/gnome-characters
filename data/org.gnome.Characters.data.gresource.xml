@@ -5,6 +5,7 @@
     <file preprocess="xml-stripblanks">mainwindow.ui</file>
     <file preprocess="xml-stripblanks">character.ui</file>
     <file preprocess="xml-stripblanks">characterlist.ui</file>
+    <file preprocess="xml-stripblanks">menu.ui</file>
     <file>application.css</file>
   </gresource>
 </gresources>
