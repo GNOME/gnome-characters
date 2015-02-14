@@ -64,6 +64,15 @@ gchar          *gc_character_name         (gunichar              uc);
 
 GtkClipboard   *gc_gtk_clipboard_get      (void);
 
+/* Pango support.  PangoAttrFallback is not accessible from GI.  */
+void            gc_pango_layout_disable_fallback
+                                          (PangoLayout          *layout);
+
+gboolean        gc_pango_context_font_has_glyph
+                                          (PangoContext         *context,
+					   PangoFont            *font,
+					   gunichar              uc);
+
 G_END_DECLS
 
 #endif	/* __GC_H__ */

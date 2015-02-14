@@ -10,6 +10,9 @@
 #include <unistr.h>
 #include "confusables.h"
 
+#define PANGO_ENABLE_ENGINE 1
+#include <pango/pangofc-font.h>
+
 static const uc_block_t *all_blocks;
 static size_t all_block_count;
 
@@ -708,4 +711,53 @@ GtkClipboard *
 gc_gtk_clipboard_get (void)
 {
   return gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
+}
+
+void
+gc_pango_layout_disable_fallback (PangoLayout *layout)
+{
+  PangoAttrList *attr_list;
+
+  attr_list = pango_attr_list_new ();
+  pango_attr_list_insert (attr_list, pango_attr_fallback_new (FALSE));
+  pango_layout_set_attributes (layout, attr_list);
+}
+
+gboolean
+gc_pango_context_font_has_glyph (PangoContext *context,
+                                 PangoFont    *font,
+                                 gunichar      uc)
+{
+  if (PANGO_IS_FC_FONT (font))
+    /* Fast path when the font is loaded as PangoFcFont.  */
+    {
+      PangoFcFont *fcfont = PANGO_FC_FONT (font);
+      return pango_fc_font_has_char (fcfont, uc);
+    }
+  else
+    /* Slow path performing actual rendering.  */
+    {
+      PangoLayout *layout;
+      GError *error;
+      gchar *utf8;
+      glong items_written;
+      int retval;
+
+      utf8 = g_ucs4_to_utf8 (&uc, 1, NULL, &items_written, &error);
+      if (!utf8)
+	{
+	  g_printerr ("error in decoding: %s\n", error->message);
+	  g_error_free (error);
+	}
+
+      layout = pango_layout_new (context);
+      gc_pango_layout_disable_fallback (layout);
+      pango_layout_set_text (layout, utf8, items_written);
+      g_free (utf8);
+
+      retval = pango_layout_get_unknown_glyphs_count (layout);
+      g_object_unref (layout);
+
+      return retval == 0;
+    }
 }
