@@ -89,8 +89,7 @@ const MenuPopover = new Lang.Class({
         if (row._family == 'None')
             return true;
 
-        let name = row._family.get_name();
-        let nameWords = name.split(/\s+/).map(String.toLowerCase);
+        let nameWords = row._family.split(/\s+/).map(String.toLowerCase);
 	    return this._keywords.some(function(keyword, index, array) {
 		    return nameWords.some(function(nameWord, index, array) {
 		        return nameWord.indexOf(keyword) >= 0;
