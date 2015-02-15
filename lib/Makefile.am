@@ -46,7 +46,7 @@ typelibdir= $(pkglibdir)/girepository-1.0
 gir_DATA = $(INTROSPECTION_GIRS)
 typelib_DATA = $(gir_DATA:.gir=.typelib)
 
-EXTRA_DIST = $(gir_DATA) gen-confusables.py
+EXTRA_DIST = $(gir_DATA) gen-confusables.py libunistring.pot
 CLEANFILES = $(typelib_DATA)
 DISTCLEANFILES = $(gir_DATA)
 
