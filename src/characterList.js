@@ -31,6 +31,7 @@ const Util = imports.util;
 
 const BASELINE_OFFSET = 0.85;
 const CELLS_PER_ROW = 5;
+const NUM_ROWS = 10;
 const CELL_SIZE = 50;
 
 function getCellSize(fontDescription) {
@@ -115,7 +116,7 @@ const CharacterListWidget = new Lang.Class({
     },
 
     vfunc_get_preferred_height_for_width: function(width) {
-        let height = this._rows.length * getCellSize(this._fontDescription);
+        let height = Math.max(this._rows.length, NUM_ROWS) * getCellSize(this._fontDescription);
         return [height, height];
     },
 
@@ -207,7 +208,7 @@ const CharacterListView = new Lang.Class({
     Name: 'CharacterListView',
     Extends: Gtk.Stack,
     Template: 'resource:///org/gnome/Characters/characterlist.ui',
-    InternalChildren: ['loading-banner-spinner'],
+    InternalChildren: ['loading-spinner'],
     Properties: {
         'font': GObject.ParamSpec.string(
             'font', '', '',
@@ -263,8 +264,8 @@ const CharacterListView = new Lang.Class({
         this._spinnerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
                              Lang.bind(this, function () {
-                                 this._loading_banner_spinner.start();
-                                 this.visible_child_name = 'loading-banner';
+                                 this._loading_spinner.start();
+                                 this.visible_child_name = 'loading';
                                  this.show_all();
                              }));
     },
@@ -273,7 +274,7 @@ const CharacterListView = new Lang.Class({
         if (this._spinnerTimeoutId > 0) {
             GLib.source_remove(this._spinnerTimeoutId);
             this._spinnerTimeoutId = 0;
-            this._loading_banner_spinner.stop();
+            this._loading_spinner.stop();
         }
 
         let characters = [];
@@ -308,7 +309,7 @@ const CharacterListView = new Lang.Class({
         this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
         if (characters.length == 0) {
-            this.visible_child_name = 'search-banner';
+            this.visible_child_name = 'unavailable';
         } else {
             this.visible_child_name = 'character-list';
         }

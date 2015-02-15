@@ -1,19 +1,9 @@
-.list-row.category-list-row {
-    border-style: groove;
-    border-width: 1pt;
-    padding: 10px;
-    background-color: @theme_bg_color;
-    color: @theme_fg_color;
-}
-
-.list-row.category-list-row:selected,
-.list-row.category-list-row:selected:focus {
-    background-color: @theme_selected_bg_color;
-    color: @theme_selected_fg_color;
-}
-
 .list-row.category-list-row .category-label {
     padding: 10pt;
+}
+
+.menu-title {
+    padding: 6pt;
 }
 
 .banner {
@@ -22,7 +12,7 @@
 
 .banner-label {
     padding: 10pt;
-    font-size: large;
+    font-size: x-large;
 }
 
 .character-list {

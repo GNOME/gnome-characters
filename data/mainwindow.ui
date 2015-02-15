@@ -2,6 +2,7 @@
 <interface>
   <requires lib="gtk+" version="3.12"/>
   <template class="Gjs_MainWindow" parent="GtkApplicationWindow">
+    <property name="height-request">600</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="main-headerbar">
 	<property name="can_focus">False</property>
@@ -52,19 +53,7 @@
 	<property name="can_focus">False</property>
 	<property name="visible">True</property>
 	<property name="orientation">vertical</property>
-	<child>
-	  <object class="GtkSearchBar" id="search-bar">
-	    <property name="visible">True</property>
-	    <property name="hexpand">True</property>
-	    <child>
-	      <object class="GtkSearchEntry" id="search-entry">
-		<property name="can_focus">True</property>
-		<property name="width-request">500</property>
-		<property name="halign">center</property>
-	      </object>
-	    </child>
-	  </object>
-	</child>
+	<property name="valign">fill</property>
 	<child>
 	  <object class="GtkBox" id="main-hbox">
 	    <property name="can_focus">False</property>
@@ -74,12 +63,31 @@
 	      <object class="GtkGrid" id="sidebar-grid">
 		<property name="can_focus">False</property>
 		<property name="visible">True</property>
+		<property name="hexpand">False</property>
+		<property name="vexpand">True</property>
 		<property name="orientation">vertical</property>
+		<child>
+		  <object class="GtkSearchBar" id="search-bar">
+		    <property name="visible">True</property>
+		    <property name="halign">fill</property>
+		    <child>
+		      <object class="GtkSearchEntry" id="search-entry">
+			<property name="can_focus">True</property>
+			<property name="halign">fill</property>
+		      </object>
+		    </child>
+		  </object>
+		</child>
 		<child>
 		  <placeholder/>
 		</child>
 	      </object>
 	    </child>
+	    <child>
+              <object class="GtkVSeparator">
+		<property name="visible">True</property>
+              </object>
+            </child>
 	    <child>
 	      <placeholder/>
 	    </child>

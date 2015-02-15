@@ -95,8 +95,13 @@ const MainWindow = new Lang.Class({
         this._menu_popover = new Menu.MenuPopover({});
         this._menu_button.set_popover(this._menu_popover);
 
-        this._categoryList = new CategoryList.CategoryListWidget();
-        this._sidebar_grid.add(this._categoryList);
+        this._categoryList = new CategoryList.CategoryListWidget({ vexpand: true });
+        let scroll = new Gtk.ScrolledWindow({
+            hscrollbar_policy: Gtk.PolicyType.NEVER,
+            hexpand: false,
+        });
+        scroll.add(this._categoryList);
+        this._sidebar_grid.add(scroll);
 
         this._mainView = new MainView();
         this._main_hbox.pack_start(this._mainView, true, true, 0);
@@ -281,8 +286,12 @@ const MainView = new Lang.Class({
         this.visible_child.setFilterFont(null);
 
         if (name == 'recent') {
-            this.visible_child.setCharacters(this._recentCharacters);
-            this.visible_child.updateCharacterList();
+            if (this._recentCharacters.length == 0)
+                this.visible_child.visible_child_name = 'empty-recent';
+            else {
+                this.visible_child.setCharacters(this._recentCharacters);
+                this.visible_child.updateCharacterList();
+            }
         } else {
             let category = null;
             for (let index in CategoryList.Category) {

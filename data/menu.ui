@@ -4,10 +4,20 @@
   <template class="Gjs_MenuPopover" parent="GtkPopover">
     <property name="vexpand">True</property>
     <child>
-      <object class="GtkGrid" id="main-grid">
+      <object class="GtkGrid" id="menu-grid">
 	<property name="can_focus">False</property>
 	<property name="visible">True</property>
 	<property name="orientation">vertical</property>
+	<child>
+	  <object class="GtkLabel" id="label1">
+	    <property name="visible">True</property>
+	    <property name="halign">center</property>
+	    <property name="label" translatable="yes">Filter by font</property>
+	    <style>
+	      <class name="menu-title"/>
+	    </style>
+	  </object>
+	</child>
 	<child>
 	  <object class="GtkSearchEntry" id="search-entry">
 	    <property name="can_focus">True</property>
