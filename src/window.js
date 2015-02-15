@@ -199,6 +199,8 @@ const MainWindow = new Lang.Class({
 
     _filterFont: function(action, v) {
         let [family, length] = v.get_string()
+        if (family == '')
+            family = null;
         this._mainView.setFilterFont(family);
         this._updateTitle(this._mainView.visible_child.title, family);
     },

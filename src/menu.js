@@ -58,6 +58,13 @@ const MenuPopover = new Lang.Class({
         // This silents warning at Characters exit about this widget being
         // visible but not mapped.  Borrowed from Maps.
         this.connect('unmap', function(popover) { popover.hide(); });
+
+        // Reset filter font when this popover is closed.
+        this.connect('hide', function(popover) {
+            let toplevel = popover.get_toplevel();
+            let action = toplevel.lookup_action('filter-font');
+            action.activate(new GLib.Variant('s', ''));
+        });
     },
 
     _handleSearchChanged: function(entry) {

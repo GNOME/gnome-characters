@@ -357,6 +357,7 @@ const CharacterListView = new Lang.Class({
     setFilterFont: function(family) {
         if (family == null) {
             this._filterFontDescription = null;
+            this.updateCharacterList();
             return;
         }
 
