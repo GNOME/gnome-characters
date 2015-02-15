@@ -34,16 +34,23 @@ const MenuPopover = new Lang.Class({
         params = Params.fill(params, {});
         this.parent(params);
 
+        let row = new Gtk.ListBoxRow({ visible: true });
+        row._family = 'None';
+        row.add(new Gtk.Label({ label: _("None"),
+				                visible: true,
+                                halign: Gtk.Align.START }));
+        this._font_listbox.add(row);
+
         let context = this.get_pango_context();
         let families = context.list_families();
         families = families.sort(function(a, b) {
             return a.get_name().localeCompare(b.get_name());
         });
         for (let index in families) {
-            let row = new Gtk.ListBoxRow({ visible: true });
-            row._family = families[index];
-            row.add(new Gtk.Label({ label: row._family.get_name(),
-				    visible: true,
+            row = new Gtk.ListBoxRow({ visible: true });
+            row._family = families[index].get_name();
+            row.add(new Gtk.Label({ label: row._family,
+				                    visible: true,
                                     halign: Gtk.Align.START }));
             this._font_listbox.add(row);
         }
@@ -51,20 +58,13 @@ const MenuPopover = new Lang.Class({
         this._keywords = [];
         this._search_entry.connect('search-changed',
                                    Lang.bind(this, this._handleSearchChanged));
-        this._font_listbox.connect('row-activated',
-                                   Lang.bind(this, this._handleRowActivated));
+        this._font_listbox.connect('row-selected',
+                                   Lang.bind(this, this._handleRowSelected));
         this._font_listbox.set_filter_func(Lang.bind(this, this._filterFunc));
 
         // This silents warning at Characters exit about this widget being
         // visible but not mapped.  Borrowed from Maps.
         this.connect('unmap', function(popover) { popover.hide(); });
-
-        // Reset filter font when this popover is closed.
-        this.connect('hide', function(popover) {
-            let toplevel = popover.get_toplevel();
-            let action = toplevel.lookup_action('filter-font');
-            action.activate(new GLib.Variant('s', ''));
-        });
     },
 
     _handleSearchChanged: function(entry) {
@@ -75,25 +75,26 @@ const MenuPopover = new Lang.Class({
         return true;
     },
 
-    _handleRowActivated: function(listBox, row) {
+    _handleRowSelected: function(listBox, row) {
         if (row != null) {
             let toplevel = this.get_toplevel();
             let action = toplevel.lookup_action('filter-font');
-            action.activate(new GLib.Variant('s', row._family.get_name()));
+            action.activate(new GLib.Variant('s', row._family));
         }
     },
 
     _filterFunc: function(row) {
         if (this._keywords.length == 0)
-	    return true;
-	else {
-            let name = row._family.get_name();
-            let nameWords = name.split(/\s+/).map(String.toLowerCase);
+	        return true;
+        if (row._family == 'None')
+            return true;
+
+        let name = row._family.get_name();
+        let nameWords = name.split(/\s+/).map(String.toLowerCase);
 	    return this._keywords.some(function(keyword, index, array) {
-		return nameWords.some(function(nameWord, index, array) {
-		    return nameWord.indexOf(keyword) >= 0;
-		});
+		    return nameWords.some(function(nameWord, index, array) {
+		        return nameWord.indexOf(keyword) >= 0;
+		    });
 	    });
-	}
     }
 });

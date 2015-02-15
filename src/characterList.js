@@ -369,5 +369,5 @@ const CharacterListView = new Lang.Class({
             this._filterFontDescription = fontDescription;
             this.updateCharacterList();
         }
-    },
+    }
 });

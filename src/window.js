@@ -61,6 +61,7 @@ const MainWindow = new Lang.Class({
 
         this._searchActive = false;
         this._searchKeywords = [];
+        this._filterFontFamily = null;
 
         Util.initActions(this,
                          [{ name: 'about',
@@ -120,6 +121,7 @@ const MainWindow = new Lang.Class({
         if (this._searchActive == v)
             return;
 
+        this._categoryList.unselect_all();
         this._searchActive = v;
         this.notify('search-active');
     },
@@ -166,10 +168,11 @@ const MainWindow = new Lang.Class({
         });
     },
 
-    _updateTitle: function(title, filterFont) {
-        if (filterFont) {
+    _updateTitle: function(title) {
+        if (this._filterFontFamily) {
             this._main_headerbar.title =
-                _("%s (%s only)").format(Gettext.gettext(title), filterFont);
+                _("%s (%s only)").format(Gettext.gettext(title),
+                                         this._filterFontFamily);
         } else {
             this._main_headerbar.title = Gettext.gettext(title);
         }
@@ -188,8 +191,8 @@ const MainWindow = new Lang.Class({
         }
 
         Util.assertNotEqual(category, null);
-        this._mainView.setPage(category.name);
-        this._updateTitle(category.title, null);
+        this._mainView.setPage(category.name, this._filterFontFamily);
+        this._updateTitle(category.title);
     },
 
     _character: function(action, v) {
@@ -199,10 +202,11 @@ const MainWindow = new Lang.Class({
 
     _filterFont: function(action, v) {
         let [family, length] = v.get_string()
-        if (family == '')
+        if (family == 'None')
             family = null;
         this._mainView.setFilterFont(family);
-        this._updateTitle(this._mainView.visible_child.title, family);
+        this._filterFontFamily = family;
+        this._updateTitle(this._mainView.visible_child.title);
     },
 });
 
@@ -280,12 +284,12 @@ const MainView = new Lang.Class({
         this.visible_child.cancelSearch();
     },
 
-    setPage: function(name) {
+    setPage: function(name, filterFontFamily) {
         if (!(name in this._characterLists))
             return;
 
         this.visible_child_name = name;
-        this.visible_child.setFilterFont(null);
+        this.visible_child.setFilterFont(filterFontFamily);
 
         if (name == 'recent') {
             if (this._recentCharacters.length == 0)
