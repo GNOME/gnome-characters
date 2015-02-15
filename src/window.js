@@ -96,7 +96,8 @@ const MainWindow = new Lang.Class({
         this._menu_popover = new Menu.MenuPopover({});
         this._menu_button.set_popover(this._menu_popover);
 
-        this._categoryList = new CategoryList.CategoryListWidget({ vexpand: true });
+        this._categoryList =
+            new CategoryList.CategoryListWidget({ vexpand: true });
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
@@ -105,6 +106,12 @@ const MainWindow = new Lang.Class({
         this._sidebar_grid.add(scroll);
 
         this._mainView = new MainView();
+
+        if (this._mainView.recentCharacters.length == 0) {
+            let row = this._categoryList.get_row_at_index(1);
+            this._categoryList.select_row(row);
+        }
+
         this._main_hbox.pack_start(this._mainView, true, true, 0);
         this._main_grid.show_all();
 
@@ -226,8 +233,8 @@ const MainView = new Lang.Class({
 
     set max_recent_characters(v) {
         this._maxRecentCharacters = v;
-        if (this._recentCharacters.length > this._maxRecentCharacters)
-            this._recentCharacters = this._recentCharacters.slice(
+        if (this.recentCharacters.length > this._maxRecentCharacters)
+            this.recentCharacters = this.recentCharacters.slice(
                 0, this._maxRecentCharacters);
     },
 
@@ -255,7 +262,7 @@ const MainView = new Lang.Class({
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
         let recentCharacters = Main.settings.get_value('recent-characters');
-        this._recentCharacters = recentCharacters.get_strv();
+        this.recentCharacters = recentCharacters.get_strv();
         this._maxRecentCharacters = 100;
         Main.settings.bind('max-recent-characters', this,
                            'max-recent-characters',
@@ -292,10 +299,10 @@ const MainView = new Lang.Class({
         this.visible_child.setFilterFont(filterFontFamily);
 
         if (name == 'recent') {
-            if (this._recentCharacters.length == 0)
+            if (this.recentCharacters.length == 0)
                 this.visible_child.visible_child_name = 'empty-recent';
             else {
-                this.visible_child.setCharacters(this._recentCharacters);
+                this.visible_child.setCharacters(this.recentCharacters);
                 this.visible_child.updateCharacterList();
             }
         } else {
@@ -312,14 +319,14 @@ const MainView = new Lang.Class({
     },
 
     selectCharacter: function(uc) {
-        if (this._recentCharacters.indexOf(uc) < 0) {
-            this._recentCharacters.push(uc);
-            if (this._recentCharacters.length > this._maxRecentCharacters)
-                this._recentCharacters = this._recentCharacters.slice(
+        if (this.recentCharacters.indexOf(uc) < 0) {
+            this.recentCharacters.push(uc);
+            if (this.recentCharacters.length > this._maxRecentCharacters)
+                this.recentCharacters = this.recentCharacters.slice(
                     0, this._maxRecentCharacters);
             Main.settings.set_value(
                 'recent-characters',
-                GLib.Variant.new_strv(this._recentCharacters));
+                GLib.Variant.new_strv(this.recentCharacters));
         }
     },
 

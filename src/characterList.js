@@ -257,9 +257,18 @@ const CharacterListView = new Lang.Class({
         this._cancellable = new Gio.Cancellable();
     },
 
+    _stopSpinner: function() {
+        if (this._spinnerTimeoutId > 0) {
+            GLib.source_remove(this._spinnerTimeoutId);
+            this._spinnerTimeoutId = 0;
+            this._loading_spinner.stop();
+        }
+        this._cancellable.reset();
+    },
+
     _startSearch: function() {
         this._cancellable.cancel();
-        this._cancellable.reset();
+        this._stopSpinner();
 
         this._spinnerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
@@ -271,11 +280,7 @@ const CharacterListView = new Lang.Class({
     },
 
     _finishSearch: function(result) {
-        if (this._spinnerTimeoutId > 0) {
-            GLib.source_remove(this._spinnerTimeoutId);
-            this._spinnerTimeoutId = 0;
-            this._loading_spinner.stop();
-        }
+        this._stopSpinner();
 
         let characters = [];
         for (let index = 0; index < result.len; index++) {
@@ -317,7 +322,7 @@ const CharacterListView = new Lang.Class({
     },
 
     searchByCategory: function(category) {
-        this._startSearch();
+        this._startSearch()
         Gc.search_by_category(
             category.category,
             -1,
