@@ -19,8 +19,7 @@ noinst_PROGRAMS = gen-libunistring-pot
 gen_libunistring_pot_SOURCES = gen-libunistring-pot.c
 gen_libunistring_pot_LDADD = $(LIBGC_LIBS) $(LTLIBICONV) $(LTLIBUNISTRING) $(builddir)/../gllib/libgnu.la
 
-BUILT_SOURCES = libunistring.pot
-libunistring.pot: gen-libunistring-pot
+libunistring.pot: | gen-libunistring-pot
 	$(AM_V_GEN) $(builddir)/gen-libunistring-pot | $(MSGUNIQ) > $@
 
 include $(INTROSPECTION_MAKEFILE)
