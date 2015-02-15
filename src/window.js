@@ -204,7 +204,7 @@ const MainWindow = new Lang.Class({
 
     _character: function(action, v) {
         let [uc, length] = v.get_string()
-        this._mainView.selectCharacter(uc);
+        this._mainView.addToRecent(uc);
     },
 
     _filterFont: function(action, v) {
@@ -318,7 +318,7 @@ const MainView = new Lang.Class({
         }
     },
 
-    selectCharacter: function(uc) {
+    addToRecent: function(uc) {
         if (this.recentCharacters.indexOf(uc) < 0) {
             this.recentCharacters.push(uc);
             if (this.recentCharacters.length > this._maxRecentCharacters)
@@ -331,12 +331,13 @@ const MainView = new Lang.Class({
     },
 
     _handleCharacterSelected: function(widget, uc) {
-        this.selectCharacter(uc);
+        this.addToRecent(uc);
 
         let dialog = new Character.CharacterDialog({
             character: uc,
             modal: true,
-            transient_for: this.get_toplevel()
+            transient_for: this.get_toplevel(),
+            fontDescription: this.visible_child.getFontDescription()
         });
 
         dialog.show();

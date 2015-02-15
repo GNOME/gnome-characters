@@ -33,34 +33,10 @@ const CharacterDialog = new Lang.Class({
     Template: 'resource:///org/gnome/Characters/character.ui',
     InternalChildren: ['main-stack', 'character-label', 'detail-label',
                        'copy-button', 'related-listbox'],
-    Properties: {
-        'font': GObject.ParamSpec.string(
-            'font', '', '',
-            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            'Cantarell')
-    },
-
-    get font() {
-        return this._font;
-    },
-
-    set font(v) {
-        if (v == this._font)
-            return;
-
-        this._font = v;
-        let description = Pango.FontDescription.from_string(this._font);
-        this._character_label.override_font(description);
-
-        let children = this._related_listbox.get_children();
-        for (let index in children) {
-            let label = children[index].get_children()[0];
-            label.override_font(description);
-        }
-    },
 
     _init: function(params) {
-        let filtered = Params.filter(params, { character: null });
+        let filtered = Params.filter(params, { character: null,
+                                               fontDescription: null });
         params = Params.fill(params, { use_header_bar: true,
                                        width_request: 400,
                                        height_request: 400 });
@@ -86,9 +62,7 @@ const CharacterDialog = new Lang.Class({
                     this._main_stack.visible_child_name = 'character';
             }));
 
-        Main.settings.bind('font', this, 'font',
-                           Gio.SettingsBindFlags.DEFAULT);
-
+        this._character_label.override_font(filtered.fontDescription);
         this._setCharacter(filtered.character);
     },
 

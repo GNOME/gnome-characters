@@ -295,6 +295,12 @@ const CharacterListView = new Lang.Class({
         this._characters = characters;
     },
 
+    getFontDescription: function() {
+        if (this._filterFontDescription)
+            return this._filterFontDescription;
+        return this._fontDescription;
+    },
+
     updateCharacterList: function() {
         let characters = this._characters;
         let fontDescription = this._fontDescription;
