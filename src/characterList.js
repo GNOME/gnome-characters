@@ -355,17 +355,18 @@ const CharacterListView = new Lang.Class({
     },
 
     setFilterFont: function(family) {
+        let fontDescription;
         if (family == null) {
-            this._filterFontDescription = null;
-            this.updateCharacterList();
-            return;
+            fontDescription = null;
+        } else {
+            fontDescription = Pango.FontDescription.from_string(family);
+            fontDescription.set_size(this._fontDescription.get_size());
         }
 
-        let fontDescription = Pango.FontDescription.from_string(family);
-        fontDescription.set_size(this._fontDescription.get_size());
-
-        if (!(this._filterFontDescription &&
-              fontDescription.equal(this._filterFontDescription))) {
+        if ((this._filterFontDescription != null && fontDescription == null) ||
+            (this._filterFontDescription == null && fontDescription != null) ||
+            (this._filterFontDescription != null && fontDescription != null &&
+             !fontDescription.equal(this._filterFontDescription))) {
             this._filterFontDescription = fontDescription;
             this.updateCharacterList();
         }
