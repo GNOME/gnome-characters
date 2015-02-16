@@ -110,6 +110,10 @@ const CharacterListWidget = new Lang.Class({
             this.emit('character-selected', this._characters[index]);
     },
 
+    vfunc_get_request_mode: function() {
+        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
+    },
+
     vfunc_get_preferred_height: function() {
         let [minWidth, natWidth] = this.vfunc_get_preferred_width();
         return this.vfunc_get_preferred_height_for_width(minWidth);
