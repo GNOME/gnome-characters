@@ -1,3 +1,22 @@
+3.15.90
+===
+
+- Support character filtering by font
+- Bundle Gnulib libunistring modules to provide Unicode 7.0.0 support,
+  which will be compiled in only when the system libunistring is < 0.9.5
+- Bug 740260 - Emoticons section - characters are cut off at the bottom
+- Bug 744331 - Don't default to recently used when it is empty
+- Bug 744479 - Unicode text should be selectable
+
+New And Updated Translations
+============================
+Balázs Úr (hu)
+Christian Kirbach (de)
+Daniel Mustieles (es)
+Enrico Nicoletto (pt_BR)
+Marek Černocký (cs)
+Мирослав Николић (sr) (sr@latin)
+
 3.15.2
 ===
 
