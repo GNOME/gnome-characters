@@ -1,6 +1,6 @@
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
-// Copyright (C) 2014  Daiki Ueno <dueno@src.gnome.org>
+// Copyright (C) 2014-2015  Daiki Ueno <dueno@src.gnome.org>
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
