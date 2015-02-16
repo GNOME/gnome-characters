@@ -163,7 +163,7 @@ const MainWindow = new Lang.Class({
               license_type: Gtk.License.GPL_2_0,
               logo_icon_name: 'org.gnome.Characters',
               version: pkg.version,
-              website: 'http://www.example.com/gnome-characters/',
+              // website: 'https://wiki.gnome.org/Design/Apps/CharacterMap',
               wrap_license: true,
               modal: true,
               transient_for: this
