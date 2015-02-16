@@ -90,6 +90,8 @@ const CategoryListRowWidget = new Lang.Class({
         this.parent(params);
         this.category = category;
         this.get_style_context().add_class('category-list-row');
+        this.get_accessible().accessible_name =
+            _('%s Category List Row').format(category.title);
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.add(hbox);

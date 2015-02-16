@@ -29,7 +29,7 @@ PAGE_LABELS = [
 
 class Page(object):
     def __init__(self, app, label):
-        self.button = app.child(label)
+        self.button = app.child('%s Category List Row' % label)
         self.character_list = app.child('%s Character List' % label)
 
 init()
@@ -51,7 +51,12 @@ try:
     for label, page in pages.items():
         assert page.button.showing
         if label in PAGE_LABELS:
-            assert not page.character_list.showing
+            # for the first time, recent characters are empty and
+            # 'Punctuation' tab should be selected.
+            if label == 'Punctuation':
+                assert page.character_list.showing
+            else:
+                assert not page.character_list.showing
 
     # selection mode
     for label1 in PAGE_LABELS:
