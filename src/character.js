@@ -83,7 +83,8 @@ const CharacterDialog = new Lang.Class({
             hbox.pack_start(characterLabel, false, false, 2);
 
             let nameLabel = new Gtk.Label({ label: Util.capitalize(name),
-                                            halign: Gtk.Align.START });
+                                            halign: Gtk.Align.START,
+                                            ellipsize: Pango.EllipsizeMode.END });
             hbox.pack_start(nameLabel, true, true, 0);
 
             let row = new Gtk.ListBoxRow();
