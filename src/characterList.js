@@ -31,7 +31,7 @@ const Util = imports.util;
 
 const BASELINE_OFFSET = 0.85;
 const CELLS_PER_ROW = 5;
-const NUM_ROWS = 10;
+const NUM_ROWS = 5;
 const CELL_SIZE = 50;
 
 function getCellSize(fontDescription) {
