@@ -1,8 +1,7 @@
 AC_PREREQ(2.63)
 AC_INIT([org.gnome.Characters], [3.15.2],
-        [bugs@example.com],
-        [gnome-characters],
-        [http://www.example.com/gnome-characters/])
+        [https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters],
+        [gnome-characters])
 
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
