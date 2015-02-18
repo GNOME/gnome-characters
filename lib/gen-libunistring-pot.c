@@ -10,7 +10,10 @@ main (int argc, char **argv)
   const uc_block_t *blocks;
   size_t count, i;
 
-#define PAIR(str) printf ("msgid \"%s\"\nmsgstr \"\"\n\n", str)
+#define PAIR(str) printf ("\
+#. TRANSLATORS: this is a string from libunistring; you can skip it for now\n\
+msgid \"%s\"\n\
+msgstr \"\"\n\n", str)
   PAIR (uc_general_category_long_name (UC_CATEGORY_L));
   PAIR (uc_general_category_long_name (UC_CATEGORY_LC));
   PAIR (uc_general_category_long_name (UC_CATEGORY_Lu));
