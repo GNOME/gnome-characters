@@ -161,7 +161,7 @@ const MainWindow = new Lang.Class({
               comments: _("Character Map"),
               copyright: 'Copyright 2014-2015 Daiki Ueno',
               license_type: Gtk.License.GPL_2_0,
-              logo_icon_name: 'org.gnome.Characters',
+              logo_icon_name: 'gnome-characters',
               version: pkg.version,
               // website: 'https://wiki.gnome.org/Design/Apps/CharacterMap',
               wrap_license: true,

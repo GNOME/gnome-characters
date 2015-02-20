@@ -2,7 +2,7 @@
 Type=Application
 _Name=Characters
 _Comment=Utility application to find and insert unusual characters
-Icon=org.gnome.Characters
+Icon=gnome-characters
 Exec=gapplication launch org.gnome.Characters
 DBusActivatable=true
 StartupNotify=true

@@ -7,8 +7,15 @@ nobase_icon_DATA = \
 	gnome/scalable/categories/characters-picture-symbolic.svg \
 	gnome/scalable/categories/characters-currency-symbolic.svg \
 	gnome/scalable/categories/characters-math-symbolic.svg \
-	gnome/scalable/categories/characters-latin-symbolic.svg
-EXTRA_DIST = $(nobase_icon_DATA) characters-stencils.svg render-symbolic.rb
+	gnome/scalable/categories/characters-latin-symbolic.svg \
+	hicolor/16x16/apps/gnome-characters.png \
+	hicolor/22x22/apps/gnome-characters.png \
+	hicolor/32x32/apps/gnome-characters.png \
+	hicolor/48x48/apps/gnome-characters.png \
+	hicolor/256x256/apps/gnome-characters.png
+
+EXTRA_DIST = $(nobase_icon_DATA) hicolor/gnome-characters.svg \
+	characters-stencils.svg render-symbolic.rb
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/gnome -t $(datadir)/icons/hicolor; gtk-update-icon-cache -f -t $(datadir)/icons/HighContrast
 
