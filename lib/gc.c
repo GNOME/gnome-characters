@@ -271,7 +271,7 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_PICTURE:
       {
-	static uc_block_t picture_blocks[2];
+	static uc_block_t picture_blocks[3];
 	static gsize picture_blocks_size = 0;
 	static gsize picture_blocks_initialized = 0;
 	if (g_once_init_enter (&picture_blocks_initialized))
@@ -285,6 +285,11 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 		      sizeof (uc_block_t));
 	    /* 2700..27BF; Dingbats */
 	    block = uc_block (0x2700);
+	    if (block)
+	      memcpy (&picture_blocks[picture_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    /* 1F300..1F5FF; Miscellaneous Symbols and Pictographs */
+	    block = uc_block (0x1F300);
 	    if (block)
 	      memcpy (&picture_blocks[picture_blocks_size++], block,
 		      sizeof (uc_block_t));
