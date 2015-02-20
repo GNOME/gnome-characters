@@ -16,14 +16,6 @@
 static const uc_block_t *all_blocks;
 static size_t all_block_count;
 
-/* libunistring <= 0.9.4 doesn't have Emoticons block defined.  */
-static const uc_block_t emoticon_block =
-  {
-    0x1F600,
-    0x1F64F,
-    "Emoticons"
-  };
-
 /* Bullets are not specially categorized in the Unicode standard.
    Use the character list from UTR#25 "Unicode Support for Mathematics".  */
 static const gunichar bullet_characters[] =
@@ -328,21 +320,15 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 
 	    /* 1F600..1F64F; Emoticons */
 	    block = uc_block (0x1F600);
-
-	    /* libunistring <= 0.9.4 doesn't have Emoticons block defined.  */
-	    if (!block)
-	      block = &emoticon_block;
-
-	    memcpy (&emoticon_blocks[emoticon_blocks_size++], block,
-		    sizeof (uc_block_t));
+	    if (block)
+	      memcpy (&emoticon_blocks[emoticon_blocks_size++], block,
+		      sizeof (uc_block_t));
 	    g_once_init_leave (&emoticon_blocks_initialized, 1);
 	  }
 	gc_character_iter_init_for_blocks (iter,
 					   emoticon_blocks,
 					   emoticon_blocks_size);
-	/* libunistring <= 0.9.4 doesn't have Emoticons block defined
-	   and we can't use uc_is_print() here.  */
-	iter->filter = filter_all;
+	iter->filter = filter_is_print;
 	return;
       }
     }
