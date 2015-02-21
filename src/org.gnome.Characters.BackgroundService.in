@@ -1,0 +1,6 @@
+#!@GJS@
+imports.package.init({ name: "org.gnome.Characters",
+                       version: "@PACKAGE_VERSION@",
+                       prefix: "@prefix@",
+                       libdir: "@libdir@" });
+imports.package.run(imports.service);

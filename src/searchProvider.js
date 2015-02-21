@@ -1,0 +1,125 @@
+// -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
+//
+// Copyright (c) 2013 Giovanni Campagna <scampa.giovanni@gmail.com>
+// Copyright (C) 2015  Daiki Ueno <dueno@src.gnome.org>
+//
+// Gnome Weather is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by the
+// Free Software Foundation; either version 2 of the License, or (at your
+// option) any later version.
+//
+// Gnome Weather is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+// or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+// for more details.
+//
+// You should have received a copy of the GNU General Public License along
+// with Gnome Weather; if not, write to the Free Software Foundation,
+// Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
+const Lang = imports.lang;
+const Gc = imports.gi.Gc;
+const Util = imports.util;
+
+const MAX_SEARCH_RESULTS = 100
+
+const SearchProviderInterface = Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0).toArray().toString();
+
+const SearchProvider = new Lang.Class({
+    Name: 'WeatherSearchProvider',
+
+    _init: function(application) {
+        this._app = application;
+
+        this._impl = Gio.DBusExportedObject.wrapJSObject(SearchProviderInterface, this);
+        this._cancellable = new Gio.Cancellable();
+    },
+
+    export: function(connection, path) {
+        return this._impl.export(connection, path);
+    },
+
+    unexport: function(connection) {
+        return this._impl.unexport_from_connection(connection);
+    },
+
+    _runQuery: function(keywords, invocation) {
+        this._cancellable.cancel();
+        this._cancellable.reset();
+
+        Gc.search_by_keywords(
+            keywords.map(String.toUpperCase),
+            MAX_SEARCH_RESULTS,
+            this._cancellable,
+            Lang.bind(this, function(source_object, res, user_data) {
+                let characters = [];
+                try {
+                    let result = Gc.search_finish(res);
+                    for (let index = 0; index < result.len; index++) {
+                        characters.push(Gc.search_result_get(result, index));
+                    }
+                } catch (e) {
+                    log("Failed to search by keywords: " + e);
+                }
+                invocation.return_value(new GLib.Variant('(as)', [characters]));
+            }));
+    },
+
+    GetInitialResultSetAsync: function(params, invocation) {
+        this._app.hold();
+        this._runQuery(params[0], invocation);
+    },
+
+    GetSubsearchResultSetAsync: function(params, invocation) {
+        this._app.hold();
+        this._runQuery(params[1], invocation);
+    },
+
+    GetResultMetas: function(identifiers) {
+        this._app.hold();
+
+        let ret = [];
+
+        for (let i = 0; i < identifiers.length; i++) {
+            let character = identifiers[i];
+            let codePoint = character.charCodeAt(0);
+            let codePointHex = codePoint.toString(16).toUpperCase();
+            let name = Gc.character_name(character);
+            if (name == null)
+                name = _("Unknown character name");
+            else
+                name = Util.capitalize(name);
+            let summary = _("U+%s, %s: %s").format(codePointHex,
+                                                   character,
+                                                   name);
+            ret.push({ name: new GLib.Variant('s', name),
+                       id: new GLib.Variant('s', identifiers[i]),
+                       description: new GLib.Variant('s', summary),
+                       icon: (new Gio.ThemedIcon({ name: 'gnome-characters' })).serialize()
+                     });
+        }
+
+        this._app.release();
+
+        return ret;
+    },
+
+    _getPlatformData: function(timestamp) {
+        return {'desktop-startup-id': new GLib.Variant('s', '_TIME' + timestamp) };
+    },
+
+    ActivateResult: function(id, terms, timestamp) {
+        let clipboard = Gc.gtk_clipboard_get();
+        // FIXME: GLib.unichar_to_utf8() has missing (nullable)
+        // annotation to the outbuf argument.
+        let outbuf = '      ';
+        let length = GLib.unichar_to_utf8(id, outbuf);
+        clipboard.set_text(id, length);
+    },
+
+    LaunchSearch: function(terms, timestamp) {
+        // not implemented
+    },
+});
