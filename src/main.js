@@ -62,6 +62,12 @@ const MyApplication = new Lang.Class({
         this.quit();
     },
 
+    _onSearch: function(action, parameter) {
+        let window = new Window.MainWindow({ application: this });
+        window.setSearchKeywords(parameter.get_strv());
+        window.show();
+    },
+
     _initAppMenu: function() {
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/app-menu.ui');
@@ -77,7 +83,10 @@ const MyApplication = new Lang.Class({
 
         Util.initActions(this,
                          [{ name: 'quit',
-                            activate: this._onQuit }]);
+                            activate: this._onQuit },
+                          { name: 'search',
+                            activate: this._onSearch,
+                            parameter_type: new GLib.VariantType('as') }]);
         this._initAppMenu();
 
         settings = Util.getSettings('org.gnome.Characters',

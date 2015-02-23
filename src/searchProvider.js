@@ -106,10 +106,6 @@ const SearchProvider = new Lang.Class({
         return ret;
     },
 
-    _getPlatformData: function(timestamp) {
-        return {'desktop-startup-id': new GLib.Variant('s', '_TIME' + timestamp) };
-    },
-
     ActivateResult: function(id, terms, timestamp) {
         let clipboard = Gc.gtk_clipboard_get();
         // FIXME: GLib.unichar_to_utf8() has missing (nullable)
@@ -119,7 +115,38 @@ const SearchProvider = new Lang.Class({
         clipboard.set_text(id, length);
     },
 
-    LaunchSearch: function(terms, timestamp) {
-        // not implemented
+    _getPlatformData: function(timestamp) {
+        return {'desktop-startup-id': new GLib.Variant('s', '_TIME' + timestamp) };
     },
+
+    _activateAction: function(action, parameter, timestamp) {
+        let wrappedParam;
+        if (parameter)
+            wrappedParam = [parameter];
+        else
+            wrappedParam = [];
+
+        Gio.DBus.session.call('org.gnome.Characters',
+                              '/org/gnome/Characters',
+                              'org.freedesktop.Application',
+                              'ActivateAction',
+                              new GLib.Variant('(sava{sv})', [action, wrappedParam,
+                                                              this._getPlatformData(timestamp)]),
+                              null,
+                              Gio.DBusCallFlags.NONE,
+                              -1, null, Lang.bind(this, function(connection, result) {
+                                  try {
+                                      connection.call_finish(result);
+                                  } catch(e) {
+                                      log('Failed to launch application: ' + e);
+                                  }
+
+                                  this._app.release();
+                              }));
+    },
+
+    LaunchSearch: function(terms, timestamp) {
+        this._activateAction('search', new GLib.Variant('as', terms),
+                             timestamp);
+    }
 });

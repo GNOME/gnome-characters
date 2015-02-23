@@ -215,6 +215,11 @@ const MainWindow = new Lang.Class({
         this._filterFontFamily = family;
         this._updateTitle(this._mainView.visible_child.title);
     },
+
+    setSearchKeywords: function(keywords) {
+        this.search_active = keywords.length > 0;
+        this._search_entry.set_text(keywords.join(' '));
+    }
 });
 
 const MainView = new Lang.Class({
