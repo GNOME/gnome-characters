@@ -67,6 +67,10 @@ const CharacterDialog = new Lang.Class({
     },
 
     _finishSearch: function(result) {
+        let children = this._related_listbox.get_children();
+        for (let index in children)
+            this._related_listbox.remove(children[index]);
+
         for (let index = 0; index < result.len; index++) {
             let uc = Gc.search_result_get(result, index);
             let name = Gc.character_name(uc);
@@ -108,10 +112,6 @@ const CharacterDialog = new Lang.Class({
         let codePoint = this._character.charCodeAt(0);
         let codePointHex = codePoint.toString(16).toUpperCase();
         this._detail_label.label = _("Unicode U+%04s").format(codePointHex);
-
-        let children = this._related_listbox.get_children();
-        for (let index in children)
-            this._related_listbox.remove(children[index]);
 
         this._cancellable.cancel();
         this._cancellable.reset();
