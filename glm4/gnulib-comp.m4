@@ -207,6 +207,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module uniname/base:
   # Code from module uniname/uniname:
   # Code from module uninorm/base:
+  # Code from module uninorm/canonical-decomposition:
+  # Code from module uninorm/decomposition-table:
   # Code from module unistr/base:
   # Code from module unistr/u32-to-u8:
   # Code from module unistr/u8-uctomb:
@@ -476,6 +478,8 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_LIBHEADER([0.9.5], [uniname.h])
   gl_LIBUNISTRING_MODULE([0.9.5], [uniname/uniname])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [uninorm.h])
+  gl_LIBUNISTRING_MODULE([0.9.5], [uninorm/canonical-decomposition])
+  AC_REQUIRE([AC_C_INLINE])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [unistr.h])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u32-to-u8])
   gl_MODULE_INDICATOR([unistr/u8-uctomb])
@@ -912,6 +916,11 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/uniname/uniname.c
   lib/uniname/uninames.h
   lib/uninorm.in.h
+  lib/uninorm/canonical-decomposition.c
+  lib/uninorm/decomposition-table.c
+  lib/uninorm/decomposition-table.h
+  lib/uninorm/decomposition-table1.h
+  lib/uninorm/decomposition-table2.h
   lib/unistr.in.h
   lib/unistr/u32-to-u8.c
   lib/unistr/u8-uctomb-aux.c

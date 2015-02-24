@@ -35,6 +35,7 @@ test -z "$GNULIB_SRCDIR" || \
 		    unictype/mirror \
 		    unictype/property-all \
 		    unictype/scripts-all \
+		    uninorm/canonical-decomposition \
 		    unistr/u32-to-u8 \
 		    unitypes \
 		    uniname/uniname ;
