@@ -7,6 +7,7 @@
 #include <unicase.h>
 #include <unictype.h>
 #include <uniname.h>
+#include <uninorm.h>
 #include <unistr.h>
 #include "confusables.h"
 
@@ -643,6 +644,43 @@ gc_search_related_thread (GTask        *task,
     {
       uc = mirror;
       g_array_append_val (result, uc);
+    }
+
+  if (uc_is_general_category (data->uc, UC_CATEGORY_L))
+    {
+      const uc_script_t *script;
+      ucs4_t decomposition[UC_DECOMPOSITION_MAX_LENGTH];
+      int length;
+
+      script = uc_script (data->uc);
+      if (script && strcmp (script->name, "Latin") == 0)
+	{
+	  ucs4_t block_starters[4] = { 0x0000, 0x0080, 0x0100, 0x0180 };
+	  ucs4_t base;
+	  int i;
+
+	  length = uc_canonical_decomposition (data->uc, decomposition);
+	  if (length > 0)
+	    {
+	      base = decomposition[0];
+	      g_array_append_val (result, base);
+	    }
+	  else
+	    base = data->uc;
+
+	  for (i = 0; i < G_N_ELEMENTS (block_starters); i++)
+	    {
+	      const uc_block_t *block;
+
+	      block = uc_block (block_starters[i]);
+	      for (uc = block->start; uc < block->end; uc++)
+		{
+		  length = uc_canonical_decomposition (uc, decomposition);
+		  if (length > 0 && decomposition[0] == base)
+		    g_array_append_val (result, uc);
+		}
+	    }
+	}
     }
 
   gc_add_confusables (data, result, cancellable);
