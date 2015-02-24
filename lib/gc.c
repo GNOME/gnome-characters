@@ -271,7 +271,7 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_PICTURE:
       {
-	static uc_block_t picture_blocks[3];
+	static uc_block_t picture_blocks[6];
 	static gsize picture_blocks_size = 0;
 	static gsize picture_blocks_initialized = 0;
 	if (g_once_init_enter (&picture_blocks_initialized))
@@ -285,6 +285,21 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 		      sizeof (uc_block_t));
 	    /* 2700..27BF; Dingbats */
 	    block = uc_block (0x2700);
+	    if (block)
+	      memcpy (&picture_blocks[picture_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    /* 1F000..1F02F; Mahjong Tiles */
+	    block = uc_block (0x1F000);
+	    if (block)
+	      memcpy (&picture_blocks[picture_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    /* 1F030..1F09F; Domino Tiles */
+	    block = uc_block (0x1F030);
+	    if (block)
+	      memcpy (&picture_blocks[picture_blocks_size++], block,
+		      sizeof (uc_block_t));
+	    /* 1F0A0..1F0FF; Playing Cards */
+	    block = uc_block (0x1F0A0);
 	    if (block)
 	      memcpy (&picture_blocks[picture_blocks_size++], block,
 		      sizeof (uc_block_t));
