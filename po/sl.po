@@ -1,0 +1,222 @@
+# Slovenian translation for gnome-characters.
+# Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+#
+# Matej Urbančič <mateju@svn.gnome.org>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-02-28 19:09+0000\n"
+"PO-Revision-Date: 2015-02-28 21:53+0100\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"Language: sl_SI\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../data/app-menu.ui.h:1
+#, fuzzy
+msgid "About Characters"
+msgstr "Vstavi znake"
+
+#: ../data/app-menu.ui.h:2
+msgid "Quit"
+msgstr "Končaj"
+
+#: ../data/characterlist.ui.h:1
+#, fuzzy
+msgid "Search produced empty result"
+msgstr "Vrstni red stolpcev z rezultati iskanja"
+
+#: ../data/characterlist.ui.h:2
+#, fuzzy
+msgid "Try another search criteria."
+msgstr "Najdi kriterije iskanja znotraj datotek"
+
+#: ../data/characterlist.ui.h:3
+msgid "Loading..."
+msgstr "Nalaganje ..."
+
+#: ../data/characterlist.ui.h:4
+#, fuzzy
+msgid "No recent characters found"
+msgstr "Nedavnih predlog ni mogoče najti."
+
+#: ../data/characterlist.ui.h:5
+msgid "Characters will appear here if you use them."
+msgstr ""
+
+#: ../data/character.ui.h:1
+#, fuzzy
+msgid "Copy Character"
+msgstr "Lastnost gesla"
+
+#: ../data/mainwindow.ui.h:1
+#, fuzzy
+msgid "Current page"
+msgstr "Trenutna stran"
+
+#: ../data/menu.ui.h:1
+#, fuzzy
+msgid "Filter by font"
+msgstr "Samodejni filter onemogoča %s"
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the charactrer you are looking for "
+"by searching for keywords."
+msgstr ""
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+
+#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+#, fuzzy
+msgid "Characters"
+msgstr "znakih"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+#, fuzzy
+msgid "characters;unicode;"
+msgstr "Znaki Unicode 0x%04X-0x%04X"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+#, fuzzy
+msgid "Font to display characters"
+msgstr "Pisava, uporabljena za prikaz podnapisov"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr ""
+
+#: ../data/org.gnome.Characters.gschema.xml.h:3
+#, fuzzy
+msgid "Maximum recent characters"
+msgstr "Največ nedavnih datotek"
+
+#: ../src/categoryList.js:31
+#, fuzzy
+msgid "Recently Used"
+msgstr "Nedavno uporabljeno"
+
+#: ../src/categoryList.js:37
+#, fuzzy
+msgid "Punctuation"
+msgstr "Postavljanje ločil, spojnik"
+
+#: ../src/categoryList.js:43
+msgid "Arrows"
+msgstr "Puščice"
+
+#: ../src/categoryList.js:49
+msgid "Bullets"
+msgstr "Vrstične oznake"
+
+#: ../src/categoryList.js:55
+msgid "Pictures"
+msgstr "Slike"
+
+#: ../src/categoryList.js:61
+msgid "Currencies"
+msgstr "Denarne enote"
+
+#: ../src/categoryList.js:67
+msgid "Math"
+msgstr "Matematika"
+
+#: ../src/categoryList.js:73
+#, fuzzy
+msgid "Latin"
+msgstr "latinski"
+
+#: ../src/categoryList.js:79
+msgid "Emoticons"
+msgstr "Izrazne ikone"
+
+#: ../src/categoryList.js:94
+#, fuzzy, javascript-format
+msgid "%s Category List Row"
+msgstr "glava vrstice razpredelnice"
+
+#: ../src/character.js:52
+msgid "See Also"
+msgstr "Poglejte tudi"
+
+#: ../src/character.js:114
+#, fuzzy, javascript-format
+msgid "Unicode U+%04s"
+msgstr " (neveljaven Unicode)"
+
+#: ../src/main.js:58
+#, fuzzy
+msgid "Characters Application"
+msgstr "Izbran program"
+
+#: ../src/main.js:95
+#, fuzzy
+msgid "Characters Application started"
+msgstr "Iskalna storitev je zagnana"
+
+#: ../src/main.js:103
+#, fuzzy
+msgid "Characters Application exiting"
+msgstr "Izhod (prejet SIGTERM) ..."
+
+#: ../src/menu.js:39
+msgid "None"
+msgstr "Brez"
+
+#: ../src/searchProvider.js:91
+#, fuzzy
+msgid "Unknown character name"
+msgstr "Neznano ime skupine"
+
+#: ../src/searchProvider.js:94
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#: ../src/window.js:159
+msgid "translator-credits"
+msgstr "Matej Urbančič <matej.urban@svn.gnome.org>"
+
+#: ../src/window.js:160
+#, fuzzy
+msgid "GNOME Characters"
+msgstr "Vstavi znake"
+
+#: ../src/window.js:161
+#, fuzzy
+msgid "Character Map"
+msgstr "Nabor znakov"
+
+#: ../src/window.js:181
+#, fuzzy, javascript-format
+msgid "%s (%s only)"
+msgstr "Samo"
+
+#: ../src/window.js:256
+#, fuzzy, javascript-format
+msgid "%s Character List"
+msgstr "Seznam podprtih naborov znakov"
+
+#: ../src/window.js:263
+#, fuzzy
+msgid "Search Result Character List"
+msgstr "Seznam podprtih naborov znakov"
