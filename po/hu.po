@@ -2,16 +2,16 @@
 # Copyright (C) 2014 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 #
-# Balázs Úr <urbalazs@gmail.com>, 2014.
+# Balázs Úr <urbalazs@gmail.com>, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-12-21 07:06+0000\n"
-"PO-Revision-Date: 2014-12-21 17:34+0100\n"
+"POT-Creation-Date: 2015-02-23 16:58+0000\n"
+"PO-Revision-Date: 2015-03-01 17:40+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
-"Language-Team: Hungarian <gnome-hu-list@gnome.org>\n"
+"Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,16 +20,32 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "_New"
-msgstr "Ú_j"
-
-#: ../data/app-menu.ui.h:2
 msgid "About Characters"
 msgstr "A Karakterek névjegye"
 
-#: ../data/app-menu.ui.h:3
+#: ../data/app-menu.ui.h:2
 msgid "Quit"
 msgstr "Kilépés"
+
+#: ../data/characterlist.ui.h:1
+msgid "Search produced empty result"
+msgstr "A keresés üres eredményt adott"
+
+#: ../data/characterlist.ui.h:2
+msgid "Try another search criteria."
+msgstr "Próbáljon egy másik keresési feltételt."
+
+#: ../data/characterlist.ui.h:3
+msgid "Loading..."
+msgstr "Betöltés…"
+
+#: ../data/characterlist.ui.h:4
+msgid "No recent characters found"
+msgstr "Nem találhatók legutóbbi karakterek"
+
+#: ../data/characterlist.ui.h:5
+msgid "Characters will appear here if you use them."
+msgstr "A karakterek itt fognak megjelenni, ha használja azokat."
 
 #: ../data/character.ui.h:1
 msgid "Copy Character"
@@ -39,23 +55,32 @@ msgstr "Karakter másolása"
 msgid "Current page"
 msgstr "Jelenlegi oldal"
 
-#: ../data/mainview.ui.h:1
-msgid "Type to Search"
-msgstr "Gépeljen a kereséshez"
-
-#: ../data/mainview.ui.h:2
-msgid "Loading..."
-msgstr "Betöltés…"
+#: ../data/menu.ui.h:1
+msgid "Filter by font"
+msgstr "Szűrés betűkészlet szerint"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
+#| msgid ""
+#| "Characters is a simple utility application to find and insert unusual "
+#| "characters."
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters."
+"characters. It allows you to quickly find the charactrer you are looking for "
+"by searching for keywords."
 msgstr ""
 "A Karakterek egy egyszerű segédprogram alkalmazás szokatlan karakterek "
-"kereséséhez és beszúrásához."
+"kereséséhez és beszúrásához. Lehetővé teszi a keresett karakter gyors "
+"megtalálását kulcsszavakra való kereséssel."
 
-#: ../data/org.gnome.Characters.desktop.in.h:1
+#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Böngészhet a karakterek között kategóriák szerint is, úgymint központozás, "
+"képek, stb."
+
+#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
 msgstr "Karakterek"
 
@@ -76,6 +101,10 @@ msgstr "Betűkészlet a karakterek megjelenítéséhez"
 msgid "Use the font to render characters on the character list."
 msgstr ""
 "A betűkészlet használata a karakterek megjelenítéséhez a karakterlistán."
+
+#: ../data/org.gnome.Characters.gschema.xml.h:3
+msgid "Maximum recent characters"
+msgstr "Maximális legutóbbi karakter"
 
 #: ../src/categoryList.js:31
 msgid "Recently Used"
@@ -113,11 +142,17 @@ msgstr "Latin"
 msgid "Emoticons"
 msgstr "Hangulatjelek"
 
-#: ../src/character.js:83
+#: ../src/categoryList.js:94
+#, javascript-format
+#| msgid "%s Character List"
+msgid "%s Category List Row"
+msgstr "%s kategórialista sor"
+
+#: ../src/character.js:52
 msgid "See Also"
 msgstr "Lásd még"
 
-#: ../src/character.js:142
+#: ../src/character.js:110
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
@@ -126,32 +161,55 @@ msgstr "Unicode U+%04s"
 msgid "Characters Application"
 msgstr "Karakterek alkalmazás"
 
-#: ../src/main.js:86
+#: ../src/main.js:95
 msgid "Characters Application started"
 msgstr "Karakterek alkalmazás elindítva"
 
-#: ../src/main.js:94
+#: ../src/main.js:103
 msgid "Characters Application exiting"
 msgstr "Karakterek alkalmazás kilépés"
 
-#: ../src/window.js:149
+#: ../src/menu.js:39
+msgid "None"
+msgstr "Nincs"
+
+#: ../src/searchProvider.js:91
+msgid "Unknown character name"
+msgstr "Ismeretlen karakternév"
+
+#: ../src/searchProvider.js:94
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#: ../src/window.js:159
 msgid "translator-credits"
 msgstr "Úr Balázs <urbalazs@gmail.com>, 2014."
 
-#: ../src/window.js:150
+#: ../src/window.js:160
 msgid "GNOME Characters"
 msgstr "GNOME Karakterek"
 
-#: ../src/window.js:151
+#: ../src/window.js:161
 msgid "Character Map"
 msgstr "Karaktertábla"
 
-#: ../src/window.js:203
+#: ../src/window.js:181
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (csak %s)"
+
+#: ../src/window.js:256
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s karakterlista"
 
-#: ../src/window.js:211
+#: ../src/window.js:263
 msgid "Search Result Character List"
 msgstr "Keresési eredmény karakterlista"
 
+#~ msgid "_New"
+#~ msgstr "Ú_j"
+
+#~ msgid "Type to Search"
+#~ msgstr "Gépeljen a kereséshez"
