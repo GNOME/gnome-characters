@@ -242,7 +242,10 @@ const CharacterListView = new Lang.Class({
     },
 
     _init: function(params) {
-        params = Params.fill(params, { hexpand: true, vexpand: true });
+        params = Params.fill(params, {
+            hexpand: true, vexpand: true,
+            transition_type: Gtk.StackTransitionType.CROSSFADE
+        });
         this.parent(params);
 
         Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
