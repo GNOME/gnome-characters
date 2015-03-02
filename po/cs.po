@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-23 16:58+0000\n"
+"POT-Creation-Date: 2015-03-02 17:41+0000\n"
 "PO-Revision-Date: 2015-03-02 18:36+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -63,7 +63,7 @@ msgstr "Filtrovat podle písma"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the charactrer you are looking for "
+"characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
 "Znaky je jednoduchá pomocná aplikace pro vyhledávání a vkládání méně běžných "
@@ -146,7 +146,7 @@ msgstr "Řádek v seznam znaků %s"
 msgid "See Also"
 msgstr "Viz také"
 
-#: ../src/character.js:110
+#: ../src/character.js:114
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikód U+%04s"
@@ -176,28 +176,28 @@ msgstr "Neznámý název znaku"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#: ../src/window.js:159
+#: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: ../src/window.js:160
+#: ../src/window.js:166
 msgid "GNOME Characters"
 msgstr "Znaky GNOME"
 
-#: ../src/window.js:161
+#: ../src/window.js:167
 msgid "Character Map"
 msgstr "Mapa znaků"
 
-#: ../src/window.js:181
+#: ../src/window.js:187
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (jen %s)"
 
-#: ../src/window.js:256
+#: ../src/window.js:267
 #, javascript-format
 msgid "%s Character List"
 msgstr "Seznam znaků %s"
 
-#: ../src/window.js:263
+#: ../src/window.js:274
 msgid "Search Result Character List"
 msgstr "Seznam nalezených znaků"
