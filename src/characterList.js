@@ -251,10 +251,12 @@ const CharacterListView = new Lang.Class({
                                                         vexpand: true,
                                                         fontDescription: this._fontDescription });
         let scroll = new Gtk.ScrolledWindow({
-            hscrollbar_policy: Gtk.PolicyType.NEVER
+            hscrollbar_policy: Gtk.PolicyType.NEVER,
+            visible: true
         });
         scroll.add(this._characterList);
         this.add_named(scroll, 'character-list');
+        this.visible_child_name = 'character-list';
 
         this._characters = [];
         this._spinnerTimeoutId = 0;

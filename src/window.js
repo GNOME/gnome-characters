@@ -300,15 +300,15 @@ const MainView = new Lang.Class({
         if (!(name in this._characterLists))
             return;
 
-        this.visible_child_name = name;
-        this.visible_child.setFilterFont(filterFontFamily);
+        let characterList = this.get_child_by_name(name);
+        characterList.setFilterFont(filterFontFamily);
 
         if (name == 'recent') {
             if (this.recentCharacters.length == 0)
-                this.visible_child.visible_child_name = 'empty-recent';
+                characterList.visible_child_name = 'empty-recent';
             else {
-                this.visible_child.setCharacters(this.recentCharacters);
-                this.visible_child.updateCharacterList();
+                characterList.setCharacters(this.recentCharacters);
+                characterList.updateCharacterList();
             }
         } else {
             let category = null;
@@ -319,8 +319,10 @@ const MainView = new Lang.Class({
             }
 
             Util.assertNotEqual(category, null);
-            this.visible_child.searchByCategory(category);
+            characterList.searchByCategory(category);
         }
+
+        this.visible_child = characterList;
     },
 
     addToRecent: function(uc) {

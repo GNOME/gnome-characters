@@ -6,7 +6,7 @@
     <child>
       <object class="GtkGrid" id="unavailable-grid">
 	<property name="can_focus">False</property>
-	<property name="visible">True</property>
+	<property name="visible">False</property>
 	<property name="orientation">vertical</property>
 	<property name="halign">center</property>
 	<property name="valign">center</property>
@@ -52,7 +52,7 @@
     <child>
       <object class="GtkGrid" id="loading-grid">
 	<property name="can_focus">False</property>
-	<property name="visible">True</property>
+	<property name="visible">False</property>
 	<property name="halign">center</property>
 	<property name="valign">center</property>
 	<style>
@@ -84,7 +84,7 @@
     <child>
       <object class="GtkGrid" id="empty-recent-grid">
 	<property name="can_focus">False</property>
-	<property name="visible">True</property>
+	<property name="visible">False</property>
 	<property name="orientation">vertical</property>
 	<property name="halign">center</property>
 	<property name="valign">center</property>
