@@ -16,13 +16,6 @@ libgc_la_LDFLAGS = -avoid-version
 libgc_la_sources = gc.h gc.c
 libgc_la_SOURCES = $(libgc_la_sources) confusables.h
 
-noinst_PROGRAMS = gen-libunistring-pot
-gen_libunistring_pot_SOURCES = gen-libunistring-pot.c
-gen_libunistring_pot_LDADD = $(LIBGC_LIBS) $(LTLIBICONV) $(LTLIBUNISTRING) $(builddir)/../gllib/libgnu.la
-
-libunistring.pot: | gen-libunistring-pot
-	$(AM_V_GEN) $(builddir)/gen-libunistring-pot | $(MSGUNIQ) > $@
-
 include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = Gc-1.0.gir
 
@@ -46,7 +39,7 @@ typelibdir= $(pkglibdir)/girepository-1.0
 gir_DATA = $(INTROSPECTION_GIRS)
 typelib_DATA = $(gir_DATA:.gir=.typelib)
 
-EXTRA_DIST = $(gir_DATA) gen-confusables.py libunistring.pot
+EXTRA_DIST = $(gir_DATA) gen-confusables.py
 CLEANFILES = $(typelib_DATA)
 DISTCLEANFILES = $(gir_DATA)
 
