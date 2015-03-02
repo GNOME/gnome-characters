@@ -128,8 +128,11 @@ const MainWindow = new Lang.Class({
         if (this._searchActive == v)
             return;
 
-        this._categoryList.unselect_all();
         this._searchActive = v;
+
+        if (this._searchActive)
+            this._categoryList.unselect_all();
+
         this.notify('search-active');
     },
 
@@ -186,6 +189,8 @@ const MainWindow = new Lang.Class({
     },
 
     _category: function(action, v) {
+        this.search_active = false;
+
         let [name, length] = v.get_string()
 
         // FIXME: we could use Gtk.Container.get_child to obtain the
