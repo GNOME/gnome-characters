@@ -1,3 +1,19 @@
+3.15.91
+===
+
+- Bug 744336 - Add a unique application icon
+- Bug 744855 - Search provider
+- Add more characters to "Pictures" section
+- Add more characters to "See Also" list, by using Unicode character
+  compositions
+
+New And Updated Translations
+============================
+Balázs Úr (hu)
+Cheng-Chia Tseng (zh_TW)
+Matej Urban\u010di\u010d (sl)
+Yosef Or Boczko (he)
+
 3.15.90
 ===
 
