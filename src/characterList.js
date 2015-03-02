@@ -97,7 +97,8 @@ const CharacterListWidget = new Lang.Class({
         this._fontDescription = filtered.fontDescription;
         this._characters = [];
         this._rows = [];
-        this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK);
+        this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
+                        Gdk.EventMask.BUTTON_RELEASE_MASK);
     },
 
     vfunc_button_press_event: function(event) {
