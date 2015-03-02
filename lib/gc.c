@@ -618,6 +618,40 @@ remove_duplicates (GArray *array)
 }
 
 static void
+add_composited (GArray *result,
+		ucs4_t uc,
+		ucs4_t *block_characters,
+		size_t n_block_characters)
+{
+  ucs4_t decomposition[UC_DECOMPOSITION_MAX_LENGTH];
+  int decomposition_length;
+  ucs4_t base;
+  size_t i;
+
+  decomposition_length = uc_canonical_decomposition (uc, decomposition);
+  if (decomposition_length > 0)
+    {
+      base = decomposition[0];
+      g_array_append_val (result, base);
+    }
+  else
+    base = uc;
+
+  for (i = 0; i < n_block_characters; i++)
+    {
+      const uc_block_t *block;
+
+      block = uc_block (block_characters[i]);
+      for (uc = block->start; uc < block->end; uc++)
+	{
+	  decomposition_length = uc_canonical_decomposition (uc, decomposition);
+	  if (decomposition_length > 0 && decomposition[0] == base)
+	    g_array_append_val (result, uc);
+	}
+    }
+}
+
+static void
 gc_search_related_thread (GTask        *task,
 			  gpointer      source_object,
 			  gpointer      task_data,
@@ -649,36 +683,27 @@ gc_search_related_thread (GTask        *task,
   if (uc_is_general_category (data->uc, UC_CATEGORY_L))
     {
       const uc_script_t *script;
-      ucs4_t decomposition[UC_DECOMPOSITION_MAX_LENGTH];
-      int length;
 
       script = uc_script (data->uc);
-      if (script && strcmp (script->name, "Latin") == 0)
+      if (script)
 	{
-	  ucs4_t block_starters[4] = { 0x0000, 0x0080, 0x0100, 0x0180 };
-	  ucs4_t base;
-	  int i;
-
-	  length = uc_canonical_decomposition (data->uc, decomposition);
-	  if (length > 0)
+	  if (strcmp (script->name, "Latin") == 0)
 	    {
-	      base = decomposition[0];
-	      g_array_append_val (result, base);
+	      ucs4_t block_starters[4] = { 0x0000, 0x0080, 0x0100, 0x0180 };
+	      add_composited (result, data->uc,
+			      block_starters, G_N_ELEMENTS (block_starters));
 	    }
-	  else
-	    base = data->uc;
-
-	  for (i = 0; i < G_N_ELEMENTS (block_starters); i++)
+	  else if (strcmp (script->name, "Hiragana") == 0)
 	    {
-	      const uc_block_t *block;
-
-	      block = uc_block (block_starters[i]);
-	      for (uc = block->start; uc < block->end; uc++)
-		{
-		  length = uc_canonical_decomposition (uc, decomposition);
-		  if (length > 0 && decomposition[0] == base)
-		    g_array_append_val (result, uc);
-		}
+	      ucs4_t block_starters[1] = { 0x3040 };
+	      add_composited (result, data->uc,
+			      block_starters, G_N_ELEMENTS (block_starters));
+	    }
+	  else if (strcmp (script->name, "Katakana") == 0)
+	    {
+	      ucs4_t block_starters[2] = { 0x30A0, 0x31F0 };
+	      add_composited (result, data->uc,
+			      block_starters, G_N_ELEMENTS (block_starters));
 	    }
 	}
     }
