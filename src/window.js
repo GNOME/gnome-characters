@@ -158,7 +158,10 @@ const MainWindow = new Lang.Class({
 
     _about: function() {
         let aboutDialog = new Gtk.AboutDialog(
-            { authors: [ 'Daiki Ueno <dueno@src.gnome.org>' ],
+            { artists: [ 'Allan Day <allanpday@gmail.com>',
+                         'Jakub Steiner <jimmac@gmail.com>' ],
+              authors: [ 'Daiki Ueno <dueno@src.gnome.org>' ],
+              // TRANSLATORS: put your names here, one name per line.
               translator_credits: _("translator-credits"),
               program_name: _("GNOME Characters"),
               comments: _("Character Map"),
