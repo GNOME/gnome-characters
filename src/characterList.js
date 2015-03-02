@@ -177,6 +177,7 @@ const CharacterListWidget = new Lang.Class({
             this._rows.push(row);
         }
 
+        this.queue_resize();
         this.queue_draw();
     },
 
