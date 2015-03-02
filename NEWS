@@ -1,3 +1,8 @@
+3.15.91.1
+===
+
+- Restore the resizing behavior, which was broken in the last release
+
 3.15.91
 ===
 
