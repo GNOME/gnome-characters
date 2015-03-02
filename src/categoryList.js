@@ -116,9 +116,15 @@ const CategoryListWidget = new Lang.Class({
         params = Params.fill(params, {});
         this.parent(params);
 
+        // Mimic GtkStackSidebar to take advantage of the standard theme.
+        this.get_style_context().add_class('sidebar');
+
         for (let index in Category) {
             let category = Category[index];
-            this.add(new CategoryListRowWidget({}, category));
+            let rowWidget = new CategoryListRowWidget({}, category);
+            // Mimic GtkStackSidebar to take advantage of the standard theme.
+            rowWidget.get_style_context().add_class('sidebar-item');
+            this.add(rowWidget);
         }
     },
 
