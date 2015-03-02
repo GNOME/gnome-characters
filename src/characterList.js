@@ -32,6 +32,7 @@ const Util = imports.util;
 const BASELINE_OFFSET = 0.85;
 const CELLS_PER_ROW = 5;
 const NUM_ROWS = 5;
+const NUM_COLUMNS = 5;
 const CELL_SIZE = 50;
 
 function getCellSize(fontDescription) {
@@ -121,8 +122,10 @@ const CharacterListWidget = new Lang.Class({
     },
 
     vfunc_get_preferred_height_for_width: function(width) {
-        let height = Math.max(this._rows.length, NUM_ROWS) * getCellSize(this._fontDescription);
-        return [height, height];
+        let cellSize = getCellSize(this._fontDescription);
+        let natHeight = Math.max(this._rows.length, NUM_ROWS) * cellSize;
+        let minHeight = NUM_ROWS * cellSize;
+        return [minHeight, natHeight];
     },
 
     vfunc_get_preferred_width: function() {
@@ -130,8 +133,10 @@ const CharacterListWidget = new Lang.Class({
     },
 
     vfunc_get_preferred_width_for_height: function(height) {
-        let width = this._cellsPerRow * getCellSize(this._fontDescription);
-        return [width, width];
+        let cellSize = getCellSize(this._fontDescription);
+        let natWidth = Math.max(this._cellsPerRow, NUM_COLUMNS) * cellSize;
+        let minWidth = NUM_COLUMNS * cellSize;
+        return [minWidth, natWidth];
     },
 
     vfunc_size_allocate: function(allocation) {
