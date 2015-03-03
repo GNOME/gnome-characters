@@ -17,6 +17,7 @@
 // with Gnome Weather; if not, write to the Free Software Foundation,
 // Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;
@@ -116,7 +117,13 @@ const SearchProvider = new Lang.Class({
     },
 
     _getPlatformData: function(timestamp) {
-        return {'desktop-startup-id': new GLib.Variant('s', '_TIME' + timestamp) };
+        let display = Gdk.Display.get_default();
+        let context = display.get_app_launch_context();
+        context.set_timestamp(timestamp);
+
+        let app = Gio.DesktopAppInfo.new('org.gnome.Characters.desktop');
+        let id = context.get_startup_notify_id(app, []);
+        return {'desktop-startup-id': new GLib.Variant('s', id) };
     },
 
     _activateAction: function(action, parameter, timestamp) {
