@@ -264,6 +264,7 @@ const CharacterListView = new Lang.Class({
             visible: true
         });
         scroll.add(this._characterList);
+        scroll.get_style_context().add_class('character-list-scroll');
         this.add_named(scroll, 'character-list');
         this.visible_child_name = 'character-list';
 
