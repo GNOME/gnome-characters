@@ -85,10 +85,6 @@ const BackgroundService = new Lang.Class({
     vfunc_activate: function() {
         // do nothing, this is a background service
     },
-
-    vfunc_shutdown: function() {
-        // do nothing, this is a background service
-    }
 });
 
 function main(argv) {
