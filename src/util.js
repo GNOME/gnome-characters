@@ -131,3 +131,14 @@ function capitalize(s) {
         return w;
     }).join(' ');
 }
+
+function toCodePoint(s) {
+    let codePoint = s.charCodeAt(0);
+    if (codePoint > 0xD800) {
+        let high = codePoint;
+        let low = s.charCodeAt(1);
+        codePoint = 0x10000 + (high - 0xD800) * 0x400 + (low - 0xDC00);
+    }
+
+    return codePoint;
+}

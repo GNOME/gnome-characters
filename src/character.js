@@ -109,7 +109,7 @@ const CharacterDialog = new Lang.Class({
         this._character = this._character;
         this._character_label.label = this._character;
 
-        let codePoint = this._character.charCodeAt(0);
+        let codePoint = Util.toCodePoint(this._character);
         let codePointHex = codePoint.toString(16).toUpperCase();
         this._detail_label.label = _("Unicode U+%04s").format(codePointHex);
 

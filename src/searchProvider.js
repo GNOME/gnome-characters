@@ -84,7 +84,7 @@ const SearchProvider = new Lang.Class({
 
         for (let i = 0; i < identifiers.length; i++) {
             let character = identifiers[i];
-            let codePoint = character.charCodeAt(0);
+            let codePoint = Util.toCodePoint(character);
             let codePointHex = codePoint.toString(16).toUpperCase();
             let name = Gc.character_name(character);
             if (name == null)
