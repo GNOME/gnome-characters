@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-23 16:58+0000\n"
-"PO-Revision-Date: 2015-03-01 17:40+0100\n"
+"POT-Creation-Date: 2015-03-02 17:31+0000\n"
+"PO-Revision-Date: 2015-03-03 16:19+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
@@ -62,10 +62,11 @@ msgstr "Szűrés betűkészlet szerint"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 #| msgid ""
 #| "Characters is a simple utility application to find and insert unusual "
-#| "characters."
+#| "characters. It allows you to quickly find the charactrer you are looking "
+#| "for by searching for keywords."
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the charactrer you are looking for "
+"characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
 "A Karakterek egy egyszerű segédprogram alkalmazás szokatlan karakterek "
@@ -144,7 +145,6 @@ msgstr "Hangulatjelek"
 
 #: ../src/categoryList.js:94
 #, javascript-format
-#| msgid "%s Character List"
 msgid "%s Category List Row"
 msgstr "%s kategórialista sor"
 
@@ -152,7 +152,7 @@ msgstr "%s kategórialista sor"
 msgid "See Also"
 msgstr "Lásd még"
 
-#: ../src/character.js:110
+#: ../src/character.js:114
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
@@ -182,29 +182,29 @@ msgstr "Ismeretlen karakternév"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#: ../src/window.js:159
+#: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Úr Balázs <urbalazs@gmail.com>, 2014."
 
-#: ../src/window.js:160
+#: ../src/window.js:166
 msgid "GNOME Characters"
 msgstr "GNOME Karakterek"
 
-#: ../src/window.js:161
+#: ../src/window.js:167
 msgid "Character Map"
 msgstr "Karaktertábla"
 
-#: ../src/window.js:181
+#: ../src/window.js:187
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (csak %s)"
 
-#: ../src/window.js:256
+#: ../src/window.js:267
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s karakterlista"
 
-#: ../src/window.js:263
+#: ../src/window.js:274
 msgid "Search Result Character List"
 msgstr "Keresési eredmény karakterlista"
 
