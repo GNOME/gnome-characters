@@ -47,7 +47,7 @@ const BackgroundService = new Lang.Class({
     _init: function() {
         this.parent({ application_id: pkg.name,
                       flags: Gio.ApplicationFlags.IS_SERVICE,
-                      inactivity_timeout: 60000 });
+                      inactivity_timeout: 30000 });
         GLib.set_application_name(_("Characters"));
 
         this._searchProvider = new SearchProvider.SearchProvider(this);
