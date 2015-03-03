@@ -65,6 +65,8 @@ const SearchProvider = new Lang.Class({
                     log("Failed to search by keywords: " + e);
                 }
                 invocation.return_value(new GLib.Variant('(as)', [characters]));
+
+                this._app.release();
             }));
     },
 
