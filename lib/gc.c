@@ -378,6 +378,17 @@ filter_keywords (GcCharacterIter *iter, ucs4_t uc)
 	return TRUE;
     }
 
+  /* Match against the hexadecimal code point.  */
+  if (*keywords && *(keywords + 1) == NULL)
+    {
+      size_t length = strlen (*keywords);
+
+      if (length <= 6
+	  && strspn (*keywords, "0123456789abcdefABCDEF") == length
+	  && strtoul (*keywords, NULL, 16) == uc)
+	return TRUE;
+    }
+
   /* Match against the name.  */
   if (!unicode_character_name (uc, buffer))
     return FALSE;
