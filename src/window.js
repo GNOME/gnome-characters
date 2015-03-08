@@ -61,7 +61,6 @@ const MainWindow = new Lang.Class({
 
         this._searchActive = false;
         this._searchKeywords = [];
-        this._filterFontFamily = null;
 
         Util.initActions(this,
                          [{ name: 'about',
@@ -183,10 +182,10 @@ const MainWindow = new Lang.Class({
     },
 
     _updateTitle: function(title) {
-        if (this._filterFontFamily) {
+        if (this._mainView.filterFontFamily) {
             this._main_headerbar.title =
                 _("%s (%s only)").format(Gettext.gettext(title),
-                                         this._filterFontFamily);
+                                         this._mainView.filterFontFamily);
         } else {
             this._main_headerbar.title = Gettext.gettext(title);
         }
@@ -207,7 +206,7 @@ const MainWindow = new Lang.Class({
         }
 
         Util.assertNotEqual(category, null);
-        this._mainView.setPage(category.name, this._filterFontFamily);
+        this._mainView.setPage(category.name);
         this._updateTitle(category.title);
     },
 
@@ -220,8 +219,7 @@ const MainWindow = new Lang.Class({
         let [family, length] = v.get_string()
         if (family == 'None')
             family = null;
-        this._mainView.setFilterFont(family);
-        this._filterFontFamily = family;
+        this._mainView.filterFontFamily = family;
         this._updateTitle(this._mainView.visible_child.title);
     },
 
@@ -252,6 +250,15 @@ const MainView = new Lang.Class({
                 0, this._maxRecentCharacters);
     },
 
+    get filterFontFamily() {
+        return this._filterFontFamily;
+    },
+
+    set filterFontFamily(family) {
+        this._filterFontFamily = family;
+        this.visible_child.setFilterFont(family);
+    },
+
     _init: function(params) {
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
@@ -259,6 +266,7 @@ const MainView = new Lang.Class({
         });
         this.parent(params);
 
+        this._filterFontFamily = null;
         this._characterLists = {};
 
         let characterList;
@@ -308,12 +316,12 @@ const MainView = new Lang.Class({
         this.visible_child.cancelSearch();
     },
 
-    setPage: function(name, filterFontFamily) {
+    setPage: function(name) {
         if (!(name in this._characterLists))
             return;
 
         let characterList = this.get_child_by_name(name);
-        characterList.setFilterFont(filterFontFamily);
+        characterList.setFilterFont(this._filterFontFamily);
 
         if (name == 'recent') {
             if (this.recentCharacters.length == 0)
@@ -364,9 +372,5 @@ const MainView = new Lang.Class({
             if (response_id == Gtk.ResponseType.CLOSE)
                 dialog.destroy();
         });
-    },
-
-    setFilterFont: function(family) {
-        this.visible_child.setFilterFont(family);
     }
 });
