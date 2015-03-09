@@ -1,0 +1,203 @@
+# Slovak translation for gnome-characters.
+# Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# Dušan Kazik <prescott66@gmail.com>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-03-09 07:11+0000\n"
+"PO-Revision-Date: 2015-03-09 10:52+0100\n"
+"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"X-Generator: Poedit 1.7.4\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "About Characters"
+msgstr "O programe Znaky"
+
+#: ../data/app-menu.ui.h:2
+msgid "Quit"
+msgstr "Ukončiť"
+
+#: ../data/characterlist.ui.h:1
+msgid "Search produced empty result"
+msgstr "Vyhľadávaním sa nenašli žiadne výsledky"
+
+#: ../data/characterlist.ui.h:2
+msgid "Try another search criteria."
+msgstr "Skúste iné kritériá vyhľadávania."
+
+#: ../data/characterlist.ui.h:3
+msgid "Loading..."
+msgstr "Načítava sa…"
+
+#: ../data/characterlist.ui.h:4
+msgid "No recent characters found"
+msgstr "Nenašli sa žiadne nedávne znaky"
+
+#: ../data/characterlist.ui.h:5
+msgid "Characters will appear here if you use them."
+msgstr "Tu sa zobrazia znaky, ktoré ste použili."
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "Skopírovať znak"
+
+#: ../data/mainwindow.ui.h:1
+msgid "Current page"
+msgstr "Aktuálna stránka"
+
+#: ../data/menu.ui.h:1
+msgid "Filter by font"
+msgstr "Filtrovať podľa písma"
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for by "
+"searching for keywords."
+msgstr ""
+"Znaky je jednoduchá užitočná aplikácia na nájdenie a vloženie neobvyklých "
+"znakov. Umožňuje vám rýchlo nájsť znak, ktorý môžete vyhľadať pomocou kľúčových "
+"slov."
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Môžete tiež prehliadať znaky podľa kategórií, ako sú napríklad Znaky, Obrázky, "
+"atď."
+
+#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+msgid "Characters"
+msgstr "Znaky"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Utility application to find and insert unusual characters"
+msgstr "Užitočná aplikácia na nájdenie a vloženie neobvyklých znakov"
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "characters;unicode;"
+msgstr "znaky;unicode;"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "Písmo zobrazovaných znakov"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr "Písmo, ktoré sa použije na vykreslenie znakov v zozname znakov."
+
+#: ../data/org.gnome.Characters.gschema.xml.h:3
+msgid "Maximum recent characters"
+msgstr "Maximálny počet nedávnych znakov"
+
+#: ../src/categoryList.js:31
+msgid "Recently Used"
+msgstr "Nedávno použité"
+
+#: ../src/categoryList.js:37
+msgid "Punctuation"
+msgstr "Interpunkcie"
+
+#: ../src/categoryList.js:43
+msgid "Arrows"
+msgstr "Šípky"
+
+#: ../src/categoryList.js:49
+msgid "Bullets"
+msgstr "Odrážky"
+
+#: ../src/categoryList.js:55
+msgid "Pictures"
+msgstr "Obrázky"
+
+#: ../src/categoryList.js:61
+msgid "Currencies"
+msgstr "Meny"
+
+#: ../src/categoryList.js:67
+msgid "Math"
+msgstr "Matematika"
+
+#: ../src/categoryList.js:73
+msgid "Latin"
+msgstr "Latinka"
+
+#: ../src/categoryList.js:79
+msgid "Emoticons"
+msgstr "Smejkovia"
+
+#: ../src/categoryList.js:94
+#, javascript-format
+msgid "%s Category List Row"
+msgstr "Riadok zoznamu kategórie %s"
+
+#: ../src/character.js:52
+msgid "See Also"
+msgstr "Pozrite tiež"
+
+#: ../src/character.js:114
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Unicode U+%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr "Aplikácia Znaky"
+
+#: ../src/main.js:95
+msgid "Characters Application started"
+msgstr "Spustenie aplikácie Znaky"
+
+#: ../src/main.js:103
+msgid "Characters Application exiting"
+msgstr "Ukončenie aplikácie Znaky"
+
+#: ../src/menu.js:39
+msgid "None"
+msgstr "Žiadne"
+
+#: ../src/searchProvider.js:94
+msgid "Unknown character name"
+msgstr "Neznámy názov znaku"
+
+#: ../src/searchProvider.js:97
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#: ../src/window.js:165
+msgid "translator-credits"
+msgstr "Dušan Kazik <prescott66@gmail.com>"
+
+#: ../src/window.js:166
+msgid "GNOME Characters"
+msgstr "Znaky GNOME"
+
+#: ../src/window.js:167
+msgid "Character Map"
+msgstr "Mapa znakov"
+
+#: ../src/window.js:187
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (iba %s)"
+
+#: ../src/window.js:276
+#, javascript-format
+msgid "%s Character List"
+msgstr "Zoznam znakov kategórie %s"
+
+#: ../src/window.js:283
+msgid "Search Result Character List"
+msgstr "Zoznam výsledkov vyhľadávaných znakov"
