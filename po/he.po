@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-control-center.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-24 13:19+0200\n"
-"PO-Revision-Date: 2015-02-24 13:44+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
+"POT-Creation-Date: 2015-03-13 04:23+0200\n"
+"PO-Revision-Date: 2015-03-13 04:24+0200\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "סינון לפי גופן"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the charactrer you are looking for "
+"characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
 "תווים זהו יישום שירות פשוט למציאה ולהכנסת תווים בלתי רגילים. הוא מאפשר לך "
@@ -172,38 +172,39 @@ msgstr "Characters Application exiting"
 msgid "None"
 msgstr "אף אחד"
 
-#: ../src/searchProvider.js:91
+#: ../src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "שם תו לא ידוע"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#: ../src/window.js:159
+#. TRANSLATORS: put your names here, one name per line.
+#: ../src/window.js:165
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/window.js:160
+#: ../src/window.js:166
 msgid "GNOME Characters"
 msgstr "‏GNOME תווים"
 
-#: ../src/window.js:161
+#: ../src/window.js:167
 msgid "Character Map"
 msgstr "מפת תווים"
 
-#: ../src/window.js:181
+#: ../src/window.js:187
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s בלבד)"
 
-#: ../src/window.js:256
+#: ../src/window.js:276
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s רשימת תווים"
 
-#: ../src/window.js:263
+#: ../src/window.js:283
 msgid "Search Result Character List"
 msgstr "תוצאות חיפוש תווים"
 
