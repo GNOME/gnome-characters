@@ -1,3 +1,20 @@
+3.15.92
+===
+
+- Bug 745508 - Two fixes to the search provider
+- Fix non-BMP character display
+- Make search keyword match against hex code point
+- Add key navigation with cursor keys (without modifiers)
+
+New And Updated Translations
+============================
+Balázs Úr (hu)
+Daiki Ueno (ja)
+Dušan Kazik (sk)
+Marek Černocký (cs)
+Piotr Drąg (pl)
+Yosef Or Boczko (he)
+
 3.15.91.1
 ===
 
