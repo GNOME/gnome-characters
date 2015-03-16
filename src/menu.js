@@ -64,7 +64,10 @@ const MenuPopover = new Lang.Class({
 
         // This silents warning at Characters exit about this widget being
         // visible but not mapped.  Borrowed from Maps.
-        this.connect('unmap', function(popover) { popover.hide(); });
+        this.connect('unmap', function(popover) {
+            popover._font_listbox.unselect_all();
+            popover.hide();
+        });
     },
 
     _handleSearchChanged: function(entry) {
