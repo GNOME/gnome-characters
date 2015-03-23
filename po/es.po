@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2015.
+# Irene Sáez Sanz <irenesaez946@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-02 17:31+0000\n"
-"PO-Revision-Date: 2015-03-17 19:25+0100\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"POT-Creation-Date: 2015-03-17 18:46+0000\n"
+"PO-Revision-Date: 2015-03-23 10:59+0100\n"
+"Last-Translator: Irene Sáez Sanz <irenesaez946@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -34,7 +35,7 @@ msgstr "La búsqueda no ha producido resultados"
 
 #: ../data/characterlist.ui.h:2
 msgid "Try another search criteria."
-msgstr ""
+msgstr "Pruebe otro criterio de búsqueda."
 
 #: ../data/characterlist.ui.h:3
 msgid "Loading..."
@@ -42,11 +43,11 @@ msgstr "Cargando…"
 
 #: ../data/characterlist.ui.h:4
 msgid "No recent characters found"
-msgstr ""
+msgstr "No se han encontrado caracteres recientes"
 
 #: ../data/characterlist.ui.h:5
 msgid "Characters will appear here if you use them."
-msgstr ""
+msgstr "Aquí aparecerán los caracteres si los usa."
 
 #: ../data/character.ui.h:1
 msgid "Copy Character"
@@ -61,7 +62,6 @@ msgid "Filter by font"
 msgstr "Filtrar por tipografía"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
-#, fuzzy
 #| msgid ""
 #| "Characters is a simple utility application to find and insert unusual "
 #| "characters."
@@ -71,13 +71,16 @@ msgid ""
 "by searching for keywords."
 msgstr ""
 "Caracteres es una sencilla aplicación para buscar e insertar caracteres poco "
-"habituales."
+"habituales. Le permite buscar rápidamente el carácter que está buscando "
+"usando palabras clave."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
+"Puede examinar los caracteres por categorías, tales como Puntuación, "
+"Imágenes, etc."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -142,10 +145,10 @@ msgid "Emoticons"
 msgstr "Emoticonos"
 
 #: ../src/categoryList.js:94
-#, fuzzy, javascript-format
+#, javascript-format
 #| msgid "%s Character List"
 msgid "%s Category List Row"
-msgstr "Lista de caracteres %s"
+msgstr "Fila de lista de categorías %s"
 
 #: ../src/character.js:52
 msgid "See Also"
@@ -170,13 +173,13 @@ msgstr "Saliendo de la aplicación Caracteres"
 
 #: ../src/menu.js:39
 msgid "None"
-msgstr ""
+msgstr "Niguno"
 
-#: ../src/searchProvider.js:91
+#: ../src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Nombre de carácter desconocido"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -198,12 +201,12 @@ msgstr "Mapa de caracteres"
 msgid "%s (%s only)"
 msgstr "%s (%s solo)"
 
-#: ../src/window.js:267
+#: ../src/window.js:276
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
-#: ../src/window.js:274
+#: ../src/window.js:283
 msgid "Search Result Character List"
 msgstr "Buscar en la lista de resultados de caracteres"
 
