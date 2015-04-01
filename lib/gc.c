@@ -367,22 +367,19 @@ filter_keywords (GcCharacterIter *iter, ucs4_t uc)
   if (!uc_is_print (uc))
     return FALSE;
 
-  /* Match against the character itself.  */
-  if (*keywords)
-    {
-      uint8_t utf8[6];
-      size_t length = G_N_ELEMENTS (utf8);
-
-      u32_to_u8 (&uc, 1, utf8, &length);
-      if (length == strlen (*keywords) && memcmp (*keywords, utf8, length) == 0)
-	return TRUE;
-    }
-
-  /* Match against the hexadecimal code point.  */
+  /* Special case if KEYWORDS only contains a single word.  */
   if (*keywords && *(keywords + 1) == NULL)
     {
       size_t length = strlen (*keywords);
+      uint8_t utf8[6];
+      size_t utf8_length = G_N_ELEMENTS (utf8);
 
+      /* Match against the character itself.  */
+      u32_to_u8 (&uc, 1, utf8, &utf8_length);
+      if (utf8_length == length && memcmp (*keywords, utf8, utf8_length) == 0)
+	return TRUE;
+
+      /* Match against the hexadecimal code point.  */
       if (length <= 6
 	  && strspn (*keywords, "0123456789abcdefABCDEF") == length
 	  && strtoul (*keywords, NULL, 16) == uc)
