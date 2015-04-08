@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-02 17:41+0000\n"
+"POT-Creation-Date: 2015-04-07 02:13+0000\n"
 "PO-Revision-Date: 2015-03-02 18:36+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -37,7 +37,7 @@ msgid "Try another search criteria."
 msgstr "Zkuste jiné kritérium hledání."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
+msgid "Loading…"
 msgstr "Načítá se…"
 
 #: ../data/characterlist.ui.h:4
@@ -167,11 +167,11 @@ msgstr "Aplikace Znaky se ukončuje"
 msgid "None"
 msgstr "žádný"
 
-#: ../src/searchProvider.js:91
+#: ../src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Neznámý název znaku"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -193,11 +193,11 @@ msgstr "Mapa znaků"
 msgid "%s (%s only)"
 msgstr "%s (jen %s)"
 
-#: ../src/window.js:267
+#: ../src/window.js:276
 #, javascript-format
 msgid "%s Character List"
 msgstr "Seznam znaků %s"
 
-#: ../src/window.js:274
+#: ../src/window.js:283
 msgid "Search Result Character List"
 msgstr "Seznam nalezených znaků"
