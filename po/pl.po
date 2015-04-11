@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-02 18:29+0100\n"
-"PO-Revision-Date: 2015-03-02 18:30+0100\n"
+"POT-Creation-Date: 2015-04-12 00:49+0200\n"
+"PO-Revision-Date: 2015-04-12 00:50+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -40,8 +40,8 @@ msgid "Try another search criteria."
 msgstr "Proszę spróbować innych kryteriów wyszukiwania."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
-msgstr "Wczytywanie..."
+msgid "Loading…"
+msgstr "Wczytywanie…"
 
 #: ../data/characterlist.ui.h:4
 msgid "No recent characters found"
@@ -171,11 +171,11 @@ msgstr "Kończenie działania tablicy znaków"
 msgid "None"
 msgstr "Brak"
 
-#: ../src/searchProvider.js:91
+#: ../src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Nieznana nazwa znaku"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -200,11 +200,11 @@ msgstr "Tablica znaków"
 msgid "%s (%s only)"
 msgstr "%s (tylko %s)"
 
-#: ../src/window.js:267
+#: ../src/window.js:276
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista znaków %s"
 
-#: ../src/window.js:274
+#: ../src/window.js:283
 msgid "Search Result Character List"
 msgstr "Wynik wyszukiwania na liście znaków"
