@@ -805,36 +805,36 @@ gc_pango_context_font_has_glyph (PangoContext *context,
                                  PangoFont    *font,
                                  gunichar      uc)
 {
+#ifdef HAVE_PANGOFT2
   if (PANGO_IS_FC_FONT (font))
     /* Fast path when the font is loaded as PangoFcFont.  */
     {
       PangoFcFont *fcfont = PANGO_FC_FONT (font);
       return pango_fc_font_has_char (fcfont, uc);
     }
-  else
-    /* Slow path performing actual rendering.  */
+#endif
+
+  /* Slow path performing actual rendering.  */
+  PangoLayout *layout;
+  GError *error;
+  gchar *utf8;
+  glong items_written;
+  int retval;
+
+  utf8 = g_ucs4_to_utf8 (&uc, 1, NULL, &items_written, &error);
+  if (!utf8)
     {
-      PangoLayout *layout;
-      GError *error;
-      gchar *utf8;
-      glong items_written;
-      int retval;
-
-      utf8 = g_ucs4_to_utf8 (&uc, 1, NULL, &items_written, &error);
-      if (!utf8)
-	{
-	  g_printerr ("error in decoding: %s\n", error->message);
-	  g_error_free (error);
-	}
-
-      layout = pango_layout_new (context);
-      gc_pango_layout_disable_fallback (layout);
-      pango_layout_set_text (layout, utf8, items_written);
-      g_free (utf8);
-
-      retval = pango_layout_get_unknown_glyphs_count (layout);
-      g_object_unref (layout);
-
-      return retval == 0;
+      g_printerr ("error in decoding: %s\n", error->message);
+      g_error_free (error);
     }
+
+  layout = pango_layout_new (context);
+  gc_pango_layout_disable_fallback (layout);
+  pango_layout_set_text (layout, utf8, items_written);
+  g_free (utf8);
+
+  retval = pango_layout_get_unknown_glyphs_count (layout);
+  g_object_unref (layout);
+
+  return retval == 0;
 }
