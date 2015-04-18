@@ -83,6 +83,19 @@ AC_SUBST(GLIB_COMPILE_RESOURCES)
 
 PKG_CHECK_MODULES([LIBGC], [gio-2.0 gtk+-3.0 pango])
 
+AC_ARG_ENABLE(pangoft2,
+    AS_HELP_STRING([--disable-pangoft2], [disable pangoft2 support]),,
+    enable_pangoft2=auto
+)
+
+AS_IF([test "$enable_pangoft2" = "yes"], [have_pangoft2=yes],
+      [test "$enable_pangoft2" = "auto"], PKG_CHECK_EXISTS([pangoft2], [have_pangoft2=yes]))
+
+AS_IF([test "$have_pangoft2" = "yes"], [
+    PKG_CHECK_MODULES([PANGOFT2], [pangoft2])
+    AC_DEFINE([HAVE_PANGOFT2],[1],[Define if you want to enable pangoft2 support])
+])
+
 AC_CONFIG_FILES([
   Makefile
   data/Makefile
