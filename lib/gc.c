@@ -805,6 +805,12 @@ gc_pango_context_font_has_glyph (PangoContext *context,
                                  PangoFont    *font,
                                  gunichar      uc)
 {
+  PangoLayout *layout;
+  GError *error;
+  gchar *utf8;
+  glong items_written;
+  int retval;
+
 #ifdef HAVE_PANGOFT2
   if (PANGO_IS_FC_FONT (font))
     /* Fast path when the font is loaded as PangoFcFont.  */
@@ -815,17 +821,12 @@ gc_pango_context_font_has_glyph (PangoContext *context,
 #endif
 
   /* Slow path performing actual rendering.  */
-  PangoLayout *layout;
-  GError *error;
-  gchar *utf8;
-  glong items_written;
-  int retval;
-
   utf8 = g_ucs4_to_utf8 (&uc, 1, NULL, &items_written, &error);
   if (!utf8)
     {
       g_printerr ("error in decoding: %s\n", error->message);
       g_error_free (error);
+      return FALSE;
     }
 
   layout = pango_layout_new (context);
