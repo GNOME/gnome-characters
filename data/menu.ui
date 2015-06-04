@@ -23,6 +23,8 @@
 	    <property name="can_focus">True</property>
 	    <property name="visible">True</property>
 	    <property name="halign">fill</property>
+	    <property name="margin_start">6</property>
+	    <property name="margin_end">6</property>
 	  </object>
 	</child>
 	<child>

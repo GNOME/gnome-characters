@@ -61,6 +61,7 @@ const MenuPopover = new Lang.Class({
         this._font_listbox.connect('row-selected',
                                    Lang.bind(this, this._handleRowSelected));
         this._font_listbox.set_filter_func(Lang.bind(this, this._filterFunc));
+        this._font_listbox.set_header_func(Lang.bind(this, this._headerFunc));
 
         // This silents warning at Characters exit about this widget being
         // visible but not mapped.  Borrowed from Maps.
@@ -98,5 +99,14 @@ const MenuPopover = new Lang.Class({
 		        return nameWord.indexOf(keyword) >= 0;
 		    });
 	    });
+    },
+
+    _headerFunc: function(row, before) {
+        if (before && !row.get_header()) {
+            let separator = new Gtk.Separator({
+                orientation: Gtk.Orientation.HORIZONTAL
+            });
+            row.set_header (separator);
+        }
     }
 });
