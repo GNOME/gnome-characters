@@ -37,7 +37,7 @@ const MenuPopover = new Lang.Class({
         let row = new Gtk.ListBoxRow({ visible: true });
         row._family = 'None';
         row.add(new Gtk.Label({ label: _("None"),
-				                visible: true,
+                                visible: true,
                                 halign: Gtk.Align.START }));
         this._font_listbox.add(row);
 
@@ -50,7 +50,7 @@ const MenuPopover = new Lang.Class({
             row = new Gtk.ListBoxRow({ visible: true });
             row._family = families[index].get_name();
             row.add(new Gtk.Label({ label: row._family,
-				                    visible: true,
+                                    visible: true,
                                     halign: Gtk.Align.START }));
             this._font_listbox.add(row);
         }
@@ -75,7 +75,7 @@ const MenuPopover = new Lang.Class({
         let text = entry.get_text().replace(/^\s+|\s+$/g, '');
         let keywords = text == '' ? [] : text.split(/\s+/);
         this._keywords = keywords.map(String.toLowerCase);
-	this._font_listbox.invalidate_filter();
+        this._font_listbox.invalidate_filter();
         return true;
     },
 
@@ -89,16 +89,16 @@ const MenuPopover = new Lang.Class({
 
     _filterFunc: function(row) {
         if (this._keywords.length == 0)
-	        return true;
+            return true;
         if (row._family == 'None')
             return true;
 
         let nameWords = row._family.split(/\s+/).map(String.toLowerCase);
-	    return this._keywords.some(function(keyword, index, array) {
-		    return nameWords.some(function(nameWord, index, array) {
-		        return nameWord.indexOf(keyword) >= 0;
-		    });
-	    });
+        return this._keywords.some(function(keyword, index, array) {
+            return nameWords.some(function(nameWord, index, array) {
+                return nameWord.indexOf(keyword) >= 0;
+            });
+        });
     },
 
     _headerFunc: function(row, before) {
