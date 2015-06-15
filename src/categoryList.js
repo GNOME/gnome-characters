@@ -18,11 +18,15 @@
 
 const Lang = imports.lang;
 const Params = imports.params;
+const Cairo = imports.cairo;
+const PangoCairo = imports.gi.PangoCairo;
+const Pango = imports.gi.Pango;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Gettext = imports.gettext;
 const Gc = imports.gi.Gc;
+const Main = imports.main;
 
 const Category = [
     {
@@ -78,6 +82,11 @@ const Category = [
         category: Gc.Category.EMOTICON,
         title: N_('Emoticons'),
         icon_name: 'face-smile-symbolic'
+    },
+    {
+        name: 'local',
+        category: Gc.Category.NONE,
+        title: N_('Local scripts')
     }
 ];
 
@@ -97,8 +106,13 @@ const CategoryListRowWidget = new Lang.Class({
                                  margin_start: 10 });
         this.add(hbox);
 
-        let icon = new Gio.ThemedIcon({ name: category.icon_name });
-        let image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.LARGE_TOOLBAR);
+        let image;
+        if (category.name == 'local') {
+            image = this._createScriptsImage();
+        } else {
+            let icon = new Gio.ThemedIcon({ name: category.icon_name });
+            image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.LARGE_TOOLBAR);
+        }
         image.get_style_context().add_class('category-image');
         hbox.pack_start(image, false, false, 2);
 
@@ -106,6 +120,25 @@ const CategoryListRowWidget = new Lang.Class({
                                     halign: Gtk.Align.START });
         label.get_style_context().add_class('category-label');
         hbox.pack_start(label, true, true, 0);
+    },
+
+    _createScriptsImage: function() {
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, 24, 24);
+        let cr = new CairoContext(surface);
+        let layout = PangoCairo.create_layout(cr);
+
+        let context = this.get_pango_context();
+        layout.get_context().set_font_map(context.get_font_map());
+        let fontDescription = context.get_font_description();
+        fontDescription.set_size(16 * Pango.SCALE);
+        layout.set_font_description(fontDescription);
+
+        let [uc, length] =
+            Main.settings.get_value('scripts-character').get_string();
+        layout.set_text(uc, length);
+        PangoCairo.show_layout(cr, layout);
+
+        return Gtk.Image.new_from_surface(surface);
     }
 });
 
@@ -120,8 +153,13 @@ const CategoryListWidget = new Lang.Class({
         // Mimic GtkStackSidebar to take advantage of the standard theme.
         this.get_style_context().add_class('sidebar');
 
+        let scripts = Main.settings.get_value('scripts').get_strv();
+        let scripts_visible = scripts.length > 0;
+
         for (let index in Category) {
             let category = Category[index];
+            if (category.name == 'local' && !scripts_visible)
+                continue;
             let rowWidget = new CategoryListRowWidget({}, category);
             // Mimic GtkStackSidebar to take advantage of the standard theme.
             rowWidget.get_style_context().add_class('sidebar-item');

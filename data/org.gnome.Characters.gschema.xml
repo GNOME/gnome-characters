@@ -14,5 +14,17 @@
       <default>100</default>
       <summary>Maximum recent characters</summary>
     </key>
+    <key name="scripts" type="as">
+      <!-- TRANSLATORS: list Unicode scripts used in your language.
+	   For Latin languages, keep it empty.  -->
+      <default l10n="messages" context="scripts">[]</default>
+      <summary>A list of Unicode scripts used in this locale.</summary>
+    </key>
+    <key name="scripts-character" type="s">
+      <!-- TRANSLATORS: put the most representative character in your language.
+	   This will be used as a label of the 'Local scripts' tab.  -->
+      <default l10n="messages" context="scripts-character">'?'</default>
+      <summary>Character representing Unicode scripts used in this locale.</summary>
+    </key>
   </schema>
 </schemalist>

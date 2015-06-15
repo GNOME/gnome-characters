@@ -76,7 +76,7 @@ struct GcCharacterIter
   size_t block_index;
   size_t block_count;
 
-  const uc_script_t *script;
+  const uc_script_t * const * scripts;
   uc_general_category_t category;
   const gchar * const * keywords;
 
@@ -199,20 +199,32 @@ gc_character_iter_init_for_blocks (GcCharacterIter  *iter,
 }
 
 static gboolean
-filter_script (GcCharacterIter *iter, ucs4_t uc)
+filter_scripts (GcCharacterIter *iter, ucs4_t uc)
 {
-  return uc_is_print (uc) && uc_is_script (uc, iter->script);
+  const uc_script_t * const *scripts = iter->scripts;
+
+  if (!uc_is_print (uc))
+    return FALSE;
+
+  while (*scripts)
+    {
+      if (uc_is_script (uc, *scripts))
+	return TRUE;
+      scripts++;
+    }
+
+  return FALSE;
 }
 
 static void
-gc_character_iter_init_for_script (GcCharacterIter   *iter,
-                                   const uc_script_t *script)
+gc_character_iter_init_for_scripts (GcCharacterIter   *iter,
+				    const uc_script_t * const * scripts)
 {
   gc_character_iter_init (iter);
   iter->blocks = all_blocks;
   iter->block_count = all_block_count;
-  iter->filter = filter_script;
-  iter->script = script;
+  iter->filter = filter_scripts;
+  iter->scripts = scripts;
 }
 
 static void
@@ -327,8 +339,13 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
       return;
 
     case GC_CATEGORY_LATIN:
-      gc_character_iter_init_for_script (iter, uc_script ('A'));
-      return;
+      {
+	static const uc_script_t *latin_scripts[2];
+	latin_scripts[0] = uc_script ('A');
+	latin_scripts[1] = NULL;
+	gc_character_iter_init_for_scripts (iter, latin_scripts);
+	return;
+      }
 
     case GC_CATEGORY_EMOTICON:
       {
@@ -437,6 +454,7 @@ struct SearchData
 {
   GcCategory category;
   gchar **keywords;
+  const uc_script_t **scripts;
   gunichar uc;
   gint max_matches;
 };
@@ -446,6 +464,8 @@ search_data_free (struct SearchData *data)
 {
   if (data->keywords)
     g_strfreev (data->keywords);
+  if (data->scripts)
+    g_free (data->scripts);
   g_slice_free (struct SearchData, data);
 }
 
@@ -556,6 +576,64 @@ gc_search_by_keywords (const gchar * const * keywords,
   g_task_set_task_data (task, data,
 			(GDestroyNotify) search_data_free);
   g_task_run_in_thread (task, gc_search_by_keywords_thread);
+}
+
+static void
+gc_search_by_scripts_thread (GTask        *task,
+			     gpointer      source_object,
+			     gpointer      task_data,
+			     GCancellable *cancellable)
+{
+  GcCharacterIter iter;
+  GArray *result;
+  struct SearchData *data = task_data;
+
+  if (!all_blocks)
+    uc_all_blocks (&all_blocks, &all_block_count);
+
+  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
+  gc_character_iter_init_for_scripts (&iter,
+				      (const uc_script_t * const *) data->scripts);
+  while (!g_cancellable_is_cancelled (cancellable)
+	 && gc_character_iter_next (&iter))
+    {
+      gunichar uc = gc_character_iter_get (&iter);
+      g_array_append_val (result, uc);
+    }
+
+  g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
+}
+
+/**
+ * gc_search_by_scripts:
+ * @scripts: (array zero-terminated=1) (element-type utf8): an array of scripts
+ * @max_matches: the maximum number of results.
+ * @cancellable: a #GCancellable.
+ * @callback: a #GAsyncReadyCallback.
+ * @user_data: a user data passed to @callback.
+ */
+void
+gc_search_by_scripts (const gchar * const * scripts,
+		      gint                  max_matches,
+		      GCancellable         *cancellable,
+		      GAsyncReadyCallback   callback,
+		      gpointer              user_data)
+{
+  GTask *task;
+  struct SearchData *data;
+  guint length, i;
+
+  task = g_task_new (NULL, cancellable, callback, user_data);
+
+  data = g_slice_new0 (struct SearchData);
+  length = g_strv_length ((gchar **) scripts);
+  data->scripts = g_malloc0_n (length + 1, sizeof (uc_script_t *));
+  for (i = 0; i < length; i++)
+    data->scripts[i] = uc_script_byname (scripts[i]);
+  data->max_matches = max_matches;
+  g_task_set_task_data (task, data,
+			(GDestroyNotify) search_data_free);
+  g_task_run_in_thread (task, gc_search_by_scripts_thread);
 }
 
 static int

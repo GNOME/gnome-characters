@@ -49,6 +49,11 @@ void            gc_search_by_keywords     (const gchar * const * keywords,
                                            GCancellable         *cancellable,
                                            GAsyncReadyCallback   callback,
                                            gpointer              user_data);
+void            gc_search_by_scripts      (const gchar * const * scripts,
+                                           gint                  max_matches,
+                                           GCancellable         *cancellable,
+                                           GAsyncReadyCallback   callback,
+                                           gpointer              user_data);
 void            gc_search_related         (gunichar              uc,
                                            gint                  max_matches,
                                            GCancellable         *cancellable,

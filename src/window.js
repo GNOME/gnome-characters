@@ -330,6 +330,9 @@ const MainView = new Lang.Class({
                 characterList.setCharacters(this.recentCharacters);
                 characterList.updateCharacterList();
             }
+        } else if (name == 'local') {
+            let scripts = Main.settings.get_value('scripts').get_strv();
+            characterList.searchByScripts(scripts);
         } else {
             let category = null;
             for (let index in CategoryList.Category) {

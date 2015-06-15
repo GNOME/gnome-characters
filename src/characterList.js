@@ -376,6 +376,22 @@ const CharacterListView = new Lang.Class({
             }));
     },
 
+    searchByScripts: function(scripts) {
+        this._startSearch()
+        Gc.search_by_scripts(
+            scripts,
+            -1,
+            this._cancellable,
+            Lang.bind(this, function(source_object, res, user_data) {
+                try {
+                    let result = Gc.search_finish(res);
+                    this._finishSearch(result);
+                } catch (e) {
+                    log("Failed to search by scripts: " + e);
+                }
+            }));
+    },
+
     cancelSearch: function() {
         this._cancellable.cancel();
         this._finishSearch([]);
