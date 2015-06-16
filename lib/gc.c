@@ -2,6 +2,8 @@
 
 #include "gc.h"
 
+#include <langinfo.h>
+#include <locale.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unicase.h>
@@ -916,4 +918,92 @@ gc_pango_context_font_has_glyph (PangoContext *context,
   g_object_unref (layout);
 
   return retval == 0;
+}
+
+/**
+ * gc_get_current_language:
+ *
+ * Returns: (transfer full): an ISO639 two-letter language code
+ */
+gchar *
+gc_get_current_language (void)
+{
+  const gchar *locale = setlocale (LC_MESSAGES, NULL);
+  size_t length;
+
+  if (!locale || !*locale)
+    return NULL;
+
+  length = strcspn (locale, "_.@");
+
+  return g_strndup (locale, length);
+}
+
+/**
+ * gc_get_scripts_for_locale:
+ * @locale: a locale name
+ *
+ * Returns: (transfer full) (element-type utf8): a list of script names.
+ */
+GList *
+gc_get_scripts_for_locale (const gchar *locale)
+{
+  gchar *old_locale;
+  GSettings *settings;
+  GVariant *value;
+  GList *result = NULL;
+
+  old_locale = g_strdup (setlocale (LC_MESSAGES, locale));
+  if (!old_locale)
+    return NULL;
+
+  settings = g_settings_new ("org.gnome.Characters");
+  value = g_settings_get_default_value (settings, "local-scripts");
+  if (value)
+    {
+      GVariantIter iter;
+      gchar *script;
+
+      g_variant_iter_init (&iter, value);
+      while (g_variant_iter_next (&iter, "s", &script))
+	result = g_list_append (result, script);
+      g_variant_unref (value);
+    }
+
+  setlocale (LC_MESSAGES, old_locale);
+  g_free (old_locale);
+
+  return result;
+}
+
+/**
+ * gc_get_character_for_locale:
+ * @locale: a locale name
+ *
+ * Returns: (nullable) (transfer full): a string
+ */
+gchar *
+gc_get_character_for_locale (const gchar *locale)
+{
+  gchar *old_locale;
+  GSettings *settings;
+  GVariant *value;
+  gchar *result = NULL;
+
+  old_locale = g_strdup (setlocale (LC_MESSAGES, locale));
+  if (!old_locale)
+    return g_strdup ("?");
+
+  settings = g_settings_new ("org.gnome.Characters");
+  value = g_settings_get_default_value (settings, "local-scripts-character");
+  setlocale (LC_MESSAGES, old_locale);
+  g_free (old_locale);
+
+  if (value)
+    {
+      result = g_variant_dup_string (value, NULL);
+      g_variant_unref (value);
+    }
+
+  return result;
 }

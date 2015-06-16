@@ -78,6 +78,12 @@ gboolean        gc_pango_context_font_has_glyph
 					   PangoFont            *font,
 					   gunichar              uc);
 
+gchar          *gc_get_current_language   (void);
+GList          *gc_get_scripts_for_locale
+                                          (const gchar          *locale);
+gchar          *gc_get_character_for_locale
+                                          (const gchar          *locale);
+
 G_END_DECLS
 
 #endif	/* __GC_H__ */

@@ -344,6 +344,11 @@ const CharacterListView = new Lang.Class({
     },
 
     searchByCategory: function(category) {
+        if ('scripts' in category) {
+            this.searchByScripts(category.scripts);
+            return;
+        }
+
         this._startSearch()
         Gc.search_by_category(
             category.category,

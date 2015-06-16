@@ -199,8 +199,9 @@ const MainWindow = new Lang.Class({
         // FIXME: we could use Gtk.Container.get_child to obtain the
         // title, but it is not introspectable.
         let category = null;
-        for (let index in CategoryList.Category) {
-            category = CategoryList.Category[index];
+        let categories = CategoryList.getCategoryList();
+        for (let index in categories) {
+            category = categories[index];
             if (category.name == name)
                 break;
         }
@@ -270,8 +271,9 @@ const MainView = new Lang.Class({
         this._characterLists = {};
 
         let characterList;
-        for (let index in CategoryList.Category) {
-            let category = CategoryList.Category[index];
+        let categories = CategoryList.getCategoryList();
+        for (let index in categories) {
+            let category = categories[index];
             characterList = this._createCharacterList(
                 category.name, _('%s Character List').format(category.title));
             // FIXME: Can't use GtkContainer.child_get_property.
@@ -330,13 +332,11 @@ const MainView = new Lang.Class({
                 characterList.setCharacters(this.recentCharacters);
                 characterList.updateCharacterList();
             }
-        } else if (name == 'local') {
-            let scripts = Main.settings.get_value('scripts').get_strv();
-            characterList.searchByScripts(scripts);
         } else {
             let category = null;
-            for (let index in CategoryList.Category) {
-                category = CategoryList.Category[index];
+            let categories = CategoryList.getCategoryList();
+            for (let index in categories) {
+                category = categories[index];
                 if (category.name == name)
                     break;
             }

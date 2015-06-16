@@ -21,14 +21,16 @@ const Params = imports.params;
 const Cairo = imports.cairo;
 const PangoCairo = imports.gi.PangoCairo;
 const Pango = imports.gi.Pango;
+const GnomeDesktop = imports.gi.GnomeDesktop;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Gettext = imports.gettext;
 const Gc = imports.gi.Gc;
 const Main = imports.main;
+const Util = imports.util;
 
-const Category = [
+const BaseCategoryList = [
     {
         name: 'recent',
         category: Gc.Category.NONE,
@@ -82,11 +84,6 @@ const Category = [
         category: Gc.Category.EMOTICON,
         title: N_('Emoticons'),
         icon_name: 'face-smile-symbolic'
-    },
-    {
-        name: 'local',
-        category: Gc.Category.NONE,
-        title: N_('Local scripts')
     }
 ];
 
@@ -107,8 +104,8 @@ const CategoryListRowWidget = new Lang.Class({
         this.add(hbox);
 
         let image;
-        if (category.name == 'local') {
-            image = this._createScriptsImage();
+        if ('scripts' in category) {
+            image = this._createCharacterImage(category.character);
         } else {
             let icon = new Gio.ThemedIcon({ name: category.icon_name });
             image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.LARGE_TOOLBAR);
@@ -122,7 +119,7 @@ const CategoryListRowWidget = new Lang.Class({
         hbox.pack_start(label, true, true, 0);
     },
 
-    _createScriptsImage: function() {
+    _createCharacterImage: function(uc) {
         let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, 24, 24);
         let cr = new CairoContext(surface);
         let layout = PangoCairo.create_layout(cr);
@@ -133,14 +130,78 @@ const CategoryListRowWidget = new Lang.Class({
         fontDescription.set_size(16 * Pango.SCALE);
         layout.set_font_description(fontDescription);
 
-        let [uc, length] =
-            Main.settings.get_value('scripts-character').get_string();
-        layout.set_text(uc, length);
+        layout.set_text(uc, -1);
         PangoCairo.show_layout(cr, layout);
 
         return Gtk.Image.new_from_surface(surface);
     }
 });
+
+let _categoryList = null;
+
+function getCategoryList() {
+    if (_categoryList == null) {
+        _categoryList = BaseCategoryList.slice();
+
+        // Deduce language list from input-source settings.
+        let allLanguages = {};
+        let settings = Util.getSettings('org.gnome.desktop.input-sources',
+                                        '/org/gnome/desktop/input-sources/');
+        let xkbInfo = new GnomeDesktop.XkbInfo();
+        if (settings && xkbInfo.get_languages_for_layout) {
+            let sources = settings.get_value('sources').deep_unpack();
+            for (let i in sources) {
+                let [type, id] = sources[i];
+                if (type != 'xkb')
+                    continue;
+
+                let languages = xkbInfo.get_languages_for_layout(id);
+                for (let j in languages) {
+                    let language_code =
+                        GnomeDesktop.normalize_language_code(languages[j]);
+                    if (!(languages in allLanguages)) {
+                        allLanguages[language_code] =
+                            GnomeDesktop.get_language_from_code(language_code,
+                                                                null);
+                    }
+                }
+            }
+        }
+
+        // Add current locale language to allLangs.
+        let language_code = Gc.get_current_language();
+        if (!(language_code in allLanguages)) {
+            allLanguages[language_code] =
+                GnomeDesktop.get_language_from_code(language_code, null);
+        }
+
+        let allLocales = GnomeDesktop.get_all_locales();
+        // Loop over allLangs and deduce Unicode scripts used in each language.
+        for (let language_code in allLanguages) {
+            let locales = allLocales.filter(function (value) {
+                return value == language_code ||
+                    value.startsWith(language_code + '_');
+            });
+            for (let index in locales) {
+                let locale = locales[index];
+                let scripts = Gc.get_scripts_for_locale(locale);
+                let character = Gc.get_character_for_locale(locale);
+                if (scripts.length > 0) {
+                    let category = {
+                        name: language_code,
+                        category: Gc.Category.NONE,
+                        title: allLanguages[language_code],
+                        scripts: scripts,
+                        character: character
+                    }
+                    _categoryList.push(category);
+                    break;
+                }
+            }
+        }
+    }
+    return _categoryList;
+}
 
 const CategoryListWidget = new Lang.Class({
     Name: 'CategoryListWidget',
@@ -153,13 +214,9 @@ const CategoryListWidget = new Lang.Class({
         // Mimic GtkStackSidebar to take advantage of the standard theme.
         this.get_style_context().add_class('sidebar');
 
-        let scripts = Main.settings.get_value('scripts').get_strv();
-        let scripts_visible = scripts.length > 0;
-
-        for (let index in Category) {
-            let category = Category[index];
-            if (category.name == 'local' && !scripts_visible)
-                continue;
+        let categories = getCategoryList();
+        for (let index in categories) {
+            let category = categories[index];
             let rowWidget = new CategoryListRowWidget({}, category);
             // Mimic GtkStackSidebar to take advantage of the standard theme.
             rowWidget.get_style_context().add_class('sidebar-item');
