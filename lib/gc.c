@@ -949,25 +949,29 @@ GList *
 gc_get_scripts_for_locale (const gchar *locale)
 {
   gchar *old_locale;
-  GSettings *settings;
-  GVariant *value;
   GList *result = NULL;
 
-  old_locale = g_strdup (setlocale (LC_MESSAGES, locale));
+  old_locale = g_strdup (setlocale (LC_MESSAGES, NULL));
   if (!old_locale)
     return NULL;
 
-  settings = g_settings_new ("org.gnome.Characters");
-  value = g_settings_get_default_value (settings, "local-scripts");
-  if (value)
+  if (setlocale (LC_MESSAGES, locale))
     {
-      GVariantIter iter;
-      gchar *script;
+      GSettings *settings;
+      GVariant *value;
 
-      g_variant_iter_init (&iter, value);
-      while (g_variant_iter_next (&iter, "s", &script))
-	result = g_list_append (result, script);
-      g_variant_unref (value);
+      settings = g_settings_new ("org.gnome.Characters");
+      value = g_settings_get_default_value (settings, "local-scripts");
+      if (value)
+	{
+	  GVariantIter iter;
+	  gchar *script;
+
+	  g_variant_iter_init (&iter, value);
+	  while (g_variant_iter_next (&iter, "s", &script))
+	    result = g_list_append (result, script);
+	  g_variant_unref (value);
+	}
     }
 
   setlocale (LC_MESSAGES, old_locale);
@@ -986,24 +990,29 @@ gchar *
 gc_get_character_for_locale (const gchar *locale)
 {
   gchar *old_locale;
-  GSettings *settings;
-  GVariant *value;
   gchar *result = NULL;
 
-  old_locale = g_strdup (setlocale (LC_MESSAGES, locale));
+  old_locale = g_strdup (setlocale (LC_MESSAGES, NULL));
   if (!old_locale)
     return g_strdup ("?");
 
-  settings = g_settings_new ("org.gnome.Characters");
-  value = g_settings_get_default_value (settings, "local-scripts-character");
+  if (setlocale (LC_MESSAGES, locale))
+    {
+      GSettings *settings;
+      GVariant *value;
+
+      settings = g_settings_new ("org.gnome.Characters");
+      value = g_settings_get_default_value (settings,
+					    "local-scripts-character");
+      if (value)
+	{
+	  result = g_variant_dup_string (value, NULL);
+	  g_variant_unref (value);
+	}
+    }
+
   setlocale (LC_MESSAGES, old_locale);
   g_free (old_locale);
-
-  if (value)
-    {
-      result = g_variant_dup_string (value, NULL);
-      g_variant_unref (value);
-    }
 
   return result;
 }
