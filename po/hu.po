@@ -1,5 +1,5 @@
 # Hungarian translation for gnome-characters.
-# Copyright (C) 2014 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-characters package.
 #
 # Balázs Úr <urbalazs@gmail.com>, 2014, 2015.
@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-02 17:31+0000\n"
-"PO-Revision-Date: 2015-03-03 16:19+0100\n"
+"POT-Creation-Date: 2015-04-07 02:13+0000\n"
+"PO-Revision-Date: 2015-06-23 00:26+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
@@ -36,7 +36,8 @@ msgid "Try another search criteria."
 msgstr "Próbáljon egy másik keresési feltételt."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
+#| msgid "Loading..."
+msgid "Loading…"
 msgstr "Betöltés…"
 
 #: ../data/characterlist.ui.h:4
@@ -60,10 +61,6 @@ msgid "Filter by font"
 msgstr "Szűrés betűkészlet szerint"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
-#| msgid ""
-#| "Characters is a simple utility application to find and insert unusual "
-#| "characters. It allows you to quickly find the charactrer you are looking "
-#| "for by searching for keywords."
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -173,11 +170,11 @@ msgstr "Karakterek alkalmazás kilépés"
 msgid "None"
 msgstr "Nincs"
 
-#: ../src/searchProvider.js:91
+#: ../src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Ismeretlen karakternév"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -199,12 +196,12 @@ msgstr "Karaktertábla"
 msgid "%s (%s only)"
 msgstr "%s (csak %s)"
 
-#: ../src/window.js:267
+#: ../src/window.js:276
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s karakterlista"
 
-#: ../src/window.js:274
+#: ../src/window.js:283
 msgid "Search Result Character List"
 msgstr "Keresési eredmény karakterlista"
 
