@@ -347,7 +347,7 @@ const MainView = new Lang.Class({
 
     addToRecent: function(uc) {
         if (this.recentCharacters.indexOf(uc) < 0) {
-            this.recentCharacters.push(uc);
+            this.recentCharacters.unshift(uc);
             if (this.recentCharacters.length > this._maxRecentCharacters)
                 this.recentCharacters = this.recentCharacters.slice(
                     0, this._maxRecentCharacters);
