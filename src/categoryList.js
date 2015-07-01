@@ -18,13 +18,15 @@
 
 const Lang = imports.lang;
 const Params = imports.params;
+const GnomeDesktop = imports.gi.GnomeDesktop;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Gettext = imports.gettext;
 const Gc = imports.gi.Gc;
+const Util = imports.util;
 
-const Category = [
+const BaseCategoryList = [
     {
         name: 'recent',
         category: Gc.Category.NONE,
@@ -68,9 +70,9 @@ const Category = [
         icon_name: 'characters-math-symbolic'
     },
     {
-        name: 'latin',
+        name: 'letters',
         category: Gc.Category.LATIN,
-        title: N_('Latin'),
+        title: N_('Letters'),
         icon_name: 'characters-latin-symbolic'
     },
     {
@@ -120,8 +122,10 @@ const CategoryListWidget = new Lang.Class({
         // Mimic GtkStackSidebar to take advantage of the standard theme.
         this.get_style_context().add_class('sidebar');
 
-        for (let index in Category) {
-            let category = Category[index];
+        this._ensureCategoryList();
+
+        for (let index in this._categoryList) {
+            let category = this._categoryList[index];
             let rowWidget = new CategoryListRowWidget({}, category);
             // Mimic GtkStackSidebar to take advantage of the standard theme.
             rowWidget.get_style_context().add_class('sidebar-item');
@@ -136,4 +140,144 @@ const CategoryListWidget = new Lang.Class({
             category.activate(new GLib.Variant('s', row.category.name));
         }
     },
+
+    _finishListEngines: function(sources, bus, res) {
+        try {
+            let engines = bus.list_engines_async_finish(res);
+            if (engines) {
+                for (let j in engines) {
+                    let engine = engines[j];
+                    let language = engine.get_language();
+                    if (language != null)
+                        this._ibusLanguageList[engine.get_name()] = language;
+                }
+            }
+        } catch (e) {
+            log("Failed to list engines: " + e);
+        }
+        this._finishBuiltScriptList(sources);
+    },
+
+    _ensureIBusLanguageList: function(sources) {
+        if (this._ibusLanguageList != null)
+            return;
+
+        this._ibusLanguageList = {};
+
+        // Don't assume IBus is always available.
+        let ibus;
+        try {
+            ibus = imports.gi.IBus;
+        } catch (e) {
+            this._finishBuiltScriptList(sources);
+            return;
+        }
+
+        ibus.init();
+        let bus = new ibus.Bus();
+        bus.list_engines_async(-1,
+                               null,
+                               Lang.bind(this, function (bus, res) {
+                                   this._finishListEngines(sources, bus, res);
+                               }));
+    },
+
+    _finishBuiltScriptList: function(sources) {
+        let xkbInfo = new GnomeDesktop.XkbInfo();
+        let languages = [];
+        for (let i in sources) {
+            let [type, id] = sources[i];
+            switch (type) {
+            case 'xkb':
+                // FIXME: Remove this check once gnome-desktop gets the
+                // support for that.
+                if (xkbInfo.get_languages_for_layout) {
+                    languages = languages.concat(
+                        xkbInfo.get_languages_for_layout(id));
+                }
+                break;
+            case 'ibus':
+                if (id in this._ibusLanguageList)
+                    languages.push(this._ibusLanguageList[id]);
+                break;
+            }
+        }
+
+        // Add current locale language to allLangs.
+        languages.push(Gc.get_current_language());
+
+        let allScripts = [];
+        for (let i in languages) {
+            let language = GnomeDesktop.normalize_locale(languages[i]);
+            if (language == null)
+                continue;
+            let scripts = Gc.get_scripts_for_language(languages[i]);
+            for (let j in scripts) {
+                let script = scripts[j];
+                // Latin is always added at top, and Han contains too
+                // many characters.
+                if (['Latin', 'Han'].indexOf(script) >= 0)
+                    continue;
+                if (allScripts.indexOf(script) >= 0)
+                    continue;
+                allScripts.push(script);
+            }
+        }
+
+        allScripts.unshift('Latin');
+        let category = this.getCategory('letters');
+        category.scripts = allScripts;
+    },
+
+    _buildScriptList: function() {
+        let settings =
+            Util.getSettings('org.gnome.desktop.input-sources',
+                             '/org/gnome/desktop/input-sources/');
+        if (settings) {
+            let sources = settings.get_value('sources').deep_unpack();
+            let hasIBus = sources.some(function(current, index, array) {
+                return current[0] == 'ibus';
+            });
+            if (hasIBus)
+                this._ensureIBusLanguageList(sources);
+            else
+                this._finishBuiltScriptList(sources);
+        }
+    },
+
+    _ensureCategoryList: function() {
+        if (this._categoryList != null)
+            return;
+
+        this._categoryList = BaseCategoryList.slice();
+
+        // Populate the "scripts" element of the "Letter" category,
+        // based on the input-sources settings.
+        //
+        // This works asynchronously, in the following call flow:
+        //
+        // _buildScriptList()
+        //    if an IBus input-source is configured:
+        //       _ensureIBusLanguageList()
+        //          ibus_bus_list_engines_async()
+        //             _finishListEngines()
+        //                _finishBuiltScriptList()
+        //    else:
+        //       _finishBuiltScriptList()
+        //
+        this._buildScriptList();
+    },
+
+    getCategoryList: function() {
+        return this._categoryList;
+    },
+
+    getCategory: function(name) {
+        for (let index in this._categoryList) {
+            let category = this._categoryList[index];
+            if (category.name == name)
+                return category;
+        }
+        return null;
+    }
 });

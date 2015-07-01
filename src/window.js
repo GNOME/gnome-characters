@@ -104,7 +104,7 @@ const MainWindow = new Lang.Class({
         scroll.add(this._categoryList);
         this._sidebar_grid.add(scroll);
 
-        this._mainView = new MainView();
+        this._mainView = new MainView({ categoryList: this._categoryList });
 
         if (this._mainView.recentCharacters.length == 0) {
             let row = this._categoryList.get_row_at_index(1);
@@ -196,17 +196,10 @@ const MainWindow = new Lang.Class({
 
         let [name, length] = v.get_string()
 
-        // FIXME: we could use Gtk.Container.get_child to obtain the
-        // title, but it is not introspectable.
-        let category = null;
-        for (let index in CategoryList.Category) {
-            category = CategoryList.Category[index];
-            if (category.name == name)
-                break;
-        }
+        let category = this._categoryList.getCategory(name);
 
         Util.assertNotEqual(category, null);
-        this._mainView.setPage(category.name);
+        this._mainView.setPage(category);
         this._updateTitle(category.title);
     },
 
@@ -260,6 +253,7 @@ const MainView = new Lang.Class({
     },
 
     _init: function(params) {
+        let filtered = Params.filter(params, { categoryList: null });
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
@@ -268,10 +262,12 @@ const MainView = new Lang.Class({
 
         this._filterFontFamily = null;
         this._characterLists = {};
+        this._categoryList = filtered.categoryList;
 
         let characterList;
-        for (let index in CategoryList.Category) {
-            let category = CategoryList.Category[index];
+        let categories = this._categoryList.getCategoryList();
+        for (let index in categories) {
+            let category = categories[index];
             characterList = this._createCharacterList(
                 category.name, _('%s Character List').format(category.title));
             // FIXME: Can't use GtkContainer.child_get_property.
@@ -316,14 +312,11 @@ const MainView = new Lang.Class({
         this.visible_child.cancelSearch();
     },
 
-    setPage: function(name) {
-        if (!(name in this._characterLists))
-            return;
-
-        let characterList = this.get_child_by_name(name);
+    setPage: function(category) {
+        let characterList = this.get_child_by_name(category.name);
         characterList.setFilterFont(this._filterFontFamily);
 
-        if (name == 'recent') {
+        if (category.name == 'recent') {
             if (this.recentCharacters.length == 0)
                 characterList.visible_child_name = 'empty-recent';
             else {
@@ -331,14 +324,6 @@ const MainView = new Lang.Class({
                 characterList.updateCharacterList();
             }
         } else {
-            let category = null;
-            for (let index in CategoryList.Category) {
-                category = CategoryList.Category[index];
-                if (category.name == name)
-                    break;
-            }
-
-            Util.assertNotEqual(category, null);
             characterList.searchByCategory(category);
         }
 
