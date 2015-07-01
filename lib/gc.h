@@ -49,6 +49,11 @@ void            gc_search_by_keywords     (const gchar * const * keywords,
                                            GCancellable         *cancellable,
                                            GAsyncReadyCallback   callback,
                                            gpointer              user_data);
+void            gc_search_by_scripts      (const gchar * const * scripts,
+                                           gint                  max_matches,
+                                           GCancellable         *cancellable,
+                                           GAsyncReadyCallback   callback,
+                                           gpointer              user_data);
 void            gc_search_related         (gunichar              uc,
                                            gint                  max_matches,
                                            GCancellable         *cancellable,
@@ -72,6 +77,10 @@ gboolean        gc_pango_context_font_has_glyph
                                           (PangoContext         *context,
                                            PangoFont            *font,
                                            gunichar              uc);
+
+gchar          *gc_get_current_language   (void);
+const gchar * const * gc_get_scripts_for_language
+                                          (const gchar          *language);
 
 G_END_DECLS
 
