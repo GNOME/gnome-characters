@@ -113,33 +113,33 @@ gc_character_iter_next (GcCharacterIter *iter)
   while (TRUE)
     {
       if (uc == iter->blocks[iter->block_index].end)
-	{
-	  iter->block_index++;
-	  uc = UNINAME_INVALID;
-	}
+        {
+          iter->block_index++;
+          uc = UNINAME_INVALID;
+        }
 
       if (uc == UNINAME_INVALID)
-	{
-	  while (iter->block_index < iter->block_count
-		 && iter->blocks[iter->block_index].start
-		 == iter->blocks[iter->block_index].end)
-	    iter->block_index++;
-	  if (iter->block_index == iter->block_count)
-	    return FALSE;
-	  uc = iter->blocks[iter->block_index].start;
-	}
+        {
+          while (iter->block_index < iter->block_count
+                 && iter->blocks[iter->block_index].start
+                 == iter->blocks[iter->block_index].end)
+            iter->block_index++;
+          if (iter->block_index == iter->block_count)
+            return FALSE;
+          uc = iter->blocks[iter->block_index].start;
+        }
       else
-	uc++;
+        uc++;
 
       while (uc < iter->blocks[iter->block_index].end
-	     && !iter->filter (iter, uc))
-	uc++;
+             && !iter->filter (iter, uc))
+        uc++;
 
       if (uc < iter->blocks[iter->block_index].end)
-	{
-	  iter->uc = uc;
-	  return TRUE;
-	}
+        {
+          iter->uc = uc;
+          return TRUE;
+        }
     }
 
   return FALSE;
@@ -233,34 +233,34 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_ARROW:
       {
-	static uc_block_t arrow_blocks[3];
-	static gsize arrow_blocks_size = 0;
-	static gsize arrow_blocks_initialized = 0;
-	if (g_once_init_enter (&arrow_blocks_initialized))
-	  {
-	    const uc_block_t *block;
+        static uc_block_t arrow_blocks[3];
+        static gsize arrow_blocks_size = 0;
+        static gsize arrow_blocks_initialized = 0;
+        if (g_once_init_enter (&arrow_blocks_initialized))
+          {
+            const uc_block_t *block;
 
-	    /* 2190..21FF; Arrows */
-	    block = uc_block (0x2190);
-	    if (block)
-	      memcpy (&arrow_blocks[arrow_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    /* 27F0..27FF; Supplemental Arrows-A */
-	    block = uc_block (0x27F0);
-	    if (block)
-	      memcpy (&arrow_blocks[arrow_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    /* 2900..297F; Supplemental Arrows-B */
-	    block = uc_block (0x2900);
-	    if (block)
-	      memcpy (&arrow_blocks[arrow_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    g_once_init_leave (&arrow_blocks_initialized, 1);
-	  }
-	gc_character_iter_init_for_blocks (iter,
-					   arrow_blocks,
-					   arrow_blocks_size);
-	return;
+            /* 2190..21FF; Arrows */
+            block = uc_block (0x2190);
+            if (block)
+              memcpy (&arrow_blocks[arrow_blocks_size++], block,
+                      sizeof (uc_block_t));
+            /* 27F0..27FF; Supplemental Arrows-A */
+            block = uc_block (0x27F0);
+            if (block)
+              memcpy (&arrow_blocks[arrow_blocks_size++], block,
+                      sizeof (uc_block_t));
+            /* 2900..297F; Supplemental Arrows-B */
+            block = uc_block (0x2900);
+            if (block)
+              memcpy (&arrow_blocks[arrow_blocks_size++], block,
+                      sizeof (uc_block_t));
+            g_once_init_leave (&arrow_blocks_initialized, 1);
+          }
+        gc_character_iter_init_for_blocks (iter,
+                                           arrow_blocks,
+                                           arrow_blocks_size);
+        return;
       }
 
     case GC_CATEGORY_BULLET:
@@ -272,49 +272,49 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_PICTURE:
       {
-	static uc_block_t picture_blocks[6];
-	static gsize picture_blocks_size = 0;
-	static gsize picture_blocks_initialized = 0;
-	if (g_once_init_enter (&picture_blocks_initialized))
-	  {
-	    const uc_block_t *block;
+        static uc_block_t picture_blocks[6];
+        static gsize picture_blocks_size = 0;
+        static gsize picture_blocks_initialized = 0;
+        if (g_once_init_enter (&picture_blocks_initialized))
+          {
+            const uc_block_t *block;
 
-	    /* 2600..26FF; Miscellaneous Symbols */
-	    block = uc_block (0x2600);
-	    if (block)
-	      memcpy (&picture_blocks[picture_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    /* 2700..27BF; Dingbats */
-	    block = uc_block (0x2700);
-	    if (block)
-	      memcpy (&picture_blocks[picture_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    /* 1F000..1F02F; Mahjong Tiles */
-	    block = uc_block (0x1F000);
-	    if (block)
-	      memcpy (&picture_blocks[picture_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    /* 1F030..1F09F; Domino Tiles */
-	    block = uc_block (0x1F030);
-	    if (block)
-	      memcpy (&picture_blocks[picture_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    /* 1F0A0..1F0FF; Playing Cards */
-	    block = uc_block (0x1F0A0);
-	    if (block)
-	      memcpy (&picture_blocks[picture_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    /* 1F300..1F5FF; Miscellaneous Symbols and Pictographs */
-	    block = uc_block (0x1F300);
-	    if (block)
-	      memcpy (&picture_blocks[picture_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    g_once_init_leave (&picture_blocks_initialized, 1);
-	  }
-	gc_character_iter_init_for_blocks (iter,
-					   picture_blocks,
-					   picture_blocks_size);
-	return;
+            /* 2600..26FF; Miscellaneous Symbols */
+            block = uc_block (0x2600);
+            if (block)
+              memcpy (&picture_blocks[picture_blocks_size++], block,
+                      sizeof (uc_block_t));
+            /* 2700..27BF; Dingbats */
+            block = uc_block (0x2700);
+            if (block)
+              memcpy (&picture_blocks[picture_blocks_size++], block,
+                      sizeof (uc_block_t));
+            /* 1F000..1F02F; Mahjong Tiles */
+            block = uc_block (0x1F000);
+            if (block)
+              memcpy (&picture_blocks[picture_blocks_size++], block,
+                      sizeof (uc_block_t));
+            /* 1F030..1F09F; Domino Tiles */
+            block = uc_block (0x1F030);
+            if (block)
+              memcpy (&picture_blocks[picture_blocks_size++], block,
+                      sizeof (uc_block_t));
+            /* 1F0A0..1F0FF; Playing Cards */
+            block = uc_block (0x1F0A0);
+            if (block)
+              memcpy (&picture_blocks[picture_blocks_size++], block,
+                      sizeof (uc_block_t));
+            /* 1F300..1F5FF; Miscellaneous Symbols and Pictographs */
+            block = uc_block (0x1F300);
+            if (block)
+              memcpy (&picture_blocks[picture_blocks_size++], block,
+                      sizeof (uc_block_t));
+            g_once_init_leave (&picture_blocks_initialized, 1);
+          }
+        gc_character_iter_init_for_blocks (iter,
+                                           picture_blocks,
+                                           picture_blocks_size);
+        return;
       }
       break;
 
@@ -332,25 +332,25 @@ gc_enumerate_character_by_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_EMOTICON:
       {
-	static uc_block_t emoticon_blocks[1];
-	static gsize emoticon_blocks_size = 0;
-	static gsize emoticon_blocks_initialized = 0;
-	if (g_once_init_enter (&emoticon_blocks_initialized))
-	  {
-	    const uc_block_t *block;
+        static uc_block_t emoticon_blocks[1];
+        static gsize emoticon_blocks_size = 0;
+        static gsize emoticon_blocks_initialized = 0;
+        if (g_once_init_enter (&emoticon_blocks_initialized))
+          {
+            const uc_block_t *block;
 
-	    /* 1F600..1F64F; Emoticons */
-	    block = uc_block (0x1F600);
-	    if (block)
-	      memcpy (&emoticon_blocks[emoticon_blocks_size++], block,
-		      sizeof (uc_block_t));
-	    g_once_init_leave (&emoticon_blocks_initialized, 1);
-	  }
-	gc_character_iter_init_for_blocks (iter,
-					   emoticon_blocks,
-					   emoticon_blocks_size);
-	iter->filter = filter_is_print;
-	return;
+            /* 1F600..1F64F; Emoticons */
+            block = uc_block (0x1F600);
+            if (block)
+              memcpy (&emoticon_blocks[emoticon_blocks_size++], block,
+                      sizeof (uc_block_t));
+            g_once_init_leave (&emoticon_blocks_initialized, 1);
+          }
+        gc_character_iter_init_for_blocks (iter,
+                                           emoticon_blocks,
+                                           emoticon_blocks_size);
+        iter->filter = filter_is_print;
+        return;
       }
     }
 
@@ -377,13 +377,13 @@ filter_keywords (GcCharacterIter *iter, ucs4_t uc)
       /* Match against the character itself.  */
       u32_to_u8 (&uc, 1, utf8, &utf8_length);
       if (utf8_length == length && memcmp (*keywords, utf8, utf8_length) == 0)
-	return TRUE;
+        return TRUE;
 
       /* Match against the hexadecimal code point.  */
       if (length <= 6
-	  && strspn (*keywords, "0123456789abcdefABCDEF") == length
-	  && strtoul (*keywords, NULL, 16) == uc)
-	return TRUE;
+          && strspn (*keywords, "0123456789abcdefABCDEF") == length
+          && strtoul (*keywords, NULL, 16) == uc)
+        return TRUE;
     }
 
   /* Match against the name.  */
@@ -422,7 +422,7 @@ gc_character_name (gunichar uc)
 }
 
 G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
-		     g_array_ref, g_array_unref);
+                     g_array_ref, g_array_unref);
 
 gunichar
 gc_search_result_get (GcSearchResult *result, gint index)
@@ -465,11 +465,11 @@ gc_search_by_category_thread (GTask        *task,
   result = g_array_new (FALSE, FALSE, sizeof (gunichar));
   gc_enumerate_character_by_category (&iter, data->category);
   while (!g_cancellable_is_cancelled (cancellable)
-	 && gc_character_iter_next (&iter))
+         && gc_character_iter_next (&iter))
     {
       gunichar uc = gc_character_iter_get (&iter);
       if (data->max_matches < 0 || result->len < data->max_matches)
-	g_array_append_val (result, uc);
+        g_array_append_val (result, uc);
     }
 
   g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
@@ -499,7 +499,7 @@ gc_search_by_category (GcCategory          category,
   data->category = category;
   data->max_matches = max_matches;
   g_task_set_task_data (task, data,
-			(GDestroyNotify) search_data_free);
+                        (GDestroyNotify) search_data_free);
   g_task_run_in_thread (task, gc_search_by_category_thread);
 }
 
@@ -520,11 +520,11 @@ gc_search_by_keywords_thread (GTask        *task,
   result = g_array_new (FALSE, FALSE, sizeof (gunichar));
   gc_enumerate_character_by_keywords (&iter, keywords);
   while (!g_cancellable_is_cancelled (cancellable)
-	 && gc_character_iter_next (&iter))
+         && gc_character_iter_next (&iter))
     {
       gunichar uc = gc_character_iter_get (&iter);
       if (data->max_matches < 0 || result->len < data->max_matches)
-	g_array_append_val (result, uc);
+        g_array_append_val (result, uc);
     }
 
   g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
@@ -540,10 +540,10 @@ gc_search_by_keywords_thread (GTask        *task,
  */
 void
 gc_search_by_keywords (const gchar * const * keywords,
-		       gint                  max_matches,
-		       GCancellable         *cancellable,
-		       GAsyncReadyCallback   callback,
-		       gpointer              user_data)
+                       gint                  max_matches,
+                       GCancellable         *cancellable,
+                       GAsyncReadyCallback   callback,
+                       gpointer              user_data)
 {
   GTask *task;
   struct SearchData *data;
@@ -554,13 +554,13 @@ gc_search_by_keywords (const gchar * const * keywords,
   data->keywords = g_strdupv ((gchar **) keywords);
   data->max_matches = max_matches;
   g_task_set_task_data (task, data,
-			(GDestroyNotify) search_data_free);
+                        (GDestroyNotify) search_data_free);
   g_task_run_in_thread (task, gc_search_by_keywords_thread);
 }
 
 static int
 confusable_character_class_compare (const void *a,
-				    const void *b)
+                                    const void *b)
 {
   const struct ConfusableCharacterClass *ac = a, *bc = b;
   return ac->uc == bc->uc ? 0 : (ac->uc < bc->uc ? -1 : 1);
@@ -575,21 +575,21 @@ gc_add_confusables (struct SearchData *data,
 
   key.uc = data->uc;
   res = bsearch (&key, confusable_character_classes,
-		 G_N_ELEMENTS (confusable_character_classes),
-		 sizeof (*confusable_character_classes),
-		 confusable_character_class_compare);
+                 G_N_ELEMENTS (confusable_character_classes),
+                 sizeof (*confusable_character_classes),
+                 confusable_character_class_compare);
   if (res)
     {
       const struct ConfusableClass *klass = &confusable_classes[res->index];
       uint16_t i;
 
       for (i = 0; i < klass->length
-	     && !g_cancellable_is_cancelled (cancellable); i++)
-	{
-	  gunichar uc = confusable_characters[klass->offset + i];
-	  if (data->max_matches < 0 || result->len < data->max_matches)
-	    g_array_append_val (result, uc);
-	}
+             && !g_cancellable_is_cancelled (cancellable); i++)
+        {
+          gunichar uc = confusable_characters[klass->offset + i];
+          if (data->max_matches < 0 || result->len < data->max_matches)
+            g_array_append_val (result, uc);
+        }
     }
 }
 
@@ -613,23 +613,23 @@ remove_duplicates (GArray *array)
 
       start = &g_array_index (array, gunichar, i);
       for (j = i + 1; j < array->len; j++)
-	{
-	  gunichar *stop;
+        {
+          gunichar *stop;
 
-	  stop = &g_array_index (array, gunichar, j);
-	  if (*start != *stop)
-	    break;
-	}
+          stop = &g_array_index (array, gunichar, j);
+          if (*start != *stop)
+            break;
+        }
       if (j != i + 1)
-	g_array_remove_range (array, i + 1, j - (i + 1));
+        g_array_remove_range (array, i + 1, j - (i + 1));
     }
 }
 
 static void
 add_composited (GArray *result,
-		ucs4_t uc,
-		ucs4_t *block_characters,
-		size_t n_block_characters)
+                ucs4_t uc,
+                ucs4_t *block_characters,
+                size_t n_block_characters)
 {
   ucs4_t decomposition[UC_DECOMPOSITION_MAX_LENGTH];
   int decomposition_length;
@@ -651,19 +651,19 @@ add_composited (GArray *result,
 
       block = uc_block (block_characters[i]);
       for (uc = block->start; uc < block->end; uc++)
-	{
-	  decomposition_length = uc_canonical_decomposition (uc, decomposition);
-	  if (decomposition_length > 0 && decomposition[0] == base)
-	    g_array_append_val (result, uc);
-	}
+        {
+          decomposition_length = uc_canonical_decomposition (uc, decomposition);
+          if (decomposition_length > 0 && decomposition[0] == base)
+            g_array_append_val (result, uc);
+        }
     }
 }
 
 static void
 gc_search_related_thread (GTask        *task,
-			  gpointer      source_object,
-			  gpointer      task_data,
-			  GCancellable *cancellable)
+                          gpointer      source_object,
+                          gpointer      task_data,
+                          GCancellable *cancellable)
 {
   GArray *result;
   struct SearchData *data = task_data;
@@ -694,26 +694,26 @@ gc_search_related_thread (GTask        *task,
 
       script = uc_script (data->uc);
       if (script)
-	{
-	  if (strcmp (script->name, "Latin") == 0)
-	    {
-	      ucs4_t block_starters[4] = { 0x0000, 0x0080, 0x0100, 0x0180 };
-	      add_composited (result, data->uc,
-			      block_starters, G_N_ELEMENTS (block_starters));
-	    }
-	  else if (strcmp (script->name, "Hiragana") == 0)
-	    {
-	      ucs4_t block_starters[1] = { 0x3040 };
-	      add_composited (result, data->uc,
-			      block_starters, G_N_ELEMENTS (block_starters));
-	    }
-	  else if (strcmp (script->name, "Katakana") == 0)
-	    {
-	      ucs4_t block_starters[2] = { 0x30A0, 0x31F0 };
-	      add_composited (result, data->uc,
-			      block_starters, G_N_ELEMENTS (block_starters));
-	    }
-	}
+        {
+          if (strcmp (script->name, "Latin") == 0)
+            {
+              ucs4_t block_starters[4] = { 0x0000, 0x0080, 0x0100, 0x0180 };
+              add_composited (result, data->uc,
+                              block_starters, G_N_ELEMENTS (block_starters));
+            }
+          else if (strcmp (script->name, "Hiragana") == 0)
+            {
+              ucs4_t block_starters[1] = { 0x3040 };
+              add_composited (result, data->uc,
+                              block_starters, G_N_ELEMENTS (block_starters));
+            }
+          else if (strcmp (script->name, "Katakana") == 0)
+            {
+              ucs4_t block_starters[2] = { 0x30A0, 0x31F0 };
+              add_composited (result, data->uc,
+                              block_starters, G_N_ELEMENTS (block_starters));
+            }
+        }
     }
 
   gc_add_confusables (data, result, cancellable);
@@ -726,10 +726,10 @@ gc_search_related_thread (GTask        *task,
 
       puc = &g_array_index (result, gunichar, i);
       if (*puc == data->uc)
-	{
-	  g_array_remove_index (result, i);
-	  break;
-	}
+        {
+          g_array_remove_index (result, i);
+          break;
+        }
     }
 
   g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
@@ -759,7 +759,7 @@ gc_search_related (gunichar            uc,
   data->uc = uc;
   data->max_matches = max_matches;
   g_task_set_task_data (task, data,
-			(GDestroyNotify) search_data_free);
+                        (GDestroyNotify) search_data_free);
   g_task_run_in_thread (task, gc_search_related_thread);
 }
 
@@ -772,7 +772,7 @@ gc_search_related (gunichar            uc,
  */
 GcSearchResult *
 gc_search_finish (GAsyncResult *result,
-                            GError      **error)
+                  GError      **error)
 {
   g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
 

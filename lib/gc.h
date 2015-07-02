@@ -70,9 +70,9 @@ void            gc_pango_layout_disable_fallback
 
 gboolean        gc_pango_context_font_has_glyph
                                           (PangoContext         *context,
-					   PangoFont            *font,
-					   gunichar              uc);
+                                           PangoFont            *font,
+                                           gunichar              uc);
 
 G_END_DECLS
 
-#endif	/* __GC_H__ */
+#endif  /* __GC_H__ */
