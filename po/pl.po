@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-12 00:49+0200\n"
-"PO-Revision-Date: 2015-04-12 00:50+0200\n"
+"POT-Creation-Date: 2015-07-05 20:24+0200\n"
+"PO-Revision-Date: 2015-07-05 20:25+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -105,43 +105,43 @@ msgstr "Czcionka używana do wyświetlania znaków na liście."
 msgid "Maximum recent characters"
 msgstr "Maksymalna liczba ostatnio używanych znaków"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Ostatnio używane"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Interpunkcja"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "Strzałki"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "Wypunktowanie"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "Obrazki"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "Waluty"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "Symbole matematyczne"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "Alfabet łaciński"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "Litery"
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Emotikony"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Rząd listy kategorii \"%s\""
@@ -200,11 +200,11 @@ msgstr "Tablica znaków"
 msgid "%s (%s only)"
 msgstr "%s (tylko %s)"
 
-#: ../src/window.js:276
+#: ../src/window.js:272
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista znaków %s"
 
-#: ../src/window.js:283
+#: ../src/window.js:279
 msgid "Search Result Character List"
 msgstr "Wynik wyszukiwania na liście znaków"
