@@ -23,7 +23,7 @@ PAGE_LABELS = [
     'Pictures',
     'Currencies',
     'Math',
-    'Latin',
+    'Letters',
     'Emoticons'
 ]
 
