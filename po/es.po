@@ -7,11 +7,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: gnome-characters.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-17 18:46+0000\n"
-"PO-Revision-Date: 2015-03-23 10:59+0100\n"
+"POT-Creation-Date: 2015-07-02 07:15+0000\n"
+"PO-Revision-Date: 2015-07-13 \n"
 "Last-Translator: Irene Sáez Sanz <irenesaez946@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -38,7 +38,8 @@ msgid "Try another search criteria."
 msgstr "Pruebe otro criterio de búsqueda."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
+#| msgid "Loading..."
+msgid "Loading…"
 msgstr "Cargando…"
 
 #: ../data/characterlist.ui.h:4
@@ -62,9 +63,6 @@ msgid "Filter by font"
 msgstr "Filtrar por tipografía"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
-#| msgid ""
-#| "Characters is a simple utility application to find and insert unusual "
-#| "characters."
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -108,45 +106,43 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Número máximo de caracteres recientes"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Usados recientemente"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Puntuación"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "Flechas"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "Topos"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "Imágenes"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "Monedas"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "Matemáticas"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "Latín"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "Letras"
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Emoticonos"
 
-#: ../src/categoryList.js:94
-#, javascript-format
-#| msgid "%s Character List"
+#: ../src/categoryList.js:96
 msgid "%s Category List Row"
 msgstr "Fila de lista de categorías %s"
 
@@ -155,7 +151,6 @@ msgid "See Also"
 msgstr "Consulte también"
 
 #: ../src/character.js:114
-#, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
@@ -180,7 +175,6 @@ msgid "Unknown character name"
 msgstr "Nombre de carácter desconocido"
 
 #: ../src/searchProvider.js:97
-#, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
@@ -197,18 +191,19 @@ msgid "Character Map"
 msgstr "Mapa de caracteres"
 
 #: ../src/window.js:187
-#, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s solo)"
 
-#: ../src/window.js:276
-#, javascript-format
+#: ../src/window.js:272
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
-#: ../src/window.js:283
+#: ../src/window.js:279
 msgid "Search Result Character List"
 msgstr "Buscar en la lista de resultados de caracteres"
+
+#~ msgid "Latin"
+#~ msgstr "Latín"
 
 #~ msgid "_New"
 #~ msgstr "_Nuevo"
