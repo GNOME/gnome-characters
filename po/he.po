@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-control-center.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-13 04:23+0200\n"
-"PO-Revision-Date: 2015-03-13 04:26+0200\n"
+"POT-Creation-Date: 2015-07-19 13:26+0300\n"
+"PO-Revision-Date: 2015-07-19 13:29+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -36,8 +36,8 @@ msgid "Try another search criteria."
 msgstr "ניתן לנסות תבחין אחר."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
-msgstr "בטעינה..."
+msgid "Loading…"
+msgstr "בטעינה…"
 
 #: ../data/characterlist.ui.h:4
 msgid "No recent characters found"
@@ -72,7 +72,8 @@ msgstr ""
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
-msgstr "כמו כן ניתן לדפדף בתווים באמצעות קטגוריות, כמו סימני פיסוק, תמונות וכו׳."
+msgstr ""
+"כמו כן ניתן לדפדף בתווים באמצעות קטגוריות, כמו סימני פיסוק, תמונות וכו׳."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -98,39 +99,39 @@ msgstr "Use the font to render characters on the character list."
 msgid "Maximum recent characters"
 msgstr "Maximum recent characters"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "פסוק"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "חצים"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "תבליטים"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "תמונות"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "מטבעות"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "מתמטיקה"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "לטינית"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "אותיות"
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "פרצופונים"
 
@@ -142,7 +143,7 @@ msgstr "פרצופונים"
 #
 # נתיבים:
 # ../src/categoryList.js:94
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s רשימת שורות קטגוריה"
@@ -199,14 +200,17 @@ msgstr "מפת תווים"
 msgid "%s (%s only)"
 msgstr "%s (%s בלבד)"
 
-#: ../src/window.js:276
+#: ../src/window.js:272
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s רשימת תווים"
 
-#: ../src/window.js:283
+#: ../src/window.js:279
 msgid "Search Result Character List"
 msgstr "תוצאות חיפוש תווים"
+
+#~ msgid "Latin"
+#~ msgstr "לטינית"
 
 #~ msgid "_New"
 #~ msgstr "_חדש"
