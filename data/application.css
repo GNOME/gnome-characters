@@ -2,8 +2,16 @@
     padding: 3pt;
 }
 
-.menu-title {
-    padding: 6pt;
+Gjs_MenuPopover {
+    padding: 0;
+}
+
+Gjs_MenuPopover GtkScrolledWindow {
+    border-width: 1px 0;
+}
+
+Gjs_MenuPopover .list-row {
+    padding: 5px 6px;
 }
 
 .banner {

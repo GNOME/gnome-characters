@@ -8,14 +8,14 @@
 	<property name="can_focus">False</property>
 	<property name="visible">True</property>
 	<property name="orientation">vertical</property>
+	<property name="margin-top">12</property>
+	<property name="margin-bottom">12</property>
+	<property name="row-spacing">12</property>
 	<child>
 	  <object class="GtkLabel" id="label1">
 	    <property name="visible">True</property>
 	    <property name="halign">center</property>
 	    <property name="label" translatable="yes">Filter by font</property>
-	    <style>
-	      <class name="menu-title"/>
-	    </style>
 	  </object>
 	</child>
 	<child>
@@ -23,33 +23,24 @@
 	    <property name="can_focus">True</property>
 	    <property name="visible">True</property>
 	    <property name="halign">fill</property>
-	    <property name="margin_start">6</property>
-	    <property name="margin_end">6</property>
+	    <property name="margin-start">12</property>
+	    <property name="margin-end">12</property>
 	  </object>
 	</child>
 	<child>
 	  <object class="GtkScrolledWindow" id="font-scrolled">
 	    <property name="visible">True</property>
 	    <property name="can_focus">False</property>
-	    <property name="margin_start">6</property>
-	    <property name="margin_end">6</property>
-	    <property name="margin_top">6</property>
-	    <property name="margin_bottom">6</property>
+	    <property name="shadow-type">in</property>
 	    <property name="hscrollbar_policy">never</property>
 	    <child>
-	      <object class="GtkViewport" id="font-viewport">
+	      <object class="GtkListBox" id="font-listbox">
 		<property name="can_focus">False</property>
 		<property name="visible">True</property>
+		<property name="vexpand">True</property>
+		<property name="selection_mode">single</property>
 		<child>
-		  <object class="GtkListBox" id="font-listbox">
-		    <property name="can_focus">False</property>
-		    <property name="visible">True</property>
-		    <property name="vexpand">True</property>
-		    <property name="selection_mode">single</property>
-		    <child>
-		      <placeholder/>
-		    </child>
-		  </object>
+		  <placeholder/>
 		</child>
 	      </object>
 	    </child>
