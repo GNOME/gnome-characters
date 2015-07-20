@@ -1,3 +1,32 @@
+3.17.4
+===
+
+- Update Unicode standard to 8.0.0
+- Bug 752607 - Update filter menu layout according to lastest mockup
+- Bug 743643 - Lacks scripts other than Latin
+- Bug 748717 - Filter by font - layout and visual fixes
+- Bug 748124 - build failure
+- Bug 747398 - Use the ellipsis character
+- Bug 747061 - Search sometimes has poor results.
+
+New And Updated Translations
+============================
+Alexandre Franke (fr)
+Balázs Úr (hu)
+Cédric Valmary (oc)
+Daniel Korostil (uk)
+Daniel Mustieles (es)
+Dean Chen (zh_CN)
+Dušan Kazik (sk)
+Enrico Nicoletto (pt_BR)
+GNOME Translation Robot (pt_BR)
+Irene Sáez (es)
+Jordi Mas (ca)
+Marek Černocký (cs)
+Milo Casagrande (it)
+Piotr Drąg (pl)
+Yosef Or Boczko (he)
+
 3.16.0
 ===
 
