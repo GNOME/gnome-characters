@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-24 06:23+0000\n"
-"PO-Revision-Date: 2015-07-24 08:16+0100\n"
+"POT-Creation-Date: 2015-07-24 07:17+0000\n"
+"PO-Revision-Date: 2015-07-24 08:19+0100\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
 "Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
@@ -36,8 +36,9 @@ msgid "Try another search criteria."
 msgstr "Tente outro critério de procura."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loadingâ€¦"
-msgstr "A carregar"
+#| msgid "Loadingâ€¦"
+msgid "Loading…"
+msgstr "A carregar…"
 
 #: ../data/characterlist.ui.h:4
 msgid "No recent characters found"
