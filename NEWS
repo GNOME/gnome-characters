@@ -1,3 +1,9 @@
+3.17.4.1
+===
+
+- Bug 752954 - gnome-characters 3.17.4 no longer installs appdata
+- Install all hicolor icons under $datadir/icons/hicolor
+
 3.17.4
 ===
 
