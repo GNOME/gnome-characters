@@ -18,6 +18,13 @@ which gnome-autogen.sh || {
     exit 1
 }
 
+# gllib/unictype contains gperf generated source code
+: ${GPERF=gperf}
+"$GPERF" --version 2>&1 >/dev/null || {
+    echo "You need to install gperf."
+    exit 1
+}
+
 (cd "$srcdir" ;
 test -d m4 || mkdir m4/ ;
 git submodule update --init --recursive ;
