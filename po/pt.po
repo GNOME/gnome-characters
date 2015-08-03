@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2015-07-24 07:17+0000\n"
-"PO-Revision-Date: 2015-07-24 08:19+0100\n"
+"PO-Revision-Date: 2015-08-03 05:16+0100\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
 "Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
@@ -186,7 +186,7 @@ msgstr "Caracteres GNOME"
 
 #: ../src/window.js:167
 msgid "Character Map"
-msgstr "Mara de caracteres"
+msgstr "Mapa de caracteres"
 
 #: ../src/window.js:187
 #, javascript-format
