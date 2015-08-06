@@ -7,9 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 18:28+0300\n"
-"PO-Revision-Date: 2015-08-02 18:28+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-08-06 18:24+0000\n"
+"PO-Revision-Date: 2015-08-06 22:23+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -131,7 +132,7 @@ msgstr "Matematiniai"
 
 #: ../src/categoryList.js:73
 msgid "Latin"
-msgstr ""
+msgstr "Lotynų"
 
 #: ../src/categoryList.js:79
 msgid "Emoticons"
@@ -176,7 +177,6 @@ msgstr "Nežinomas simbolio pavadinimas"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr ""
