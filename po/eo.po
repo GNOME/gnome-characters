@@ -1,0 +1,196 @@
+# Esperanto translation for gnome-characters.
+# Copyright (C) 2015 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnome-characters package.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-08-14 18:25+0000\n"
+"PO-Revision-Date: 2015-08-15 01:27+0200\n"
+"Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
+"Language-Team: Esperanto <gnome-l10n-eo@lists.launchpad.net>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "About Characters"
+msgstr "Pri Signoj"
+
+#: ../data/app-menu.ui.h:2
+msgid "Quit"
+msgstr "Ĉesi"
+
+#: ../data/characterlist.ui.h:1
+msgid "Search produced empty result"
+msgstr ""
+
+#: ../data/characterlist.ui.h:2
+msgid "Try another search criteria."
+msgstr "Provi aliajn serĉajn kriteriojn."
+
+#: ../data/characterlist.ui.h:3
+msgid "Loading…"
+msgstr "Ŝargante…"
+
+#: ../data/characterlist.ui.h:4
+msgid "No recent characters found"
+msgstr ""
+
+#: ../data/characterlist.ui.h:5
+msgid "Characters will appear here if you use them."
+msgstr "Signoj aperos ĉi tie se vi uzas ilin."
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "Kopii signon"
+
+#: ../data/mainwindow.ui.h:1
+msgid "Current page"
+msgstr "Aktuala paĝo"
+
+#: ../data/menu.ui.h:1
+msgid "Filter by font"
+msgstr "Filtri laŭ tiparo"
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+#, fuzzy
+msgid "Characters is a simple utility application to find and insert unusual characters. It allows you to quickly find the character you are looking for by searching for keywords."
+msgstr ""
+"Signoj estas simpla ila aplikaĵo por trovi kaj enmeti nekutimajn signojn. Ĝi "
+"permesas al vi rapide trovi la signon vi estas serĉanta de serĉanta "
+"ŝlosilvortojn."
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+msgid "You can also browse characters by categories, such as Punctuation, Pictures, etc."
+msgstr ""
+"Vi ankaŭ povas foliumi signojn laŭ kategorioj, kiel Interpunkcio, Bildoj, "
+"ktp."
+
+#: ../data/org.gnome.Characters.desktop.in.h:1
+#: ../src/service.js:51
+msgid "Characters"
+msgstr "Signoj"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "characters;unicode;"
+msgstr "signoj;unikodo;"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "Tiparo por montri signojn"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr "Uzi la tiparon por bildigi signojn sur la signo-listo."
+
+#: ../data/org.gnome.Characters.gschema.xml.h:3
+msgid "Maximum recent characters"
+msgstr "Maksimumaj lastatempaj signoj"
+
+#: ../src/categoryList.js:33
+#, fuzzy
+msgid "Recently Used"
+msgstr "Lastaj uzitaj"
+
+#: ../src/categoryList.js:39
+msgid "Punctuation"
+msgstr "Interpunkcio"
+
+#: ../src/categoryList.js:45
+msgid "Arrows"
+msgstr "Sagoj"
+
+#: ../src/categoryList.js:51
+msgid "Bullets"
+msgstr "Kugloj"
+
+#: ../src/categoryList.js:57
+msgid "Pictures"
+msgstr "Bildoj"
+
+#: ../src/categoryList.js:63
+msgid "Currencies"
+msgstr "Valutoj"
+
+#: ../src/categoryList.js:69
+msgid "Math"
+msgstr "Matematiko"
+
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr ""
+
+#: ../src/categoryList.js:81
+msgid "Emoticons"
+msgstr "Miensimboloj"
+
+#: ../src/categoryList.js:96
+msgid "%s Category List Row"
+msgstr ""
+
+#: ../src/character.js:52
+msgid "See Also"
+msgstr "Vidu ankaŭ"
+
+#: ../src/character.js:114
+msgid "Unicode U+%04s"
+msgstr "Unikodo U+%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr ""
+
+#: ../src/main.js:95
+msgid "Characters Application started"
+msgstr ""
+
+#: ../src/main.js:103
+msgid "Characters Application exiting"
+msgstr ""
+
+#: ../src/menu.js:39
+msgid "None"
+msgstr "Neniu"
+
+#: ../src/searchProvider.js:94
+msgid "Unknown character name"
+msgstr "Nekonata signo-nomo"
+
+#: ../src/searchProvider.js:97
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#: ../src/window.js:165
+msgid "translator-credits"
+msgstr "Kristjan SCHMIDT"
+
+#: ../src/window.js:166
+msgid "GNOME Characters"
+msgstr "GNOME Signoj"
+
+#: ../src/window.js:167
+msgid "Character Map"
+msgstr "Signo-mapo"
+
+#: ../src/window.js:187
+msgid "%s (%s only)"
+msgstr "%s(%s nur)"
+
+#: ../src/window.js:272
+msgid "%s Character List"
+msgstr "%s signo-listo"
+
+#: ../src/window.js:279
+msgid "Search Result Character List"
+msgstr "Serĉrezulto de signo-listo"
