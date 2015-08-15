@@ -7,9 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-28 19:09+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-15 10:39+0900\n"
 "PO-Revision-Date: 2015-02-28 21:53+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
@@ -42,7 +41,8 @@ msgid "Try another search criteria."
 msgstr "Najdi kriterije iskanja znotraj datotek"
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
+#, fuzzy
+msgid "Loading…"
 msgstr "Nalaganje ..."
 
 #: ../data/characterlist.ui.h:4
@@ -72,7 +72,7 @@ msgstr "Samodejni filter onemogoča %s"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the charactrer you are looking for "
+"characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
 
@@ -110,46 +110,45 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Največ nedavnih datotek"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 #, fuzzy
 msgid "Recently Used"
 msgstr "Nedavno uporabljeno"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 #, fuzzy
 msgid "Punctuation"
 msgstr "Postavljanje ločil, spojnik"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "Puščice"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "Vrstične oznake"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "Slike"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "Denarne enote"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "Matematika"
 
-#: ../src/categoryList.js:73
-#, fuzzy
-msgid "Latin"
-msgstr "latinski"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr ""
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Izrazne ikone"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:96
 #, fuzzy, javascript-format
 msgid "%s Category List Row"
 msgstr "glava vrstice razpredelnice"
@@ -182,41 +181,46 @@ msgstr "Izhod (prejet SIGTERM) ..."
 msgid "None"
 msgstr "Brez"
 
-#: ../src/searchProvider.js:91
+#: ../src/searchProvider.js:94
 #, fuzzy
 msgid "Unknown character name"
 msgstr "Neznano ime skupine"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#: ../src/window.js:159
+#. TRANSLATORS: put your names here, one name per line.
+#: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Matej Urbančič <matej.urban@svn.gnome.org>"
 
-#: ../src/window.js:160
+#: ../src/window.js:166
 #, fuzzy
 msgid "GNOME Characters"
 msgstr "Vstavi znake"
 
-#: ../src/window.js:161
+#: ../src/window.js:167
 #, fuzzy
 msgid "Character Map"
 msgstr "Nabor znakov"
 
-#: ../src/window.js:181
+#: ../src/window.js:187
 #, fuzzy, javascript-format
 msgid "%s (%s only)"
 msgstr "Samo"
 
-#: ../src/window.js:256
+#: ../src/window.js:272
 #, fuzzy, javascript-format
 msgid "%s Character List"
 msgstr "Seznam podprtih naborov znakov"
 
-#: ../src/window.js:263
+#: ../src/window.js:279
 #, fuzzy
 msgid "Search Result Character List"
 msgstr "Seznam podprtih naborov znakov"
+
+#, fuzzy
+#~ msgid "Latin"
+#~ msgstr "latinski"

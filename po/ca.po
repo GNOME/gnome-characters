@@ -9,12 +9,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-29 18:22+0200\n"
+"POT-Creation-Date: 2015-08-15 10:39+0900\n"
 "PO-Revision-Date: 2015-03-14 07:44-0500\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>, 2015\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 
@@ -35,7 +35,8 @@ msgid "Try another search criteria."
 msgstr "Proveu un altre criteri de cerca."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
+#, fuzzy
+msgid "Loading…"
 msgstr "S'està carregant..."
 
 #: ../data/characterlist.ui.h:4
@@ -100,43 +101,43 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Màxim de caràcters recents"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Utilitzats recentment"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Puntuació"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "Fletxes"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "Pics"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "Imatges"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "Monedes"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "Matemàtiques"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "Llatí"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr ""
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Emoticones"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s fila de la llista de categories"
@@ -193,11 +194,14 @@ msgstr "Mapa de caràcters"
 msgid "%s (%s only)"
 msgstr "%s (%s només)"
 
-#: ../src/window.js:276
+#: ../src/window.js:272
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s llista de caràcters"
 
-#: ../src/window.js:283
+#: ../src/window.js:279
 msgid "Search Result Character List"
 msgstr "Cerca el resultat a la llista de caràcters"
+
+#~ msgid "Latin"
+#~ msgstr "Llatí"

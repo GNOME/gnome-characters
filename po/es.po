@@ -4,13 +4,12 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2015.
 # Irene Sáez Sanz <irenesaez946@gmail.com>, 2015.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters.master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-02 07:15+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-15 10:39+0900\n"
 "PO-Revision-Date: 2015-07-13 \n"
 "Last-Translator: Irene Sáez Sanz <irenesaez946@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
@@ -38,7 +37,6 @@ msgid "Try another search criteria."
 msgstr "Pruebe otro criterio de búsqueda."
 
 #: ../data/characterlist.ui.h:3
-#| msgid "Loading..."
 msgid "Loading…"
 msgstr "Cargando…"
 
@@ -143,6 +141,7 @@ msgid "Emoticons"
 msgstr "Emoticonos"
 
 #: ../src/categoryList.js:96
+#, javascript-format
 msgid "%s Category List Row"
 msgstr "Fila de lista de categorías %s"
 
@@ -151,6 +150,7 @@ msgid "See Also"
 msgstr "Consulte también"
 
 #: ../src/character.js:114
+#, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
@@ -175,9 +175,11 @@ msgid "Unknown character name"
 msgstr "Nombre de carácter desconocido"
 
 #: ../src/searchProvider.js:97
+#, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2015"
@@ -191,10 +193,12 @@ msgid "Character Map"
 msgstr "Mapa de caracteres"
 
 #: ../src/window.js:187
+#, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s solo)"
 
 #: ../src/window.js:272
+#, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 

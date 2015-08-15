@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-21 06:19+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-15 10:39+0900\n"
 "PO-Revision-Date: 2015-07-21 15:13+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -137,6 +136,7 @@ msgid "Emoticons"
 msgstr "Emotikony"
 
 #: ../src/categoryList.js:96
+#, javascript-format
 msgid "%s Category List Row"
 msgstr "Řádek v seznam znaků %s"
 
@@ -145,6 +145,7 @@ msgid "See Also"
 msgstr "Viz také"
 
 #: ../src/character.js:114
+#, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikód U+%04s"
 
@@ -169,9 +170,11 @@ msgid "Unknown character name"
 msgstr "Neznámý název znaku"
 
 #: ../src/searchProvider.js:97
+#, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
@@ -185,10 +188,12 @@ msgid "Character Map"
 msgstr "Mapa znaků"
 
 #: ../src/window.js:187
+#, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (jen %s)"
 
 #: ../src/window.js:272
+#, javascript-format
 msgid "%s Character List"
 msgstr "Seznam znaků %s"
 

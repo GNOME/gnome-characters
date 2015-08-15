@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-14 18:25+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-15 10:39+0900\n"
 "PO-Revision-Date: 2015-08-15 01:27+0200\n"
 "Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
 "Language-Team: Esperanto <gnome-l10n-eo@lists.launchpad.net>\n"
@@ -61,20 +60,24 @@ msgstr "Filtri laŭ tiparo"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 #, fuzzy
-msgid "Characters is a simple utility application to find and insert unusual characters. It allows you to quickly find the character you are looking for by searching for keywords."
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
 "Signoj estas simpla ila aplikaĵo por trovi kaj enmeti nekutimajn signojn. Ĝi "
 "permesas al vi rapide trovi la signon vi estas serĉanta de serĉanta "
 "ŝlosilvortojn."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
-msgid "You can also browse characters by categories, such as Punctuation, Pictures, etc."
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
 msgstr ""
 "Vi ankaŭ povas foliumi signojn laŭ kategorioj, kiel Interpunkcio, Bildoj, "
 "ktp."
 
-#: ../data/org.gnome.Characters.desktop.in.h:1
-#: ../src/service.js:51
+#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
 msgstr "Signoj"
 
@@ -136,6 +139,7 @@ msgid "Emoticons"
 msgstr "Miensimboloj"
 
 #: ../src/categoryList.js:96
+#, javascript-format
 msgid "%s Category List Row"
 msgstr ""
 
@@ -144,6 +148,7 @@ msgid "See Also"
 msgstr "Vidu ankaŭ"
 
 #: ../src/character.js:114
+#, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikodo U+%04s"
 
@@ -168,9 +173,11 @@ msgid "Unknown character name"
 msgstr "Nekonata signo-nomo"
 
 #: ../src/searchProvider.js:97
+#, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Kristjan SCHMIDT"
@@ -184,10 +191,12 @@ msgid "Character Map"
 msgstr "Signo-mapo"
 
 #: ../src/window.js:187
+#, javascript-format
 msgid "%s (%s only)"
 msgstr "%s(%s nur)"
 
 #: ../src/window.js:272
+#, javascript-format
 msgid "%s Character List"
 msgstr "%s signo-listo"
 

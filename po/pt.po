@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-24 07:17+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-15 10:39+0900\n"
 "PO-Revision-Date: 2015-08-03 05:16+0100\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
 "Language-Team: Português <palbuquerque73@gmail.com>\n"
@@ -36,7 +35,6 @@ msgid "Try another search criteria."
 msgstr "Tente outro critério de procura."
 
 #: ../data/characterlist.ui.h:3
-#| msgid "Loadingâ€¦"
 msgid "Loading…"
 msgstr "A carregar…"
 
@@ -176,6 +174,7 @@ msgstr "Nome de carácter desconhecido"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Pedro Albuquerque <palbuquerque73@gmail.com>"
