@@ -1,3 +1,20 @@
+3.17.90
+===
+
+- Bug 753113 - make fails without gperf
+
+New And Updated Translations
+============================
+Andika Triwidada (id)
+Aurimas Černius (lt)
+Daiki Ueno (ja)
+Daiki Ueno (ja)
+Fran Dieguez (gl)
+Kjartan Maraas (nb)
+Kristjan SCHMIDT (eo)
+Muhammet Kara (tr)
+Pedro Albuquerque (pt)
+
 3.17.4.1
 ===
 
