@@ -4,28 +4,109 @@
   <template class="Gjs_CharacterDialog" parent="GtkDialog">
     <child internal-child="vbox">
       <object class="GtkBox" id="vbox1">
+	<property name="halign">fill</property>
+	<property name="hexpand">True</property>
 	<child>
 	  <object class="GtkStack" id="main-stack">
 	    <property name="visible">True</property>
+	    <property name="halign">fill</property>
+	    <property name="hexpand">True</property>
 	    <child>
 	      <object class="GtkGrid" id="character-grid">
 		<property name="visible">True</property>
 		<property name="can_focus">False</property>
-		<property name="halign">center</property>
-		<property name="valign">center</property>
+		<property name="hexpand">True</property>
+		<property name="vexpand">True</property>
+		<property name="valign">fill</property>
 		<property name="border_width">5</property>
 		<property name="orientation">vertical</property>
 		<property name="row_spacing">50</property>
 		<child>
-		  <object class="GtkLabel" id="character-label">
-		    <property name="visible">True</property>
-		    <property name="can_focus">False</property>
-		    <property name="ellipsize">end</property>
-		    <property name="halign">center</property>
-		    <property name="valign">center</property>
-		    <style>
-		      <class name="character-label"/>
-		    </style>
+		  <object class="GtkEventBox" id="eventbox">
+		    <child>
+		      <object class="GtkOverlay" id="character-overlay">
+			<property name="visible">True</property>
+			<property name="hexpand">True</property>
+			<property name="vexpand">True</property>
+			<child>
+			  <object class="GtkLabel" id="character-label">
+			    <property name="visible">True</property>
+			    <property name="can_focus">False</property>
+			    <property name="hexpand">True</property>
+			    <property name="vexpand">True</property>
+			    <property name="valign">center</property>
+			    <property name="margin-top">34</property>
+			    <style>
+			      <class name="character-label"/>
+			    </style>
+			  </object>
+			</child>
+			<child type="overlay">
+			  <object class="GtkRevealer" id="revealer">
+			    <property name="valign">start</property>
+			    <child>
+			      <object class="GtkToolbar" id="toolbar">
+				<property name="opacity">0.4</property>
+				<property name="margin">2</property>
+				<property name="halign">center</property>
+				<property name="valign">end</property>
+				<property name="hexpand">False</property>
+				<property name="receives_default">True</property>
+				<style>
+				  <class name="osd"/>
+				</style>
+				<child>
+				  <object class="GtkToolItem">
+				    <property name="visible">True</property>
+				    <child>
+				      <object class="GtkBox">
+					<property name="visible">True</property>
+					<style>
+					  <class name="linked"/>
+					</style>
+					<child>
+					  <object class="GtkButton" id="previous-button">
+					    <property name="visible">True</property>
+					    <style>
+					      <class name="image-button"/>
+					    </style>
+					    <child>
+					      <object class="GtkImage">
+						<property name="visible">True</property>
+						<property name="icon-name">pan-start-symbolic</property>
+						<property name="icon-size">1</property>
+					      </object>
+					    </child>
+					  </object>
+					</child>
+					<child>
+					  <object class="GtkButton" id="next-button">
+					    <property name="visible">True</property>
+					    <style>
+					      <class name="image-button"/>
+					    </style>
+					    <child>
+					      <object class="GtkImage">
+						<property name="visible">True</property>
+						<property name="icon-name">pan-end-symbolic</property>
+						<property name="icon-size">1</property>
+					      </object>
+					    </child>
+					  </object>
+					</child>
+				      </object>
+				    </child>
+				  </object>
+				</child>
+			      </object>
+			    </child>
+			  </object>
+			  <packing>
+			    <property name="pass-through">True</property>
+			  </packing>
+			</child>
+		      </object>
+		    </child>
 		  </object>
 		  <packing>
 		    <property name="left_attach">0</property>
@@ -38,6 +119,8 @@
 		    <property name="visible">True</property>
 		    <property name="can_focus">True</property>
 		    <property name="receives_default">False</property>
+		    <property name="hexpand">False</property>
+		    <property name="halign">center</property>
 		  </object>
 		  <packing>
 		    <property name="left_attach">0</property>
@@ -49,7 +132,9 @@
 		    <property name="visible">True</property>
 		    <property name="can_focus">False</property>
 		    <property name="halign">center</property>
+		    <property name="valign">center</property>
 		    <property name="selectable">True</property>
+		    <property name="justify">center</property>
 		    <style>
 		      <class name="detail-label"/>
 		    </style>
@@ -65,39 +150,39 @@
 	      </packing>
 	    </child>
 	    <child>
-	      <object class="GtkScrolledWindow" id="related-scrolled">
-		<property name="visible">True</property>
-		<property name="can_focus">False</property>
-		<property name="margin_start">6</property>
-		<property name="margin_end">6</property>
-		<property name="margin_top">6</property>
-		<property name="margin_bottom">6</property>
-		<property name="hscrollbar_policy">never</property>
-		<property name="vexpand">True</property>
-		<style>
-		  <class name="related"/>
-		</style>
+	  <object class="GtkScrolledWindow" id="related-scrolled">
+	    <property name="visible">True</property>
+	    <property name="can_focus">False</property>
+	    <property name="margin_start">6</property>
+	    <property name="margin_end">6</property>
+	    <property name="margin_top">6</property>
+	    <property name="margin_bottom">6</property>
+	    <property name="hscrollbar_policy">never</property>
+	    <property name="vexpand">True</property>
+	    <style>
+	      <class name="related"/>
+	    </style>
+	    <child>
+	      <object class="GtkViewport" id="related-viewport">
 		<child>
-		  <object class="GtkViewport" id="related-viewport">
+		  <object class="GtkListBox" id="related-listbox">
+		    <property name="visible">True</property>
+		    <property name="can_focus">False</property>
 		    <child>
-		      <object class="GtkListBox" id="related-listbox">
-			<property name="visible">True</property>
-			<property name="can_focus">False</property>
-			<child>
-			  <placeholder/>
-			</child>
-		      </object>
+		      <placeholder/>
 		    </child>
 		  </object>
 		</child>
 	      </object>
-	      <packing>
-		<property name="name">related</property>
-	      </packing>
 	    </child>
 	  </object>
+	  <packing>
+	    <property name="name">related</property>
+	  </packing>
 	</child>
       </object>
     </child>
-  </template>
+  </object>
+</child>
+</template>
 </interface>

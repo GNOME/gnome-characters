@@ -21,22 +21,27 @@ const Params = imports.params;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
+const Gdk = imports.gi.Gdk;
 const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
 const Gc = imports.gi.Gc;
 const Main = imports.main;
 const Util = imports.util;
+const Mainloop = imports.mainloop;
+const _AUTO_HIDE_TIMEOUT = 1;
 
 const CharacterDialog = new Lang.Class({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Characters/character.ui',
-    InternalChildren: ['main-stack', 'character-label', 'detail-label',
-                       'copy-button', 'related-listbox'],
+    InternalChildren: ['main-stack', 'eventbox', 'revealer', 'toolbar',
+                       'previous-button', 'next-button', 'character-label',
+                       'detail-label', 'copy-button', 'related-listbox'],
 
     _init: function(params) {
         let filtered = Params.filter(params, { character: null,
-                                               fontDescription: null });
+                                               fontDescription: null,
+                                               fontFeatures: null });
         params = Params.fill(params, { use_header_bar: true,
                                        width_request: 400,
                                        height_request: 400 });
@@ -64,6 +69,122 @@ const CharacterDialog = new Lang.Class({
 
         this._character_label.override_font(filtered.fontDescription);
         this._setCharacter(filtered.character);
+
+        this._fontFeaturesIndex = 0;
+        this._fontFeatures = [];
+
+        if (filtered.fontFeatures.length > 0) {
+            let context = this.get_pango_context();
+            let font = context.load_font(filtered.fontDescription);
+            let effective =
+                Gc.pango_list_effective_font_features (font,
+                                                       filtered.fontFeatures,
+                                                       filtered.character);
+            if (effective.length > 0) {
+                this._eventbox.connect(
+                    'enter-notify-event',
+                    Lang.bind(this, this._handleInitialEnterNotify));
+                this._eventbox.connect(
+                    'leave-notify-event',
+                    Lang.bind(this, this._handleLeaveNotify));
+
+                this._previous_button.connect('clicked', Lang.bind(this, this._previousButtonClicked));
+                this._next_button.connect('clicked', Lang.bind(this, this._nextButtonClicked));
+
+                let widgets = [this._toolbar, this._previous_button, this._next_button];
+                for (let index in widgets) {
+                    widgets[index].connect('enter-notify-event',
+                                           Lang.bind(this, this._handleEnterNotify));
+                    widgets[index].connect('leave-notify-event',
+                                           Lang.bind(this, this._handleLeaveNotify));
+                }
+                this._fontFeatures = this._fontFeatures.concat(effective);
+                this._fontFeatures.unshift('');
+            }
+        }
+
+        this._autoHideId = 0;
+        this._previous_button.set_sensitive(false);
+        if (this._fontFeatures.length > 0)
+            this._next_button.set_sensitive(true);
+    },
+
+    _autoHide: function() {
+        this._autoHideId = 0;
+        this._revealer.set_reveal_child(false);
+        return false;
+    },
+
+    _unqueueAutoHide: function() {
+        if (this._autoHideId == 0)
+            return;
+        Mainloop.source_remove(this._autoHideId);
+        this._autoHideId = 0;
+    },
+
+    _queueAutoHide: function() {
+        this._unqueueAutoHide();
+        this._autoHideId = Mainloop.timeout_add_seconds(_AUTO_HIDE_TIMEOUT, Lang.bind(this, this._autoHide));
+    },
+
+    _handleInitialEnterNotify: function(box, event) {
+        if (this._revealer.get_child_revealed())
+            return false;
+
+        this._revealer.set_reveal_child(true);
+        return true;
+    },
+
+    _handleEnterNotify: function(widget, event) {
+        this._unqueueAutoHide();
+        return false;
+    },
+
+    _handleLeaveNotify: function(widget, event) {
+        this._queueAutoHide();
+        return false;
+    },
+
+    _changeFeature: function(feature) {
+        this._character_label.set_attributes(null);
+        let layout = this._character_label.get_layout();
+        Gc.pango_layout_set_font_features(layout, feature);
+        if (feature == '')
+            this._detail_label.label = this._codePointLabel + "\n";
+        else
+            this._detail_label.label = this._codePointLabel + "\n" + _("OpenType feature: %s").format(feature);
+    },
+
+    _previousButtonClicked: function(event) {
+        if (this._fontFeaturesIndex == 0)
+            return;
+
+        this._fontFeaturesIndex--;
+        if (this._fontFeaturesIndex == 0) {
+            this._previous_button.set_sensitive(false);
+            // Making the button insensitive causes leave-notify and
+            // then auto-hide of the toolbar.  Cancel it manually.
+            this._unqueueAutoHide();
+        }
+
+        this._next_button.set_sensitive(true);
+        this._changeFeature(this._fontFeatures[this._fontFeaturesIndex]);
+    },
+
+    _nextButtonClicked: function(event) {
+        if (this._fontFeaturesIndex == this._fontFeatures.length - 1)
+            return;
+
+        this._fontFeaturesIndex++;
+        if (this._fontFeaturesIndex == this._fontFeatures.length - 1) {
+            this._next_button.set_sensitive(false);
+            // Making the button insensitive causes leave-notify and
+            // then auto-hide of the toolbar.  Cancel it manually.
+            this._unqueueAutoHide();
+        }
+
+        this._previous_button.set_sensitive(true);
+        this._changeFeature(this._fontFeatures[this._fontFeaturesIndex]);
     },
 
     _finishSearch: function(result) {
@@ -111,7 +232,8 @@ const CharacterDialog = new Lang.Class({
 
         let codePoint = Util.toCodePoint(this._character);
         let codePointHex = codePoint.toString(16).toUpperCase();
-        this._detail_label.label = _("Unicode U+%04s").format(codePointHex);
+        this._codePointLabel = _("Unicode U+%04s").format(codePointHex)
+        this._detail_label.label = this._codePointLabel + "\n";
 
         this._cancellable.cancel();
         this._cancellable.reset();

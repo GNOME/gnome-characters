@@ -72,6 +72,15 @@ GtkClipboard   *gc_gtk_clipboard_get      (void);
 /* Pango support.  PangoAttrFallback is not accessible from GI.  */
 void            gc_pango_layout_disable_fallback
                                           (PangoLayout          *layout);
+void            gc_pango_layout_set_font_features
+                                          (PangoLayout          *layout,
+					   gchar                *features);
+gchar         **gc_pango_list_font_features
+                                          (PangoFont            *font);
+gchar         **gc_pango_list_effective_font_features
+                                          (PangoFont            *font,
+					   gchar               **font_features,
+					   gunichar              uc);
 
 gboolean        gc_pango_context_font_has_glyph
                                           (PangoContext         *context,

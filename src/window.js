@@ -350,7 +350,8 @@ const MainView = new Lang.Class({
             character: uc,
             modal: true,
             transient_for: this.get_toplevel(),
-            fontDescription: this.visible_child.getFontDescription()
+            fontDescription: this.visible_child.getFontDescription(),
+            fontFeatures: this.visible_child.getFontFeatures()
         });
 
         dialog.show();

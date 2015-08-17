@@ -40,7 +40,8 @@ PKG_CHECK_MODULES([DEPS], [gdk-3.0
                            glib-2.0
                            gobject-2.0
                            gtk+-3.0
-                           gjs-1.0 >= $GJS_MIN_VERSION])
+                           gjs-1.0 >= $GJS_MIN_VERSION
+                           harfbuzz >= 1.0.0])
 
 AC_PATH_PROG([GJS],[gjs])
 

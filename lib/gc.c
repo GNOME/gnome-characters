@@ -17,6 +17,8 @@
 
 #define PANGO_ENABLE_ENGINE 1
 #include <pango/pangofc-font.h>
+#include <harfbuzz/hb-ft.h>
+#include <harfbuzz/hb-ot.h>
 
 static const uc_block_t *all_blocks;
 static size_t all_block_count;
@@ -924,6 +926,177 @@ gc_pango_context_font_has_glyph (PangoContext *context,
   g_object_unref (layout);
 
   return retval == 0;
+}
+
+void
+gc_pango_layout_set_font_features (PangoLayout *layout, gchar *features)
+{
+  PangoAttrList *attr_list;
+
+  attr_list = pango_layout_get_attributes (layout);
+  if (!attr_list)
+    {
+      attr_list = pango_attr_list_new ();
+      pango_layout_set_attributes (layout, attr_list);
+    }
+  pango_attr_list_change (attr_list, pango_attr_font_features_new (features));
+}
+
+/**
+ * gc_pango_list_font_features:
+ * @font: a #PangoFont
+ *
+ * Returns: (transfer full) (nullable) (array zero-terminated=1): A
+ *   list of OpenType feature tags.
+ */
+gchar **
+gc_pango_list_font_features (PangoFont *font)
+{
+#ifdef HAVE_PANGOFT2
+  if (PANGO_IS_FC_FONT (font))
+    {
+      FT_Face ftface = pango_fc_font_lock_face (PANGO_FC_FONT (font));
+      hb_face_t *hbface = hb_ft_face_create_cached (ftface);
+      unsigned int count, i;
+      hb_tag_t *features;
+      gchar buf[5];
+      gchar **result;
+
+      count = hb_ot_layout_table_get_feature_tags (hbface, HB_OT_TAG_GSUB, 0,
+						   NULL, NULL);
+      features = g_new (hb_tag_t, count + 1);
+      hb_ot_layout_table_get_feature_tags (hbface, HB_OT_TAG_GSUB, 0,
+					   &count, features);
+      result = g_new0 (gchar *, count + 1);
+      for (i = 0; i < count; i++)
+	{
+	  buf[4] = '\0';
+	  hb_tag_to_string (features[i], buf);
+	  result[i] = g_strdup (buf);
+	}
+      g_free (features);
+      pango_fc_font_unlock_face (PANGO_FC_FONT (font));
+      return result;
+    }
+#endif
+  return NULL;
+}
+
+static void
+collect_features (gpointer key,
+		  gpointer value,
+		  gpointer user_data)
+{
+  GArray *result = user_data;
+  g_array_append_val (result, value);
+}
+
+/**
+ * gc_pango_list_effective_font_features:
+ * @font: a #PangoFont
+ * @font_features: (array zero-terminated=1) (element-type utf8): a
+ *   list of font features
+ * @uc: a #gunichar
+ *
+ * Returns: (transfer full) (nullable) (array zero-terminated=1): A
+ *   list of OpenType feature tags followed by a space and the index.
+ */
+gchar **
+gc_pango_list_effective_font_features (PangoFont *font,
+				       gchar **font_features,
+				       gunichar uc)
+{
+  GHashTable *table = g_hash_table_new (g_direct_hash, g_direct_equal);
+  GArray *result = g_array_sized_new (TRUE, FALSE,
+				      sizeof (gchar *),
+				      g_strv_length (font_features));
+
+#ifdef HAVE_PANGOFT2
+  if (PANGO_IS_FC_FONT (font))
+    {
+      FT_Face ftface = pango_fc_font_lock_face (PANGO_FC_FONT (font));
+      hb_face_t *hbface = hb_ft_face_create_cached (ftface);
+      hb_buffer_t *buffer;
+      hb_font_t *hbfont = NULL;
+      hb_glyph_info_t *infos;
+      unsigned int length;
+      hb_feature_t features[1];
+      hb_codepoint_t base_gid = 0;
+      gchar **p, *last;
+      gint index;
+      uint8_t utf8[6];
+      size_t utf8_length = G_N_ELEMENTS (utf8);
+
+      u32_to_u8 (&uc, 1, utf8, &utf8_length);
+
+      hbfont = hb_font_create (hbface);
+      hb_ft_font_set_funcs (hbfont);
+      hb_font_set_scale (hbfont, 10, 10);
+
+      buffer = hb_buffer_create ();
+      hb_buffer_set_direction (buffer, HB_DIRECTION_LTR);
+      hb_buffer_add_utf8 (buffer, (const char *) utf8, utf8_length, 0, 1);
+
+      hb_shape (hbfont, buffer, NULL, 0);
+      infos = hb_buffer_get_glyph_infos (buffer, &length);
+      if (length > 0)
+	base_gid = infos[0].codepoint;
+      hb_buffer_destroy (buffer);
+
+      last = NULL;
+      index = 0;
+      for (p = font_features; *p; p++)
+	{
+	  gchar *feature_string;
+	  hb_codepoint_t gid = 0;
+
+	  /* OpenType features which could produce alternative glyphs:
+	     calt, cv00-99, jp04, jp78, jp83, jp90, salt, ss00-20 */
+	  if (!(strlen (*p) == 4
+		&& (strcmp (*p, "calt") == 0
+		    || (strcmp (*p, "cv00") >= 0 && strcmp (*p, "cv99") <= 0)
+		    || strcmp (*p, "jp78") == 0
+		    || strcmp (*p, "jp83") == 0
+		    || strcmp (*p, "jp90") == 0
+		    || strcmp (*p, "jp04") == 0
+		    || strcmp (*p, "salt") == 0
+		    || (strcmp (*p, "ss00") >= 0 && strcmp (*p, "ss20") <= 0))))
+	    continue;
+
+	  if (last != NULL && strcmp (*p, last) == 0)
+	    index++;
+	  else
+	    index = 0;
+	  last = *p;
+
+	  feature_string = g_strdup_printf ("%s %d", *p, index);
+
+	  hb_feature_from_string (feature_string, 6, &features[0]);
+
+	  buffer = hb_buffer_create ();
+	  hb_buffer_set_direction (buffer, HB_DIRECTION_LTR);
+	  hb_buffer_add_utf8 (buffer, (const char *) utf8, utf8_length, 0, 1);
+	  hb_shape (hbfont, buffer, features, 1);
+	  infos = hb_buffer_get_glyph_infos (buffer, &length);
+
+	  if (length > 0)
+	    gid = infos[0].codepoint;
+	  hb_buffer_destroy (buffer);
+
+	  if (gid != base_gid
+	      && !g_hash_table_contains (table, GINT_TO_POINTER (gid)))
+	    g_hash_table_insert (table, GINT_TO_POINTER (gid), feature_string);
+	  else
+	    g_free (feature_string);
+	}
+
+      hb_font_destroy (hbfont);
+      pango_fc_font_unlock_face (PANGO_FC_FONT (font));
+    }
+#endif
+  g_hash_table_foreach (table, collect_features, result);
+  g_hash_table_unref (table);
+  return (gchar **) g_array_free (result, FALSE);
 }
 
 /**

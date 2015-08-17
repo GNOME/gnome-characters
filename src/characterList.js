@@ -317,20 +317,27 @@ const CharacterListView = new Lang.Class({
         return this._fontDescription;
     },
 
+    getFontFeatures: function() {
+        return this._fontFeatures;
+    },
+
     updateCharacterList: function() {
         let characters = this._characters;
-        let fontDescription = this._fontDescription;
+        let fontDescription = this._filterFontDescription ?
+            this._filterFontDescription : this._fontDescription;
+
+        let context = this.get_pango_context();
+        let font = context.load_font(fontDescription);
+        this._fontFeatures = Gc.pango_list_font_features(font);
+
         if (this._filterFontDescription) {
-            let context = this.get_pango_context();
-            let filterFont = context.load_font(this._filterFontDescription);
             let filteredCharacters = [];
             for (let index = 0; index < characters.length; index++) {
                 let uc = characters[index];
-                if (Gc.pango_context_font_has_glyph(context, filterFont, uc))
+                if (Gc.pango_context_font_has_glyph(context, font, uc))
                     filteredCharacters.push(uc);
             }
             characters = filteredCharacters;
-            fontDescription = this._filterFontDescription;
         }
 
         this._characterList.setFontDescription(fontDescription);
