@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-15 10:39+0900\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-11-14 14:57+0000\n"
 "PO-Revision-Date: 2014-11-15 10:56+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: www.gnome.gr\n"
@@ -20,78 +21,52 @@ msgstr ""
 "X-Project-Style: gnome\n"
 
 #: ../data/app-menu.ui.h:1
-#, fuzzy
-msgid "About Characters"
-msgstr "Αντιγραφή χαρακτήρα"
+msgid "_New"
+msgstr "_Νέο"
 
 #: ../data/app-menu.ui.h:2
+msgid "About Example"
+msgstr "Παράδειγμα για το περί"
+
+#: ../data/app-menu.ui.h:3
 msgid "Quit"
 msgstr "Έξοδος"
-
-#: ../data/characterlist.ui.h:1
-msgid "Search produced empty result"
-msgstr ""
-
-#: ../data/characterlist.ui.h:2
-msgid "Try another search criteria."
-msgstr ""
-
-#: ../data/characterlist.ui.h:3
-#, fuzzy
-msgid "Loading…"
-msgstr "Φορτώνει..."
-
-#: ../data/characterlist.ui.h:4
-msgid "No recent characters found"
-msgstr ""
-
-#: ../data/characterlist.ui.h:5
-msgid "Characters will appear here if you use them."
-msgstr ""
 
 #: ../data/character.ui.h:1
 msgid "Copy Character"
 msgstr "Αντιγραφή χαρακτήρα"
 
-#: ../data/mainwindow.ui.h:1
+#: ../data/main.ui.h:1
 msgid "Current page"
 msgstr "Τρέχουσα σελίδα"
 
-#: ../data/menu.ui.h:1
-msgid "Filter by font"
-msgstr ""
+#: ../data/main.ui.h:2
+msgid "Type to Search"
+msgstr "Πληκτρολογήστε για αναζήτηση"
+
+#: ../data/main.ui.h:3
+msgid "Loading..."
+msgstr "Φορτώνει..."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
-#, fuzzy
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
+"characters."
 msgstr ""
 "Οι χαρακτήρες είναι μια απλή βοηθητική εφαρμογή εύρεσης και εισαγωγής "
 "σπάνιων χαρακτήρων."
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:2
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
-msgstr ""
-
-#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
-#, fuzzy
-msgid "Characters"
-msgstr "Πίνακας χαρακτήρων"
+#: ../data/org.gnome.Characters.desktop.in.h:1
+msgid "JS Application"
+msgstr "Εφαρμογή JS"
 
 #: ../data/org.gnome.Characters.desktop.in.h:2
-#, fuzzy
-msgid "Utility application to find and insert unusual characters"
-msgstr ""
-"Οι χαρακτήρες είναι μια απλή βοηθητική εφαρμογή εύρεσης και εισαγωγής "
-"σπάνιων χαρακτήρων."
+msgid "Demo JS Application and template"
+msgstr "Παρουσίαση εφαρμογής JS και προτύπου"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr ""
+msgid "gtk;gjs;demo;development;"
+msgstr "gtk;gjs;παρουσίαση;ανάπτυξη;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -103,56 +78,51 @@ msgstr ""
 "Χρήση της γραμματοσειράς που θα αποδώσει τους χαρακτήρες στον κατάλογο "
 "χαρακτήρων."
 
-#: ../data/org.gnome.Characters.gschema.xml.h:3
-msgid "Maximum recent characters"
-msgstr ""
-
-#: ../src/categoryList.js:33
+#: ../src/categoryList.js:13
 msgid "Recently Used"
 msgstr "Πρόσφατα χρησιμοποιημένες"
 
-#: ../src/categoryList.js:39
+#: ../src/categoryList.js:19
 msgid "Punctuation"
 msgstr "Στίξη"
 
-#: ../src/categoryList.js:45
+#: ../src/categoryList.js:25
 msgid "Arrows"
 msgstr "Βέλη"
 
-#: ../src/categoryList.js:51
+#: ../src/categoryList.js:31
 msgid "Bullets"
 msgstr "Κουκκίδες"
 
-#: ../src/categoryList.js:57
+#: ../src/categoryList.js:37
 msgid "Pictures"
 msgstr "Εικόνες"
 
-#: ../src/categoryList.js:63
+#: ../src/categoryList.js:43
 msgid "Currencies"
 msgstr "Νομίσματα"
 
-#: ../src/categoryList.js:69
+#: ../src/categoryList.js:49
 msgid "Math"
 msgstr "Μαθηματικά"
 
-#: ../src/categoryList.js:75
-msgid "Letters"
-msgstr ""
+#: ../src/categoryList.js:55
+msgid "Latin"
+msgstr "Λατινικά"
 
-#: ../src/categoryList.js:81
+#: ../src/categoryList.js:61
 msgid "Emoticons"
 msgstr "Εικονίδια διάθεσης"
 
-#: ../src/categoryList.js:96
-#, fuzzy, javascript-format
-msgid "%s Category List Row"
-msgstr "Κατάλογος χαρακτήρων %s"
+#: ../src/character.js:65
+msgid "Done"
+msgstr "Έτοιμο"
 
-#: ../src/character.js:52
+#: ../src/character.js:69
 msgid "See Also"
 msgstr "Δείτε επίσης"
 
-#: ../src/character.js:114
+#: ../src/character.js:128
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
@@ -161,77 +131,34 @@ msgstr "Unicode U+%04s"
 msgid "Characters Application"
 msgstr "Εφαρμογή χαρακτήρων "
 
-#: ../src/main.js:95
+#: ../src/main.js:86
 msgid "Characters Application started"
 msgstr "Άρχισε η εφαρμογή χαρακτήρων"
 
-#: ../src/main.js:103
+#: ../src/main.js:94
 msgid "Characters Application exiting"
 msgstr "Έξοδος από την εφαρμογή χαρακτήρων"
 
-#: ../src/menu.js:39
-msgid "None"
-msgstr ""
-
-#: ../src/searchProvider.js:94
-msgid "Unknown character name"
-msgstr ""
-
-#: ../src/searchProvider.js:97
-#, javascript-format
-msgid "U+%s, %s: %s"
-msgstr ""
-
-#. TRANSLATORS: put your names here, one name per line.
-#: ../src/window.js:165
+#: ../src/window.js:153
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα του GNOME\n"
 " Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
 "Για περισσότερα δείτε: http://gnome.gr"
 
-#: ../src/window.js:166
+#: ../src/window.js:154
 msgid "GNOME Characters"
 msgstr "Χαρακτήρες GNOME"
 
-#: ../src/window.js:167
+#: ../src/window.js:155
 msgid "Character Map"
 msgstr "Πίνακας χαρακτήρων"
 
-#: ../src/window.js:187
-#, javascript-format
-msgid "%s (%s only)"
-msgstr ""
-
-#: ../src/window.js:272
+#: ../src/window.js:207
 #, javascript-format
 msgid "%s Character List"
 msgstr "Κατάλογος χαρακτήρων %s"
 
-#: ../src/window.js:279
+#: ../src/window.js:215
 msgid "Search Result Character List"
 msgstr "Αναζήτηση αποτελέσματος καταλόγου χαρακτήρων"
-
-#~ msgid "_New"
-#~ msgstr "_Νέο"
-
-#~ msgid "About Example"
-#~ msgstr "Παράδειγμα για το περί"
-
-#~ msgid "Type to Search"
-#~ msgstr "Πληκτρολογήστε για αναζήτηση"
-
-#~ msgid "JS Application"
-#~ msgstr "Εφαρμογή JS"
-
-#~ msgid "Demo JS Application and template"
-#~ msgstr "Παρουσίαση εφαρμογής JS και προτύπου"
-
-#~ msgid "gtk;gjs;demo;development;"
-#~ msgstr "gtk;gjs;παρουσίαση;ανάπτυξη;"
-
-#~ msgid "Latin"
-#~ msgstr "Λατινικά"
-
-#~ msgid "Done"
-#~ msgstr "Έτοιμο"

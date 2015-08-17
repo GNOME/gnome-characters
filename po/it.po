@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-15 10:39+0900\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-03-02 17:31+0000\n"
 "PO-Revision-Date: 2015-03-25 18:15+0100\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <gnome-it@gnome.org>\n"
@@ -35,8 +36,7 @@ msgid "Try another search criteria."
 msgstr "Provare un'altra ricerca."
 
 #: ../data/characterlist.ui.h:3
-#, fuzzy
-msgid "Loading…"
+msgid "Loading..."
 msgstr "Caricamento..."
 
 #: ../data/characterlist.ui.h:4
@@ -102,43 +102,43 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Massimo numero di caratteri recenti"
 
-#: ../src/categoryList.js:33
+#: ../src/categoryList.js:31
 msgid "Recently Used"
 msgstr "Usati di recente"
 
-#: ../src/categoryList.js:39
+#: ../src/categoryList.js:37
 msgid "Punctuation"
 msgstr "Punteggiatura"
 
-#: ../src/categoryList.js:45
+#: ../src/categoryList.js:43
 msgid "Arrows"
 msgstr "Frecce"
 
-#: ../src/categoryList.js:51
+#: ../src/categoryList.js:49
 msgid "Bullets"
 msgstr "Elenchi"
 
-#: ../src/categoryList.js:57
+#: ../src/categoryList.js:55
 msgid "Pictures"
 msgstr "Immagini"
 
-#: ../src/categoryList.js:63
+#: ../src/categoryList.js:61
 msgid "Currencies"
 msgstr "Valute"
 
-#: ../src/categoryList.js:69
+#: ../src/categoryList.js:67
 msgid "Math"
 msgstr "Matematica"
 
-#: ../src/categoryList.js:75
-msgid "Letters"
-msgstr ""
+#: ../src/categoryList.js:73
+msgid "Latin"
+msgstr "Latino"
 
-#: ../src/categoryList.js:81
+#: ../src/categoryList.js:79
 msgid "Emoticons"
 msgstr "Emoticon"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:94
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Riga elenco categoria %s"
@@ -168,16 +168,15 @@ msgstr "Applicazione Caratteri terminata"
 msgid "None"
 msgstr "Nessuno"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:91
 msgid "Unknown character name"
 msgstr "Nome carattere sconosciuto"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:94
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Milo Casagrande <milo@milo.name>"
@@ -195,17 +194,14 @@ msgstr "Tabella caratteri"
 msgid "%s (%s only)"
 msgstr "%s (solo %s)"
 
-#: ../src/window.js:272
+#: ../src/window.js:267
 #, javascript-format
 msgid "%s Character List"
 msgstr "Elenco caratteri %s"
 
-#: ../src/window.js:279
+#: ../src/window.js:274
 msgid "Search Result Character List"
 msgstr "Elenco caratteri ricerca"
-
-#~ msgid "Latin"
-#~ msgstr "Latino"
 
 #~ msgid "Application Demo"
 #~ msgstr "Demo Applicazione"

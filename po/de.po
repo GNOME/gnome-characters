@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-15 10:39+0900\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-01-29 07:08+0000\n"
 "PO-Revision-Date: 2015-01-29 18:59+0100\n"
 "Last-Translator: Bernd Homuth <dev@hmt.im>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -19,33 +20,16 @@ msgstr ""
 "X-Generator: Poedit 1.7.3\n"
 
 #: ../data/app-menu.ui.h:1
+msgid "_New"
+msgstr "_Neu"
+
+#: ../data/app-menu.ui.h:2
 msgid "About Characters"
 msgstr "Info zu Zeichen"
 
-#: ../data/app-menu.ui.h:2
+#: ../data/app-menu.ui.h:3
 msgid "Quit"
 msgstr "Beenden"
-
-#: ../data/characterlist.ui.h:1
-msgid "Search produced empty result"
-msgstr ""
-
-#: ../data/characterlist.ui.h:2
-msgid "Try another search criteria."
-msgstr ""
-
-#: ../data/characterlist.ui.h:3
-#, fuzzy
-msgid "Loading…"
-msgstr "Laden …"
-
-#: ../data/characterlist.ui.h:4
-msgid "No recent characters found"
-msgstr ""
-
-#: ../data/characterlist.ui.h:5
-msgid "Characters will appear here if you use them."
-msgstr ""
 
 #: ../data/character.ui.h:1
 msgid "Copy Character"
@@ -55,27 +39,23 @@ msgstr "Zeichen kopieren"
 msgid "Current page"
 msgstr "Aktuelle Seite"
 
-#: ../data/menu.ui.h:1
-msgid "Filter by font"
-msgstr ""
+#: ../data/mainview.ui.h:1
+msgid "Type to Search"
+msgstr "Tippen zum Suchen"
+
+#: ../data/mainview.ui.h:2
+msgid "Loading..."
+msgstr "Laden …"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
-#, fuzzy
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
+"characters."
 msgstr ""
 "Zeichen ist ein einfaches Hilfsprogramm zum Auffinden und Einsetzen von "
 "selten benutzen Zeichen."
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:2
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
-msgstr ""
-
-#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+#: ../data/org.gnome.Characters.desktop.in.h:1
 msgid "Characters"
 msgstr "Zeichen"
 
@@ -96,56 +76,47 @@ msgid "Use the font to render characters on the character list."
 msgstr ""
 "Die zu verwendende Schriftart zum Anzeigen von Zeichen in der Zeichenliste."
 
-#: ../data/org.gnome.Characters.gschema.xml.h:3
-msgid "Maximum recent characters"
-msgstr ""
-
-#: ../src/categoryList.js:33
+#: ../src/categoryList.js:31
 msgid "Recently Used"
 msgstr "Zuletzt verwendet"
 
-#: ../src/categoryList.js:39
+#: ../src/categoryList.js:37
 msgid "Punctuation"
 msgstr "Satzzeichen"
 
-#: ../src/categoryList.js:45
+#: ../src/categoryList.js:43
 msgid "Arrows"
 msgstr "Pfeile"
 
-#: ../src/categoryList.js:51
+#: ../src/categoryList.js:49
 msgid "Bullets"
 msgstr "Aufzählungspunkte"
 
-#: ../src/categoryList.js:57
+#: ../src/categoryList.js:55
 msgid "Pictures"
 msgstr "Bilder"
 
-#: ../src/categoryList.js:63
+#: ../src/categoryList.js:61
 msgid "Currencies"
 msgstr "Währungen"
 
-#: ../src/categoryList.js:69
+#: ../src/categoryList.js:67
 msgid "Math"
 msgstr "Mathematik"
 
-#: ../src/categoryList.js:75
-msgid "Letters"
-msgstr ""
+#: ../src/categoryList.js:73
+msgid "Latin"
+msgstr "Lateinisch"
 
-#: ../src/categoryList.js:81
+#: ../src/categoryList.js:79
 msgid "Emoticons"
 msgstr "Emoticons"
 
-#: ../src/categoryList.js:96
-#, fuzzy, javascript-format
-msgid "%s Category List Row"
-msgstr "%s Zeichenliste"
-
-#: ../src/character.js:52
+#: ../src/character.js:83
 msgid "See Also"
 msgstr "Siehe auch"
 
-#: ../src/character.js:114
+#: ../src/character.js:142
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
@@ -154,61 +125,33 @@ msgstr "Unicode U+%04s"
 msgid "Characters Application"
 msgstr "Zeichen-Anwendung"
 
-#: ../src/main.js:95
+#: ../src/main.js:86
 msgid "Characters Application started"
 msgstr "Zeichen-Anwendung gestartet"
 
-#: ../src/main.js:103
+#: ../src/main.js:94
 msgid "Characters Application exiting"
 msgstr "Zeichen-Anwendung wird beendet"
 
-#: ../src/menu.js:39
-msgid "None"
-msgstr ""
-
-#: ../src/searchProvider.js:94
-msgid "Unknown character name"
-msgstr ""
-
-#: ../src/searchProvider.js:97
-#, javascript-format
-msgid "U+%s, %s: %s"
-msgstr ""
-
-#. TRANSLATORS: put your names here, one name per line.
-#: ../src/window.js:165
+#: ../src/window.js:149
 msgid "translator-credits"
 msgstr ""
 "Christian Kirbach <christian.kirbach@gmail.com>, 2015\n"
 "Bernd Homuth <dev@hmt.im>, 2015"
 
-#: ../src/window.js:166
+#: ../src/window.js:150
 msgid "GNOME Characters"
 msgstr "GNOME Zeichen"
 
-#: ../src/window.js:167
+#: ../src/window.js:151
 msgid "Character Map"
 msgstr "Zeichentabelle"
 
-#: ../src/window.js:187
-#, javascript-format
-msgid "%s (%s only)"
-msgstr ""
-
-#: ../src/window.js:272
+#: ../src/window.js:206
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s Zeichenliste"
 
-#: ../src/window.js:279
+#: ../src/window.js:215
 msgid "Search Result Character List"
 msgstr "Suchergebnisse der Zeichenliste"
-
-#~ msgid "_New"
-#~ msgstr "_Neu"
-
-#~ msgid "Type to Search"
-#~ msgstr "Tippen zum Suchen"
-
-#~ msgid "Latin"
-#~ msgstr "Lateinisch"

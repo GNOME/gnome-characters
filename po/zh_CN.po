@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-15 10:39+0900\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-04-26 06:16+0000\n"
 "PO-Revision-Date: 2015-04-26 16:29+0800\n"
 "Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
@@ -34,8 +35,7 @@ msgid "Try another search criteria."
 msgstr "尝试其他搜索条件。"
 
 #: ../data/characterlist.ui.h:3
-#, fuzzy
-msgid "Loading…"
+msgid "Loading..."
 msgstr "正在加载…"
 
 #: ../data/characterlist.ui.h:4
@@ -97,43 +97,43 @@ msgstr "使用字体渲染字符列表上的字符。"
 msgid "Maximum recent characters"
 msgstr "最近字符的最大数"
 
-#: ../src/categoryList.js:33
+#: ../src/categoryList.js:31
 msgid "Recently Used"
 msgstr "最近使用"
 
-#: ../src/categoryList.js:39
+#: ../src/categoryList.js:37
 msgid "Punctuation"
 msgstr "标点"
 
-#: ../src/categoryList.js:45
+#: ../src/categoryList.js:43
 msgid "Arrows"
 msgstr "箭头"
 
-#: ../src/categoryList.js:51
+#: ../src/categoryList.js:49
 msgid "Bullets"
 msgstr "项目符号"
 
-#: ../src/categoryList.js:57
+#: ../src/categoryList.js:55
 msgid "Pictures"
 msgstr "图片"
 
-#: ../src/categoryList.js:63
+#: ../src/categoryList.js:61
 msgid "Currencies"
 msgstr "货币"
 
-#: ../src/categoryList.js:69
+#: ../src/categoryList.js:67
 msgid "Math"
 msgstr "数学"
 
-#: ../src/categoryList.js:75
-msgid "Letters"
-msgstr ""
+#: ../src/categoryList.js:73
+msgid "Latin"
+msgstr "拉丁字母"
 
-#: ../src/categoryList.js:81
+#: ../src/categoryList.js:79
 msgid "Emoticons"
 msgstr "表情"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:94
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s 分类列表行"
@@ -172,7 +172,6 @@ msgstr "未知的字符名称"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Dean Chen <wsxy162@gmail.com>, 2015"
@@ -190,14 +189,11 @@ msgstr "字符映射表"
 msgid "%s (%s only)"
 msgstr "%s (限 %s)"
 
-#: ../src/window.js:272
+#: ../src/window.js:276
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s 字符列表"
 
-#: ../src/window.js:279
+#: ../src/window.js:283
 msgid "Search Result Character List"
 msgstr "字符列表搜索结果"
-
-#~ msgid "Latin"
-#~ msgstr "拉丁字母"

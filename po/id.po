@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-15 10:39+0900\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-08-14 08:33+0000\n"
 "PO-Revision-Date: 2015-08-14 19:17+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
@@ -60,12 +61,12 @@ msgstr "Saring menurut fonta"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
+"characters. It allows you to quickly find the character you are looking for by "
+"searching for keywords."
 msgstr ""
 "Karakter adalah sebuah utilitas sederhana untuk mencari dan menyisipkan "
-"karakter-karakter tak umum. Ini memungkinkan Anda mencari secara cepat "
-"karakter yang Anda inginkan dengan mencari berdasarkan kata-kata kunci."
+"karakter-karakter tak umum. Ini memungkinkan Anda mencari secara cepat karakter "
+"yang Anda inginkan dengan mencari berdasarkan kata-kata kunci."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -175,7 +176,6 @@ msgstr "Nama karakter tak dikenal"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Andika Triwidada <andika@gmail.com>, 2015"

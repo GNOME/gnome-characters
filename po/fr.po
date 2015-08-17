@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-15 10:39+0900\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-04-06 06:20+0000\n"
 "PO-Revision-Date: 2015-04-06 11:23+0200\n"
 "Last-Translator: Guillaume Bernard <translate@filorin.fr>\n"
 "Language-Team: français <gnomefr@traduc.org>\n"
@@ -35,8 +36,7 @@ msgid "Try another search criteria."
 msgstr "Essayez un autre critère de recherche."
 
 #: ../data/characterlist.ui.h:3
-#, fuzzy
-msgid "Loading…"
+msgid "Loading..."
 msgstr "Chargement…"
 
 #: ../data/characterlist.ui.h:4
@@ -101,43 +101,43 @@ msgstr "Utiliser la police pour afficher la liste des caractères."
 msgid "Maximum recent characters"
 msgstr "Nombre maximal de caractères récents"
 
-#: ../src/categoryList.js:33
+#: ../src/categoryList.js:31
 msgid "Recently Used"
 msgstr "Récemment utilisé"
 
-#: ../src/categoryList.js:39
+#: ../src/categoryList.js:37
 msgid "Punctuation"
 msgstr "Ponctuation"
 
-#: ../src/categoryList.js:45
+#: ../src/categoryList.js:43
 msgid "Arrows"
 msgstr "Flèches"
 
-#: ../src/categoryList.js:51
+#: ../src/categoryList.js:49
 msgid "Bullets"
 msgstr "Puces"
 
-#: ../src/categoryList.js:57
+#: ../src/categoryList.js:55
 msgid "Pictures"
 msgstr "Images"
 
-#: ../src/categoryList.js:63
+#: ../src/categoryList.js:61
 msgid "Currencies"
 msgstr "Monnaies"
 
-#: ../src/categoryList.js:69
+#: ../src/categoryList.js:67
 msgid "Math"
 msgstr "Math"
 
-#: ../src/categoryList.js:75
-msgid "Letters"
-msgstr ""
+#: ../src/categoryList.js:73
+msgid "Latin"
+msgstr "Latin"
 
-#: ../src/categoryList.js:81
+#: ../src/categoryList.js:79
 msgid "Emoticons"
 msgstr "Émoticônes"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:94
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Ligne de la catégorie %s"
@@ -176,7 +176,6 @@ msgstr "Nom de caractère inconnu"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Guillaume Bernard <translate@filorin.fr>"
@@ -194,14 +193,11 @@ msgstr "Table de caractères"
 msgid "%s (%s only)"
 msgstr "%s (%s seulement)"
 
-#: ../src/window.js:272
+#: ../src/window.js:276
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s liste de caractères"
 
-#: ../src/window.js:279
+#: ../src/window.js:283
 msgid "Search Result Character List"
 msgstr "Liste des caractères issus de la recherche"
-
-#~ msgid "Latin"
-#~ msgstr "Latin"
