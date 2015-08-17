@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.gnome.Characters 3.15.91.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-07 10:04+0900\n"
-"PO-Revision-Date: 2015-03-07 10:26+0900\n"
+"POT-Creation-Date: 2015-08-18 06:39+0900\n"
+"PO-Revision-Date: 2015-08-18 06:40+0900\n"
 "Last-Translator: Daiki Ueno <ueno@gnu.org>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -34,8 +34,8 @@ msgid "Try another search criteria."
 msgstr "別の検索条件を試してください"
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
-msgstr "読み込み中..."
+msgid "Loading…"
+msgstr "読み込み中…"
 
 #: ../data/characterlist.ui.h:4
 msgid "No recent characters found"
@@ -62,7 +62,9 @@ msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
-msgstr "Characters は珍しい文字を探して挿入するためのシンプルなユーティリティです。キーワード検索により、素早く文字を発見できます。"
+msgstr ""
+"Characters は珍しい文字を探して挿入するためのシンプルなユーティリティです。"
+"キーワード検索により、素早く文字を発見できます。"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -94,43 +96,43 @@ msgstr "文字一覧に文字を描画するのにそのフォントを使いま
 msgid "Maximum recent characters"
 msgstr "最近使われた文字の最大記憶数"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "最近の使用"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "句読点記号"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "矢印記号"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "見出し記号"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "絵文字"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "通貨記号"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "数学記号"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "ラテン文字"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr ""
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "顔文字"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s カテゴリの行"
@@ -170,28 +172,31 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: ../src/window.js:166
+#: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Daiki Ueno"
 
-#: ../src/window.js:167
+#: ../src/window.js:166
 msgid "GNOME Characters"
 msgstr "GNOME Characters"
 
-#: ../src/window.js:168
+#: ../src/window.js:167
 msgid "Character Map"
 msgstr "文字マップ"
 
-#: ../src/window.js:188
+#: ../src/window.js:187
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s のみ)"
 
-#: ../src/window.js:268
+#: ../src/window.js:272
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s の文字一覧"
 
-#: ../src/window.js:275
+#: ../src/window.js:279
 msgid "Search Result Character List"
 msgstr "検索結果の文字一覧"
+
+#~ msgid "Latin"
+#~ msgstr "ラテン文字"
