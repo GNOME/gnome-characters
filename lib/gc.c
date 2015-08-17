@@ -877,9 +877,13 @@ gc_pango_layout_disable_fallback (PangoLayout *layout)
 {
   PangoAttrList *attr_list;
 
-  attr_list = pango_attr_list_new ();
+  attr_list = pango_layout_get_attributes (layout);
+  if (!attr_list)
+    {
+      attr_list = pango_attr_list_new ();
+      pango_layout_set_attributes (layout, attr_list);
+    }
   pango_attr_list_insert (attr_list, pango_attr_fallback_new (FALSE));
-  pango_layout_set_attributes (layout, attr_list);
 }
 
 gboolean
