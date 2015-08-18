@@ -64,6 +64,9 @@ HAVE_INCLUDE_NEXT = (__GNUC__ || 60000000 <= __DECC_VER)
 ## begin gnulib module gperf
 
 GPERF = gperf
+V_GPERF = $(V_GPERF_@AM_V@)
+V_GPERF_ = $(V_GPERF_@AM_DEFAULT_V@)
+V_GPERF_0 = @echo "  GPERF   " $@;
 
 ## end   gnulib module gperf
 
@@ -697,7 +700,7 @@ libgnu_la_SOURCES += unictype/categ_byname.c
 endif
 
 unictype/categ_byname.h: unictype/categ_byname.gperf
-	$(GPERF) -m 10 $(srcdir)/unictype/categ_byname.gperf > $(srcdir)/unictype/categ_byname.h-t
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/unictype/categ_byname.gperf > $(srcdir)/unictype/categ_byname.h-t && \
 	mv $(srcdir)/unictype/categ_byname.h-t $(srcdir)/unictype/categ_byname.h
 BUILT_SOURCES        += unictype/categ_byname.h
 MOSTLYCLEANFILES     += unictype/categ_byname.h-t
@@ -977,7 +980,7 @@ libgnu_la_SOURCES += unictype/pr_byname.c
 endif
 
 unictype/pr_byname.h: unictype/pr_byname.gperf
-	$(GPERF) -m 10 $(srcdir)/unictype/pr_byname.gperf > $(srcdir)/unictype/pr_byname.h-t
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/unictype/pr_byname.gperf > $(srcdir)/unictype/pr_byname.h-t && \
 	mv $(srcdir)/unictype/pr_byname.h-t $(srcdir)/unictype/pr_byname.h
 BUILT_SOURCES        += unictype/pr_byname.h
 MOSTLYCLEANFILES     += unictype/pr_byname.h-t
@@ -1673,7 +1676,7 @@ libgnu_la_SOURCES += unictype/scripts.c
 endif
 
 unictype/scripts_byname.h: unictype/scripts_byname.gperf
-	$(GPERF) -m 10 $(srcdir)/unictype/scripts_byname.gperf > $(srcdir)/unictype/scripts_byname.h-t
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/unictype/scripts_byname.gperf > $(srcdir)/unictype/scripts_byname.h-t && \
 	mv $(srcdir)/unictype/scripts_byname.h-t $(srcdir)/unictype/scripts_byname.h
 BUILT_SOURCES        += unictype/scripts_byname.h
 MOSTLYCLEANFILES     += unictype/scripts_byname.h-t
