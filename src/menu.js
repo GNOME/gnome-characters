@@ -94,7 +94,7 @@ const MenuPopover = new Lang.Class({
             return true;
 
         let nameWords = row._family.split(/\s+/).map(String.toLowerCase);
-        return this._keywords.some(function(keyword, index, array) {
+        return this._keywords.every(function(keyword, index, array) {
             return nameWords.some(function(nameWord, index, array) {
                 return nameWord.indexOf(keyword) >= 0;
             });
