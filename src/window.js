@@ -214,6 +214,7 @@ const MainWindow = new Lang.Class({
             family = null;
         this._mainView.filterFontFamily = family;
         this._updateTitle(this._mainView.visible_child.title);
+        this._menu_popover.hide();
     },
 
     setSearchKeywords: function(keywords) {

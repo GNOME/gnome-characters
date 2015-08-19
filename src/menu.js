@@ -58,8 +58,8 @@ const MenuPopover = new Lang.Class({
         this._keywords = [];
         this._search_entry.connect('search-changed',
                                    Lang.bind(this, this._handleSearchChanged));
-        this._font_listbox.connect('row-selected',
-                                   Lang.bind(this, this._handleRowSelected));
+        this._font_listbox.connect('row-activated',
+                                   Lang.bind(this, this._handleRowActivated));
         this._font_listbox.set_filter_func(Lang.bind(this, this._filterFunc));
         this._font_listbox.set_header_func(Lang.bind(this, this._headerFunc));
 
@@ -79,7 +79,7 @@ const MenuPopover = new Lang.Class({
         return true;
     },
 
-    _handleRowSelected: function(listBox, row) {
+    _handleRowActivated: function(listBox, row) {
         if (row != null) {
             let toplevel = this.get_toplevel();
             let action = toplevel.lookup_action('filter-font');
