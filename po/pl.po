@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-05 20:24+0200\n"
-"PO-Revision-Date: 2015-07-05 20:25+0200\n"
+"POT-Creation-Date: 2015-08-24 20:21+0200\n"
+"PO-Revision-Date: 2015-08-24 20:22+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -144,7 +144,7 @@ msgstr "Emotikony"
 #: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
-msgstr "Rząd listy kategorii \"%s\""
+msgstr "Rząd listy kategorii „%s”"
 
 #: ../src/character.js:52
 msgid "See Also"
@@ -200,11 +200,11 @@ msgstr "Tablica znaków"
 msgid "%s (%s only)"
 msgstr "%s (tylko %s)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista znaków %s"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Wynik wyszukiwania na liście znaków"
