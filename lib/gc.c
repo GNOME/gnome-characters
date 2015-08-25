@@ -438,8 +438,29 @@ gc_enumerate_character_by_keywords (GcCharacterIter      *iter,
 gchar *
 gc_character_name (gunichar uc)
 {
-  gchar *buffer = g_new0 (gchar, UNINAME_MAX);
-  return unicode_character_name (uc, buffer);
+  const uc_block_t *block;
+  static const uc_block_t *cjk_blocks[6];
+  static gsize cjk_blocks_initialized = 0;
+  gsize i;
+
+  if (g_once_init_enter (&cjk_blocks_initialized))
+    {
+      static const ucs4_t cjk_block_starters[6] =
+	{
+	  0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820
+	};
+
+      for (i = 0; i < G_N_ELEMENTS (cjk_block_starters); i++)
+	cjk_blocks[i] = uc_block (cjk_block_starters[i]);
+      g_once_init_leave (&cjk_blocks_initialized, 1);
+    }
+
+  block = uc_block (uc);
+  for (i = 0; i < G_N_ELEMENTS (cjk_blocks); i++)
+    if (block == cjk_blocks[i])
+      return g_strdup_printf ("CJK UNIFIED IDEOGRAPH-%X", uc);
+
+  return unicode_character_name (uc, g_new0 (gchar, UNINAME_MAX));
 }
 
 G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
