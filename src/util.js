@@ -124,11 +124,24 @@ function assertNotEqual(one, two) {
         throw Error('Assertion failed: ' + one + ' == ' + two);
 }
 
+function capitalizeWord(w) {
+    if (w.length > 0)
+        return w[0].toUpperCase() + w.slice(1).toLowerCase()
+    return w;
+}
+
 function capitalize(s) {
     return s.split(/\s+/).map(function(w) {
-        if (w.length > 0)
-            return w[0].toUpperCase() + w.slice(1).toLowerCase();
-        return w;
+        let acronyms = ["CJK"];
+        if (acronyms.indexOf(w) > -1)
+            return w;
+        let prefixes = ["IDEOGRAPH-", "SELECTOR-"];
+        for (let index in prefixes) {
+            let prefix = prefixes[index];
+            if (w.startsWith(prefix))
+                return capitalizeWord(prefix) + w.slice(prefix.length);
+        }
+        return capitalizeWord(w);
     }).join(' ');
 }
 
