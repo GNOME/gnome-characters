@@ -1,0 +1,200 @@
+# Arabic translation for gnome-characters.
+# Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+#
+# Safa Alfulaij <safa1996alfulaij@gmail.com>, 2015.
+# Abderrahim Kitouni <a.kitouni@gmail.com>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-08-23 06:25+0000\n"
+"PO-Revision-Date: 2015-08-27 14:56+0100\n"
+"Last-Translator: Abderrahim Kitouni <a.kitouni@gmail.com>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 2.0\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "About Characters"
+msgstr "عن «محارف»"
+
+#: ../data/app-menu.ui.h:2
+msgid "Quit"
+msgstr "أنهِ"
+
+#: ../data/characterlist.ui.h:1
+msgid "Search produced empty result"
+msgstr "لم يأت البحث بأية نتيجة"
+
+#: ../data/characterlist.ui.h:2
+msgid "Try another search criteria."
+msgstr "جرّب البحث عن شيء آخر."
+
+#: ../data/characterlist.ui.h:3
+msgid "Loading…"
+msgstr "يحمّل..."
+
+#: ../data/characterlist.ui.h:4
+msgid "No recent characters found"
+msgstr "لا محارف استخدمتها حديثًا"
+
+#: ../data/characterlist.ui.h:5
+msgid "Characters will appear here if you use them."
+msgstr "ستظهر المحارف التي تستخدمها هنا."
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "انسخ المحرف"
+
+#: ../data/mainwindow.ui.h:1
+msgid "Current page"
+msgstr "الصّفحة الحالية"
+
+#: ../data/menu.ui.h:1
+msgid "Filter by font"
+msgstr "رشّح حسب الخطّ"
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr "«محارف» تطبيق بسيط للبحث عن المحارف غير المألوفة. يسمح لك التّطبيق بالبحث عن المحرف الّذي تريده بالبحث عن الكلمات المفتاحية."
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "يمكنك تصفّح المحارف حسب فئاتها، كعلامات الترقيم والصّور وغيرها."
+
+#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+msgid "Characters"
+msgstr "المحارف"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Utility application to find and insert unusual characters"
+msgstr "تطبيق للبحث عن المحارف غير المألوفة وإدراجها"
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "characters;unicode;"
+msgstr "characters;unicode;محرف;محارف;يونيكود"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "خطّ عرض المحارف"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr "استخدم الخطّ لتصيير المحارف في قائمة المحارف."
+
+#: ../data/org.gnome.Characters.gschema.xml.h:3
+msgid "Maximum recent characters"
+msgstr "أقصى عدد للمحارف الحديثة"
+
+#: ../src/categoryList.js:33
+msgid "Recently Used"
+msgstr "المستخدمة حديثا"
+
+#: ../src/categoryList.js:39
+msgid "Punctuation"
+msgstr "علامات التّرقيم"
+
+#: ../src/categoryList.js:45
+msgid "Arrows"
+msgstr "الأسهم"
+
+#: ../src/categoryList.js:51
+msgid "Bullets"
+msgstr "النّقط"
+
+#: ../src/categoryList.js:57
+msgid "Pictures"
+msgstr "الصّور"
+
+#: ../src/categoryList.js:63
+msgid "Currencies"
+msgstr "العملات"
+
+#: ../src/categoryList.js:69
+msgid "Math"
+msgstr "الرّياضيات"
+
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "الأحرف"
+
+#: ../src/categoryList.js:81
+msgid "Emoticons"
+msgstr "الوجوه التّعبيريّة"
+
+#: ../src/categoryList.js:96
+#, javascript-format
+msgid "%s Category List Row"
+msgstr "صف فئة %s في القائمة"
+
+#: ../src/character.js:52
+msgid "See Also"
+msgstr "انظر أيضًا"
+
+#: ../src/character.js:114
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "يونيكود U+%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr "تطبيق «محارف»"
+
+#: ../src/main.js:95
+msgid "Characters Application started"
+msgstr "بدأ تطبيق «محارف»"
+
+#: ../src/main.js:103
+msgid "Characters Application exiting"
+msgstr "تطبيق «محارف» يخرج"
+
+#: ../src/menu.js:39
+msgid "None"
+msgstr "لا ترشّح"
+
+#: ../src/searchProvider.js:94
+msgid "Unknown character name"
+msgstr "اسم المحرف مجهول"
+
+#: ../src/searchProvider.js:97
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s،‏ %s:‏ %s"
+
+#: ../src/window.js:165
+msgid "translator-credits"
+msgstr ""
+"فريق عربآيز للترجمة http://www.arabeyes.org:\n"
+"صفا الفليج <safa1996alfulaij@gmail.com>"
+
+#: ../src/window.js:166
+msgid "GNOME Characters"
+msgstr "محارف جنوم"
+
+#: ../src/window.js:167
+msgid "Character Map"
+msgstr "خريطة المحارف"
+
+#: ../src/window.js:187
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (%s فقط)"
+
+#: ../src/window.js:273
+#, javascript-format
+msgid "%s Character List"
+msgstr "قائمة محارف %s"
+
+#: ../src/window.js:280
+msgid "Search Result Character List"
+msgstr "قائمة المحارف من نتيجة البحث"
