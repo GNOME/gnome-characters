@@ -1,0 +1,201 @@
+# Punjabi translation for gnome-characters.
+# Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+#
+# A S Alam <aalam@fedoraproject.org>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-08-30 09:12+0000\n"
+"PO-Revision-Date: 2015-08-30 11:29UTC-0600\n"
+"Last-Translator: A S Alam <aalam@fedoraproject.org>\n"
+"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
+"Language: pa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 2.0\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "About Characters"
+msgstr "ਅੱਖਰਾਂ ਬਾਰੇ"
+
+#: ../data/app-menu.ui.h:2
+msgid "Quit"
+msgstr "ਬਾਹਰ"
+
+#: ../data/characterlist.ui.h:1
+msgid "Search produced empty result"
+msgstr ""
+
+#: ../data/characterlist.ui.h:2
+msgid "Try another search criteria."
+msgstr ""
+
+#: ../data/characterlist.ui.h:3
+msgid "Loading…"
+msgstr "...ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ"
+
+#: ../data/characterlist.ui.h:4
+msgid "No recent characters found"
+msgstr "ਕੋਈ ਤਾਜ਼ਾ ਅੱਖਰ ਨਹੀਂ ਲੱਭੇ"
+
+#: ../data/characterlist.ui.h:5
+msgid "Characters will appear here if you use them."
+msgstr "ਅੱਖਰ ਇੱਥੇ ਦਿਖਾਈ ਦੇਣਗੇ, ਜੇ ਤੁਸੀਂ ਉਹਨਾਂ ਨੂੰ ਵਰਤਦੇ ਹੋ।"
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "ਅੱਖਰ ਕਾਪੀ ਕਰੋ"
+
+#: ../data/mainwindow.ui.h:1
+msgid "Current page"
+msgstr "ਮੌਜੂਦਾ ਸਫ਼ਾ"
+
+#: ../data/menu.ui.h:1
+msgid "Filter by font"
+msgstr "ਫੋਂਟ ਰਾਹੀਂ ਫਿਲਟਰ"
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+
+#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+msgid "Characters"
+msgstr "ਅੱਖਰ"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Utility application to find and insert unusual characters"
+msgstr "ਅਸਧਾਰਨ ਅੱਖਰ ਲੱਭਣ ਤੇ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਸਹਾਇਕ ਐਪਲੀਕੇਸ਼ਨ"
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "characters;unicode;"
+msgstr "ਅੱਖਰ;ਯੂਨੀਕੋਡ;"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "ਅੱਖਰ ਦਿਖਾਉਣ ਲਈ ਫ਼ੋਂਟ"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr ""
+
+#: ../data/org.gnome.Characters.gschema.xml.h:3
+msgid "Maximum recent characters"
+msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਤਾਜ਼ਾ ਅੱਖਰ"
+
+#: ../src/categoryList.js:33
+msgid "Recently Used"
+msgstr "ਤਾਜ਼ਾ ਵਰਤੇ"
+
+#: ../src/categoryList.js:39
+msgid "Punctuation"
+msgstr "ਵਿਰਾਮ ਚਿੰਨ੍ਹ"
+
+#: ../src/categoryList.js:45
+msgid "Arrows"
+msgstr "ਤੀਰ"
+
+#: ../src/categoryList.js:51
+msgid "Bullets"
+msgstr "ਬਿੰਦੀਆਂ"
+
+#: ../src/categoryList.js:57
+msgid "Pictures"
+msgstr "ਤਸਵੀਰਾਂ"
+
+#: ../src/categoryList.js:63
+msgid "Currencies"
+msgstr "ਮੁਦਰਾ"
+
+#: ../src/categoryList.js:69
+msgid "Math"
+msgstr "ਗਣਿਤ"
+
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "ਅੱਖਰ"
+
+#: ../src/categoryList.js:81
+msgid "Emoticons"
+msgstr "ਈਮੋ-ਆਈਕਾਨ"
+
+#: ../src/categoryList.js:96
+#, javascript-format
+msgid "%s Category List Row"
+msgstr ""
+
+#: ../src/character.js:52
+msgid "See Also"
+msgstr "ਇਹ ਵੀ ਵੇਖੋ"
+
+#: ../src/character.js:114
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "ਯੂਨੀਕੋਡ U+%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr "ਅੱਖਰ ਐਪਲੀਕੇਸ਼ਨ"
+
+#: ../src/main.js:95
+msgid "Characters Application started"
+msgstr "ਅੱਖਰ ਐਪਲੀਕੇਸ਼ਨ ਸ਼ੁਰੂ ਹੋਈ"
+
+#: ../src/main.js:103
+msgid "Characters Application exiting"
+msgstr "ਅੱਖਰ ਐਪਲੀਕੇਸ਼ਨ ਬੰਦ ਹੋ ਰਹੀ ਹੈ"
+
+#: ../src/menu.js:39
+msgid "None"
+msgstr "ਕੋਈ ਨਹੀਂ"
+
+#: ../src/searchProvider.js:94
+msgid "Unknown character name"
+msgstr "ਅਣਜਾਣ ਅੱਖਰ ਨਾਂ"
+
+#: ../src/searchProvider.js:97
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#: ../src/window.js:165
+msgid "translator-credits"
+msgstr ""
+"ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ\n"
+"ਪੰਜਾਬੀ ਓਪਨਸੋਰਸ ਟੀਮ (POST)"
+
+#: ../src/window.js:166
+msgid "GNOME Characters"
+msgstr "ਗਨੋਮ ਅੱਖਰ"
+
+#: ../src/window.js:167
+msgid "Character Map"
+msgstr "ਅੱਖਰ ਨਕਸ਼ਾ"
+
+#: ../src/window.js:187
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (%s ਕੇਵਲ)"
+
+#: ../src/window.js:273
+#, javascript-format
+msgid "%s Character List"
+msgstr "%s ਅੱਖਰ ਲਿਸਟ"
+
+#: ../src/window.js:280
+msgid "Search Result Character List"
+msgstr ""
+
