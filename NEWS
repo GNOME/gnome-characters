@@ -1,3 +1,20 @@
+3.17.91
+===
+
+- Fix font filtering logic
+- Close font filtering popover after selection
+- Fix character name display for CJK ideographs
+
+New And Updated Translations
+============================
+A S Alam (pa)
+Chao-Hsiung Liao (zh_TW)
+Christian Kirbach (de)
+Daiki Ueno (ja)
+Piotr Drąg (pl)
+Safa Alfulaij (ar)
+Tom Tryfonidis (el)
+
 3.17.90
 ===
 
