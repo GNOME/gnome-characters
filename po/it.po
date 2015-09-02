@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-02 17:31+0000\n"
-"PO-Revision-Date: 2015-03-25 18:15+0100\n"
+"POT-Creation-Date: 2015-08-17 21:41+0000\n"
+"PO-Revision-Date: 2015-09-02 21:21+0200\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <gnome-it@gnome.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.4\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "About Characters"
@@ -36,8 +36,8 @@ msgid "Try another search criteria."
 msgstr "Provare un'altra ricerca."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
-msgstr "Caricamento..."
+msgid "Loading…"
+msgstr "Caricamento…"
 
 #: ../data/characterlist.ui.h:4
 msgid "No recent characters found"
@@ -62,12 +62,12 @@ msgstr "Filtra per carattere"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
+"characters. It allows you to quickly find the character you are looking for by "
+"searching for keywords."
 msgstr ""
-"Caratteri è un semplice programma per la ricerca e l'inserimento di "
-"caratteri insoliti. Consente di cercare velocemente dei caratteri attraverso "
-"una ricerca per parole chiave."
+"Caratteri è un semplice programma per la ricerca e l'inserimento di caratteri "
+"insoliti. Consente di cercare velocemente dei caratteri attraverso una ricerca "
+"per parole chiave."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -95,50 +95,49 @@ msgstr "Il tipo di carattere da usare per la visualizzazione"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:2
 msgid "Use the font to render characters on the character list."
-msgstr ""
-"Usa il tipo di carattere definito per la visualizzazione dei caratteri."
+msgstr "Usa il tipo di carattere definito per la visualizzazione dei caratteri."
 
 #: ../data/org.gnome.Characters.gschema.xml.h:3
 msgid "Maximum recent characters"
 msgstr "Massimo numero di caratteri recenti"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Usati di recente"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Punteggiatura"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "Frecce"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "Elenchi"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "Immagini"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "Valute"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "Matematica"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "Latino"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "Lettere"
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Emoticon"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Riga elenco categoria %s"
@@ -168,11 +167,11 @@ msgstr "Applicazione Caratteri terminata"
 msgid "None"
 msgstr "Nessuno"
 
-#: ../src/searchProvider.js:91
+#: ../src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Nome carattere sconosciuto"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -194,14 +193,17 @@ msgstr "Tabella caratteri"
 msgid "%s (%s only)"
 msgstr "%s (solo %s)"
 
-#: ../src/window.js:267
+#: ../src/window.js:272
 #, javascript-format
 msgid "%s Character List"
 msgstr "Elenco caratteri %s"
 
-#: ../src/window.js:274
+#: ../src/window.js:279
 msgid "Search Result Character List"
 msgstr "Elenco caratteri ricerca"
+
+#~ msgid "Latin"
+#~ msgstr "Latino"
 
 #~ msgid "Application Demo"
 #~ msgstr "Demo Applicazione"
