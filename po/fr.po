@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-04-06 06:20+0000\n"
-"PO-Revision-Date: 2015-04-06 11:23+0200\n"
+"POT-Creation-Date: 2015-08-17 21:41+0000\n"
+"PO-Revision-Date: 2015-09-04 14:06+0200\n"
 "Last-Translator: Guillaume Bernard <translate@filorin.fr>\n"
-"Language-Team: français <gnomefr@traduc.org>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "About Characters"
@@ -36,7 +35,7 @@ msgid "Try another search criteria."
 msgstr "Essayez un autre critère de recherche."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
+msgid "Loading…"
 msgstr "Chargement…"
 
 #: ../data/characterlist.ui.h:4
@@ -101,43 +100,43 @@ msgstr "Utiliser la police pour afficher la liste des caractères."
 msgid "Maximum recent characters"
 msgstr "Nombre maximal de caractères récents"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Récemment utilisé"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Ponctuation"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "Flèches"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "Puces"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "Images"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "Monnaies"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "Math"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "Latin"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "Lettres"
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Émoticônes"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Ligne de la catégorie %s"
@@ -193,11 +192,11 @@ msgstr "Table de caractères"
 msgid "%s (%s only)"
 msgstr "%s (%s seulement)"
 
-#: ../src/window.js:276
+#: ../src/window.js:272
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s liste de caractères"
 
-#: ../src/window.js:283
+#: ../src/window.js:279
 msgid "Search Result Character List"
 msgstr "Liste des caractères issus de la recherche"
