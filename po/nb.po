@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters 3.17.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-07 11:44+0200\n"
-"PO-Revision-Date: 2015-08-07 11:46+0200\n"
+"POT-Creation-Date: 2015-09-07 20:07+0200\n"
+"PO-Revision-Date: 2015-09-07 20:10+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -61,13 +61,13 @@ msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
-msgstr ""
+msgstr "Tegn er et enkelt verktøyprogram hvor du kan finne og sette inn uvanlige tegn. Det lar deg finne tegnene du leter etter raskt ved å søke etter nøkkelord."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
-msgstr ""
+msgstr "Du kan også bla gjennom tegn etter kategorier som, tegnsetting, bilder, etc."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -75,7 +75,7 @@ msgstr "Tegn"
 
 #: ../data/org.gnome.Characters.desktop.in.h:2
 msgid "Utility application to find and insert unusual characters"
-msgstr ""
+msgstr "Verktøyprogram for å finne og sette inn uvanlige tegn"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
 msgid "characters;unicode;"
@@ -87,12 +87,11 @@ msgstr "Skrittype for visning av tegn"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:2
 msgid "Use the font to render characters on the character list."
-msgstr ""
+msgstr "Bruk skriften til å tegne tegnene i tegnlisten."
 
 #: ../data/org.gnome.Characters.gschema.xml.h:3
-#, fuzzy
 msgid "Maximum recent characters"
-msgstr "Sist valgte tegn"
+msgstr "Maksimalt antall nylige tegn"
 
 #: ../src/categoryList.js:33
 msgid "Recently Used"
@@ -133,7 +132,7 @@ msgstr "Emotikoner"
 #: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
-msgstr ""
+msgstr "%s kategorilisterad"
 
 #: ../src/character.js:52
 msgid "See Also"
@@ -187,12 +186,11 @@ msgstr "Tegnkart"
 msgid "%s (%s only)"
 msgstr "%s (kun %s)"
 
-#: ../src/window.js:272
-#, fuzzy, javascript-format
+#: ../src/window.js:273
+#, javascript-format
 msgid "%s Character List"
-msgstr "_Detaljer om tegn"
+msgstr "%s tegnliste"
 
-#: ../src/window.js:279
-#, fuzzy
+#: ../src/window.js:280
 msgid "Search Result Character List"
-msgstr "Søk i _detaljer om tegn"
+msgstr "Søk i resultattegnlisten"
