@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-11 06:26+0000\n"
+"POT-Creation-Date: 2015-09-14 06:29+0000\n"
 "PO-Revision-Date: 2015-09-11 16:40+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../data/app-menu.ui.h:1
 msgid "About Characters"
-msgstr "문자 정보"
+msgstr "문자 도구 정보"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -65,8 +65,8 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"문자는 자주 사용하지 않는 문자를 찾아 넣는 단순한 유틸리티 프로그램입니다. 찾"
-"아보고자 하는 문자를 단어를 통해 빨리 찾아볼 수 있습니다."
+"문자 도구는 자주 사용하지 않는 문자를 찾아 넣는 단순한 유틸리티 프로그램입니"
+"다. 찾아보고자 하는 문자를 단어를 통해 빨리 찾아볼 수 있습니다."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -76,7 +76,7 @@ msgstr "구두기호, 그림 등의 분류 방식으로 문자를 찾아볼 수 
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
-msgstr "문자"
+msgstr "문자 도구"
 
 #: ../data/org.gnome.Characters.desktop.in.h:2
 msgid "Utility application to find and insert unusual characters"
@@ -84,7 +84,7 @@ msgstr "자주 사용하지 않는 문자를 찾고 삽입하는 유틸리티 �
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
 msgid "characters;unicode;"
-msgstr "characters;문자;unicode;유니코드;"
+msgstr "characters;문자 도구;unicode;유니코드;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -150,15 +150,15 @@ msgstr "유니코드 U+%04s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
-msgstr "문자 프로그램"
+msgstr "문자 도구 프로그램"
 
 #: ../src/main.js:95
 msgid "Characters Application started"
-msgstr "문자 프로그램을 시작했습니다"
+msgstr "문자 도구 프로그램을 시작했습니다"
 
 #: ../src/main.js:103
 msgid "Characters Application exiting"
-msgstr "문자 프로그램이 이미 실행중입니다"
+msgstr "문자 도구 프로그램이 이미 실행중입니다"
 
 #: ../src/menu.js:39
 msgid "None"
@@ -179,7 +179,7 @@ msgstr "조성호 <shcho@gnome.org>"
 
 #: ../src/window.js:166
 msgid "GNOME Characters"
-msgstr "그놈 문자"
+msgstr "그놈 문자 도구"
 
 #: ../src/window.js:167
 msgid "Character Map"
