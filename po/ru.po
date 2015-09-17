@@ -1,0 +1,205 @@
+# Russian translation for gnome-characters.
+# Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# Stas Solovey <whats_up@tut.by>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-09-17 18:28+0000\n"
+"PO-Revision-Date: 2015-09-18 00:35+0300\n"
+"Last-Translator: Stas Solovey <whats_up@tut.by>\n"
+"Language-Team: Русский <gnome-cyr@gnome.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#: ../data/app-menu.ui.h:1
+msgid "About Characters"
+msgstr "О приложении"
+
+#: ../data/app-menu.ui.h:2
+msgid "Quit"
+msgstr "Завершить"
+
+#: ../data/characterlist.ui.h:1
+msgid "Search produced empty result"
+msgstr "Поиск не дал результатов"
+
+#: ../data/characterlist.ui.h:2
+msgid "Try another search criteria."
+msgstr "Попробуйте другой поисковый запрос."
+
+#: ../data/characterlist.ui.h:3
+msgid "Loading…"
+msgstr "Загрузка…"
+
+#: ../data/characterlist.ui.h:4
+msgid "No recent characters found"
+msgstr "Не найдено недавних символов"
+
+#: ../data/characterlist.ui.h:5
+msgid "Characters will appear here if you use them."
+msgstr "Здесь будут отображаться символы, которые вы используете."
+
+#: ../data/character.ui.h:1
+msgid "Copy Character"
+msgstr "Копировать символ"
+
+#: ../data/mainwindow.ui.h:1
+msgid "Current page"
+msgstr "Текущая страница"
+
+#: ../data/menu.ui.h:1
+msgid "Filter by font"
+msgstr "Сортировать по шрифту"
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Символы — это простое приложение, для поиска и вставки необычных символов. "
+"Оно позволяет быстро находить нужный символ по ключевым словам."
+
+#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Также можно просматривать символы по категориям, таким как знаки пунктуации, "
+"картинки и т.д."
+
+#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+msgid "Characters"
+msgstr "Символы"
+
+#: ../data/org.gnome.Characters.desktop.in.h:2
+msgid "Utility application to find and insert unusual characters"
+msgstr "Простое приложение, для поиска и вставки необычных символов"
+
+#: ../data/org.gnome.Characters.desktop.in.h:3
+msgid "characters;unicode;"
+msgstr "символы;юникод;"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:1
+msgid "Font to display characters"
+msgstr "Шрифт для отображения символов"
+
+#: ../data/org.gnome.Characters.gschema.xml.h:2
+msgid "Use the font to render characters on the character list."
+msgstr "Используйте шрифт для отображения символов в списке символов."
+
+#: ../data/org.gnome.Characters.gschema.xml.h:3
+msgid "Maximum recent characters"
+msgstr "Максимальное количество недавних символов"
+
+#: ../src/categoryList.js:33
+msgid "Recently Used"
+msgstr "Недавно использованные"
+
+#: ../src/categoryList.js:39
+msgid "Punctuation"
+msgstr "Пунктуация"
+
+#: ../src/categoryList.js:45
+msgid "Arrows"
+msgstr "Стрелки"
+
+#: ../src/categoryList.js:51
+msgid "Bullets"
+msgstr "Маркеры"
+
+#: ../src/categoryList.js:57
+msgid "Pictures"
+msgstr "Картинки"
+
+#: ../src/categoryList.js:63
+msgid "Currencies"
+msgstr "Валюты"
+
+#: ../src/categoryList.js:69
+msgid "Math"
+msgstr "Математика"
+
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "Буквы"
+
+#: ../src/categoryList.js:81
+msgid "Emoticons"
+msgstr "Смайлики"
+
+#: ../src/categoryList.js:96
+#, javascript-format
+msgid "%s Category List Row"
+msgstr "Список категорий %s"
+
+#: ../src/character.js:52
+msgid "See Also"
+msgstr "См. также"
+
+#: ../src/character.js:114
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Юникод U+%04s"
+
+#: ../src/main.js:58
+msgid "Characters Application"
+msgstr "Приложение Символы"
+
+#: ../src/main.js:95
+msgid "Characters Application started"
+msgstr "Приложение Символы запущено"
+
+#: ../src/main.js:103
+msgid "Characters Application exiting"
+msgstr "Приложение Символы завершается"
+
+#: ../src/menu.js:39
+msgid "None"
+msgstr "Нет"
+
+#: ../src/searchProvider.js:94
+msgid "Unknown character name"
+msgstr "Неизвестное имя символа"
+
+#: ../src/searchProvider.js:97
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#: ../src/window.js:165
+msgid "translator-credits"
+msgstr ""
+"Stas Solovey <whats_up@tut.by>, 2015."
+
+
+#: ../src/window.js:166
+msgid "GNOME Characters"
+msgstr "Символы GNOME"
+
+#: ../src/window.js:167
+msgid "Character Map"
+msgstr "Карта символов"
+
+#: ../src/window.js:187
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (только %s)"
+
+#: ../src/window.js:273
+#, javascript-format
+msgid "%s Character List"
+msgstr "Список символов %s"
+
+#: ../src/window.js:280
+msgid "Search Result Character List"
+msgstr "Результат поиска в списке символов"
