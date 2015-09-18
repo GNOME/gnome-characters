@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 20:21+0200\n"
-"PO-Revision-Date: 2015-08-24 20:22+0200\n"
+"POT-Creation-Date: 2015-09-18 09:18+0200\n"
+"PO-Revision-Date: 2015-09-18 09:19+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -148,7 +148,7 @@ msgstr "Rząd listy kategorii „%s”"
 
 #: ../src/character.js:52
 msgid "See Also"
-msgstr "Proszę zobaczyć także"
+msgstr "Podobne znaki"
 
 #: ../src/character.js:114
 #, javascript-format
