@@ -24,6 +24,11 @@ GITIGNOREFILES = \
 	m4/intltool.m4 \
 	m4/libtool.m4 \
 	m4/lt* \
+	m4/appstream-xml.m4 \
+	m4/gsettings.m4 \
+	m4/introspection.m4 \
+	m4/nls.m4 \
+	m4/pkg.m4 \
 	gllib/Makefile \
 	gllib/Makefile.in \
 	gllib/**/*.lo \
