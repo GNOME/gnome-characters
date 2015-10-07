@@ -32,7 +32,7 @@ const CharacterDialog = new Lang.Class({
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Characters/character.ui',
     InternalChildren: ['main-stack', 'character-label', 'detail-label',
-                       'copy-button', 'related-listbox'],
+                       'copy-button', 'copy-revealer', 'related-listbox'],
 
     _init: function(params) {
         let filtered = Params.filter(params, { character: null,
@@ -138,13 +138,42 @@ const CharacterDialog = new Lang.Class({
             headerBar.title = Util.capitalize(name);
     },
 
+    _hideCopyRevealer: function() {
+        if (this._copyRevealerTimeoutId > 0) {
+            GLib.source_remove(this._copyRevealerTimeoutId);
+            this._copyRevealerTimeoutId = 0;
+            this._copy_revealer.set_reveal_child(false);
+        }
+    },
+
+    _clipboardOwnerChanged: function(clipboard, event) {
+        let text = clipboard.wait_for_text();
+        if (text != this._character)
+            this._hideCopyRevealer();
+    },
+
     _copyCharacter: function() {
-        let clipboard = Gc.gtk_clipboard_get();
+        if (this._clipboard == null) {
+            this._clipboard = Gc.gtk_clipboard_get();
+            this._clipboard.connect('owner-change',
+                                    Lang.bind(this,
+                                              this._clipboardOwnerChanged));
+        }
+
         // FIXME: GLib.unichar_to_utf8() has missing (nullable)
         // annotation to the outbuf argument.
         let outbuf = '      ';
         let length = GLib.unichar_to_utf8(this._character, outbuf);
-        clipboard.set_text(this._character, length);
+        this._clipboard.set_text(this._character, length);
+
+        // Show a feedback message with a revealer.  The message is
+        // hidden after 2 seconds, or when another client set a
+        // different text to clipboard.
+        this._hideCopyRevealer();
+        this._copy_revealer.set_reveal_child(true);
+        this._copyRevealerTimeoutId =
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000,
+                             Lang.bind(this, this._hideCopyRevealer));
     },
 
     _handleRowSelected: function(listBox, row) {
