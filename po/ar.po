@@ -86,7 +86,7 @@ msgstr "تطبيق للبحث عن المحارف غير المألوفة و إ
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
 msgid "characters;unicode;"
-msgstr "characters;unicode;محرف;محارف;يونيكود"
+msgstr "characters;unicode;محرف;محارف;يونيكود;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
