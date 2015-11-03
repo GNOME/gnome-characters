@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-24 07:17+0000\n"
-"PO-Revision-Date: 2015-08-03 05:16+0100\n"
+"POT-Creation-Date: 2015-10-24 07:01+0000\n"
+"PO-Revision-Date: 2015-11-03 09:50+0000\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
 "Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "Sobre o Caracteres"
+msgid "About"
+msgstr "Sobre"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -36,7 +36,6 @@ msgid "Try another search criteria."
 msgstr "Tente outro critério de procura."
 
 #: ../data/characterlist.ui.h:3
-#| msgid "Loadingâ€¦"
 msgid "Loading…"
 msgstr "A carregar…"
 
@@ -51,6 +50,10 @@ msgstr "Os caracteres aparecem aqui, se os usar."
 #: ../data/character.ui.h:1
 msgid "Copy Character"
 msgstr "Copiar carácter"
+
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Caracteres copiados para a área de transferência"
 
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
@@ -176,9 +179,12 @@ msgstr "Nome de carácter desconhecido"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
-msgstr "Pedro Albuquerque <palbuquerque73@gmail.com>"
+msgstr ""
+"Tiago S. <almosthumane@portugalmail.pt>\n"
+"Pedro Albuquerque <palbuquerque73@gmail.com>"
 
 #: ../src/window.js:166
 msgid "GNOME Characters"
@@ -193,11 +199,14 @@ msgstr "Mapa de caracteres"
 msgid "%s (%s only)"
 msgstr "%s (só %s)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s lista de caracteres"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Lista de caracteres resultado da procura"
+
+#~ msgid "About Characters"
+#~ msgstr "Sobre o Caracteres"
