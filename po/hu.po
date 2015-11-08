@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-17 06:22+0000\n"
-"PO-Revision-Date: 2015-07-17 15:11+0200\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"POT-Creation-Date: 2015-10-25 08:09+0000\n"
+"PO-Revision-Date: 2015-10-25 14:14+0100\n"
+"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "A Karakterek névjegye"
+msgid "About"
+msgstr "Névjegy"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -51,6 +51,10 @@ msgstr "A karakterek itt fognak megjelenni, ha használja azokat."
 msgid "Copy Character"
 msgstr "Karakter másolása"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Karakter vágólapra másolva"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Jelenlegi oldal"
@@ -62,8 +66,8 @@ msgstr "Szűrés betűkészlet szerint"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
+"characters. It allows you to quickly find the character you are looking for by "
+"searching for keywords."
 msgstr ""
 "A Karakterek egy egyszerű segédprogram alkalmazás szokatlan karakterek "
 "kereséséhez és beszúrásához. Lehetővé teszi a keresett karakter gyors "
@@ -83,8 +87,7 @@ msgstr "Karakterek"
 
 #: ../data/org.gnome.Characters.desktop.in.h:2
 msgid "Utility application to find and insert unusual characters"
-msgstr ""
-"Segédprogram alkalmazás szokatlan karakterek kereséséhez és beszúrásához"
+msgstr "Segédprogram alkalmazás szokatlan karakterek kereséséhez és beszúrásához"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
 msgid "characters;unicode;"
@@ -96,8 +99,7 @@ msgstr "Betűkészlet a karakterek megjelenítéséhez"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:2
 msgid "Use the font to render characters on the character list."
-msgstr ""
-"A betűkészlet használata a karakterek megjelenítéséhez a karakterlistán."
+msgstr "A betűkészlet használata a karakterek megjelenítéséhez a karakterlistán."
 
 #: ../data/org.gnome.Characters.gschema.xml.h:3
 msgid "Maximum recent characters"
@@ -178,6 +180,7 @@ msgstr "Ismeretlen karakternév"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Úr Balázs <urbalazs@gmail.com>, 2014."
@@ -195,14 +198,17 @@ msgstr "Karaktertábla"
 msgid "%s (%s only)"
 msgstr "%s (csak %s)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s karakterlista"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Keresési eredmény karakterlista"
+
+#~ msgid "About Characters"
+#~ msgstr "A Karakterek névjegye"
 
 #~ msgid "Latin"
 #~ msgstr "Latin"
