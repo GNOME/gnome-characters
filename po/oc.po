@@ -1,23 +1,23 @@
 # Occitan translation for gnome-characters.
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# 
-# Cédric Valmary (Tot en Òc) <cvalmary@yahoo.fr>, 2015.
+# Cédric Valmary <cvalmary@yahoo.fr>, 2015.
+# Cédric Valmary (Tot en òc) <cvalmary@yahoo.fr>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-04-07 02:13+0000\n"
-"PO-Revision-Date: 2015-05-19 09:37+0200\n"
-"Last-Translator: Cédric Valmary (Tot en Òc) <cvalmary@yahoo.fr>\n"
-"Language-Team: www.totenoc.eu\n"
+"POT-Creation-Date: 2015-10-07 13:13+0000\n"
+"PO-Revision-Date: 2015-10-31 08:52+0200\n"
+"Last-Translator: Cédric Valmary (Tot en òc) <cvalmary@yahoo.fr>\n"
+"Language-Team: Tot en òc (totenoc.eu)\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/app-menu.ui.h:1
@@ -37,7 +37,6 @@ msgid "Try another search criteria."
 msgstr "Ensajatz un autre critèri de recèrca."
 
 #: ../data/characterlist.ui.h:3
-#| msgid "Loading..."
 msgid "Loading…"
 msgstr "Cargament…"
 
@@ -102,43 +101,43 @@ msgstr "Utilizar la poliça per afichar la lista dels caractèrs."
 msgid "Maximum recent characters"
 msgstr "Nombre maximal de caractèrs recents"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Utilizat recentament"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
-msgstr "Ponctuacion"
+msgstr "Pontuacion"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "Flèchas"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "Piuses"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "Imatges"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "Monedas"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "Math"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "Latin"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "Letras"
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Emoticònas"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Linha de la categoria %s"
@@ -177,6 +176,7 @@ msgstr "Nom de caractèr desconegut"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Cédric Valmary <cvalmary@yahoo.fr>"
@@ -194,11 +194,14 @@ msgstr "Taula de caractèrs"
 msgid "%s (%s only)"
 msgstr "%s (%s solament)"
 
-#: ../src/window.js:276
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s lista de caractèrs"
 
-#: ../src/window.js:283
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Lista dels caractèrs eissits de la recèrca"
+
+#~ msgid "Latin"
+#~ msgstr "Latin"
