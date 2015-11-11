@@ -115,13 +115,14 @@ const CharacterDialog = new Lang.Class({
 
         this._cancellable.cancel();
         this._cancellable.reset();
-        Gc.search_related(
-            this._character,
+        let criteria = Gc.SearchCriteria.new_related(this._character);
+        let context = new Gc.SearchContext({ criteria: criteria });
+        context.search(
             -1,
             this._cancellable,
-            Lang.bind(this, function(source_object, res, user_data) {
+            Lang.bind(this, function(context, res, user_data) {
                 try {
-                    let result = Gc.search_finish(res);
+                    let result = context.search_finish(res);
                     this._finishSearch(result);
                 } catch (e) {
                     log("Failed to search related: " + e);

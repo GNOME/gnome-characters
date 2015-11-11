@@ -35,52 +35,76 @@ typedef enum
 typedef GArray GcSearchResult;
 typedef gboolean (*GcSearchFunc) (gunichar uc, gpointer user_data);
 
-GType           gc_search_result_get_type (void);
-gunichar        gc_search_result_get      (GcSearchResult       *result,
-                                           gint                  index);
+#define GC_SEARCH_ERROR (gc_search_error_quark ())
 
-void            gc_search_by_category     (GcCategory            category,
-                                           gint                  max_matches,
-                                           GCancellable         *cancellable,
-                                           GAsyncReadyCallback   callback,
-                                           gpointer              user_data);
-void            gc_search_by_keywords     (const gchar * const * keywords,
-                                           gint                  max_matches,
-                                           GCancellable         *cancellable,
-                                           GAsyncReadyCallback   callback,
-                                           gpointer              user_data);
-void            gc_search_by_scripts      (const gchar * const * scripts,
-                                           gint                  max_matches,
-                                           GCancellable         *cancellable,
-                                           GAsyncReadyCallback   callback,
-                                           gpointer              user_data);
-void            gc_search_related         (gunichar              uc,
-                                           gint                  max_matches,
-                                           GCancellable         *cancellable,
-                                           GAsyncReadyCallback   callback,
-                                           gpointer              user_data);
-GcSearchResult *gc_search_finish          (GAsyncResult         *result,
-                                           GError              **error);
+typedef enum
+  {
+    GC_SEARCH_ERROR_FAILED,
+    GC_SEARCH_ERROR_INVALID_STATE
+  } GcSearchError;
 
-gchar          *gc_character_name         (gunichar              uc);
+#define GC_TYPE_SEARCH_CRITERIA (gc_search_criteria_get_type ())
+
+typedef struct _GcSearchCriteria GcSearchCriteria;
+
+#define GC_TYPE_SEARCH_CONTEXT (gc_search_context_get_type ())
+G_DECLARE_FINAL_TYPE (GcSearchContext, gc_search_context,
+                      GC, SEARCH_CONTEXT, GObject)
+
+GType                 gc_search_result_get_type
+                                            (void);
+gunichar              gc_search_result_get  (GcSearchResult       *result,
+                                             gint                  index);
+
+GType                 gc_search_criteria_get_type
+                                            (void);
+
+GcSearchCriteria     *gc_search_criteria_new_category
+                                            (GcCategory            category);
+
+GcSearchCriteria     *gc_search_criteria_new_keywords
+                                            (const gchar * const * keywords);
+
+GcSearchCriteria     *gc_search_criteria_new_scripts
+                                            (const gchar * const * scripts);
+
+GcSearchCriteria     *gc_search_criteria_new_related
+                                            (gunichar              uc);
+
+GcSearchContext      *gc_search_context_new (GcSearchCriteria     *criteria);
+void                  gc_search_context_search
+                                            (GcSearchContext      *context,
+                                             gint                  max_matches,
+                                             GCancellable         *cancellable,
+                                             GAsyncReadyCallback   callback,
+                                             gpointer              user_data);
+GcSearchResult       *gc_search_context_search_finish
+                                            (GcSearchContext      *context,
+                                             GAsyncResult         *result,
+                                             GError              **error);
+gboolean              gc_search_context_is_finished
+                                            (GcSearchContext      *context);
+
+gchar                *gc_character_name     (gunichar              uc);
 
 /* GTK+ support.  gtk_clipboard_get() takes an GdkAtom as the first
    argument, but GdkAtom is not accessible through GI.  */
 
-GtkClipboard   *gc_gtk_clipboard_get      (void);
+GtkClipboard         *gc_gtk_clipboard_get  (void);
 
 /* Pango support.  PangoAttrFallback is not accessible from GI.  */
-void            gc_pango_layout_disable_fallback
-                                          (PangoLayout          *layout);
+void                  gc_pango_layout_disable_fallback
+                                            (PangoLayout          *layout);
 
-gboolean        gc_pango_context_font_has_glyph
-                                          (PangoContext         *context,
-                                           PangoFont            *font,
-                                           gunichar              uc);
+gboolean              gc_pango_context_font_has_glyph
+                                            (PangoContext         *context,
+                                             PangoFont            *font,
+                                             gunichar              uc);
 
-gchar          *gc_get_current_language   (void);
+gchar                *gc_get_current_language
+                                            (void);
 const gchar * const * gc_get_scripts_for_language
-                                          (const gchar          *language);
+                                            (const gchar          *language);
 
 G_END_DECLS
 

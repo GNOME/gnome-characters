@@ -270,7 +270,25 @@ const CharacterListView = new Lang.Class({
 
         this._characters = [];
         this._spinnerTimeoutId = 0;
+        this._searchContext = null;
         this._cancellable = new Gio.Cancellable();
+        this._cancellable.connect(Lang.bind(this, function () {
+            this._stopSpinner();
+            this._searchContext = null;
+            this._characters = [];
+            this.updateCharacterList();
+        }));
+        scroll.connect('edge-reached', Lang.bind(this, this._onEdgeReached));
+    },
+
+    _startSpinner: function() {
+        this._spinnerTimeoutId =
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
+                             Lang.bind(this, function () {
+                                 this._loading_spinner.start();
+                                 this.visible_child_name = 'loading';
+                                 this.show_all();
+                             }));
     },
 
     _stopSpinner: function() {
@@ -279,20 +297,6 @@ const CharacterListView = new Lang.Class({
             this._spinnerTimeoutId = 0;
             this._loading_spinner.stop();
         }
-        this._cancellable.reset();
-    },
-
-    _startSearch: function() {
-        this._cancellable.cancel();
-        this._stopSpinner();
-
-        this._spinnerTimeoutId =
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
-                             Lang.bind(this, function () {
-                                 this._loading_spinner.start();
-                                 this.visible_child_name = 'loading';
-                                 this.show_all();
-                             }));
     },
 
     _finishSearch: function(result) {
@@ -343,63 +347,66 @@ const CharacterListView = new Lang.Class({
         this.show_all();
     },
 
+    _onEdgeReached: function(scrolled, pos) {
+        if (pos == Gtk.PositionType.BOTTOM &&
+            this._searchContext != null && !this._searchContext.is_finished()) {
+            this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
+        }
+    },
+
+    _addSearchResult: function(result) {
+        for (let index = 0; index < result.len; index++) {
+            this._characters.push(Gc.search_result_get(result, index));
+        }
+
+        this.updateCharacterList()
+    },
+
+    _searchWithContext: function(context, count) {
+        this._startSpinner();
+        context.search(
+            count,
+            this._cancellable,
+            Lang.bind(this, function(context, res, user_data) {
+                this._stopSpinner();
+                try {
+                    let result = context.search_finish(res);
+                    this._addSearchResult(result);
+                } catch (e) {
+                    log("Failed to search: " + e);
+                }
+            }));
+    },
+
     searchByCategory: function(category) {
         if ('scripts' in category) {
             this.searchByScripts(category.scripts);
             return;
         }
 
-        this._startSearch()
-        Gc.search_by_category(
-            category.category,
-            -1,
-            this._cancellable,
-            Lang.bind(this,
-                      function(source_object, res, user_data) {
-                          try {
-                              let result = Gc.search_finish(res);
-                              this._finishSearch(result);
-                          } catch (e) {
-                              log("Failed to search by category: " + e);
-                          }
-                      }));
+        this._characters = [];
+        let criteria = Gc.SearchCriteria.new_category(category.category);
+        this._searchContext = new Gc.SearchContext({ criteria: criteria });
+        this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
     },
 
     searchByKeywords: function(keywords) {
-        this._startSearch()
-        Gc.search_by_keywords(
-            keywords,
-            MAX_SEARCH_RESULTS,
-            this._cancellable,
-            Lang.bind(this, function(source_object, res, user_data) {
-                try {
-                    let result = Gc.search_finish(res);
-                    this._finishSearch(result);
-                } catch (e) {
-                    log("Failed to search by keywords: " + e);
-                }
-            }));
+        this._characters = [];
+        let criteria = Gc.SearchCriteria.new_keywords(keywords);
+        this._searchContext = new Gc.SearchContext({ criteria: criteria });
+        this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
     },
 
     searchByScripts: function(scripts) {
-        this._startSearch()
-        Gc.search_by_scripts(
-            scripts,
-            -1,
-            this._cancellable,
-            Lang.bind(this, function(source_object, res, user_data) {
-                try {
-                    let result = Gc.search_finish(res);
-                    this._finishSearch(result);
-                } catch (e) {
-                    log("Failed to search by scripts: " + e);
-                }
-            }));
+        this._characters = [];
+        var criteria = Gc.SearchCriteria.new_scripts(scripts);
+        this._searchContext = new Gc.SearchContext({ criteria: criteria });
+        this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
     },
 
     cancelSearch: function() {
         this._cancellable.cancel();
-        this._finishSearch([]);
+        this._cancellable.reset();
     },
 
     setFilterFont: function(family) {
