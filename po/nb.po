@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-characters 3.17.x\n"
+"Project-Id-Version: gnome-characters 3.19.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-07 20:07+0200\n"
-"PO-Revision-Date: 2015-09-07 20:10+0200\n"
+"POT-Creation-Date: 2015-11-14 16:17+0100\n"
+"PO-Revision-Date: 2015-11-14 16:18+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "Om tegn"
+msgid "About"
+msgstr "Om"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -48,6 +48,10 @@ msgstr "Tegn vil vises her hvis du bruker dem."
 msgid "Copy Character"
 msgstr "Kopier tegn"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Tegn er kopiert til utklippstavlen"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Denne siden"
@@ -61,13 +65,17 @@ msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
-msgstr "Tegn er et enkelt verktøyprogram hvor du kan finne og sette inn uvanlige tegn. Det lar deg finne tegnene du leter etter raskt ved å søke etter nøkkelord."
+msgstr ""
+"Tegn er et enkelt verktøyprogram hvor du kan finne og sette inn uvanlige "
+"tegn. Det lar deg finne tegnene du leter etter raskt ved å søke etter "
+"nøkkelord."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
-msgstr "Du kan også bla gjennom tegn etter kategorier som, tegnsetting, bilder, etc."
+msgstr ""
+"Du kan også bla gjennom tegn etter kategorier som, tegnsetting, bilder, etc."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
