@@ -2,17 +2,18 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015.
 # Irene Sáez Sanz <irenesaez946@gmail.com>, 2015.
+# 
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015., 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-02 07:15+0000\n"
-"PO-Revision-Date: 2015-07-13 \n"
-"Last-Translator: Irene Sáez Sanz <irenesaez946@gmail.com>\n"
+"POT-Creation-Date: 2015-11-16 08:08+0000\n"
+"PO-Revision-Date: 2015-11-16 16:31+0100\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -22,8 +23,8 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "Acerca de Caracteres"
+msgid "About"
+msgstr "Acerca de"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -38,7 +39,6 @@ msgid "Try another search criteria."
 msgstr "Pruebe otro criterio de búsqueda."
 
 #: ../data/characterlist.ui.h:3
-#| msgid "Loading..."
 msgid "Loading…"
 msgstr "Cargando…"
 
@@ -53,6 +53,11 @@ msgstr "Aquí aparecerán los caracteres si los usa."
 #: ../data/character.ui.h:1
 msgid "Copy Character"
 msgstr "Copiar carácter"
+
+#: ../data/character.ui.h:2
+#| msgid "Characters Application started"
+msgid "Character copied to clipboard"
+msgstr "Carácter copiado al portapapeles"
 
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
@@ -143,6 +148,7 @@ msgid "Emoticons"
 msgstr "Emoticonos"
 
 #: ../src/categoryList.js:96
+#, javascript-format
 msgid "%s Category List Row"
 msgstr "Fila de lista de categorías %s"
 
@@ -151,6 +157,7 @@ msgid "See Also"
 msgstr "Consulte también"
 
 #: ../src/character.js:114
+#, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
@@ -175,9 +182,11 @@ msgid "Unknown character name"
 msgstr "Nombre de carácter desconocido"
 
 #: ../src/searchProvider.js:97
+#, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2015"
@@ -191,16 +200,21 @@ msgid "Character Map"
 msgstr "Mapa de caracteres"
 
 #: ../src/window.js:187
+#, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s solo)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
+#, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Buscar en la lista de resultados de caracteres"
+
+#~ msgid "About Characters"
+#~ msgstr "Acerca de Caracteres"
 
 #~ msgid "Latin"
 #~ msgstr "Latín"
