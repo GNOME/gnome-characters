@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-control-center.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-19 13:26+0300\n"
-"PO-Revision-Date: 2015-07-19 13:29+0300\n"
+"POT-Creation-Date: 2015-11-19 21:10+0200\n"
+"PO-Revision-Date: 2015-11-19 21:11+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "על אודות תווים"
+msgid "About"
+msgstr "על אודות"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -50,6 +50,10 @@ msgstr "תווים יציג כאן אם הם בשימוש."
 #: ../data/character.ui.h:1
 msgid "Copy Character"
 msgstr "העתקת תו"
+
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "תו הועתק ללוח הגזירים"
 
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
@@ -200,14 +204,17 @@ msgstr "מפת תווים"
 msgid "%s (%s only)"
 msgstr "%s (%s בלבד)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s רשימת תווים"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "תוצאות חיפוש תווים"
+
+#~ msgid "About Characters"
+#~ msgstr "על אודות תווים"
 
 #~ msgid "Latin"
 #~ msgstr "לטינית"
