@@ -17,4 +17,10 @@
   </screenshots>
   <url type="homepage">https://wiki.gnome.org/Design/Apps/CharacterMap</url>
   <updatecontact>dueno_at_src.gnome.org</updatecontact>
+  <kudos>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>HighContrast</kudo>
+    <kudo>ModernToolkit</kudo>
+    <kudo>SearchProvider</kudo>
+  </kudos>
 </component>
