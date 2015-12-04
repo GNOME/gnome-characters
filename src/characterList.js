@@ -282,6 +282,7 @@ const CharacterListView = new Lang.Class({
     },
 
     _startSpinner: function() {
+        this._stopSpinner();
         this._spinnerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
                              Lang.bind(this, function () {
