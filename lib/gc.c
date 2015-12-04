@@ -587,6 +587,12 @@ gc_search_criteria_new_keywords (const gchar * const * keywords)
   return result;
 }
 
+/**
+ * gc_search_criteria_new_scripts:
+ * @scripts: (array zero-terminated=1) (element-type utf8): an array of scripts
+ *
+ * Returns: (transfer full): a new #GcSearchCriteria
+ */
 GcSearchCriteria *
 gc_search_criteria_new_scripts (const gchar * const * scripts)
 {
