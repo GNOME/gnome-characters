@@ -23,6 +23,7 @@ const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
+const Cairo = imports.cairo;
 const Pango = imports.gi.Pango;
 const PangoCairo = imports.gi.PangoCairo;
 const Gc = imports.gi.Gc;
@@ -53,6 +54,9 @@ const CharacterListRow = new Lang.Class({
         this.parent(params);
         this._characters = filtered.characters;
         this._fontDescription = filtered.fontDescription;
+        var fontDescription = filtered.fontDescription.copy();
+        fontDescription.set_size(fontDescription.get_size() * 0.18);
+        this._overlayFontDescription = fontDescription;
     },
 
     draw: function(cr, x, y, width, height) {
@@ -72,14 +76,62 @@ const CharacterListRow = new Lang.Class({
         let cellSize = getCellSize(this._fontDescription);
         for (let i in this._characters) {
             layout.set_text(this._characters[i], -1);
-            let layoutBaseline = layout.get_baseline() / Pango.SCALE;
-            let [logicalRect, inkRect] = layout.get_extents();
-            cr.moveTo(x + cellSize * i - logicalRect.x / Pango.SCALE +
-                      (cellSize - logicalRect.width / Pango.SCALE) / 2,
-                      y + BASELINE_OFFSET * height - layoutBaseline);
-            PangoCairo.show_layout(cr, layout);
+            if (Gc.character_is_invisible (this._characters[i])) {
+                this._drawOverlay(cr, x + cellSize * i, y, cellSize, cellSize,
+                                  this._characters[i]);
+            } else {
+                let layoutBaseline = layout.get_baseline();
+                let [logicalRect, inkRect] = layout.get_extents();
+                cr.moveTo(x + cellSize * i - logicalRect.x / Pango.SCALE +
+                          (cellSize - logicalRect.width / Pango.SCALE) / 2,
+                          y + BASELINE_OFFSET * height -
+                          layoutBaseline / Pango.SCALE);
+                PangoCairo.show_layout(cr, layout);
+            }
         }
     },
+
+    _drawOverlay: function(cr, x, y, width, height, uc) {
+        cr.save();
+        cr.rectangle(x, y, width, height);
+        cr.clip();
+
+        // Draw character shape as a gray rectangle.
+        let layout = PangoCairo.create_layout(cr);
+        layout.set_text(uc, -1);
+        layout.set_font_description(this._fontDescription);
+        let layoutBaseline = layout.get_baseline();
+        let [logicalRect, inkRect] = layout.get_extents();
+        let x0 = x - inkRect.x / Pango.SCALE +
+            (width - inkRect.width / Pango.SCALE) / 2;
+        let y0 = y + BASELINE_OFFSET * height - layoutBaseline / Pango.SCALE;
+        let borderWidth = 1;
+        cr.rectangle(x0 - borderWidth * 2,
+                     y0 - borderWidth * 2,
+                     inkRect.width / Pango.SCALE + borderWidth * 2,
+                     inkRect.height / Pango.SCALE + borderWidth * 2);
+        cr.setSourceRGBA(239.0 / 255.0, 239.0 / 255.0, 239.0 / 255.0, 1.0);
+        cr.fill();
+
+        // Draw character name.
+        layout.set_width(width * Pango.SCALE * 0.8);
+        layout.set_height(height * Pango.SCALE * 0.8);
+        layout.set_wrap(Pango.WrapMode.WORD);
+        layout.set_ellipsize(Pango.EllipsizeMode.END);
+        layout.set_alignment(Pango.Alignment.CENTER);
+        layout.set_font_description(this._overlayFontDescription);
+        var name = Gc.character_name(uc);
+        layout.set_text(Util.capitalize(name), -1);
+        let [logicalRect, inkRect] = layout.get_extents();
+        cr.moveTo(x - logicalRect.x / Pango.SCALE +
+                  (width - logicalRect.width / Pango.SCALE) / 2,
+                  y - logicalRect.y / Pango.SCALE +
+                  (height - logicalRect.height / Pango.SCALE) / 2);
+        cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
+        PangoCairo.show_layout(cr, layout);
+
+        cr.restore();
+    }
 });
 
 const CharacterListWidget = new Lang.Class({

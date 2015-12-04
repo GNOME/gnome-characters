@@ -494,6 +494,21 @@ gc_character_name (gunichar uc)
   return unicode_character_name (uc, g_new0 (gchar, UNINAME_MAX));
 }
 
+/**
+ * gc_character_is_invisible:
+ * @uc: a UCS-4 character
+ *
+ * Returns: %TRUE if @uc is an invisible character, %FALSE otherwise.
+ */
+gboolean
+gc_character_is_invisible (gunichar uc)
+{
+  return uc_is_property_space (uc)
+    || uc_is_property_iso_control (uc)
+    || uc_is_property_format_control (uc)
+    || uc_is_property_zero_width (uc);
+}
+
 GQuark
 gc_search_error_quark (void)
 {
