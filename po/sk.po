@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-01 18:23+0000\n"
-"PO-Revision-Date: 2015-09-02 07:45+0200\n"
+"POT-Creation-Date: 2015-12-06 08:06+0000\n"
+"PO-Revision-Date: 2015-12-06 13:20+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "O programe Znaky"
+msgid "About"
+msgstr "O programe"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -51,6 +51,10 @@ msgstr "Tu sa zobrazia znaky, ktoré ste použili."
 msgid "Copy Character"
 msgstr "Skopírovať znak"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Znak skopírovaný do schránky"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Aktuálna stránka"
@@ -62,20 +66,20 @@ msgstr "Filtrovať podľa písma"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for by "
-"searching for keywords."
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
 "Znaky je jednoduchá užitočná aplikácia na nájdenie a vloženie neobvyklých "
-"znakov. Umožňuje vám rýchlo nájsť znak, ktorý môžete vyhľadať pomocou kľúčových "
-"slov."
+"znakov. Umožňuje vám rýchlo nájsť znak, ktorý môžete vyhľadať pomocou "
+"kľúčových slov."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Môžete tiež prehliadať znaky podľa kategórií, ako sú napríklad Znaky, Obrázky, "
-"atď."
+"Môžete tiež prehliadať znaky podľa kategórií, ako sú napríklad Znaky, "
+"Obrázky, atď."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -176,6 +180,7 @@ msgstr "Neznámy názov znaku"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
@@ -201,6 +206,9 @@ msgstr "Zoznam znakov kategórie %s"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Zoznam výsledkov vyhľadávaných znakov"
+
+#~ msgid "About Characters"
+#~ msgstr "O programe Znaky"
 
 #~ msgid "Latin"
 #~ msgstr "Latinka"
