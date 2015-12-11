@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-31 18:22+0000\n"
-"PO-Revision-Date: 2015-09-19 23:48+0200\n"
-"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"POT-Creation-Date: 2015-11-22 20:08+0000\n"
+"PO-Revision-Date: 2015-11-22 21:37+0100\n"
+"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "Om Tecken"
+msgid "About"
+msgstr "Om"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -51,6 +51,10 @@ msgstr "Tecken kommer dyka upp här om du använder dem."
 msgid "Copy Character"
 msgstr "Kopiera tecken"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Tecken kopierat till urklipp"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Aktuell sida"
@@ -62,19 +66,19 @@ msgstr "Filtrera efter typsnitt"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for by "
-"searching for keywords."
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
-"Tecken är ett enkelt nyttoprogram för att söka och infoga ovanliga tecken. Det "
-"låter dig snabbt hitta tecknet du söker genom att söka efter nyckelord."
+"Tecken är ett enkelt nyttoprogram för att söka och infoga ovanliga tecken. "
+"Det låter dig snabbt hitta tecknet du söker genom att söka efter nyckelord."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Du kan också bläddra igenom tecken efter kategorier som skiljetecken, bilder o."
-"s.v."
+"Du kan också bläddra igenom tecken efter kategorier som skiljetecken, bilder "
+"o.s.v."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -177,6 +181,7 @@ msgstr "Okänt teckennamn"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr ""
@@ -199,15 +204,18 @@ msgid "%s (%s only)"
 msgstr "%s (endast %s)"
 
 # accessible name
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s-teckenlista"
 
 # accessible name
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Teckenlista för sökresultat"
+
+#~ msgid "About Characters"
+#~ msgstr "Om Tecken"
 
 #~ msgid "Latin"
 #~ msgstr "Latin"
