@@ -1,3 +1,35 @@
+3.19.3
+===
+
+- Add visual feedback for invisible characters (bug#757815)
+- Rework search function to feed more results when the user scrolls
+  the list to the bottom (bug#757523)
+- Standardize app menu
+- Disable search provider by default
+- Add notification for clipboard access (bug#755212)
+- Switch away from gnome-autogen.sh
+
+New And Updated Translations
+============================
+Aurimas Černius (lt)
+Balázs Meskó (hu)
+Baurzhan Muftakhidinov (kk)
+Cédric Valmary (oc)
+Daniel Mustieles (es)
+Daniel Șerbănescu (ro)
+Dušan Kazik (sk)
+Efstathios Iosifidis (el)
+Fabio Tomat (fur)
+Inaki Larranaga Murgoitio (eu)
+Jiri Grönroos (fi)
+Kalev Lember (ar)
+Kjartan Maraas (nb)
+Marek Černoch (cs)
+Pedro Albuquerque (pt)
+Sebastian Rasmussen (sv)
+Sveinn í Felli (is)
+Yosef Or Boczko (he)
+
 3.18.0
 ===
 
