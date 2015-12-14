@@ -53,5 +53,5 @@ Gjs_MenuPopover .list-row {
 }
 
 GtkScrolledWindow.character-list-scroll {
-  gtk-key-bindings: ScrollUnmodified;
+  -gtk-key-bindings: ScrollUnmodified;
 }
