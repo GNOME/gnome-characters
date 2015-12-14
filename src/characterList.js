@@ -84,13 +84,18 @@ const CharacterListRow = new Lang.Class({
                 this._drawCharacterName(cr, cellRect, this._characters[i]);
             } else {
                 layout.set_text(this._characters[i], -1);
-                let layoutBaseline = layout.get_baseline();
-                let [logicalRect, inkRect] = layout.get_extents();
-                cr.moveTo(x + cellSize * i - logicalRect.x / Pango.SCALE +
-                          (cellSize - logicalRect.width / Pango.SCALE) / 2,
-                          y + BASELINE_OFFSET * height -
-                          layoutBaseline / Pango.SCALE);
-                PangoCairo.show_layout(cr, layout);
+                if (layout.get_unknown_glyphs_count () == 0) {
+                    let layoutBaseline = layout.get_baseline();
+                    let [logicalRect, inkRect] = layout.get_extents();
+                    cr.moveTo(x + cellSize * i - logicalRect.x / Pango.SCALE +
+                              (cellSize - logicalRect.width / Pango.SCALE) / 2,
+                              y + BASELINE_OFFSET * height -
+                              layoutBaseline / Pango.SCALE);
+                    PangoCairo.show_layout(cr, layout);
+                } else {
+                    this._drawBoundingBox(cr, cellRect, this._characters[i]);
+                    this._drawCharacterName(cr, cellRect, this._characters[i]);
+                }
             }
         }
     },
@@ -99,17 +104,42 @@ const CharacterListRow = new Lang.Class({
         let layout = PangoCairo.create_layout(cr);
         layout.set_font_description(this._fontDescription);
         layout.set_text(uc, -1);
-        let layoutBaseline = layout.get_baseline();
 
-        let [logicalRect, inkRect] = layout.get_extents();
+        let shapeRect;
+        let layoutBaseline;
+        if (layout.get_unknown_glyphs_count() == 0) {
+            let [logicalRect, inkRect] = layout.get_extents();
+            layoutBaseline = layout.get_baseline();
+            shapeRect = inkRect;
+        } else {
+            // If the character cannot be rendered with the current
+            // font settings, show a rectangle calculated from the
+            // base glyph ('A').
+            if (this._baseGlyphRect == null) {
+                layout.set_text('A', -1);
+                let [baseLogicalRect, baseInkRect] = layout.get_extents();
+                this._baseGlyphLayoutBaseline = layout.get_baseline();
+                this._baseGlyphRect = baseInkRect;
+            }
+            layoutBaseline = this._baseGlyphLayoutBaseline;
+            shapeRect = new Pango.Rectangle({
+                x: this._baseGlyphRect.x,
+                y: this._baseGlyphRect.y,
+                width: this._baseGlyphRect.width,
+                height: this._baseGlyphRect.height
+            });
+            let characterWidth = Gc.character_width (uc);
+            if (characterWidth > 1)
+                shapeRect.width *= characterWidth;
+        }
 
-        inkRect.x = cellRect.x - inkRect.x / Pango.SCALE +
-            (cellRect.width - inkRect.width / Pango.SCALE) / 2;
-        inkRect.y = cellRect.y + BASELINE_OFFSET * cellRect.height -
+        shapeRect.x = cellRect.x - shapeRect.x / Pango.SCALE +
+            (cellRect.width - shapeRect.width / Pango.SCALE) / 2;
+        shapeRect.y = cellRect.y + BASELINE_OFFSET * cellRect.height -
             layoutBaseline / Pango.SCALE;
-        inkRect.width = inkRect.width / Pango.SCALE;
-        inkRect.height = inkRect.height / Pango.SCALE;
-        return inkRect;
+        shapeRect.width = shapeRect.width / Pango.SCALE;
+        shapeRect.height = shapeRect.height / Pango.SCALE;
+        return shapeRect;
     },
 
     _drawBoundingBox: function(cr, cellRect, uc) {
