@@ -27,7 +27,7 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gllib --m4-base=glm4 --doc-base=doc --tests-base=gltests --aux-dir=. --no-conditional-dependencies --libtool --macro-prefix=gl --no-vc-files libunistring-optional unicase/tolower unicase/totitle unicase/toupper unictype/block-all unictype/category-all unictype/ctype-print unictype/mirror unictype/property-all unictype/scripts-all uniname/uniname uninorm/canonical-decomposition unistr/u32-to-u8 unitypes
+#   gnulib-tool --import --lib=libgnu --source-base=gllib --m4-base=glm4 --doc-base=doc --tests-base=gltests --aux-dir=. --no-conditional-dependencies --libtool --macro-prefix=gl --no-vc-files libunistring-optional unicase/tolower unicase/totitle unicase/toupper unictype/block-all unictype/category-all unictype/ctype-print unictype/mirror unictype/property-all unictype/scripts-all uniname/uniname uninorm/canonical-decomposition unistr/u32-to-u8 unitypes uniwidth/width
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
@@ -46,6 +46,7 @@ gl_MODULES([
   uninorm/canonical-decomposition
   unistr/u32-to-u8
   unitypes
+  uniwidth/width
 ])
 gl_AVOID([])
 gl_SOURCE_BASE([gllib])

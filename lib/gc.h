@@ -88,6 +88,7 @@ gboolean              gc_search_context_is_finished
 gchar                *gc_character_name     (gunichar              uc);
 gboolean              gc_character_is_invisible
                                             (gunichar              uc);
+gint                  gc_character_width    (gunichar              uc);
 
 
 /* GTK+ support.  gtk_clipboard_get() takes an GdkAtom as the first

@@ -12,6 +12,7 @@
 #include <uniname.h>
 #include <uninorm.h>
 #include <unistr.h>
+#include <uniwidth.h>
 #include "confusables.h"
 #include "scripts.h"
 
@@ -507,6 +508,18 @@ gc_character_is_invisible (gunichar uc)
     || uc_is_property_iso_control (uc)
     || uc_is_property_format_control (uc)
     || uc_is_property_zero_width (uc);
+}
+
+/**
+ * gc_character_width:
+ * @uc: a UCS-4 character
+ *
+ * Returns: column width of @uc, or -1 if @uc is a control character.
+ */
+gint
+gc_character_width (gunichar uc)
+{
+  return uc_width (uc, "UTF-8");
 }
 
 GQuark

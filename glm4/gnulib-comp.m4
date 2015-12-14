@@ -37,7 +37,10 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_ES$])dnl a valid locale name
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
+
+  # Pre-early section.
   AC_REQUIRE([gl_PROG_AR_RANLIB])
+
   AC_REQUIRE([AM_PROG_CC_C_O])
   # Code from module absolute-header:
   # Code from module gperf:
@@ -51,6 +54,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module ssize_t:
   # Code from module stdbool:
   # Code from module stdint:
+  # Code from module streq:
   # Code from module sys_types:
   # Code from module unicase/base:
   # Code from module unicase/tolower:
@@ -213,6 +217,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module unistr/u32-to-u8:
   # Code from module unistr/u8-uctomb:
   # Code from module unitypes:
+  # Code from module uniwidth/base:
+  # Code from module uniwidth/width:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -485,6 +491,8 @@ AC_DEFUN([gl_INIT],
   gl_MODULE_INDICATOR([unistr/u8-uctomb])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-uctomb])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [unitypes.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.4], [uniwidth.h])
+  gl_LIBUNISTRING_MODULE([0.9.6], [uniwidth/width])
   # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
@@ -624,8 +632,10 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
   build-aux/snippet/unused-parameter.h
   lib/libunistring.valgrind
+  lib/localcharset.h
   lib/stdbool.in.h
   lib/stdint.in.h
+  lib/streq.h
   lib/sys_types.in.h
   lib/unicase.in.h
   lib/unicase/simple-mapping.h
@@ -926,6 +936,9 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/unistr/u8-uctomb-aux.c
   lib/unistr/u8-uctomb.c
   lib/unitypes.in.h
+  lib/uniwidth.in.h
+  lib/uniwidth/cjk.h
+  lib/uniwidth/width.c
   m4/00gnulib.m4
   m4/absolute-header.m4
   m4/gnulib-common.m4

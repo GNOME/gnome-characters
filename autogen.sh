@@ -42,7 +42,8 @@ test -z "$GNULIB_SRCDIR" || \
 		    uninorm/canonical-decomposition \
 		    unistr/u32-to-u8 \
 		    unitypes \
-		    uniname/uniname
+		    uniname/uniname \
+		    uniwidth/width
 
 cd $olddir
 if [ "$NOCONFIGURE" = "" ]; then
