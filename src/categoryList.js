@@ -91,7 +91,6 @@ const CategoryListRowWidget = new Lang.Class({
         params = Params.fill(params, {});
         this.parent(params);
         this.category = category;
-        this.get_style_context().add_class('category-list-row');
         this.get_accessible().accessible_name =
             _('%s Category List Row').format(category.title);
 
@@ -101,7 +100,7 @@ const CategoryListRowWidget = new Lang.Class({
 
         let icon = new Gio.ThemedIcon({ name: category.icon_name });
         let image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.LARGE_TOOLBAR);
-        image.get_style_context().add_class('category-image');
+        image.get_style_context().add_class('category-icon');
         hbox.pack_start(image, false, false, 2);
 
         let label = new Gtk.Label({ label: Gettext.gettext(category.title),
@@ -119,16 +118,14 @@ const CategoryListWidget = new Lang.Class({
         params = Params.fill(params, {});
         this.parent(params);
 
-        // Mimic GtkStackSidebar to take advantage of the standard theme.
-        this.get_style_context().add_class('sidebar');
+        this.get_style_context().add_class('categories');
 
         this._ensureCategoryList();
 
         for (let index in this._categoryList) {
             let category = this._categoryList[index];
             let rowWidget = new CategoryListRowWidget({}, category);
-            // Mimic GtkStackSidebar to take advantage of the standard theme.
-            rowWidget.get_style_context().add_class('sidebar-item');
+            rowWidget.get_style_context().add_class('category');
             this.add(rowWidget);
         }
     },
