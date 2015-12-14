@@ -145,7 +145,9 @@ const CharacterListWidget = new Lang.Class({
         let filtered = Params.filter(params, { fontDescription: null });
         params = Params.fill(params, {});
         this.parent(params);
-        this.get_style_context().add_class('character-list');
+        let context = this.get_style_context();
+        context.add_class('character-list');
+        context.save();
         this._cellsPerRow = CELLS_PER_ROW;
         this._fontDescription = filtered.fontDescription;
         this._characters = [];
@@ -316,7 +318,9 @@ const CharacterListView = new Lang.Class({
             visible: true
         });
         scroll.add(this._characterList);
-        scroll.get_style_context().add_class('character-list-scroll');
+        let context = scroll.get_style_context();
+        context.add_class('character-list-scroll');
+        context.save();
         this.add_named(scroll, 'character-list');
         this.visible_child_name = 'character-list';
 
