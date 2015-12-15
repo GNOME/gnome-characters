@@ -111,11 +111,7 @@ const SearchProvider = new Lang.Class({
 
     ActivateResult: function(id, terms, timestamp) {
         let clipboard = Gc.gtk_clipboard_get();
-        // FIXME: GLib.unichar_to_utf8() has missing (nullable)
-        // annotation to the outbuf argument.
-        let outbuf = '      ';
-        let length = GLib.unichar_to_utf8(id, outbuf);
-        clipboard.set_text(id, length);
+        clipboard.set_text(id, -1);
     },
 
     _getPlatformData: function(timestamp) {

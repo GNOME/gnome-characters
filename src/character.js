@@ -160,12 +160,7 @@ const CharacterDialog = new Lang.Class({
                                     Lang.bind(this,
                                               this._clipboardOwnerChanged));
         }
-
-        // FIXME: GLib.unichar_to_utf8() has missing (nullable)
-        // annotation to the outbuf argument.
-        let outbuf = '      ';
-        let length = GLib.unichar_to_utf8(this._character, outbuf);
-        this._clipboard.set_text(this._character, length);
+        this._clipboard.set_text(this._character, -1);
 
         // Show a feedback message with a revealer.  The message is
         // hidden after 2 seconds, or when another client set a
