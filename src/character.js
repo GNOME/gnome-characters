@@ -31,7 +31,8 @@ const CharacterDialog = new Lang.Class({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Characters/character.ui',
-    InternalChildren: ['main-stack', 'character-label', 'detail-label',
+    InternalChildren: ['main-stack', 'character-stack',
+                       'character-label', 'missing-label', 'detail-label',
                        'copy-button', 'copy-revealer', 'related-listbox'],
 
     _init: function(params) {
@@ -62,7 +63,7 @@ const CharacterDialog = new Lang.Class({
                     this._main_stack.visible_child_name = 'character';
             }));
 
-        this._character_label.override_font(filtered.fontDescription);
+        this._fontDescription = filtered.fontDescription;
         this._setCharacter(filtered.character);
     },
 
@@ -106,11 +107,34 @@ const CharacterDialog = new Lang.Class({
     _setCharacter: function(uc) {
         this._character = uc;
 
-        this._character = this._character;
-        this._character_label.label = this._character;
-
         let codePoint = Util.toCodePoint(this._character);
         let codePointHex = codePoint.toString(16).toUpperCase();
+
+        let name = Gc.character_name(this._character);
+        if (name != null) {
+            name = Util.capitalize(name);
+        } else {
+            name = _("Unicode U+%04s").format(codePointHex);
+        }
+
+        let headerBar = this.get_header_bar();
+        headerBar.title = name;
+
+        this._character_label.override_font(this._fontDescription);
+        this._character_label.label = this._character;
+
+        var pangoContext = this._character_label.get_pango_context();
+        var pangoLayout = Pango.Layout.new(pangoContext);
+        pangoLayout.set_text(this._character, -1);
+        if (pangoLayout.get_unknown_glyphs_count() == 0) {
+            this._character_stack.visible_child_name = 'character';
+        } else {
+            var fontFamily = this._fontDescription.get_family();
+            this._missing_label.label =
+                _("%s is not included in %s").format(name, fontFamily);
+            this._character_stack.visible_child_name = 'missing';
+        }
+
         this._detail_label.label = _("Unicode U+%04s").format(codePointHex);
 
         this._cancellable.cancel();
@@ -132,11 +156,6 @@ const CharacterDialog = new Lang.Class({
         this._relatedButton.active = false;
         this._main_stack.visible_child_name = 'character';
         this._main_stack.show_all();
-
-        let headerBar = this.get_header_bar();
-        let name = Gc.character_name(this._character);
-        if (name != null)
-            headerBar.title = Util.capitalize(name);
     },
 
     _hideCopyRevealer: function() {

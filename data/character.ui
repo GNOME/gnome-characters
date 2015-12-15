@@ -17,15 +17,42 @@
 		<property name="orientation">vertical</property>
 		<property name="row_spacing">50</property>
 		<child>
-		  <object class="GtkLabel" id="character-label">
+		  <object class="GtkStack" id="character-stack">
 		    <property name="visible">True</property>
-		    <property name="can_focus">False</property>
-		    <property name="ellipsize">end</property>
-		    <property name="halign">center</property>
-		    <property name="valign">center</property>
-		    <style>
-		      <class name="character-label"/>
-		    </style>
+		    <child>
+		      <object class="GtkLabel" id="character-label">
+			<property name="visible">True</property>
+			<property name="can_focus">False</property>
+			<property name="ellipsize">end</property>
+			<property name="halign">center</property>
+			<property name="valign">center</property>
+			<style>
+			  <class name="character-label"/>
+			</style>
+		      </object>
+		      <packing>
+			<property name="name">character</property>
+		      </packing>
+		    </child>
+		    <child>
+		      <object class="GtkLabel" id="missing-label">
+			<property name="visible">True</property>
+			<property name="can_focus">False</property>
+			<property name="halign">center</property>
+			<property name="valign">center</property>
+			<property name="wrap">True</property>
+			<property name="wrap-mode">word</property>
+			<property name="width-chars">28</property>
+			<property name="max-width-chars">28</property>
+			<property name="justify">center</property>
+			<style>
+			  <class name="missing-label"/>
+			</style>
+		      </object>
+		      <packing>
+			<property name="name">missing</property>
+		      </packing>
+		    </child>
 		  </object>
 		  <packing>
 		    <property name="left_attach">0</property>
