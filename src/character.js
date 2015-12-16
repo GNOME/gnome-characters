@@ -131,6 +131,7 @@ const CharacterDialog = new Lang.Class({
         } else {
             var fontFamily = this._fontDescription.get_family();
             this._missing_label.label =
+                // TRANSLATORS: the first variable is a character, the second is a font
                 _("%s is not included in %s").format(name, fontFamily);
             this._character_stack.visible_child_name = 'missing';
         }
