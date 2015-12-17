@@ -522,11 +522,7 @@ gc_character_width (gunichar uc)
   return uc_width (uc, "UTF-8");
 }
 
-GQuark
-gc_search_error_quark (void)
-{
-  return g_quark_from_static_string ("gc-search-error-quark");
-}
+G_DEFINE_QUARK (gc-search-error-quark, gc_search_error)
 
 G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
                      g_array_ref, g_array_unref);
