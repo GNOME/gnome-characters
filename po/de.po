@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-23 18:45+0000\n"
-"PO-Revision-Date: 2015-09-23 21:39+0100\n"
+"POT-Creation-Date: 2015-12-26 20:11+0000\n"
+"PO-Revision-Date: 2015-12-27 08:32+0100\n"
 "Last-Translator: Benjamin Steinwender <b@stbe.at>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -21,8 +21,8 @@ msgstr ""
 "X-Generator: Poedit 1.7.1\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "Info zu Zeichen"
+msgid "About"
+msgstr "Info"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -52,6 +52,10 @@ msgstr "Zeichen werden hier erschienen, sobald Sie diese verwenden."
 msgid "Copy Character"
 msgstr "Zeichen kopieren"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Zeichen in die Zwischenablage kopiert"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Aktuelle Seite"
@@ -63,20 +67,20 @@ msgstr "Nach Schrift filtern"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for by "
-"searching for keywords."
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
-"Zeichen ist ein einfaches Hilfsprogramm zum Auffinden und Einsetzen von selten "
-"verwendeten Zeichen. Sie können schnell das gesuchte Zeichen finden, indem Sie "
-"nach Schlüsselwörtern suchen."
+"Zeichen ist ein einfaches Hilfsprogramm zum Auffinden und Einsetzen von "
+"selten verwendeten Zeichen. Sie können schnell das gesuchte Zeichen finden, "
+"indem Sie nach Schlüsselwörtern suchen."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Sie können ebenfalls nach Kategorie suchen, wie z.B. nach Zeichensetzung oder "
-"Bildern."
+"Sie können ebenfalls nach Kategorie suchen, wie z.B. nach Zeichensetzung "
+"oder Bildern."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -139,19 +143,25 @@ msgstr "Buchstaben"
 msgid "Emoticons"
 msgstr "Emoticons"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "﻿%s Kategorielistenzeile"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Siehe auch"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s ist nicht in %s enthalten"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -207,6 +217,9 @@ msgstr "%s Zeichenliste"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Suchergebnisse der Zeichenliste"
+
+#~ msgid "About Characters"
+#~ msgstr "Info zu Zeichen"
 
 #~ msgid "Latin"
 #~ msgstr "Lateinisch"
