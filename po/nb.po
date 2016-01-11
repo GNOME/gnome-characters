@@ -1,14 +1,14 @@
 # Norwegian bokmål translation of gnome-characters.
 # Copyright (C) 2003-2005 Free Software Foundation, Inc.
-# Kjartan Maraas <kmaraas@gnome.org>, 2003-2015.
+# Kjartan Maraas <kmaraas@gnome.org>, 2003-2016.
 # Terance Edward Sola <terance@lyse.net>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters 3.19.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-14 16:17+0100\n"
-"PO-Revision-Date: 2015-11-14 16:18+0100\n"
+"POT-Creation-Date: 2016-01-11 07:40+0100\n"
+"PO-Revision-Date: 2016-01-11 07:40+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -137,19 +137,25 @@ msgstr "Bokstaver"
 msgid "Emoticons"
 msgstr "Emotikoner"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s kategorilisterad"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Se også"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s er ikke inkludert i %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
