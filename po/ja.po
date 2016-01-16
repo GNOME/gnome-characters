@@ -2,14 +2,16 @@
 # Copyright (C) 2015 THE org.gnome.Characters'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the org.gnome.Characters package.
 # Daiki Ueno <ueno@gnu.org>, 2015.
+# Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.gnome.Characters 3.15.91.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-18 06:39+0900\n"
-"PO-Revision-Date: 2015-08-18 10:17+0900\n"
-"Last-Translator: Daiki Ueno <ueno@gnu.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-12-29 08:08+0000\n"
+"PO-Revision-Date: 2015-12-29 21:16+0900\n"
+"Last-Translator: Jiro Matsuzawa <jmatsuzawa@gnome.org>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
+msgid "About"
 msgstr "このアプリケーションについて"
 
 #: ../data/app-menu.ui.h:2
@@ -48,6 +50,10 @@ msgstr "文字を使うとここに表示されます"
 #: ../data/character.ui.h:1
 msgid "Copy Character"
 msgstr "文字をコピー"
+
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "文字をクリップボードにコピーしました"
 
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
@@ -132,19 +138,25 @@ msgstr "文字記号"
 msgid "Emoticons"
 msgstr "顔文字"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s カテゴリの行"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "関連項目"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s のフォントは %s に含まれていません"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -174,7 +186,9 @@ msgstr "U+%s, %s: %s"
 #. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
-msgstr "Daiki Ueno"
+msgstr ""
+"Daiki Ueno\n"
+"松澤 二郎 <jmatsuzawa@gnome.org>"
 
 #: ../src/window.js:166
 msgid "GNOME Characters"
@@ -189,14 +203,17 @@ msgstr "文字マップ"
 msgid "%s (%s only)"
 msgstr "%s (%s のみ)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s の文字一覧"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "検索結果の文字一覧"
+
+#~ msgid "About Characters"
+#~ msgstr "このアプリケーションについて"
 
 #~ msgid "Latin"
 #~ msgstr "ラテン文字"
