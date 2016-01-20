@@ -1,27 +1,28 @@
 # Russian translation for gnome-characters.
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Stas Solovey <whats_up@tut.by>, 2015.
+# Артём Воротников <artem@vorotnikov.me>, 2015.
+# Stas Solovey <whats_up@tut.by>, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-17 18:28+0000\n"
-"PO-Revision-Date: 2015-09-18 00:35+0300\n"
+"POT-Creation-Date: 2015-12-16 00:25+0000\n"
+"PO-Revision-Date: 2016-01-21 00:04+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
-"Language-Team: Русский <gnome-cyr@gnome.org>\n"
+"Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
+msgid "About"
 msgstr "О приложении"
 
 #: ../data/app-menu.ui.h:2
@@ -51,6 +52,10 @@ msgstr "Здесь будут отображаться символы, кото�
 #: ../data/character.ui.h:1
 msgid "Copy Character"
 msgstr "Копировать символ"
+
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Символ скопирован в буфер обмена"
 
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
@@ -137,19 +142,25 @@ msgstr "Буквы"
 msgid "Emoticons"
 msgstr "Смайлики"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Список категорий %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "См. также"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Юникод U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s не содержится в %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -176,11 +187,12 @@ msgstr "Неизвестное имя символа"
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr ""
-"Stas Solovey <whats_up@tut.by>, 2015."
-
+"Stas Solovey <whats_up@tut.by>, 2015-2016.\n"
+"Артём Воротников <artem@vorotnikov.me>, 2015."
 
 #: ../src/window.js:166
 msgid "GNOME Characters"
@@ -203,3 +215,6 @@ msgstr "Список символов %s"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Результат поиска в списке символов"
+
+#~ msgid "About Characters"
+#~ msgstr "О приложении"
