@@ -3,7 +3,8 @@
   <id>org.gnome.Characters.desktop</id>
   <name>GNOME Characters</name>
   <summary>Character map application</summary>
-  <licence>CC0</licence>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>BSD-3-Clause AND GPL-2.0+</project_license>
   <description>
     <_p>
       Characters is a simple utility application to find and insert unusual characters.  It allows you to quickly find the character you are looking for by searching for keywords.
@@ -13,10 +14,16 @@
     </_p>
   </description>
   <screenshots>
-    <screenshot type="default" width="1024" height="768">https://raw.github.com/gnome-design-team/gnome-mockups/master/character-map/png/grid.png</screenshot>
+    <screenshot type="default" width="1024" height="768">
+      <image>https://raw.github.com/gnome-design-team/gnome-mockups/master/character-map/png/grid.png</image>
+    </screenshot>
   </screenshots>
+  <project_group>GNOME</project_group>
   <url type="homepage">https://wiki.gnome.org/Design/Apps/CharacterMap</url>
-  <updatecontact>dueno_at_src.gnome.org</updatecontact>
+  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters</url>
+  <url type="donation">http://www.gnome.org/friends/</url>
+  <url type="help">https://wiki.gnome.org/Apps/Gucharmap</url>
+  <update_contact>dueno_at_src.gnome.org</update_contact>
   <kudos>
     <kudo>HiDpiIcon</kudo>
     <kudo>HighContrast</kudo>
