@@ -30,4 +30,5 @@
     <kudo>ModernToolkit</kudo>
     <kudo>SearchProvider</kudo>
   </kudos>
+  <translation type="gettext">org.gnome.Characters</translation>
 </component>
