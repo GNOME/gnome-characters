@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-20 08:10+0000\n"
-"PO-Revision-Date: 2015-11-20 19:02+0200\n"
-"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
+"POT-Creation-Date: 2016-01-04 08:09+0000\n"
+"PO-Revision-Date: 2016-01-04 18:36+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: Ελληνικά <opensuse-translation-el@opensuse.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/app-menu.ui.h:1
@@ -36,7 +36,7 @@ msgstr "Η αναζήτηση δεν επέστρεψε αποτελέσματα
 
 #: ../data/characterlist.ui.h:2
 msgid "Try another search criteria."
-msgstr "Δοκιμάστε διαφορετικά κριτήρια αναζήτησης"
+msgstr "Δοκιμάστε διαφορετικά κριτήρια αναζήτησης."
 
 #: ../data/characterlist.ui.h:3
 msgid "Loading…"
@@ -55,7 +55,6 @@ msgid "Copy Character"
 msgstr "Αντιγραφή χαρακτήρα"
 
 #: ../data/character.ui.h:2
-#| msgid "Characters Application started"
 msgid "Character copied to clipboard"
 msgstr "Χαρακτήρας που αντιγράφτηκε στο πρόχειρο"
 
@@ -73,9 +72,9 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"Οι χαρακτήρες είναι μια απλή βοηθητική εφαρμογή εύρεσης και εισαγωγής "
-"σπάνιων χαρακτήρων. Σας επιτρέπει να βρείτε γρήγορα τον χαρακτήρα που "
-"ψάχνετε αναζητώντας λέξεις κλειδιά."
+"Η εφαρμογή Χαρακτήρες είναι μια απλή βοηθητική εφαρμογή εύρεσης και "
+"εισαγωγής σπάνιων χαρακτήρων. Σας επιτρέπει να βρείτε γρήγορα τον χαρακτήρα "
+"που ψάχνετε αναζητώντας λέξεις κλειδιά."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -147,19 +146,25 @@ msgstr "Γράμματα"
 msgid "Emoticons"
 msgstr "Εικονίδια διάθεσης"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Σειρά καταλόγου χαρακτήρων %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Δείτε επίσης"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "Το %s δεν υπάρχει στο %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -190,7 +195,7 @@ msgstr "U+%s, %s: %s"
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr ""
-"Ελληνική μεταφραστική ομάδα του GNOME\n"
+"Ελληνική μεταφραστική ομάδα GNOME\n"
 " Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
 "\n"
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
