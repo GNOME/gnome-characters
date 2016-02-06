@@ -4,14 +4,14 @@
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Piotr Drąg <piotrdrag@gmail.com>, 2015.
-# Aviary.pl <gnomepl@aviary.pl>, 2015.
+# Piotr Drąg <piotrdrag@gmail.com>, 2015-2016.
+# Aviary.pl <gnomepl@aviary.pl>, 2015-2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-18 09:18+0200\n"
-"PO-Revision-Date: 2015-09-18 09:19+0200\n"
+"POT-Creation-Date: 2016-02-06 15:52+0100\n"
+"PO-Revision-Date: 2016-02-06 15:53+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -24,8 +24,8 @@ msgstr ""
 "X-Poedit-Country: Poland\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "O tablicy znaków"
+msgid "About"
+msgstr "O programie"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -54,6 +54,10 @@ msgstr "Znaki pojawią się w tym miejscu po ich użyciu."
 #: ../data/character.ui.h:1
 msgid "Copy Character"
 msgstr "Skopiuj znak"
+
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Skopiowano znak do schowka"
 
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
@@ -141,19 +145,25 @@ msgstr "Litery"
 msgid "Emoticons"
 msgstr "Emotikony"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Rząd listy kategorii „%s”"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Podobne znaki"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "Znaku „%s” nie ma w czcionce %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -184,8 +194,8 @@ msgstr "U+%s, %s: %s"
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2015\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2015"
+"Piotr Drąg <piotrdrag@gmail.com>, 2015-2016\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2015-2016"
 
 #: ../src/window.js:166
 msgid "GNOME Characters"
