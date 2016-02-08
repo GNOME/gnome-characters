@@ -106,6 +106,7 @@ struct GcCharacterIter
   const uc_script_t * const * scripts;
   uc_general_category_t category;
   const gchar * const * keywords;
+  GcSearchFlag flags;
 
   gboolean (* filter) (GcCharacterIter *iter, ucs4_t uc);
 };
@@ -438,8 +439,24 @@ filter_keywords (GcCharacterIter *iter, ucs4_t uc)
     return FALSE;
 
   while (*keywords)
-    if (g_strstr_len (buffer, UNINAME_MAX, *keywords++) == NULL)
-      return FALSE;
+    {
+      const gchar *keyword = *keywords++;
+      size_t length = strlen (keyword);
+
+      if (length >= UNINAME_MAX)
+        return FALSE;
+
+      if (iter->flags & GC_SEARCH_FLAG_WORD)
+        {
+          if (strncmp (buffer, keyword, strlen (keyword)) != 0)
+            return FALSE;
+        }
+      else
+        {
+          if (g_strstr_len (buffer, UNINAME_MAX, keyword) == NULL)
+            return FALSE;
+        }
+    }
 
   return TRUE;
 }
@@ -657,6 +674,7 @@ struct _GcSearchContext
   enum GcSearchState state;
   GcCharacterIter iter;
   GcSearchCriteria *criteria;
+  GcSearchFlag flags;
 };
 
 struct SearchData
@@ -882,6 +900,7 @@ gc_character_iter_init_for_related (GcCharacterIter *iter,
 enum {
   SEARCH_CONTEXT_PROP_0,
   SEARCH_CONTEXT_PROP_CRITERIA,
+  SEARCH_CONTEXT_PROP_FLAGS,
   SEARCH_CONTEXT_LAST_PROP
 };
 
@@ -901,6 +920,9 @@ gc_search_context_set_property (GObject      *object,
     {
     case SEARCH_CONTEXT_PROP_CRITERIA:
       context->criteria = g_value_dup_boxed (value);
+      break;
+    case SEARCH_CONTEXT_PROP_FLAGS:
+      context->flags = g_value_get_flags (value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -931,6 +953,11 @@ gc_search_context_class_init (GcSearchContextClass *klass)
     g_param_spec_boxed ("criteria", NULL, NULL,
                         GC_TYPE_SEARCH_CRITERIA,
                         G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE);
+  search_context_props[SEARCH_CONTEXT_PROP_FLAGS] =
+    g_param_spec_flags ("flags", NULL, NULL,
+                        GC_TYPE_SEARCH_FLAG,
+                        GC_SEARCH_FLAG_NONE,
+                        G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE);
   g_object_class_install_properties (object_class, SEARCH_CONTEXT_LAST_PROP,
                                      search_context_props);
 }
@@ -942,9 +969,13 @@ gc_search_context_init (GcSearchContext *context)
 }
 
 GcSearchContext *
-gc_search_context_new (GcSearchCriteria *criteria)
+gc_search_context_new (GcSearchCriteria *criteria,
+                       GcSearchFlag      flags)
 {
-  return g_object_new (GC_TYPE_SEARCH_CONTEXT, "criteria", criteria, NULL);
+  return g_object_new (GC_TYPE_SEARCH_CONTEXT,
+                       "criteria", criteria,
+                       "flags", flags,
+                       NULL);
 }
 
 static void
@@ -1051,6 +1082,7 @@ gc_search_context_search  (GcSearchContext    *context,
                                "search context destroyed");
       return;
     }
+  context->iter.flags = context->flags;
   g_mutex_unlock (&context->lock);
 
   data = g_slice_new0 (struct SearchData);

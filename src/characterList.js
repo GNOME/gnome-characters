@@ -504,7 +504,7 @@ const CharacterListView = new Lang.Class({
 
     searchByKeywords: function(keywords) {
         this._characters = [];
-        let criteria = Gc.SearchCriteria.new_keywords(keywords);
+        let criteria = Gc.SearchCriteria.new_keywords(keywords, Gc.SearchFlag.NONE);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
         this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
     },

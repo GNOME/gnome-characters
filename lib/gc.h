@@ -7,6 +7,7 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <pango/pango.h>
+#include "gc-enumtypes.h"
 
 G_BEGIN_DECLS
 
@@ -43,6 +44,12 @@ typedef enum
     GC_SEARCH_ERROR_INVALID_STATE
   } GcSearchError;
 
+typedef enum
+{
+  GC_SEARCH_FLAG_NONE = 0,
+  GC_SEARCH_FLAG_WORD = 1 << 0
+} GcSearchFlag;
+
 #define GC_TYPE_SEARCH_CRITERIA (gc_search_criteria_get_type ())
 
 typedef struct _GcSearchCriteria GcSearchCriteria;
@@ -71,7 +78,8 @@ GcSearchCriteria     *gc_search_criteria_new_scripts
 GcSearchCriteria     *gc_search_criteria_new_related
                                             (gunichar              uc);
 
-GcSearchContext      *gc_search_context_new (GcSearchCriteria     *criteria);
+GcSearchContext      *gc_search_context_new (GcSearchCriteria     *criteria,
+                                             GcSearchFlag          flags);
 void                  gc_search_context_search
                                             (GcSearchContext      *context,
                                              gint                  max_matches,

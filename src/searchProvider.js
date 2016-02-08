@@ -52,7 +52,8 @@ const SearchProvider = new Lang.Class({
 
         let upper = keywords.map(String.toUpperCase);
         let criteria = Gc.SearchCriteria.new_keywords(upper);
-        let context = new Gc.SearchContext({ criteria: criteria });
+        let context = new Gc.SearchContext({ criteria: criteria,
+                                             flags: Gc.SearchFlag.WORD });
         context.search(
             MAX_SEARCH_RESULTS,
             this._cancellable,
