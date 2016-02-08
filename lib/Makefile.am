@@ -1,4 +1,5 @@
 EXTRA_DIST = gen-confusables.py gen-scripts.py
+CLEANFILES =
 
 AM_CPPFLAGS =					\
         -I$(top_srcdir)				\
@@ -22,11 +23,12 @@ libgc_la_SOURCES = $(libgc_la_sources) confusables.h scripts.h gc-enumtypes.h
 BUILT_SOURCES = gc-enumtypes.h gc-enumtypes.c
 
 gc-enumtypes.h: gc.h gc-enumtypes.h.template
-	$(AM_V_GEN) $(GLIB_MKENUMS) --identifier-prefix Gc --symbol-prefix gc --template $(srcdir)/gc-enumtypes.h.template $(srcdir)/gc.h > $@-t && mv $@-t $@ || rm $@-t
+	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --identifier-prefix Gc --symbol-prefix gc --template gc-enumtypes.h.template gc.h ) > $@-t && mv $@-t $@ || rm $@-t
 gc-enumtypes.c: gc.h gc-enumtypes.c.template
-	$(AM_V_GEN) $(GLIB_MKENUMS) --identifier-prefix Gc --symbol-prefix gc --template $(srcdir)/gc-enumtypes.c.template $(srcdir)/gc.h > $@-t && mv $@-t $@ || rm $@-t
+	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --identifier-prefix Gc --symbol-prefix gc --template gc-enumtypes.c.template gc.h ) > $@-t && mv $@-t $@ || rm $@-t
 
 EXTRA_DIST += gc-enumtypes.h.template gc-enumtypes.c.template
+CLEANFILES += *-t
 
 include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = Gc-1.0.gir
