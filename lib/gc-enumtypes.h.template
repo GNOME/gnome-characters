@@ -3,7 +3,6 @@
 #define GPGME_GLIB_ENUMTYPES_H_
 
 #include <glib-object.h>
-#include "gc.h"
 
 G_BEGIN_DECLS
 /*** END file-header ***/
