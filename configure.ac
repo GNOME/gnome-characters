@@ -76,6 +76,8 @@ if test x$enable_coverage = xyes; then
 fi
 AM_CONDITIONAL([ENABLE_COVERAGE], [test x$enable_coverage = xyes])
 
+AM_PATH_GLIB_2_0
+
 GLIB_TESTS
 
 GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`

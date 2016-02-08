@@ -14,8 +14,15 @@ pkglib_LTLIBRARIES = libgc.la
 
 libgc_la_LIBADD = $(LIBGC_LIBS) $(LTLIBICONV) $(LTLIBUNISTRING) $(PANGOFT2_LIBS) $(builddir)/../gllib/libgnu.la
 libgc_la_LDFLAGS = -avoid-version
-libgc_la_sources = gc.h gc.c
-libgc_la_SOURCES = $(libgc_la_sources) confusables.h scripts.h
+libgc_la_sources = gc.h gc.c gc-enumtypes.c
+libgc_la_SOURCES = $(libgc_la_sources) confusables.h scripts.h gc-enumtypes.h
+
+BUILT_SOURCES = gc-enumtypes.h gc-enumtypes.c
+
+gc-enumtypes.h: gc.h gc-enumtypes.h.template
+	$(AM_V_GEN) $(GLIB_MKENUMS) --identifier-prefix Gc --symbol-prefix gc --template gc-enumtypes.h.template gc.h > $@-t && mv $@-t $@ || rm $@-t
+gc-enumtypes.c: gc.h gc-enumtypes.c.template
+	$(AM_V_GEN) $(GLIB_MKENUMS) --identifier-prefix Gc --symbol-prefix gc --template gc-enumtypes.c.template gc.h > $@-t && mv $@-t $@ || rm $@-t
 
 include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = Gc-1.0.gir
