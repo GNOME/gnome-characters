@@ -32,6 +32,7 @@ CLEANFILES += *-t
 
 include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = Gc-1.0.gir
+INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir) --includedir=.
 
 Gc-1.0.gir: libgc.la Makefile
 Gc_1_0_gir_NAMESPACE = Gc
@@ -54,7 +55,7 @@ gir_DATA = $(INTROSPECTION_GIRS)
 typelib_DATA = $(gir_DATA:.gir=.typelib)
 
 EXTRA_DIST += $(gir_DATA)
-CLEANFILES = $(typelib_DATA)
+CLEANFILES += $(typelib_DATA)
 DISTCLEANFILES = $(gir_DATA)
 
 -include $(top_srcdir)/git.mk
