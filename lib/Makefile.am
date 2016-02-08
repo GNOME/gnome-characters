@@ -1,3 +1,5 @@
+EXTRA_DIST = gen-confusables.py gen-scripts.py
+
 AM_CPPFLAGS =					\
         -I$(top_srcdir)				\
         -I$(top_srcdir)/gllib			\
@@ -24,6 +26,8 @@ gc-enumtypes.h: gc.h gc-enumtypes.h.template
 gc-enumtypes.c: gc.h gc-enumtypes.c.template
 	$(AM_V_GEN) $(GLIB_MKENUMS) --identifier-prefix Gc --symbol-prefix gc --template gc-enumtypes.c.template gc.h > $@-t && mv $@-t $@ || rm $@-t
 
+EXTRA_DIST += gc-enumtypes.h.template gc-enumtypes.c.template
+
 include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = Gc-1.0.gir
 
@@ -47,7 +51,7 @@ typelibdir= $(pkglibdir)/girepository-1.0
 gir_DATA = $(INTROSPECTION_GIRS)
 typelib_DATA = $(gir_DATA:.gir=.typelib)
 
-EXTRA_DIST = $(gir_DATA) gen-confusables.py gen-scripts.py
+EXTRA_DIST += $(gir_DATA)
 CLEANFILES = $(typelib_DATA)
 DISTCLEANFILES = $(gir_DATA)
 
