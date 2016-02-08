@@ -50,14 +50,16 @@ const SearchProvider = new Lang.Class({
         this._cancellable.cancel();
         this._cancellable.reset();
 
-        Gc.search_by_keywords(
-            keywords.map(String.toUpperCase),
+        let upper = keywords.map(String.toUpperCase);
+        let criteria = Gc.SearchCriteria.new_keywords(upper);
+        let context = new Gc.SearchContext({ criteria: criteria });
+        context.search(
             MAX_SEARCH_RESULTS,
             this._cancellable,
             Lang.bind(this, function(source_object, res, user_data) {
                 let characters = [];
                 try {
-                    let result = Gc.search_finish(res);
+                    let result = context.search_finish(res);
                     for (let index = 0; index < result.len; index++) {
                         characters.push(Gc.search_result_get(result, index));
                     }
