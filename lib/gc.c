@@ -661,9 +661,6 @@ struct _GcSearchContext
 
 struct SearchData
 {
-  GcCategory category;
-  gchar **keywords;
-  const uc_script_t **scripts;
   gunichar uc;
   gint max_matches;
   GcSearchContext *context;
@@ -672,8 +669,6 @@ struct SearchData
 static void
 search_data_free (struct SearchData *data)
 {
-  g_clear_pointer (&data->keywords, (GDestroyNotify) g_strfreev);
-  g_clear_pointer (&data->scripts, g_free);
   g_clear_object (&data->context);
   g_slice_free (struct SearchData, data);
 }
