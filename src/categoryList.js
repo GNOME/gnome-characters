@@ -94,8 +94,7 @@ const CategoryListRowWidget = new Lang.Class({
         this.get_accessible().accessible_name =
             _('%s Category List Row').format(category.title);
 
-        let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL,
-                                 margin_start: 10 });
+        let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.add(hbox);
 
         let icon = new Gio.ThemedIcon({ name: category.icon_name });
