@@ -19,8 +19,8 @@ Gjs_MenuPopover GtkScrolledWindow {
     border-width: 1px 0;
 }
 
-Gjs_MenuPopover .list-row {
-    padding: 5px 6px;
+.font {
+    padding: 6px 6px;
 }
 
 .banner {

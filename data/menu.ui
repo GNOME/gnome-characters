@@ -8,14 +8,14 @@
 	<property name="can_focus">False</property>
 	<property name="visible">True</property>
 	<property name="orientation">vertical</property>
-	<property name="margin-top">12</property>
-	<property name="margin-bottom">12</property>
+	<property name="margin">12</property>
 	<property name="row-spacing">12</property>
 	<child>
 	  <object class="GtkLabel" id="label1">
 	    <property name="visible">True</property>
 	    <property name="halign">center</property>
-	    <property name="label" translatable="yes">Filter by font</property>
+	    <property name="use-markup">True</property>
+	    <property name="label" translatable="yes">&lt;b&gt;Filter by Font&lt;/b&gt;</property>
 	  </object>
 	</child>
 	<child>
@@ -33,6 +33,8 @@
 	    <property name="can_focus">False</property>
 	    <property name="shadow-type">in</property>
 	    <property name="hscrollbar_policy">never</property>
+	    <property name="margin-start">12</property>
+	    <property name="margin-end">12</property>
 	    <child>
 	      <object class="GtkListBox" id="font-listbox">
 		<property name="can_focus">False</property>

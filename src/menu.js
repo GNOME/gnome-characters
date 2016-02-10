@@ -30,15 +30,24 @@ const MenuPopover = new Lang.Class({
     Template: 'resource:///org/gnome/Characters/menu.ui',
     InternalChildren: ['search-entry', 'font-listbox'],
 
+    _createFontListRow: function(label, family) {
+        let row = new Gtk.ListBoxRow({ visible: true });
+        row.get_style_context().add_class('font');
+        row._family = family;
+        let label = new Gtk.Label({ label: label,
+                                    visible: true,
+                                    halign: Gtk.Align.START });
+        label.get_style_context().add_class('font-label');
+        row.add(label);
+        return row;
+    },
+
     _init: function(params) {
         params = Params.fill(params, {});
         this.parent(params);
 
-        let row = new Gtk.ListBoxRow({ visible: true });
-        row._family = 'None';
-        row.add(new Gtk.Label({ label: _("None"),
-                                visible: true,
-                                halign: Gtk.Align.START }));
+        this._font_listbox.get_style_context().add_class('fonts');
+        row = this._createFontListRow(_("None"), 'None');
         this._font_listbox.add(row);
 
         let context = this.get_pango_context();
@@ -47,11 +56,8 @@ const MenuPopover = new Lang.Class({
             return a.get_name().localeCompare(b.get_name());
         });
         for (let index in families) {
-            row = new Gtk.ListBoxRow({ visible: true });
-            row._family = families[index].get_name();
-            row.add(new Gtk.Label({ label: row._family,
-                                    visible: true,
-                                    halign: Gtk.Align.START }));
+            row = this._createFontListRow(families[index].get_name(),
+                                          families[index].get_name());
             this._font_listbox.add(row);
         }
 
