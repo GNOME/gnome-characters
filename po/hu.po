@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-19 08:13+0000\n"
-"PO-Revision-Date: 2016-01-19 17:31+0100\n"
+"POT-Creation-Date: 2016-02-10 08:13+0000\n"
+"PO-Revision-Date: 2016-02-10 13:35+0100\n"
 "Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
@@ -60,8 +60,8 @@ msgid "Current page"
 msgstr "Jelenlegi oldal"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
-msgstr "Szűrés betűkészlet szerint"
+msgid "<b>Filter by Font</b>"
+msgstr "<b>Szűrés betűkészlet szerint</b>"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
@@ -175,15 +175,15 @@ msgstr "Karakterek alkalmazás elindítva"
 msgid "Characters Application exiting"
 msgstr "Karakterek alkalmazás kilépés"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Nincs"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Ismeretlen karakternév"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
