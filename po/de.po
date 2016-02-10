@@ -93,7 +93,7 @@ msgstr "Hilfsprogramm zum Auffinden und Einsetzen von selten benutzen Zeichen"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
 msgid "characters;unicode;"
-msgstr "Zeichen;Unicode;Schriftzeichen"
+msgstr "Zeichen;Unicode;Schriftzeichen;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
