@@ -30,11 +30,11 @@ const MenuPopover = new Lang.Class({
     Template: 'resource:///org/gnome/Characters/menu.ui',
     InternalChildren: ['search-entry', 'font-listbox'],
 
-    _createFontListRow: function(label, family) {
+    _createFontListRow: function(title, family) {
         let row = new Gtk.ListBoxRow({ visible: true });
         row.get_style_context().add_class('font');
         row._family = family;
-        let label = new Gtk.Label({ label: label,
+        let label = new Gtk.Label({ label: title,
                                     visible: true,
                                     halign: Gtk.Align.START });
         label.get_style_context().add_class('font-label');
