@@ -49,14 +49,13 @@ const CharacterListRow = new Lang.Class({
 
     _init: function(params) {
         let filtered = Params.filter(params, { characters: null,
-                                               fontDescription: null });
+                                               fontDescription: null,
+                                               overlayFontDescription: null });
         params = Params.fill(params, {});
         this.parent(params);
         this._characters = filtered.characters;
         this._fontDescription = filtered.fontDescription;
-        var fontDescription = filtered.fontDescription.copy();
-        fontDescription.set_size(fontDescription.get_size() * 0.18);
-        this._overlayFontDescription = fontDescription;
+        this._overlayFontDescription = filtered.overlayFontDescription;
     },
 
     draw: function(cr, x, y, width, height) {
@@ -260,9 +259,12 @@ const CharacterListWidget = new Lang.Class({
     },
 
     _createCharacterListRow: function(characters) {
+        var context = this.get_pango_context();
+        var fontDescription = context.get_font_description();
         let row = new CharacterListRow({
             characters: characters,
-            fontDescription: this._fontDescription
+            fontDescription: this._fontDescription,
+            overlayFontDescription: fontDescription
         });
         return row;
     },
