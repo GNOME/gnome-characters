@@ -47,7 +47,7 @@ const MenuPopover = new Lang.Class({
         this.parent(params);
 
         this._font_listbox.get_style_context().add_class('fonts');
-        row = this._createFontListRow(_("None"), 'None');
+        let row = this._createFontListRow(_("None"), 'None');
         this._font_listbox.add(row);
 
         let context = this.get_pango_context();
