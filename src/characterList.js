@@ -261,6 +261,7 @@ const CharacterListWidget = new Lang.Class({
     _createCharacterListRow: function(characters) {
         var context = this.get_pango_context();
         var fontDescription = context.get_font_description();
+        fontDescription.set_size(fontDescription.get_size() * 0.8);
         let row = new CharacterListRow({
             characters: characters,
             fontDescription: this._fontDescription,
