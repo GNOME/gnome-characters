@@ -4,22 +4,23 @@
 # Christian Kirbach <Christian.Kirbach@gmail.com>, 2015.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2015.
 # Bernd Homuth <dev@hmt.im>, 2016.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-10 16:13+0000\n"
-"PO-Revision-Date: 2016-02-10 19:49+0100\n"
-"Last-Translator: Bernd Homuth <dev@hmt.im>\n"
+"POT-Creation-Date: 2016-02-13 20:10+0000\n"
+"PO-Revision-Date: 2016-02-13 21:25+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "About"
@@ -62,8 +63,8 @@ msgid "Current page"
 msgstr "Aktuelle Seite"
 
 #: ../data/menu.ui.h:1
-msgid "<b>Filter by Font</b>"
-msgstr "<b>Nach Schriftart filtern</b>"
+msgid "Filter by Font"
+msgstr "Nach Schriftart filtern"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
