@@ -1,16 +1,17 @@
 # Brazilian Portuguese translation for gnome-characters.
-# Copyright (C) 2014-2015 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2016 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2015.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2015.
+# Rafael Fontenelle <rffontenelle@gmail.com>, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-10 08:13+0000\n"
-"PO-Revision-Date: 2016-02-10 14:12-0200\n"
+"POT-Creation-Date: 2016-02-14 08:11+0000\n"
+"PO-Revision-Date: 2016-02-14 14:56-0200\n"
 "Last-Translator: Rafael Fontenelle <rffontenelle@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -61,8 +62,8 @@ msgid "Current page"
 msgstr "Página atual"
 
 #: ../data/menu.ui.h:1
-msgid "<b>Filter by Font</b>"
-msgstr "<b>Filtrar por fonte</b>"
+msgid "Filter by Font"
+msgstr "Filtrar por fonte"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
