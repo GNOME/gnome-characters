@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-06 15:52+0100\n"
-"PO-Revision-Date: 2016-02-06 15:53+0100\n"
+"POT-Creation-Date: 2016-02-14 18:59+0100\n"
+"PO-Revision-Date: 2016-02-14 19:00+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -64,7 +64,7 @@ msgid "Current page"
 msgstr "Bieżąca strona"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtrowanie według czcionki"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -177,15 +177,15 @@ msgstr "Uruchomiono tablicę znaków"
 msgid "Characters Application exiting"
 msgstr "Kończenie działania tablicy znaków"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Brak"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nieznana nazwa znaku"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
