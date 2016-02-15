@@ -1,3 +1,37 @@
+3.19.90
+===
+
+- Make "copy character" work again with newer GTK+
+- Make search provider work again with the new internal search API
+- Hide missing characters by default (bug#744591)
+- Update appdata to 0.7+ format and add missing data
+- The search provider now only shows prefix matches (bug#757368)
+- Visual fixes for category list (bug#761793)
+- Visual fixes for font list (bug#748717)
+
+New And Updated Translations
+============================
+Aurimas Černius (lt)
+Balázs Meskó (hu)
+Bernd Homuth (de)
+Daniel Mustieles (es)
+Dušan Kazik (sk)
+hanniedu (nl)
+Jiri Grönroos (fi)
+Jiro Matsuzawa (ja)
+Kjartan Maraas (nb)
+Marek Černocký (cs)
+Mario Blättermann (de)
+Matej Urbančič (sl)
+Paul Seyfert (de)
+Pedro Albuquerque (pt)
+Piotr Drąg (de)
+Piotr Drąg (pl)
+Rafael Fontenelle (pt_BR)
+Rūdolfs Mazurs (lv)
+Stas Solovey (ru)
+Tom Tryfonidis (el)
+
 3.19.3
 ===
 
