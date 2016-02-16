@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Irene Sáez Sanz <irenesaez946@gmail.com>, 2015.
 # 
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015., 2015.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015., 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-18 08:12+0000\n"
-"PO-Revision-Date: 2015-12-18 09:42+0100\n"
+"POT-Creation-Date: 2016-02-15 08:09+0000\n"
+"PO-Revision-Date: 2016-02-16 13:30+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -63,7 +63,8 @@ msgid "Current page"
 msgstr "Página actual"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+#| msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtrar por tipografía"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -178,15 +179,15 @@ msgstr "Aplicación Caracteres iniciada"
 msgid "Characters Application exiting"
 msgstr "Saliendo de la aplicación Caracteres"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Niguno"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nombre de carácter desconocido"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
