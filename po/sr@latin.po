@@ -1,30 +1,29 @@
 # Serbian translation for gnome-characters.
 # Copyright (C) 2014 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2014.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2014, 2016.
 # Miloš Popović <gpopac@gmail.com>, 2015.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-17 21:41+0000\n"
-"PO-Revision-Date: 2015-09-22 12:35+0200\n"
-"Last-Translator: Miloš Popović <gpopac@gmail.com>\n"
-"Language-Team: srpski <gnom@prevod.org>\n"
+"POT-Creation-Date: 2016-02-18 08:11+0000\n"
+"PO-Revision-Date: 2016-02-18 19:05+0200\n"
+"Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "O Znakovniku"
+msgid "About"
+msgstr "O programu"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -32,20 +31,19 @@ msgstr "Izađi"
 
 #: ../data/characterlist.ui.h:1
 msgid "Search produced empty result"
-msgstr "Pretraga nije našla nikakvo poklapanje"
+msgstr "Pretraga nije dala nikakav rezultat"
 
 #: ../data/characterlist.ui.h:2
 msgid "Try another search criteria."
 msgstr "Pokušajte pretragu drugim rečima."
 
 #: ../data/characterlist.ui.h:3
-#| msgid "Loading..."
 msgid "Loading…"
 msgstr "Učitavam…"
 
 #: ../data/characterlist.ui.h:4
 msgid "No recent characters found"
-msgstr "Nisu nađeni skorašnji znakovi"
+msgstr "Nisam našao skorašnje znakove"
 
 #: ../data/characterlist.ui.h:5
 msgid "Characters will appear here if you use them."
@@ -55,18 +53,21 @@ msgstr "Znakovi će se pojaviti ovde ukoliko ih upotrebite."
 msgid "Copy Character"
 msgstr "Umnoži znak"
 
+#: ../data/character.ui.h:2
+#| msgid "Characters Application started"
+msgid "Character copied to clipboard"
+msgstr "Znak je umnožen u ostavu"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Trenutna stranica"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
-msgstr "Filter na osnovu fonta"
+#| msgid "Filter by font"
+msgid "Filter by Font"
+msgstr "Izdvoj prema slovnom liku"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
-#| msgid ""
-#| "Characters is a simple utility application to find and insert unusual "
-#| "characters."
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -80,8 +81,8 @@ msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Možete da listate znakove po kategorijama kao što su Interpunkcije, Slike i "
-"drugo."
+"Možete da razgledate znakove po kategorijama kao što su Interpunkcije, Slike "
+"i drugo."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -143,20 +144,25 @@ msgstr "Slova"
 msgid "Emoticons"
 msgstr "Smajlići"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
-#| msgid "%s Character List"
 msgid "%s Category List Row"
 msgstr "%s. red u spisku znakova"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Vidite takođe"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikod U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s se ne nalazi u „%s“"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -170,19 +176,20 @@ msgstr "Program za znakove je pokrenut"
 msgid "Characters Application exiting"
 msgstr "Program za znakove završava"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Ništa"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nepoznat naziv znaka"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr ""
@@ -204,14 +211,17 @@ msgstr "Tablica znakova"
 msgid "%s (%s only)"
 msgstr "%s (samo %s)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "Spisak „%s“ znakova"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Pretražite rezultat spiska znakova"
+
+#~ msgid "About Characters"
+#~ msgstr "O Znakovniku"
 
 #~ msgid "_New"
 #~ msgstr "_Novo"
