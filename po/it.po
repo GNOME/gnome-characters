@@ -1,15 +1,15 @@
 # Italian translation of gnome-characters.
-# Copyright (C) 2015 Free Software Foundation, Inc.
+# Copyright (C) 2015, 2016 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-characters package.
-# Milo Casagrande <milo@milo.name>, 2015.
+# Milo Casagrande <milo@milo.name>, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-17 21:41+0000\n"
-"PO-Revision-Date: 2015-09-02 21:21+0200\n"
+"POT-Creation-Date: 2016-02-21 08:11+0000\n"
+"PO-Revision-Date: 2016-02-21 17:02+0100\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <gnome-it@gnome.org>\n"
 "Language: it\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "I_nformazioni"
+msgid "About"
+msgstr "Informazioni"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -51,23 +51,27 @@ msgstr "I caratteri sono elencati qui quando vengono usati."
 msgid "Copy Character"
 msgstr "Copia carattere"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Carattere copiato negli appunti"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Pagina corrente"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtra per carattere"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for by "
-"searching for keywords."
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
-"Caratteri è un semplice programma per la ricerca e l'inserimento di caratteri "
-"insoliti. Consente di cercare velocemente dei caratteri attraverso una ricerca "
-"per parole chiave."
+"Caratteri è un semplice programma per la ricerca e l'inserimento di "
+"caratteri insoliti. Consente di cercare velocemente dei caratteri attraverso "
+"una ricerca per parole chiave."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -95,7 +99,8 @@ msgstr "Il tipo di carattere da usare per la visualizzazione"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:2
 msgid "Use the font to render characters on the character list."
-msgstr "Usa il tipo di carattere definito per la visualizzazione dei caratteri."
+msgstr ""
+"Usa il tipo di carattere definito per la visualizzazione dei caratteri."
 
 #: ../data/org.gnome.Characters.gschema.xml.h:3
 msgid "Maximum recent characters"
@@ -137,19 +142,25 @@ msgstr "Lettere"
 msgid "Emoticons"
 msgstr "Emoticon"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Riga elenco categoria %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Vedere anche"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s non è incluso in %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -163,19 +174,20 @@ msgstr "Applicazione Caratteri avviata"
 msgid "Characters Application exiting"
 msgstr "Applicazione Caratteri terminata"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Nessuno"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nome carattere sconosciuto"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Milo Casagrande <milo@milo.name>"
@@ -193,20 +205,11 @@ msgstr "Tabella caratteri"
 msgid "%s (%s only)"
 msgstr "%s (solo %s)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "Elenco caratteri %s"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Elenco caratteri ricerca"
-
-#~ msgid "Latin"
-#~ msgstr "Latino"
-
-#~ msgid "Application Demo"
-#~ msgstr "Demo Applicazione"
-
-#~ msgid "js;demo;app"
-#~ msgstr "js;demo;app"
