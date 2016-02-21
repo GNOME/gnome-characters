@@ -1,23 +1,24 @@
 # Swedish translation for gnome-characters.
-# Copyright © 2015 gnome-characters's COPYRIGHT HOLDER
+# Copyright © 2015, 2016 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016.
+# Sebastian Rasmussen <sebras@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-22 20:08+0000\n"
-"PO-Revision-Date: 2015-11-22 21:37+0100\n"
-"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
+"POT-Creation-Date: 2016-02-15 20:12+0000\n"
+"PO-Revision-Date: 2016-02-15 22:37+0100\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "About"
@@ -60,7 +61,7 @@ msgid "Current page"
 msgstr "Aktuell sida"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtrera efter typsnitt"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -141,19 +142,25 @@ msgid "Emoticons"
 msgstr "Humörsymboler"
 
 # accessible name
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Listrad för kategorin %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Se även"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s är inte inkluderat i %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -168,15 +175,15 @@ msgid "Characters Application exiting"
 msgstr "Programmet Tecken avslutas"
 
 # Gäller typsnitt
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Inget"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Okänt teckennamn"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
