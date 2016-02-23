@@ -2,13 +2,13 @@
 # Copyright (C) 2015 THE gnome-characters'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Fran <fran@localhost.localdomain>, 2015.
-# Fran Dieguez <frandieguez@gnome.org>, 2015.
+# Fran Dieguez <frandieguez@gnome.org>, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-18\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-17 00:47+0200\n"
-"PO-Revision-Date: 2015-08-17 00:54+0200\n"
+"POT-Creation-Date: 2016-02-23 20:36+0100\n"
+"PO-Revision-Date: 2016-02-23 20:39+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: en\n"
@@ -17,10 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "Sobre Caracteres"
+msgid "About"
+msgstr "Sobre"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -50,12 +51,16 @@ msgstr "Os caracteres aparecerán aquí cando os use."
 msgid "Copy Character"
 msgstr "Copiar caracter"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Caracter copiado ao portapapeis"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Páxina actual"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtrar por tipo de letra"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -93,7 +98,8 @@ msgstr "Tipo de letra para mostrar os caracteres"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:2
 msgid "Use the font to render characters on the character list."
-msgstr "Usar o tipo de letra para renderizar caracteres na lista de caracteres."
+msgstr ""
+"Usar o tipo de letra para renderizar caracteres na lista de caracteres."
 
 #: ../data/org.gnome.Characters.gschema.xml.h:3
 msgid "Maximum recent characters"
@@ -135,19 +141,25 @@ msgstr "Letras"
 msgid "Emoticons"
 msgstr "Emoticons"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Fila da lista de categoría %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Vexa tamén"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s non está incluído en %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -161,15 +173,15 @@ msgstr "Aplicativo Caracteres iniciado"
 msgid "Characters Application exiting"
 msgstr "Saíndo do aplicativo Caracteres"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Ningún"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nome de caracter descoñecido"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -192,11 +204,14 @@ msgstr "Mapa de caracteres"
 msgid "%s (%s only)"
 msgstr "%s (só %s)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Lista de caracteres dos resultados da busca"
+
+#~ msgid "About Characters"
+#~ msgstr "Sobre Caracteres"
