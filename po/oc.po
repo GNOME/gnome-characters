@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Cédric Valmary <cvalmary@yahoo.fr>, 2015.
 # Cédric Valmary (Tot en òc) <cvalmary@yahoo.fr>, 2015.
+# Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-10-07 13:13+0000\n"
-"PO-Revision-Date: 2015-10-31 08:52+0200\n"
-"Last-Translator: Cédric Valmary (Tot en òc) <cvalmary@yahoo.fr>\n"
-"Language-Team: Tot en òc (totenoc.eu)\n"
+"POT-Creation-Date: 2016-02-10 20:51+0000\n"
+"PO-Revision-Date: 2016-02-24 18:34+0200\n"
+"Last-Translator: Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>\n"
+"Language-Team: Tot En Òc\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,8 +22,8 @@ msgstr ""
 "X-Project-Style: gnome\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "A prepaus de Caractèrs"
+msgid "About"
+msgstr "A prepaus"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -52,12 +53,18 @@ msgstr "Los caractèrs apareisseràn aicí se los utilizatz."
 msgid "Copy Character"
 msgstr "Copiar lo caractèr"
 
+#: ../data/character.ui.h:2
+#| msgid "Characters Application started"
+msgid "Character copied to clipboard"
+msgstr "Caractèrs copiats dempuèi lo quichapapièrs"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Pagina actuala"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+#| msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtrar per poliça"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -111,7 +118,7 @@ msgstr "Pontuacion"
 
 #: ../src/categoryList.js:45
 msgid "Arrows"
-msgstr "Flèchas"
+msgstr "Sagetas"
 
 #: ../src/categoryList.js:51
 msgid "Bullets"
@@ -137,19 +144,25 @@ msgstr "Letras"
 msgid "Emoticons"
 msgstr "Emoticònas"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Linha de la categoria %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Veire tanben"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s es pas inclús dins %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -163,15 +176,15 @@ msgstr "Aplicacion Caractèrs aviada"
 msgid "Characters Application exiting"
 msgstr "Tampadura de l'aplicacion Caractèrs"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Pas cap"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nom de caractèr desconegut"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -202,6 +215,9 @@ msgstr "%s lista de caractèrs"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Lista dels caractèrs eissits de la recèrca"
+
+#~ msgid "About Characters"
+#~ msgstr "A prepaus de Caractèrs"
 
 #~ msgid "Latin"
 #~ msgstr "Latin"
