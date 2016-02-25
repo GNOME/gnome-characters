@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the gnome-characters package.
 #
 # Marek Černoch <marek.cernoch@email.cz>, 2015
-# Marek Černocký <marek@manet.cz>, 2014, 2015.
+# Marek Černocký <marek@manet.cz>, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-24 08:08+0000\n"
-"PO-Revision-Date: 2015-12-24 12:58+0100\n"
+"POT-Creation-Date: 2016-02-25 08:10+0000\n"
+"PO-Revision-Date: 2016-02-25 10:54+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -62,7 +62,7 @@ msgid "Current page"
 msgstr "Aktuální stránka"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtrovat podle písma"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -174,15 +174,15 @@ msgstr "Aplikace Znaky je spuštěna"
 msgid "Characters Application exiting"
 msgstr "Aplikace Znaky se ukončuje"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "žádný"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Neznámý název znaku"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
