@@ -1,16 +1,16 @@
 # French translation for gnome-characters.
-# Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2015-2016 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Guillaume Bernard <translate@filorin.fr>, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-characters gnome-3-16\n"
+"Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-17 21:41+0000\n"
-"PO-Revision-Date: 2015-09-04 14:06+0200\n"
-"Last-Translator: Guillaume Bernard <translate@filorin.fr>\n"
+"POT-Creation-Date: 2016-02-27 08:09+0000\n"
+"PO-Revision-Date: 2016-02-27 10:40+0100\n"
+"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "À propos de Caractères"
+msgid "About"
+msgstr "À propos"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -50,12 +50,16 @@ msgstr "Les caractères apparaîtront ici si vous les utilisez."
 msgid "Copy Character"
 msgstr "Copier le caractère"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Caractère copié dans le presse-papiers"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Page actuelle"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtrer par police"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -136,19 +140,25 @@ msgstr "Lettres"
 msgid "Emoticons"
 msgstr "Émoticônes"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Ligne de la catégorie %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Voir aussi"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s n'est pas inclus dans %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -162,19 +172,20 @@ msgstr "Application Caractères démarée"
 msgid "Characters Application exiting"
 msgstr "Fermeture de l'application Caractères"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Aucun"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nom de caractère inconnu"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Guillaume Bernard <translate@filorin.fr>"
@@ -192,11 +203,14 @@ msgstr "Table de caractères"
 msgid "%s (%s only)"
 msgstr "%s (%s seulement)"
 
-#: ../src/window.js:272
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s liste de caractères"
 
-#: ../src/window.js:279
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Liste des caractères issus de la recherche"
+
+#~ msgid "About Characters"
+#~ msgstr "À propos de Caractères"
