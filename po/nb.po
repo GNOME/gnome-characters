@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters 3.19.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-11 07:40+0100\n"
-"PO-Revision-Date: 2016-01-11 07:40+0100\n"
+"POT-Creation-Date: 2016-02-28 16:56+0100\n"
+"PO-Revision-Date: 2016-02-28 16:56+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -57,7 +57,7 @@ msgid "Current page"
 msgstr "Denne siden"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtrer etter skrifttype"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -169,15 +169,15 @@ msgstr "Tegnprogram startet"
 msgid "Characters Application exiting"
 msgstr "Tegnprogram avslutter"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Ingen"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Ukjent navn på tegn."
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
