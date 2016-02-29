@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-14 18:59+0100\n"
-"PO-Revision-Date: 2016-02-14 19:00+0100\n"
+"POT-Creation-Date: 2016-02-29 19:48+0100\n"
+"PO-Revision-Date: 2016-02-29 19:49+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -94,8 +94,10 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Narzędzie do wyszukiwania i wstawiania znaków specjalnych"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "znak;znaki;czcionka;font;pismo;unicode;unikod;mapa;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"znak;znaki;czcionka;font;pismo;unicode;unikod;interpunkcja;interpunkcyjne;"
+"matematyka;matematyczne;litery;emoji;emotikony;emotikonki;emotki;mapa;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
