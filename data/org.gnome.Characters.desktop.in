@@ -7,4 +7,4 @@ Exec=gapplication launch org.gnome.Characters
 DBusActivatable=true
 StartupNotify=true
 Categories=GNOME;GTK;Utility;X-GNOME-Utilities;
-_Keywords=characters;unicode;
+_Keywords=characters;unicode;punctuation;math;letters;emoji;emoticon;
