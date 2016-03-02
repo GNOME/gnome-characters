@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-control-center.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-19 21:10+0200\n"
-"PO-Revision-Date: 2015-11-19 21:11+0200\n"
+"POT-Creation-Date: 2016-03-02 13:33+0200\n"
+"PO-Revision-Date: 2016-03-02 13:35+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -60,7 +60,7 @@ msgid "Current page"
 msgstr "דף נוכחי"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "סינון לפי גופן"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -88,8 +88,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "יישום למציאה ולהכנסת תווים בלתי רגילים"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "תווים;יוניקוד;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "תו;תווים;יוניקוד;פיסוק;מתמטיקה;אותיות;חייכנים;רגשונים;סמיילים;סמיילי;רגשון;חייכן;סמל הבעה;;ניקוד;טעמים;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -147,19 +147,25 @@ msgstr "פרצופונים"
 #
 # נתיבים:
 # ../src/categoryList.js:94
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s רשימת שורות קטגוריה"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "ראו גם"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "יוניקוד ‎U+‎%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s אינו כלול בתוך %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -173,15 +179,15 @@ msgstr "Characters Application started"
 msgid "Characters Application exiting"
 msgstr "Characters Application exiting"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "אף אחד"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "שם תו לא ידוע"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -212,6 +218,9 @@ msgstr "%s רשימת תווים"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "תוצאות חיפוש תווים"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "תווים;יוניקוד;"
 
 #~ msgid "About Characters"
 #~ msgstr "על אודות תווים"
