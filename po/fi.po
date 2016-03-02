@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-06 08:06+0000\n"
-"PO-Revision-Date: 2016-01-06 14:50+0200\n"
+"POT-Creation-Date: 2016-03-02 20:15+0000\n"
+"PO-Revision-Date: 2016-03-02 22:22+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -61,7 +61,8 @@ msgid "Current page"
 msgstr "Nykyinen sivu"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+#| msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Suodata fontin perusteella"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -90,8 +91,10 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Sovellus epätavallisten merkkien etsintään ja syöttämiseen"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "characters;unicode;merkit;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"characters;unicode;punctuation;math;letters;emoji;emoticon;merkit;kirjaimet;"
+"hymiöt;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -173,15 +176,15 @@ msgstr "Merkkisovellus käynnistetty"
 msgid "Characters Application exiting"
 msgstr "Merkkisovellus suljetaan"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Ei mitään"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Tuntematon merkin nimi"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -212,6 +215,9 @@ msgstr "%s - Merkkiluettelo"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Hakutulosten merkkiluettelo"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "characters;unicode;merkit;"
 
 #~ msgid "About Characters"
 #~ msgstr "Tietoja - Merkit"
