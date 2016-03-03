@@ -1,27 +1,27 @@
 # Korean translation for gnome-characters.
-# Copyright (C) 2015 Seong-ho Cho, et al.
+# Copyright (C) 2015, 2016 Seong-ho Cho, et al.
 # This file is distributed under the same license as the gnome-characters package.
-# Seong-ho Cho <shcho@gnome.org>, 2015.
+# Seong-ho Cho <shcho@gnome.org>, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-14 06:29+0000\n"
-"PO-Revision-Date: 2015-09-11 16:40+0900\n"
+"POT-Creation-Date: 2016-03-01 08:12+0000\n"
+"PO-Revision-Date: 2016-03-02 01:25+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
-"Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
+"Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "문자 도구 정보"
+msgid "About"
+msgstr "정보"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -51,12 +51,16 @@ msgstr "사용한 문자가 여기에 나타납니다."
 msgid "Copy Character"
 msgstr "문자 복사"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "클립보드에 문자를 복사했습니다"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "현재 페이지"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "글꼴로 구분"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -65,8 +69,8 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"문자 도구는 자주 사용하지 않는 문자를 찾아 넣는 단순한 유틸리티 프로그램입니"
-"다. 찾아보고자 하는 문자를 단어를 통해 빨리 찾아볼 수 있습니다."
+"문자 도구는 자주 사용하지 않는 문자를 찾아 입력하는 단순한 유틸리티 프로그램"
+"입니다. 찾아볼 문자를 단어로 빨리 찾아볼 수 있습니다."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -80,11 +84,13 @@ msgstr "문자 도구"
 
 #: ../data/org.gnome.Characters.desktop.in.h:2
 msgid "Utility application to find and insert unusual characters"
-msgstr "자주 사용하지 않는 문자를 찾고 삽입하는 유틸리티 프로그램"
+msgstr "자주 사용하지 않는 문자를 찾아 입력하는 유틸리티 프로그램"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "characters;문자 도구;unicode;유니코드;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"characters;문자;unicode;유니코드;punctuation;구두기호;math;수학;letters;언어문자;"
+"emoji;이모지;emoticon;이모티콘;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -134,19 +140,25 @@ msgstr "문자"
 msgid "Emoticons"
 msgstr "이모티콘"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s 분류 목록"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "더 보기"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "유니코드 U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s이(가) %s에 없습니다"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -160,19 +172,20 @@ msgstr "문자 도구 프로그램을 시작했습니다"
 msgid "Characters Application exiting"
 msgstr "문자 도구 프로그램이 이미 실행중입니다"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "없음"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "알 수 없는 문자 이름"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "조성호 <shcho@gnome.org>"
@@ -198,3 +211,9 @@ msgstr "%s 문자 목록"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "검색 결과 문자 목록"
+
+#~ msgid "About Characters"
+#~ msgstr "문자 도구 정보"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "characters;문자 도구;unicode;유니코드;"
