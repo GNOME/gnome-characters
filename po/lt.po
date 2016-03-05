@@ -2,15 +2,15 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # FULL NAME <EMAIL@ADDRESS>, 2015.
-# Aurimas Černius <aurisc4@gmail.com>, 2015.
+# Aurimas Černius <aurisc4@gmail.com>, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-17 20:11+0000\n"
-"PO-Revision-Date: 2015-12-17 22:12+0200\n"
+"POT-Creation-Date: 2016-02-29 01:54+0000\n"
+"PO-Revision-Date: 2016-03-05 21:19+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "About"
@@ -62,7 +62,7 @@ msgid "Current page"
 msgstr "Dabartinis puslapis"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtruoti pagal šriftą"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -91,8 +91,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Programa neįprastų simbolių suradimui ir įterpimui"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "simboliai;unikodas;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "simboliai;unikodas;skyryba;matematika;raidės;šypsniukai;emotikonos;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -174,15 +174,15 @@ msgstr "Simbolių programa paleista"
 msgid "Characters Application exiting"
 msgstr "Simbolių programa baigia darbą"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Nėra"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nežinomas simbolio pavadinimas"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -215,6 +215,9 @@ msgstr "%s simbolių sąrašas"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Paieškos rezultatų simbolių sąrašas"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "simboliai;unikodas;"
 
 #~ msgid "About Characters"
 #~ msgstr "Apie simbolius"
