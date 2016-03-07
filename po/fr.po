@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-27 08:09+0000\n"
+"POT-Creation-Date: 2016-03-07 08:12+0000\n"
 "PO-Revision-Date: 2016-02-27 10:40+0100\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -89,8 +89,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Utilitaire pour chercher et insérer des caractères inhabituels."
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "caractères;unicode;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "caractères;unicode;ponctuation;math;lettres;emoji;émoticône;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -211,6 +211,9 @@ msgstr "%s liste de caractères"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Liste des caractères issus de la recherche"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "caractères;unicode;"
 
 #~ msgid "About Characters"
 #~ msgstr "À propos de Caractères"
