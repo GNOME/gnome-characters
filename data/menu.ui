@@ -25,8 +25,6 @@
 	    <property name="can_focus">True</property>
 	    <property name="visible">True</property>
 	    <property name="halign">fill</property>
-	    <property name="margin-start">12</property>
-	    <property name="margin-end">12</property>
 	  </object>
 	</child>
 	<child>
@@ -35,8 +33,6 @@
 	    <property name="can_focus">False</property>
 	    <property name="shadow-type">in</property>
 	    <property name="hscrollbar_policy">never</property>
-	    <property name="margin-start">12</property>
-	    <property name="margin-end">12</property>
 	    <child>
 	      <object class="GtkListBox" id="font-listbox">
 		<property name="can_focus">False</property>
