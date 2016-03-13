@@ -1,3 +1,39 @@
+3.19.92
+===
+
+- Add additional keywords to .desktop (bug#762576)
+- Disable subtitle in the headerbar (bug#763177)
+- Remove redundant horizontal padding in filter menu (bug#763233)
+
+New And Updated Translations
+============================
+Alexandre Franke (fr)
+Anders Jonsson (sv)
+Artur de Aquino Morais (pt_BR)
+Aurimas Černius (lt)
+Balázs Úr (hu)
+Baurzhan Muftakhidinov (kk)
+Cédric Valmary (oc)
+Claude Paroz (fr)
+Daniel Mustieles (es)
+Dušan Kazik (sk)
+Efstathios Iosifidis (el)
+Fabio Tomat (fur)
+Fran Dieguez (gl)
+hanniedu (nl)
+Jiri Grönroos (fi)
+Kjartan Maraas (nb)
+Marek Černocký (cs)
+Mario Blättermann (de)
+Matej Urbančič (sl)
+Milo Casagrande (it)
+Piotr Drąg (pl)
+Rūdolfs Mazurs (lv)
+Seong-ho Cho (ko)
+Yosef Or Boczko (he)
+Марко М. Костић (sr)
+Мирослав Николић (sr) (sr@latin)
+
 3.19.90
 ===
 
