@@ -151,7 +151,7 @@ const CategoryListWidget = new Lang.Class({
         } catch (e) {
             log("Failed to list engines: " + e);
         }
-        this._finishBuiltScriptList(sources);
+        this._finishBuildScriptList(sources);
     },
 
     _ensureIBusLanguageList: function(sources) {
@@ -165,7 +165,7 @@ const CategoryListWidget = new Lang.Class({
         try {
             ibus = imports.gi.IBus;
         } catch (e) {
-            this._finishBuiltScriptList(sources);
+            this._finishBuildScriptList(sources);
             return;
         }
 
@@ -178,7 +178,7 @@ const CategoryListWidget = new Lang.Class({
                                }));
     },
 
-    _finishBuiltScriptList: function(sources) {
+    _finishBuildScriptList: function(sources) {
         let xkbInfo = new GnomeDesktop.XkbInfo();
         let languages = [];
         for (let i in sources) {
@@ -199,7 +199,7 @@ const CategoryListWidget = new Lang.Class({
             }
         }
 
-        // Add current locale language to allLangs.
+        // Add current locale language to languages.
         languages.push(Gc.get_current_language());
 
         let allScripts = [];
@@ -210,8 +210,8 @@ const CategoryListWidget = new Lang.Class({
             let scripts = Gc.get_scripts_for_language(languages[i]);
             for (let j in scripts) {
                 let script = scripts[j];
-                // Latin is always added at top, and Han contains too
-                // many characters.
+                // Exclude Latin and Han, since Latin is always added
+                // at the top and Han contains too many characters.
                 if (['Latin', 'Han'].indexOf(script) >= 0)
                     continue;
                 if (allScripts.indexOf(script) >= 0)
@@ -237,7 +237,7 @@ const CategoryListWidget = new Lang.Class({
             if (hasIBus)
                 this._ensureIBusLanguageList(sources);
             else
-                this._finishBuiltScriptList(sources);
+                this._finishBuildScriptList(sources);
         }
     },
 
@@ -247,8 +247,9 @@ const CategoryListWidget = new Lang.Class({
 
         this._categoryList = BaseCategoryList.slice();
 
-        // Populate the "scripts" element of the "Letter" category,
-        // based on the input-sources settings.
+        // Populate the "scripts" element of the "Letter" category
+        // object, based on the current locale and the input-sources
+        // settings.
         //
         // This works asynchronously, in the following call flow:
         //
@@ -257,9 +258,9 @@ const CategoryListWidget = new Lang.Class({
         //       _ensureIBusLanguageList()
         //          ibus_bus_list_engines_async()
         //             _finishListEngines()
-        //                _finishBuiltScriptList()
+        //                _finishBuildScriptList()
         //    else:
-        //       _finishBuiltScriptList()
+        //       _finishBuildScriptList()
         //
         this._buildScriptList();
     },
