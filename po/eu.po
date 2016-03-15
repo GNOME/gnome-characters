@@ -2,26 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2015.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To:  http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-10-14 11:56+0200\n"
-"PO-Revision-Date: 2015-10-13 22:32+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
-"Language-Team: Basque <Basque <librezale@librezale.org>>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-15 16:48+0100\n"
+"PO-Revision-Date: 2016-03-15 16:49+0100\n"
+"Last-Translator: dooteo <dooteo@zundan.com>\n"
+"Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "'Karaktereak' buruz"
+msgid "About"
+msgstr "Honi buruz"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -60,7 +59,7 @@ msgid "Current page"
 msgstr "Uneko orria"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Iragazi letra-tipoaren arabera"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -90,8 +89,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Aplikazio bat da ohikoak ez diren karaktereak bilatu eta txertatzeko"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "karaktereak;unicode;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "karaktereak;unicode;puntuazioa;matematika;hizkiak;aurpegierak;ikurrak;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -141,19 +140,25 @@ msgstr "Hizkiak"
 msgid "Emoticons"
 msgstr "Aurpegierak"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "'%s' kategoria-zerrendako errenkada"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Ikus halaber"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "'%s' ez dago '%s' letra-tipoan"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -167,15 +172,15 @@ msgstr "'Karaktereak' aplikazioa abiarazita"
 msgid "Characters Application exiting"
 msgstr "'Karaktereak' aplikaziotik irteten"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Bat ere ez"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Karakterearen izena ezezaguna"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -206,3 +211,9 @@ msgstr "%s karaktere-zerrenda"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Bilaketaren emaitzako karaktere-zerrenda"
+
+#~ msgid "About Characters"
+#~ msgstr "'Karaktereak' buruz"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "karaktereak;unicode;"
