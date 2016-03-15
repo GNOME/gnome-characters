@@ -2,24 +2,27 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Kris Thomsen <mail@kristhomsen.dk>, 2015.
-#
+# scootergrisen, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-20 19:59+0200\n"
-"PO-Revision-Date: 2015-09-20 19:47+0200\n"
-"Last-Translator: Kris Thomsen <mail@kristhomsen.dk>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-02-11 08:11+0000\n"
+"PO-Revision-Date: 2016-02-11 22:42+0200\n"
+"Last-Translator: scootergrisen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "Om Tegn"
+msgid "About"
+msgstr "Om"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -39,7 +42,7 @@ msgstr "Indlæser…"
 
 #: ../data/characterlist.ui.h:4
 msgid "No recent characters found"
-msgstr "Ingen nylige tegn fundet"
+msgstr "Ingen seneste fundne tegn"
 
 #: ../data/characterlist.ui.h:5
 msgid "Characters will appear here if you use them."
@@ -49,13 +52,19 @@ msgstr "Tegn vises her, hvis du bruger dem."
 msgid "Copy Character"
 msgstr "Kopiér tegn"
 
+#: ../data/character.ui.h:2
+#| msgid "Characters Application started"
+msgid "Character copied to clipboard"
+msgstr "Tegn kopieret til udklipsholderen"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Nuværende side"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
-msgstr "Filtrér efter skrifttype"
+#| msgid "Filter by font"
+msgid "Filter by Font"
+msgstr "Sortér efter skrifttype"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
@@ -72,8 +81,7 @@ msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Du kan også gennemse tegn efter kategorier, som f.eks. Tegnsætning, Billeder "
-"osv."
+"Du kan også gennemse tegn efter kategorier, såsom tegnsætning, billeder osv."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -97,7 +105,7 @@ msgstr "Brug skrifttypen til at vise tegn i tegnlisten."
 
 #: ../data/org.gnome.Characters.gschema.xml.h:3
 msgid "Maximum recent characters"
-msgstr "Maksimum antal nylige tegn"
+msgstr "Maksimum antal seneste tegn"
 
 #: ../src/categoryList.js:33
 msgid "Recently Used"
@@ -135,19 +143,25 @@ msgstr "Bogstaver"
 msgid "Emoticons"
 msgstr "Humørikoner"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Listerække for kategorien %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Se også"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s er ikke inkluderet i %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -161,15 +175,15 @@ msgstr "Programmet Tegn startet"
 msgid "Characters Application exiting"
 msgstr "Programmet Tegn afslutter"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Ingen"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Ukendt tegn-navn"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -179,6 +193,7 @@ msgstr "U+%s, %s: %s"
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
+"scootergrisen\n"
 "\n"
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
