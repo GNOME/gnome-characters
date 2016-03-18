@@ -1,16 +1,17 @@
 # Danish translation for gnome-characters.
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Kris Thomsen <mail@kristhomsen.dk>, 2015.
+#
+# Kris Thomsen <mail@kristhomsen.dk>, 2015-2016.
 # scootergrisen, 2016.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-11 08:11+0000\n"
-"PO-Revision-Date: 2016-02-11 22:42+0200\n"
-"Last-Translator: scootergrisen\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-18 11:24+0100\n"
+"PO-Revision-Date: 2016-03-16 19:58+0200\n"
+"Last-Translator: Kris Thomsen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -53,7 +54,6 @@ msgid "Copy Character"
 msgstr "Kopiér tegn"
 
 #: ../data/character.ui.h:2
-#| msgid "Characters Application started"
 msgid "Character copied to clipboard"
 msgstr "Tegn kopieret til udklipsholderen"
 
@@ -62,7 +62,6 @@ msgid "Current page"
 msgstr "Nuværende side"
 
 #: ../data/menu.ui.h:1
-#| msgid "Filter by font"
 msgid "Filter by Font"
 msgstr "Sortér efter skrifttype"
 
@@ -92,8 +91,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Hjælpeværktøj til at finde og indsætte usædvanlige tegn"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "tegn;unicode;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "tegn;unicode;tegnsætning;matematik;bogstaver;emoji;smiley;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -219,3 +218,6 @@ msgstr "Tegnliste for %s"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Søgeresultater for tegnliste"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "tegn;unicode;"
