@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Daniel Korostil <ted.korostiled@gmail.com>, 2015.
+# Daniel Korostil <ted.korostiled@gmail.com>, 2015, 2016.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-23 10:04+0000\n"
-"PO-Revision-Date: 2015-03-23 19:20+0300\n"
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-22 19:50+0200\n"
+"PO-Revision-Date: 2016-03-22 21:58+0300\n"
 "Last-Translator: Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Language-Team: linux.org.ua\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
+msgid "About"
 msgstr "Про програму"
 
 #: ../data/app-menu.ui.h:2
@@ -37,7 +36,7 @@ msgid "Try another search criteria."
 msgstr "Спробуйте інший критерій пошуку."
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
+msgid "Loading…"
 msgstr "Завантаження…"
 
 #: ../data/characterlist.ui.h:4
@@ -52,12 +51,16 @@ msgstr "Символи з'являтимуться тут у міру їхньо
 msgid "Copy Character"
 msgstr "Скопіювати символ"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Символ скопійовано в буфер"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Поточна сторінка"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Відсіяти за шрифтом"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -86,8 +89,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Програма для пошуку та вставлення незвичайних символів"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "символи;унікод;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "символи;унікод;пунктуація;математика;букви;літери;емоції;смайлики;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -101,55 +104,61 @@ msgstr "Використовувати шрифт для відтворення 
 msgid "Maximum recent characters"
 msgstr "Максимально нещодавні символи"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Недавно вжиті"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Пунктуація"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "Стрілки"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "Маркери"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "Малюнки"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "Валюти"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "Математика"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "Латиниця"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "Букви"
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Емоції"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s рядок переліку категорій"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Дивіться також"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Унікод U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s немає в %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -163,19 +172,20 @@ msgstr "Програму символів запущено"
 msgid "Characters Application exiting"
 msgstr "Програма символів існує"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Немає"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Невідома назва символу"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
@@ -193,11 +203,20 @@ msgstr "Таблиця символів"
 msgid "%s (%s only)"
 msgstr "%s (тільки %s)"
 
-#: ../src/window.js:276
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "Перелік символів %s"
 
-#: ../src/window.js:283
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Перелік символів з результату пошуку"
+
+#~ msgid "About Characters"
+#~ msgstr "Про програму"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "символи;унікод;"
+
+#~ msgid "Latin"
+#~ msgstr "Латиниця"
