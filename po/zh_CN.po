@@ -10,20 +10,20 @@ msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-02 20:35+0000\n"
-"PO-Revision-Date: 2016-03-03 13:02+0800\n"
+"POT-Creation-Date: 2016-03-26 06:04+0000\n"
+"PO-Revision-Date: 2016-03-26 14:15+0800\n"
 "Last-Translator: Bin Li <binli@gnome.org>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.7.6\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About"
-msgstr "关于"
+msgid "About Characters"
+msgstr "关于 字符"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -53,26 +53,22 @@ msgstr "你使用的字符将会在这里显示。"
 msgid "Copy Character"
 msgstr "复制字符"
 
-#: ../data/character.ui.h:2
-msgid "Character copied to clipboard"
-msgstr "字符已复制到剪贴板"
-
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "当前页"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by Font"
+msgid "Filter by font"
 msgstr "按字体筛选"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
+"characters. It allows you to quickly find the character you are looking for by "
+"searching for keywords."
 msgstr ""
-"字符 是一个简单的查找并插入特殊字符的实用程序。它可以让你通过通过搜索关键字快"
-"速找到你正在寻找的字符。"
+"字符 是一个简单的查找并插入特殊字符的实用程序。它可以让你通过通过搜索关键字快速"
+"找到你正在寻找的字符。"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -89,10 +85,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "查找和插入特殊字符的实用程序"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr ""
-"characters;unicode;punctuation;math;letters;emoji;emoticon;字符;统一码;标点符"
-"号;表情;字母;公式;数学;音标;"
+msgid "characters;unicode;"
+msgstr "characters;unicode;字符;万国码;统一码;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -142,25 +136,19 @@ msgstr "字母"
 msgid "Emoticons"
 msgstr "表情"
 
-#: ../src/categoryList.js:95
+#: ../src/categoryList.js:96
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s 分类列表行"
 
-#: ../src/character.js:53
+#: ../src/character.js:52
 msgid "See Also"
 msgstr "另见"
 
-#: ../src/character.js:117 ../src/character.js:139
+#: ../src/character.js:114
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
-
-#. TRANSLATORS: the first variable is a character, the second is a font
-#: ../src/character.js:135
-#, javascript-format
-msgid "%s is not included in %s"
-msgstr "字体 %2$s 不包含字符 %1$s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -174,15 +162,15 @@ msgstr "字符 应用程序已打开"
 msgid "Characters Application exiting"
 msgstr "字符 应用程序正在退出"
 
-#: ../src/menu.js:50
+#: ../src/menu.js:39
 msgid "None"
 msgstr "无"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "未知的字符名称"
 
-#: ../src/searchProvider.js:100
+#: ../src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -213,3 +201,17 @@ msgstr "%s 字符列表"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "字符列表搜索结果"
+
+#~ msgid "About"
+#~ msgstr "关于"
+
+#~ msgid "Character copied to clipboard"
+#~ msgstr "字符已复制到剪贴板"
+
+#~ msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+#~ msgstr ""
+#~ "characters;unicode;punctuation;math;letters;emoji;emoticon;字符;统一码;标点符"
+#~ "号;表情;字母;公式;数学;音标;"
+
+#~ msgid "%s is not included in %s"
+#~ msgstr "字体 %2$s 不包含字符 %1$s"
