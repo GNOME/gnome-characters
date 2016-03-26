@@ -2,25 +2,28 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Dean Chen <wsxy162@gmail.com>, 2015.
+# Jeff Bai <jeffbai@aosc.xyz>, 2015, 2016.
+# Bin Li <binli@gnome.org>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-04-26 06:16+0000\n"
-"PO-Revision-Date: 2015-04-26 16:29+0800\n"
-"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
+"POT-Creation-Date: 2016-03-02 20:35+0000\n"
+"PO-Revision-Date: 2016-03-03 13:02+0800\n"
+"Last-Translator: Bin Li <binli@gnome.org>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Gtranslator 2.91.7\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "关于 字符"
+msgid "About"
+msgstr "关于"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -35,7 +38,7 @@ msgid "Try another search criteria."
 msgstr "尝试其他搜索条件。"
 
 #: ../data/characterlist.ui.h:3
-msgid "Loading..."
+msgid "Loading…"
 msgstr "正在加载…"
 
 #: ../data/characterlist.ui.h:4
@@ -50,12 +53,16 @@ msgstr "你使用的字符将会在这里显示。"
 msgid "Copy Character"
 msgstr "复制字符"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "字符已复制到剪贴板"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "当前页"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "按字体筛选"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -82,8 +89,10 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "查找和插入特殊字符的实用程序"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "characters;unicode;字符;统一码;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"characters;unicode;punctuation;math;letters;emoji;emoticon;字符;统一码;标点符"
+"号;表情;字母;公式;数学;音标;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -97,55 +106,61 @@ msgstr "使用字体渲染字符列表上的字符。"
 msgid "Maximum recent characters"
 msgstr "最近字符的最大数"
 
-#: ../src/categoryList.js:31
+#: ../src/categoryList.js:33
 msgid "Recently Used"
 msgstr "最近使用"
 
-#: ../src/categoryList.js:37
+#: ../src/categoryList.js:39
 msgid "Punctuation"
 msgstr "标点"
 
-#: ../src/categoryList.js:43
+#: ../src/categoryList.js:45
 msgid "Arrows"
 msgstr "箭头"
 
-#: ../src/categoryList.js:49
+#: ../src/categoryList.js:51
 msgid "Bullets"
 msgstr "项目符号"
 
-#: ../src/categoryList.js:55
+#: ../src/categoryList.js:57
 msgid "Pictures"
 msgstr "图片"
 
-#: ../src/categoryList.js:61
+#: ../src/categoryList.js:63
 msgid "Currencies"
 msgstr "货币"
 
-#: ../src/categoryList.js:67
+#: ../src/categoryList.js:69
 msgid "Math"
 msgstr "数学"
 
-#: ../src/categoryList.js:73
-msgid "Latin"
-msgstr "拉丁字母"
+#: ../src/categoryList.js:75
+msgid "Letters"
+msgstr "字母"
 
-#: ../src/categoryList.js:79
+#: ../src/categoryList.js:81
 msgid "Emoticons"
 msgstr "表情"
 
-#: ../src/categoryList.js:94
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s 分类列表行"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "另见"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "字体 %2$s 不包含字符 %1$s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -159,19 +174,20 @@ msgstr "字符 应用程序已打开"
 msgid "Characters Application exiting"
 msgstr "字符 应用程序正在退出"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "无"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "未知的字符名称"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. TRANSLATORS: put your names here, one name per line.
 #: ../src/window.js:165
 msgid "translator-credits"
 msgstr "Dean Chen <wsxy162@gmail.com>, 2015"
@@ -189,11 +205,11 @@ msgstr "字符映射表"
 msgid "%s (%s only)"
 msgstr "%s (限 %s)"
 
-#: ../src/window.js:276
+#: ../src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s 字符列表"
 
-#: ../src/window.js:283
+#: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "字符列表搜索结果"
