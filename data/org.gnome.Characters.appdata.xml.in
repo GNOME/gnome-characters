@@ -19,6 +19,7 @@
     </screenshot>
   </screenshots>
   <project_group>GNOME</project_group>
+  <compulsory_for_desktop>GNOME</compulsory_for_desktop>
   <url type="homepage">https://wiki.gnome.org/Design/Apps/CharacterMap</url>
   <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters</url>
   <url type="donation">http://www.gnome.org/friends/</url>
