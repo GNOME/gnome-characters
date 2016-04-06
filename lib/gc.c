@@ -442,20 +442,27 @@ filter_keywords (GcCharacterIter *iter, ucs4_t uc)
     {
       const gchar *keyword = *keywords++;
       size_t length = strlen (keyword);
+      gchar *p;
 
       if (length >= UNINAME_MAX)
         return FALSE;
 
+      p = g_strstr_len (buffer, UNINAME_MAX, keyword);
+      if (!p)
+	return FALSE;
+
       if (iter->flags & GC_SEARCH_FLAG_WORD)
-        {
-          if (strncmp (buffer, keyword, strlen (keyword)) != 0)
-            return FALSE;
-        }
-      else
-        {
-          if (g_strstr_len (buffer, UNINAME_MAX, keyword) == NULL)
-            return FALSE;
-        }
+	{
+	  while (p)
+	    {
+	      if (p == buffer || g_ascii_isspace (*(p - 1)))
+		break;
+	      p = g_strstr_len (p + 1, UNINAME_MAX, keyword);
+	    }
+
+	  if (!p)
+	    return FALSE;
+	}
     }
 
   return TRUE;
