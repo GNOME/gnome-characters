@@ -208,6 +208,30 @@ const CharacterListWidget = new Lang.Class({
         this._rows = [];
         this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
                         Gdk.EventMask.BUTTON_RELEASE_MASK);
+        this._character = null;
+        this.drag_source_set(Gdk.ModifierType.BUTTON1_MASK,
+                             null,
+                             Gdk.DragAction.COPY);
+        this.drag_source_add_text_targets();
+    },
+
+    vfunc_drag_begin: function(context) {
+        let cellSize = getCellSize(this._fontDescription);
+        this._dragSurface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
+                                                   cellSize,
+                                                   cellSize);
+        let cr = new Cairo.Context(this._dragSurface);
+        cr.setSourceRGBA(1.0, 1.0, 1.0, 1.0);
+        cr.paint();
+        cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
+        let row = this._createCharacterListRow([this._character]);
+        row.draw(cr, 0, 0, cellSize, cellSize);
+        Gtk.drag_set_icon_surface(context, this._dragSurface, 0, 0);
+    },
+
+    vfunc_drag_data_get: function(context, data, info, time) {
+        if (this._character != null)
+            data.set_text(this._character, -1);
     },
 
     vfunc_button_press_event: function(event) {
@@ -217,7 +241,16 @@ const CharacterListWidget = new Lang.Class({
         let y = Math.floor(event.y / cellSize);
         let index = y * this._cellsPerRow + x;
         if (index < this._characters.length)
-            this.emit('character-selected', this._characters[index]);
+            this._character = this._characters[index];
+        else
+            this._character = null;
+        return false;
+    },
+
+    vfunc_button_release_event: function(event) {
+        if (this._character)
+            this.emit('character-selected', this._character);
+        return false;
     },
 
     vfunc_get_request_mode: function() {
