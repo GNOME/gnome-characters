@@ -2,22 +2,23 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Pedro Albuquerque <palbuquerque73@gmail.com>, 2015.
+# Tiago Santos <tiagofsantos81@sapo.pt>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-18 20:11+0000\n"
-"PO-Revision-Date: 2015-12-19 07:21+0000\n"
-"Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
+"POT-Creation-Date: 2016-04-30 07:29+0000\n"
+"PO-Revision-Date: 2016-04-30 16:27+0100\n"
+"Last-Translator: Tiago Santos <tiagofsantos81@sapo.pt>\n"
 "Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\\n\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n;\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "About"
@@ -60,8 +61,9 @@ msgid "Current page"
 msgstr "Página atual"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
-msgstr "Filtrar por letra"
+#| msgid "Filter by font"
+msgid "Filter by Font"
+msgstr "Filtrar por tipo de letra"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
@@ -89,8 +91,9 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Utilitário para localizar e inserir caracteres pouco habituais"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "caracteres;unicode;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"caratéres;unicode;pontuação;matemática;letras;smeileys;emoticons;emoji;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -172,15 +175,15 @@ msgstr "Caracteres iniciado"
 msgid "Characters Application exiting"
 msgstr "Caracteres a sair"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Nenhum"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nome de carácter desconhecido"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -213,6 +216,9 @@ msgstr "%s lista de caracteres"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Lista de caracteres resultado da procura"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "caracteres;unicode;"
 
 #~ msgid "About Characters"
 #~ msgstr "Sobre o Caracteres"
