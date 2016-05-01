@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters 3.19.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-28 16:56+0100\n"
-"PO-Revision-Date: 2016-02-28 16:56+0100\n"
+"POT-Creation-Date: 2016-05-01 14:35+0200\n"
+"PO-Revision-Date: 2016-05-01 14:35+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -86,8 +86,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Verktøyprogram for å finne og sette inn uvanlige tegn"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "tegn;unicode;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "tegn;unicode;sitattegn;matematikk;bokstaver;emoji;smilefjes;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
