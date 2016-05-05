@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-10 20:51+0000\n"
-"PO-Revision-Date: 2016-02-24 18:34+0200\n"
+"POT-Creation-Date: 2016-04-29 07:30+0000\n"
+"PO-Revision-Date: 2016-05-05 21:45+0200\n"
 "Last-Translator: Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -54,7 +54,6 @@ msgid "Copy Character"
 msgstr "Copiar lo caractèr"
 
 #: ../data/character.ui.h:2
-#| msgid "Characters Application started"
 msgid "Character copied to clipboard"
 msgstr "Caractèrs copiats dempuèi lo quichapapièrs"
 
@@ -63,7 +62,6 @@ msgid "Current page"
 msgstr "Pagina actuala"
 
 #: ../data/menu.ui.h:1
-#| msgid "Filter by font"
 msgid "Filter by Font"
 msgstr "Filtrar per poliça"
 
@@ -93,8 +91,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Utilitari per cercar e inserir de caractèrs inabituals."
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "caractèrs;unicode;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "caractèrs;unicode;pontuacion;math;letras;emoji;emoticòna;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -215,6 +213,9 @@ msgstr "%s lista de caractèrs"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Lista dels caractèrs eissits de la recèrca"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "caractèrs;unicode;"
 
 #~ msgid "About Characters"
 #~ msgstr "A prepaus de Caractèrs"
