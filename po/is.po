@@ -1,14 +1,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Sveinn í Felli <sv1@fellsnet.is>, 2015.
+# Sveinn í Felli <sv1@fellsnet.is>, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-02 08:05+0000\n"
-"PO-Revision-Date: 2015-11-02 13:31+0000\n"
+"POT-Creation-Date: 2016-05-05 07:33+0000\n"
+"PO-Revision-Date: 2016-05-15 09:47+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
+msgid "About"
 msgstr "Um hugbúnaðinn"
 
 #: ../data/app-menu.ui.h:2
@@ -50,12 +50,18 @@ msgstr "Stafir munu birtast hér ef þú hefur notað þá."
 msgid "Copy Character"
 msgstr "Afrita staftákn"
 
+#: ../data/character.ui.h:2
+#| msgid "Characters Application started"
+msgid "Character copied to clipboard"
+msgstr "Stafur afritaður á klippispjaldið"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Núverandi síða"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+#| msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Sía eftir leturgerð"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
@@ -64,6 +70,9 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
+"Stafataflan Characters er einfalt nytjatól til að finna og setja inn "
+"óvenjuleg staftákn. Fljótlegt er að finna táknið sem þú leitar að með því að "
+"setja inn stikkorð."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -82,8 +91,9 @@ msgstr ""
 "Nytjatól til að setja inn óvenjuleg staftákn (t.d. sem eru ekki á lyklaborði)"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "stafir;staftákn;unicode;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"stafir;staftákn;unicode;greinamerki;stærðfræði;tjáningartákn;emoji;merki;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -91,7 +101,7 @@ msgstr "Letur fyrir birtingu stafa"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:2
 msgid "Use the font to render characters on the character list."
-msgstr ""
+msgstr "Nota letrið fyrir birtingu stafa í stafalistanum."
 
 #: ../data/org.gnome.Characters.gschema.xml.h:3
 msgid "Maximum recent characters"
@@ -133,19 +143,25 @@ msgstr "Stafir"
 msgid "Emoticons"
 msgstr "Tjáningartákn"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s röð í flokkalista"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Sjá einnig"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s er ekki innifalið í %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -159,15 +175,15 @@ msgstr "Stafaforrit ræsist"
 msgid "Characters Application exiting"
 msgstr "Stafaforrit hættir"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Ekkert"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Óþekkt heiti á staftákni"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -202,3 +218,8 @@ msgstr "%s stafalisti"
 msgid "Search Result Character List"
 msgstr "Listi með leitarniðurstöðum"
 
+#~ msgid "About Characters"
+#~ msgstr "Um hugbúnaðinn"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "stafir;staftákn;unicode;"
