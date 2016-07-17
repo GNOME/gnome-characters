@@ -279,7 +279,7 @@ const MainView = new Lang.Class({
         characterList = this._createCharacterList(
             'search-result', _('Search Result Character List'));
         // FIXME: Can't use GtkContainer.child_get_property.
-        characterList.title = "Search Result";
+        characterList.title = _("Search Result");
         this.add_named(characterList, 'search-result');
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
