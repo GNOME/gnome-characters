@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-29 01:54+0000\n"
-"PO-Revision-Date: 2016-03-05 21:19+0200\n"
+"POT-Creation-Date: 2016-07-17 17:39+0000\n"
+"PO-Revision-Date: 2016-07-24 17:05+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -215,6 +215,12 @@ msgstr "%s simbolių sąrašas"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Paieškos rezultatų simbolių sąrašas"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: ../src/window.js:282
+#| msgid "Search Result Character List"
+msgid "Search Result"
+msgstr "Paieškos rezultatai"
 
 #~ msgid "characters;unicode;"
 #~ msgstr "simboliai;unikodas;"
