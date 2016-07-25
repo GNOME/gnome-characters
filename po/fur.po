@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-06 20:12+0000\n"
-"PO-Revision-Date: 2016-03-06 21:33+0100\n"
+"POT-Creation-Date: 2016-07-17 17:39+0000\n"
+"PO-Revision-Date: 2016-07-25 12:00+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "About"
@@ -65,8 +65,8 @@ msgstr "Filtri par Caratar"
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for by "
-"searching for keywords."
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
 "Caratars al è un sempliç program par la ricercje e l'inseriment di caratars "
 "insolits. Al permet di cirî di corse dai caratars a mieç di une ricercje par "
@@ -77,8 +77,8 @@ msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Al è pussibil ancje esplorâ i caratars par categorie come puntuazions, figuris, "
-"ecc."
+"Al è pussibil ancje esplorâ i caratars par categorie come puntuazions, "
+"figuris, ecc."
 
 #: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
 msgid "Characters"
@@ -211,6 +211,11 @@ msgstr "Liste caratars %s"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Liste caratars de ricercje"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: ../src/window.js:282
+msgid "Search Result"
+msgstr "Risultâts de ricercje"
 
 #~ msgid "characters;unicode;"
 #~ msgstr "unicode;caratars;"
