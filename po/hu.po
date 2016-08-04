@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-04 08:11+0000\n"
-"PO-Revision-Date: 2016-03-04 19:24+0100\n"
+"POT-Creation-Date: 2016-07-17 17:39+0000\n"
+"PO-Revision-Date: 2016-08-04 23:41+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
@@ -214,6 +214,12 @@ msgstr "%s karakterlista"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Keresési eredmény karakterlista"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: ../src/window.js:282
+#| msgid "Search Result Character List"
+msgid "Search Result"
+msgstr "Keresési eredmény"
 
 #~ msgid "characters;unicode;"
 #~ msgstr "karakterek;unicode;"
