@@ -9,21 +9,21 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-05 22:20+0100\n"
-"PO-Revision-Date: 2016-03-05 22:20+0100\n"
+"POT-Creation-Date: 2016-08-18 22:41+0200\n"
+"PO-Revision-Date: 2016-08-18 22:42+0200\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
-"Language: sl\n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: ../data/app-menu.ui.h:1
-msgid "About Characters"
+msgid "About"
 msgstr "O programu"
 
 #: ../data/app-menu.ui.h:2
@@ -54,22 +54,26 @@ msgstr "Znaki bodo izpisani na tem mestu, če jih uporabite."
 msgid "Copy Character"
 msgstr "Kopiraj znak"
 
+#: ../data/character.ui.h:2
+msgid "Character copied to clipboard"
+msgstr "Znak je kopiran v odložišče"
+
 #: ../data/mainwindow.ui.h:1
 msgid "Current page"
 msgstr "Trenutna stran"
 
 #: ../data/menu.ui.h:1
-msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "Filtriraj po pisavi"
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:1
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for by "
-"searching for keywords."
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
-"Znaki so enostaven program za iskanje in vstavljanje nenavadnih znakov. Omogoča "
-"hitro iskanje prek ključnih besed."
+"Znaki so enostaven program za iskanje in vstavljanje nenavadnih znakov. "
+"Omogoča hitro iskanje prek ključnih besed."
 
 #: ../data/org.gnome.Characters.appdata.xml.in.h:2
 msgid ""
@@ -87,8 +91,8 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "Program za iskanje in vstavljanje nenavadnih znakov iz nabora"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "znaki;unikod;Unicode;nabor;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "znaki;unikod;unicode;matematika;ličila;črke;emotikoni;izrazne ikone;"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
@@ -138,19 +142,25 @@ msgstr "Črke"
 msgid "Emoticons"
 msgstr "Izrazne ikone"
 
-#: ../src/categoryList.js:96
+#: ../src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Vrstica seznama kategorije %s"
 
-#: ../src/character.js:52
+#: ../src/character.js:53
 msgid "See Also"
 msgstr "Poglejte tudi"
 
-#: ../src/character.js:114
+#: ../src/character.js:117 ../src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikod U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: ../src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s ni vključen v %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -164,15 +174,15 @@ msgstr "Program Znaki je zagnan"
 msgid "Characters Application exiting"
 msgstr "Program Znaki se končuje"
 
-#: ../src/menu.js:39
+#: ../src/menu.js:50
 msgid "None"
 msgstr "Brez"
 
-#: ../src/searchProvider.js:94
+#: ../src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Neznano ime znaka"
 
-#: ../src/searchProvider.js:97
+#: ../src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
@@ -204,20 +214,19 @@ msgstr "Seznam znakov %s"
 msgid "Search Result Character List"
 msgstr "Seznam rezultatov iskanja znakov"
 
-#~ msgid "About"
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: ../src/window.js:282
+msgid "Search Result"
+msgstr "Zadetki iskanja"
+
+#~ msgid "About Characters"
 #~ msgstr "O programu"
 
-#~ msgid "Character copied to clipboard"
-#~ msgstr "Znak je kopiran v odložišče"
-
-#~ msgid "Filter by Font"
+#~ msgid "Filter by font"
 #~ msgstr "Filtriraj po pisavi"
 
-#~ msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-#~ msgstr "znaki;unikod;unicode;matematika;ličila;črke;emotikoni;izrazne ikone;"
-
-#~ msgid "%s is not included in %s"
-#~ msgstr "%s ni vključen v %s"
+#~ msgid "characters;unicode;"
+#~ msgstr "znaki;unikod;Unicode;nabor;"
 
 #~ msgid "Loading..."
 #~ msgstr "Nalaganje ..."
