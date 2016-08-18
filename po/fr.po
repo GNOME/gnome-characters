@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-07 08:12+0000\n"
+"POT-Creation-Date: 2016-07-17 17:39+0000\n"
 "PO-Revision-Date: 2016-02-27 10:40+0100\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -212,8 +212,8 @@ msgstr "%s liste de caractères"
 msgid "Search Result Character List"
 msgstr "Liste des caractères issus de la recherche"
 
-#~ msgid "characters;unicode;"
-#~ msgstr "caractères;unicode;"
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: ../src/window.js:282
+msgid "Search Result"
+msgstr "Résultat de la recherche"
 
-#~ msgid "About Characters"
-#~ msgstr "À propos de Caractères"
