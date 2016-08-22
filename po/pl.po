@@ -1,31 +1,27 @@
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Aviary.pl
-# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
-# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
-# gnomepl@aviary.pl
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Polish translation for gnome-characters.
+# Copyright © 2015-2016 the gnome-characters authors.
+# This file is distributed under the same license as the gnome-characters package.
 # Piotr Drąg <piotrdrag@gmail.com>, 2015-2016.
-# Aviary.pl <gnomepl@aviary.pl>, 2015-2016.
+# Aviary.pl <community-poland@mozilla.org>, 2015-2016.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 19:48+0100\n"
-"PO-Revision-Date: 2016-02-29 19:49+0100\n"
+"POT-Creation-Date: 2016-08-22 17:10+0200\n"
+"PO-Revision-Date: 2016-08-22 17:11+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <gnomepl@aviary.pl>\n"
+"Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: Poland\n"
 
 #: ../data/app-menu.ui.h:1
 msgid "About"
-msgstr "O programie"
+msgstr "O programie"
 
 #: ../data/app-menu.ui.h:2
 msgid "Quit"
@@ -49,7 +45,7 @@ msgstr "Nie odnaleziono żadnych ostatnio używanych znaków"
 
 #: ../data/characterlist.ui.h:5
 msgid "Characters will appear here if you use them."
-msgstr "Znaki pojawią się w tym miejscu po ich użyciu."
+msgstr "Znaki pojawią się w tym miejscu po ich użyciu."
 
 #: ../data/character.ui.h:1
 msgid "Copy Character"
@@ -73,7 +69,7 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"Tablica znaków to proste narzędzie do wyszukiwania i wstawiania znaków "
+"Tablica znaków to proste narzędzie do wyszukiwania i wstawiania znaków "
 "specjalnych. Umożliwia ono szybkie znajdowanie znaków dzięki słowom "
 "kluczowym."
 
@@ -91,7 +87,7 @@ msgstr "Znaki"
 
 #: ../data/org.gnome.Characters.desktop.in.h:2
 msgid "Utility application to find and insert unusual characters"
-msgstr "Narzędzie do wyszukiwania i wstawiania znaków specjalnych"
+msgstr "Narzędzie do wyszukiwania i wstawiania znaków specjalnych"
 
 #: ../data/org.gnome.Characters.desktop.in.h:3
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
@@ -101,7 +97,7 @@ msgstr ""
 
 #: ../data/org.gnome.Characters.gschema.xml.h:1
 msgid "Font to display characters"
-msgstr "Czcionka, w jakiej wyświetlać znaki"
+msgstr "Czcionka, w jakiej wyświetlać znaki"
 
 #: ../data/org.gnome.Characters.gschema.xml.h:2
 msgid "Use the font to render characters on the character list."
@@ -165,7 +161,7 @@ msgstr "Unicode U+%04s"
 #: ../src/character.js:135
 #, javascript-format
 msgid "%s is not included in %s"
-msgstr "Znaku „%s” nie ma w czcionce %s"
+msgstr "Znaku „%s” nie ma w czcionce %s"
 
 #: ../src/main.js:58
 msgid "Characters Application"
@@ -197,7 +193,7 @@ msgstr "U+%s, %s: %s"
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2015-2016\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2015-2016"
+"Aviary.pl <community-poland@mozilla.org>, 2015-2016"
 
 #: ../src/window.js:166
 msgid "GNOME Characters"
@@ -220,3 +216,8 @@ msgstr "Lista znaków %s"
 #: ../src/window.js:280
 msgid "Search Result Character List"
 msgstr "Wynik wyszukiwania na liście znaków"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: ../src/window.js:282
+msgid "Search Result"
+msgstr "Wyniki wyszukiwania"
