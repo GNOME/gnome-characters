@@ -1,3 +1,38 @@
+3.21.91
+===
+
+- Update Unicode standard to 9.0.0
+- characterList: Support drag and drop of characters (bug#764757)
+
+New And Updated Translations
+============================
+Alexandre Franke (fr)
+Anders Jonsson (sv)
+Andika Triwidada (id)
+Arash Mousavi (fa)
+Aurimas Černius (lt)
+Balázs Úr (hu)
+Cédric Valmary (oc)
+Cheng-Chia Tseng (zh_TW)
+Daniel Korostil (uk)
+Daniel Mustieles (es)
+Dušan Kazik (sk)
+Fabio Tomat (fur)
+Fran Dieguez (gl)
+Jeff Bai (zh_CN)
+Jiri Grönroos (fi)
+Khaled Hosny (ar)
+Lucas Capalbo (es)
+Marek Cernocky (cs)
+Mario Blättermann (de)
+Matej Urbančič (sl)
+Piotr Drąg (ca) (es) (gl) (ln) (sl) (sr@latin)
+Piotr Drąg (pl)
+René Manassé GALEKWA (ln)
+Sveinn í Felli (is)
+Tiago Santos (pt)
+Yosef Or Boczko (he)
+
 3.20.0
 ===
 
