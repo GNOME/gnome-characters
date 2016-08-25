@@ -16,7 +16,8 @@ resource_DATA = org.gnome.Characters.data.gresource org.gnome.Characters.Backgro
 appsdir = $(datadir)/applications
 apps_DATA = org.gnome.Characters.desktop
 
-@INTLTOOL_DESKTOP_RULE@
+org.gnome.Characters.desktop: org.gnome.Characters.desktop.in
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 gsettings_SCHEMAS = org.gnome.Characters.gschema.xml
 
@@ -24,8 +25,8 @@ gsettings_SCHEMAS = org.gnome.Characters.gschema.xml
 
 appstream_XML = org.gnome.Characters.appdata.xml
 
-@APPSTREAM_XML_RULES@
-@INTLTOOL_XML_RULE@
+org.gnome.Characters.appdata.xml: org.gnome.Characters.appdata.xml.in
+	$(AM_V_GEN) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
 org.gnome.Characters.service: org.gnome.Characters.service.in
 	$(AM_V_GEN) sed \
@@ -57,6 +58,8 @@ EXTRA_DIST = \
 	org.gnome.Characters.appdata.xml.in \
 	$(app_resource_files) \
 	ShellSearchProvider2.xml \
+	$(apps_DATA) \
+	$(appstream_XML) \
 	$(NULL)
 
 CLEANFILES = \
@@ -66,7 +69,6 @@ CLEANFILES = \
 	org.gnome.Characters.BackgroundService.data.gresource \
 	org.gnome.Characters.appdata.xml \
 	org.gnome.Characters.appdata.valid \
-	$(apps_DATA) \
 	*.valid \
 	gschemas.compiled \
 	$(NULL)

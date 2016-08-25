@@ -1,8 +1,8 @@
-[type: gettext/glade]data/app-menu.ui
-[type: gettext/glade]data/characterlist.ui
-[type: gettext/glade]data/character.ui
-[type: gettext/glade]data/mainwindow.ui
-[type: gettext/glade]data/menu.ui
+data/app-menu.ui
+data/characterlist.ui
+data/character.ui
+data/mainwindow.ui
+data/menu.ui
 data/org.gnome.Characters.appdata.xml.in
 data/org.gnome.Characters.desktop.in
 data/org.gnome.Characters.gschema.xml
