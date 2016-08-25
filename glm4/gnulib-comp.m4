@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2015 Free Software Foundation, Inc.
+# Copyright (C) 2002-2016 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -482,7 +482,7 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_MODULE([0.9.6], [unictype/property-zero-width])
   gl_LIBUNISTRING_MODULE([0.9.6], [unictype/scripts])
   gl_LIBUNISTRING_LIBHEADER([0.9.5], [uniname.h])
-  gl_LIBUNISTRING_MODULE([0.9.6], [uniname/uniname])
+  gl_LIBUNISTRING_MODULE([0.9.7], [uniname/uniname])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [uninorm.h])
   gl_LIBUNISTRING_MODULE([0.9.6], [uninorm/canonical-decomposition])
   AC_REQUIRE([AC_C_INLINE])
