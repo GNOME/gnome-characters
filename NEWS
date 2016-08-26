@@ -1,3 +1,18 @@
+3.21.91.1
+===
+
+- Remove intltool markers from .appdata and .desktop
+- Update tables for "See Also" list to Unicode 9.0.0
+
+New And Updated Translations
+============================
+Anders Jonsson (sv)
+Balázs Úr (hu)
+Enrico Nicoletto (pt_BR)
+Marek Cernocky (cs)
+Matej Urbančič (sl)
+Piotr Drąg (pl)
+
 3.21.91
 ===
 
