@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-07-17 17:39+0000\n"
-"PO-Revision-Date: 2016-08-12 17:25+0200\n"
+"POT-Creation-Date: 2016-08-25 15:44+0000\n"
+"PO-Revision-Date: 2016-08-26 11:56+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>>\n"
 "Language: cs\n"
@@ -21,51 +21,59 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#: ../data/app-menu.ui.h:1
+#: data/app-menu.ui:6
 msgid "About"
 msgstr "O aplikaci"
 
-#: ../data/app-menu.ui.h:2
+#: data/app-menu.ui:10
 msgid "Quit"
 msgstr "Ukončit"
 
-#: ../data/characterlist.ui.h:1
+#: data/characterlist.ui:30
 msgid "Search produced empty result"
 msgstr "Výsledek hledání je prázdný"
 
-#: ../data/characterlist.ui.h:2
+#: data/characterlist.ui:41
 msgid "Try another search criteria."
 msgstr "Zkuste jiné kritérium hledání."
 
-#: ../data/characterlist.ui.h:3
+#: data/characterlist.ui:73
 msgid "Loading…"
 msgstr "Načítá se…"
 
-#: ../data/characterlist.ui.h:4
+#: data/characterlist.ui:108
 msgid "No recent characters found"
 msgstr "Nenalezen žádný nedávný znak"
 
-#: ../data/characterlist.ui.h:5
+#: data/characterlist.ui:119
 msgid "Characters will appear here if you use them."
 msgstr "Zde se objeví znaky, které jste již použili."
 
-#: ../data/character.ui.h:1
+#: data/character.ui:68
 msgid "Copy Character"
 msgstr "Kopírovat znak"
 
-#: ../data/character.ui.h:2
+#: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Znak byl zkopírován do schránky"
 
-#: ../data/mainwindow.ui.h:1
+#: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "Aktuální stránka"
 
-#: ../data/menu.ui.h:1
+#: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "Filtrovat podle písma"
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+msgid "GNOME Characters"
+msgstr "Znaky GNOME"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Aplikace s mapou znaků"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -74,7 +82,7 @@ msgstr ""
 "Znaky je jednoduchá pomocná aplikace pro vyhledávání a vkládání méně běžných "
 "znaků. Znak, který hledáte, můžete rychle najít podle klíčových slov."
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+#: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -82,147 +90,145 @@ msgstr ""
 "Znaky můžete také procházet podle kategorií, jako například „interpunkce“, "
 "„obrázky“ atd."
 
-#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
 msgid "Characters"
 msgstr "Znaky"
 
-#: ../data/org.gnome.Characters.desktop.in.h:2
+#: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Pomocná aplikace pro vyhledávání a vkládání méně běžných znaků."
 
-#: ../data/org.gnome.Characters.desktop.in.h:3
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "gnome-characters"
+msgstr "gnome-characters"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
 msgstr ""
 "znak;znaky;unicode;unikód;interpunkce;interpunkční;znaménko;znaménka;"
 "matematické;symboly;značky;písmena;smajlík;smajlíci;emotikona;emotikony;"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:1
+#: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
 msgstr "Písmo pro zobrazení znaků"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:2
+#: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
 msgstr "Použít toto písmo pro vykreslování znaků v seznamu."
 
-#: ../data/org.gnome.Characters.gschema.xml.h:3
+#: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "Maximální počet nedávných znaků"
 
-#: ../src/categoryList.js:33
+#: src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Nedávno použité"
 
-#: ../src/categoryList.js:39
+#: src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Interpunkce"
 
-#: ../src/categoryList.js:45
+#: src/categoryList.js:45
 msgid "Arrows"
 msgstr "Šipky"
 
-#: ../src/categoryList.js:51
+#: src/categoryList.js:51
 msgid "Bullets"
 msgstr "Odrážky"
 
-#: ../src/categoryList.js:57
+#: src/categoryList.js:57
 msgid "Pictures"
 msgstr "Obrázky"
 
-#: ../src/categoryList.js:63
+#: src/categoryList.js:63
 msgid "Currencies"
 msgstr "Měny"
 
-#: ../src/categoryList.js:69
+#: src/categoryList.js:69
 msgid "Math"
 msgstr "Matematika"
 
-#: ../src/categoryList.js:75
+#: src/categoryList.js:75
 msgid "Letters"
 msgstr "Písmena"
 
-#: ../src/categoryList.js:81
+#: src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Emotikony"
 
-#: ../src/categoryList.js:95
+#: src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Řádek v seznam znaků %s"
 
-#: ../src/character.js:53
+#: src/character.js:53
 msgid "See Also"
 msgstr "Viz také"
 
-#: ../src/character.js:117 ../src/character.js:139
+#: src/character.js:117 src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikód U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: ../src/character.js:135
+#: src/character.js:135
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s v písmu %s schází"
 
-#: ../src/main.js:58
+#: src/main.js:58
 msgid "Characters Application"
 msgstr "Aplikace Znaky"
 
-#: ../src/main.js:95
+#: src/main.js:95
 msgid "Characters Application started"
 msgstr "Aplikace Znaky je spuštěna"
 
-#: ../src/main.js:103
+#: src/main.js:103
 msgid "Characters Application exiting"
 msgstr "Aplikace Znaky se ukončuje"
 
-#: ../src/menu.js:50
+#: src/menu.js:50
 msgid "None"
 msgstr "žádný"
 
-#: ../src/searchProvider.js:97
+#: src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Neznámý název znaku"
 
-#: ../src/searchProvider.js:100
+#: src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: ../src/window.js:165
+#: src/window.js:165
 msgid "translator-credits"
 msgstr ""
 "Marek Černocký <marek@manet.cz>\n"
 "Marek Černoch <marek.cernoch@email.cz>"
 
-#: ../src/window.js:166
-msgid "GNOME Characters"
-msgstr "Znaky GNOME"
-
-#: ../src/window.js:167
+#: src/window.js:167
 msgid "Character Map"
 msgstr "Mapa znaků"
 
-#: ../src/window.js:187
+#: src/window.js:187
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (jen %s)"
 
-#: ../src/window.js:273
+#: src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "Seznam znaků %s"
 
-#: ../src/window.js:280
+#: src/window.js:280
 msgid "Search Result Character List"
 msgstr "Seznam nalezených znaků"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: ../src/window.js:282
-#| msgid "Search Result Character List"
+#: src/window.js:282
 msgid "Search Result"
 msgstr "Výsledek hledání"
-
-#~ msgid "characters;unicode;"
-#~ msgstr "znaky;unicode;unikód;"
