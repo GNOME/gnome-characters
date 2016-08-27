@@ -25,6 +25,8 @@ gsettings_SCHEMAS = org.gnome.Characters.gschema.xml
 
 appstream_XML = org.gnome.Characters.appdata.xml
 
+@APPSTREAM_XML_RULES@
+
 org.gnome.Characters.appdata.xml: org.gnome.Characters.appdata.xml.in
 	$(AM_V_GEN) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
