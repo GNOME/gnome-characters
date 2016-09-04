@@ -6,7 +6,7 @@
 # 
 # lcapalbo <lucas.capalbo@gmail.com>, 2016.
 # 
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015., 2016.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015, 2016.
 #
 msgid ""
 msgstr ""
