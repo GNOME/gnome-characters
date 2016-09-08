@@ -22,7 +22,6 @@ GITIGNOREFILES = \
 	.anjuta \
 	.anjuta_sym_db.db \
 	ABOUT-NLS \
-	m4/intltool.m4 \
 	m4/libtool.m4 \
 	m4/lt* \
 	m4/appstream-xml.m4 \
