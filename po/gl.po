@@ -6,9 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-18\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-23 23:22+0200\n"
-"PO-Revision-Date: 2016-08-23 23:22+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-09-06 21:18+0000\n"
+"PO-Revision-Date: 2016-09-11 00:27+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician\n"
 "Language: gl\n"
@@ -19,51 +20,60 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/app-menu.ui.h:1
+#: data/app-menu.ui:6
 msgid "About"
 msgstr "Sobre"
 
-#: ../data/app-menu.ui.h:2
+#: data/app-menu.ui:10
 msgid "Quit"
 msgstr "Saír"
 
-#: ../data/characterlist.ui.h:1
+#: data/characterlist.ui:30
 msgid "Search produced empty result"
 msgstr "A busca non devolveu resultados"
 
-#: ../data/characterlist.ui.h:2
+#: data/characterlist.ui:41
 msgid "Try another search criteria."
 msgstr "Probe con outros criterios de busca."
 
-#: ../data/characterlist.ui.h:3
+#: data/characterlist.ui:73
 msgid "Loading…"
 msgstr "Cargando…"
 
-#: ../data/characterlist.ui.h:4
+#: data/characterlist.ui:108
 msgid "No recent characters found"
 msgstr "Non se atoparon caracteres recentes"
 
-#: ../data/characterlist.ui.h:5
+#: data/characterlist.ui:119
 msgid "Characters will appear here if you use them."
 msgstr "Os caracteres aparecerán aquí cando os use."
 
-#: ../data/character.ui.h:1
+#: data/character.ui:68
 msgid "Copy Character"
 msgstr "Copiar caracter"
 
-#: ../data/character.ui.h:2
+#: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Caracter copiado ao portapapeis"
 
-#: ../data/mainwindow.ui.h:1
+#: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "Páxina actual"
 
-#: ../data/menu.ui.h:1
+#: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "Filtrar por tipo de letra"
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+msgid "GNOME Characters"
+msgstr "Caracteres de GNOME"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+#| msgid "Characters Application"
+msgid "Character map application"
+msgstr "Aplicativo de mapa de caracteres"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -73,148 +83,151 @@ msgstr ""
 "normais. Permítelle atopar de forma rápida o caracter que está buscando por "
 "etiquetas."
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+#: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Tamén pode explorar caracteres por categorís, como Puntuación, Imaxes, etc."
+"Tamén pode explorar caracteres por categorías, como Puntuación, Imaxes, etc."
 
-#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
 msgid "Characters"
 msgstr "Caracteres"
 
-#: ../data/org.gnome.Characters.desktop.in.h:2
+#: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Utilidade para atopar e inserir caracteres non usuais"
 
-#: ../data/org.gnome.Characters.desktop.in.h:3
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+#| msgid "Characters"
+msgid "gnome-characters"
+msgstr "gnome-characters"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
 msgstr "caracters;unicode;puntuación;matemático;letras;emoji;emoticono;"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:1
+#: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
 msgstr "Tipo de letra para mostrar os caracteres"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:2
+#: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
 msgstr ""
 "Usar o tipo de letra para renderizar caracteres na lista de caracteres."
 
-#: ../data/org.gnome.Characters.gschema.xml.h:3
+#: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "Número máximo de caracteres recentes"
 
-#: ../src/categoryList.js:33
+#: src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Usados recentemente"
 
-#: ../src/categoryList.js:39
+#: src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Puntuación"
 
-#: ../src/categoryList.js:45
+#: src/categoryList.js:45
 msgid "Arrows"
 msgstr "Frechas"
 
-#: ../src/categoryList.js:51
+#: src/categoryList.js:51
 msgid "Bullets"
 msgstr "Viñetas"
 
-#: ../src/categoryList.js:57
+#: src/categoryList.js:57
 msgid "Pictures"
 msgstr "Imaxes"
 
-#: ../src/categoryList.js:63
+#: src/categoryList.js:63
 msgid "Currencies"
 msgstr "Moedas"
 
-#: ../src/categoryList.js:69
+#: src/categoryList.js:69
 msgid "Math"
 msgstr "Matemáticas"
 
-#: ../src/categoryList.js:75
+#: src/categoryList.js:75
 msgid "Letters"
 msgstr "Letras"
 
-#: ../src/categoryList.js:81
+#: src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Emoticons"
 
-#: ../src/categoryList.js:95
+#: src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Fila da lista de categoría %s"
 
-#: ../src/character.js:53
+#: src/character.js:53
 msgid "See Also"
 msgstr "Vexa tamén"
 
-#: ../src/character.js:117 ../src/character.js:139
+#: src/character.js:117 src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: ../src/character.js:135
+#: src/character.js:135
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s non está incluído en %s"
 
-#: ../src/main.js:58
+#: src/main.js:58
 msgid "Characters Application"
 msgstr "Aplicativo de caracteres"
 
-#: ../src/main.js:95
+#: src/main.js:95
 msgid "Characters Application started"
 msgstr "Aplicativo Caracteres iniciado"
 
-#: ../src/main.js:103
+#: src/main.js:103
 msgid "Characters Application exiting"
 msgstr "Saíndo do aplicativo Caracteres"
 
-#: ../src/menu.js:50
+#: src/menu.js:50
 msgid "None"
 msgstr "Ningún"
 
-#: ../src/searchProvider.js:97
+#: src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Nome de caracter descoñecido"
 
-#: ../src/searchProvider.js:100
+#: src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: ../src/window.js:165
+#: src/window.js:165
 msgid "translator-credits"
 msgstr "Fran Dieguez <fran.dieguez@gnome.org>, 2015"
 
-#: ../src/window.js:166
-msgid "GNOME Characters"
-msgstr "Caracteres de GNOME"
-
-#: ../src/window.js:167
+#: src/window.js:167
 msgid "Character Map"
 msgstr "Mapa de caracteres"
 
-#: ../src/window.js:187
+#: src/window.js:187
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (só %s)"
 
-#: ../src/window.js:273
+#: src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
-#: ../src/window.js:280
+#: src/window.js:280
 msgid "Search Result Character List"
 msgstr "Lista de caracteres dos resultados da busca"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: ../src/window.js:282
+#: src/window.js:282
 msgid "Search Result"
 msgstr "Resultados da busca"
 
