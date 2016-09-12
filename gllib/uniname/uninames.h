@@ -11791,7 +11791,7 @@ static const char unicode_name_words[71408] = {
   'P', 'A', 'S', 'S', 'I', 'V', 'E', '-', 'P', 'U', 'L', 'L', '-', 'D', 'O', 'W', 'N', '-', 'O', 'U', 'T', 'P', 'U', 'T',
 };
 #define UNICODE_CHARNAME_NUM_WORDS 11782
-static const struct { uint16_t extra_offset; uint16_t ind_offset; } unicode_name_by_length[26] = {
+static const struct { uint32_t extra_offset; uint16_t ind_offset; } unicode_name_by_length[26] = {
   { 0, 0 },
   { 0, 0 },
   { 26, 26 },
