@@ -1,3 +1,39 @@
+3.22.0
+===
+
+- build: Fix appdata installation
+- build: Don't run intltoolize in autogen.sh
+- build: Regenerate uninames.h
+- Add more options to XGETTEXT_OPTIONS in po/Makevars
+
+New And Updated Translations
+============================
+Alexandre Franke (fr)
+Andika Triwidada (id)
+Arash Mousavi (fa)
+Ask Hjorth Larsen (da)
+Aurimas Černius (lt)
+Baurzhan Muftakhidinov (kk)
+Bruce Cowan (en_GB)
+Daniel Korostil (uk)
+Daniel Mustieles (es)
+Dušan Kazik (sk)
+Fabio Tomat (fur)
+Fran Dieguez (gl)
+Hannie Dumoleyn (nl)
+Inaki Larranaga Murgoitio (eu)
+Jeremy Bicha (es)
+Jiri Grönroos (fi)
+Mario Blättermann (de)
+Milo Casagrande (it)
+Rūdolfs Mazurs (lv)
+Seong-ho Cho (ko)
+Stas Solovey (ru)
+Tiago Santos (pt)
+Tom Tryfonidis (el)
+Yosef Or Boczko (he)
+Мирослав Николић (sr) (sr@latin)
+
 3.21.91.1
 ===
 
