@@ -1,0 +1,223 @@
+# Tajik translation for gnome-characters.
+# Copyright (C) 2016 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# Victor Ibragimov <victor.ibragimov@gmail.com>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-10-23 16:08+0000\n"
+"PO-Revision-Date: 2016-10-24 11:21+0500\n"
+"Language-Team: Tajik <tg@li.org>\n"
+"Language: tg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 1.8.4\n"
+
+#: data/app-menu.ui:6
+msgid "About"
+msgstr "Дар бораи барнома"
+
+#: data/app-menu.ui:10
+msgid "Quit"
+msgstr "Анҷоми кор"
+
+#: data/characterlist.ui:30
+msgid "Search produced empty result"
+msgstr ""
+
+#: data/characterlist.ui:41
+msgid "Try another search criteria."
+msgstr ""
+
+#: data/characterlist.ui:73
+msgid "Loading…"
+msgstr "Дар ҳоли боркунӣ…"
+
+#: data/characterlist.ui:108
+msgid "No recent characters found"
+msgstr ""
+
+#: data/characterlist.ui:119
+msgid "Characters will appear here if you use them."
+msgstr ""
+
+#: data/character.ui:68
+msgid "Copy Character"
+msgstr "Нусха бардоштани аломат"
+
+#: data/character.ui:86
+msgid "Character copied to clipboard"
+msgstr ""
+
+#: data/mainwindow.ui:12
+msgid "Current page"
+msgstr "Саҳифаи ҷорӣ"
+
+#: data/menu.ui:17
+msgid "Filter by Font"
+msgstr ""
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+msgid "GNOME Characters"
+msgstr "Аломатҳои GNOME"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr ""
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for by "
+"searching for keywords."
+msgstr ""
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+msgid "Characters"
+msgstr "Аломатҳо"
+
+#: data/org.gnome.Characters.desktop.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "gnome-characters"
+msgstr "gnome-characters"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+
+#: data/org.gnome.Characters.gschema.xml:5
+msgid "Font to display characters"
+msgstr "Шрифт барои намоиш додани аломатҳо"
+
+#: data/org.gnome.Characters.gschema.xml:6
+msgid "Use the font to render characters on the character list."
+msgstr ""
+
+#: data/org.gnome.Characters.gschema.xml:15
+msgid "Maximum recent characters"
+msgstr ""
+
+#: src/categoryList.js:33
+msgid "Recently Used"
+msgstr ""
+
+#: src/categoryList.js:39
+msgid "Punctuation"
+msgstr ""
+
+#: src/categoryList.js:45
+msgid "Arrows"
+msgstr ""
+
+#: src/categoryList.js:51
+msgid "Bullets"
+msgstr ""
+
+#: src/categoryList.js:57
+msgid "Pictures"
+msgstr "Суратҳо"
+
+#: src/categoryList.js:63
+msgid "Currencies"
+msgstr ""
+
+#: src/categoryList.js:69
+msgid "Math"
+msgstr ""
+
+#: src/categoryList.js:75
+msgid "Letters"
+msgstr ""
+
+#: src/categoryList.js:81
+msgid "Emoticons"
+msgstr ""
+
+#: src/categoryList.js:95
+#, javascript-format
+msgid "%s Category List Row"
+msgstr ""
+
+#: src/character.js:53
+msgid "See Also"
+msgstr ""
+
+#: src/character.js:117 src/character.js:139
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Юникоди U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr ""
+
+#: src/main.js:58
+msgid "Characters Application"
+msgstr "Барномаи аломатҳо"
+
+#: src/main.js:95
+msgid "Characters Application started"
+msgstr "Барномаи аломатҳо оғоз ёфт"
+
+#: src/main.js:103
+msgid "Characters Application exiting"
+msgstr "Барномаи аломатҳо анҷом ёфт"
+
+#: src/menu.js:50
+msgid "None"
+msgstr "Ҳеҷ"
+
+#: src/searchProvider.js:97
+msgid "Unknown character name"
+msgstr "Номи аломат номаълум аст"
+
+#: src/searchProvider.js:100
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:165
+msgid "translator-credits"
+msgstr "Victor Ibragimov -  victor.ibragimov@gmail.com"
+
+#: src/window.js:167
+msgid "Character Map"
+msgstr "Харитаи аломатҳо"
+
+#: src/window.js:187
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (танҳо %s)"
+
+#: src/window.js:273
+#, javascript-format
+msgid "%s Character List"
+msgstr "Рӯйхати аломатҳои %s"
+
+#: src/window.js:280
+msgid "Search Result Character List"
+msgstr "Натиҷаи ҷустуҷӯ дар рӯйхати аломатҳо"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:282
+msgid "Search Result"
+msgstr "Натиҷаи ҷустуҷӯ"
