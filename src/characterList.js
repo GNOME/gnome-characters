@@ -174,8 +174,9 @@ const CharacterListRow = new Lang.Class({
         layout.set_ellipsize(Pango.EllipsizeMode.END);
         layout.set_alignment(Pango.Alignment.CENTER);
         layout.set_font_description(this._overlayFontDescription);
-        var name = Gc.character_name(uc);
-        layout.set_text(Util.capitalize(name), -1);
+        let name = Gc.character_name(uc);
+        let text = name == null ? _('Unassigned') : Util.capitalize(name);
+        layout.set_text(text, -1);
         let [logicalRect, inkRect] = layout.get_extents();
         cr.moveTo(cellRect.x - logicalRect.x / Pango.SCALE +
                   (cellRect.width - logicalRect.width / Pango.SCALE) / 2,
