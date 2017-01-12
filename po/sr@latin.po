@@ -104,7 +104,7 @@ msgstr "Pomagalo za nalaženje i umetanje neobičnih znakova."
 #: data/org.gnome.Characters.desktop.in:7
 #| msgid "Characters"
 msgid "gnome-characters"
-msgstr "gnomov-znakovnik"
+msgstr "gnome-characters"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
