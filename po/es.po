@@ -3,20 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Irene Sáez Sanz <irenesaez946@gmail.com>, 2015.
-# 
+#
 # lcapalbo <lucas.capalbo@gmail.com>, 2016.
-# 
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015, 2016.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-25 15:44+0000\n"
-"PO-Revision-Date: 2016-08-29 14:19+0200\n"
+"POT-Creation-Date: 2017-01-10 11:41+0000\n"
+"PO-Revision-Date: 2017-01-11 09:38+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
+"Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,12 +32,13 @@ msgid "Quit"
 msgstr "Salir"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+#| msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "La búsqueda no ha producido resultados"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Pruebe otro criterio de búsqueda."
+msgid "Try a different search."
+msgstr "Pruebe a hacer una búsqueda diferente."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -73,7 +73,6 @@ msgid "GNOME Characters"
 msgstr "Caracteres de GNOME"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
-#| msgid "Characters Application"
 msgid "Character map application"
 msgstr "Aplicación de mapa de caracteres"
 
@@ -106,7 +105,6 @@ msgstr ""
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -184,6 +182,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s no está incluido en %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "No asignado"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Aplicación Caracteres"
@@ -236,6 +238,9 @@ msgstr "Buscar en la lista de resultados de caracteres"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Buscar resultados"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Pruebe otro criterio de búsqueda."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "caracteres;unicode;"
