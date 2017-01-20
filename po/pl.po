@@ -1,15 +1,16 @@
 # Polish translation for gnome-characters.
-# Copyright © 2015-2016 the gnome-characters authors.
+# Copyright © 2015-2017 the gnome-characters authors.
 # This file is distributed under the same license as the gnome-characters package.
-# Piotr Drąg <piotrdrag@gmail.com>, 2015-2016.
-# Aviary.pl <community-poland@mozilla.org>, 2015-2016.
+# Piotr Drąg <piotrdrag@gmail.com>, 2015-2017.
+# Aviary.pl <community-poland@mozilla.org>, 2015-2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-25 15:44+0000\n"
-"PO-Revision-Date: 2016-08-26 13:50+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-01-20 22:58+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -28,12 +29,12 @@ msgid "Quit"
 msgstr "Zakończ"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "Brak wyników wyszukiwania"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Proszę spróbować innych kryteriów wyszukiwania."
+msgid "Try a different search."
+msgstr "Proszę spróbować innych słów."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -177,6 +178,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "Znaku „%s” nie ma w czcionce %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Nieprzydzielone"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Tablica znaków"
@@ -206,8 +211,8 @@ msgstr "U+%s, %s: %s"
 #: src/window.js:165
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2015-2016\n"
-"Aviary.pl <community-poland@mozilla.org>, 2015-2016"
+"Piotr Drąg <piotrdrag@gmail.com>, 2015-2017\n"
+"Aviary.pl <community-poland@mozilla.org>, 2015-2017"
 
 #: src/window.js:167
 msgid "Character Map"
