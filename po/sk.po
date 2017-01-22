@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-28 15:04+0000\n"
-"PO-Revision-Date: 2016-08-29 09:00+0200\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-01-22 15:20+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -28,12 +28,12 @@ msgid "Quit"
 msgstr "Ukončiť"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "Vyhľadávaním sa nenašli žiadne výsledky"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Skúste iné kritériá vyhľadávania."
+msgid "Try a different search."
+msgstr "Skúste vyhľadať niečo iné."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -175,6 +175,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "Znak %s nie je zahrnutý v písme %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Nepriradené"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Aplikácia Znaky"
@@ -227,6 +231,9 @@ msgstr "Zoznam výsledkov vyhľadávaných znakov"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Výsledok vyhľadávania"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Skúste iné kritériá vyhľadávania."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "znaky;unicode;"
