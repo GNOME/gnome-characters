@@ -2,15 +2,15 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2015, 2016.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 21:18+0000\n"
-"PO-Revision-Date: 2016-09-07 12:28+0300\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-02-04 19:40+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -29,11 +29,12 @@ msgid "Quit"
 msgstr "Lopeta"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
-msgstr "Haku ei tuottanut tuloksia"
+#| msgid "Search produced empty result"
+msgid "Search found no results"
+msgstr "Haku ei tuottanut tuloksia."
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
+msgid "Try a different search."
 msgstr "Kokeile eri hakuehtoja."
 
 #: data/characterlist.ui:73
@@ -42,7 +43,7 @@ msgstr "Ladataan…"
 
 #: data/characterlist.ui:108
 msgid "No recent characters found"
-msgstr "Äskettäisiä merkkejä ei löytynyt"
+msgstr "Viimeisimpiä merkkejä ei löytynyt"
 
 #: data/characterlist.ui:119
 msgid "Characters will appear here if you use them."
@@ -69,7 +70,6 @@ msgid "GNOME Characters"
 msgstr "Gnomen merkit"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
-#| msgid "Characters Application"
 msgid "Character map application"
 msgstr "Merkkikarttasovellus"
 
@@ -100,7 +100,6 @@ msgstr "Sovellus epätavallisten merkkien etsintään ja syöttämiseen"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -179,6 +178,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "Merkki %s ei sisälly fonttiin %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Määrittämätön"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Merkkisovellus"
@@ -231,6 +234,9 @@ msgstr "Hakutulosten merkkiluettelo"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Hakutulos"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Kokeile eri hakuehtoja."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "characters;unicode;merkit;"
