@@ -11,16 +11,16 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-25 15:44+0000\n"
-"PO-Revision-Date: 2016-08-28 17:03+0200\n"
-"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-02-09 12:41+0100\n"
+"Last-Translator: Bernd Homuth <dev@hmt.im>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -31,12 +31,12 @@ msgid "Quit"
 msgstr "Beenden"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "Suche ergab keine Treffer"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Versuchen Sie, ein anderes Suchkriterium zu verwenden."
+msgid "Try a different search."
+msgstr "Versuchen Sie eine andere Suche"
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -102,7 +102,6 @@ msgstr "Hilfsprogramm zum Auffinden und Einsetzen von selten benutzen Zeichen"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -180,6 +179,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s ist nicht in %s enthalten"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Nicht zugeordnet"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Zeichen-Anwendung"
@@ -235,6 +238,9 @@ msgstr "Suchergebnisse der Zeichenliste"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Suchergebnis"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Versuchen Sie, ein anderes Suchkriterium zu verwenden."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "Zeichen;Unicode;Schriftzeichen;"
