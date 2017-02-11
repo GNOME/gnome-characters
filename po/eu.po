@@ -2,216 +2,240 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2015, 2016.
 #
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 09:18+0200\n"
-"PO-Revision-Date: 2016-09-15 21:24+0100\n"
-"Last-Translator: dooteo <dooteo@zundan.com>\n"
-"Language-Team: Basque <librezale@librezale.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-01-27 11:25+0100\n"
+"Last-Translator: \n"
+"Language-Team: Basque <kde-i18n-doc@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 1.5\n"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:1
+#: data/app-menu.ui:6
+msgid "About"
+msgstr "Honi buruz"
+
+#: data/app-menu.ui:10
+msgid "Quit"
+msgstr "Irten"
+
+#: data/characterlist.ui:30
+#| msgid "Search produced empty result"
+msgid "Search found no results"
+msgstr "Bilaketak ez du emaitzarik aurkitu"
+
+#: data/characterlist.ui:41
+msgid "Try a different search."
+msgstr "Saiatu bestelako bilaketa batekin."
+
+#: data/characterlist.ui:73
+msgid "Loading…"
+msgstr "Kargatzen..."
+
+#: data/characterlist.ui:108
+msgid "No recent characters found"
+msgstr "Ez da azken aldian erabilitako karaktererik aurkitu"
+
+#: data/characterlist.ui:119
+msgid "Characters will appear here if you use them."
+msgstr "Karaktereak hemen agertuko dira erabiltzen badituzu."
+
+#: data/character.ui:68
+msgid "Copy Character"
+msgstr "Kopiatu karakterea"
+
+#: data/character.ui:86
+msgid "Character copied to clipboard"
+msgstr "Karakterea arbelean kopiatuta"
+
+#: data/mainwindow.ui:12
+msgid "Current page"
+msgstr "Uneko orria"
+
+#: data/menu.ui:17
+msgid "Filter by Font"
+msgstr "Iragazi letra-tipoaren arabera"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+msgid "GNOME Characters"
+msgstr "GNOMEren Karaktereak"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Karaktere-maparen aplikazioa"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"'Karaktereak' aplikazio xume bat da ohikoak ez diren karaktereak bilatu eta "
+"txertatzeko. Gako-hitzen arabera bilatzea nahi duzun karakterea bizkor "
+"aurkitzen du."
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Kategorien arabera ere araka ditzakezu karaktereak. Hala nola, puntuazioa, "
+"irudiak, eta abar."
+
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+msgid "Characters"
+msgstr "Karaktereak"
+
+#: data/org.gnome.Characters.desktop.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Aplikazio bat da ohikoak ez diren karaktereak bilatu eta txertatzeko"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "gnome-characters"
+msgstr "gnome-characters"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "karaktereak;unicode;puntuazioa;matematika;hizkiak;aurpegierak;ikurrak;"
+
+#: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
 msgstr "Letra-tipoa karaktereak bistaratzeko"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:2
+#: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
 msgstr "Erabili letra-tipoa karaktereak karaktereen zerrendan marrazteko."
 
-#: ../data/org.gnome.Characters.gschema.xml.h:3
+#: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "Gehienezko azken karaktereak"
 
-#: ../src/categoryList.js:33
+#: src/categoryList.js:33
 msgid "Recently Used"
 msgstr "Duela gutxi erabilita"
 
-#: ../src/categoryList.js:39
+#: src/categoryList.js:39
 msgid "Punctuation"
 msgstr "Puntuazioa"
 
-#: ../src/categoryList.js:45
+#: src/categoryList.js:45
 msgid "Arrows"
 msgstr "Geziak"
 
-#: ../src/categoryList.js:51
+#: src/categoryList.js:51
 msgid "Bullets"
 msgstr "Buletak"
 
-#: ../src/categoryList.js:57
+#: src/categoryList.js:57
 msgid "Pictures"
 msgstr "Irudiak"
 
-#: ../src/categoryList.js:63
+#: src/categoryList.js:63
 msgid "Currencies"
 msgstr "Dibisak"
 
-#: ../src/categoryList.js:69
+#: src/categoryList.js:69
 msgid "Math"
 msgstr "Matematika"
 
-#: ../src/categoryList.js:75
+#: src/categoryList.js:75
 msgid "Letters"
 msgstr "Hizkiak"
 
-#: ../src/categoryList.js:81
+#: src/categoryList.js:81
 msgid "Emoticons"
 msgstr "Aurpegierak"
 
-#: ../src/categoryList.js:95
+#: src/categoryList.js:95
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "'%s' kategoria-zerrendako errenkada"
 
-#: ../src/character.js:53
+#: src/character.js:53
 msgid "See Also"
 msgstr "Ikus halaber"
 
-#: ../src/character.js:117 ../src/character.js:139
+#: src/character.js:117 src/character.js:139
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: ../src/character.js:135
+#: src/character.js:135
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "'%s' ez dago '%s' letra-tipoan"
 
-#: ../src/main.js:58
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Esleitu gabea"
+
+#: src/main.js:58
 msgid "Characters Application"
 msgstr "'Karaktereak' aplikazioa"
 
-#: ../src/main.js:95
+#: src/main.js:95
 msgid "Characters Application started"
 msgstr "'Karaktereak' aplikazioa abiarazita"
 
-#: ../src/main.js:103
+#: src/main.js:103
 msgid "Characters Application exiting"
 msgstr "'Karaktereak' aplikaziotik irteten"
 
-#: ../src/menu.js:50
+#: src/menu.js:50
 msgid "None"
 msgstr "Bat ere ez"
 
-#: ../src/searchProvider.js:97
+#: src/searchProvider.js:97
 msgid "Unknown character name"
 msgstr "Karakterearen izena ezezaguna"
 
-#: ../src/searchProvider.js:100
+#: src/searchProvider.js:100
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#: ../src/service.js:51
-msgid "Characters"
-msgstr "Karaktereak"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: ../src/window.js:165
+#: src/window.js:165
 msgid "translator-credits"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 
-#: ../src/window.js:166
-msgid "GNOME Characters"
-msgstr "GNOMEren Karaktereak"
-
-#: ../src/window.js:167
+#: src/window.js:167
 msgid "Character Map"
 msgstr "Karaktere-mapa"
 
-#: ../src/window.js:187
+#: src/window.js:187
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s soilik)"
 
-#: ../src/window.js:273
+#: src/window.js:273
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s karaktere-zerrenda"
 
-#: ../src/window.js:280
+#: src/window.js:280
 msgid "Search Result Character List"
 msgstr "Bilaketaren emaitzako karaktere-zerrenda"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: ../src/window.js:282
+#: src/window.js:282
 msgid "Search Result"
 msgstr "Bilaketaren emaitzak"
 
-#~ msgid "About"
-#~ msgstr "Honi buruz"
-
-#~ msgid "Quit"
-#~ msgstr "Irten"
-
-#~ msgid "Search produced empty result"
-#~ msgstr "Bilaketak emaitza hutsa sortu du"
-
 #~ msgid "Try another search criteria."
 #~ msgstr "Saiatu bilaketa beste irizpide batekin."
-
-#~ msgid "Loading…"
-#~ msgstr "Kargatzen..."
-
-#~ msgid "No recent characters found"
-#~ msgstr "Ez da azken aldian erabilitako karaktererik aurkitu"
-
-#~ msgid "Characters will appear here if you use them."
-#~ msgstr "Karaktereak hemen agertuko dira erabiltzen badituzu."
-
-#~ msgid "Copy Character"
-#~ msgstr "Kopiatu karakterea"
-
-#~ msgid "Character copied to clipboard"
-#~ msgstr "Karakterea arbelean kopiatuta"
-
-#~ msgid "Current page"
-#~ msgstr "Uneko orria"
-
-#~ msgid "Filter by Font"
-#~ msgstr "Iragazi letra-tipoaren arabera"
-
-#~| msgid "Characters Application"
-#~ msgid "Character map application"
-#~ msgstr "Karaktere-maparen aplikazioa"
-
-#~ msgid ""
-#~ "Characters is a simple utility application to find and insert unusual "
-#~ "characters. It allows you to quickly find the character you are looking "
-#~ "for by searching for keywords."
-#~ msgstr ""
-#~ "'Karaktereak' aplikazio xume bat da ohikoak ez diren karaktereak bilatu "
-#~ "eta txertatzeko. Gako-hitzen arabera bilatzea nahi duzun karakterea "
-#~ "bizkor aurkitzen du."
-
-#~ msgid ""
-#~ "You can also browse characters by categories, such as Punctuation, "
-#~ "Pictures, etc."
-#~ msgstr ""
-#~ "Kategorien arabera ere araka ditzakezu karaktereak. Hala nola, "
-#~ "puntuazioa, irudiak, eta abar."
-
-#~ msgid "Utility application to find and insert unusual characters"
-#~ msgstr ""
-#~ "Aplikazio bat da ohikoak ez diren karaktereak bilatu eta txertatzeko"
-
-#~| msgid "Characters"
-#~ msgid "gnome-characters"
-#~ msgstr "gnome-characters"
-
-#~ msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-#~ msgstr ""
-#~ "karaktereak;unicode;puntuazioa;matematika;hizkiak;aurpegierak;ikurrak;"
 
 #~ msgid "About Characters"
 #~ msgstr "'Karaktereak' buruz"
