@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-09 14:04+0000\n"
-"PO-Revision-Date: 2017-01-10 00:05+0100\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-02-11 15:08+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -30,12 +30,12 @@ msgid "Quit"
 msgstr "Ukončit"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
-msgstr "Výsledek hledání je prázdný"
+msgid "Search found no results"
+msgstr "Nebylo nic nalezeno"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Zkuste jiné kritérium hledání."
+msgid "Try a different search."
+msgstr "Zkuste jiné hledání."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -236,3 +236,4 @@ msgstr "Seznam nalezených znaků"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Výsledek hledání"
+
