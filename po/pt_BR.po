@@ -1,26 +1,26 @@
 # Brazilian Portuguese translation for gnome-characters.
-# Copyright (C) 2016 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2017 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2015.
-# Rafael Fontenelle <rffontenelle@gmail.com>, 2015, 2016.
 # Artur de Aquino Morais <artur.morais93@outlook.com>, 2016.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2015, 2016.
-#
+# Rafael Fontenelle <rafaelff@gnome.org>, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-25 15:44+0000\n"
-"PO-Revision-Date: 2016-08-25 20:11-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-02-21 16:56-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
+"X-Project-Style: gnome\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -31,12 +31,13 @@ msgid "Quit"
 msgstr "Sair"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
-msgstr "A pesquisa produziu resultado vazio"
+#| msgid "Search produced empty result"
+msgid "Search found no results"
+msgstr "A pesquisa localizou nenhum resultado"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Tente outro critério de pesquisa."
+msgid "Try a different search."
+msgstr "Tente uma pesquisa diferente."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -102,7 +103,6 @@ msgstr "Aplicativo utilitário para localizar e inserir caracteres incomuns"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -179,6 +179,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s não está incluído em %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Não atribuído"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Aplicativo de caracteres"
@@ -207,7 +211,9 @@ msgstr "U+%s, %s: %s"
 #. TRANSLATORS: put your names here, one name per line.
 #: src/window.js:165
 msgid "translator-credits"
-msgstr "Enrico Nicoletto <liverig@gmail.com>"
+msgstr ""
+"Enrico Nicoletto <liverig@gmail.com>\n"
+"Rafael Fontenelle <rafaelff@gnome.org>"
 
 #: src/window.js:167
 msgid "Character Map"
@@ -231,6 +237,9 @@ msgstr "Resultado da pesquisa da lista de caracteres"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Resultado da pesquisa"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Tente outro critério de pesquisa."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "caracteres;unicode;"
