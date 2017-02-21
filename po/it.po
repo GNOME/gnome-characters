@@ -1,15 +1,15 @@
 # Italian translation of gnome-characters.
-# Copyright (C) 2015, 2016 Free Software Foundation, Inc.
+# Copyright (C) 2015, 2016, 2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-characters package.
-# Milo Casagrande <milo@milo.name>, 2015, 2016.
+# Milo Casagrande <milo@milo.name>, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 21:18+0000\n"
-"PO-Revision-Date: 2016-09-14 14:20+0200\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-02-19 18:52+0100\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <gnome-it@gnome.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 2.0beta3\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -28,12 +28,12 @@ msgid "Quit"
 msgstr "Esci"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
-msgstr "Nessun risultato"
+msgid "Search found no results"
+msgstr "Nessun risultato trovato"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Provare un'altra ricerca."
+msgid "Try a different search."
+msgstr "Provare un altro criterio di ricerca."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -99,7 +99,6 @@ msgstr "Applicazione per cercare e inserire caratteri insoliti"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -178,6 +177,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s non è incluso in %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Non assegnato"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Applicazione Caratteri"
@@ -230,3 +233,6 @@ msgstr "Elenco caratteri ricerca"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Risultati ricerca"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Provare un'altra ricerca."
