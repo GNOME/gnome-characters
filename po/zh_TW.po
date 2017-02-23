@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 21:18+0000\n"
-"PO-Revision-Date: 2016-10-09 21:11+0800\n"
+"POT-Creation-Date: 2017-01-18 21:52+0000\n"
+"PO-Revision-Date: 2017-02-23 08:46+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -27,12 +27,12 @@ msgid "Quit"
 msgstr "退出"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
-msgstr "搜尋產生的空白結果"
+msgid "Search found no results"
+msgstr "搜尋找不到結果"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "嘗試另一個搜尋條件。"
+msgid "Try a different search."
+msgstr "嘗試不同的搜尋。"
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -95,7 +95,6 @@ msgstr "尋找並插入不常用字元的公用程式"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -174,6 +173,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s 不在 %s 中"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "未分配"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "字元應用程式"
@@ -226,6 +229,9 @@ msgstr "搜尋結果字元清單"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "搜尋結果"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "嘗試另一個搜尋條件。"
 
 #~ msgid "About Characters"
 #~ msgstr "關於《字元》"
