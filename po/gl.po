@@ -2,22 +2,23 @@
 # Copyright (C) 2015 THE gnome-characters'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Fran <fran@localhost.localdomain>, 2015.
-# Fran Dieguez <frandieguez@gnome.org>, 2015, 2016.
+# Fran Dieguez <frandieguez@gnome.org>, 2015, 2016, 2017.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-18\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 21:18+0000\n"
-"PO-Revision-Date: 2016-09-11 00:27+0200\n"
+"POT-Creation-Date: 2017-02-23 23:59+0000\n"
+"PO-Revision-Date: 2017-02-26 22:48+0100\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
-"Language-Team: Galician\n"
+"Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "X-Project-Style: gnome\n"
 
 #: data/app-menu.ui:6
@@ -29,12 +30,13 @@ msgid "Quit"
 msgstr "Saír"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+#| msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "A busca non devolveu resultados"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Probe con outros criterios de busca."
+msgid "Try a different search."
+msgstr "Probe con unha busca distinta."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -69,7 +71,6 @@ msgid "GNOME Characters"
 msgstr "Caracteres de GNOME"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
-#| msgid "Characters Application"
 msgid "Character map application"
 msgstr "Aplicativo de mapa de caracteres"
 
@@ -100,7 +101,6 @@ msgstr "Utilidade para atopar e inserir caracteres non usuais"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -178,6 +178,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s non está incluído en %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Non asignado"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Aplicativo de caracteres"
@@ -230,6 +234,9 @@ msgstr "Lista de caracteres dos resultados da busca"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Resultados da busca"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Probe con outros criterios de busca."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "caracteres;unicode;"
