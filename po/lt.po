@@ -7,11 +7,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-25 15:44+0000\n"
-"PO-Revision-Date: 2016-09-04 12:35+0300\n"
-"Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
+"POT-Creation-Date: 2017-03-02 06:18+0000\n"
+"PO-Revision-Date: 2017-03-03 19:48+0200\n"
+"Last-Translator: Moo\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -30,12 +30,12 @@ msgid "Quit"
 msgstr "Išeiti"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
-msgstr "Paieška nedavė rezultatų"
+msgid "Search found no results"
+msgstr "Paieška negrąžino jokių rezultatų"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Bandykite kitus paieškos kriterijus."
+msgid "Try a different search."
+msgstr "Bandykite kitą paiešką."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -70,7 +70,6 @@ msgid "GNOME Characters"
 msgstr "GNOME simboliai"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
-#| msgid "Characters Application"
 msgid "Character map application"
 msgstr "Simbolių žemėlapio programa"
 
@@ -101,7 +100,6 @@ msgstr "Programa neįprastų simbolių suradimui ir įterpimui"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -178,6 +176,10 @@ msgstr "Unikodas U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s nėra įtrauktas į %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Nepriskirta"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Simbolių programa"
@@ -232,6 +234,9 @@ msgstr "Paieškos rezultatų simbolių sąrašas"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Paieškos rezultatai"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Bandykite kitus paieškos kriterijus."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "simboliai;unikodas;"
