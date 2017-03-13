@@ -31,7 +31,7 @@ msgstr "Surt"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
-msgstr "La cerca no donat resultats"
+msgstr "La cerca no ha donat resultats"
 
 #: data/characterlist.ui:41
 msgid "Try a different search."
