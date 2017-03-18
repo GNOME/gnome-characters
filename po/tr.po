@@ -4,15 +4,16 @@
 # Kaan Özdinçer <kaanozdincer@gmail.com>, 2015.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2016.
 # Muhammet Kara <muhammetk@gmail.com>, 2015, 2016.
+# Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-12 07:47+0000\n"
-"PO-Revision-Date: 2016-10-23 19:07+0300\n"
-"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
+"POT-Creation-Date: 2017-03-13 17:51+0000\n"
+"PO-Revision-Date: 2017-03-18 22:12+0300\n"
+"Last-Translator: Çağatay Yiğit Şahin <cyigitsahin@outlook.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -31,12 +32,12 @@ msgid "Quit"
 msgstr "Çık"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
-msgstr "Arama sonuç üretmedi"
+msgid "Search found no results"
+msgstr "Arama sonuç bulamadı"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Başka bir arama kıstası deneyin."
+msgid "Try a different search."
+msgstr "Farklı bir arama deneyin."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -180,6 +181,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s, %s içinde bulunmuyor"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Atanmamış"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Karakterler Uygulaması"
@@ -232,6 +237,9 @@ msgstr "Karakter Listesi Arama Sonucu"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Arama Sonucu"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Başka bir arama kıstası deneyin."
 
 #~ msgid "About Characters"
 #~ msgstr "Characters Hakkında"
