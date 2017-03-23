@@ -2,15 +2,15 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Pedro Albuquerque <palbuquerque73@gmail.com>, 2015.
-# Tiago Santos <tiagofsantos81@sapo.pt>, 2014 - 2016.
+# Tiago Santos <tiagofsantos81@sapo.pt>, 2014 - 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 21:18+0000\n"
-"PO-Revision-Date: 2016-09-07 06:22+0100\n"
+"POT-Creation-Date: 2017-03-07 13:15+0000\n"
+"PO-Revision-Date: 2017-03-23 15:09+0000\n"
 "Last-Translator: Tiago Santos <tiagofsantos81@sapo.pt>\n"
 "Language-Team: Português\n"
 "Language: pt\n"
@@ -29,12 +29,12 @@ msgid "Quit"
 msgstr "Sair"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "A procura não produziu resultados"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Tente outro critério de procura."
+msgid "Try a different search."
+msgstr "Tente uma procura diferente"
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -176,6 +176,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s não está incluído em %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Não atribuído"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Aplicação Caracteres"
@@ -230,6 +234,9 @@ msgstr "Lista de caracteres resultado da procura"
 #: src/window.js:282
 msgid "Search Result"
 msgstr "Resultado da procura"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Tente outro critério de procura."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "caracteres;unicode;"
