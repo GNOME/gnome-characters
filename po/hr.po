@@ -1,0 +1,234 @@
+# Croatian translation for gnome-characters.
+# Copyright (C) 2017 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-04-08 16:54+0000\n"
+"PO-Revision-Date: 2017-04-10 22:02+0200\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: data/app-menu.ui:6
+msgid "About"
+msgstr "O programu"
+
+#: data/app-menu.ui:10
+msgid "Quit"
+msgstr "Zatvori"
+
+#: data/characterlist.ui:30
+msgid "Search found no results"
+msgstr "Nema pronađenih rezultata"
+
+#: data/characterlist.ui:41
+msgid "Try a different search."
+msgstr "Pokušajte drugačiju pretragu"
+
+#: data/characterlist.ui:73
+msgid "Loading…"
+msgstr "Učitavanje…"
+
+#: data/characterlist.ui:108
+msgid "No recent characters found"
+msgstr "Nema pronađenih nedavnih znakova"
+
+#: data/characterlist.ui:119
+msgid "Characters will appear here if you use them."
+msgstr "Znakovi će se pojaviti ovdje ako ih korsitite."
+
+#: data/character.ui:68
+msgid "Copy Character"
+msgstr "Kopiraj znak"
+
+#: data/character.ui:86
+msgid "Character copied to clipboard"
+msgstr "Znak je kopiran u međuspremnik"
+
+#: data/mainwindow.ui:12
+msgid "Current page"
+msgstr "Trenutna stranica"
+
+#: data/menu.ui:17
+msgid "Filter by Font"
+msgstr "Filtriraj po slovima"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+msgid "GNOME Characters"
+msgstr "GNOME znakovi"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Aplikacij mape znakova"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Znakovi je mala aplikacija pomagala za pronalazak i umetanje neuobičajenih "
+"znakova. Omogućuje vam brz pronalazak znaka kojeg tražite pretragom po "
+"ključnoj riječi."
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Isto tako možete pregledavati znakove po kategorijama, poput interpunkcija, "
+"slika, itd."
+
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+msgid "Characters"
+msgstr "Znakovi"
+
+#: data/org.gnome.Characters.desktop.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Aplikacija pomagala za pronalazak i umetanje neuobičajenih znakova"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "gnome-characters"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "znakovi;unikôd;interpunkcija;matematika;slova;emoji;emotkoin;"
+
+#: data/org.gnome.Characters.gschema.xml:5
+msgid "Font to display characters"
+msgstr "Slovo za prikaz znaka"
+
+#: data/org.gnome.Characters.gschema.xml:6
+msgid "Use the font to render characters on the character list."
+msgstr "Koristi slovo za prikaz znakova na popisu znaka."
+
+#: data/org.gnome.Characters.gschema.xml:15
+msgid "Maximum recent characters"
+msgstr "Najviše nedavnih znakova"
+
+#: src/categoryList.js:33
+msgid "Recently Used"
+msgstr "Nedavno korišteno"
+
+#: src/categoryList.js:39
+msgid "Punctuation"
+msgstr "Interpunkcija"
+
+#: src/categoryList.js:45
+msgid "Arrows"
+msgstr "Strelice"
+
+#: src/categoryList.js:51
+msgid "Bullets"
+msgstr "Grafičke oznake"
+
+#: src/categoryList.js:57
+msgid "Pictures"
+msgstr "Slike"
+
+#: src/categoryList.js:63
+msgid "Currencies"
+msgstr "Valute"
+
+#: src/categoryList.js:69
+msgid "Math"
+msgstr "Matematika"
+
+#: src/categoryList.js:75
+msgid "Letters"
+msgstr "Slova"
+
+#: src/categoryList.js:81
+msgid "Emoticons"
+msgstr "Emotkoini"
+
+#: src/categoryList.js:95
+#, javascript-format
+msgid "%s Category List Row"
+msgstr "%s redak popisa kategorije"
+
+#: src/character.js:53
+msgid "See Also"
+msgstr "Još pogledajte"
+
+#: src/character.js:117 src/character.js:139
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Unikôd U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s nije uključen u %s"
+
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Nedodjeljeno"
+
+#: src/main.js:58
+msgid "Characters Application"
+msgstr "Aplikacija znakova"
+
+#: src/main.js:95
+msgid "Characters Application started"
+msgstr "Aplikacija znakova pokrenuta"
+
+#: src/main.js:103
+msgid "Characters Application exiting"
+msgstr "Aplikacija znakova zatvorena"
+
+#: src/menu.js:50
+msgid "None"
+msgstr "Nepoznat"
+
+#: src/searchProvider.js:97
+msgid "Unknown character name"
+msgstr "Nepoznat naziv znaka"
+
+#: src/searchProvider.js:100
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:165
+msgid "translator-credits"
+msgstr "gogo https://launchpad.net/~trebelnik-stefina"
+
+#: src/window.js:167
+msgid "Character Map"
+msgstr "Mapa znaka"
+
+#: src/window.js:187
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (%s samo)"
+
+#: src/window.js:273
+#, javascript-format
+msgid "%s Character List"
+msgstr "%s popis znakova"
+
+#: src/window.js:280
+msgid "Search Result Character List"
+msgstr "Pretraži rezultat popisa znakova"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:282
+msgid "Search Result"
+msgstr "Rezult pretrage"
