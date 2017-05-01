@@ -1,0 +1,225 @@
+# Gujarati translation for gnome-characters.
+# Copyright (C) 2016 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# વિશાલ ભલાણી <vishalbhalani89@gmail.com>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-08-28 04:41+0000\n"
+"PO-Revision-Date: 2016-08-28 10:42+0200\n"
+"Language-Team: Gujarati <gu@li.org>\n"
+"Language: gu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: વિશાલ ભલાણી <vishalbhalani89@gmail.com>\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: data/app-menu.ui:6
+msgid "About"
+msgstr "વિશે"
+
+#: data/app-menu.ui:10
+msgid "Quit"
+msgstr "બહાર નીકળો"
+
+#: data/characterlist.ui:30
+msgid "Search produced empty result"
+msgstr "શોધનું પરિણામ ખાલી અાવ્યુ"
+
+#: data/characterlist.ui:41
+msgid "Try another search criteria."
+msgstr "બીજો શોધ માપદંડથી પ્રયાસ કરો."
+
+#: data/characterlist.ui:73
+msgid "Loading…"
+msgstr "લાવી રહ્યા છે"
+
+#: data/characterlist.ui:108
+msgid "No recent characters found"
+msgstr "કોઈ તાજેતરના અક્ષરો મળ્યા નથી"
+
+#: data/characterlist.ui:119
+msgid "Characters will appear here if you use them."
+msgstr "જો તમે અક્ષરો વાપરસો તો તે અહીં દેખાશે."
+
+#: data/character.ui:68
+msgid "Copy Character"
+msgstr "નકલ કરો"
+
+#: data/character.ui:86
+msgid "Character copied to clipboard"
+msgstr "અક્ષરની ક્લિપબોર્ડ પર નકલ કરેલ છે"
+
+#: data/mainwindow.ui:12
+msgid "Current page"
+msgstr "વર્તમાન પાનું"
+
+#: data/menu.ui:17
+msgid "Filter by Font"
+msgstr "ફોન્ટથી ગાળો"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+msgid "GNOME Characters"
+msgstr "GNOME અક્ષરો"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "અક્ષરનો નકશો એપલીકા"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"અક્ષરો ઓ શોધવા અને અસામાન્ય અક્ષરો દાખલ કરવા માટે એક સરળ ઉપયોગીતા એપ્લિકેશન છે. તે "
+"તમને ઝડપથી તમારા કીવર્ડ્સ માટે અક્ષરને શોધવા માટે પરવાનગી આપે છે."
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "તમે વિરામચિહ્ન, ચિત્રો, વગેરે દ્વારા પણ અક્ષરો બ્રાઉઝ કરી શકો છો."
+
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+msgid "Characters"
+msgstr "અક્ષરો"
+
+#: data/org.gnome.Characters.desktop.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "અક્ષરો શોધવા અને અસામાન્ય અક્ષરો દાખલ કરવા માટે એક સરળ ઉપયોગીતા એપ્લિકેશન"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "gnome-characters"
+msgstr "gnome-characters"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "અક્ષરો;યુનિકોડ;ચિહ્ન;ગણીત;હાવભાવ;ભાવનાઓ;"
+
+#: data/org.gnome.Characters.gschema.xml:5
+msgid "Font to display characters"
+msgstr "અક્ષરો દર્શાવા માટનાં ફોન્ટ"
+
+#: data/org.gnome.Characters.gschema.xml:6
+msgid "Use the font to render characters on the character list."
+msgstr "અક્ષર યાદી પર અક્ષરો દોરવા માટે ફોન્ટ ઉપયોગ કરો."
+
+#: data/org.gnome.Characters.gschema.xml:15
+msgid "Maximum recent characters"
+msgstr "મહત્તમ તાજેતરના અક્ષરો"
+
+#: src/categoryList.js:33
+msgid "Recently Used"
+msgstr "તાજેતરમાં વાપરેલ"
+
+#: src/categoryList.js:39
+msgid "Punctuation"
+msgstr "ચિહ્ન"
+
+#: src/categoryList.js:45
+msgid "Arrows"
+msgstr "તીરો"
+
+#: src/categoryList.js:51
+msgid "Bullets"
+msgstr "ગોળીઓ"
+
+#: src/categoryList.js:57
+msgid "Pictures"
+msgstr "ચિત્રો"
+
+#: src/categoryList.js:63
+msgid "Currencies"
+msgstr "ચલણ"
+
+#: src/categoryList.js:69
+msgid "Math"
+msgstr "ગણીત"
+
+#: src/categoryList.js:75
+msgid "Letters"
+msgstr "અક્ષરો"
+
+#: src/categoryList.js:81
+msgid "Emoticons"
+msgstr "ભાવનાઓ"
+
+#: src/categoryList.js:95
+#, javascript-format
+msgid "%s Category List Row"
+msgstr "%s વર્ગ યાદી ની લીટી"
+
+#: src/character.js:53
+msgid "See Also"
+msgstr "પણ જુઓ"
+
+#: src/character.js:117 src/character.js:139
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "યુનિકોડ U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s નો સમાવેશ %s માં થયેલ નથી"
+
+#: src/main.js:58
+msgid "Characters Application"
+msgstr "અક્ષરો એપલીકા"
+
+#: src/main.js:95
+msgid "Characters Application started"
+msgstr "અક્ષરો એપલીકા ચાલુ"
+
+#: src/main.js:103
+msgid "Characters Application exiting"
+msgstr "અક્ષરો એપલીકા બંધ"
+
+#: src/menu.js:50
+msgid "None"
+msgstr "કંઈ નહિં"
+
+#: src/searchProvider.js:97
+msgid "Unknown character name"
+msgstr "અજ્ઞાત અક્ષર નામ"
+
+#: src/searchProvider.js:100
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:165
+msgid "translator-credits"
+msgstr "વિશાલ ભલાણી <vishalbhalani89@gmail.com>"
+
+#: src/window.js:167
+msgid "Character Map"
+msgstr "અક્ષરનો નકશો"
+
+#: src/window.js:187
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (%s ફક્ત)"
+
+#: src/window.js:273
+#, javascript-format
+msgid "%s Character List"
+msgstr "%s અક્ષર યાદી"
+
+#: src/window.js:280
+msgid "Search Result Character List"
+msgstr "શોધનું પરિણામ અક્ષર યાદી"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:282
+msgid "Search Result"
+msgstr "શોધનું પરિણામ"
