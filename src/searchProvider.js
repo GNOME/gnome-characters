@@ -29,7 +29,7 @@ const MAX_SEARCH_RESULTS = 100
 const SearchProviderInterface = Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0).toArray().toString();
 
 const SearchProvider = new Lang.Class({
-    Name: 'WeatherSearchProvider',
+    Name: 'CharactersSearchProvider',
 
     _init: function(application) {
         this._app = application;
