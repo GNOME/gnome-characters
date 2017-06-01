@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-05-17 21:53+0300\n"
+"PO-Revision-Date: 2017-05-30 19:08+0300\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: Uladzimir Manulenka <vlma@tut.by>\n"
+"Language: be_BY\n"
+
+#: data/app-menu.ui:6
+msgid "About"
+msgstr "Пра праграму"
+
+#: data/app-menu.ui:10
+msgid "Quit"
+msgstr "Выхад"
+
+#: data/characterlist.ui:30
+msgid "Search produced empty result"
+msgstr "Пошук выдае пусты вынік"
+
+#: data/characterlist.ui:41
+msgid "Try another search criteria."
+msgstr "Паспрабуйце іншыя крытэрыі пошуку."
+
+#: data/characterlist.ui:73
+msgid "Loading…"
+msgstr "Загрузка…"
+
+#: data/characterlist.ui:108
+msgid "No recent characters found"
+msgstr "Апошнія сімвалы не знойдзены"
+
+#: data/characterlist.ui:119
+msgid "Characters will appear here if you use them."
+msgstr "Сімвалы ўзнікнуць тут, калі вы і іх выкарыстаеце."
+
+#: data/character.ui:68
+msgid "Copy Character"
+msgstr "Капіраваць сімвал"
+
+#: data/character.ui:86
+msgid "Character copied to clipboard"
+msgstr "Сімвал скапіраваны ў буфер абмену"
+
+#: data/mainwindow.ui:12
+msgid "Current page"
+msgstr "Бягучая старонка"
+
+#: data/menu.ui:17
+msgid "Filter by Font"
+msgstr "Фільтр па шрыфту"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+msgid "GNOME Characters"
+msgstr "Сімвалы GNOME"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Дастасаванне мапы сімвалаў"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Сімвалы - гэта зычайнае службовае дастасаванне для пошуку і ўстаўкі "
+"незвычайных сімвалаў. Яно дазваляе вам хутка шукаць сімвал які вы шукаеце "
+"шукаючы па ключавых словах."
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Вы, так сама, можаце праглядаць сімвалы па катэгорыях, напрыклад Пунктуацыя, "
+"Малюнкі і г.д."
+
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+msgid "Characters"
+msgstr "Сімвалы"
+
+#: data/org.gnome.Characters.desktop.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Утыліта для пошуку і ўстаўкі незвычайных сімвалаў"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "gnome-characters"
+msgstr "сімвалы GNOME"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "сімвалы;унікод;пунктуацыя;лічбы;літары;эмоджы;смайлік;"
+
+#: data/org.gnome.Characters.gschema.xml:5
+msgid "Font to display characters"
+msgstr "Шрыфт для паказу сімвалаў"
+
+#: data/org.gnome.Characters.gschema.xml:6
+msgid "Use the font to render characters on the character list."
+msgstr "Выкарыстоўвайце шрыфт для адлюстравання знакаў у спісе знакаў."
+
+#: data/org.gnome.Characters.gschema.xml:15
+msgid "Maximum recent characters"
+msgstr "Максімальная колькасць апошніх сімвалаў"
+
+#: src/categoryList.js:33
+msgid "Recently Used"
+msgstr "Апошнія выкарыстаныя"
+
+#: src/categoryList.js:39
+msgid "Punctuation"
+msgstr "Пунктуацыя"
+
+#: src/categoryList.js:45
+msgid "Arrows"
+msgstr "Стрэлкі"
+
+#: src/categoryList.js:51
+msgid "Bullets"
+msgstr "Маркеры"
+
+#: src/categoryList.js:57
+msgid "Pictures"
+msgstr "Малюнкі"
+
+#: src/categoryList.js:63
+msgid "Currencies"
+msgstr "Валюты"
+
+#: src/categoryList.js:69
+msgid "Math"
+msgstr "Лічбы"
+
+#: src/categoryList.js:75
+msgid "Letters"
+msgstr "Літары"
+
+#: src/categoryList.js:81
+msgid "Emoticons"
+msgstr "Смайлікі"
+
+#: src/categoryList.js:95
+#, javascript-format
+msgid "%s Category List Row"
+msgstr "%s Радок спісу катэгорый"
+
+#: src/character.js:53
+msgid "See Also"
+msgstr "Глядзі так сама"
+
+#: src/character.js:117 src/character.js:139
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Юнікод U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/character.js:135
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s не ўключаны ў %s"
+
+#: src/main.js:58
+msgid "Characters Application"
+msgstr "Дастасаванне сімвалаў"
+
+#: src/main.js:95
+msgid "Characters Application started"
+msgstr "Дастасаванне сімвалаў запушчанае"
+
+#: src/main.js:103
+msgid "Characters Application exiting"
+msgstr "Выхад з дастасавання сімвалаў"
+
+#: src/menu.js:50
+msgid "None"
+msgstr "Няма"
+
+#: src/searchProvider.js:97
+msgid "Unknown character name"
+msgstr "Назва невядомага сімвала"
+
+#: src/searchProvider.js:100
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:165
+msgid "translator-credits"
+msgstr "Uladzimir Manulenka <vlma@tut.by>"
+
+#: src/window.js:167
+msgid "Character Map"
+msgstr "Мапа сімвалаў"
+
+#: src/window.js:187
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (толькі %s)"
+
+#: src/window.js:273
+#, javascript-format
+msgid "%s Character List"
+msgstr "%s Спіс сімвалаў"
+
+#: src/window.js:280
+msgid "Search Result Character List"
+msgstr "Спіс вынікаў пошуку сімвалаў"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:282
+msgid "Search Result"
+msgstr "Вынікі пошуку"
