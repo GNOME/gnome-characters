@@ -69,6 +69,8 @@ const MainWindow = new Lang.Class({
                             activate: this._toggleSearch,
                             parameter_type: new GLib.VariantType('b'),
                             state: new GLib.Variant('b', false) },
+                          { name: 'find',
+                            activate: this._find },
                           { name: 'category',
                             activate: this._category,
                             parameter_type: new GLib.VariantType('s'),
@@ -79,6 +81,8 @@ const MainWindow = new Lang.Class({
                           { name: 'filter-font',
                             activate: this._filterFont,
                             parameter_type: new GLib.VariantType('s') }]);
+
+        this.application.set_accels_for_action('win.find', ['<Primary>F']);
 
         this.bind_property('search-active', this._search_active_button, 'active',
                            GObject.BindingFlags.SYNC_CREATE |
@@ -215,6 +219,10 @@ const MainWindow = new Lang.Class({
         this._mainView.filterFontFamily = family;
         this._updateTitle(this._mainView.visible_child.title);
         this._menu_popover.hide();
+    },
+
+    _find: function() {
+        this.search_active = !this.search_active;
     },
 
     setSearchKeywords: function(keywords) {
