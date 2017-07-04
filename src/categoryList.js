@@ -171,11 +171,14 @@ const CategoryListWidget = new Lang.Class({
 
         ibus.init();
         let bus = new ibus.Bus();
-        bus.list_engines_async(-1,
-                               null,
-                               Lang.bind(this, function (bus, res) {
-                                   this._finishListEngines(sources, bus, res);
-                               }));
+        if (bus.is_connected()) {
+            bus.list_engines_async(-1,
+                                   null,
+                                   Lang.bind(this, function (bus, res) {
+                                       this._finishListEngines(sources, bus, res);
+                                   }));
+        } else
+            this._finishBuildScriptList(sources);
     },
 
     _finishBuildScriptList: function(sources) {
