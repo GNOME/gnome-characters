@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-02 06:18+0000\n"
-"PO-Revision-Date: 2017-03-12 07:55+0100\n"
+"POT-Creation-Date: 2017-07-04 13:13+0000\n"
+"PO-Revision-Date: 2017-07-08 13:25+0200\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>, 2015\n"
+"Language-Team: \n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"Language-Team: \n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 2.0\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -65,7 +65,7 @@ msgstr "Pàgina actual"
 msgid "Filter by Font"
 msgstr "Filtra per tipus de lletra"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:170
 msgid "GNOME Characters"
 msgstr "Caràcters del GNOME"
 
@@ -179,7 +179,7 @@ msgstr "%s no està inclòs a %s"
 
 #: src/characterList.js:178
 msgid "Unassigned"
-msgstr ""
+msgstr "No assignat"
 
 #: src/main.js:58
 msgid "Characters Application"
@@ -207,30 +207,30 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:169
 msgid "translator-credits"
 msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>, 2015"
 
-#: src/window.js:167
+#: src/window.js:171
 msgid "Character Map"
 msgstr "Mapa de caràcters"
 
-#: src/window.js:187
+#: src/window.js:191
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s només)"
 
-#: src/window.js:273
+#: src/window.js:281
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s llista de caràcters"
 
-#: src/window.js:280
+#: src/window.js:288
 msgid "Search Result Character List"
 msgstr "Cerca el resultat a la llista de caràcters"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:290
 msgid "Search Result"
 msgstr "Resultat de la cerca"
 
