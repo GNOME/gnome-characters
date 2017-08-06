@@ -503,6 +503,22 @@ const CharacterListView = new Lang.Class({
         }
     },
 
+    get initialSearchCount() {
+        // Use our parents allocation; we aren't visible before we do the
+        // initial search, so our allocation is 1x1
+        let allocation = this.get_parent().get_allocation();
+
+        // Sometimes more MAX_SEARCH_RESULTS are visible on screen
+        // (eg. fullscreen at 1080p).  We always present a over-full screen,
+        // otherwise the lazy loading gets broken
+        let cellSize = getCellSize(this._fontDescription);
+        let cellsPerRow = Math.floor(allocation.width / cellSize);
+        // Ensure the rows cause a scroll
+        let heightInRows = Math.ceil((allocation.height + 1) / cellSize);
+
+        return Math.max(MAX_SEARCH_RESULTS, heightInRows * cellsPerRow);
+    },
+
     _addSearchResult: function(result) {
         for (let index = 0; index < result.len; index++) {
             this._characters.push(Gc.search_result_get(result, index));
@@ -536,21 +552,21 @@ const CharacterListView = new Lang.Class({
         this._characters = [];
         let criteria = Gc.SearchCriteria.new_category(category.category);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
-        this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
+        this._searchWithContext(this._searchContext, this.initialSearchCount);
     },
 
     searchByKeywords: function(keywords) {
         this._characters = [];
         let criteria = Gc.SearchCriteria.new_keywords(keywords, Gc.SearchFlag.NONE);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
-        this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
+        this._searchWithContext(this._searchContext, this.initialSearchCount);
     },
 
     searchByScripts: function(scripts) {
         this._characters = [];
         var criteria = Gc.SearchCriteria.new_scripts(scripts);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
-        this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
+        this._searchWithContext(this._searchContext, this.initialSearchCount);
     },
 
     cancelSearch: function() {
