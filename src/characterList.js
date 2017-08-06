@@ -496,10 +496,15 @@ const CharacterListView = new Lang.Class({
         this.show_all();
     },
 
-    _onEdgeReached: function(scrolled, pos) {
-        if (pos == Gtk.PositionType.BOTTOM &&
-            this._searchContext != null && !this._searchContext.is_finished()) {
+    _maybeLoadMore() {
+        if (this._searchContext != null && !this._searchContext.is_finished()) {
             this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
+        }
+    },
+
+    _onEdgeReached: function(scrolled, pos) {
+        if (pos == Gtk.PositionType.BOTTOM) {
+            this._maybeLoadMore();
         }
     },
 
@@ -517,6 +522,14 @@ const CharacterListView = new Lang.Class({
         let heightInRows = Math.ceil((allocation.height + 1) / cellSize);
 
         return Math.max(MAX_SEARCH_RESULTS, heightInRows * cellsPerRow);
+    },
+
+    vfunc_size_allocate: function(allocation) {
+        this.parent(allocation);
+
+        if (this._characters.length < this.initialSearchCount) {
+            this._maybeLoadMore();
+        }
     },
 
     _addSearchResult: function(result) {
