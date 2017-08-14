@@ -30,6 +30,9 @@ const Util = imports.util;
 const CharacterDialog = new Lang.Class({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
+    Signals: {
+        'character-copied': { param_types: [ GObject.TYPE_STRING ] }
+    },
     Template: 'resource:///org/gnome/Characters/character.ui',
     InternalChildren: ['main-stack', 'character-stack',
                        'character-label', 'missing-label', 'detail-label',
@@ -181,6 +184,7 @@ const CharacterDialog = new Lang.Class({
                                               this._clipboardOwnerChanged));
         }
         this._clipboard.set_text(this._character, -1);
+        this.emit('character-copied', this._character);
 
         // Show a feedback message with a revealer.  The message is
         // hidden after 2 seconds, or when another client set a

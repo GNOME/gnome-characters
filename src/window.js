@@ -351,9 +351,11 @@ const MainView = new Lang.Class({
         }
     },
 
-    _handleCharacterSelected: function(widget, uc) {
+    _addToRecent: function(widget, uc) {
         this.addToRecent(uc);
+    },
 
+    _handleCharacterSelected: function(widget, uc) {
         let dialog = new Character.CharacterDialog({
             character: uc,
             modal: true,
@@ -362,6 +364,8 @@ const MainView = new Lang.Class({
         });
 
         dialog.show();
+        dialog.connect('character-copied',
+                       Lang.bind(this, this._addToRecent));
         dialog.connect('response', function(self, response_id) {
             if (response_id == Gtk.ResponseType.CLOSE)
                 dialog.destroy();
