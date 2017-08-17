@@ -360,7 +360,7 @@ const CharacterListWidget = new Lang.Class({
 
 const MAX_SEARCH_RESULTS = 100;
 
-const CharacterListView = new Lang.Class({
+var CharacterListView = new Lang.Class({
     Name: 'CharacterListView',
     Extends: Gtk.Stack,
     Template: 'resource:///org/gnome/Characters/characterlist.ui',

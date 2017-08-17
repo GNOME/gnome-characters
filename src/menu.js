@@ -24,7 +24,7 @@ const Lang = imports.lang;
 const Params = imports.params;
 const Pango = imports.gi.Pango;
 
-const MenuPopover = new Lang.Class({
+var MenuPopover = new Lang.Class({
     Name: 'MenuPopover',
     Extends: Gtk.Popover,
     Template: 'resource:///org/gnome/Characters/menu.ui',

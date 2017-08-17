@@ -109,7 +109,7 @@ const CategoryListRowWidget = new Lang.Class({
     }
 });
 
-const CategoryListWidget = new Lang.Class({
+var CategoryListWidget = new Lang.Class({
     Name: 'CategoryListWidget',
     Extends: Gtk.ListBox,
 

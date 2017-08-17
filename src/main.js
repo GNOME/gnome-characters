@@ -40,7 +40,7 @@ const Lang = imports.lang;
 const Util = imports.util;
 const Window = imports.window;
 
-let settings = null;
+var settings = null;
 
 function initEnvironment() {
     window.getApp = function() {

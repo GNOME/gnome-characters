@@ -39,7 +39,7 @@ const Gettext = imports.gettext;
 const Main = imports.main;
 const Util = imports.util;
 
-const MainWindow = new Lang.Class({
+var MainWindow = new Lang.Class({
     Name: 'MainWindow',
     Extends: Gtk.ApplicationWindow,
     Template: 'resource:///org/gnome/Characters/mainwindow.ui',

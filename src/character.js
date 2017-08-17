@@ -27,7 +27,7 @@ const Gc = imports.gi.Gc;
 const Main = imports.main;
 const Util = imports.util;
 
-const CharacterDialog = new Lang.Class({
+var CharacterDialog = new Lang.Class({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
     Signals: {
