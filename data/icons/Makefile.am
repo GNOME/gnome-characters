@@ -8,6 +8,14 @@ nobase_icon_DATA = \
 	hicolor/scalable/categories/characters-currency-symbolic.svg \
 	hicolor/scalable/categories/characters-math-symbolic.svg \
 	hicolor/scalable/categories/characters-latin-symbolic.svg \
+	hicolor/scalable/categories/characters-emoji-activities.svg \
+	hicolor/scalable/categories/characters-emoji-animals.svg \
+	hicolor/scalable/categories/characters-emoji-flags.svg \
+	hicolor/scalable/categories/characters-emoji-food.svg \
+	hicolor/scalable/categories/characters-emoji-objects.svg \
+	hicolor/scalable/categories/characters-emoji-smileys.svg \
+	hicolor/scalable/categories/characters-emoji-symbols.svg \
+	hicolor/scalable/categories/characters-emoji-travel.svg \
 	hicolor/16x16/apps/gnome-characters.png \
 	hicolor/22x22/apps/gnome-characters.png \
 	hicolor/32x32/apps/gnome-characters.png \
@@ -16,7 +24,7 @@ nobase_icon_DATA = \
 	hicolor/symbolic/apps/gnome-characters-symbolic.svg
 
 EXTRA_DIST = $(nobase_icon_DATA) hicolor/gnome-characters.svg \
-	characters-stencils.svg render-symbolic.rb
+	characters-stencils.svg render-icons.rb
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 
