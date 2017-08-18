@@ -68,6 +68,8 @@ var CharacterDialog = new Lang.Class({
 
         this._fontDescription = filtered.fontDescription;
         this._setCharacter(filtered.character);
+
+        this._copyRevealerTimeoutId = 0;
     },
 
     _finishSearch: function(result) {

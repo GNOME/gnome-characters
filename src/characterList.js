@@ -197,7 +197,10 @@ const CharacterListWidget = new Lang.Class({
     },
 
     _init: function(params) {
-        let filtered = Params.filter(params, { fontDescription: null });
+        let filtered = Params.filter(params, {
+            fontDescription: null,
+            numRows: NUM_ROWS
+        });
         params = Params.fill(params, {});
         this.parent(params);
         let context = this.get_style_context();
@@ -205,6 +208,7 @@ const CharacterListWidget = new Lang.Class({
         context.save();
         this._cellsPerRow = CELLS_PER_ROW;
         this._fontDescription = filtered.fontDescription;
+        this._numRows = filtered.numRows;
         this._characters = [];
         this._rows = [];
         this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
@@ -264,7 +268,7 @@ const CharacterListWidget = new Lang.Class({
     },
 
     vfunc_get_preferred_height_for_width: function(width) {
-        let height = Math.max(this._rows.length, NUM_ROWS) *
+        let height = Math.max(this._rows.length, this._numRows) *
             getCellSize(this._fontDescription);
         return [height, height];
     },
@@ -360,16 +364,17 @@ const CharacterListWidget = new Lang.Class({
 
 const MAX_SEARCH_RESULTS = 100;
 
-var CharacterListView = new Lang.Class({
-    Name: 'CharacterListView',
-    Extends: Gtk.Stack,
-    Template: 'resource:///org/gnome/Characters/characterlist.ui',
-    InternalChildren: ['loading-spinner'],
+var FontFilter = new Lang.Class({
+    Name: 'FontFilter',
+    Extends: GObject.Object,
     Properties: {
         'font': GObject.ParamSpec.string(
             'font', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
             'Cantarell 50')
+    },
+    Signals: {
+        'filter-set': { param_types: [] }
     },
 
     get font() {
@@ -387,24 +392,90 @@ var CharacterListView = new Lang.Class({
 
         this._font = v;
         this._fontDescription = fontDescription;
-        if (this.mapped) {
-            this.setCharacters(this._characters);
-            this.show_all();
-        }
+    },
+
+    get fontDescription() {
+        if (this._filterFontDescription)
+            return this._filterFontDescription;
+        return this._fontDescription;
     },
 
     _init: function(params) {
+        params = Params.fill(params, {});
+        this.parent(params);
+
+        this._fontDescription = null;
+        this._filterFontDescription = null;
+
+        Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
+    },
+
+    setFilterFont: function(v) {
+        let fontDescription;
+        if (v == null) {
+            fontDescription = null;
+        } else {
+            fontDescription = Pango.FontDescription.from_string(v);
+            fontDescription.set_size(this._fontDescription.get_size());
+        }
+
+        if ((this._filterFontDescription != null && fontDescription == null) ||
+            (this._filterFontDescription == null && fontDescription != null) ||
+            (this._filterFontDescription != null && fontDescription != null &&
+             !fontDescription.equal(this._filterFontDescription))) {
+            this._filterFontDescription = fontDescription;
+            this.emit('filter-set');
+        }
+    },
+
+    apply: function(widget, characters) {
+        let fontDescription = this._fontDescription;
+        if (this._filterFontDescription) {
+            let context = widget.get_pango_context();
+            let filterFont = context.load_font(this._filterFontDescription);
+            let filteredCharacters = [];
+            for (let index = 0; index < characters.length; index++) {
+                let uc = characters[index];
+                if (Gc.pango_context_font_has_glyph(context, filterFont, uc))
+                    filteredCharacters.push(uc);
+            }
+            characters = filteredCharacters;
+            fontDescription = this._filterFontDescription;
+        }
+
+        return [fontDescription, characters];
+    },
+});
+
+var CharacterListView = new Lang.Class({
+    Name: 'CharacterListView',
+    Extends: Gtk.Stack,
+    Template: 'resource:///org/gnome/Characters/characterlist.ui',
+    InternalChildren: ['loading-spinner'],
+    Signals: {
+        'character-selected': { param_types: [ GObject.TYPE_STRING ] }
+    },
+
+    _init: function(params) {
+        let filtered = Params.filter(params, {
+            fontFilter: null
+        });
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
         });
         this.parent(params);
 
-        Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
-
-        this._characterList = new CharacterListWidget({ hexpand: true,
-                                                        vexpand: true,
-                                                        fontDescription: this._fontDescription });
+        this._fontFilter = filtered.fontFilter;
+        this._characterList = new CharacterListWidget({
+            hexpand: true,
+            vexpand: true,
+            fontDescription: this._fontFilter.fontDescription
+        });
+        this._characterList.connect('character-selected',
+                                    Lang.bind(this, function(w, c) {
+                                        this.emit('character-selected', c);
+                                    }));
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             visible: true
@@ -416,6 +487,9 @@ var CharacterListView = new Lang.Class({
         this.add_named(scroll, 'character-list');
         this.visible_child_name = 'character-list';
 
+        this._fontFilter.connect('filter-set',
+                                 Lang.bind(this, this._updateCharacterList));
+
         this._characters = [];
         this._spinnerTimeoutId = 0;
         this._searchContext = null;
@@ -424,7 +498,7 @@ var CharacterListView = new Lang.Class({
             this._stopSpinner();
             this._searchContext = null;
             this._characters = [];
-            this.updateCharacterList();
+            this._updateCharacterList();
         }));
         scroll.connect('edge-reached', Lang.bind(this, this._onEdgeReached));
     },
@@ -451,41 +525,18 @@ var CharacterListView = new Lang.Class({
     _finishSearch: function(result) {
         this._stopSpinner();
 
-        let characters = [];
-        for (let index = 0; index < result.len; index++) {
-            characters.push(Gc.search_result_get(result, index));
-        }
+        let characters = Util.searchResultToArray(result);
 
-        this._characters = characters;
-        this.updateCharacterList()
+        this.setCharacters(characters);
     },
 
     setCharacters: function(characters) {
         this._characters = characters;
+        this._updateCharacterList();
     },
 
-    getFontDescription: function() {
-        if (this._filterFontDescription)
-            return this._filterFontDescription;
-        return this._fontDescription;
-    },
-
-    updateCharacterList: function() {
-        let characters = this._characters;
-        let fontDescription = this._fontDescription;
-        if (this._filterFontDescription) {
-            let context = this.get_pango_context();
-            let filterFont = context.load_font(this._filterFontDescription);
-            let filteredCharacters = [];
-            for (let index = 0; index < characters.length; index++) {
-                let uc = characters[index];
-                if (Gc.pango_context_font_has_glyph(context, filterFont, uc))
-                    filteredCharacters.push(uc);
-            }
-            characters = filteredCharacters;
-            fontDescription = this._filterFontDescription;
-        }
-
+    _updateCharacterList: function() {
+        let [fontDescription, characters] = this._fontFilter.apply(this, this._characters);
         this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
         if (characters.length == 0) {
@@ -516,7 +567,7 @@ var CharacterListView = new Lang.Class({
         // Sometimes more MAX_SEARCH_RESULTS are visible on screen
         // (eg. fullscreen at 1080p).  We always present a over-full screen,
         // otherwise the lazy loading gets broken
-        let cellSize = getCellSize(this._fontDescription);
+        let cellSize = getCellSize(this._fontFilter.fontDescription);
         let cellsPerRow = Math.floor(allocation.width / cellSize);
         // Ensure the rows cause a scroll
         let heightInRows = Math.ceil((allocation.height + 1) / cellSize);
@@ -533,11 +584,8 @@ var CharacterListView = new Lang.Class({
     },
 
     _addSearchResult: function(result) {
-        for (let index = 0; index < result.len; index++) {
-            this._characters.push(Gc.search_result_get(result, index));
-        }
-
-        this.updateCharacterList()
+        let characters = Util.searchResultToArray(result);
+        this.setCharacters(characters);
     },
 
     _searchWithContext: function(context, count) {
@@ -585,23 +633,56 @@ var CharacterListView = new Lang.Class({
     cancelSearch: function() {
         this._cancellable.cancel();
         this._cancellable.reset();
+    }
+});
+
+var RecentCharacterListView = new Lang.Class({
+    Name: 'RecentCharacterListView',
+    Extends: Gtk.Bin,
+    Signals: {
+        'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
 
-    setFilterFont: function(family) {
-        let fontDescription;
-        if (family == null) {
-            fontDescription = null;
-        } else {
-            fontDescription = Pango.FontDescription.from_string(family);
-            fontDescription.set_size(this._fontDescription.get_size());
-        }
+    _init: function(params) {
+        let filtered = Params.filter(params, {
+            category: null,
+            fontFilter: null
+        });
+        params = Params.fill(params, {
+            hexpand: true, vexpand: true
+        });
+        this.parent(params);
 
-        if ((this._filterFontDescription != null && fontDescription == null) ||
-            (this._filterFontDescription == null && fontDescription != null) ||
-            (this._filterFontDescription != null && fontDescription != null &&
-             !fontDescription.equal(this._filterFontDescription))) {
-            this._filterFontDescription = fontDescription;
-            this.updateCharacterList();
-        }
+        this._fontFilter = filtered.fontFilter;
+        this._characterList = new CharacterListWidget({
+            hexpand: true,
+            vexpand: true,
+            fontDescription: this._fontFilter.fontDescription,
+            numRows: 0
+        });
+        this._characterList.connect('character-selected',
+                                    Lang.bind(this, function(w, c) {
+                                        this.emit('character-selected', c);
+                                    }));
+        this.add(this._characterList);
+
+        this._fontFilter.connect('filter-set',
+                                 Lang.bind(this, this._updateCharacterList));
+
+        this._category = filtered.category;
+        this._characters = [];
+    },
+
+    setCharacters: function(characters) {
+        let result = Gc.filter_characters(this._category, characters);
+        this._characters = Util.searchResultToArray(result);
+        this._updateCharacterList();
+    },
+
+    _updateCharacterList: function() {
+        let [fontDescription, characters] = this._fontFilter.apply(this, this._characters);
+        this._characterList.setFontDescription(fontDescription);
+        this._characterList.setCharacters(characters);
+        this.show_all();
     }
 });

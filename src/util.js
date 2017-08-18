@@ -28,6 +28,7 @@ const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+const Gc = imports.gi.Gc;
 const Lang = imports.lang;
 const Params = imports.params;
 const System = imports.system;
@@ -154,4 +155,12 @@ function toCodePoint(s) {
     }
 
     return codePoint;
+}
+
+function searchResultToArray(result) {
+    let characters = [];
+    for (let index = 0; index < result.len; index++) {
+        characters.push(Gc.search_result_get(result, index));
+    }
+    return characters;
 }

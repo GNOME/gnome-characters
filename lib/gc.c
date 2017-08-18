@@ -271,11 +271,11 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
     case GC_CATEGORY_NONE:
       break;
 
-    case GC_CATEGORY_PUNCTUATION:
+    case GC_CATEGORY_LETTER_PUNCTUATION:
       gc_character_iter_init_for_general_category (iter, UC_CATEGORY_P);
       return;
 
-    case GC_CATEGORY_ARROW:
+    case GC_CATEGORY_LETTER_ARROW:
       {
         static uc_block_t arrow_blocks[3];
         static gsize arrow_blocks_size = 0;
@@ -307,14 +307,14 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
         return;
       }
 
-    case GC_CATEGORY_BULLET:
+    case GC_CATEGORY_LETTER_BULLET:
       gc_character_iter_init (iter);
       iter->characters = bullet_characters;
       iter->character_count = bullet_character_count;
       iter->filter = filter_all;
       return;
 
-    case GC_CATEGORY_PICTURE:
+    case GC_CATEGORY_LETTER_PICTURE:
       {
         static uc_block_t picture_blocks[6];
         static gsize picture_blocks_size = 0;
@@ -362,15 +362,15 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
       }
       break;
 
-    case GC_CATEGORY_CURRENCY:
+    case GC_CATEGORY_LETTER_CURRENCY:
       gc_character_iter_init_for_general_category (iter, UC_CATEGORY_Sc);
       return;
 
-    case GC_CATEGORY_MATH:
+    case GC_CATEGORY_LETTER_MATH:
       gc_character_iter_init_for_general_category (iter, UC_CATEGORY_Sm);
       return;
 
-    case GC_CATEGORY_LATIN:
+    case GC_CATEGORY_LETTER_LATIN:
       {
         static const uc_script_t *latin_scripts[2];
         latin_scripts[0] = uc_script ('A');
@@ -1155,6 +1155,72 @@ gboolean
 gc_search_context_is_finished (GcSearchContext *context)
 {
   return context->state == GC_SEARCH_STATE_FINISHED;
+}
+
+static int
+filter_compare (const void *a, const void *b)
+{
+  const uint32_t *ac = a, *bc = b;
+  return *ac == *bc ? 0 : (*ac < *bc ? -1 : 1);
+}
+
+/**
+ * gc_filter_characters:
+ * @category: a #GcCategory.
+ * @characters: (array zero-terminated=1) (element-type utf8): an array of characters
+ *
+ * Returns: (transfer full): an array of characters.
+ */
+GcSearchResult *
+gc_filter_characters (GcCategory           category,
+                      const gchar * const *characters)
+{
+  static const struct {
+    const uint32_t *table;
+    size_t length;
+  } emoji_tables[] = {
+    { emoji_smileys_characters, EMOJI_SMILEYS_CHARACTER_COUNT },
+    { emoji_animals_characters, EMOJI_ANIMALS_CHARACTER_COUNT },
+    { emoji_food_characters, EMOJI_FOOD_CHARACTER_COUNT },
+    { emoji_travel_characters, EMOJI_TRAVEL_CHARACTER_COUNT },
+    { emoji_activities_characters, EMOJI_ACTIVITIES_CHARACTER_COUNT },
+    { emoji_objects_characters, EMOJI_OBJECTS_CHARACTER_COUNT },
+    { emoji_symbols_characters, EMOJI_SYMBOLS_CHARACTER_COUNT },
+    { emoji_flags_characters, EMOJI_FLAGS_CHARACTER_COUNT }
+  };
+  GArray *result;
+  size_t i, j;
+
+  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
+
+  g_return_val_if_fail (category == GC_CATEGORY_LETTER || category == GC_CATEGORY_EMOJI, result);
+
+  for (i = 0; characters[i] != 0; i++)
+    {
+      const uint8_t *utf8 = characters[i];
+      size_t utf8_length = u8_strmblen (utf8);
+      uint32_t uc;
+      size_t uc_length = 1;
+
+      u8_to_u32 (utf8, utf8_length, &uc, &uc_length);
+      for (j = 0; j < G_N_ELEMENTS(emoji_tables); j++)
+	{
+	  uint32_t *res;
+	  res = bsearch (&uc, emoji_tables[j].table, emoji_tables[j].length,
+			 sizeof (uint32_t),
+			 filter_compare);
+	  if (res)
+	    {
+	      if (category == GC_CATEGORY_EMOJI)
+		g_array_append_val (result, uc);
+	      break;
+	    }
+	}
+      if (j == G_N_ELEMENTS(emoji_tables) && category == GC_CATEGORY_LETTER)
+	g_array_append_val (result, uc);
+    }
+
+  return result;
 }
 
 /**

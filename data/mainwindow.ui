@@ -29,6 +29,24 @@
 	  </packing>
 	</child>
 	<child>
+	  <object class="GtkButton" id="back-button">
+            <property name="can_focus">True</property>
+            <property name="visible">False</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="back-button-image">
+		<property name="visible">True</property>
+		<property name="icon-name">go-previous-symbolic</property>
+              </object>
+            </child>
+	  </object>
+	  <packing>
+            <property name="pack-type">start</property>
+	  </packing>
+	</child>
+	<child>
 	  <object class="GtkMenuButton" id="menu-button">
             <property name="can_focus">False</property>
             <property name="visible">True</property>

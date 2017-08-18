@@ -1,6 +1,6 @@
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
-// Copyright (C) 2014-2015  Daiki Ueno <dueno@src.gnome.org>
+// Copyright (C) 2014-2017  Daiki Ueno <dueno@src.gnome.org>
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -26,60 +26,131 @@ const Gettext = imports.gettext;
 const Gc = imports.gi.Gc;
 const Util = imports.util;
 
-const BaseCategoryList = [
+const CategoryList = [
     {
-        name: 'recent',
-        category: Gc.Category.NONE,
-        title: N_('Recently Used'),
-        icon_name: 'document-open-recent-symbolic'
+        name: 'letters',
+        category: Gc.Category.LETTER,
+        title: N_('Letters & Symbols'),
+        icon_name: 'characters-latin-symbolic',
+        action_name: 'category'
     },
     {
+        name: 'emojis',
+        category: Gc.Category.EMOJI,
+        title: N_('Emojis'),
+        icon_name: 'characters-emoji-smileys',
+        action_name: 'category'
+    }
+];
+
+const LetterCategoryList = [
+    {
         name: 'punctuation',
-        category: Gc.Category.PUNCTUATION,
+        category: Gc.Category.LETTER_PUNCTUATION,
         title: N_('Punctuation'),
-        icon_name: 'characters-punctuation-symbolic'
+        icon_name: 'characters-punctuation-symbolic',
+        action_name: 'subcategory'
     },
     {
         name: 'arrow',
-        category: Gc.Category.ARROW,
+        category: Gc.Category.LETTER_ARROW,
         title: N_('Arrows'),
-        icon_name: 'characters-arrow-symbolic'
+        icon_name: 'characters-arrow-symbolic',
+        action_name: 'subcategory'
     },
     {
         name: 'bullet',
-        category: Gc.Category.BULLET,
+        category: Gc.Category.LETTER_BULLET,
         title: N_('Bullets'),
-        icon_name: 'characters-bullet-symbolic'
+        icon_name: 'characters-bullet-symbolic',
+        action_name: 'subcategory'
     },
     {
         name: 'picture',
-        category: Gc.Category.PICTURE,
+        category: Gc.Category.LETTER_PICTURE,
         title: N_('Pictures'),
-        icon_name: 'characters-picture-symbolic'
+        icon_name: 'characters-picture-symbolic',
+        action_name: 'subcategory'
     },
     {
         name: 'currency',
-        category: Gc.Category.CURRENCY,
+        category: Gc.Category.LETTER_CURRENCY,
         title: N_('Currencies'),
-        icon_name: 'characters-currency-symbolic'
+        icon_name: 'characters-currency-symbolic',
+        action_name: 'subcategory'
     },
     {
         name: 'math',
-        category: Gc.Category.MATH,
+        category: Gc.Category.LETTER_MATH,
         title: N_('Math'),
-        icon_name: 'characters-math-symbolic'
+        icon_name: 'characters-math-symbolic',
+        action_name: 'subcategory'
     },
     {
         name: 'letters',
-        category: Gc.Category.LATIN,
+        category: Gc.Category.LETTER_LATIN,
         title: N_('Letters'),
-        icon_name: 'characters-latin-symbolic'
+        icon_name: 'characters-latin-symbolic',
+        action_name: 'subcategory'
+    }
+];
+
+const EmojiCategoryList = [
+    {
+        name: 'emoji-smileys',
+        category: Gc.Category.EMOJI_SMILEYS,
+        title: N_('Smileys & People'),
+        icon_name: 'characters-emoji-smileys',
+        action_name: 'subcategory'
     },
     {
-        name: 'emoticon',
-        category: Gc.Category.EMOTICON,
-        title: N_('Emoticons'),
-        icon_name: 'face-smile-symbolic'
+        name: 'emoji-animals',
+        category: Gc.Category.EMOJI_ANIMALS,
+        title: N_('Animals & Nature'),
+        icon_name: 'characters-emoji-animals',
+        action_name: 'subcategory'
+    },
+    {
+        name: 'emoji-food',
+        category: Gc.Category.EMOJI_FOOD,
+        title: N_('Food & Drink'),
+        icon_name: 'characters-emoji-food',
+        action_name: 'subcategory'
+    },
+    {
+        name: 'emoji-activities',
+        category: Gc.Category.EMOJI_ACTIVITIES,
+        title: N_('Activities'),
+        icon_name: 'characters-emoji-activities',
+        action_name: 'subcategory'
+    },
+    {
+        name: 'emoji-travel',
+        category: Gc.Category.EMOJI_TRAVEL,
+        title: N_('Travel & Places'),
+        icon_name: 'characters-emoji-travel',
+        action_name: 'subcategory'
+    },
+    {
+        name: 'emoji-objects',
+        category: Gc.Category.EMOJI_OBJECTS,
+        title: N_('Objects'),
+        icon_name: 'characters-emoji-objects',
+        action_name: 'subcategory'
+    },
+    {
+        name: 'emoji-symbols',
+        category: Gc.Category.EMOJI_SYMBOLS,
+        title: N_('Symbols'),
+        icon_name: 'characters-emoji-symbols',
+        action_name: 'subcategory'
+    },
+    {
+        name: 'emoji-flags',
+        category: Gc.Category.EMOJI_FLAGS,
+        title: N_('Flags'),
+        icon_name: 'characters-emoji-flags',
+        action_name: 'subcategory'
     }
 ];
 
@@ -106,20 +177,29 @@ const CategoryListRowWidget = new Lang.Class({
                                     halign: Gtk.Align.START });
         label.get_style_context().add_class('category-label');
         hbox.pack_start(label, true, true, 0);
+
+        if (category.secondary_icon_name) {
+            let icon = new Gio.ThemedIcon({ name: category.secondary_icon_name });
+            let image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON);
+            image.get_style_context().add_class('category-icon');
+            hbox.pack_start(image, false, false, 2);
+        }
     }
 });
 
-var CategoryListWidget = new Lang.Class({
+const CategoryListWidget = new Lang.Class({
     Name: 'CategoryListWidget',
     Extends: Gtk.ListBox,
 
     _init: function(params) {
+        let filtered = Params.filter(params, { categoryList: null });
         params = Params.fill(params, {});
         this.parent(params);
 
         this.get_style_context().add_class('categories');
 
-        this._ensureCategoryList();
+        this._categoryList = filtered.categoryList;
+        this.populateCategoryList();
 
         for (let index in this._categoryList) {
             let category = this._categoryList[index];
@@ -130,12 +210,33 @@ var CategoryListWidget = new Lang.Class({
     },
 
     vfunc_row_selected: function(row) {
-        if (row != null) {
+        if (row != null && row.selectable) {
             let toplevel = row.get_toplevel();
-            let category = toplevel.lookup_action('category');
-            category.activate(new GLib.Variant('s', row.category.name));
+            let action = toplevel.lookup_action(row.category.action_name);
+            action.activate(new GLib.Variant('s', row.category.name));
         }
     },
+
+    populateCategoryList: function() {
+    },
+
+    getCategoryList: function() {
+        return this._categoryList;
+    },
+
+    getCategory: function(name) {
+        for (let index in this._categoryList) {
+            let category = this._categoryList[index];
+            if (category.name == name)
+                return category;
+        }
+        return null;
+    }
+});
+
+const LetterCategoryListWidget = new Lang.Class({
+    Name: 'LetterCategoryListWidget',
+    Extends: CategoryListWidget,
 
     _finishListEngines: function(sources, bus, res) {
         try {
@@ -228,28 +329,7 @@ var CategoryListWidget = new Lang.Class({
         category.scripts = allScripts;
     },
 
-    _buildScriptList: function() {
-        let settings =
-            Util.getSettings('org.gnome.desktop.input-sources',
-                             '/org/gnome/desktop/input-sources/');
-        if (settings) {
-            let sources = settings.get_value('sources').deep_unpack();
-            let hasIBus = sources.some(function(current, index, array) {
-                return current[0] == 'ibus';
-            });
-            if (hasIBus)
-                this._ensureIBusLanguageList(sources);
-            else
-                this._finishBuildScriptList(sources);
-        }
-    },
-
-    _ensureCategoryList: function() {
-        if (this._categoryList != null)
-            return;
-
-        this._categoryList = BaseCategoryList.slice();
-
+    populateCategoryList: function() {
         // Populate the "scripts" element of the "Letter" category
         // object, based on the current locale and the input-sources
         // settings.
@@ -265,19 +345,107 @@ var CategoryListWidget = new Lang.Class({
         //    else:
         //       _finishBuildScriptList()
         //
-        this._buildScriptList();
+        let settings =
+            Util.getSettings('org.gnome.desktop.input-sources',
+                             '/org/gnome/desktop/input-sources/');
+        if (settings) {
+            let sources = settings.get_value('sources').deep_unpack();
+            let hasIBus = sources.some(function(current, index, array) {
+                return current[0] == 'ibus';
+            });
+            if (hasIBus)
+                this._ensureIBusLanguageList(sources);
+            else
+                this._finishBuildScriptList(sources);
+        }
+    }
+});
+
+const EmojiCategoryListWidget = new Lang.Class({
+    Name: 'EmojiCategoryListWidget',
+    Extends: CategoryListWidget,
+
+    _init: function(params) {
+        params = Params.fill(params, {});
+        this.parent(params);
+
+        let category;
+        let rowWidget;
+
+        category = {
+            name: 'recent',
+            category: Gc.Category.NONE,
+            title: N_('Recently Used'),
+            icon_name: 'document-open-recent-symbolic',
+            action_name: 'subcategory'
+        };
+        rowWidget = new CategoryListRowWidget({}, category);
+        rowWidget.get_style_context().add_class('category');
+        this.prepend(rowWidget);
+        this._recentCategory = category;
+
+        category = {
+            name: 'letters',
+            category: Gc.Category.NONE,
+            title: N_('Letters & Symbols'),
+            icon_name: 'characters-latin-symbolic',
+            secondary_icon_name: 'go-next-symbolic',
+            action_name: 'category',
+        };
+        rowWidget = new CategoryListRowWidget({}, category);
+        rowWidget.get_style_context().add_class('category');
+        let separator = new Gtk.Separator();
+        let separatorRowWidget = new Gtk.ListBoxRow({ selectable: false });
+        separatorRowWidget.add(separator);
+        this.add(separatorRowWidget);
+        this.add(rowWidget);
+    },
+
+    getCategory: function(name) {
+        if (name == 'recent')
+            return this._recentCategory;
+        return this.parent(name);
+    }
+});
+
+var CategoryListView = new Lang.Class({
+    Name: 'CategoryListView',
+    Extends: Gtk.Stack,
+
+    _init: function(params) {
+        params = Params.fill(params, {
+            hexpand: true, vexpand: true,
+            transition_type: Gtk.StackTransitionType.SLIDE_RIGHT
+        });
+        this.parent(params);
+
+        let emojiCategoryList = new EmojiCategoryListWidget({
+            categoryList: EmojiCategoryList
+        });
+        this.add_named(emojiCategoryList, 'emojis');
+
+        let letterCategoryList = new LetterCategoryListWidget({
+            categoryList: LetterCategoryList
+        });
+        this.add_named(letterCategoryList, 'letters');
+
+        this.set_visible_child_name('emojis');
+
+        this._categoryList = CategoryList.slice();
+
+        this.connect('notify::visible-child-name',
+                     Lang.bind(this, this._ensureTransitionType));
+    },
+
+    _ensureTransitionType: function() {
+        if (this.get_visible_child_name() == 'emojis') {
+            this.transition_type = Gtk.StackTransitionType.SLIDE_RIGHT;
+        } else {
+            this.transition_type = Gtk.StackTransitionType.SLIDE_LEFT;
+        }
     },
 
     getCategoryList: function() {
         return this._categoryList;
-    },
-
-    getCategory: function(name) {
-        for (let index in this._categoryList) {
-            let category = this._categoryList[index];
-            if (category.name == name)
-                return category;
-        }
-        return null;
     }
 });

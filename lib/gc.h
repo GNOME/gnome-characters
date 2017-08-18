@@ -18,13 +18,15 @@ G_BEGIN_DECLS
 typedef enum
 {
   GC_CATEGORY_NONE,
-  GC_CATEGORY_PUNCTUATION,
-  GC_CATEGORY_ARROW,
-  GC_CATEGORY_BULLET,
-  GC_CATEGORY_PICTURE,
-  GC_CATEGORY_CURRENCY,
-  GC_CATEGORY_MATH,
-  GC_CATEGORY_LATIN,
+  GC_CATEGORY_LETTER,
+  GC_CATEGORY_LETTER_PUNCTUATION,
+  GC_CATEGORY_LETTER_ARROW,
+  GC_CATEGORY_LETTER_BULLET,
+  GC_CATEGORY_LETTER_PICTURE,
+  GC_CATEGORY_LETTER_CURRENCY,
+  GC_CATEGORY_LETTER_MATH,
+  GC_CATEGORY_LETTER_LATIN,
+  GC_CATEGORY_EMOJI,
   GC_CATEGORY_EMOJI_SMILEYS,
   GC_CATEGORY_EMOJI_ANIMALS,
   GC_CATEGORY_EMOJI_FOOD,
@@ -99,6 +101,9 @@ GcSearchResult       *gc_search_context_search_finish
                                              GError              **error);
 gboolean              gc_search_context_is_finished
                                             (GcSearchContext      *context);
+
+GcSearchResult       *gc_filter_characters  (GcCategory            category,
+					     const gchar * const * characters);
 
 gchar                *gc_character_name     (gunichar              uc);
 gboolean              gc_character_is_invisible

@@ -24,6 +24,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+const Gc = imports.gi.Gc;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
@@ -44,7 +45,7 @@ var MainWindow = new Lang.Class({
     Extends: Gtk.ApplicationWindow,
     Template: 'resource:///org/gnome/Characters/mainwindow.ui',
     InternalChildren: ['main-headerbar', 'search-active-button',
-                       'search-bar', 'search-entry',
+                       'search-bar', 'search-entry', 'back-button',
                        'menu-button',
                        'main-grid', 'main-hbox', 'sidebar-grid'],
     Properties: {
@@ -74,7 +75,11 @@ var MainWindow = new Lang.Class({
                           { name: 'category',
                             activate: this._category,
                             parameter_type: new GLib.VariantType('s'),
-                            state: new GLib.Variant('s', 'punctuation') },
+                            state: new GLib.Variant('s', 'emojis') },
+                          { name: 'subcategory',
+                            activate: this._subcategory,
+                            parameter_type: new GLib.VariantType('s'),
+                            state: new GLib.Variant('s', 'emoji-smileys') },
                           { name: 'character',
                             activate: this._character,
                             parameter_type: new GLib.VariantType('s') },
@@ -96,24 +101,31 @@ var MainWindow = new Lang.Class({
         this._search_entry.connect('search-changed',
                                    Lang.bind(this, this._handleSearchChanged));
 
+        this._back_button.connect('clicked',
+                                  Lang.bind(this, function() {
+                                      let action = this.lookup_action('category');
+                                      action.activate(new GLib.Variant('s', 'emojis'));
+                                  }));
+        this._back_button.bind_property('visible',
+                                        this._search_active_button, 'visible',
+                                        GObject.BindingFlags.SYNC_CREATE |
+                                        GObject.BindingFlags.INVERT_BOOLEAN);
+
         this._menu_popover = new Menu.MenuPopover({});
         this._menu_button.set_popover(this._menu_popover);
 
-        this._categoryList =
-            new CategoryList.CategoryListWidget({ vexpand: true });
+        this._categoryListView =
+            new CategoryList.CategoryListView({ vexpand: true });
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
         });
-        scroll.add(this._categoryList);
+        scroll.add(this._categoryListView);
         this._sidebar_grid.add(scroll);
 
-        this._mainView = new MainView({ categoryList: this._categoryList });
-
-        if (this._mainView.recentCharacters.length == 0) {
-            let row = this._categoryList.get_row_at_index(1);
-            this._categoryList.select_row(row);
-        }
+        this._mainView = new MainView({
+            categoryListView: this._categoryListView
+        });
 
         this._main_hbox.pack_start(this._mainView, true, true, 0);
         this._main_grid.show_all();
@@ -121,6 +133,22 @@ var MainWindow = new Lang.Class({
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
         this.connect('key-press-event', Lang.bind(this, this._handleKeyPress));
+    },
+
+    vfunc_map: function() {
+        this.parent();
+        this._selectFirstSubcategory();
+    },
+
+    // Select the first subcategory which contains at least one character.
+    _selectFirstSubcategory: function() {
+        let categoryList = this._categoryListView.get_visible_child();
+        let index = 0;
+        let row = categoryList.get_row_at_index(index);
+        if (row.category.name == 'recent' &&
+            this._mainView.recentCharacters.length == 0)
+            index++;
+        categoryList.select_row(categoryList.get_row_at_index(index));
     },
 
     get search_active() {
@@ -200,11 +228,39 @@ var MainWindow = new Lang.Class({
 
         let [name, length] = v.get_string()
 
-        let category = this._categoryList.getCategory(name);
+        this._categoryListView.set_visible_child_name(name);
+        let categoryList = this._categoryListView.get_visible_child();
+        if (categoryList == null)
+            return;
+
+        this._selectFirstSubcategory();
+        let category = categoryList.get_selected_row().category;
+
+        if (name == 'emojis') {
+            this._back_button.hide();
+        } else {
+            this._back_button.show();
+        }
 
         Util.assertNotEqual(category, null);
         this._mainView.setPage(category);
         this._updateTitle(category.title);
+    },
+
+    _subcategory: function(action, v) {
+        this.search_active = false;
+
+        let [name, length] = v.get_string()
+
+        let categoryList = this._categoryListView.get_visible_child();
+        if (categoryList == null)
+            return;
+
+        let category = categoryList.getCategory(name);
+        if (category) {
+            this._mainView.setPage(category);
+            this._updateTitle(category.title);
+        }
     },
 
     _character: function(action, v) {
@@ -234,6 +290,7 @@ var MainWindow = new Lang.Class({
 const MainView = new Lang.Class({
     Name: 'MainView',
     Extends: Gtk.Stack,
+    Template: 'resource:///org/gnome/Characters/mainview.ui',
     Properties: {
         'max-recent-characters': GObject.ParamSpec.uint(
             'max-recent-characters', '', '',
@@ -258,31 +315,58 @@ const MainView = new Lang.Class({
 
     set filterFontFamily(family) {
         this._filterFontFamily = family;
-        this.visible_child.setFilterFont(family);
+        this._fontFilter.setFilterFont(this._filterFontFamily);
     },
 
     _init: function(params) {
-        let filtered = Params.filter(params, { categoryList: null });
+        let filtered = Params.filter(params, { categoryListView: null });
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
         });
         this.parent(params);
 
+        this._fontFilter = new CharacterList.FontFilter({});
         this._filterFontFamily = null;
         this._characterLists = {};
-        this._categoryList = filtered.categoryList;
+        this._recentCharacterLists = {};
+        this._categoryListView = filtered.categoryListView;
 
         let characterList;
-        let categories = this._categoryList.getCategoryList();
-        for (let index in categories) {
-            let category = categories[index];
-            characterList = this._createCharacterList(
-                category.name, _('%s Character List').format(category.title));
-            // FIXME: Can't use GtkContainer.child_get_property.
-            characterList.title = category.title;
-            this.add_titled(characterList, category.name, category.title);
+        let categories = this._categoryListView.getCategoryList();
+        let recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
+                                      hexpand: true, vexpand: true });
+
+        for (let i in categories) {
+            let category = categories[i];
+            let categoryList = this._categoryListView.get_child_by_name(category.name);
+            let subcategories = categoryList.getCategoryList();
+            for (let j in subcategories) {
+                let subcategory = subcategories[j];
+                characterList = this._createCharacterList(
+                    subcategory.name,
+                    _('%s Character List').format(subcategory.title));
+                // FIXME: Can't use GtkContainer.child_get_property.
+                characterList.title = subcategory.title;
+                this.add_titled(characterList, subcategory.name, subcategory.title);
+            }
+            characterList = this._createRecentCharacterList(
+                category.name,
+                _('Recently Used %s Character List').format(category.title),
+                category.category);
+            this._recentCharacterLists[category.name] = characterList;
+            if (i > 0) {
+                let separator = new Gtk.Separator({});
+                recentBox.pack_end(separator, false, false, 0);
+            }
+            recentBox.pack_end(characterList, true, true, 0);
         }
+        let scroll = new Gtk.ScrolledWindow({
+            hscrollbar_policy: Gtk.PolicyType.NEVER,
+            hexpand: false,
+        });
+        scroll.add(recentBox);
+        this.add_titled(scroll, 'recent', 'Recently Used');
 
         characterList = this._createCharacterList(
             'search-result', _('Search Result Character List'));
@@ -300,13 +384,25 @@ const MainView = new Lang.Class({
     },
 
     _createCharacterList: function(name, accessible_name) {
-        let characterList = new CharacterList.CharacterListView({});
+        let characterList = new CharacterList.CharacterListView({
+            fontFilter: this._fontFilter
+        });
         characterList.get_accessible().accessible_name = accessible_name;
+        characterList.connect('character-selected',
+                              Lang.bind(this, this._handleCharacterSelected));
 
-        let scroll = characterList.get_child_by_name('character-list');
-        let widget = scroll.get_child().get_child();
-        widget.connect('character-selected',
-                       Lang.bind(this, this._handleCharacterSelected));
+        this._characterLists[name] = characterList;
+        return characterList;
+    },
+
+    _createRecentCharacterList: function(name, accessible_name, category) {
+        let characterList = new CharacterList.RecentCharacterListView({
+            fontFilter: this._fontFilter,
+            category: category
+        });
+        characterList.get_accessible().accessible_name = accessible_name;
+        characterList.connect('character-selected',
+                              Lang.bind(this, this._handleCharacterSelected));
 
         this._characterLists[name] = characterList;
         return characterList;
@@ -322,21 +418,23 @@ const MainView = new Lang.Class({
     },
 
     setPage: function(category) {
-        let characterList = this.get_child_by_name(category.name);
-        characterList.setFilterFont(this._filterFontFamily);
-
         if (category.name == 'recent') {
             if (this.recentCharacters.length == 0)
-                characterList.visible_child_name = 'empty-recent';
+                this.visible_child_name = 'empty-recent';
             else {
-                characterList.setCharacters(this.recentCharacters);
-                characterList.updateCharacterList();
+                let categories = this._categoryListView.getCategoryList();
+                for (let i in categories) {
+                    let category = categories[i];
+                    let characterList = this._recentCharacterLists[category.name];
+                    characterList.setCharacters(this.recentCharacters);
+                }
+                this.visible_child_name = 'recent';
             }
         } else {
+            let characterList = this.get_child_by_name(category.name);
             characterList.searchByCategory(category);
+            this.visible_child = characterList;
         }
-
-        this.visible_child = characterList;
     },
 
     addToRecent: function(uc) {
@@ -360,7 +458,7 @@ const MainView = new Lang.Class({
             character: uc,
             modal: true,
             transient_for: this.get_toplevel(),
-            fontDescription: this.visible_child.getFontDescription()
+            fontDescription: this._fontFilter.fontDescription
         });
 
         dialog.show();

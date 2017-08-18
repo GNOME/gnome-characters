@@ -81,51 +81,5 @@
 	<property name="name">loading</property>
       </packing>
     </child>
-    <child>
-      <object class="GtkGrid" id="empty-recent-grid">
-	<property name="can_focus">False</property>
-	<property name="visible">False</property>
-	<property name="orientation">vertical</property>
-	<property name="halign">center</property>
-	<property name="valign">center</property>
-	<style>
-	  <class name="banner"/>
-	</style>
-	<child>
-	  <object class="GtkImage" id="empty-recent-image">
-	    <property name="can_focus">False</property>
-	    <property name="visible">True</property>
-	    <property name="halign">center</property>
-	    <property name="pixel_size">128</property>
-	    <property name="icon_name">characters-punctuation-symbolic</property>
-	  </object>
-	</child>
-	<child>
-	  <object class="GtkLabel" id="empty-recent-label">
-	    <property name="can_focus">False</property>
-	    <property name="visible">True</property>
-	    <property name="halign">center</property>
-	    <property name="label" translatable="yes">No recent characters found</property>
-	    <style>
-	      <class name="banner-label"/>
-	    </style>
-	  </object>
-	</child>
-	<child>
-	  <object class="GtkLabel" id="empty-recent-hint">
-	    <property name="can_focus">False</property>
-	    <property name="visible">True</property>
-	    <property name="halign">center</property>
-	    <property name="label" translatable="yes">Characters will appear here if you use them.</property>
-	    <style>
-	      <class name="banner-hints"/>
-	    </style>
-	  </object>
-	</child>
-      </object>
-      <packing>
-	<property name="name">empty-recent</property>
-      </packing>
-    </child>
   </template>
 </interface>
