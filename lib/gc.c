@@ -14,6 +14,7 @@
 #include <unistr.h>
 #include <uniwidth.h>
 #include "confusables.h"
+#include "emoji.h"
 #include "scripts.h"
 
 #define PANGO_ENABLE_ENGINE 1
@@ -378,28 +379,61 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
         return;
       }
 
-    case GC_CATEGORY_EMOTICON:
-      {
-        static uc_block_t emoticon_blocks[1];
-        static gsize emoticon_blocks_size = 0;
-        static gsize emoticon_blocks_initialized = 0;
-        if (g_once_init_enter (&emoticon_blocks_initialized))
-          {
-            const uc_block_t *block;
+    case GC_CATEGORY_EMOJI_SMILEYS:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_smileys_characters;
+      iter->character_count = EMOJI_SMILEYS_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
 
-            /* 1F600..1F64F; Emoticons */
-            block = uc_block (0x1F600);
-            if (block)
-              memcpy (&emoticon_blocks[emoticon_blocks_size++], block,
-                      sizeof (uc_block_t));
-            g_once_init_leave (&emoticon_blocks_initialized, 1);
-          }
-        gc_character_iter_init_for_blocks (iter,
-                                           emoticon_blocks,
-                                           emoticon_blocks_size);
-        iter->filter = filter_is_print;
-        return;
-      }
+    case GC_CATEGORY_EMOJI_ANIMALS:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_animals_characters;
+      iter->character_count = EMOJI_ANIMALS_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
+
+    case GC_CATEGORY_EMOJI_FOOD:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_food_characters;
+      iter->character_count = EMOJI_FOOD_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
+
+    case GC_CATEGORY_EMOJI_ACTIVITIES:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_activities_characters;
+      iter->character_count = EMOJI_ACTIVITIES_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
+
+    case GC_CATEGORY_EMOJI_TRAVEL:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_travel_characters;
+      iter->character_count = EMOJI_TRAVEL_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
+
+    case GC_CATEGORY_EMOJI_OBJECTS:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_objects_characters;
+      iter->character_count = EMOJI_OBJECTS_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
+
+    case GC_CATEGORY_EMOJI_SYMBOLS:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_symbols_characters;
+      iter->character_count = EMOJI_SYMBOLS_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
+
+    case GC_CATEGORY_EMOJI_FLAGS:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_flags_characters;
+      iter->character_count = EMOJI_FLAGS_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
     }
 
   gc_character_iter_init (iter);
