@@ -153,7 +153,7 @@ var CharacterDialog = new Lang.Class({
                     let result = context.search_finish(res);
                     this._finishSearch(result);
                 } catch (e) {
-                    log("Failed to search related: " + e);
+                    log("Failed to search related: " + e.message);
                 }
             }));
 

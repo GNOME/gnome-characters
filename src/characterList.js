@@ -551,7 +551,7 @@ var CharacterListView = new Lang.Class({
                     let result = context.search_finish(res);
                     this._addSearchResult(result);
                 } catch (e) {
-                    log("Failed to search: " + e);
+                    log("Failed to search: " + e.message);
                 }
             }));
     },

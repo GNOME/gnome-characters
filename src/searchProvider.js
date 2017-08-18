@@ -65,7 +65,7 @@ const SearchProvider = new Lang.Class({
                         characters.push(Gc.search_result_get(result, index));
                     }
                 } catch (e) {
-                    log("Failed to search by keywords: " + e);
+                    log("Failed to search by keywords: " + e.message);
                 }
                 invocation.return_value(new GLib.Variant('(as)', [characters]));
 
@@ -147,7 +147,7 @@ const SearchProvider = new Lang.Class({
                                   try {
                                       connection.call_finish(result);
                                   } catch(e) {
-                                      log('Failed to launch application: ' + e);
+                                      log('Failed to launch application: ' + e.message);
                                   }
 
                                   this._app.release();

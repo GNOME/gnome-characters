@@ -149,7 +149,7 @@ var CategoryListWidget = new Lang.Class({
                 }
             }
         } catch (e) {
-            log("Failed to list engines: " + e);
+            log("Failed to list engines: " + e.message);
         }
         this._finishBuildScriptList(sources);
     },
