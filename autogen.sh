@@ -40,6 +40,8 @@ test -z "$GNULIB_SRCDIR" || \
 		    unictype/scripts-all \
 		    uninorm/canonical-decomposition \
 		    unistr/u32-to-u8 \
+		    unistr/u8-to-u32 \
+		    unistr/u8-strmblen \
 		    unitypes \
 		    uniname/uniname \
 		    uniwidth/width
