@@ -1,4 +1,4 @@
-/* Convert UTF-32 string to UTF-8 string.
+/* Convert UTF-8 string to UTF-32 string.
    Copyright (C) 2002, 2006-2007, 2009-2017 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
@@ -20,9 +20,9 @@
 /* Specification.  */
 #include "unistr.h"
 
-#define FUNC u32_to_u8
-#define SRC_UNIT uint32_t
-#define DST_UNIT uint8_t
+#define FUNC u8_to_u32
+#define SRC_UNIT uint8_t
+#define DST_UNIT uint32_t
 
 #include <errno.h>
 #include <stdlib.h>
@@ -58,26 +58,24 @@ FUNC (const SRC_UNIT *s, size_t n, DST_UNIT *resultbuf, size_t *lengthp)
       int count;
 
       /* Fetch a Unicode character from the input string.  */
-      uc = *s++;
-      /* No need to call the safe variant u32_mbtouc, because
-         u8_uctomb will verify uc anyway.  */
-
-      /* Store it in the output string.  */
-      count = u8_uctomb (result + length, uc, allocated - length);
-      if (count == -1)
+      count = u8_mbtoucr (&uc, s, s_end - s);
+      if (count < 0)
         {
           if (!(result == resultbuf || result == NULL))
             free (result);
           errno = EILSEQ;
           return NULL;
         }
-      if (count == -2)
+      s += count;
+
+      /* Store it in the output string.  */
+      if (length + 1 > allocated)
         {
           DST_UNIT *memory;
 
           allocated = (allocated > 0 ? 2 * allocated : 12);
-          if (length + 6 > allocated)
-            allocated = length + 6;
+          if (length + 1 > allocated)
+            allocated = length + 1;
           if (result == resultbuf || result == NULL)
             memory = (DST_UNIT *) malloc (allocated * sizeof (DST_UNIT));
           else
@@ -95,11 +93,8 @@ FUNC (const SRC_UNIT *s, size_t n, DST_UNIT *resultbuf, size_t *lengthp)
             memcpy ((char *) memory, (char *) result,
                     length * sizeof (DST_UNIT));
           result = memory;
-          count = u8_uctomb (result + length, uc, allocated - length);
-          if (count < 0)
-            abort ();
         }
-      length += count;
+      result[length++] = uc;
     }
 
   if (length == 0)

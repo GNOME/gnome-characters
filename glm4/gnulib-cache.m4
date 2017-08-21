@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2016 Free Software Foundation, Inc.
+# Copyright (C) 2002-2017 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --lib=libgnu --source-base=gllib --m4-base=glm4 --doc-base=doc --tests-base=gltests --aux-dir=. --no-conditional-dependencies --libtool --macro-prefix=gl --no-vc-files libunistring-optional unicase/tolower unicase/totitle unicase/toupper unictype/block-all unictype/category-all unictype/ctype-print unictype/mirror unictype/property-all unictype/scripts-all uniname/uniname uninorm/canonical-decomposition unistr/u32-to-u8 unitypes uniwidth/width
+#   gnulib-tool --import --lib=libgnu --source-base=gllib --m4-base=glm4 --doc-base=doc --tests-base=gltests --aux-dir=. --no-conditional-dependencies --libtool --macro-prefix=gl --no-vc-files libunistring-optional unicase/tolower unicase/totitle unicase/toupper unictype/block-all unictype/category-all unictype/ctype-print unictype/mirror unictype/property-all unictype/scripts-all uniname/uniname uninorm/canonical-decomposition unistr/u32-to-u8 unistr/u8-strmblen unistr/u8-to-u32 unitypes uniwidth/width
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
@@ -45,6 +45,8 @@ gl_MODULES([
   uniname/uniname
   uninorm/canonical-decomposition
   unistr/u32-to-u8
+  unistr/u8-strmblen
+  unistr/u8-to-u32
   unitypes
   uniwidth/width
 ])

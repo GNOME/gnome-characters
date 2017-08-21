@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2016 Free Software Foundation, Inc.
+# Copyright (C) 2002-2017 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -49,6 +49,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module include_next:
   # Code from module inline:
   # Code from module libunistring-optional:
+  # Code from module limits-h:
   # Code from module multiarch:
   # Code from module snippet/unused-parameter:
   # Code from module ssize_t:
@@ -215,6 +216,9 @@ AC_DEFUN([gl_EARLY],
   # Code from module uninorm/decomposition-table:
   # Code from module unistr/base:
   # Code from module unistr/u32-to-u8:
+  # Code from module unistr/u8-mbtoucr:
+  # Code from module unistr/u8-strmblen:
+  # Code from module unistr/u8-to-u32:
   # Code from module unistr/u8-uctomb:
   # Code from module unitypes:
   # Code from module uniwidth/base:
@@ -240,6 +244,7 @@ AC_DEFUN([gl_INIT],
     [gl_ICONV_MODULE_INDICATOR([iconv])])
   gl_INLINE
   gl_LIBUNISTRING_OPTIONAL
+  gl_LIMITS_H
   gl_MULTIARCH
   gt_TYPE_SSIZE_T
   AM_STDBOOL_H
@@ -482,12 +487,16 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_MODULE([0.9.6], [unictype/property-zero-width])
   gl_LIBUNISTRING_MODULE([0.9.6], [unictype/scripts])
   gl_LIBUNISTRING_LIBHEADER([0.9.5], [uniname.h])
-  gl_LIBUNISTRING_MODULE([0.9.7], [uniname/uniname])
+  gl_LIBUNISTRING_MODULE([0.9.6], [uniname/uniname])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [uninorm.h])
   gl_LIBUNISTRING_MODULE([0.9.6], [uninorm/canonical-decomposition])
   AC_REQUIRE([AC_C_INLINE])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [unistr.h])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u32-to-u8])
+  gl_MODULE_INDICATOR([unistr/u8-mbtoucr])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-mbtoucr])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-strmblen])
+  gl_LIBUNISTRING_MODULE([0.9.3], [unistr/u8-to-u32])
   gl_MODULE_INDICATOR([unistr/u8-uctomb])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-uctomb])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [unitypes.h])
@@ -630,8 +639,8 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
-  build-aux/snippet/unused-parameter.h
   lib/libunistring.valgrind
+  lib/limits.in.h
   lib/localcharset.h
   lib/stdbool.in.h
   lib/stdint.in.h
@@ -933,12 +942,16 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/uninorm/decomposition-table2.h
   lib/unistr.in.h
   lib/unistr/u32-to-u8.c
+  lib/unistr/u8-mbtoucr.c
+  lib/unistr/u8-strmblen.c
+  lib/unistr/u8-to-u32.c
   lib/unistr/u8-uctomb-aux.c
   lib/unistr/u8-uctomb.c
   lib/unitypes.in.h
   lib/uniwidth.in.h
   lib/uniwidth/cjk.h
   lib/uniwidth/width.c
+  lib/unused-parameter.h
   m4/00gnulib.m4
   m4/absolute-header.m4
   m4/gnulib-common.m4
@@ -951,6 +964,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/libunistring-base.m4
   m4/libunistring-optional.m4
   m4/libunistring.m4
+  m4/limits-h.m4
   m4/longlong.m4
   m4/multiarch.m4
   m4/off_t.m4
@@ -958,4 +972,5 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/stdbool.m4
   m4/stdint.m4
   m4/sys_types_h.m4
+  m4/wint_t.m4
 ])
