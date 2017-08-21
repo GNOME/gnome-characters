@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk+" version="3.12"/>
   <template class="Gjs_MainWindow" parent="GtkApplicationWindow">
-    <property name="height-request">600</property>
+    <property name="height-request">660</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="main-headerbar">
 	<property name="can_focus">False</property>
