@@ -161,8 +161,10 @@ var MainWindow = new Lang.Class({
 
         this._searchActive = v;
 
-        if (this._searchActive)
-            this._categoryList.unselect_all();
+        if (this._searchActive) {
+            let categoryList = this._categoryListView.get_visible_child();
+            categoryList.unselect_all();
+        }
 
         this.notify('search-active');
     },
