@@ -610,21 +610,18 @@ var CharacterListView = new Lang.Class({
             return;
         }
 
-        this._characters = [];
         let criteria = Gc.SearchCriteria.new_category(category.category);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
     },
 
     searchByKeywords: function(keywords) {
-        this._characters = [];
         let criteria = Gc.SearchCriteria.new_keywords(keywords, Gc.SearchFlag.NONE);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
     },
 
     searchByScripts: function(scripts) {
-        this._characters = [];
         var criteria = Gc.SearchCriteria.new_scripts(scripts);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
