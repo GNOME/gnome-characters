@@ -61,9 +61,7 @@ const SearchProvider = new Lang.Class({
                 let characters = [];
                 try {
                     let result = context.search_finish(res);
-                    for (let index = 0; index < result.len; index++) {
-                        characters.push(Gc.search_result_get(result, index));
-                    }
+                    characters = Util.searchResultToArray(result);
                 } catch (e) {
                     log("Failed to search by keywords: " + e.message);
                 }
