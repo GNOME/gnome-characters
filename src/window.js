@@ -368,7 +368,9 @@ const MainView = new Lang.Class({
             hexpand: false,
         });
         scroll.add(recentBox);
-        this.add_titled(scroll, 'recent', 'Recently Used');
+        // FIXME: Can't use GtkContainer.child_get_property.
+        scroll.title = _('Recently Used');
+        this.add_titled(scroll, 'recent', scroll.title);
 
         characterList = this._createCharacterList(
             'search-result', _('Search Result Character List'));
