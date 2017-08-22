@@ -168,8 +168,8 @@ const CategoryListRowWidget = new Lang.Class({
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.add(hbox);
 
-        let icon = new Gio.ThemedIcon({ name: category.icon_name });
-        let image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.LARGE_TOOLBAR);
+        let pixbuf = Util.loadIcon(category.icon_name, 24);
+        let image = Gtk.Image.new_from_pixbuf(pixbuf);
         image.get_style_context().add_class('category-icon');
         hbox.pack_start(image, false, false, 2);
 
@@ -179,10 +179,10 @@ const CategoryListRowWidget = new Lang.Class({
         hbox.pack_start(label, true, true, 0);
 
         if (category.secondary_icon_name) {
-            let icon = new Gio.ThemedIcon({ name: category.secondary_icon_name });
-            let image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON);
+            let pixbuf = Util.loadIcon(category.secondary_icon_name, 16);
+            let image = Gtk.Image.new_from_pixbuf(pixbuf);
             image.get_style_context().add_class('category-icon');
-            hbox.pack_start(image, false, false, 2);
+            hbox.pack_end(image, false, false, 2);
         }
     }
 });
