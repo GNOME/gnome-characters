@@ -1,5 +1,5 @@
 /* Decomposition of Unicode characters.
-   Copyright (C) 2001-2003, 2009-2016 Free Software Foundation, Inc.
+   Copyright (C) 2001-2003, 2009-2017 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This program is free software: you can redistribute it and/or modify it
@@ -21,7 +21,7 @@
 /* The decomposition table is made of two parts:
      - A table containing the actual arrays of decomposed equivalents.
        (This table is separate because the maximum length of a decomposition
-       is 18, much larger than than the average length 1.497 of a decomposition).
+       is 18, much larger than the average length 1.497 of a decomposition).
      - A 3-level table of indices into this array.  */
 
 #include "decomposition-table1.h"
