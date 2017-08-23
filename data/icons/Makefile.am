@@ -1,21 +1,6 @@
 icondir = $(datadir)/icons
 
 nobase_icon_DATA = \
-	hicolor/scalable/categories/characters-punctuation-symbolic.svg \
-	hicolor/scalable/categories/characters-arrow-symbolic.svg \
-	hicolor/scalable/categories/characters-bullet-symbolic.svg \
-	hicolor/scalable/categories/characters-picture-symbolic.svg \
-	hicolor/scalable/categories/characters-currency-symbolic.svg \
-	hicolor/scalable/categories/characters-math-symbolic.svg \
-	hicolor/scalable/categories/characters-latin-symbolic.svg \
-	hicolor/scalable/categories/characters-emoji-activities.svg \
-	hicolor/scalable/categories/characters-emoji-animals.svg \
-	hicolor/scalable/categories/characters-emoji-flags.svg \
-	hicolor/scalable/categories/characters-emoji-food.svg \
-	hicolor/scalable/categories/characters-emoji-objects.svg \
-	hicolor/scalable/categories/characters-emoji-smileys.svg \
-	hicolor/scalable/categories/characters-emoji-symbols.svg \
-	hicolor/scalable/categories/characters-emoji-travel.svg \
 	hicolor/16x16/apps/gnome-characters.png \
 	hicolor/22x22/apps/gnome-characters.png \
 	hicolor/32x32/apps/gnome-characters.png \
