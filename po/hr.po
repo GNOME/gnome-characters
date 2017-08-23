@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-04-08 16:54+0000\n"
-"PO-Revision-Date: 2017-04-10 22:02+0200\n"
+"POT-Creation-Date: 2017-07-01 16:09+0000\n"
+"PO-Revision-Date: 2017-08-23 17:07+0200\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -64,7 +64,7 @@ msgstr "Trenutna stranica"
 msgid "Filter by Font"
 msgstr "Filtriraj po slovima"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:170
 msgid "GNOME Characters"
 msgstr "GNOME znakovi"
 
@@ -101,7 +101,7 @@ msgstr "Aplikacija pomagala za pronalazak i umetanje neuobičajenih znakova"
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
 msgid "gnome-characters"
-msgstr ""
+msgstr "gnome-characters"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -206,29 +206,29 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:169
 msgid "translator-credits"
 msgstr "gogo https://launchpad.net/~trebelnik-stefina"
 
-#: src/window.js:167
+#: src/window.js:171
 msgid "Character Map"
 msgstr "Mapa znaka"
 
-#: src/window.js:187
+#: src/window.js:191
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s samo)"
 
-#: src/window.js:273
+#: src/window.js:281
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s popis znakova"
 
-#: src/window.js:280
+#: src/window.js:288
 msgid "Search Result Character List"
 msgstr "Pretraži rezultat popisa znakova"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:290
 msgid "Search Result"
 msgstr "Rezult pretrage"
