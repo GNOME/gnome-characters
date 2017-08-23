@@ -337,7 +337,7 @@ const MainView = new Lang.Class({
         let characterList;
         let categories = this._categoryListView.getCategoryList();
         let recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
-                                      hexpand: true, vexpand: true });
+                                      hexpand: true, vexpand: false });
 
         for (let i in categories) {
             let category = categories[i];
@@ -359,9 +359,9 @@ const MainView = new Lang.Class({
             this._recentCharacterLists[category.name] = characterList;
             if (i > 0) {
                 let separator = new Gtk.Separator({});
-                recentBox.pack_end(separator, false, false, 0);
+                recentBox.pack_start(separator, false, false, 0);
             }
-            recentBox.pack_end(characterList, true, true, 0);
+            recentBox.pack_start(characterList, false, false, 0);
         }
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,

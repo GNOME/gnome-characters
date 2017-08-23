@@ -646,7 +646,7 @@ var RecentCharacterListView = new Lang.Class({
             fontFilter: null
         });
         params = Params.fill(params, {
-            hexpand: true, vexpand: true
+            hexpand: true, vexpand: false
         });
         this.parent(params);
 

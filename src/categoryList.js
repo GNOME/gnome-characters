@@ -28,17 +28,17 @@ const Util = imports.util;
 
 const CategoryList = [
     {
-        name: 'letters',
-        category: Gc.Category.LETTER,
-        title: N_('Letters & Symbols'),
-        icon_name: 'characters-latin-symbolic',
-        action_name: 'category'
-    },
-    {
         name: 'emojis',
         category: Gc.Category.EMOJI,
         title: N_('Emojis'),
         icon_name: 'characters-emoji-smileys',
+        action_name: 'category'
+    },
+    {
+        name: 'letters',
+        category: Gc.Category.LETTER,
+        title: N_('Letters & Symbols'),
+        icon_name: 'characters-latin-symbolic',
         action_name: 'category'
     }
 ];
