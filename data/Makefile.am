@@ -75,6 +75,10 @@ CLEANFILES = \
 	gschemas.compiled \
 	$(NULL)
 
+GITIGNOREFILES = \
+	org.gnome.Characters.desktop \
+	$(NULL)
+
 # For uninstalled use
 all-local:
 	$(GLIB_COMPILE_SCHEMAS) $(builddir)

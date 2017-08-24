@@ -22,6 +22,7 @@ GITIGNOREFILES = \
 	.anjuta \
 	.anjuta_sym_db.db \
 	ABOUT-NLS \
+	config.rpath \
 	m4/libtool.m4 \
 	m4/lt* \
 	m4/appstream-xml.m4 \
@@ -61,6 +62,7 @@ GITIGNOREFILES = \
 	m4/wchar_t.m4 \
 	m4/wint_t.m4 \
 	m4/xsize.m4 \
+	po/Makevars.template \
 	po/Rules-quot \
 	po/boldquot.sed \
 	po/en@boldquot.header \
@@ -77,6 +79,7 @@ GITIGNOREFILES = \
 	gllib/**/.deps \
 	gllib/**/.libs \
 	gllib/.libs \
+	gllib/limits.h \
 	gllib/sys \
 	gllib/unicase.h \
 	gllib/unictype.h \
@@ -87,6 +90,7 @@ GITIGNOREFILES = \
 	gllib/uninorm.h \
 	gllib/unistr.h \
 	gllib/unitypes.h \
+	gllib/uniwidth.h \
 	gllib/unused-parameter.h \
 	gllib/**/.dirstamp \
 	rpms/
