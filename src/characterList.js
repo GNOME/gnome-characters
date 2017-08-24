@@ -585,7 +585,7 @@ var CharacterListView = new Lang.Class({
 
     _addSearchResult: function(result) {
         let characters = Util.searchResultToArray(result);
-        this.setCharacters(characters);
+        this.setCharacters(this._characters.concat(characters));
     },
 
     _searchWithContext: function(context, count) {
