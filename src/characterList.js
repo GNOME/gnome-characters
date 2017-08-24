@@ -501,6 +501,7 @@ var CharacterListView = new Lang.Class({
             this._updateCharacterList();
         }));
         scroll.connect('edge-reached', Lang.bind(this, this._onEdgeReached));
+        scroll.connect('size-allocate', Lang.bind(this, this._onSizeAllocate));
     },
 
     _startSpinner: function() {
@@ -575,9 +576,7 @@ var CharacterListView = new Lang.Class({
         return Math.max(MAX_SEARCH_RESULTS, heightInRows * cellsPerRow);
     },
 
-    vfunc_size_allocate: function(allocation) {
-        this.parent(allocation);
-
+    _onSizeAllocate: function(scrolled, allocation) {
         if (this._characters.length < this.initialSearchCount) {
             this._maybeLoadMore();
         }
