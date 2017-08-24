@@ -1,4 +1,4 @@
-EXTRA_DIST = gen-confusables.py gen-scripts.py
+EXTRA_DIST = gen-confusables.py gen-emoji.py gen-scripts.py
 CLEANFILES =
 DISTCLEANFILES =
 MAINTAINERCLEANFILES =
@@ -20,7 +20,7 @@ pkglib_LTLIBRARIES = libgc.la
 libgc_la_LIBADD = $(LIBGC_LIBS) $(LTLIBICONV) $(LTLIBUNISTRING) $(PANGOFT2_LIBS) $(builddir)/../gllib/libgnu.la
 libgc_la_LDFLAGS = -avoid-version
 libgc_la_sources = gc.h gc.c gc-enumtypes.c
-libgc_la_SOURCES = $(libgc_la_sources) confusables.h scripts.h gc-enumtypes.h
+libgc_la_SOURCES = $(libgc_la_sources) confusables.h emoji.h scripts.h gc-enumtypes.h
 
 BUILT_SOURCES = gc-enumtypes.h gc-enumtypes.c
 
