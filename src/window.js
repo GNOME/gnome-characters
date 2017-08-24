@@ -354,6 +354,7 @@ const MainView = new Lang.Class({
             }
             characterList = this._createRecentCharacterList(
                 category.name,
+                // TRANSLATORS: %s will be either 'emojis' or 'letters'
                 _('Recently Used %s Character List').format(category.title),
                 category.category);
             this._recentCharacterLists[category.name] = characterList;
