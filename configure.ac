@@ -4,7 +4,7 @@ AC_INIT([org.gnome.Characters], [3.22.0],
         [gnome-characters])
 
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_MACRO_DIRS([glm4 m4])
 
 AM_INIT_AUTOMAKE([1.12 dist-xz no-dist-gzip foreign tar-ustar no-define serial-tests -Wno-portability])
 # revert automake using PACKAGE_TARNAME instead of PACKAGE_NAME

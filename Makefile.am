@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4 -I glm4 ${ACLOCAL_FLAGS}
+ACLOCAL_AMFLAGS = -I glm4 -I m4 ${ACLOCAL_FLAGS}
 DISTCHECK_CONFIGURE_FLAGS = --disable-dogtail
 
 SUBDIRS = po data gllib lib src tests
