@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-02 06:18+0000\n"
+"Report-Msgid-Bugs-To: "
+"https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-07-01 16:09+0000\n"
 "PO-Revision-Date: 2017-03-06 15:34+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -68,7 +68,7 @@ msgstr "Nuværende side"
 msgid "Filter by Font"
 msgstr "Sortér efter skrifttype"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:170
 msgid "GNOME Characters"
 msgstr "GNOME Tegn"
 
@@ -209,7 +209,7 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:169
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
@@ -219,26 +219,26 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: src/window.js:167
+#: src/window.js:171
 msgid "Character Map"
 msgstr "Tegnoversigt"
 
-#: src/window.js:187
+#: src/window.js:191
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (kun %s)"
 
-#: src/window.js:273
+#: src/window.js:281
 #, javascript-format
 msgid "%s Character List"
 msgstr "Tegnliste for %s"
 
-#: src/window.js:280
+#: src/window.js:288
 msgid "Search Result Character List"
 msgstr "Søgeresultat for tegnliste"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:290
 msgid "Search Result"
 msgstr "Søgeresultat"
 
@@ -247,3 +247,5 @@ msgstr "Søgeresultat"
 
 #~ msgid "characters;unicode;"
 #~ msgstr "tegn;unicode;"
+
+
