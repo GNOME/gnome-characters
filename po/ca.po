@@ -106,7 +106,7 @@ msgstr "gnome-characters"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "caràcters;unicode;punctuació;mates;lletres;emoji;emoticona;"
+msgstr "caràcters;unicode;puntuació;mates;lletres;emoji;emoticona;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
