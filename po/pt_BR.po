@@ -8,10 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-18 21:52+0000\n"
-"PO-Revision-Date: 2017-02-21 16:56-0200\n"
+"POT-Creation-Date: 2017-08-30 14:55+0000\n"
+"PO-Revision-Date: 2017-08-30 20:26-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -31,7 +31,6 @@ msgid "Quit"
 msgstr "Sair"
 
 #: data/characterlist.ui:30
-#| msgid "Search produced empty result"
 msgid "Search found no results"
 msgstr "A pesquisa localizou nenhum resultado"
 
@@ -43,14 +42,6 @@ msgstr "Tente uma pesquisa diferente."
 msgid "Loading…"
 msgstr "Carregando…"
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Não foram localizados caracteres recentes"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Caracteres irão aparecer aqui se você usá-los."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "Copiar caractere"
@@ -58,6 +49,14 @@ msgstr "Copiar caractere"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "O aplicativo de caracteres foi copiado para a área de transferência"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Não foram localizados caracteres recentes"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Caracteres irão aparecer aqui se você usá-los."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -67,7 +66,7 @@ msgstr "Página atual"
 msgid "Filter by Font"
 msgstr "Filtrar por fonte"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "Caracteres do GNOME"
 
@@ -124,57 +123,94 @@ msgid "Maximum recent characters"
 msgstr "Máximo de caracteres recentes"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Usados recentemente"
+msgid "Emojis"
+msgstr "Emojis"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Letras & símbolos"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Pontuação"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Setas"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Marcadores"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Figuras"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Moedas"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Matemática"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Letras"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Carinhas"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Smileys & pessoas"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Animais & natureza"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Comida & bebida"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Atividades"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Viagem & lugares"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Objetos"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Símbolos"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Opções"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Linha %s da lista de categoria"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "Usados recentemente"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Veja também"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s não está incluído em %s"
@@ -199,44 +235,54 @@ msgstr "Encerrando o aplicativo de caracteres"
 msgid "None"
 msgstr "Nenhum"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Nome de caractere desconhecido"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:199
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>\n"
 "Rafael Fontenelle <rafaelff@gnome.org>"
 
-#: src/window.js:167
+#: src/window.js:201
 msgid "Character Map"
 msgstr "Mapa de caracteres"
 
-#: src/window.js:187
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (apenas %s)"
 
-#: src/window.js:273
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+#| msgid "%s Character List"
+msgid "Recently Used %s Character List"
+msgstr "Lista de caracteres %s recentemente usados"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "Resultado da pesquisa da lista de caracteres"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:379
 msgid "Search Result"
 msgstr "Resultado da pesquisa"
+
+#~ msgid "Emoticons"
+#~ msgstr "Carinhas"
 
 #~ msgid "Try another search criteria."
 #~ msgstr "Tente outro critério de pesquisa."
