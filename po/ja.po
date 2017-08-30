@@ -97,7 +97,7 @@ msgstr "珍しい文字を探して挿入するためのユーティリティ"
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
 msgid "gnome-characters"
-msgstr "文字"
+msgstr "gnome-characters"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
