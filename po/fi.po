@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-18 21:52+0000\n"
-"PO-Revision-Date: 2017-02-04 19:40+0200\n"
+"POT-Creation-Date: 2017-08-30 14:55+0000\n"
+"PO-Revision-Date: 2017-08-31 09:32+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -29,7 +29,6 @@ msgid "Quit"
 msgstr "Lopeta"
 
 #: data/characterlist.ui:30
-#| msgid "Search produced empty result"
 msgid "Search found no results"
 msgstr "Haku ei tuottanut tuloksia."
 
@@ -41,14 +40,6 @@ msgstr "Kokeile eri hakuehtoja."
 msgid "Loading…"
 msgstr "Ladataan…"
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Viimeisimpiä merkkejä ei löytynyt"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Tänne ilmestyy merkkejä, kun käytät niitä."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "Kopioi merkki"
@@ -56,6 +47,14 @@ msgstr "Kopioi merkki"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Merkki kopioitu leikepöydälle"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Viimeisimpiä merkkejä ei löytynyt"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Tänne ilmestyy merkkejä, kun käytät niitä."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -65,7 +64,7 @@ msgstr "Nykyinen sivu"
 msgid "Filter by Font"
 msgstr "Suodata fontin perusteella"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "Gnomen merkit"
 
@@ -123,57 +122,94 @@ msgid "Maximum recent characters"
 msgstr "Äskettäisten merkkien enimmäismäärä"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Äskettäin käytetty"
+msgid "Emojis"
+msgstr "Emojit"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Kirjaimet ja symbolit"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Välimerkit"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Nuolet"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Luettelomerkit"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Kuvat"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Valuutat"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Matematiikka"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Kirjaimet"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Hymiöt"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Hymiöt ja ihmiset"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Eläimet ja luonto"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Ruoka ja juoma"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Aktiviteetit"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Matkustaminen"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Objektit"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Symbolit"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Liput"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s luokkaluettelon sarake"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "Äskettäin käytetty"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Katso myös"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "Merkki %s ei sisälly fonttiin %s"
@@ -198,42 +234,52 @@ msgstr "Merkkisovellus suljetaan"
 msgid "None"
 msgstr "Ei mitään"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Tuntematon merkin nimi"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:199
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/window.js:167
+#: src/window.js:201
 msgid "Character Map"
 msgstr "Merkkikartta"
 
-#: src/window.js:187
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (vain %s)"
 
-#: src/window.js:273
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s - Merkkiluettelo"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+#| msgid "%s Character List"
+msgid "Recently Used %s Character List"
+msgstr "Äskettäin käytetty \"%s\"-merkkiluettelo"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "Hakutulosten merkkiluettelo"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:379
 msgid "Search Result"
 msgstr "Hakutulos"
+
+#~ msgid "Emoticons"
+#~ msgstr "Hymiöt"
 
 #~ msgid "Try another search criteria."
 #~ msgstr "Kokeile eri hakuehtoja."
