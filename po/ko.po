@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-23 23:59+0000\n"
-"PO-Revision-Date: 2017-03-01 16:50+0900\n"
+"POT-Creation-Date: 2017-08-30 14:55+0000\n"
+"PO-Revision-Date: 2017-09-02 11:44+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -39,14 +39,6 @@ msgstr "다른 단어로 검색하십시오."
 msgid "Loading…"
 msgstr "불러오는 중…"
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "최근 문자가 없습니다"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "사용한 문자가 여기에 나타납니다."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "문자 복사"
@@ -54,6 +46,14 @@ msgstr "문자 복사"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "클립보드에 문자를 복사했습니다"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "최근 문자가 없습니다"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "사용한 문자가 여기에 나타납니다."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -63,7 +63,7 @@ msgstr "현재 페이지"
 msgid "Filter by Font"
 msgstr "글꼴로 구분"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "그놈 문자 도구"
 
@@ -119,57 +119,94 @@ msgid "Maximum recent characters"
 msgstr "최대 최근 사용 문자"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "최근 사용"
+msgid "Emojis"
+msgstr "이모지"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "문자와 기호"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "구두 기호"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "화살표"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "문단 기호"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "그림 문자"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "화폐 단위"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "수학기호"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "문자"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "이모티콘"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "표정과 사람"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "동물과 자연"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "음식과 음료"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "활동"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "여행과 장소"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "사물"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "기호"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "국기"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s 분류 목록"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "최근 사용"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "더 보기"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "유니코드 U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s이(가) %s에 없습니다"
@@ -194,42 +231,51 @@ msgstr "문자 도구 프로그램이 이미 실행중입니다"
 msgid "None"
 msgstr "없음"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "알 수 없는 문자 이름"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:199
 msgid "translator-credits"
 msgstr "조성호 <shcho@gnome.org>"
 
-#: src/window.js:167
+#: src/window.js:201
 msgid "Character Map"
 msgstr "문자표"
 
-#: src/window.js:187
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s(%s만)"
 
-#: src/window.js:273
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s 문자 목록"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "최근 사용한 %s 문자 목록"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "검색 결과 문자 목록"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:379
 msgid "Search Result"
 msgstr "검색 결과"
+
+#~ msgid "Emoticons"
+#~ msgstr "이모티콘"
 
 #~ msgid "Try another search criteria."
 #~ msgstr "다른 검색어로 시도하십시오."
