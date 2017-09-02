@@ -2,15 +2,16 @@
 # Copyright (C) 2015, 2016 Seong-ho Cho, et al.
 # This file is distributed under the same license as the gnome-characters package.
 # Seong-ho Cho <shcho@gnome.org>, 2015-2017.
+# DaeHyun Sung <sungdh86@gmail.com>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-30 14:55+0000\n"
-"PO-Revision-Date: 2017-09-02 11:44+0900\n"
-"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
+"POT-Creation-Date: 2017-09-02 06:47+0000\n"
+"PO-Revision-Date: 2017-09-02 16:15+0900\n"
+"Last-Translator: DaeHyun Sung <sungdh86@gmail.com>\n"
 "Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -243,7 +244,8 @@ msgstr "U+%s, %s: %s"
 #. TRANSLATORS: put your names here, one name per line.
 #: src/window.js:199
 msgid "translator-credits"
-msgstr "조성호 <shcho@gnome.org>"
+msgstr "조성호 <shcho@gnome.org>\n"
+"성대현 <sungdh86@gmail.com>"
 
 #: src/window.js:201
 msgid "Character Map"
@@ -274,14 +276,3 @@ msgstr "검색 결과 문자 목록"
 msgid "Search Result"
 msgstr "검색 결과"
 
-#~ msgid "Emoticons"
-#~ msgstr "이모티콘"
-
-#~ msgid "Try another search criteria."
-#~ msgstr "다른 검색어로 시도하십시오."
-
-#~ msgid "About Characters"
-#~ msgstr "문자 도구 정보"
-
-#~ msgid "characters;unicode;"
-#~ msgstr "characters;문자 도구;unicode;유니코드;"
