@@ -6,17 +6,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-18 21:52+0000\n"
-"PO-Revision-Date: 2017-02-17 08:47+0500\n"
+"POT-Creation-Date: 2017-08-30 14:55+0000\n"
+"PO-Revision-Date: 2017-09-04 20:53+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -38,14 +38,6 @@ msgstr "Басқа сөздерді іздеп көріңіз."
 msgid "Loading…"
 msgstr "Жүктеу…"
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Жуырдағы таңбалар табылмады"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Таңбаларды қолдансаңыз, олар осында көрсетіледі."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "Таңбаны көшіріп алу"
@@ -53,6 +45,14 @@ msgstr "Таңбаны көшіріп алу"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Таңба алмасу буферіне көшірілді"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Жуырдағы таңбалар табылмады"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Таңбаларды қолдансаңыз, олар осында көрсетіледі."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -62,7 +62,7 @@ msgstr "Ағымдағы бет"
 msgid "Filter by Font"
 msgstr "Қаріп бойынша сүзгілеу"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "GNOME таңбалар қолданбасы"
 
@@ -121,57 +121,94 @@ msgid "Maximum recent characters"
 msgstr "Жуырдағы таңбалардың макс. саны"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Жақында қолданылған"
+msgid "Emojis"
+msgstr "Эмодзи"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Әріптер және таңбалар"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Емле таңбалары"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Сызықшалар"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Маркерлер"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Суреттер"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Қаржылар"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Математика"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Әріптер"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Смайликтер"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Смайликтер және адамдар"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Жануарлар және табиғат"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Тамақ және сусындар"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Белсенділіктер"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Саяхат және орындар"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Объекттер"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Таңбалар"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Жалаулар"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s санаттар тізімінің жолы"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "Жақында қолданылған"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Тағы қараңыз"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s %s ішінде жоқ"
@@ -196,42 +233,51 @@ msgstr "Таңбалар қолданбасы жұмысын аяқтауда"
 msgid "None"
 msgstr "Ешнәрсе"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Таңба аты белгісіз"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:199
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
-#: src/window.js:167
+#: src/window.js:201
 msgid "Character Map"
 msgstr "Таңбалар картасы"
 
-#: src/window.js:187
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (тек %s)"
 
-#: src/window.js:273
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s таңбалар тізімі"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Соңғы қолданылған %s таңбалар тізімі"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "Іздеу нәтижесінің таңбалар тізімі"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:379
 msgid "Search Result"
 msgstr "Іздеу нәтижесі"
+
+#~ msgid "Emoticons"
+#~ msgstr "Смайликтер"
 
 #~ msgid "Try another search criteria."
 #~ msgstr "Басқа іздеу шартын қолданып көріңіз."
