@@ -1,5 +1,5 @@
 AC_PREREQ(2.63)
-AC_INIT([org.gnome.Characters], [3.24.0],
+AC_INIT([org.gnome.Characters], [3.25.92],
         [https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters],
         [gnome-characters])
 

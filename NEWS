@@ -1,3 +1,39 @@
+3.25.92
+===
+
+- ui: Implement Emoji subcategories
+- character: Add to Recent list when copied not viewed
+- characterList: load more on resize
+- build fixes
+
+New And Updated Translations
+============================
+Anish Sheela (ml)
+Ask Hjorth Larsen (da)
+Aurimas Černius (lt)
+Balázs Úr (hu)
+Cheng-Chia Tseng (zh_TW)
+Daniel Mustieles (es)
+Dušan Kazik (sk)
+Emin Tufan Çetin (tr)
+Fabio Tomat (fur)
+Fran Dieguez (gl)
+gogo (hr)
+hanniedu (nl)
+Jiri Grönroos (fi)
+Jordi Mas (ca)
+Kukuh Syafaat (id)
+Marek Cernocky (cs)
+Milo Casagrande (it)
+Pawan Chitrakar (ne)
+Piotr Drąg (ja)
+Piotr Drąg (ml)
+Piotr Drąg (pl)
+Rafael Fontenelle (pt_BR)
+Rūdolfs Mazurs (lv)
+Seong-ho Cho (ko)
+Yuras Shumovich (be)
+
 3.24.0
 ===
 
