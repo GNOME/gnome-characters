@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2017-08-25 14:04+0200\n"
-"PO-Revision-Date: 2017-08-30 16:02+0200\n"
+"PO-Revision-Date: 2017-09-04 09:19+0200\n"
 "Last-Translator: Jiro Matsuzawa <jmatsuzawa@gnome.org>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -102,7 +102,7 @@ msgstr "gnome-characters"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr ""
+msgstr "文字;unicode;句読点;数字;絵文字;顔文字;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -162,7 +162,7 @@ msgstr "動物と自然"
 
 #: src/categoryList.js:116
 msgid "Food & Drink"
-msgstr "食料と飲料"
+msgstr "食品と飲料"
 
 #: src/categoryList.js:123
 msgid "Activities"
