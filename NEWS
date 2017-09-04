@@ -1,3 +1,55 @@
+3.24.0
+===
+
+- characterList: Add NULL check for character name
+- characterlist.ui: Improve the 'no result' strings
+- searchProvider: add clipboardText to result meta
+- categoryList: Make IBus detection robuster
+
+New And Updated Translations
+============================
+Alan Mortensen (da)
+Anders Jonsson (sv)
+Ask Hjorth Larsen (da)
+Aurimas Černius (lt)
+Balázs Meskó (hu)
+Baurzhan Muftakhidinov (kk)
+Bernd Homuth (de)
+Çağatay Yiğit Şahin (tr)
+Chao-Hsiung Liao (zh_TW)
+Charles Monzat (fr)
+Cheng-Chia Tseng (zh_TW)
+Daniel Mustieles (es)
+Dušan Kazik (sk)
+Dz Chen (zh_CN)
+Fabio Tomat (fur)
+Fran Dieguez (gl)
+GNOME Translation Robot (gd)
+gogo (hr)
+Inaki Larranaga Murgoitio (eu)
+Jiri Grönroos (fi)
+Jordi Mas (ca)
+Khaled Hosny (ar)
+Kjartan Maraas (nb)
+Kukuh Syafaat (id)
+Marek Černocký (cs)
+Matej Urbančič (sl)
+Milo Casagrande (it)
+Muhammet Kara (tr)
+Piotr Drąg (is) (lv) (pt) (sr) (sr@latin)
+Piotr Drąg (pl)
+Rafael Fontenelle (pt_BR)
+Rūdolfs Mazurs (lv)
+Seong-ho Cho (ko)
+Sveinn í Felli (is)
+Tiago Santos (pt)
+Tom Tryfonidis (el)
+Victor Ibragimov (tg)
+Yuras Shumovich (be)
+Yuri Myasoedov (ru)
+Мирослав Николић (sr) (sr@latin)
+વિશાલ ભલાણી (gu)
+
 3.22.0
 ===
 
