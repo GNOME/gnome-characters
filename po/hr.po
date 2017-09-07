@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-01 16:09+0000\n"
-"PO-Revision-Date: 2017-08-23 17:07+0200\n"
+"POT-Creation-Date: 2017-08-30 14:55+0000\n"
+"PO-Revision-Date: 2017-09-07 20:19+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -40,14 +40,6 @@ msgstr "Pokušajte drugačiju pretragu"
 msgid "Loading…"
 msgstr "Učitavanje…"
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Nema pronađenih nedavnih znakova"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Znakovi će se pojaviti ovdje ako ih korsitite."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "Kopiraj znak"
@@ -55,6 +47,14 @@ msgstr "Kopiraj znak"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Znak je kopiran u međuspremnik"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Nema pronađenih nedavnih znakova"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Znakovi će se pojaviti ovdje ako ih korsitite."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -64,7 +64,7 @@ msgstr "Trenutna stranica"
 msgid "Filter by Font"
 msgstr "Filtriraj po slovima"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:170
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "GNOME znakovi"
 
@@ -121,57 +121,94 @@ msgid "Maximum recent characters"
 msgstr "Najviše nedavnih znakova"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Nedavno korišteno"
+msgid "Emojis"
+msgstr "Smajliji"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Slova i simboli"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Interpunkcija"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Strelice"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Grafičke oznake"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Slike"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Valute"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Matematika"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Slova"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Emotkoini"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Smajliji i ljudi"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Životinje i priroda"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Hrana i piće"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Aktivnosti"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Putovanja i mjesta"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Objekti"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Simboli"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Zastave"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s redak popisa kategorije"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "Nedavno korišteno"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Još pogledajte"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikôd U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s nije uključen u %s"
@@ -196,39 +233,48 @@ msgstr "Aplikacija znakova zatvorena"
 msgid "None"
 msgstr "Nepoznat"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Nepoznat naziv znaka"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:169
+#: src/window.js:199
 msgid "translator-credits"
 msgstr "gogo https://launchpad.net/~trebelnik-stefina"
 
-#: src/window.js:171
+#: src/window.js:201
 msgid "Character Map"
 msgstr "Mapa znaka"
 
-#: src/window.js:191
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s samo)"
 
-#: src/window.js:281
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s popis znakova"
 
-#: src/window.js:288
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Nedavno korišten %s popis znakova"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "Pretraži rezultat popisa znakova"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:290
+#: src/window.js:379
 msgid "Search Result"
 msgstr "Rezult pretrage"
+
+#~ msgid "Emoticons"
+#~ msgstr "Emotkoini"
