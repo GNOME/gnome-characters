@@ -1,14 +1,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Sveinn í Felli <sv1@fellsnet.is>, 2015, 2016.
+# Sveinn í Felli <sv1@fellsnet.is>, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 21:18+0000\n"
-"PO-Revision-Date: 2016-10-11 06:54+0000\n"
+"POT-Creation-Date: 2017-07-04 13:47+0000\n"
+"PO-Revision-Date: 2017-09-08 08:33+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -27,12 +27,13 @@ msgid "Quit"
 msgstr "Hætta"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+#| msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "Leit skilaði engum niðurstöðum"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "Prófa önnur leitarskilyrði."
+msgid "Try a different search."
+msgstr "Reyna aðra leit."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -67,7 +68,6 @@ msgid "GNOME Characters"
 msgstr "GNOME Stafir"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
-#| msgid "Characters Application"
 msgid "Character map application"
 msgstr "Stafatöfluforrit"
 
@@ -99,7 +99,6 @@ msgstr ""
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -177,6 +176,10 @@ msgstr "Unicode U+%04s"
 msgid "%s is not included in %s"
 msgstr "%s er ekki innifalið í %s"
 
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Ekki úthlutað"
+
 #: src/main.js:58
 msgid "Characters Application"
 msgstr "Stafaforrit"
@@ -230,9 +233,11 @@ msgstr "Listi með leitarniðurstöðum"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
 #: src/window.js:282
-#| msgid "Search Result Character List"
 msgid "Search Result"
 msgstr "Leitarniðurstöður"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Prófa önnur leitarskilyrði."
 
 #~ msgid "About Characters"
 #~ msgstr "Um hugbúnaðinn"
