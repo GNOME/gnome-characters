@@ -1,19 +1,19 @@
 # Danish translation for gnome-characters.
-# Copyright (C) 2015, 2016 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2015, 2016-2017 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 #
 # Kris Thomsen <mail@kristhomsen.dk>, 2015-2016.
 # scootergrisen, 2016.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2016.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2016-2017.
 # Alan Mortensen <alanmortensen.am@gmail.com>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: "
-"https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-01 16:09+0000\n"
-"PO-Revision-Date: 2017-03-06 15:34+0100\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-08-30 14:55+0000\n"
+"PO-Revision-Date: 2017-09-10 17:49+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -44,14 +44,6 @@ msgstr "Prøv en anden søgning."
 msgid "Loading…"
 msgstr "Indlæser …"
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Ingen seneste fundne tegn"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Tegn vises her, hvis du bruger dem."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "Kopiér tegn"
@@ -59,6 +51,14 @@ msgstr "Kopiér tegn"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Tegn kopieret til udklipsholderen"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Ingen seneste fundne tegn"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Tegn vises her, hvis du bruger dem."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -68,7 +68,7 @@ msgstr "Nuværende side"
 msgid "Filter by Font"
 msgstr "Sortér efter skrifttype"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:170
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "GNOME Tegn"
 
@@ -124,57 +124,94 @@ msgid "Maximum recent characters"
 msgstr "Maksimum antal seneste tegn"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Senest brugte"
+msgid "Emojis"
+msgstr "Emojier"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Bogstaver & symboler"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Tegnsætning"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Pile"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Prikker"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Billeder"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Valutaer"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Matematik"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Bogstaver"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Humørikoner"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Smileyer & mennesker"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Dyr & natur"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Mad & drikke"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Aktiviteter"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Rejse & steder"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Objekter"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Symboler"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Flag"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Listerække for kategorien %s"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "Senest brugte"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Se også"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s er ikke inkluderet i %s"
@@ -199,17 +236,17 @@ msgstr "Programmet Tegn afslutter"
 msgid "None"
 msgstr "Ingen"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Ukendt tegn-navn"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:169
+#: src/window.js:199
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
@@ -219,33 +256,40 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: src/window.js:171
+#: src/window.js:201
 msgid "Character Map"
 msgstr "Tegnoversigt"
 
-#: src/window.js:191
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (kun %s)"
 
-#: src/window.js:281
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "Tegnliste for %s"
 
-#: src/window.js:288
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Liste over senest brugte %s-tegn"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "Søgeresultat for tegnliste"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:290
+#: src/window.js:379
 msgid "Search Result"
 msgstr "Søgeresultat"
+
+#~ msgid "Emoticons"
+#~ msgstr "Humørikoner"
 
 #~ msgid "Try another search criteria."
 #~ msgstr "Prøv et andet søgekriterium."
 
 #~ msgid "characters;unicode;"
 #~ msgstr "tegn;unicode;"
-
-
