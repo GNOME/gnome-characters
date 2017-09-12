@@ -11,15 +11,15 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2017-09-08 08:40+0000\n"
-"PO-Revision-Date: 2017-09-09 12:52+0200\n"
-"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
+"PO-Revision-Date: 2017-09-12 22:22+0300\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gnome.org>\n"
 "Language-Team: Greek, Modern (1453-) <opensuse-translation-el@opensuse.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Project-Style: gnome\n"
 
 #: data/app-menu.ui:6
@@ -132,7 +132,7 @@ msgstr "Emojis"
 
 #: src/categoryList.js:40 src/categoryList.js:390
 msgid "Letters & Symbols"
-msgstr "Γράμματα & Σύμβολα"
+msgstr "Γράμματα & σύμβολα"
 
 #: src/categoryList.js:50
 msgid "Punctuation"
@@ -164,15 +164,15 @@ msgstr "Γράμματα"
 
 #: src/categoryList.js:102
 msgid "Smileys & People"
-msgstr "Χαμόγελα & Άτομα"
+msgstr "Χαμόγελα & άτομα"
 
 #: src/categoryList.js:109
 msgid "Animals & Nature"
-msgstr "Ζώα & Φύση"
+msgstr "Ζώα & φύση"
 
 #: src/categoryList.js:116
 msgid "Food & Drink"
-msgstr "Φαγητό & Ποτό"
+msgstr "Φαγητό & ποτό"
 
 #: src/categoryList.js:123
 msgid "Activities"
@@ -180,7 +180,7 @@ msgstr "Δραστηριότητες"
 
 #: src/categoryList.js:130
 msgid "Travel & Places"
-msgstr "Ταξίδια & Τοποθεσίες"
+msgstr "Ταξίδια & τοποθεσίες"
 
 #: src/categoryList.js:137
 msgid "Objects"
