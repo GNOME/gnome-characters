@@ -1,22 +1,22 @@
 # Persian translation for gnome-characters.
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Arash Mousavi <mousavi.arash@gmail.com>, 2015, 2016.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 21:18+0000\n"
-"PO-Revision-Date: 2016-09-09 17:15+0430\n"
+"POT-Creation-Date: 2017-08-30 14:55+0000\n"
+"PO-Revision-Date: 2017-09-22 22:19+0330\n"
 "Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -27,24 +27,16 @@ msgid "Quit"
 msgstr "خروج"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "جستجو نتیجه‌ای نداشت"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "یک محدوده جستجو دیگر را امتحان کنید"
+msgid "Try a different search."
+msgstr "یک جست‌وجو دیگر را امتحان کنید."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
-msgstr "درحال بارگیری..."
-
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "هیچ نویسه‌ای که که اخیرا استفاده شده باشد پیدا نشد"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "نویسه اگر از آنها استفاده کنید اینجا ظاهر می‌شوند."
+msgstr "درحال بارگیری…"
 
 #: data/character.ui:68
 msgid "Copy Character"
@@ -54,6 +46,14 @@ msgstr "رونوشت از نویشه"
 msgid "Character copied to clipboard"
 msgstr "نویسه به تخته‌گیره رونوشت شد"
 
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "هیچ نویسه‌ای که که اخیرا استفاده شده باشد پیدا نشد"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "نویسه اگر از آنها استفاده کنید اینجا ظاهر می‌شوند."
+
 #: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "صفحه فعلی"
@@ -62,7 +62,7 @@ msgstr "صفحه فعلی"
 msgid "Filter by Font"
 msgstr "صافی بر اساس قلم"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "نویسه‌های گنوم"
 
@@ -114,67 +114,108 @@ msgstr "قلم برای نمایش نویسه‌ها"
 
 #: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
-msgstr "از قلم برای رندر نویسه‌ها در فهرست نویسه استفاده کنید"
+msgstr "از قلم برای رندر نویسه‌ها در فهرست نویسه استفاده کنید."
 
 #: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "بیشینه‌ی نویسه‌های اخیر"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "اخیرا استفاده شده"
+msgid "Emojis"
+msgstr "ایموجی‌ها"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "حروف و علائم"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "نقطه‌گذاری"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "پیکان‌ها"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "نقطه‌ها"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "تصاویر"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "ارزها"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "ریاضی"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "حروف"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "شکلک‌ها"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "شکلک‌ها و افراد"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "حیوانات و طبعیت"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "غذا و نوشیدنی"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "فعالیت‌ها"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "مسافرت و مکان‌ها"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "اشیاء"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "علائم"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "پرچم‌ها"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "ردیفِ فهرستِ شاخه %s"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "اخیرا استفاده شده"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "همچنین ببینید"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "یونیکد U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s در %s وجود ندارد"
+
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "اختصاص نیافته"
 
 #: src/main.js:58
 msgid "Characters Application"
@@ -192,42 +233,54 @@ msgstr "برنامه نویسه‌ها در حال خروج است"
 msgid "None"
 msgstr "هیچ‌کدام"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "نام نویسه ناشناس"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s، %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:199
 msgid "translator-credits"
 msgstr "آرش موسوی <mousavi.arash@gmail.com>"
 
-#: src/window.js:167
+#: src/window.js:201
 msgid "Character Map"
 msgstr "نقشه نویسه‌ها"
 
-#: src/window.js:187
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s فقط)"
 
-#: src/window.js:273
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "فهرست نویسه %s"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "فهرست نویسه‌های %s به تازگی استفاده شده"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "فهرست نویسه‌های نتیجه جستجو"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:379
 msgid "Search Result"
 msgstr "نتایج جست‌وجو"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "یک محدوده جستجو دیگر را امتحان کنید"
+
+#~ msgid "Emoticons"
+#~ msgstr "شکلک‌ها"
 
 #~ msgid "About Characters"
 #~ msgstr "درباره نویسه‌ها"
