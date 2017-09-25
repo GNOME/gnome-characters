@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-04 13:47+0000\n"
-"PO-Revision-Date: 2017-09-08 08:33+0000\n"
+"POT-Creation-Date: 2017-09-08 08:34+0000\n"
+"PO-Revision-Date: 2017-09-25 17:33+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -27,7 +27,6 @@ msgid "Quit"
 msgstr "Hætta"
 
 #: data/characterlist.ui:30
-#| msgid "Search produced empty result"
 msgid "Search found no results"
 msgstr "Leit skilaði engum niðurstöðum"
 
@@ -39,14 +38,6 @@ msgstr "Reyna aðra leit."
 msgid "Loading…"
 msgstr "Hleð..."
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Engir nýlegir stafir fundust"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Stafir munu birtast hér ef þú hefur notað þá."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "Afrita staftákn"
@@ -54,6 +45,14 @@ msgstr "Afrita staftákn"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Stafur afritaður á klippispjaldið"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Engir nýlegir stafir fundust"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Stafir munu birtast hér ef þú hefur notað þá."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -63,7 +62,7 @@ msgstr "Núverandi síða"
 msgid "Filter by Font"
 msgstr "Sía eftir leturgerð"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "GNOME Stafir"
 
@@ -121,57 +120,94 @@ msgid "Maximum recent characters"
 msgstr "Hámarksfjöldi nýlegra stafa"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Nýlega notað"
+msgid "Emojis"
+msgstr "Tjáningartákn"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Stafir og tákn"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Greinamerki"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Örvar"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Áherslumerki"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Myndir"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Gjaldmiðlar"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Stærðfræði"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Stafir"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Tjáningartákn"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Fólk og broskarlar"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Dýr og náttúra"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Matur og drykkur"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Athafnir"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Staðir og ferðalög"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Hlutir"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Táknmerki"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Fánar"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s röð í flokkalista"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "Nýlega notað"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Sjá einnig"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s er ekki innifalið í %s"
@@ -196,45 +232,55 @@ msgstr "Stafaforrit hættir"
 msgid "None"
 msgstr "Ekkert"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Óþekkt heiti á staftákni"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:199
 msgid "translator-credits"
 msgstr ""
 "Áki G. Karlsson  <aki@akademia.is>\n"
 "Samúel Jón Gunnarsson <sammi@techattack.nu>\n"
 "Sveinn í Felli <sv1@fellsnet.is>"
 
-#: src/window.js:167
+#: src/window.js:201
 msgid "Character Map"
 msgstr "Stafatafla"
 
-#: src/window.js:187
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (einungis %s)"
 
-#: src/window.js:273
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s stafalisti"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+#| msgid "%s Character List"
+msgid "Recently Used %s Character List"
+msgstr "Nýlega notaður %s stafalisti"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "Listi með leitarniðurstöðum"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:379
 msgid "Search Result"
 msgstr "Leitarniðurstöður"
+
+#~ msgid "Emoticons"
+#~ msgstr "Tjáningartákn"
 
 #~ msgid "Try another search criteria."
 #~ msgstr "Prófa önnur leitarskilyrði."
