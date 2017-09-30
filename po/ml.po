@@ -10,10 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-01 16:09+0000\n"
-"PO-Revision-Date: 2017-08-06 00:26+0530\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-09-02 07:52+0000\n"
+"PO-Revision-Date: 2017-09-30 17:04+0530\n"
 "Last-Translator: Anish Sheela <aneesh.nl@gmail.com>\n"
 "Language-Team: Swatantra Malayalam Computing <discuss@lists.smc.org.in>\n"
 "Language: ml\n"
@@ -21,12 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Project-Style: gnome\n"
 
 #: data/app-menu.ui:6
 msgid "About"
-msgstr "സംബന്ധിച്ച്"
+msgstr "ഗ്നോം ക്യാരക്ടറിനെ കുറിച്ച്"
 
 #: data/app-menu.ui:10
 msgid "Quit"
@@ -34,23 +33,15 @@ msgstr "പുറത്ത് കടക്കുക"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
-msgstr "തിരയുന്ന വിവരം ലഭ്യമല്ല."
+msgstr "തിരയുന്ന വിവരം ലഭ്യമല്ല"
 
 #: data/characterlist.ui:41
 msgid "Try a different search."
-msgstr "വ്യത്യസ്ത രീതിയില്‍ തിരയാന്‍ ശ്രമിക്കുക"
+msgstr "വ്യത്യസ്ത രീതിയില്‍ തിരയാന്‍ ശ്രമിക്കുക."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
-msgstr "വന്നുക്കൊണ്ടിരിക്കുന്നു..."
-
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "സമീപകാലത്ത് അക്ഷരങ്ങള്‍ ഉപയോഗിച്ചിട്ടില്ല"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "അക്ഷരങ്ങള്‍ ഉപയോഗിക്കുകയാണെങ്കില്‍ ഇവിടെ ലഭ്യമാകും"
+msgstr "വന്നുക്കൊണ്ടിരിക്കുന്നു…"
 
 #: data/character.ui:68
 msgid "Copy Character"
@@ -60,6 +51,14 @@ msgstr "അക്ഷരങ്ങള്‍ പകര്‍ത്തുക"
 msgid "Character copied to clipboard"
 msgstr "അക്ഷരങ്ങള്‍ ക്ലിപ്ബോര്‍ഡിലേക്ക് പകര്‍ത്തുക"
 
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "സമീപകാലത്ത് അക്ഷരങ്ങള്‍ ഉപയോഗിച്ചിട്ടില്ല"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "അക്ഷരങ്ങള്‍ ഉപയോഗിക്കുകയാണെങ്കില്‍ ഇവിടെ ലഭ്യമാകും."
+
 #: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "നിലവിലുള്ള താള്‍"
@@ -68,7 +67,7 @@ msgstr "നിലവിലുള്ള താള്‍"
 msgid "Filter by Font"
 msgstr "അക്ഷരങ്ങളുടെ വിവിധ രൂപങ്ങളെ തെളിച്ചെടുക്കുക"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:170
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "ഗ്നോം ക്യാരക്റ്റേഴ്സ്"
 
@@ -78,18 +77,14 @@ msgstr "അക്ഷരങ്ങളുടെ വഴികാട്ടി"
 
 #: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
-"Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
+"Characters is a simple utility application to find and insert unusual characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"ക്യാരക്ടര്‍ എന്നത് ലളിതമായി ഉപയോഗിക്കാവുന്ന അപ്ലിക്കേഷന്‍ ആണ്.ഇത് അപൂര്‍വ്വമായ ക്യാരക്ടറെ "
-"കണ്ടെത്തുകയും കൂട്ടിച്ചേര്‍ക്കുകയും ചെയ്യുന്നു.നിങ്ങള്‍ നല്‍കുന്ന സൂചകപദങ്ങളെ വേഗത്തില്‍ കണ്ടെത്തുന്നതിന് ഇത് "
-"അനുവദിക്കുന്നു "
+"ക്യാരക്ടര്‍ എന്നത് ലളിതമായി ഉപയോഗിക്കാവുന്ന അപ്ലിക്കേഷന്‍ ആണ്.ഇത് അപൂര്‍വ്വമായ ക്യാരക്ടറെ കണ്ടെത്തുകയും കൂട്ടിച്ചേര്‍ക്കുകയും ചെയ്യുന്നു.നിങ്ങള്‍ നല്‍കുന്ന സൂചകപദങ്ങളെ വേഗത്തില്‍ കണ്ടെത്തുന്നതിന് ഇത് "
+"അനുവദിക്കുന്നു."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
+msgid "You can also browse characters by categories, such as Punctuation, Pictures, etc."
 msgstr "ചിത്രങ്ങള്‍ , ചിഹ്നങ്ങള്‍ മുതലായവ വിഭാഗങ്ങളായി ക്രമത്തില്‍ നിങ്ങളെ തിരയാം."
 
 #: data/org.gnome.Characters.desktop.in:4 src/service.js:51
@@ -108,7 +103,7 @@ msgstr "gnome-characters"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "ക്യാരക്റ്റേഴ്സ്;യുണികോഡ്;ചിഹ്നങ്ങള്‍;ഗണിതം;അക്ഷരങ്ങള്‍;ഇമോജി;വികാരചിഹ്നങ്ങള്‍;"
+msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -116,65 +111,101 @@ msgstr "അക്ഷരങ്ങളുടെ വിവിധ രൂപങ്ങ�
 
 #: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
-msgstr "അക്ഷരവിന്യാസക്രമം അക്ഷരങ്ങളെ ക്യാരക്റ്റര്‍ പട്ടികയില്‍ വിന്യസിക്കുന്നു"
+msgstr "അക്ഷരവിന്യാസക്രമം അക്ഷരങ്ങളെ ക്യാരക്റ്റര്‍ പട്ടികയില്‍ വിന്യസിക്കുന്നു."
 
 #: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "ലഭ്യമായ പരമാവധി അക്ഷരങ്ങള്‍"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "അടുത്തിടെ ഉപയോഗിച്ചത്"
+msgid "Emojis"
+msgstr "ഇമോജികൾ"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "അക്ഷരങ്ങളും ചിഹ്നങ്ങളും"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "ചിഹ്നങ്ങള്‍"
 
-#: src/categoryList.js:45
-#, fuzzy
+#: src/categoryList.js:57
 msgid "Arrows"
-msgstr "സൂചിക"
+msgstr "സൂചികകള്‍"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "ബുള്ളറ്റ്"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "ചിത്രങ്ങള്‍"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "കറന്‍സി"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "കണക്ക്"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "അക്ഷരങ്ങള്‍"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "വികാരചിഹ്നങ്ങള്‍"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "സ്മൈലികളും ജനങ്ങളും"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "മൃഗങ്ങളും പ്രകൃതിയും"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "ഭക്ഷണവും പാനീയവും"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "പ്രവർത്തനങ്ങൾ"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "യാത്രകളും  സ്ഥലങ്ങളും"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "സാധനങ്ങള്‍"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "ചിഹ്നങ്ങള്‍"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "കൊടികള്‍"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s  വര്‍ഗ്ഗീകരണ പട്ടിക"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "അടുത്തിടെ ഉപയോഗിച്ചത്"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "ഇതുംകൂടി കാണുക"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "യുണീകോഡ് U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s എന്നത് %s എന്നതില്‍ ഉള്‍പ്പെടുത്തിയിട്ടില്ല"
@@ -199,39 +230,51 @@ msgstr "ക്യാരക്റ്ററില്‍ നിന്ന് പു�
 msgid "None"
 msgstr "യാതൊന്നുമില്ല"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "അപരിചിതമായ അക്ഷരം"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s:%s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:169
+#: src/window.js:199
 msgid "translator-credits"
-msgstr "വിവര്‍ത്തകന്റെ നേട്ടം"
+msgstr ""
+"അനീഷ് ഷീല <aneesh.nl@gmail.com>\n"
+"ഗായത്രി എന്‍\n"
+"അതുല്‍ ആര്‍ ടി"
 
-#: src/window.js:171
+#: src/window.js:201
 msgid "Character Map"
 msgstr "ക്യാരക്റ്റര്‍ വഴികാട്ടി"
 
-#: src/window.js:191
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s മാത്രം)"
 
-#: src/window.js:281
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s ക്യാരക്ടര്‍ പട്ടിക"
 
-#: src/window.js:288
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "അടുത്തിടെ ഉപയോഗിച്ച %s ക്യാരക്ടര്‍ പട്ടിക"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "തിരഞ്ഞ ഫലങ്ങളുടെ പട്ടിക"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:290
+#: src/window.js:379
 msgid "Search Result"
 msgstr "തിരഞ്ഞ ഫലങ്ങള്‍"
+
+#~ msgid "Emoticons"
+#~ msgstr "വികാരചിഹ്നങ്ങള്‍"
