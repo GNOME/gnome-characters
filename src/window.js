@@ -174,11 +174,10 @@ var MainWindow = new Lang.Class({
         let keywords = text == '' ? [] : text.split(/\s+/);
         keywords = keywords.map(String.toUpperCase);
         if (keywords != this._searchKeywords) {
+            this._mainView.cancelSearch();
             this._searchKeywords = keywords;
             if (this._searchKeywords.length > 0)
                 this._mainView.searchByKeywords(this._searchKeywords);
-            else
-                this._mainView.cancelSearch();
         }
         return true;
     },
