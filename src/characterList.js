@@ -615,8 +615,11 @@ var CharacterListView = new Lang.Class({
     },
 
     searchByKeywords: function(keywords) {
-        let criteria = Gc.SearchCriteria.new_keywords(keywords, Gc.SearchFlag.NONE);
-        this._searchContext = new Gc.SearchContext({ criteria: criteria });
+        let criteria = Gc.SearchCriteria.new_keywords(keywords);
+        this._searchContext = new Gc.SearchContext({
+            criteria: criteria,
+            flags: Gc.SearchFlag.WORD
+        });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
     },
 
