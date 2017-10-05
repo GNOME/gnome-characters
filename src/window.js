@@ -418,7 +418,8 @@ const MainView = new Lang.Class({
     },
 
     cancelSearch: function() {
-        this.visible_child.cancelSearch();
+        let characterList = this.get_child_by_name('search-result');
+        characterList.cancelSearch();
     },
 
     setPage: function(category) {
