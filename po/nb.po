@@ -5,11 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-characters 3.23.x\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-18 21:52+0000\n"
-"PO-Revision-Date: 2017-02-12 12:09+0100\n"
+"Project-Id-Version: gnome-characters 3.26.x\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-08-30 14:55+0000\n"
+"PO-Revision-Date: 2017-11-05 12:59+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -37,14 +36,6 @@ msgstr "Prøv et annet søk."
 msgid "Loading…"
 msgstr "Laster …"
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Fant ingen nylig brukte tegn"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Tegn vil vises her hvis du bruker dem."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "Kopier tegn"
@@ -52,6 +43,14 @@ msgstr "Kopier tegn"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Kopierte tegn til utklippstavlen"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Fant ingen nylig brukte tegn"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Tegn vil vises her hvis du bruker dem."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -61,7 +60,7 @@ msgstr "Aktiv side"
 msgid "Filter by Font"
 msgstr "Filtrer etter skrifttype"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
 msgid "GNOME Characters"
 msgstr "GNOME tegn"
 
@@ -117,57 +116,94 @@ msgid "Maximum recent characters"
 msgstr "Maksimalt antall nylige tegn"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Nylig brukt"
+msgid "Emojis"
+msgstr "Emojier"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Bokstaver og symboler"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Skilletegn"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Piler"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Kulepunkter"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Bilder"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Valutaer"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Matematikk"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Bokstaver"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Emotikoner"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Smiletegn og folk"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Dyr og natur"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Mat og drikke"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Aktiviteter"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Reise og steder"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Objekter"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Symboler"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Flagg"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s kategorilisterad"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:373
+msgid "Recently Used"
+msgstr "Nylig brukt"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Se også"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s er ikke inkludert i %s"
@@ -192,39 +228,45 @@ msgstr "Tegnprogram avslutter"
 msgid "None"
 msgstr "Ingen"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Ukjent navn på tegn."
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:199
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: src/window.js:167
+#: src/window.js:201
 msgid "Character Map"
 msgstr "Tegnkart"
 
-#: src/window.js:187
+#: src/window.js:221
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (kun %s)"
 
-#: src/window.js:273
+#: src/window.js:350
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s tegnliste"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:358
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Sist brukt %s tegnliste"
+
+#: src/window.js:377
 msgid "Search Result Character List"
 msgstr "Søk i resultattegnlisten"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:379
 msgid "Search Result"
 msgstr "Søkeresultat"
