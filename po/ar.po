@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Safa Alfulaij <safa1996alfulaij@gmail.com>, 2015.
 # Abderrahim Kitouni <a.kitouni@gmail.com>, 2015.
-# Khaled Hosny <khaledhosny@eglug.org>, 2015, 2016.
+# Khaled Hosny <khaledhosny@eglug.org>, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 21:18+0000\n"
-"PO-Revision-Date: 2016-09-21 08:54+0200\n"
+"POT-Creation-Date: 2017-11-06 06:38+0200\n"
+"PO-Revision-Date: 2017-11-06 06:42+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -31,24 +31,16 @@ msgid "Quit"
 msgstr "أنهِ"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "لم يأت البحث بأية نتيجة"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
-msgstr "جرّب البحث عن شيء آخر."
+msgid "Try a different search."
+msgstr "جرّب بحثًا آخر."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
 msgstr "يحمّل…"
-
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "لا محارف استخدمتها حديثًا"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "ستظهر المحارف التي تستخدمها هنا."
 
 #: data/character.ui:68
 msgid "Copy Character"
@@ -58,6 +50,14 @@ msgstr "انسخ المحرف"
 msgid "Character copied to clipboard"
 msgstr "نُسخ الحرف إلى الحافظة"
 
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "لا محارف استخدمتها حديثًا"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "ستظهر المحارف التي تستخدمها هنا."
+
 #: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "الصّفحة الحالية"
@@ -66,12 +66,11 @@ msgstr "الصّفحة الحالية"
 msgid "Filter by Font"
 msgstr "رشّح حسب الخطّ"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:199
 msgid "GNOME Characters"
 msgstr "محارف جنوم"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
-#| msgid "Characters Application"
 msgid "Character map application"
 msgstr "تطبيق خريطة المحارف"
 
@@ -100,7 +99,6 @@ msgstr "تطبيق للبحث عن المحارف غير المألوفة و إ
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-#| msgid "Characters"
 msgid "gnome-characters"
 msgstr "gnome-characters"
 
@@ -111,7 +109,7 @@ msgstr "حرف;حروف;يونيكود;ترقيم;رياضية;رياضيات;إ
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
-msgstr "خطّ عرض المحارف"
+msgstr "الخطّ المستخدم لعرض المحارف"
 
 #: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
@@ -122,60 +120,101 @@ msgid "Maximum recent characters"
 msgstr "أقصى عدد للمحارف الحديثة"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "المستخدمة حديثا"
+msgid "Emojis"
+msgstr "إموجي"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "حروف و رموز"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
-msgstr "علامات التّرقيم"
-
-#: src/categoryList.js:45
-msgid "Arrows"
-msgstr "الأسهم"
-
-#: src/categoryList.js:51
-msgid "Bullets"
-msgstr "النّقاط"
+msgstr "ترقيم"
 
 #: src/categoryList.js:57
+msgid "Arrows"
+msgstr "أسهم"
+
+#: src/categoryList.js:64
+msgid "Bullets"
+msgstr "نّقاط"
+
+#: src/categoryList.js:71
 msgid "Pictures"
-msgstr "الصّور"
+msgstr "صور"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
-msgstr "العملات"
+msgstr "عملات"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
-msgstr "الرّياضيات"
+msgstr "رياضيات"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
-msgstr "الحروف"
+msgstr "حروف"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "الوجوه التّعبيريّة"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "ابتسامات و أشخاص"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "حيوانات و طبيعة"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "طعام و شراب"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "أنشطة"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "سفر و أماكن"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "أشياء"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "رموز"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "أعلام"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "صف فئة %s في القائمة"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:372
+msgid "Recently Used"
+msgstr "المستخدمة حديثا"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "انظر أيضًا"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "يونيكود U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s ليست موجودة في %s"
+
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "غير مُسنَد"
 
 #: src/main.js:58
 msgid "Characters Application"
@@ -193,45 +232,56 @@ msgstr "تطبيق «محارف» يخرج"
 msgid "None"
 msgstr "لا ترشّح"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "اسم المحرف مجهول"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "‏U+%s،‏ ‏%s:‏‏ %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:198
 msgid "translator-credits"
 msgstr ""
 "فريق عربآيز للترجمة http://www.arabeyes.org:\n"
 "صفا الفليج <safa1996alfulaij@gmail.com>"
 
-#: src/window.js:167
+#: src/window.js:200
 msgid "Character Map"
 msgstr "خريطة المحارف"
 
-#: src/window.js:187
+#: src/window.js:220
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "‏%s ‏(%s فقط)"
 
-#: src/window.js:273
+#: src/window.js:349
 #, javascript-format
 msgid "%s Character List"
 msgstr "قائمة محارف %s"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:357
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "قائمة محارف %s المستخدمة حديثًا"
+
+#: src/window.js:376
 msgid "Search Result Character List"
 msgstr "قائمة المحارف من نتيجة البحث"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
-#| msgid "Search Result Character List"
+#: src/window.js:378
 msgid "Search Result"
 msgstr "نتيجة البحث"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "جرّب البحث عن شيء آخر."
+
+#~ msgid "Emoticons"
+#~ msgstr "الوجوه التّعبيريّة"
 
 #~ msgid "About Characters"
 #~ msgstr "عن «محارف»"
