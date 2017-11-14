@@ -38,15 +38,6 @@ apps:
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/gnome-characters
 
 parts:
-  desktop-gnome-platform:
-    source-subdir: gtk
-    plugin: make
-    make-parameters: ["FLAVOR=gtk3"]
-    build-packages:
-      - libgtk-3-dev
-    source: https://github.com/kenvandine/snapcraft-desktop-helpers.git
-    source-branch: typelib
-    install: mkdir -p $SNAPCRAFT_PART_INSTALL/gnome-platform
   iso-codes:
     after: [desktop-gnome-platform]
     source: https://pkg-isocodes.alioth.debian.org/downloads/iso-codes-3.75.tar.xz
@@ -55,6 +46,7 @@ parts:
     configflags: [--prefix=/snap/gnome-characters/current/usr]
     organize:
       snap/gnome-characters/current/usr: usr
+    build-attributes: ['no-system-libraries']
     build-packages:
       - gettext
       - python3
@@ -70,6 +62,7 @@ parts:
     configflags: [--prefix=/snap/gnome-characters/current/usr, --disable-date-in-gnome-version, --with-gnome-distributor=Ubuntu]
     organize:
       snap/gnome-characters/current/usr: usr
+    build-attributes: ['no-system-libraries']
     build-packages:
       - libglib2.0-dev
       - gnome-common
@@ -106,6 +99,7 @@ parts:
     install: |
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
       cp ../src/data/icons/hicolor/256x256/apps/gnome-characters.png $SNAPCRAFT_PART_INSTALL/meta/gui/
+    build-attributes: ['no-system-libraries']
     build-packages:
       - desktop-file-utils
       - gettext
@@ -123,9 +117,17 @@ parts:
       - gperf
       - libgdk-pixbuf2.0-dev
       - libpango1.0-dev
+
+  libraries:
+    plugin: nil
     stage-packages:
       - gjs
       - gir1.2-gdkpixbuf-2.0
       - gir1.2-glib-2.0
       - gir1.2-gtk-3.0
       - gir1.2-gnomedesktop-3.0
+    prime:
+      - "usr/bin/gjs*"
+      - "usr/lib/*/girepository-1.0*"
+      - "usr/lib/*/libmozjs*"
+      - "usr/lib/*.*"
