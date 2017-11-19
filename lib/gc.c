@@ -839,34 +839,57 @@ populate_related_characters (GcCharacterIter *iter)
 
   if (uc_is_general_category (iter->uc, UC_CATEGORY_L))
     {
-      ucs4_t decomposition[UC_DECOMPOSITION_MAX_LENGTH];
-      int decomposition_length;
-      ucs4_t decomposition_base;
       const uc_script_t *script;
-
-      decomposition_length =
-        uc_canonical_decomposition (iter->uc, decomposition);
-      if (decomposition_length > 0)
-        {
-          decomposition_base = decomposition[0];
-          if (decomposition_base != iter->uc)
-            g_array_append_val (result, decomposition_base);
-        }
-      else
-        decomposition_base = iter->uc;
 
       script = uc_script (iter->uc);
       if (script)
         {
-          if (strcmp (script->name, "Latin") == 0)
-            add_composited (result, decomposition_base,
-                            latin_blocks, latin_block_count);
-          else if (strcmp (script->name, "Hiragana") == 0)
-            add_composited (result, decomposition_base,
-                            hiragana_blocks, hiragana_block_count);
-          else if (strcmp (script->name, "Katakana") == 0)
-            add_composited (result, decomposition_base,
-                            katakana_blocks, katakana_block_count);
+          if (strcmp (script->name, "Hangul") == 0)
+            {
+              /* For Hangul, do full canonical decomposition.  */
+              uint32_t s = (uint32_t) iter->uc;
+              uint32_t decomposition[3];
+              size_t decomposition_length = 3;
+
+              if (u32_normalize (UNINORM_NFD, &s, 1,
+                                 decomposition, &decomposition_length))
+                for (i = 0; i < decomposition_length; i++)
+                  {
+                    ucs4_t hangul_jamo = (ucs4_t) decomposition[i];
+                    g_array_append_val (result, hangul_jamo);
+                  }
+            }
+          else
+            {
+              /* For Latin, Hiragana, and Katakana, first find out the
+                 base character, and then find all composited
+                 characters whose base character is the one identified
+                 by the first step.  */
+              ucs4_t decomposition[UC_DECOMPOSITION_MAX_LENGTH];
+              int decomposition_length;
+              ucs4_t decomposition_base;
+
+              decomposition_length =
+                uc_canonical_decomposition (iter->uc, decomposition);
+              if (decomposition_length > 0)
+                {
+                  decomposition_base = decomposition[0];
+                  if (decomposition_base != iter->uc)
+                    g_array_append_val (result, decomposition_base);
+                }
+              else
+                decomposition_base = iter->uc;
+
+              if (strcmp (script->name, "Latin") == 0)
+                add_composited (result, decomposition_base,
+                                latin_blocks, latin_block_count);
+              else if (strcmp (script->name, "Hiragana") == 0)
+                add_composited (result, decomposition_base,
+                                hiragana_blocks, hiragana_block_count);
+              else if (strcmp (script->name, "Katakana") == 0)
+                add_composited (result, decomposition_base,
+                                katakana_blocks, katakana_block_count);
+            }
         }
     }
 
