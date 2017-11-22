@@ -28,6 +28,7 @@ test -z "$GNULIB_SRCDIR" || \
     "$GNULIB_SRCDIR"/gnulib-tool --import \
 		    --source-base=gllib --m4-base=glm4 --tests-base=gltests \
 		    --libtool --no-vc-files \
+		    host-cpu-c-abi \
 		    libunistring-optional \
 		    unicase/tolower \
 		    unicase/toupper \
@@ -39,6 +40,8 @@ test -z "$GNULIB_SRCDIR" || \
 		    unictype/property-all \
 		    unictype/scripts-all \
 		    uninorm/canonical-decomposition \
+		    uninorm/nfd \
+		    uninorm/u32-normalize \
 		    unistr/u32-to-u8 \
 		    unistr/u8-to-u32 \
 		    unistr/u8-strmblen \

@@ -12,7 +12,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this file.  If not, see <http://www.gnu.org/licenses/>.
+# along with this file.  If not, see <https://www.gnu.org/licenses/>.
 #
 # As a special exception to the GNU General Public License,
 # this file may be distributed as part of a program that
@@ -43,8 +43,10 @@ AC_DEFUN([gl_EARLY],
 
   AC_REQUIRE([AM_PROG_CC_C_O])
   # Code from module absolute-header:
+  # Code from module array-mergesort:
   # Code from module gperf:
   # Code from module havelib:
+  # Code from module host-cpu-c-abi:
   # Code from module iconv:
   # Code from module include_next:
   # Code from module inline:
@@ -116,6 +118,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module unictype/category-or:
   # Code from module unictype/category-test:
   # Code from module unictype/category-test-withtable:
+  # Code from module unictype/combining-class:
   # Code from module unictype/ctype-print:
   # Code from module unictype/mirror:
   # Code from module unictype/property-all:
@@ -213,9 +216,15 @@ AC_DEFUN([gl_EARLY],
   # Code from module uniname/uniname:
   # Code from module uninorm/base:
   # Code from module uninorm/canonical-decomposition:
+  # Code from module uninorm/decompose-internal:
   # Code from module uninorm/decomposition-table:
+  # Code from module uninorm/nfd:
+  # Code from module uninorm/u32-normalize:
   # Code from module unistr/base:
+  # Code from module unistr/u32-cpy:
+  # Code from module unistr/u32-mbtouc-unsafe:
   # Code from module unistr/u32-to-u8:
+  # Code from module unistr/u32-uctomb:
   # Code from module unistr/u8-mbtoucr:
   # Code from module unistr/u8-strmblen:
   # Code from module unistr/u8-to-u32:
@@ -239,6 +248,7 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='gllib'
+  AC_REQUIRE([gl_HOST_CPU_C_ABI])
   AM_ICONV
   m4_ifdef([gl_ICONV_MODULE_INDICATOR],
     [gl_ICONV_MODULE_INDICATOR([iconv])])
@@ -308,6 +318,7 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_MODULE([0.9.6], [unictype/category-or])
   AC_REQUIRE([AC_C_INLINE])
   gl_LIBUNISTRING_MODULE([0.9.5], [unictype/category-test])
+  gl_LIBUNISTRING_MODULE([0.9.6], [unictype/combining-class])
   AC_REQUIRE([AC_C_INLINE])
   gl_LIBUNISTRING_MODULE([0.9.6], [unictype/ctype-print])
   gl_LIBUNISTRING_MODULE([0.9.6], [unictype/mirror])
@@ -491,8 +502,16 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [uninorm.h])
   gl_LIBUNISTRING_MODULE([0.9.6], [uninorm/canonical-decomposition])
   AC_REQUIRE([AC_C_INLINE])
+  gl_LIBUNISTRING_MODULE([0.9.6], [uninorm/nfd])
+  gl_MODULE_INDICATOR_FOR_TESTS([uninorm/u32-normalize])
+  gl_LIBUNISTRING_MODULE([0.9.6], [uninorm/u32-normalize])
   gl_LIBUNISTRING_LIBHEADER([0.9.4], [unistr.h])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u32-cpy])
+  gl_MODULE_INDICATOR([unistr/u32-mbtouc-unsafe])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u32-mbtouc-unsafe])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u32-to-u8])
+  gl_MODULE_INDICATOR([unistr/u32-uctomb])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u32-uctomb])
   gl_MODULE_INDICATOR([unistr/u8-mbtoucr])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-mbtoucr])
   gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-strmblen])
@@ -639,6 +658,7 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
+  lib/array-mergesort.h
   lib/libunistring.valgrind
   lib/limits.in.h
   lib/localcharset.h
@@ -748,6 +768,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/unictype/categ_of.h
   lib/unictype/categ_or.c
   lib/unictype/categ_test.c
+  lib/unictype/combiningclass.c
+  lib/unictype/combiningclass.h
   lib/unictype/ctype_print.c
   lib/unictype/ctype_print.h
   lib/unictype/mirror.c
@@ -936,12 +958,22 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/uniname/uninames.h
   lib/uninorm.in.h
   lib/uninorm/canonical-decomposition.c
+  lib/uninorm/decompose-internal.c
+  lib/uninorm/decompose-internal.h
   lib/uninorm/decomposition-table.c
   lib/uninorm/decomposition-table.h
   lib/uninorm/decomposition-table1.h
   lib/uninorm/decomposition-table2.h
+  lib/uninorm/nfd.c
+  lib/uninorm/normalize-internal.h
+  lib/uninorm/u-normalize-internal.h
+  lib/uninorm/u32-normalize.c
   lib/unistr.in.h
+  lib/unistr/u-cpy.h
+  lib/unistr/u32-cpy.c
+  lib/unistr/u32-mbtouc-unsafe.c
   lib/unistr/u32-to-u8.c
+  lib/unistr/u32-uctomb.c
   lib/unistr/u8-mbtoucr.c
   lib/unistr/u8-strmblen.c
   lib/unistr/u8-to-u32.c
@@ -954,7 +986,9 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/unused-parameter.h
   m4/00gnulib.m4
   m4/absolute-header.m4
+  m4/asm-underscore.m4
   m4/gnulib-common.m4
+  m4/host-cpu-c-abi.m4
   m4/iconv.m4
   m4/include_next.m4
   m4/inline.m4
