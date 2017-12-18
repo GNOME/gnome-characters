@@ -1,0 +1,278 @@
+# Afrikaans translation for gnome-characters.
+# Copyright (C) 2017 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# pieter <pieter@sonbesie.co.za>, 2017.
+# Pieter Schoeman <pieter@sonbesie.co.za>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"characters&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-12-03 06:45+0000\n"
+"PO-Revision-Date: 2017-12-18 22:33+0200\n"
+"Last-Translator: Pieter Schoeman <pieter@sonbesie.co.za>\n"
+"Language-Team: Afrikaans <pieter@sonbesie.co.za>\n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#: data/app-menu.ui:6
+msgid "About"
+msgstr "Aangaande"
+
+#: data/app-menu.ui:10
+msgid "Quit"
+msgstr "Sluit af"
+
+#: data/characterlist.ui:30
+msgid "Search found no results"
+msgstr "Soektog het geen resultate getoon nie"
+
+#: data/characterlist.ui:41
+msgid "Try a different search."
+msgstr "Probeer 'n ander soektog."
+
+#: data/characterlist.ui:73
+msgid "Loading…"
+msgstr "Laai tans…"
+
+#: data/character.ui:68
+msgid "Copy Character"
+msgstr "Kopieer Karakter"
+
+#: data/character.ui:86
+msgid "Character copied to clipboard"
+msgstr "Karakter na knipbord gekopieer"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Geen onlangse karakters gevind nie"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Karakters sal hier vertoon word indien u hulle gebruik."
+
+#: data/mainwindow.ui:12
+msgid "Current page"
+msgstr "Huidige bladsy"
+
+#: data/menu.ui:17
+msgid "Filter by Font"
+msgstr "Filtrer volgens lettertipe"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:199
+msgid "GNOME Characters"
+msgstr "GNOME Karakters"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Karakterkaart toepassing"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Karakters is 'n eenvoudige nutstoepassing om ongewone karakters te vind en "
+"in te voeg. Dit laat u toe om vinnig karakter te vind deur met sleutelwoorde "
+"te soek"
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"U kan ook deur karakter-kategorieë blaai, soos leestekens, prente, ens."
+
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+msgid "Characters"
+msgstr "Karakters"
+
+#: data/org.gnome.Characters.desktop.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Nutstoepassing om ongewone karakters te vind en in te voeg"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "gnome-characters"
+msgstr "gnome-characters"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"characters;unicode;punctuation;math;emoji;emoticon;karakters;leestekens;"
+"wiskunde;letters;emosiekone"
+
+#: data/org.gnome.Characters.gschema.xml:5
+msgid "Font to display characters"
+msgstr "Lettertipe waarin karakters vertoon word"
+
+#: data/org.gnome.Characters.gschema.xml:6
+msgid "Use the font to render characters on the character list."
+msgstr "Gebruik die lettertipe om karakters op die karakterlys te skep."
+
+#: data/org.gnome.Characters.gschema.xml:15
+msgid "Maximum recent characters"
+msgstr "Maksimum onlangse karakters"
+
+#: src/categoryList.js:33
+msgid "Emojis"
+msgstr "Emosiekone"
+
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Letters & Simbole"
+
+#: src/categoryList.js:50
+msgid "Punctuation"
+msgstr "Leestekens"
+
+#: src/categoryList.js:57
+msgid "Arrows"
+msgstr "Pyle"
+
+#: src/categoryList.js:64
+msgid "Bullets"
+msgstr "Koeëls"
+
+#: src/categoryList.js:71
+msgid "Pictures"
+msgstr "Prente"
+
+#: src/categoryList.js:78
+msgid "Currencies"
+msgstr "Geldeenhede"
+
+#: src/categoryList.js:85
+msgid "Math"
+msgstr "Wiskunde"
+
+#: src/categoryList.js:92
+msgid "Letters"
+msgstr "Letters"
+
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Glimlagge & Mense"
+
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Diere & Natuur"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Kos & Drank"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Aktiwiteite"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Reis & Plekke"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Voorwerpe"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Simbole"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Vlae"
+
+#: src/categoryList.js:166
+#, javascript-format
+msgid "%s Category List Row"
+msgstr "%s Kategorie Lys Ry"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:372
+msgid "Recently Used"
+msgstr "Onlangs Gebruik"
+
+#: src/character.js:56
+msgid "See Also"
+msgstr "Sien Ook"
+
+#: src/character.js:122 src/character.js:144
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "Unicode U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/character.js:140
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s is nie ingesluit by %s nie"
+
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Nie toegeken nie"
+
+#: src/main.js:58
+msgid "Characters Application"
+msgstr "Karakter Toepassing"
+
+#: src/main.js:95
+msgid "Characters Application started"
+msgstr "Karakter Toepassing begin"
+
+#: src/main.js:103
+msgid "Characters Application exiting"
+msgstr "Karakter Toepassing maak toe"
+
+#: src/menu.js:50
+msgid "None"
+msgstr "Geen"
+
+#: src/searchProvider.js:95
+msgid "Unknown character name"
+msgstr "Onbekende karakternaam"
+
+#: src/searchProvider.js:98
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:198
+msgid "translator-credits"
+msgstr "Pieter Schalk Schoeman"
+
+#: src/window.js:200
+msgid "Character Map"
+msgstr "Karakterkaart"
+
+#: src/window.js:220
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (%s slegs)"
+
+#: src/window.js:349
+#, javascript-format
+msgid "%s Character List"
+msgstr "%s Karakterlys"
+
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:357
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Onlangs Gebruikte %s Karakterlys"
+
+#: src/window.js:376
+msgid "Search Result Character List"
+msgstr "Soek Resultaat Karakterlys"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:378
+msgid "Search Result"
+msgstr "Soek Resultaat"
