@@ -1,0 +1,3 @@
+option('dbus_service_dir', type: 'string', value: '', description: 'custom directory for dbus service files')
+option('pangoft2', type: 'boolean', value: true, description: 'enable pangoft2 support')
+option('installed_tests', type: 'boolean', value: false, description: 'Enable installation of some test cases')

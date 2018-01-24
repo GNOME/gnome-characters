@@ -1,0 +1,3 @@
+[Test]
+Type=session-exclusive
+Exec=@testdir@/smoke_test.py

@@ -1,0 +1,328 @@
+/* CPU and C ABI indicator */
+#ifndef __i386__
+#mesondefine __i386__
+#endif
+#ifndef __x86_64_x32__
+#mesondefine __x86_64_x32__
+#endif
+#ifndef __x86_64__
+#mesondefine __x86_64__
+#endif
+#ifndef __alpha__
+#mesondefine __alpha__
+#endif
+#ifndef __arm__
+#mesondefine __arm__
+#endif
+#ifndef __armhf__
+#mesondefine __armhf__
+#endif
+#ifndef __arm64_ilp32__
+#mesondefine __arm64_ilp32__
+#endif
+#ifndef __arm64__
+#mesondefine __arm64__
+#endif
+#ifndef __hppa__
+#mesondefine __hppa__
+#endif
+#ifndef __hppa64__
+#mesondefine __hppa64__
+#endif
+#ifndef __ia64_ilp32__
+#mesondefine __ia64_ilp32__
+#endif
+#ifndef __ia64__
+#mesondefine __ia64__
+#endif
+#ifndef __m68k__
+#mesondefine __m68k__
+#endif
+#ifndef __mips__
+#mesondefine __mips__
+#endif
+#ifndef __mipsn32__
+#mesondefine __mipsn32__
+#endif
+#ifndef __mips64__
+#mesondefine __mips64__
+#endif
+#ifndef __powerpc__
+#mesondefine __powerpc__
+#endif
+#ifndef __powerpc64__
+#mesondefine __powerpc64__
+#endif
+#ifndef __powerpc64_elfv2__
+#mesondefine __powerpc64_elfv2__
+#endif
+#ifndef __s390__
+#mesondefine __s390__
+#endif
+#ifndef __s390x__
+#mesondefine __s390x__
+#endif
+#ifndef __sh__
+#mesondefine __sh__
+#endif
+#ifndef __sparc__
+#mesondefine __sparc__
+#endif
+#ifndef __sparc64__
+#mesondefine __sparc64__
+#endif
+
+/* Define to the number of bits in type 'ptrdiff_t'. */
+#mesondefine BITSIZEOF_PTRDIFF_T
+
+/* Define to the number of bits in type 'sig_atomic_t'. */
+#mesondefine BITSIZEOF_SIG_ATOMIC_T
+
+/* Define to the number of bits in type 'size_t'. */
+#mesondefine BITSIZEOF_SIZE_T
+
+/* Define to the number of bits in type 'wchar_t'. */
+#mesondefine BITSIZEOF_WCHAR_T
+
+/* Define to the number of bits in type 'wint_t'. */
+#mesondefine BITSIZEOF_WINT_T
+
+/* The prefix for our gettext translation domains. */
+#mesondefine GETTEXT_PACKAGE
+
+/* Define to 1 when the gnulib module uninorm/u32-normalize should be tested.
+   */
+#mesondefine GNULIB_TEST_UNINORM_U32_NORMALIZE
+
+/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
+   whether the gnulib module unistr/u32-mbtouc-unsafe shall be considered
+   present. */
+#mesondefine GNULIB_UNISTR_U32_MBTOUC_UNSAFE
+
+/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
+   whether the gnulib module unistr/u32-uctomb shall be considered present. */
+#mesondefine GNULIB_UNISTR_U32_UCTOMB
+
+/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
+   whether the gnulib module unistr/u8-mbtoucr shall be considered present. */
+#mesondefine GNULIB_UNISTR_U8_MBTOUCR
+
+/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
+   whether the gnulib module unistr/u8-uctomb shall be considered present. */
+#mesondefine GNULIB_UNISTR_U8_UCTOMB
+
+/* Define to 1 if you have the Mac OS X function CFLocaleCopyCurrent in the
+   CoreFoundation framework. */
+#mesondefine HAVE_CFLOCALECOPYCURRENT
+
+/* Define to 1 if you have the Mac OS X function CFPreferencesCopyAppValue in
+   the CoreFoundation framework. */
+#mesondefine HAVE_CFPREFERENCESCOPYAPPVALUE
+
+/* Define if the GNU dcgettext() function is already present or preinstalled.
+   */
+#mesondefine HAVE_DCGETTEXT
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#mesondefine HAVE_DLFCN_H
+
+/* Define if the GNU gettext() function is already present or preinstalled. */
+#mesondefine HAVE_GETTEXT
+
+/* Define if you have the iconv() function and it works. */
+#mesondefine HAVE_ICONV
+
+/* Define to 1 if the compiler supports one of the keywords 'inline',
+   '__inline__', '__inline' and effectively inlines functions marked as such.
+   */
+#mesondefine HAVE_INLINE
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#mesondefine HAVE_INTTYPES_H
+
+/* Define if you have the libunistring library. */
+#mesondefine HAVE_LIBUNISTRING
+
+/* Define to 1 if you have the <limits.h> header file. */
+#mesondefine HAVE_LIMITS_H
+
+/* Define to 1 if the system has the type 'long long int'. */
+#mesondefine HAVE_LONG_LONG_INT
+
+/* Define to 1 if you have the <memory.h> header file. */
+#mesondefine HAVE_MEMORY_H
+
+/* Define if you want to enable pangoft2 support */
+#mesondefine HAVE_PANGOFT2
+
+/* Define to 1 if 'sig_atomic_t' is a signed integer type. */
+#mesondefine HAVE_SIGNED_SIG_ATOMIC_T
+
+/* Define to 1 if 'wchar_t' is a signed integer type. */
+#mesondefine HAVE_SIGNED_WCHAR_T
+
+/* Define to 1 if 'wint_t' is a signed integer type. */
+#mesondefine HAVE_SIGNED_WINT_T
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#mesondefine HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#mesondefine HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#mesondefine HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#mesondefine HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/bitypes.h> header file. */
+#mesondefine HAVE_SYS_BITYPES_H
+
+/* Define to 1 if you have the <sys/inttypes.h> header file. */
+#mesondefine HAVE_SYS_INTTYPES_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#mesondefine HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#mesondefine HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#mesondefine HAVE_UNISTD_H
+
+/* Define to 1 if the system has the type 'unsigned long long int'. */
+#mesondefine HAVE_UNSIGNED_LONG_LONG_INT
+
+/* Define to 1 if you have the <wchar.h> header file. */
+#mesondefine HAVE_WCHAR_H
+
+/* Define if you have the 'wint_t' type. */
+#mesondefine HAVE_WINT_T
+
+/* Define to 1 if the system has the type `_Bool'. */
+#mesondefine HAVE__BOOL
+
+/* Define as const if the declaration of iconv() needs const. */
+#mesondefine ICONV_CONST
+
+/* Define to the address where bug reports for this package should be sent. */
+#mesondefine PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#mesondefine PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#mesondefine PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#mesondefine PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#mesondefine PACKAGE_URL
+
+/* Define to the version of this package. */
+#mesondefine PACKAGE_VERSION
+
+/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
+   'ptrdiff_t'. */
+#mesondefine PTRDIFF_T_SUFFIX
+
+/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
+   'sig_atomic_t'. */
+#mesondefine SIG_ATOMIC_T_SUFFIX
+
+/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
+   'size_t'. */
+#mesondefine SIZE_T_SUFFIX
+
+/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
+   'wchar_t'. */
+#mesondefine WCHAR_T_SUFFIX
+
+/* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
+   'wint_t'. */
+#mesondefine WINT_T_SUFFIX
+
+/* The _Noreturn keyword of C11.  */
+#if ! (defined _Noreturn \
+       || (defined __STDC_VERSION__ && 201112 <= __STDC_VERSION__))
+# if (3 <= __GNUC__ || (__GNUC__ == 2 && 8 <= __GNUC_MINOR__) \
+      || 0x5110 <= __SUNPRO_C)
+#  define _Noreturn __attribute__ ((__noreturn__))
+# elif defined _MSC_VER && 1200 <= _MSC_VER
+#  define _Noreturn __declspec (noreturn)
+# else
+#  define _Noreturn
+# endif
+#endif
+
+/* For standard stat data types on VMS. */
+#mesondefine _USE_STD_STAT
+
+/* Define to 1 if the system <stdint.h> predates C++11. */
+#mesondefine __STDC_CONSTANT_MACROS
+
+/* Define to 1 if the system <stdint.h> predates C++11. */
+#mesondefine __STDC_LIMIT_MACROS
+
+/* Define to `__inline__' or `__inline' if that's what the C compiler
+   calls it, or to nothing if 'inline' is not supported under any name.  */
+#ifndef __cplusplus
+#mesondefine inline
+#endif
+
+/* Work around a bug in Apple GCC 4.0.1 build 5465: In C99 mode, it supports
+   the ISO C 99 semantics of 'extern inline' (unlike the GNU C semantics of
+   earlier versions), but does not display it by setting __GNUC_STDC_INLINE__.
+   __APPLE__ && __MACH__ test for Mac OS X.
+   __APPLE_CC__ tests for the Apple compiler and its version.
+   __STDC_VERSION__ tests for the C99 mode.  */
+#if defined __APPLE__ && defined __MACH__ && __APPLE_CC__ >= 5465 && !defined __cplusplus && __STDC_VERSION__ >= 199901L && !defined __GNUC_STDC_INLINE__
+# define __GNUC_STDC_INLINE__ 1
+#endif
+
+/* Define to `int' if <sys/types.h> does not define. */
+#mesondefine mode_t
+
+/* Define to `int' if <sys/types.h> does not define. */
+#mesondefine pid_t
+
+/* Define as a signed type of the same size as size_t. */
+#mesondefine ssize_t
+
+/* Define as a marker that can be attached to declarations that might not
+    be used.  This helps to reduce warnings, such as from
+    GCC -Wunused-parameter.  */
+#if __GNUC__ >= 3 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 7)
+# define _GL_UNUSED __attribute__ ((__unused__))
+#else
+# define _GL_UNUSED
+#endif
+/* The name _UNUSED_PARAMETER_ is an earlier spelling, although the name
+   is a misnomer outside of parameter lists.  */
+#define _UNUSED_PARAMETER_ _GL_UNUSED
+
+/* gcc supports the "unused" attribute on possibly unused labels, and
+   g++ has since version 4.5.  Note to support C++ as well as C,
+   _GL_UNUSED_LABEL should be used with a trailing ;  */
+#if !defined __cplusplus || __GNUC__ > 4 \
+    || (__GNUC__ == 4 && __GNUC_MINOR__ >= 5)
+# define _GL_UNUSED_LABEL _GL_UNUSED
+#else
+# define _GL_UNUSED_LABEL
+#endif
+
+/* The __pure__ attribute was added in gcc 2.96.  */
+#if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 96)
+# define _GL_ATTRIBUTE_PURE __attribute__ ((__pure__))
+#else
+# define _GL_ATTRIBUTE_PURE /* empty */
+#endif
+
+/* The __const__ attribute was added in gcc 2.95.  */
+#if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 95)
+# define _GL_ATTRIBUTE_CONST __attribute__ ((__const__))
+#else
+# define _GL_ATTRIBUTE_CONST /* empty */
+#endif
