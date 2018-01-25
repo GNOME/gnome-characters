@@ -9,7 +9,7 @@ nobase_icon_DATA = \
 	hicolor/symbolic/apps/gnome-characters-symbolic.svg
 
 EXTRA_DIST = $(nobase_icon_DATA) hicolor/gnome-characters.svg \
-	characters-stencils.svg render-icons.rb
+	characters-stencils.svg render-icons.rb meson.build
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 

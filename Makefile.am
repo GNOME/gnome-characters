@@ -116,6 +116,13 @@ rpm: dist
 clean-local:
 	rm -fR $(builddir)/rpms
 
-EXTRA_DIST = COPYINGv2 $(PACKAGE_NAME).spec  glm4/gnulib-cache.m4
+EXTRA_DIST = \
+	COPYINGv2 \
+	$(PACKAGE_NAME).spec \
+	glm4/gnulib-cache.m4 \
+	meson.build \
+	meson_options.txt \
+	meson_post_install.py \
+	po/meson.build
 
 -include $(top_srcdir)/git.mk

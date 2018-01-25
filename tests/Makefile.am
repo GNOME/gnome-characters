@@ -30,4 +30,6 @@ else
 EXTRA_DIST += testutil.py $(dogtail_tests)
 endif
 
+EXTRA_DIST += meson.build test.in
+
 -include $(top_srcdir)/git.mk

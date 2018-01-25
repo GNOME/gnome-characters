@@ -41,6 +41,7 @@ EXTRA_DIST = \
 	org.gnome.Characters.BackgroundService.src.gresource.xml \
 	$(app_resource_files) \
 	$(service_resource_files) \
+	meson.build \
 	$(NULL)
 
 CLEANFILES = \

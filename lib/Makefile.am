@@ -1,4 +1,4 @@
-EXTRA_DIST = gen-confusables.py gen-emoji.py gen-scripts.py
+EXTRA_DIST = gen-confusables.py gen-emoji.py gen-scripts.py meson.build
 CLEANFILES =
 DISTCLEANFILES =
 MAINTAINERCLEANFILES =

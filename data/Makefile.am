@@ -62,6 +62,7 @@ EXTRA_DIST = \
 	ShellSearchProvider2.xml \
 	$(apps_DATA) \
 	$(appstream_XML) \
+	meson.build \
 	$(NULL)
 
 CLEANFILES = \
