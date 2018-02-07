@@ -18,6 +18,7 @@ characters_libdir = join_paths(characters_prefix, get_option('libdir'))
 characters_libexecdir = join_paths(characters_prefix, get_option('libexecdir'))
 
 characters_pkgdatadir = join_paths(characters_datadir, characters_name)
+characters_pkglibdir = join_paths(characters_libdir, characters_name)
 
 characters_gir_version = '1.0'
 characters_ns = 'Gc'

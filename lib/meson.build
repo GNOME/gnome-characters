@@ -26,7 +26,8 @@ libgc = shared_library(
   include_directories: top_inc,
   dependencies: libgc_deps,
   c_args: cflags,
-  install: true
+  install: true,
+  install_dir: characters_pkglibdir
 )
 
 gnome.generate_gir(
@@ -38,5 +39,7 @@ gnome.generate_gir(
   symbol_prefix: characters_ns.to_lower(),
   header: gc_h,
   includes: ['Gio-2.0', 'Gtk-3.0'],
-  install: true
+  install: true,
+  install_dir_gir: join_paths(characters_pkgdatadir, 'gir-' + characters_gir_version),
+  install_dir_typelib: join_paths(characters_pkglibdir, 'girepository-' + characters_gir_version)
 )
