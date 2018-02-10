@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Guillaume Bernard <translate@filorin.fr>, 2015.
 # Charles Monzat <superboa@hotmail.fr>, 2017.
+# Alain Lojewski <allomervan@gmail.com>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-23 23:59+0000\n"
-"PO-Revision-Date: 2017-02-28 09:54+0100\n"
-"Last-Translator: Charles Monzat <superboa@hotmail.fr>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-02-08 10:05+0000\n"
+"PO-Revision-Date: 2018-02-09 09:54+0100\n"
+"Last-Translator: Alain Lojewski <allomervan@gmail.com>\n"
 "Language-Team: français <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -29,25 +30,16 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: data/characterlist.ui:30
-#| msgid "Search produced empty result"
 msgid "Search found no results"
-msgstr "La recherche n'a trouvé aucun résultat"
+msgstr "La recherche n’a donné aucun résultat"
 
 #: data/characterlist.ui:41
 msgid "Try a different search."
-msgstr "Essayer une recherche différente."
+msgstr "Essayez une recherche différente."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
 msgstr "Chargement…"
-
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Aucun caractère récent trouvé"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Les caractères apparaîtront ici si vous les utilisez."
 
 #: data/character.ui:68
 msgid "Copy Character"
@@ -57,6 +49,14 @@ msgstr "Copier le caractère"
 msgid "Character copied to clipboard"
 msgstr "Caractère copié dans le presse-papiers"
 
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Aucun caractère récent trouvé"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Les caractères apparaîtront ici si vous les utilisez."
+
 #: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "Page actuelle"
@@ -65,13 +65,13 @@ msgstr "Page actuelle"
 msgid "Filter by Font"
 msgstr "Filtrer par police"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:199
 msgid "GNOME Characters"
-msgstr "GNOME Caractères"
+msgstr "Caractères de GNOME"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
 msgid "Character map application"
-msgstr "Application de table de caractères"
+msgstr "Application de la table de caractères"
 
 #: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
@@ -111,7 +111,7 @@ msgstr "caractères;unicode;ponctuation;math;lettres;emoji;émoticône;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
-msgstr "Police d'affichage des caractères"
+msgstr "Police d’affichage des caractères"
 
 #: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
@@ -122,60 +122,97 @@ msgid "Maximum recent characters"
 msgstr "Nombre maximal de caractères récents"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Récemment utilisé"
+msgid "Emojis"
+msgstr "Emojis"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Lettres et symboles"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Ponctuation"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Flèches"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Puces"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Images"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Monnaies"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Math"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Lettres"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Émoticônes"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Émoticônes et personnages"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Animaux et nature"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Nourriture et boisson"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Activités"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Voyages et lieux"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Objets"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Symboles"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Drapeaux"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Ligne de la catégorie %s"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:372
+msgid "Recently Used"
+msgstr "Récemment utilisé"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Voir aussi"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
-msgstr "%s n'est pas inclus dans %s"
+msgstr "%s n’est pas inclus dans %s"
 
 #: src/characterList.js:178
 msgid "Unassigned"
@@ -183,7 +220,7 @@ msgstr "Non assigné"
 
 #: src/main.js:58
 msgid "Characters Application"
-msgstr "Application de caractères"
+msgstr "Application Caractères"
 
 #: src/main.js:95
 msgid "Characters Application started"
@@ -197,42 +234,47 @@ msgstr "Fermeture de l'application Caractères"
 msgid "None"
 msgstr "Aucun"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Nom de caractère inconnu"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgstr "U+%s, %s : %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:198
 msgid "translator-credits"
-msgstr "Guillaume Bernard <translate@filorin.fr>"
+msgstr ""
+"Guillaume Bernard <translate@filorin.fr>\n"
+"Alain Lojewski <allomervan@gmail.com>"
 
-#: src/window.js:167
+#: src/window.js:200
 msgid "Character Map"
 msgstr "Table de caractères"
 
-#: src/window.js:187
+#: src/window.js:220
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s seulement)"
 
-#: src/window.js:273
+#: src/window.js:349
 #, javascript-format
 msgid "%s Character List"
-msgstr "%s liste de caractères"
+msgstr "Liste de caractères %s"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:357
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Liste de caractères %s récemment utilisée"
+
+#: src/window.js:376
 msgid "Search Result Character List"
 msgstr "Liste des caractères issus de la recherche"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:378
 msgid "Search Result"
 msgstr "Résultat de la recherche"
-
-#~ msgid "Try another search criteria."
-#~ msgstr "Essayez un autre critère de recherche."
