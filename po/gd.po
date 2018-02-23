@@ -1,14 +1,13 @@
 # Scottish Gaelic translation for gnome-characters.
 # Copyright (C) 2017 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# GunChleoc <fios@foramnagaidhlig.net>, 2017.
+# GunChleoc <fios@foramnagaidhlig.net>, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-22\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-18 21:51+0000\n"
-"PO-Revision-Date: 2017-03-07 13:13+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2018-02-08 10:05+0000\n"
+"PO-Revision-Date: 2018-02-23 09:51+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
@@ -29,24 +28,17 @@ msgid "Quit"
 msgstr "Fàg an-seo"
 
 #: data/characterlist.ui:30
-msgid "Search produced empty result"
+#| msgid "Search produced empty result"
+msgid "Search found no results"
 msgstr "Cha deach toradh a lorg"
 
 #: data/characterlist.ui:41
-msgid "Try another search criteria."
+msgid "Try a different search."
 msgstr "Feuch lorg eile."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
 msgstr "’Ga luchdadh…"
-
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Cha deach caractar o chionn goirid a lorg"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Nochdaidh caractaran an-seo nuair a chleachdas tu iad."
 
 #: data/character.ui:68
 msgid "Copy Character"
@@ -56,6 +48,14 @@ msgstr "Dèan lethbhreac dhen charactar"
 msgid "Character copied to clipboard"
 msgstr "Chaidh lethbhreac dhen charactar a chur dhan stòr-bhòrd"
 
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Cha deach caractar o chionn goirid a lorg"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Nochdaidh caractaran an-seo nuair a chleachdas tu iad."
+
 #: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "An duilleag làithreach"
@@ -64,7 +64,7 @@ msgstr "An duilleag làithreach"
 msgid "Filter by Font"
 msgstr "Criathraich a-rèir crutha-chlò"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:199
 msgid "GNOME Characters"
 msgstr "Caractaran GNOME"
 
@@ -78,8 +78,8 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"'S e goireas simplidh a th' ann an Caractaran gus caractaran sònraichte a "
-"lorg 's a chur ann. Leigidh e leat an caractar a tha thu ag iarraidh a lorg "
+"’S e goireas simplidh a th’ ann an Caractaran gus caractaran sònraichte a "
+"lorg ’s a chur ann. Leigidh e leat an caractar a tha thu ag iarraidh a lorg "
 "gu luath le taic faclan-luirg."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
@@ -87,7 +87,7 @@ msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"'S urrainn dhut na caractaran a bhrabhsadh a-rèir roinn-seòrsa cuideachd, "
+"’S urrainn dhut na caractaran a bhrabhsadh a-rèir roinn-seòrsa cuideachd, "
 "can puingeachadh, dealbhan is msaa."
 
 #: data/org.gnome.Characters.desktop.in:4 src/service.js:51
@@ -96,7 +96,7 @@ msgstr "Caractaran"
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
-msgstr "Goireas gus caractaran sònraichte a lorg 's a chur ann"
+msgstr "Goireas gus caractaran sònraichte a lorg ’s a chur ann"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
@@ -107,8 +107,8 @@ msgstr "gnome-characters"
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
 msgstr ""
-"characters;unicode;punctuation;math;letters;emoji;emoticon;caractaran;puinge"
-"achadh;matamataig;litrichean;litir;samhlaidhean-gnùis;samhla-gnùis;"
+"characters;unicode;punctuation;math;letters;emoji;emoticon;caractaran;"
+"puingeachadh;matamataig;litrichean;litir;samhlaidhean-gnùis;samhla-gnùis;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -125,60 +125,101 @@ msgid "Maximum recent characters"
 msgstr "Uiread as motha nan caractaran o chionn goirid"
 
 #: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Air an cleachdadh o chionn ghoirid"
+msgid "Emojis"
+msgstr "Emojis"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Litrichean ⁊ samhlaidhean"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Puingeachadh"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Saighdean"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Peilearan"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Dealbhan"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Airgeadrathan"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Matamataig"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Litrichean"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Samhlaidhean-gnùis"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Samhlaidhean-gnùis ⁊ daoine"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Beathaichean ⁊ an nàdar"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Biadh ⁊ deoch"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Gnìomhachdan"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Siubhal ⁊ àitichean"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Nithean"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Samhlaidhean"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Brataichean"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Ràgh air liosta na roinne-seòrsa %s"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:372
+msgid "Recently Used"
+msgstr "Air an cleachdadh o chionn ghoirid"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Faic cuideachd"
 
-#: src/character.js:117 src/character.js:139
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/character.js:140
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "Chan eil %s am broinn %s"
+
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Gun iomruineadh"
 
 #: src/main.js:58
 msgid "Characters Application"
@@ -190,45 +231,58 @@ msgstr "Chaidh aplacaid nan caractaran a thòiseachadh"
 
 #: src/main.js:103
 msgid "Characters Application exiting"
-msgstr "Tha aplacaid nan caractaran 'ga fàgail"
+msgstr "Tha aplacaid nan caractaran ’ga fàgail"
 
 #: src/menu.js:50
 msgid "None"
 msgstr "Chan eil gin"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 msgid "Unknown character name"
 msgstr "Ainm caractar nach aithne dhuinn"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:198
 msgid "translator-credits"
 msgstr "GunChleoc <fios@foramnagaidhlig.net>"
 
-#: src/window.js:167
+#: src/window.js:200
 msgid "Character Map"
 msgstr "Mapa nan caractaran"
 
-#: src/window.js:187
+#: src/window.js:220
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s a-mhàin)"
 
-#: src/window.js:273
+#: src/window.js:349
 #, javascript-format
 msgid "%s Character List"
-msgstr "Liosta na roinne-seòrsa %s"
+msgstr "Liosta charactaran %s"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:357
+#, javascript-format
+#| msgid "%s Character List"
+msgid "Recently Used %s Character List"
+msgstr "Liosta charactaran %s o chionn ghoirid"
+
+#: src/window.js:376
 msgid "Search Result Character List"
 msgstr "Liosta charactaran nan toraidhean luirg"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:378
 msgid "Search Result"
 msgstr "Toradh luirg"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Feuch lorg eile."
+
+#~ msgid "Emoticons"
+#~ msgstr "Samhlaidhean-gnùis"
