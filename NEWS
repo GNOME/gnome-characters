@@ -1,3 +1,19 @@
+3.27.92
+===
+
+- build: Port to meson build system
+- libgc: Perform full canonical decomposition for Hangul syllables
+
+New And Updated Translations
+============================
+Alain Lojewski (fr)
+Cédric Valmary (oc)
+GNOME Translation Robot (gd)
+Khaled Hosny (ar)
+Kjartan Maraas (nb)
+Pieter Schalk Schoeman (af)
+Stas Solovey (ru)
+
 3.26.2
 ===
 
