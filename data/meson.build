@@ -67,7 +67,7 @@ i18n.merge_file(
 )
 
 service_conf = configuration_data()
-service_conf.set('PACKAGE_NAME', meson.project_name())
+service_conf.set('PACKAGE_NAME', characters_name)
 service_conf.set('pkgdatadir', characters_pkgdatadir)
 
 services = [
