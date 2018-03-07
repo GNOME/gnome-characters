@@ -1,12 +1,12 @@
 project(
-  'org.gnome.Characters', 'c',
+  'gnome-characters', 'c',
   version: '3.27.92',
   license: 'BSD3',
   default_options: 'buildtype=debugoptimized',
   meson_version: '>= 0.42.0'
 )
 
-characters_name = meson.project_name()
+characters_name = 'org.gnome.Characters'
 characters_background_name = characters_name + '.BackgroundService'
 
 characters_version = meson.project_version()
