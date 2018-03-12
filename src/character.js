@@ -70,18 +70,6 @@ var CharacterDialog = new Lang.Class({
         this._setCharacter(filtered.character);
 
         this._copyRevealerTimeoutId = 0;
-        this._clipboardOwnerChangedId = 0;
-
-        this.connect('destroy', Lang.bind(this, this._disconnectSignals));
-    },
-
-    _disconnectSignals: function() {
-        if (this._copyRevealerTimeoutId > 0) {
-            GLib.source_remove(this._copyRevealerTimeoutId);
-            this._copyRevealerTimeoutId = 0;
-        }
-        if (this._clipboardOwnerChangedId > 0)
-            this._clipboard.disconnect(this._clipboardOwnerChangedId);
     },
 
     _finishSearch: function(result) {
@@ -193,10 +181,14 @@ var CharacterDialog = new Lang.Class({
     _copyCharacter: function() {
         if (this._clipboard == null) {
             this._clipboard = Gc.gtk_clipboard_get();
-            this._clipboardOwnerChangedId =
+            let clipboardOwnerChanged =
                 this._clipboard.connect('owner-change',
                                         Lang.bind(this,
                                                   this._clipboardOwnerChanged));
+            this.connect('destroy',
+                         Lang.bind(this, function() {
+                             this._clipboard.disconnect(clipboardOwnerChanged);
+                         }));
         }
         this._clipboard.set_text(this._character, -1);
         this.emit('character-copied', this._character);
@@ -209,6 +201,11 @@ var CharacterDialog = new Lang.Class({
         this._copyRevealerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000,
                              Lang.bind(this, this._hideCopyRevealer));
+        this.connect('destroy',
+                     Lang.bind(this, function() {
+                         if (this._copyRevealerTimeoutId > 0)
+                             GLib.source_remove(this._copyRevealerTimeoutId);
+                     }));
     },
 
     _handleRowSelected: function(listBox, row) {
