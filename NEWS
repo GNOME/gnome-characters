@@ -1,3 +1,8 @@
+3.28.0
+===
+
+- character: Avoid critical warning after closing the dialog
+
 3.27.92
 ===
 
