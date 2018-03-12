@@ -70,6 +70,18 @@ var CharacterDialog = new Lang.Class({
         this._setCharacter(filtered.character);
 
         this._copyRevealerTimeoutId = 0;
+        this._clipboardOwnerChangedId = 0;
+
+        this.connect('destroy', Lang.bind(this, this._disconnectSignals));
+    },
+
+    _disconnectSignals: function() {
+        if (this._copyRevealerTimeoutId > 0) {
+            GLib.source_remove(this._copyRevealerTimeoutId);
+            this._copyRevealerTimeoutId = 0;
+        }
+        if (this._clipboardOwnerChangedId > 0)
+            this._clipboard.disconnect(this._clipboardOwnerChangedId);
     },
 
     _finishSearch: function(result) {
@@ -181,9 +193,10 @@ var CharacterDialog = new Lang.Class({
     _copyCharacter: function() {
         if (this._clipboard == null) {
             this._clipboard = Gc.gtk_clipboard_get();
-            this._clipboard.connect('owner-change',
-                                    Lang.bind(this,
-                                              this._clipboardOwnerChanged));
+            this._clipboardOwnerChangedId =
+                this._clipboard.connect('owner-change',
+                                        Lang.bind(this,
+                                                  this._clipboardOwnerChanged));
         }
         this._clipboard.set_text(this._character, -1);
         this.emit('character-copied', this._character);
