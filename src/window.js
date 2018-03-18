@@ -198,7 +198,7 @@ var MainWindow = new Lang.Class({
               translator_credits: _("translator-credits"),
               program_name: _("GNOME Characters"),
               comments: _("Character Map"),
-              copyright: 'Copyright 2014-2015 Daiki Ueno',
+              copyright: 'Copyright 2014-2018 Daiki Ueno',
               license_type: Gtk.License.GPL_2_0,
               logo_icon_name: 'gnome-characters',
               version: pkg.version,
