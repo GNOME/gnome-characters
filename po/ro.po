@@ -2,14 +2,14 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Adriannho <raziel_theripper@yahoo.com>, 2015.
-# Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2015.
+# Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2015, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-18\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-10-18 06:48+0000\n"
-"PO-Revision-Date: 2015-10-18 19:26+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-03-26 12:01+0000\n"
+"PO-Revision-Date: 2018-04-08 20:35+0200\n"
 "Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
@@ -21,194 +21,274 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/app-menu.ui.h:1
+#: data/app-menu.ui:6
 msgid "About"
 msgstr "Despre"
 
-#: ../data/app-menu.ui.h:2
+#: data/app-menu.ui:10
 msgid "Quit"
 msgstr "Ieșire"
 
-#: ../data/characterlist.ui.h:1
-msgid "Search produced empty result"
-msgstr "Căutarea nu a produs rezultate"
+#: data/characterlist.ui:30
+msgid "Search found no results"
+msgstr "Căutarea nu a găsit rezultate"
 
-#: ../data/characterlist.ui.h:2
-msgid "Try another search criteria."
-msgstr "Încercați un alt criteriu de căutare."
+#: data/characterlist.ui:41
+msgid "Try a different search."
+msgstr "Încercați o căutare diferită."
 
-#: ../data/characterlist.ui.h:3
+#: data/characterlist.ui:73
 msgid "Loading…"
 msgstr "Se încarcă…"
 
-#: ../data/characterlist.ui.h:4
-msgid "No recent characters found"
-msgstr "Nu au fost găsite caractere recente"
-
-#: ../data/characterlist.ui.h:5
-msgid "Characters will appear here if you use them."
-msgstr "Caracterele vor apărea aici dacă le utilizați."
-
-#: ../data/character.ui.h:1
+#: data/character.ui:68
 msgid "Copy Character"
 msgstr "Copiază caracter"
 
-#: ../data/character.ui.h:2
-#| msgid "Characters Application started"
+#: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Caracter copiat în clipboard"
 
-#: ../data/mainwindow.ui.h:1
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Nu au fost găsite caractere recente"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Caracterele vor apărea aici dacă le utilizați."
+
+#: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "Pagina curentă"
 
-#: ../data/menu.ui.h:1
-msgid "Filter by font"
-msgstr "Filtrare după font"
+#: data/menu.ui:17
+msgid "Filter by Font"
+msgstr "Filtrează după font"
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:199
+msgid "GNOME Characters"
+msgstr "Caractere GNOME"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Aplicație cu tabel de caractere"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"Caractere este o aplicație simplă pentru găsirea și inserarea caracterelor "
-"rare. Ea vă permite să găsiți rapid caracterele pe care le doriți prin "
-"căutarea după cuvinte cheie."
+"Caractere este o aplicație simplă pentru găsirea și introducerea "
+"caracterelor rare. Ea vă permite să găsiți rapid caracterele pe care le "
+"doriți prin căutarea după cuvinte cheie."
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+#: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Puteți de asemenea să răsfoiți caractere după categorii, precum punctuație, "
-"poze, etc."
+"Puteți de asemenea să navigați prin caractere după categorii, precum "
+"punctuație, poze, etc."
 
-#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
 msgid "Characters"
 msgstr "Caractere"
 
-#: ../data/org.gnome.Characters.desktop.in.h:2
+#: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
-msgstr "Utilitar de găsire și inserare a caracterelor rare"
+msgstr "Utilitar de găsire și introducere a caracterelor rare"
 
-#: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "characters;unicode;caractere;"
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "gnome-characters"
+msgstr "gnome-characters"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:1
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"characters;unicode;punctuation;math;letters;emoji;emoticon;caractere;"
+"punctuație;matematică;litere;emoticoane;"
+
+#: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
 msgstr "Fontul de afișare a caracterelor"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:2
+#: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
 msgstr "Utilizează fontul la randarea caracterelor în lista cu caractere."
 
-#: ../data/org.gnome.Characters.gschema.xml.h:3
+#: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "Număr maxim de caractere recente"
 
-#: ../src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Utilizate recent"
+#: src/categoryList.js:33
+msgid "Emojis"
+msgstr "Emoji"
 
-#: ../src/categoryList.js:39
+#: src/categoryList.js:40 src/categoryList.js:390
+msgid "Letters & Symbols"
+msgstr "Litere și simboluri"
+
+#: src/categoryList.js:50
 msgid "Punctuation"
 msgstr "Punctuație"
 
-#: ../src/categoryList.js:45
+#: src/categoryList.js:57
 msgid "Arrows"
 msgstr "Săgeți"
 
-#: ../src/categoryList.js:51
+#: src/categoryList.js:64
 msgid "Bullets"
 msgstr "Buline"
 
-#: ../src/categoryList.js:57
+#: src/categoryList.js:71
 msgid "Pictures"
 msgstr "Imagini"
 
-#: ../src/categoryList.js:63
+#: src/categoryList.js:78
 msgid "Currencies"
 msgstr "Valute"
 
-#: ../src/categoryList.js:69
+#: src/categoryList.js:85
 msgid "Math"
 msgstr "Matematică"
 
-#: ../src/categoryList.js:75
+#: src/categoryList.js:92
 msgid "Letters"
 msgstr "Litere"
 
-#: ../src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Emoticoane"
+#: src/categoryList.js:102
+msgid "Smileys & People"
+msgstr "Emoticoane și oameni"
 
-#: ../src/categoryList.js:96
+#: src/categoryList.js:109
+msgid "Animals & Nature"
+msgstr "Animale și natură"
+
+#: src/categoryList.js:116
+msgid "Food & Drink"
+msgstr "Mâncare și băutură"
+
+#: src/categoryList.js:123
+msgid "Activities"
+msgstr "Activități"
+
+#: src/categoryList.js:130
+msgid "Travel & Places"
+msgstr "Călătorii și locuri"
+
+#: src/categoryList.js:137
+msgid "Objects"
+msgstr "Obiecte"
+
+#: src/categoryList.js:144
+msgid "Symbols"
+msgstr "Simboluri"
+
+#: src/categoryList.js:151
+msgid "Flags"
+msgstr "Steaguri"
+
+#: src/categoryList.js:166
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s rând listă categorii"
 
-#: ../src/character.js:52
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:378 src/window.js:372
+msgid "Recently Used"
+msgstr "Utilizate recent"
+
+#: src/character.js:56
 msgid "See Also"
 msgstr "Vezi și"
 
-#: ../src/character.js:114
+#: src/character.js:122 src/character.js:144
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
-#: ../src/main.js:58
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/character.js:140
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s nu este inclus în %s"
+
+#: src/characterList.js:178
+msgid "Unassigned"
+msgstr "Nealocat"
+
+#: src/main.js:58
 msgid "Characters Application"
 msgstr "Aplicația Caractere"
 
-#: ../src/main.js:95
+#: src/main.js:95
 msgid "Characters Application started"
 msgstr "S-a pornit aplicația Caractere"
 
-#: ../src/main.js:103
+#: src/main.js:103
 msgid "Characters Application exiting"
 msgstr "Se iese din aplicația Caractere"
 
-#: ../src/menu.js:39
+#: src/menu.js:50
 msgid "None"
 msgstr "Nespecificat"
 
-#: ../src/searchProvider.js:94
+#: src/searchProvider.js:95
 msgid "Unknown character name"
-msgstr "Nume caracter necunoscut"
+msgstr "Nume de caracter necunoscut"
 
-#: ../src/searchProvider.js:97
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: ../src/window.js:165
+#: src/window.js:198
 msgid "translator-credits"
-msgstr "Adriannho"
+msgstr ""
+"Adriannho,\n"
+"Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2018"
 
-#: ../src/window.js:166
-msgid "GNOME Characters"
-msgstr "GNOME Caractere"
-
-#: ../src/window.js:167
+#: src/window.js:200
 msgid "Character Map"
-msgstr "Hartă de caractere"
+msgstr "Tabel de caractere"
 
-#: ../src/window.js:187
+#: src/window.js:220
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (doar %s)"
 
-#: ../src/window.js:273
+#: src/window.js:349
 #, javascript-format
 msgid "%s Character List"
-msgstr "%s listă caractere"
+msgstr "%s listă de caractere"
 
-#: ../src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:357
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Listă de caractere %s utilizată recent"
+
+#: src/window.js:376
 msgid "Search Result Character List"
-msgstr "Caută lista cu caractere rezultată"
+msgstr "Rezultatele căutării în lista cu caractere"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:378
+msgid "Search Result"
+msgstr "Rezultatele căutării"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Încercați un alt criteriu de căutare."
+
+#~ msgid "characters;unicode;"
+#~ msgstr "characters;unicode;caractere;"
+
+#~ msgid "Emoticons"
+#~ msgstr "Emoticoane"
 
 #~ msgid "About Characters"
 #~ msgstr "Despre Caractere"
