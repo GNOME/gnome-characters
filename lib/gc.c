@@ -26,21 +26,21 @@ static size_t all_block_count;
 
 #define LATIN_BLOCK_SIZE 4
 static gsize latin_blocks_initialized;
-static const uc_block_t latin_blocks[LATIN_BLOCK_SIZE];
+static uc_block_t latin_blocks[LATIN_BLOCK_SIZE];
 static const ucs4_t latin_block_starters[LATIN_BLOCK_SIZE] =
   { 0x0000, 0x0080, 0x0100, 0x0180 };
 static size_t latin_block_count;
 
 #define HIRAGANA_BLOCK_SIZE 1
 static gsize hiragana_blocks_initialized;
-static const uc_block_t hiragana_blocks[HIRAGANA_BLOCK_SIZE];
+static uc_block_t hiragana_blocks[HIRAGANA_BLOCK_SIZE];
 static const ucs4_t hiragana_block_starters[HIRAGANA_BLOCK_SIZE] =
   { 0x3040 };
 static size_t hiragana_block_count;
 
 #define KATAKANA_BLOCK_SIZE 2
 static gsize katakana_blocks_initialized;
-static const uc_block_t katakana_blocks[KATAKANA_BLOCK_SIZE];
+static uc_block_t katakana_blocks[KATAKANA_BLOCK_SIZE];
 static const ucs4_t katakana_block_starters[KATAKANA_BLOCK_SIZE] =
   { 0x30A0, 0x31F0 };
 static size_t katakana_block_count;
@@ -372,10 +372,10 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_LETTER_LATIN:
       {
-        static const uc_script_t *latin_scripts[2];
-        latin_scripts[0] = uc_script ('A');
+        uc_script_t *latin_scripts[2];
+        latin_scripts[0] = (uc_script_t *)uc_script ('A');
         latin_scripts[1] = NULL;
-        gc_character_iter_init_for_scripts (iter, latin_scripts);
+        gc_character_iter_init_for_scripts (iter, (const uc_script_t * const *)latin_scripts);
         return;
       }
 
@@ -529,7 +529,7 @@ gchar *
 gc_character_name (gunichar uc)
 {
   const uc_block_t *block;
-  static const uc_block_t *cjk_blocks[6];
+  static uc_block_t *cjk_blocks[6];
   static gsize cjk_blocks_initialized = 0;
   gsize i;
 
@@ -915,7 +915,7 @@ populate_related_characters (GcCharacterIter *iter)
 }
 
 static size_t
-init_blocks (const uc_block_t *blocks, const ucs4_t *starters, size_t size)
+init_blocks (uc_block_t *blocks, const ucs4_t *starters, size_t size)
 {
   size_t i, count;
 
