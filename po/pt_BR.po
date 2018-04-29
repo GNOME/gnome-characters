@@ -4,14 +4,14 @@
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2015.
 # Artur de Aquino Morais <artur.morais93@outlook.com>, 2016.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2015, 2016.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2015, 2016, 2017.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2015, 2016, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-30 14:55+0000\n"
-"PO-Revision-Date: 2017-08-30 20:26-0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-03-25 03:57+0000\n"
+"PO-Revision-Date: 2018-04-29 11:29-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -66,7 +66,7 @@ msgstr "Página atual"
 msgid "Filter by Font"
 msgstr "Filtrar por fonte"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:199
 msgid "GNOME Characters"
 msgstr "Caracteres do GNOME"
 
@@ -188,7 +188,7 @@ msgstr "Símbolos"
 
 #: src/categoryList.js:151
 msgid "Flags"
-msgstr "Opções"
+msgstr "Bandeiras"
 
 #: src/categoryList.js:166
 #, javascript-format
@@ -196,7 +196,7 @@ msgid "%s Category List Row"
 msgstr "Linha %s da lista de categoria"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:373
+#: src/categoryList.js:378 src/window.js:372
 msgid "Recently Used"
 msgstr "Usados recentemente"
 
@@ -245,39 +245,38 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:199
+#: src/window.js:198
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>\n"
 "Rafael Fontenelle <rafaelff@gnome.org>"
 
-#: src/window.js:201
+#: src/window.js:200
 msgid "Character Map"
 msgstr "Mapa de caracteres"
 
-#: src/window.js:221
+#: src/window.js:220
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (apenas %s)"
 
-#: src/window.js:350
+#: src/window.js:349
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:358
+#: src/window.js:357
 #, javascript-format
-#| msgid "%s Character List"
 msgid "Recently Used %s Character List"
 msgstr "Lista de caracteres %s recentemente usados"
 
-#: src/window.js:377
+#: src/window.js:376
 msgid "Search Result Character List"
 msgstr "Resultado da pesquisa da lista de caracteres"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:379
+#: src/window.js:378
 msgid "Search Result"
 msgstr "Resultado da pesquisa"
 
