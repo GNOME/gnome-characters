@@ -1,3 +1,14 @@
+3.28.2
+===
+
+- libgc: Fix crasher with some GCC configurations
+
+New And Updated Translations
+============================
+Daniel Șerbănescu (ro)
+Dz Chen (zh_CN)
+Rafael Fontenelle (pt_BR)
+
 3.28.0
 ===
 
