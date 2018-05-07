@@ -541,7 +541,7 @@ gc_character_name (gunichar uc)
         };
 
       for (i = 0; i < G_N_ELEMENTS (cjk_block_starters); i++)
-        cjk_blocks[i] = uc_block (cjk_block_starters[i]);
+        cjk_blocks[i] = (uc_block_t *)uc_block (cjk_block_starters[i]);
       g_once_init_leave (&cjk_blocks_initialized, 1);
     }
 
