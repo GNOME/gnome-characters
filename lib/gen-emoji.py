@@ -14,6 +14,7 @@ GROUPS = {
     'Flags': 'flags'
 }
 
+
 class Builder(object):
     def __init__(self):
         pass
@@ -34,7 +35,7 @@ class Builder(object):
             cp = cp.strip()
             if cp.find(' ') > 0:
                 continue
-            status = status.strip();
+            status = status.strip()
             if not status.startswith('fully-qualified'):
                 continue
             group.add(int(cp, 16))
@@ -59,14 +60,15 @@ class Builder(object):
             print('  };')
             print()
 
+
 if __name__ == '__main__':
     import argparse
-    
+
     parser = argparse.ArgumentParser(description='build')
     parser.add_argument('infile', type=argparse.FileType('r'),
                         help='input file')
     args = parser.parse_args()
-    
+
     builder = Builder()
     # FIXME: argparse.FileType(encoding=...) is available since Python 3.4
     data = builder.read(io.open(args.infile.name, encoding='utf_8_sig'))
