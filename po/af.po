@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-12-03 06:45+0000\n"
-"PO-Revision-Date: 2017-12-18 22:33+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-03-25 03:57+0000\n"
+"PO-Revision-Date: 2018-05-20 00:19+0200\n"
 "Last-Translator: Pieter Schoeman <pieter@sonbesie.co.za>\n"
 "Language-Team: Afrikaans <pieter@sonbesie.co.za>\n"
 "Language: af\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #: data/app-menu.ui:6
 msgid "About"
@@ -80,7 +80,7 @@ msgid ""
 msgstr ""
 "Karakters is 'n eenvoudige nutstoepassing om ongewone karakters te vind en "
 "in te voeg. Dit laat u toe om vinnig karakter te vind deur met sleutelwoorde "
-"te soek"
+"te soek."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
@@ -105,9 +105,7 @@ msgstr "gnome-characters"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr ""
-"characters;unicode;punctuation;math;emoji;emoticon;karakters;leestekens;"
-"wiskunde;letters;emosiekone"
+msgstr "karakters;unicode;leestekens;wiskunde;letters;emosiekone;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -246,7 +244,7 @@ msgstr "U+%s, %s: %s"
 #. TRANSLATORS: put your names here, one name per line.
 #: src/window.js:198
 msgid "translator-credits"
-msgstr "Pieter Schalk Schoeman"
+msgstr "Pieter Schoeman"
 
 #: src/window.js:200
 msgid "Character Map"
