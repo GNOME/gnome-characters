@@ -1,0 +1,86 @@
+{
+    "env": {
+        "es6": true
+ 
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "brace-style": "error",
+        "arrow-body-style": 1,
+        "arrow-parens": 1,
+        "arrow-spacing": 1,
+        "constructor-super": 1,
+        "generator-star-spacing": 1,
+        "no-class-assign": 1,
+        "no-confusing-arrow": 1,
+        "no-const-assign": 1,
+        "no-dupe-class-members": 1,
+        "no-duplicate-imports": 1,
+        "no-new-symbol": 1,
+        "no-restricted-imports": 1,
+        "no-this-before-super": 1,
+        "no-useless-computed-key": 1,
+        "no-useless-constructor": 1,
+        "no-useless-rename": 1,
+        "object-shorthand": 1,
+        "prefer-arrow-callback": 1,
+        "prefer-const": 1,
+        "prefer-numeric-literals": 1,
+        "prefer-rest-params": 1,
+        "prefer-spread": 1,
+        "prefer-template": 1,
+        "require-yield": 1,
+        "rest-spread-spacing": 1,
+        "sort-imports": 1,
+        "symbol-description": 1,
+        "template-curly-spacing": 1,
+        "yield-star-spacing": 1,
+        "no-shadow": 1,
+        "indent": [
+            "warn",
+            4,
+            {
+                 "FunctionDeclaration": {"parameters": "first"},
+                 "MemberExpression": "off"
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single",
+            {
+                "avoidEscape": true
+            }
+
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    },
+    "plugins": [
+        "gjs"
+    ],
+    "env": {
+        "es6": true,
+        "gjs/application": true
+    },
+    "globals": {
+        "ARGV": false,
+        "Debugger": false,
+        "GIRepositoryGType": false,
+        "imports": false,
+        "Intl": false,
+        "log": false,
+        "logError": false,
+        "print": false,
+        "printerr": false,
+        "window": false
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017
+    }
+}
