@@ -36,7 +36,6 @@ const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const Util = imports.util;
 const Window = imports.window;
@@ -51,12 +50,11 @@ function initEnvironment() {
 
 var MyApplication = GObject.registerClass({
 },class MyApplication extends Gtk.Application {
-   // Name: 'MyApplication',
     _init () {
         super._init({ application_id: pkg.name, 
                       flags: Gio.ApplicationFlags.FLAGS_NONE });
 
-        GLib.set_application_name(_("Characters Application"));
+        GLib.set_application_name(_('Characters Application'));
     }
 
     _onQuit () {
@@ -64,16 +62,16 @@ var MyApplication = GObject.registerClass({
     }
 
     _onSearch (action, parameter) {
-        let window = new Window.MainWindow({ application: this });
+        const window = new Window.MainWindow({ application: this });
         window.setSearchKeywords(parameter.get_strv());
         window.show();
     }
 
     _initAppMenu () {
-        let builder = new Gtk.Builder();
+        const builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/app-menu.ui');
 
-        let menu = builder.get_object('app-menu');
+        const menu = builder.get_object('app-menu');
         this.set_app_menu(menu);
     }
 
@@ -93,7 +91,7 @@ var MyApplication = GObject.registerClass({
         settings = Util.getSettings('org.gnome.Characters',
                                     '/org/gnome/Characters/');
 
-        log(_("Characters Application Testing started"));
+        log(_('Characters Application Testing started'));
     }
 
     vfunc_activate () {
@@ -101,7 +99,7 @@ var MyApplication = GObject.registerClass({
     }
 
     vfunc_shutdown () {
-        log(_("Characters Application Testing exiting"));
+        log(_('Characters Application Testing exiting'));
 
         super.vfunc_shutdown();
     }
