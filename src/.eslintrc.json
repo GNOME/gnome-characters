@@ -5,6 +5,7 @@
     },
     "extends": "eslint:recommended",
     "rules": {
+        "files": [ "src/*.js" ],
         "brace-style": "error",
         "arrow-body-style": 1,
         "arrow-parens": 1,
@@ -37,7 +38,7 @@
         "yield-star-spacing": 1,
         "no-shadow": 1,
         "indent": [
-            "warn",
+            0,
             4,
             {
                  "FunctionDeclaration": {"parameters": "first"},
@@ -81,6 +82,6 @@
         "window": false
     },
     "parserOptions": {
-        "ecmaVersion": 2017
+        "ecmaVersion": 6
     }
 }
