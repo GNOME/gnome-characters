@@ -37,28 +37,25 @@ const NUM_COLUMNS = 5;
 const CELL_SIZE = 50;
 
 function getCellSize(fontDescription) {
-    if (fontDescription == null
-        || fontDescription.get_size() == 0)
+    if (fontDescription == null || fontDescription.get_size() == 0)
         return CELL_SIZE;
     return fontDescription.get_size() * 2 / Pango.SCALE;
 }
 
-const CharacterListRow = new Lang.Class({
-    Name: 'CharacterListRow',
-    Extends: GObject.Object,
-
-    _init: function(params) {
+const CharacterListRow = GObject.registerClass({
+}, class CharacterListRow extends GObject.Object {
+    _init(params) {
         let filtered = Params.filter(params, { characters: null,
                                                fontDescription: null,
                                                overlayFontDescription: null });
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
         this._characters = filtered.characters;
         this._fontDescription = filtered.fontDescription;
         this._overlayFontDescription = filtered.overlayFontDescription;
-    },
+    }
 
-    draw: function(cr, x, y, width, height) {
+    draw(cr, x, y, width, height) {
         let layout = PangoCairo.create_layout(cr);
         layout.set_font_description(this._fontDescription);
 
@@ -97,9 +94,9 @@ const CharacterListRow = new Lang.Class({
                 }
             }
         }
-    },
+    }
 
-    _computeBoundingBox: function(cr, cellRect, uc) {
+    _computeBoundingBox(cr, cellRect, uc) {
         let layout = PangoCairo.create_layout(cr);
         layout.set_font_description(this._fontDescription);
         layout.set_text(uc, -1);
@@ -139,9 +136,9 @@ const CharacterListRow = new Lang.Class({
         shapeRect.width = shapeRect.width / Pango.SCALE;
         shapeRect.height = shapeRect.height / Pango.SCALE;
         return shapeRect;
-    },
+    }
 
-    _drawBoundingBox: function(cr, cellRect, uc) {
+    _drawBoundingBox(cr, cellRect, uc) {
         cr.save();
         cr.rectangle(cellRect.x, cellRect.y, cellRect.width, cellRect.height);
         cr.clip();
@@ -160,9 +157,9 @@ const CharacterListRow = new Lang.Class({
         cr.fill();
 
         cr.restore();
-    },
+    }
 
-    _drawCharacterName: function(cr, cellRect, uc) {
+    _drawCharacterName(cr, cellRect, uc) {
         cr.save();
         cr.rectangle(cellRect.x, cellRect.y, cellRect.width, cellRect.height);
         cr.clip();
@@ -189,20 +186,18 @@ const CharacterListRow = new Lang.Class({
     }
 });
 
-const CharacterListWidget = new Lang.Class({
-    Name: 'CharacterListWidget',
-    Extends: Gtk.DrawingArea,
+const CharacterListWidget = GObject.registerClass({
     Signals: {
         'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
-
-    _init: function(params) {
+}, class CharacterListWidget extends Gtk.DrawingArea {
+    _init(params) {
         let filtered = Params.filter(params, {
             fontDescription: null,
             numRows: NUM_ROWS
         });
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
         let context = this.get_style_context();
         context.add_class('character-list');
         context.save();
@@ -218,9 +213,9 @@ const CharacterListWidget = new Lang.Class({
                              null,
                              Gdk.DragAction.COPY);
         this.drag_source_add_text_targets();
-    },
+    }
 
-    vfunc_drag_begin: function(context) {
+    vfunc_drag_begin(context) {
         let cellSize = getCellSize(this._fontDescription);
         this._dragSurface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
                                                    cellSize,
@@ -232,14 +227,14 @@ const CharacterListWidget = new Lang.Class({
         let row = this._createCharacterListRow([this._character]);
         row.draw(cr, 0, 0, cellSize, cellSize);
         Gtk.drag_set_icon_surface(context, this._dragSurface, 0, 0);
-    },
+    }
 
-    vfunc_drag_data_get: function(context, data, info, time) {
+    vfunc_drag_data_get(context, data, info, time) {
         if (this._character != null)
             data.set_text(this._character, -1);
-    },
+    }
 
-    vfunc_button_press_event: function(event) {
+    vfunc_button_press_event(event) {
         let allocation = this.get_allocation();
         let cellSize = getCellSize(this._fontDescription);
         let x = Math.floor(event.x / cellSize);
@@ -250,42 +245,42 @@ const CharacterListWidget = new Lang.Class({
         else
             this._character = null;
         return false;
-    },
+    }
 
-    vfunc_button_release_event: function(event) {
+    vfunc_button_release_event(event) {
         if (this._character)
             this.emit('character-selected', this._character);
         return false;
-    },
+    }
 
-    vfunc_get_request_mode: function() {
+    vfunc_get_request_mode() {
         return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
-    },
+    }
 
-    vfunc_get_preferred_height: function() {
+    vfunc_get_preferred_height() {
         let [minWidth, natWidth] = this.vfunc_get_preferred_width();
         return this.vfunc_get_preferred_height_for_width(minWidth);
-    },
+    }
 
-    vfunc_get_preferred_height_for_width: function(width) {
+    vfunc_get_preferred_height_for_width(width) {
         let height = Math.max(this._rows.length, this._numRows) *
             getCellSize(this._fontDescription);
         return [height, height];
-    },
+    }
 
-    vfunc_get_preferred_width: function() {
+    vfunc_get_preferred_width() {
         return this.vfunc_get_preferred_width_for_height(0);
-    },
+    }
 
-    vfunc_get_preferred_width_for_height: function(height) {
+    vfunc_get_preferred_width_for_height(height) {
         let cellSize = getCellSize(this._fontDescription);
         let minWidth = NUM_COLUMNS * cellSize;
         let natWidth = Math.max(this._cellsPerRow, NUM_COLUMNS) * cellSize;
         return [minWidth, natWidth];
-    },
+    }
 
-    vfunc_size_allocate: function(allocation) {
-        this.parent(allocation);
+    vfunc_size_allocate(allocation) {
+        super.vfunc_size_allocate(allocation);
 
         let cellSize = getCellSize(this._fontDescription);
         let cellsPerRow = Math.floor(allocation.width / cellSize);
@@ -294,9 +289,9 @@ const CharacterListWidget = new Lang.Class({
             this._cellsPerRow = cellsPerRow;
             this.setCharacters(this._characters);
         }
-    },
+    }
 
-    _createCharacterListRow: function(characters) {
+    _createCharacterListRow(characters) {
         var context = this.get_pango_context();
         var fontDescription = context.get_font_description();
         fontDescription.set_size(fontDescription.get_size() * 0.8);
@@ -306,13 +301,13 @@ const CharacterListWidget = new Lang.Class({
             overlayFontDescription: fontDescription
         });
         return row;
-    },
+    }
 
-    setFontDescription: function(fontDescription) {
+    setFontDescription(fontDescription) {
         this._fontDescription = fontDescription;
-    },
+    }
 
-    setCharacters: function(characters) {
+    setCharacters(characters) {
         this._rows = [];
         this._characters = characters;
 
@@ -333,9 +328,9 @@ const CharacterListWidget = new Lang.Class({
 
         this.queue_resize();
         this.queue_draw();
-    },
+    }
 
-    vfunc_draw: function(cr) {
+    vfunc_draw(cr) {
         // Clear the canvas.
         let context = this.get_style_context();
         let fg = context.get_color(Gtk.StateFlags.NORMAL);
@@ -364,9 +359,7 @@ const CharacterListWidget = new Lang.Class({
 
 const MAX_SEARCH_RESULTS = 100;
 
-var FontFilter = new Lang.Class({
-    Name: 'FontFilter',
-    Extends: GObject.Object,
+var FontFilter = GObject.registerClass({
     Properties: {
         'font': GObject.ParamSpec.string(
             'font', '', '',
@@ -376,10 +369,10 @@ var FontFilter = new Lang.Class({
     Signals: {
         'filter-set': { param_types: [] }
     },
-
+}, class FontFilter extends GObject.Object {
     get font() {
         return this._font;
-    },
+    }
 
     set font(v) {
         let fontDescription = Pango.FontDescription.from_string(v);
@@ -392,25 +385,25 @@ var FontFilter = new Lang.Class({
 
         this._font = v;
         this._fontDescription = fontDescription;
-    },
+    }
 
     get fontDescription() {
         if (this._filterFontDescription)
             return this._filterFontDescription;
         return this._fontDescription;
-    },
+    }
 
-    _init: function(params) {
+    _init(params) {
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
 
         this._fontDescription = null;
         this._filterFontDescription = null;
 
         Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
-    },
+    }
 
-    setFilterFont: function(v) {
+    setFilterFont(v) {
         let fontDescription;
         if (v == null) {
             fontDescription = null;
@@ -426,9 +419,9 @@ var FontFilter = new Lang.Class({
             this._filterFontDescription = fontDescription;
             this.emit('filter-set');
         }
-    },
+    }
 
-    apply: function(widget, characters) {
+    apply(widget, characters) {
         let fontDescription = this._fontDescription;
         if (this._filterFontDescription) {
             let context = widget.get_pango_context();
@@ -444,19 +437,17 @@ var FontFilter = new Lang.Class({
         }
 
         return [fontDescription, characters];
-    },
+    }
 });
 
-var CharacterListView = new Lang.Class({
-    Name: 'CharacterListView',
-    Extends: Gtk.Stack,
+var CharacterListView = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/characterlist.ui',
     InternalChildren: ['loading-spinner'],
     Signals: {
         'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
-
-    _init: function(params) {
+}, class CharacterListView extends Gtk.Stack {
+    _init(params) {
         let filtered = Params.filter(params, {
             fontFilter: null
         });
@@ -464,7 +455,7 @@ var CharacterListView = new Lang.Class({
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
         });
-        this.parent(params);
+        super._init(params);
 
         this._fontFilter = filtered.fontFilter;
         this._characterList = new CharacterListWidget({
@@ -502,9 +493,9 @@ var CharacterListView = new Lang.Class({
         }));
         scroll.connect('edge-reached', Lang.bind(this, this._onEdgeReached));
         scroll.connect('size-allocate', Lang.bind(this, this._onSizeAllocate));
-    },
+    }
 
-    _startSpinner: function() {
+    _startSpinner() {
         this._stopSpinner();
         this._spinnerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
@@ -513,30 +504,30 @@ var CharacterListView = new Lang.Class({
                                  this.visible_child_name = 'loading';
                                  this.show_all();
                              }));
-    },
+    }
 
-    _stopSpinner: function() {
+    _stopSpinner() {
         if (this._spinnerTimeoutId > 0) {
             GLib.source_remove(this._spinnerTimeoutId);
             this._spinnerTimeoutId = 0;
             this._loading_spinner.stop();
         }
-    },
+    }
 
-    _finishSearch: function(result) {
+    _finishSearch(result) {
         this._stopSpinner();
 
         let characters = Util.searchResultToArray(result);
 
         this.setCharacters(characters);
-    },
+    }
 
-    setCharacters: function(characters) {
+    setCharacters(characters) {
         this._characters = characters;
         this._updateCharacterList();
-    },
+    }
 
-    _updateCharacterList: function() {
+    _updateCharacterList() {
         let [fontDescription, characters] = this._fontFilter.apply(this, this._characters);
         this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
@@ -546,19 +537,19 @@ var CharacterListView = new Lang.Class({
             this.visible_child_name = 'character-list';
         }
         this.show_all();
-    },
+    }
 
     _maybeLoadMore() {
         if (this._searchContext != null && !this._searchContext.is_finished()) {
             this._searchWithContext(this._searchContext, MAX_SEARCH_RESULTS);
         }
-    },
+    }
 
-    _onEdgeReached: function(scrolled, pos) {
+    _onEdgeReached(scrolled, pos) {
         if (pos == Gtk.PositionType.BOTTOM) {
             this._maybeLoadMore();
         }
-    },
+    }
 
     get initialSearchCount() {
         // Use our parents allocation; we aren't visible before we do the
@@ -574,20 +565,20 @@ var CharacterListView = new Lang.Class({
         let heightInRows = Math.ceil((allocation.height + 1) / cellSize);
 
         return Math.max(MAX_SEARCH_RESULTS, heightInRows * cellsPerRow);
-    },
+    }
 
-    _onSizeAllocate: function(scrolled, allocation) {
+    _onSizeAllocate(scrolled, allocation) {
         if (this._characters.length < this.initialSearchCount) {
             this._maybeLoadMore();
         }
-    },
+    }
 
-    _addSearchResult: function(result) {
+    _addSearchResult(result) {
         let characters = Util.searchResultToArray(result);
         this.setCharacters(this._characters.concat(characters));
-    },
+    }
 
-    _searchWithContext: function(context, count) {
+    _searchWithContext(context, count) {
         this._startSpinner();
         context.search(
             count,
@@ -598,12 +589,12 @@ var CharacterListView = new Lang.Class({
                     let result = context.search_finish(res);
                     this._addSearchResult(result);
                 } catch (e) {
-                    log("Failed to search: " + e.message);
+                    log(`Failed to search: ${e.message}`);
                 }
             }));
-    },
+    }
 
-    searchByCategory: function(category) {
+    searchByCategory(category) {
         if ('scripts' in category) {
             this.searchByScripts(category.scripts);
             return;
@@ -612,37 +603,35 @@ var CharacterListView = new Lang.Class({
         let criteria = Gc.SearchCriteria.new_category(category.category);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
-    },
+    }
 
-    searchByKeywords: function(keywords) {
+    searchByKeywords(keywords) {
         let criteria = Gc.SearchCriteria.new_keywords(keywords);
         this._searchContext = new Gc.SearchContext({
             criteria: criteria,
             flags: Gc.SearchFlag.WORD
         });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
-    },
+    }
 
-    searchByScripts: function(scripts) {
+    searchByScripts(scripts) {
         var criteria = Gc.SearchCriteria.new_scripts(scripts);
         this._searchContext = new Gc.SearchContext({ criteria: criteria });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
-    },
+    }
 
-    cancelSearch: function() {
+    cancelSearch() {
         this._cancellable.cancel();
         this._cancellable.reset();
     }
 });
 
-var RecentCharacterListView = new Lang.Class({
-    Name: 'RecentCharacterListView',
-    Extends: Gtk.Bin,
+var RecentCharacterListView = GObject.registerClass({
     Signals: {
         'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
-
-    _init: function(params) {
+}, class RecentCharacterListView extends Gtk.Bin {
+    _init(params) {
         let filtered = Params.filter(params, {
             category: null,
             fontFilter: null
@@ -650,7 +639,7 @@ var RecentCharacterListView = new Lang.Class({
         params = Params.fill(params, {
             hexpand: true, vexpand: false
         });
-        this.parent(params);
+        super._init(params);
 
         this._fontFilter = filtered.fontFilter;
         this._characterList = new CharacterListWidget({
@@ -670,15 +659,15 @@ var RecentCharacterListView = new Lang.Class({
 
         this._category = filtered.category;
         this._characters = [];
-    },
+    }
 
-    setCharacters: function(characters) {
+    setCharacters(characters) {
         let result = Gc.filter_characters(this._category, characters);
         this._characters = Util.searchResultToArray(result);
         this._updateCharacterList();
-    },
+    }
 
-    _updateCharacterList: function() {
+    _updateCharacterList() {
         let [fontDescription, characters] = this._fontFilter.apply(this, this._characters);
         this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
