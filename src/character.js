@@ -27,8 +27,7 @@ const Gc = imports.gi.Gc;
 const Util = imports.util;
 
 var CharacterDialog = GObject.registerClass({
-    Name: 'CharacterDialog',
-    Extends: Gtk.Dialog,
+
     Signals: {
         'character-copied': { param_types: [ GObject.TYPE_STRING ] }
     },
