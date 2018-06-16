@@ -19,6 +19,7 @@
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+const Lang = imports.lang;
 const Params = imports.params;
 
 var MenuPopover = GObject.registerClass({
@@ -57,22 +58,16 @@ var MenuPopover = GObject.registerClass({
         }
 
         this._keywords = [];
-        this._search_entry.connect('search-changed', () => {
-             this._handleSearchChanged();
-        });
-        this._font_listbox.connect('row-activated', () => {
-             this._handleRowActivated();
-        });
-        this._font_listbox.set_filter_func(() => {
-             this._filterFunc();
-        });
-        this._font_listbox.set_header_func(() => {
-             this._headerFunc();
-        });
+        this._search_entry.connect('search-changed',
+                                   Lang.bind(this, this._handleSearchChanged));
+        this._font_listbox.connect('row-activated',
+                                   Lang.bind(this, this._handleRowActivated));
+        this._font_listbox.set_filter_func(Lang.bind(this, this._filterFunc));
+        this._font_listbox.set_header_func(Lang.bind(this, this._headerFunc));
 
         // This silents warning at Characters exit about this widget being
         // visible but not mapped.  Borrowed from Maps.
-        this.connect('unmap', (popover) => {
+        this.connect('unmap', function(popover) {
             popover._font_listbox.unselect_all();
             popover.hide();
         });
