@@ -49,7 +49,7 @@ function parse(params, defaults) {
 
     for (prop in params) {
         if (!(prop in defaults))
-            throw new Error('Unrecognized parameter "' + prop + '"');
+            throw new Error(`Unrecognized parameter "${prop}"`);
         ret[prop] = params[prop];
     }
 
