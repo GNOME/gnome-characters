@@ -37,7 +37,6 @@ var CharacterDialog = GObject.registerClass({
                        'copy-button', 'copy-revealer', 'related-listbox'],
 }, class CharacterDialog extends Gtk.Dialog {
     _init(params) {
-        super._init();
         let filtered = Params.filter(params, { character: null,
                                                fontDescription: null });
         params = Params.fill(params, { use_header_bar: true,
