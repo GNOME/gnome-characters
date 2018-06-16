@@ -27,7 +27,7 @@ pkg.require({ 'Gio': '2.0',
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const Util = imports.util;
 const SearchProvider = imports.searchProvider;
@@ -38,31 +38,29 @@ function initEnvironment() {
     };
 }
 
-const BackgroundService = new Lang.Class({
-    Name: 'CharactersBackgroundService',
+const BackgroundService = GObject.registerClass({
     // This needs to be a Gtk.Application instead of Gio.Application,
     // to get Gtk.Clipboard working.
-    Extends: Gtk.Application,
-
-    _init: function() {
-        this.parent({ application_id: pkg.name,
+}, class BackgroundService extends Gtk.Application {
+    _init() {
+        super._init({ application_id: pkg.name,
                       flags: Gio.ApplicationFlags.IS_SERVICE,
                       inactivity_timeout: 30000 });
-        GLib.set_application_name(_("Characters"));
+        GLib.set_application_name(_('Characters'));
 
         this._searchProvider = new SearchProvider.SearchProvider(this);
-    },
+    }
 
-    _onQuit: function() {
+    _onQuit() {
         this.quit();
-    },
+    }
 
-    vfunc_dbus_register: function(connection, path) {
-        this.parent(connection, path);
+    vfunc_dbus_register(connection, path) {
+        super.vfunc_dbus_register(connection, path);
 
         this._searchProvider.export(connection, path);
         return true;
-    },
+    }
 
 /*
   Can't do until GApplication is fixed.
@@ -74,17 +72,17 @@ const BackgroundService = new Lang.Class({
     },
 */
 
-    vfunc_startup: function() {
-        this.parent();
+    vfunc_startup() {
+        super.vfunc_startup();
 
         Util.initActions(this,
                          [{ name: 'quit',
                             activate: this._onQuit }]);
-    },
+    }
 
-    vfunc_activate: function() {
+    vfunc_activate() {
         // do nothing, this is a background service
-    },
+    }
 });
 
 function main(argv) {
