@@ -24,10 +24,9 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
 const Gc = imports.gi.Gc;
-const Main = imports.main;
 const Util = imports.util;
 
-var CharacterDialog = new Lang.Class({
+var CharacterDialog = GObject.registerClass({
     Name: 'CharacterDialog',
     Extends: Gtk.Dialog,
     Signals: {
@@ -37,8 +36,9 @@ var CharacterDialog = new Lang.Class({
     InternalChildren: ['main-stack', 'character-stack',
                        'character-label', 'missing-label', 'detail-label',
                        'copy-button', 'copy-revealer', 'related-listbox'],
-
-    _init: function(params) {
+}, class CharacterDialog extends Gtk.Dialog {
+    _init(params) {
+        super._init();
         let filtered = Params.filter(params, { character: null,
                                                fontDescription: null });
         params = Params.fill(params, { use_header_bar: true,
@@ -53,7 +53,7 @@ var CharacterDialog = new Lang.Class({
         this._related_listbox.connect('row-selected',
                                       Lang.bind(this, this._handleRowSelected));
 
-        this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
+        this._relatedButton = new Gtk.ToggleButton({ label: _('See Also') });
         this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
         this._relatedButton.show();
 
@@ -70,9 +70,9 @@ var CharacterDialog = new Lang.Class({
         this._setCharacter(filtered.character);
 
         this._copyRevealerTimeoutId = 0;
-    },
+    }
 
-    _finishSearch: function(result) {
+    _finishSearch(result) {
         let children = this._related_listbox.get_children();
         for (let index in children)
             this._related_listbox.remove(children[index]);
@@ -107,9 +107,9 @@ var CharacterDialog = new Lang.Class({
 
         this._relatedButton.visible =
             this._related_listbox.get_children().length > 0;
-    },
+    }
 
-    _setCharacter: function(uc) {
+    _setCharacter(uc) {
         this._character = uc;
 
         let codePoint = Util.toCodePoint(this._character);
@@ -119,7 +119,7 @@ var CharacterDialog = new Lang.Class({
         if (name != null) {
             name = Util.capitalize(name);
         } else {
-            name = _("Unicode U+%04s").format(codePointHex);
+            name = _('Unicode U+%04s').format(codePointHex);
         }
 
         let headerBar = this.get_header_bar();
@@ -137,11 +137,11 @@ var CharacterDialog = new Lang.Class({
             var fontFamily = this._fontDescription.get_family();
             this._missing_label.label =
                 // TRANSLATORS: the first variable is a character, the second is a font
-                _("%s is not included in %s").format(name, fontFamily);
+                _('%s is not included in %s').format(name, fontFamily);
             this._character_stack.visible_child_name = 'missing';
         }
 
-        this._detail_label.label = _("Unicode U+%04s").format(codePointHex);
+        this._detail_label.label = _('Unicode U+%04s').format(codePointHex);
 
         this._cancellable.cancel();
         this._cancellable.reset();
@@ -155,30 +155,30 @@ var CharacterDialog = new Lang.Class({
                     let result = context.search_finish(res);
                     this._finishSearch(result);
                 } catch (e) {
-                    log("Failed to search related: " + e.message);
+                    log(`Failed to search related: ${e.message}`);
                 }
             }));
 
         this._relatedButton.active = false;
         this._main_stack.visible_child_name = 'character';
         this._main_stack.show_all();
-    },
+    }
 
-    _hideCopyRevealer: function() {
+    _hideCopyRevealer() {
         if (this._copyRevealerTimeoutId > 0) {
             GLib.source_remove(this._copyRevealerTimeoutId);
             this._copyRevealerTimeoutId = 0;
             this._copy_revealer.set_reveal_child(false);
         }
-    },
+    }
 
-    _clipboardOwnerChanged: function(clipboard, event) {
+    _clipboardOwnerChanged(clipboard, event) {
         let text = clipboard.wait_for_text();
         if (text != this._character)
             this._hideCopyRevealer();
-    },
+    }
 
-    _copyCharacter: function() {
+    _copyCharacter() {
         if (this._clipboard == null) {
             this._clipboard = Gc.gtk_clipboard_get();
             let clipboardOwnerChanged =
@@ -206,14 +206,14 @@ var CharacterDialog = new Lang.Class({
                          if (this._copyRevealerTimeoutId > 0)
                              GLib.source_remove(this._copyRevealerTimeoutId);
                      }));
-    },
+    }
 
-    _handleRowSelected: function(listBox, row) {
+    _handleRowSelected(listBox, row) {
         if (row != null) {
             this._setCharacter(row._character);
             let toplevel = this.get_transient_for();
             let action = toplevel.lookup_action('character');
             action.activate(new GLib.Variant('s', row._character));
         }
-    },
+    }
 });
