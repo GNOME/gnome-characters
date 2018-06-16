@@ -65,10 +65,10 @@ const BackgroundService = GObject.registerClass({
 /*
   Can't do until GApplication is fixed.
 
-    vfunc_dbus_unregister: function(connection, path) {
+    vfunc_dbus_unregister(connection, path) {
         this._searchProvider.unexport(connection);
 
-        this.parent(connection, path);
+        super.vfunc_dbus_unregister(connection, path);
     },
 */
 
