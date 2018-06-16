@@ -191,7 +191,7 @@ const CategoryListWidget = GObject.registerClass({
     _init(params) {
         let filtered = Params.filter(params, { categoryList: null });
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
 
         this.get_style_context().add_class('categories');
 
@@ -340,7 +340,7 @@ const LetterCategoryListWidget = GObject.registerClass({
         //    else:
         //       _finishBuildScriptList()
         //
-        let settings =
+        const settings =
             Util.getSettings('org.gnome.desktop.input-sources',
                              '/org/gnome/desktop/input-sources/');
         if (settings) {
@@ -361,7 +361,7 @@ const EmojiCategoryListWidget = GObject.registerClass({
 }, class EmojiCategoryListWidget extends CategoryListWidget {
     _init(params) {
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
 
         let category;
         let rowWidget;
@@ -398,7 +398,7 @@ const EmojiCategoryListWidget = GObject.registerClass({
     getCategory(name) {
         if (name == 'recent')
             return this._recentCategory;
-        return this.parent(name);
+        return super.getCategory(name);
     }
 });
 
@@ -409,7 +409,7 @@ var CategoryListView = GObject.registerClass({
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.SLIDE_RIGHT
         });
-        this.parent(params);
+        super._init(params);
 
         let emojiCategoryList = new EmojiCategoryListWidget({
             categoryList: EmojiCategoryList
