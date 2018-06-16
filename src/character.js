@@ -43,7 +43,7 @@ var CharacterDialog = GObject.registerClass({
         params = Params.fill(params, { use_header_bar: true,
                                        width_request: 400,
                                        height_request: 400 });
-        this.parent(params);
+        super._init(params);
 
         this._cancellable = new Gio.Cancellable();
 
