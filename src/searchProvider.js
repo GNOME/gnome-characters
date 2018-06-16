@@ -24,7 +24,7 @@ const Lang = imports.lang;
 const Gc = imports.gi.Gc;
 const Util = imports.util;
 
-const MAX_SEARCH_RESULTS = 100
+const MAX_SEARCH_RESULTS = 100;
 
 const SearchProviderInterface = Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0).toArray().toString();
 
@@ -63,7 +63,7 @@ const SearchProvider = new Lang.Class({
                     let result = context.search_finish(res);
                     characters = Util.searchResultToArray(result);
                 } catch (e) {
-                    log("Failed to search by keywords: " + e.message);
+                    log(`Failed to search by keywords: ${e.message}`);
                 }
                 invocation.return_value(new GLib.Variant('(as)', [characters]));
 
@@ -92,10 +92,10 @@ const SearchProvider = new Lang.Class({
             let codePointHex = codePoint.toString(16).toUpperCase();
             let name = Gc.character_name(character);
             if (name == null)
-                name = _("Unknown character name");
+                name = _('Unknown character name');
             else
                 name = Util.capitalize(name);
-            let summary = _("U+%s, %s: %s").format(codePointHex,
+            let summary = _('U+%s, %s: %s').format(codePointHex,
                                                    character,
                                                    name);
             ret.push({ name: new GLib.Variant('s', name),
@@ -145,7 +145,7 @@ const SearchProvider = new Lang.Class({
                                   try {
                                       connection.call_finish(result);
                                   } catch(e) {
-                                      log('Failed to launch application: ' + e.message);
+                                      log(`Failed to launch application: ${e.message}`);
                                   }
 
                                   this._app.release();
