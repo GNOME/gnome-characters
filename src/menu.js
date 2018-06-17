@@ -106,7 +106,7 @@ var MenuPopover = GObject.registerClass({
     _headerFunc(row, before) {
         if (before && !row.get_header()) {
             let separator = new Gtk.Separator({
-                orientation: Gtk.Orientation.HORIZONTAL
+                orientation: Gtk.Orientation.HORIZONTAL,
             });
             row.set_header (separator);
         }
