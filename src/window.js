@@ -207,7 +207,7 @@ var MainWindow = GObject.registerClass({
             });
 
         aboutDialog.show();
-        aboutDialog.connect('response', function() {
+        aboutDialog.connect('response', () => {
             aboutDialog.destroy();
         });
     }
@@ -465,7 +465,7 @@ const MainView = GObject.registerClass({
         dialog.show();
         dialog.connect('character-copied',
                        Lang.bind(this, this._addToRecent));
-        dialog.connect('response', function(self, response_id) {
+        dialog.connect('response', (self, response_id) => {
             if (response_id == Gtk.ResponseType.CLOSE)
                 dialog.destroy();
         });
