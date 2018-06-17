@@ -29,7 +29,7 @@ const Util = imports.util;
 var CharacterDialog = GObject.registerClass({
 
     Signals: {
-        'character-copied': { param_types: [ GObject.TYPE_STRING ] }
+        'character-copied': { param_types: [ GObject.TYPE_STRING ] },
     },
     Template: 'resource:///org/gnome/Characters/character.ui',
     InternalChildren: ['main-stack', 'character-stack',
