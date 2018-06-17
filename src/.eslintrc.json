@@ -25,7 +25,7 @@
         "no-useless-rename": "warn",
         "no-unused-vars": "off",
         "object-shorthand": "off",
-        "prefer-arrow-callback": "warn",
+        "prefer-arrow-callback": "error",
         "prefer-const": "error",
         "prefer-numeric-literals": "warn",
         "prefer-rest-params": "warn",
