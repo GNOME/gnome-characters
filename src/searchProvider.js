@@ -17,12 +17,9 @@
 // with Gnome Weather; if not, write to the Free Software Foundation,
 // Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-const Gdk = imports.gi.Gdk;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
+const {Gc, Gdk, Gio, GLib, GObject} = imports.gi;
+
 const Lang = imports.lang;
-const Gc = imports.gi.Gc;
 const Util = imports.util;
 
 const MAX_SEARCH_RESULTS = 100;
