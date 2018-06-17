@@ -61,13 +61,22 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "comma-dangle": [
+            "error",
+            {
+              "arrays": "always-multiline",
+              "objects": "always-multiline",
+              "imports": "always-multiline",
+              "exports": "always-multiline",
+              "functions": "never"
+            }
+          ]
     },
-    "plugins": [
-        "gjs"
-    ],
+    "plugins": ["gjs"],
     "env": {
         "es6": true,
+        "gjs/girepository": true,
         "gjs/application": true
     },
     "globals": {
