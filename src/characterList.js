@@ -122,7 +122,7 @@ const CharacterListRow = GObject.registerClass({
                 x: this._baseGlyphRect.x,
                 y: this._baseGlyphRect.y,
                 width: this._baseGlyphRect.width,
-                height: this._baseGlyphRect.height
+                height: this._baseGlyphRect.height,
             });
             let characterWidth = Gc.character_width (uc);
             if (characterWidth > 1)
@@ -188,13 +188,13 @@ const CharacterListRow = GObject.registerClass({
 
 const CharacterListWidget = GObject.registerClass({
     Signals: {
-        'character-selected': { param_types: [ GObject.TYPE_STRING ] }
+        'character-selected': { param_types: [ GObject.TYPE_STRING ] },
     },
 }, class CharacterListWidget extends Gtk.DrawingArea {
     _init(params) {
         let filtered = Params.filter(params, {
             fontDescription: null,
-            numRows: NUM_ROWS
+            numRows: NUM_ROWS,
         });
         params = Params.fill(params, {});
         super._init(params);
@@ -298,7 +298,7 @@ const CharacterListWidget = GObject.registerClass({
         let row = new CharacterListRow({
             characters: characters,
             fontDescription: this._fontDescription,
-            overlayFontDescription: fontDescription
+            overlayFontDescription: fontDescription,
         });
         return row;
     }
@@ -364,10 +364,10 @@ var FontFilter = GObject.registerClass({
         'font': GObject.ParamSpec.string(
             'font', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            'Cantarell 50')
+            'Cantarell 50'),
     },
     Signals: {
-        'filter-set': { param_types: [] }
+        'filter-set': { param_types: [] },
     },
 }, class FontFilter extends GObject.Object {
     get font() {
@@ -444,16 +444,16 @@ var CharacterListView = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/characterlist.ui',
     InternalChildren: ['loading-spinner'],
     Signals: {
-        'character-selected': { param_types: [ GObject.TYPE_STRING ] }
+        'character-selected': { param_types: [ GObject.TYPE_STRING ] },
     },
 }, class CharacterListView extends Gtk.Stack {
     _init(params) {
         let filtered = Params.filter(params, {
-            fontFilter: null
+            fontFilter: null,
         });
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
-            transition_type: Gtk.StackTransitionType.CROSSFADE
+            transition_type: Gtk.StackTransitionType.CROSSFADE,
         });
         super._init(params);
 
@@ -461,7 +461,7 @@ var CharacterListView = GObject.registerClass({
         this._characterList = new CharacterListWidget({
             hexpand: true,
             vexpand: true,
-            fontDescription: this._fontFilter.fontDescription
+            fontDescription: this._fontFilter.fontDescription,
         });
         this._characterList.connect('character-selected',
                                     Lang.bind(this, function(w, c) {
@@ -469,7 +469,7 @@ var CharacterListView = GObject.registerClass({
                                     }));
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
-            visible: true
+            visible: true,
         });
         scroll.add(this._characterList);
         let context = scroll.get_style_context();
@@ -609,7 +609,7 @@ var CharacterListView = GObject.registerClass({
         let criteria = Gc.SearchCriteria.new_keywords(keywords);
         this._searchContext = new Gc.SearchContext({
             criteria: criteria,
-            flags: Gc.SearchFlag.WORD
+            flags: Gc.SearchFlag.WORD,
         });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
     }
@@ -628,16 +628,16 @@ var CharacterListView = GObject.registerClass({
 
 var RecentCharacterListView = GObject.registerClass({
     Signals: {
-        'character-selected': { param_types: [ GObject.TYPE_STRING ] }
+        'character-selected': { param_types: [ GObject.TYPE_STRING ] },
     },
 }, class RecentCharacterListView extends Gtk.Bin {
     _init(params) {
         let filtered = Params.filter(params, {
             category: null,
-            fontFilter: null
+            fontFilter: null,
         });
         params = Params.fill(params, {
-            hexpand: true, vexpand: false
+            hexpand: true, vexpand: false,
         });
         super._init(params);
 
@@ -646,7 +646,7 @@ var RecentCharacterListView = GObject.registerClass({
             hexpand: true,
             vexpand: true,
             fontDescription: this._fontFilter.fontDescription,
-            numRows: 0
+            numRows: 0,
         });
         this._characterList.connect('character-selected',
                                     Lang.bind(this, function(w, c) {
