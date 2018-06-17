@@ -26,7 +26,7 @@
         "no-unused-vars": "off",
         "object-shorthand": "off",
         "prefer-arrow-callback": "warn",
-        "prefer-const": "off",
+        "prefer-const": "error",
         "prefer-numeric-literals": "warn",
         "prefer-rest-params": "warn",
         "prefer-spread": "warn",
