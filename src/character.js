@@ -37,7 +37,7 @@ var CharacterDialog = GObject.registerClass({
                        'copy-button', 'copy-revealer', 'related-listbox'],
 }, class CharacterDialog extends Gtk.Dialog {
     _init(params) {
-        let filtered = Params.filter(params, { character: null,
+        const filtered = Params.filter(params, { character: null,
                                                fontDescription: null });
         params = Params.fill(params, { use_header_bar: true,
                                        width_request: 400,
@@ -71,31 +71,31 @@ var CharacterDialog = GObject.registerClass({
     }
 
     _finishSearch(result) {
-        let children = this._related_listbox.get_children();
-        for (let index in children)
+        const children = this._related_listbox.get_children();
+        for (const index in children)
             this._related_listbox.remove(children[index]);
 
         for (let index = 0; index < result.len; index++) {
-            let uc = Gc.search_result_get(result, index);
-            let name = Gc.character_name(uc);
+            const uc = Gc.search_result_get(result, index);
+            const name = Gc.character_name(uc);
             if (name == null)
                 continue;
 
-            let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
+            const hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
-            let characterLabel = new Gtk.Label({ label: uc,
+            const characterLabel = new Gtk.Label({ label: uc,
                                                  valign: Gtk.Align.CENTER,
                                                  halign: Gtk.Align.CENTER,
                                                  width_request: 45 });
             characterLabel.get_style_context().add_class('character');
             hbox.pack_start(characterLabel, false, false, 2);
 
-            let nameLabel = new Gtk.Label({ label: Util.capitalize(name),
+            const nameLabel = new Gtk.Label({ label: Util.capitalize(name),
                                             halign: Gtk.Align.START,
                                             ellipsize: Pango.EllipsizeMode.END });
             hbox.pack_start(nameLabel, true, true, 0);
 
-            let row = new Gtk.ListBoxRow();
+            const row = new Gtk.ListBoxRow();
             row._character = uc;
             row.add(hbox);
             row.show_all();
@@ -110,8 +110,8 @@ var CharacterDialog = GObject.registerClass({
     _setCharacter(uc) {
         this._character = uc;
 
-        let codePoint = Util.toCodePoint(this._character);
-        let codePointHex = codePoint.toString(16).toUpperCase();
+        const codePoint = Util.toCodePoint(this._character);
+        const codePointHex = codePoint.toString(16).toUpperCase();
 
         let name = Gc.character_name(this._character);
         if (name != null) {
@@ -120,7 +120,7 @@ var CharacterDialog = GObject.registerClass({
             name = _('Unicode U+%04s').format(codePointHex);
         }
 
-        let headerBar = this.get_header_bar();
+        const headerBar = this.get_header_bar();
         headerBar.title = name;
 
         this._character_label.override_font(this._fontDescription);
@@ -143,14 +143,14 @@ var CharacterDialog = GObject.registerClass({
 
         this._cancellable.cancel();
         this._cancellable.reset();
-        let criteria = Gc.SearchCriteria.new_related(this._character);
-        let context = new Gc.SearchContext({ criteria: criteria });
+        const criteria = Gc.SearchCriteria.new_related(this._character);
+        const context = new Gc.SearchContext({ criteria: criteria });
         context.search(
             -1,
             this._cancellable,
             Lang.bind(this, function(context, res, user_data) {
                 try {
-                    let result = context.search_finish(res);
+                    const result = context.search_finish(res);
                     this._finishSearch(result);
                 } catch (e) {
                     log(`Failed to search related: ${e.message}`);
@@ -171,7 +171,7 @@ var CharacterDialog = GObject.registerClass({
     }
 
     _clipboardOwnerChanged(clipboard, event) {
-        let text = clipboard.wait_for_text();
+        const text = clipboard.wait_for_text();
         if (text != this._character)
             this._hideCopyRevealer();
     }
@@ -179,7 +179,7 @@ var CharacterDialog = GObject.registerClass({
     _copyCharacter() {
         if (this._clipboard == null) {
             this._clipboard = Gc.gtk_clipboard_get();
-            let clipboardOwnerChanged =
+            const clipboardOwnerChanged =
                 this._clipboard.connect('owner-change',
                                         Lang.bind(this,
                                                   this._clipboardOwnerChanged));
@@ -209,8 +209,8 @@ var CharacterDialog = GObject.registerClass({
     _handleRowSelected(listBox, row) {
         if (row != null) {
             this._setCharacter(row._character);
-            let toplevel = this.get_transient_for();
-            let action = toplevel.lookup_action('character');
+            const toplevel = this.get_transient_for();
+            const action = toplevel.lookup_action('character');
             action.activate(new GLib.Variant('s', row._character));
         }
     }
