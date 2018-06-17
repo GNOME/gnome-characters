@@ -20,6 +20,7 @@
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Lang = imports.lang;
 const Gc = imports.gi.Gc;
 const Util = imports.util;
@@ -28,25 +29,25 @@ const MAX_SEARCH_RESULTS = 100;
 
 const SearchProviderInterface = Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0).toArray().toString();
 
-const SearchProvider = new Lang.Class({
+const SearchProvider = GObject.registerClass({
     Name: 'CharactersSearchProvider',
-
-    _init: function(application) {
+}, class SearchProvider extends GObject.Object {
+    _init(application) {
         this._app = application;
 
         this._impl = Gio.DBusExportedObject.wrapJSObject(SearchProviderInterface, this);
         this._cancellable = new Gio.Cancellable();
-    },
+    }
 
-    export: function(connection, path) {
+    export(connection, path) {
         return this._impl.export(connection, path);
-    },
+    }
 
-    unexport: function(connection) {
+    unexport(connection) {
         return this._impl.unexport_from_connection(connection);
-    },
+    }
 
-    _runQuery: function(keywords, invocation) {
+    _runQuery(keywords, invocation) {
         this._cancellable.cancel();
         this._cancellable.reset();
 
@@ -69,19 +70,19 @@ const SearchProvider = new Lang.Class({
 
                 this._app.release();
             }));
-    },
+    }
 
-    GetInitialResultSetAsync: function(params, invocation) {
+    GetInitialResultSetAsync(params, invocation) {
         this._app.hold();
         this._runQuery(params[0], invocation);
-    },
+    }
 
-    GetSubsearchResultSetAsync: function(params, invocation) {
+    GetSubsearchResultSetAsync(params, invocation) {
         this._app.hold();
         this._runQuery(params[1], invocation);
-    },
+    }
 
-    GetResultMetas: function(identifiers) {
+    GetResultMetas(identifiers) {
         this._app.hold();
 
         let ret = [];
@@ -102,21 +103,21 @@ const SearchProvider = new Lang.Class({
                        id: new GLib.Variant('s', identifiers[i]),
                        description: new GLib.Variant('s', summary),
                        icon: (new Gio.ThemedIcon({ name: 'gnome-characters' })).serialize(),
-                       clipboardText: new GLib.Variant('s', character)
+                       clipboardText: new GLib.Variant('s', character),
                      });
         }
 
         this._app.release();
 
         return ret;
-    },
+    }
 
-    ActivateResult: function(id, terms, timestamp) {
+    ActivateResult(id, terms, timestamp) {
         let clipboard = Gc.gtk_clipboard_get();
         clipboard.set_text(id, -1);
-    },
+    }
 
-    _getPlatformData: function(timestamp) {
+    _getPlatformData(timestamp) {
         let display = Gdk.Display.get_default();
         let context = display.get_app_launch_context();
         context.set_timestamp(timestamp);
@@ -124,9 +125,9 @@ const SearchProvider = new Lang.Class({
         let app = Gio.DesktopAppInfo.new('org.gnome.Characters.desktop');
         let id = context.get_startup_notify_id(app, []);
         return {'desktop-startup-id': new GLib.Variant('s', id) };
-    },
+    }
 
-    _activateAction: function(action, parameter, timestamp) {
+    _activateAction(action, parameter, timestamp) {
         let wrappedParam;
         if (parameter)
             wrappedParam = [parameter];
@@ -150,9 +151,9 @@ const SearchProvider = new Lang.Class({
 
                                   this._app.release();
                               }));
-    },
+    }
 
-    LaunchSearch: function(terms, timestamp) {
+    LaunchSearch(terms, timestamp) {
         this._activateAction('search', new GLib.Variant('as', terms),
                              timestamp);
     }
