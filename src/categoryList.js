@@ -16,14 +16,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+
+const {Gc, GLib, GObject, Gtk, GnomeDesktop} = imports.gi;
+
+const Gettext = imports.gettext;
 const Lang = imports.lang;
 const Params = imports.params;
-const GnomeDesktop = imports.gi.GnomeDesktop;
-const GObject = imports.gi.GObject;
-const GLib = imports.gi.GLib;
-const Gtk = imports.gi.Gtk;
-const Gettext = imports.gettext;
-const Gc = imports.gi.Gc;
 const Util = imports.util;
 
 const CategoryList = [
