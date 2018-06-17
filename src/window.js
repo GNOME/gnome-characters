@@ -101,7 +101,7 @@ var MainWindow = GObject.registerClass({
 
         this._back_button.connect('clicked',
                                   Lang.bind(this, function() {
-                                      let action = this.lookup_action('category');
+                                      const action = this.lookup_action('category');
                                       action.activate(new GLib.Variant('s', 'emojis'));
                                   }));
         this._back_button.bind_property('visible',
@@ -114,7 +114,7 @@ var MainWindow = GObject.registerClass({
 
         this._categoryListView =
             new CategoryList.CategoryListView({ vexpand: true });
-        let scroll = new Gtk.ScrolledWindow({
+        const scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
         });
@@ -140,9 +140,9 @@ var MainWindow = GObject.registerClass({
 
     // Select the first subcategory which contains at least one character.
     _selectFirstSubcategory() {
-        let categoryList = this._categoryListView.get_visible_child();
+        const categoryList = this._categoryListView.get_visible_child();
         let index = 0;
-        let row = categoryList.get_row_at_index(index);
+        const row = categoryList.get_row_at_index(index);
         if (row.category.name == 'recent' &&
             this._mainView.recentCharacters.length == 0)
             index++;
@@ -160,7 +160,7 @@ var MainWindow = GObject.registerClass({
         this._searchActive = v;
 
         if (this._searchActive) {
-            let categoryList = this._categoryListView.get_visible_child();
+            const categoryList = this._categoryListView.get_visible_child();
             categoryList.unselect_all();
         }
 
@@ -168,7 +168,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _handleSearchChanged(entry) {
-        let text = entry.get_text().replace(/^\s+|\s+$/g, '');
+        const text = entry.get_text().replace(/^\s+|\s+$/g, '');
         let keywords = text == '' ? [] : text.split(/\s+/);
         keywords = keywords.map(String.toUpperCase);
         if (keywords != this._searchKeywords) {
@@ -187,7 +187,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _about() {
-        let aboutDialog = new Gtk.AboutDialog(
+        const aboutDialog = new Gtk.AboutDialog(
             { artists: [ 'Allan Day <allanpday@gmail.com>',
                          'Jakub Steiner <jimmac@gmail.com>' ],
               authors: [ 'Daiki Ueno <dueno@src.gnome.org>',
@@ -225,15 +225,15 @@ var MainWindow = GObject.registerClass({
     _category(action, v) {
         this.search_active = false;
 
-        let [name, length] = v.get_string();
+        const [name, length] = v.get_string();
 
         this._categoryListView.set_visible_child_name(name);
-        let categoryList = this._categoryListView.get_visible_child();
+        const categoryList = this._categoryListView.get_visible_child();
         if (categoryList == null)
             return;
 
         this._selectFirstSubcategory();
-        let category = categoryList.get_selected_row().category;
+        const category = categoryList.get_selected_row().category;
 
         if (name == 'emojis') {
             this._back_button.hide();
@@ -249,13 +249,13 @@ var MainWindow = GObject.registerClass({
     _subcategory(action, v) {
         this.search_active = false;
 
-        let [name, length] = v.get_string();
+        const [name, length] = v.get_string();
 
-        let categoryList = this._categoryListView.get_visible_child();
+        const categoryList = this._categoryListView.get_visible_child();
         if (categoryList == null)
             return;
 
-        let category = categoryList.getCategory(name);
+        const category = categoryList.getCategory(name);
         if (category) {
             this._mainView.setPage(category);
             this._updateTitle(category.title);
@@ -263,7 +263,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _character(action, v) {
-        let [uc, length] = v.get_string();
+        const [uc, length] = v.get_string();
         this._mainView.addToRecent(uc);
     }
 
@@ -316,7 +316,7 @@ const MainView = GObject.registerClass({
     }
 
     _init(params) {
-        let filtered = Params.filter(params, { categoryListView: null });
+        const filtered = Params.filter(params, { categoryListView: null });
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE,
@@ -330,16 +330,16 @@ const MainView = GObject.registerClass({
         this._categoryListView = filtered.categoryListView;
 
         let characterList;
-        let categories = this._categoryListView.getCategoryList();
-        let recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
+        const categories = this._categoryListView.getCategoryList();
+        const recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
                                       hexpand: true, vexpand: false });
 
-        for (let i in categories) {
-            let category = categories[i];
-            let categoryList = this._categoryListView.get_child_by_name(category.name);
-            let subcategories = categoryList.getCategoryList();
-            for (let j in subcategories) {
-                let subcategory = subcategories[j];
+        for (const i in categories) {
+            const category = categories[i];
+            const categoryList = this._categoryListView.get_child_by_name(category.name);
+            const subcategories = categoryList.getCategoryList();
+            for (const j in subcategories) {
+                const subcategory = subcategories[j];
                 characterList = this._createCharacterList(
                     subcategory.name,
                     _('%s Character List').format(subcategory.title));
@@ -354,12 +354,12 @@ const MainView = GObject.registerClass({
                 category.category);
             this._recentCharacterLists[category.name] = characterList;
             if (i > 0) {
-                let separator = new Gtk.Separator({});
+                const separator = new Gtk.Separator({});
                 recentBox.pack_start(separator, false, false, 0);
             }
             recentBox.pack_start(characterList, false, false, 0);
         }
-        let scroll = new Gtk.ScrolledWindow({
+        const scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
         });
@@ -375,7 +375,7 @@ const MainView = GObject.registerClass({
         this.add_named(characterList, 'search-result');
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
-        let recentCharacters = Main.settings.get_value('recent-characters');
+        const recentCharacters = Main.settings.get_value('recent-characters');
         this.recentCharacters = recentCharacters.get_strv();
         this._maxRecentCharacters = 100;
         Main.settings.bind('max-recent-characters', this,
@@ -384,7 +384,7 @@ const MainView = GObject.registerClass({
     }
 
     _createCharacterList(name, accessible_name) {
-        let characterList = new CharacterList.CharacterListView({
+        const characterList = new CharacterList.CharacterListView({
             fontFilter: this._fontFilter,
         });
         characterList.get_accessible().accessible_name = accessible_name;
@@ -396,7 +396,7 @@ const MainView = GObject.registerClass({
     }
 
     _createRecentCharacterList(name, accessible_name, category) {
-        let characterList = new CharacterList.RecentCharacterListView({
+        const characterList = new CharacterList.RecentCharacterListView({
             fontFilter: this._fontFilter,
             category: category,
         });
@@ -414,7 +414,7 @@ const MainView = GObject.registerClass({
     }
 
     cancelSearch() {
-        let characterList = this.get_child_by_name('search-result');
+        const characterList = this.get_child_by_name('search-result');
         characterList.cancelSearch();
     }
 
@@ -423,16 +423,16 @@ const MainView = GObject.registerClass({
             if (this.recentCharacters.length == 0)
                 this.visible_child_name = 'empty-recent';
             else {
-                let categories = this._categoryListView.getCategoryList();
-                for (let i in categories) {
-                    let category = categories[i];
-                    let characterList = this._recentCharacterLists[category.name];
+                const categories = this._categoryListView.getCategoryList();
+                for (const i in categories) {
+                    const category = categories[i];
+                    const characterList = this._recentCharacterLists[category.name];
                     characterList.setCharacters(this.recentCharacters);
                 }
                 this.visible_child_name = 'recent';
             }
         } else {
-            let characterList = this.get_child_by_name(category.name);
+            const characterList = this.get_child_by_name(category.name);
             characterList.searchByCategory(category);
             this.visible_child = characterList;
         }
@@ -455,7 +455,7 @@ const MainView = GObject.registerClass({
     }
 
     _handleCharacterSelected(widget, uc) {
-        let dialog = new Character.CharacterDialog({
+        const dialog = new Character.CharacterDialog({
             character: uc,
             modal: true,
             transient_for: this.get_toplevel(),
