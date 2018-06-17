@@ -16,14 +16,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+const {Gc, GLib, Gio,GObject,Gtk, Pango} = imports.gi;
 const Lang = imports.lang;
 const Params = imports.params;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Pango = imports.gi.Pango;
-const Gc = imports.gi.Gc;
+
 const Util = imports.util;
 
 var CharacterDialog = GObject.registerClass({
