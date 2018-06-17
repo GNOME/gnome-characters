@@ -34,10 +34,10 @@ const Params = imports.params;
 const System = imports.system;
 
 function loadUI(resourcePath, objects) {
-    let ui = new Gtk.Builder();
+    const ui = new Gtk.Builder();
 
     if (objects) {
-        for (let o in objects)
+        for (const o in objects)
             ui.expose_object(o, objects[o]);
     }
 
@@ -46,7 +46,7 @@ function loadUI(resourcePath, objects) {
 }
 
 function loadStyleSheet(resource) {
-    let provider = new Gtk.CssProvider();
+    const provider = new Gtk.CssProvider();
     provider.load_from_file(Gio.File.new_for_uri('resource://' + resource));
     Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
                                              provider,
@@ -55,12 +55,12 @@ function loadStyleSheet(resource) {
 
 function initActions(actionMap, simpleActionEntries, context) {
     simpleActionEntries.forEach(function(entry) {
-        let filtered = Params.filter(entry, { activate: null,
+        const filtered = Params.filter(entry, { activate: null,
                                               state_changed: null,
                                               context: null });
-        let action = new Gio.SimpleAction(entry);
+        const action = new Gio.SimpleAction(entry);
 
-        let context = filtered.context || actionMap;
+        const context = filtered.context || actionMap;
         if (filtered.activate)
             action.connect('activate', filtered.activate.bind(context));
         if (filtered.state_changed)
@@ -94,7 +94,7 @@ function getSettings(schemaId, path) {
         schemaSource = GioSSS.get_default();
     }
 
-    let schemaObj = schemaSource.lookup(schemaId, true);
+    const schemaObj = schemaSource.lookup(schemaId, true);
     if (!schemaObj) {
         log('Missing GSettings schema ' + schemaId);
         System.exit(1);
@@ -108,7 +108,7 @@ function getSettings(schemaId, path) {
 }
 
 function loadIcon(iconName, size) {
-    let theme = Gtk.IconTheme.get_default();
+    const theme = Gtk.IconTheme.get_default();
 
     return theme.load_icon(iconName,
                            size,
@@ -122,23 +122,23 @@ function assertEqual(one, two) {
 
 function assertNotEqual(one, two) {
     if (one == two)
-        throw Error('Assertion failed: ' + one + ' == ' + two);
+        throw Error('Assertion failed: ' + one + ' === ' + two);
 }
 
 function capitalizeWord(w) {
     if (w.length > 0)
-        return w[0].toUpperCase() + w.slice(1).toLowerCase()
+        return w[0].toUpperCase() + w.slice(1).toLowerCase();
     return w;
 }
 
 function capitalize(s) {
     return s.split(/\s+/).map(function(w) {
-        let acronyms = ['CJK'];
+        const acronyms = ['CJK'];
         if (acronyms.indexOf(w) > -1)
             return w;
-        let prefixes = ['IDEOGRAPH-', 'SELECTOR-'];
-        for (let index in prefixes) {
-            let prefix = prefixes[index];
+        const prefixes = ['IDEOGRAPH-', 'SELECTOR-'];
+        for (const index in prefixes) {
+            const prefix = prefixes[index];
             if (w.startsWith(prefix))
                 return capitalizeWord(prefix) + w.slice(prefix.length);
         }
@@ -149,8 +149,8 @@ function capitalize(s) {
 function toCodePoint(s) {
     let codePoint = s.charCodeAt(0);
     if (codePoint >= 0xD800 && codePoint <= 0xDBFF) {
-        let high = codePoint;
-        let low = s.charCodeAt(1);
+        const high = codePoint;
+        const low = s.charCodeAt(1);
         codePoint = 0x10000 + (high - 0xD800) * 0x400 + (low - 0xDC00);
     }
 
@@ -158,7 +158,7 @@ function toCodePoint(s) {
 }
 
 function searchResultToArray(result) {
-    let characters = [];
+    const characters = [];
     for (let index = 0; index < result.len; index++) {
         characters.push(Gc.search_result_get(result, index));
     }
