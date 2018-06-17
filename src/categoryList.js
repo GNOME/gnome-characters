@@ -32,15 +32,15 @@ const CategoryList = [
         category: Gc.Category.EMOJI,
         title: N_('Emojis'),
         icon_name: 'characters-emoji-smileys',
-        action_name: 'category'
+        action_name: 'category',
     },
     {
         name: 'letters',
         category: Gc.Category.LETTER,
         title: N_('Letters & Symbols'),
         icon_name: 'characters-latin-symbolic',
-        action_name: 'category'
-    }
+        action_name: 'category',
+    },
 ];
 
 const LetterCategoryList = [
@@ -49,50 +49,50 @@ const LetterCategoryList = [
         category: Gc.Category.LETTER_PUNCTUATION,
         title: N_('Punctuation'),
         icon_name: 'characters-punctuation-symbolic',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'arrow',
         category: Gc.Category.LETTER_ARROW,
         title: N_('Arrows'),
         icon_name: 'characters-arrow-symbolic',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'bullet',
         category: Gc.Category.LETTER_BULLET,
         title: N_('Bullets'),
         icon_name: 'characters-bullet-symbolic',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'picture',
         category: Gc.Category.LETTER_PICTURE,
         title: N_('Pictures'),
         icon_name: 'characters-picture-symbolic',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'currency',
         category: Gc.Category.LETTER_CURRENCY,
         title: N_('Currencies'),
         icon_name: 'characters-currency-symbolic',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'math',
         category: Gc.Category.LETTER_MATH,
         title: N_('Math'),
         icon_name: 'characters-math-symbolic',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'letters',
         category: Gc.Category.LETTER_LATIN,
         title: N_('Letters'),
         icon_name: 'characters-latin-symbolic',
-        action_name: 'subcategory'
-    }
+        action_name: 'subcategory',
+    },
 ];
 
 const EmojiCategoryList = [
@@ -101,57 +101,57 @@ const EmojiCategoryList = [
         category: Gc.Category.EMOJI_SMILEYS,
         title: N_('Smileys & People'),
         icon_name: 'characters-emoji-smileys',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'emoji-animals',
         category: Gc.Category.EMOJI_ANIMALS,
         title: N_('Animals & Nature'),
         icon_name: 'characters-emoji-animals',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'emoji-food',
         category: Gc.Category.EMOJI_FOOD,
         title: N_('Food & Drink'),
         icon_name: 'characters-emoji-food',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'emoji-activities',
         category: Gc.Category.EMOJI_ACTIVITIES,
         title: N_('Activities'),
         icon_name: 'characters-emoji-activities',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'emoji-travel',
         category: Gc.Category.EMOJI_TRAVEL,
         title: N_('Travel & Places'),
         icon_name: 'characters-emoji-travel',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'emoji-objects',
         category: Gc.Category.EMOJI_OBJECTS,
         title: N_('Objects'),
         icon_name: 'characters-emoji-objects',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'emoji-symbols',
         category: Gc.Category.EMOJI_SYMBOLS,
         title: N_('Symbols'),
         icon_name: 'characters-emoji-symbols',
-        action_name: 'subcategory'
+        action_name: 'subcategory',
     },
     {
         name: 'emoji-flags',
         category: Gc.Category.EMOJI_FLAGS,
         title: N_('Flags'),
         icon_name: 'characters-emoji-flags',
-        action_name: 'subcategory'
-    }
+        action_name: 'subcategory',
+    },
 ];
 
 const CategoryListRowWidget = GObject.registerClass({
@@ -164,7 +164,7 @@ const CategoryListRowWidget = GObject.registerClass({
         this.get_accessible().accessible_name =
             _('%s Category List Row').format(category.title);
 
-        let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
+        const hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.add(hbox);
 
         const pixbuf = Util.loadIcon(category.icon_name, 24);
@@ -178,8 +178,8 @@ const CategoryListRowWidget = GObject.registerClass({
         hbox.pack_start(label, true, true, 0);
 
         if (category.secondary_icon_name) {
-            let pixbuf = Util.loadIcon(category.secondary_icon_name, 16);
-            let image = Gtk.Image.new_from_pixbuf(pixbuf);
+            const pixbuf = Util.loadIcon(category.secondary_icon_name, 16);
+            const image = Gtk.Image.new_from_pixbuf(pixbuf);
             image.get_style_context().add_class('category-icon');
             hbox.pack_end(image, false, false, 2);
         }
@@ -189,7 +189,7 @@ const CategoryListRowWidget = GObject.registerClass({
 const CategoryListWidget = GObject.registerClass({
 }, class CategoryListWidget extends Gtk.ListBox {
     _init(params) {
-        let filtered = Params.filter(params, { categoryList: null });
+        const filtered = Params.filter(params, { categoryList: null });
         params = Params.fill(params, {});
         super._init(params);
 
@@ -198,9 +198,9 @@ const CategoryListWidget = GObject.registerClass({
         this._categoryList = filtered.categoryList;
         this.populateCategoryList();
 
-        for (let index in this._categoryList) {
-            let category = this._categoryList[index];
-            let rowWidget = new CategoryListRowWidget({}, category);
+        for (const index in this._categoryList) {
+            const category = this._categoryList[index];
+            const rowWidget = new CategoryListRowWidget({}, category);
             rowWidget.get_style_context().add_class('category');
             this.add(rowWidget);
         }
@@ -208,8 +208,8 @@ const CategoryListWidget = GObject.registerClass({
 
     vfunc_row_selected(row) {
         if (row != null && row.selectable) {
-            let toplevel = row.get_toplevel();
-            let action = toplevel.lookup_action(row.category.action_name);
+            const toplevel = row.get_toplevel();
+            const action = toplevel.lookup_action(row.category.action_name);
             action.activate(new GLib.Variant('s', row.category.name));
         }
     }
@@ -222,9 +222,9 @@ const CategoryListWidget = GObject.registerClass({
     }
 
     getCategory(name) {
-        for (let index in this._categoryList) {
-            let category = this._categoryList[index];
-            if (category.name == name)
+        for (const index in this._categoryList) {
+            const category = this._categoryList[index];
+            if (category.name === name)
                 return category;
         }
         return null;
@@ -235,11 +235,11 @@ const LetterCategoryListWidget = GObject.registerClass({
 }, class LetterCategoryListWidget extends CategoryListWidget {
     _finishListEngines(sources, bus, res) {
         try {
-            let engines = bus.list_engines_async_finish(res);
+            const engines = bus.list_engines_async_finish(res);
             if (engines) {
-                for (let j in engines) {
-                    let engine = engines[j];
-                    let language = engine.get_language();
+                for (const j in engines) {
+                    const engine = engines[j];
+                    const language = engine.get_language();
                     if (language != null)
                         this._ibusLanguageList[engine.get_name()] = language;
                 }
@@ -266,7 +266,7 @@ const LetterCategoryListWidget = GObject.registerClass({
         }
 
         ibus.init();
-        let bus = new ibus.Bus();
+        const bus = new ibus.Bus();
         if (bus.is_connected()) {
             bus.list_engines_async(-1,
                                    null,
@@ -278,10 +278,10 @@ const LetterCategoryListWidget = GObject.registerClass({
     }
 
     _finishBuildScriptList(sources) {
-        let xkbInfo = new GnomeDesktop.XkbInfo();
+        const xkbInfo = new GnomeDesktop.XkbInfo();
         let languages = [];
-        for (let i in sources) {
-            let [type, id] = sources[i];
+        for (const i in sources) {
+            const [type, id] = sources[i];
             switch (type) {
             case 'xkb':
                 // FIXME: Remove this check once gnome-desktop gets the
@@ -301,14 +301,14 @@ const LetterCategoryListWidget = GObject.registerClass({
         // Add current locale language to languages.
         languages.push(Gc.get_current_language());
 
-        let allScripts = [];
-        for (let i in languages) {
-            let language = GnomeDesktop.normalize_locale(languages[i]);
-            if (language == null)
+        const allScripts = [];
+        for (const i in languages) {
+            const language = GnomeDesktop.normalize_locale(languages[i]);
+            if (language === null)
                 continue;
-            let scripts = Gc.get_scripts_for_language(languages[i]);
-            for (let j in scripts) {
-                let script = scripts[j];
+            const scripts = Gc.get_scripts_for_language(languages[i]);
+            for (const j in scripts) {
+                const script = scripts[j];
                 // Exclude Latin and Han, since Latin is always added
                 // at the top and Han contains too many characters.
                 if (['Latin', 'Han'].indexOf(script) >= 0)
@@ -320,7 +320,7 @@ const LetterCategoryListWidget = GObject.registerClass({
         }
 
         allScripts.unshift('Latin');
-        let category = this.getCategory('letters');
+        const category = this.getCategory('letters');
         category.scripts = allScripts;
     }
 
@@ -344,10 +344,8 @@ const LetterCategoryListWidget = GObject.registerClass({
             Util.getSettings('org.gnome.desktop.input-sources',
                              '/org/gnome/desktop/input-sources/');
         if (settings) {
-            let sources = settings.get_value('sources').deep_unpack();
-            let hasIBus = sources.some((current, index, array) => {
-                return current[0] == 'ibus';
-            });
+            const sources = settings.get_value('sources').deep_unpack();
+            const hasIBus = sources.some((current, index, array) => current[0] === 'ibus');
             if (hasIBus)
                 this._ensureIBusLanguageList(sources);
             else
@@ -371,7 +369,7 @@ const EmojiCategoryListWidget = GObject.registerClass({
             category: Gc.Category.NONE,
             title: N_('Recently Used'),
             icon_name: 'document-open-recent-symbolic',
-            action_name: 'subcategory'
+            action_name: 'subcategory',
         };
         rowWidget = new CategoryListRowWidget({}, category);
         rowWidget.get_style_context().add_class('category');
@@ -388,8 +386,8 @@ const EmojiCategoryListWidget = GObject.registerClass({
         };
         rowWidget = new CategoryListRowWidget({}, category);
         rowWidget.get_style_context().add_class('category');
-        let separator = new Gtk.Separator();
-        let separatorRowWidget = new Gtk.ListBoxRow({ selectable: false });
+        const separator = new Gtk.Separator();
+        const separatorRowWidget = new Gtk.ListBoxRow({ selectable: false });
         separatorRowWidget.add(separator);
         this.add(separatorRowWidget);
         this.add(rowWidget);
@@ -407,17 +405,17 @@ var CategoryListView = GObject.registerClass({
     _init(params) {
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
-            transition_type: Gtk.StackTransitionType.SLIDE_RIGHT
+            transition_type: Gtk.StackTransitionType.SLIDE_RIGHT,
         });
         super._init(params);
 
-        let emojiCategoryList = new EmojiCategoryListWidget({
-            categoryList: EmojiCategoryList
+        const emojiCategoryList = new EmojiCategoryListWidget({
+            categoryList: EmojiCategoryList,
         });
         this.add_named(emojiCategoryList, 'emojis');
 
-        let letterCategoryList = new LetterCategoryListWidget({
-            categoryList: LetterCategoryList
+        const letterCategoryList = new LetterCategoryListWidget({
+            categoryList: LetterCategoryList,
         });
         this.add_named(letterCategoryList, 'letters');
 
