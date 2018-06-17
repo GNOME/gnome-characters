@@ -67,7 +67,7 @@ var MenuPopover = GObject.registerClass({
 
         // This silents warning at Characters exit about this widget being
         // visible but not mapped.  Borrowed from Maps.
-        this.connect('unmap', function(popover) {
+        this.connect('unmap', (popover) => {
             popover._font_listbox.unselect_all();
             popover.hide();
         });
