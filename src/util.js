@@ -133,10 +133,10 @@ function capitalizeWord(w) {
 
 function capitalize(s) {
     return s.split(/\s+/).map(function(w) {
-        let acronyms = ["CJK"];
+        let acronyms = ['CJK'];
         if (acronyms.indexOf(w) > -1)
             return w;
-        let prefixes = ["IDEOGRAPH-", "SELECTOR-"];
+        let prefixes = ['IDEOGRAPH-', 'SELECTOR-'];
         for (let index in prefixes) {
             let prefix = prefixes[index];
             if (w.startsWith(prefix))
