@@ -49,7 +49,7 @@ var MainWindow = GObject.registerClass({
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
             'search-active', '', '',
-            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
+            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false),
     },
 }, class MainWindow extends Gtk.ApplicationWindow {
     _init(params) {
@@ -122,7 +122,7 @@ var MainWindow = GObject.registerClass({
         this._sidebar_grid.add(scroll);
 
         this._mainView = new MainView({
-            categoryListView: this._categoryListView
+            categoryListView: this._categoryListView,
         });
 
         this._main_hbox.pack_start(this._mainView, true, true, 0);
@@ -203,7 +203,7 @@ var MainWindow = GObject.registerClass({
               // website: 'https://wiki.gnome.org/Design/Apps/CharacterMap',
               wrap_license: true,
               modal: true,
-              transient_for: this
+              transient_for: this,
             });
 
         aboutDialog.show();
@@ -292,7 +292,7 @@ const MainView = GObject.registerClass({
         'max-recent-characters': GObject.ParamSpec.uint(
             'max-recent-characters', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            0, GLib.MAXUINT32, 100)
+            0, GLib.MAXUINT32, 100),
     },
 }, class MainView extends Gtk.Stack {
     get max_recent_characters() {
@@ -319,7 +319,7 @@ const MainView = GObject.registerClass({
         let filtered = Params.filter(params, { categoryListView: null });
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
-            transition_type: Gtk.StackTransitionType.CROSSFADE
+            transition_type: Gtk.StackTransitionType.CROSSFADE,
         });
         super._init(params);
 
@@ -385,7 +385,7 @@ const MainView = GObject.registerClass({
 
     _createCharacterList(name, accessible_name) {
         let characterList = new CharacterList.CharacterListView({
-            fontFilter: this._fontFilter
+            fontFilter: this._fontFilter,
         });
         characterList.get_accessible().accessible_name = accessible_name;
         characterList.connect('character-selected',
@@ -398,7 +398,7 @@ const MainView = GObject.registerClass({
     _createRecentCharacterList(name, accessible_name, category) {
         let characterList = new CharacterList.RecentCharacterListView({
             fontFilter: this._fontFilter,
-            category: category
+            category: category,
         });
         characterList.get_accessible().accessible_name = accessible_name;
         characterList.connect('character-selected',
@@ -459,7 +459,7 @@ const MainView = GObject.registerClass({
             character: uc,
             modal: true,
             transient_for: this.get_toplevel(),
-            fontDescription: this._fontFilter.fontDescription
+            fontDescription: this._fontFilter.fontDescription,
         });
 
         dialog.show();
