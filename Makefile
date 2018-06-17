@@ -9,7 +9,7 @@ run-new:
 install:
 	sudo cp /tmp/gnome-characters-build/src/* /usr/share/org.gnome.Characters/
 run:
-	/usr/share/org.gnome.Characters/org.gnome.Characters
+	GTK_DEBUG=interactive /usr/share/org.gnome.Characters/org.gnome.Characters
 help:
 	@echo ''
 	@echo 'You need to run setup before build and only run setup once.'
