@@ -51,9 +51,9 @@ const SearchProvider = GObject.registerClass({
         this._cancellable.cancel();
         this._cancellable.reset();
 
-        let upper = keywords.map(String.toUpperCase);
-        let criteria = Gc.SearchCriteria.new_keywords(upper);
-        let context = new Gc.SearchContext({ criteria: criteria,
+        const upper = keywords.map(String.toUpperCase);
+        const criteria = Gc.SearchCriteria.new_keywords(upper);
+        const context = new Gc.SearchContext({ criteria: criteria,
                                              flags: Gc.SearchFlag.WORD });
         context.search(
             MAX_SEARCH_RESULTS,
@@ -61,7 +61,7 @@ const SearchProvider = GObject.registerClass({
             Lang.bind(this, function(source_object, res, user_data) {
                 let characters = [];
                 try {
-                    let result = context.search_finish(res);
+                    const result = context.search_finish(res);
                     characters = Util.searchResultToArray(result);
                 } catch (e) {
                     log(`Failed to search by keywords: ${e.message}`);
@@ -85,18 +85,18 @@ const SearchProvider = GObject.registerClass({
     GetResultMetas(identifiers) {
         this._app.hold();
 
-        let ret = [];
+        const ret = [];
 
         for (let i = 0; i < identifiers.length; i++) {
-            let character = identifiers[i];
-            let codePoint = Util.toCodePoint(character);
-            let codePointHex = codePoint.toString(16).toUpperCase();
+            const character = identifiers[i];
+            const codePoint = Util.toCodePoint(character);
+            const codePointHex = codePoint.toString(16).toUpperCase();
             let name = Gc.character_name(character);
             if (name == null)
                 name = _('Unknown character name');
             else
                 name = Util.capitalize(name);
-            let summary = _('U+%s, %s: %s').format(codePointHex,
+            const summary = _('U+%s, %s: %s').format(codePointHex,
                                                    character,
                                                    name);
             ret.push({ name: new GLib.Variant('s', name),
@@ -113,17 +113,17 @@ const SearchProvider = GObject.registerClass({
     }
 
     ActivateResult(id, terms, timestamp) {
-        let clipboard = Gc.gtk_clipboard_get();
+        const clipboard = Gc.gtk_clipboard_get();
         clipboard.set_text(id, -1);
     }
 
     _getPlatformData(timestamp) {
-        let display = Gdk.Display.get_default();
-        let context = display.get_app_launch_context();
+        const display = Gdk.Display.get_default();
+        const context = display.get_app_launch_context();
         context.set_timestamp(timestamp);
 
-        let app = Gio.DesktopAppInfo.new('org.gnome.Characters.desktop');
-        let id = context.get_startup_notify_id(app, []);
+        const app = Gio.DesktopAppInfo.new('org.gnome.Characters.desktop');
+        const id = context.get_startup_notify_id(app, []);
         return {'desktop-startup-id': new GLib.Variant('s', id) };
     }
 
