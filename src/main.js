@@ -32,10 +32,7 @@ pkg.require({ 'Gdk': '3.0',
               'GObject': '2.0',
               'Gtk': '3.0' });
 
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+const {GLib, Gio, GObject, Gtk} = imports.gi;
 
 const Util = imports.util;
 const Window = imports.window;
