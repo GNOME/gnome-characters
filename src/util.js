@@ -24,11 +24,8 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const Gdk = imports.gi.Gdk;
-const Gio = imports.gi.Gio;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Gc = imports.gi.Gc;
+const {Gc, Gdk, Gio, GObject, Gtk} = imports.gi;
+
 const Lang = imports.lang;
 const Params = imports.params;
 const System = imports.system;
@@ -122,7 +119,7 @@ function assertEqual(one, two) {
 
 function assertNotEqual(one, two) {
     if (one == two)
-        throw Error('Assertion failed: ' + one + ' === ' + two);
+        throw Error('Assertion failed: ' + one + ' == ' + two);
 }
 
 function capitalizeWord(w) {
