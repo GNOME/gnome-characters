@@ -193,9 +193,9 @@ var MainWindow = GObject.registerClass({
               authors: [ 'Daiki Ueno <dueno@src.gnome.org>',
                          'Giovanni Campagna <scampa.giovanni@gmail.com>' ],
               // TRANSLATORS: put your names here, one name per line.
-              translator_credits: _("translator-credits"),
-              program_name: _("GNOME Characters"),
-              comments: _("Character Map"),
+              translator_credits: _('translator-credits'),
+              program_name: _('GNOME Characters'),
+              comments: _('Character Map'),
               copyright: 'Copyright 2014-2018 Daiki Ueno',
               license_type: Gtk.License.GPL_2_0,
               logo_icon_name: 'gnome-characters',
@@ -215,7 +215,7 @@ var MainWindow = GObject.registerClass({
     _updateTitle(title) {
         if (this._mainView.filterFontFamily) {
             this._main_headerbar.title =
-                _("%s (%s only)").format(Gettext.gettext(title),
+                _('%s (%s only)').format(Gettext.gettext(title),
                                          this._mainView.filterFontFamily);
         } else {
             this._main_headerbar.title = Gettext.gettext(title);
@@ -225,7 +225,7 @@ var MainWindow = GObject.registerClass({
     _category(action, v) {
         this.search_active = false;
 
-        let [name, length] = v.get_string()
+        let [name, length] = v.get_string();
 
         this._categoryListView.set_visible_child_name(name);
         let categoryList = this._categoryListView.get_visible_child();
@@ -249,7 +249,7 @@ var MainWindow = GObject.registerClass({
     _subcategory(action, v) {
         this.search_active = false;
 
-        let [name, length] = v.get_string()
+        let [name, length] = v.get_string();
 
         let categoryList = this._categoryListView.get_visible_child();
         if (categoryList == null)
@@ -263,12 +263,12 @@ var MainWindow = GObject.registerClass({
     }
 
     _character(action, v) {
-        let [uc, length] = v.get_string()
+        let [uc, length] = v.get_string();
         this._mainView.addToRecent(uc);
     }
 
     _filterFont(action, v) {
-        let [family, length] = v.get_string()
+        let [family, length] = v.get_string();
         if (family == 'None')
             family = null;
         this._mainView.filterFontFamily = family;
@@ -371,7 +371,7 @@ const MainView = GObject.registerClass({
         characterList = this._createCharacterList(
             'search-result', _('Search Result Character List'));
         // FIXME: Can't use GtkContainer.child_get_property.
-        characterList.title = _("Search Result");
+        characterList.title = _('Search Result');
         this.add_named(characterList, 'search-result');
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
