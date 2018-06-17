@@ -27,10 +27,10 @@ var MenuPopover = GObject.registerClass({
     InternalChildren: ['search-entry', 'font-listbox'],
 }, class MenuPopover extends Gtk.Popover {
     _createFontListRow(title, family) {
-        let row = new Gtk.ListBoxRow({ visible: true });
+        const row = new Gtk.ListBoxRow({ visible: true });
         row.get_style_context().add_class('font');
         row._family = family;
-        let label = new Gtk.Label({ label: title,
+        const label = new Gtk.Label({ label: title,
                                     visible: true,
                                     halign: Gtk.Align.START });
         label.get_style_context().add_class('font-label');
@@ -46,12 +46,12 @@ var MenuPopover = GObject.registerClass({
         let row = this._createFontListRow(_('None'), 'None');
         this._font_listbox.add(row);
 
-        let context = this.get_pango_context();
+        const context = this.get_pango_context();
         let families = context.list_families();
         families = families.sort(function(a, b) {
             return a.get_name().localeCompare(b.get_name());
         });
-        for (let index in families) {
+        for (const index in families) {
             row = this._createFontListRow(families[index].get_name(),
                                           families[index].get_name());
             this._font_listbox.add(row);
@@ -74,8 +74,8 @@ var MenuPopover = GObject.registerClass({
     }
 
     _handleSearchChanged(entry) {
-        let text = entry.get_text().replace(/^\s+|\s+$/g, '');
-        let keywords = text == '' ? [] : text.split(/\s+/);
+        const text = entry.get_text().replace(/^\s+|\s+$/g, '');
+        const keywords = text == '' ? [] : text.split(/\s+/);
         this._keywords = keywords.map(String.toLowerCase);
         this._font_listbox.invalidate_filter();
         return true;
@@ -83,8 +83,8 @@ var MenuPopover = GObject.registerClass({
 
     _handleRowActivated(listBox, row) {
         if (row != null) {
-            let toplevel = this.get_toplevel();
-            let action = toplevel.lookup_action('filter-font');
+            const toplevel = this.get_toplevel();
+            const action = toplevel.lookup_action('filter-font');
             action.activate(new GLib.Variant('s', row._family));
         }
     }
@@ -95,7 +95,7 @@ var MenuPopover = GObject.registerClass({
         if (row._family == 'None')
             return true;
 
-        let nameWords = row._family.split(/\s+/).map(String.toLowerCase);
+        const nameWords = row._family.split(/\s+/).map(String.toLowerCase);
         return this._keywords.every(function(keyword, index, array) {
             return nameWords.some(function(nameWord, index, array) {
                 return nameWord.indexOf(keyword) >= 0;
@@ -105,7 +105,7 @@ var MenuPopover = GObject.registerClass({
 
     _headerFunc(row, before) {
         if (before && !row.get_header()) {
-            let separator = new Gtk.Separator({
+            const separator = new Gtk.Separator({
                 orientation: Gtk.Orientation.HORIZONTAL,
             });
             row.set_header (separator);
