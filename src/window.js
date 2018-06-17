@@ -24,10 +24,12 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+const Gc = imports.gi.Gc;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+const Lang = imports.lang;
 const Params = imports.params;
 const CategoryList = imports.categoryList;
 const Character = imports.character;
@@ -39,7 +41,6 @@ const Main = imports.main;
 const Util = imports.util;
 
 var MainWindow = GObject.registerClass({
-
     Template: 'resource:///org/gnome/Characters/mainwindow.ui',
     InternalChildren: ['main-headerbar', 'search-active-button',
                        'search-bar', 'search-entry', 'back-button',
@@ -50,13 +51,12 @@ var MainWindow = GObject.registerClass({
             'search-active', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
     },
-},class MainWindow extends Gtk.ApplicationWindow {
-
-    _init (params) {
+}, class MainWindow extends Gtk.ApplicationWindow {
+    _init(params) {
         params = Params.fill(params, { title: GLib.get_application_name(),
                                        default_width: 640,
                                        default_height: 480 });
-        super._init (params);
+        super._init(params);
 
         this._searchActive = false;
         this._searchKeywords = [];
@@ -96,14 +96,14 @@ var MainWindow = GObject.registerClass({
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
         this._search_bar.connect_entry(this._search_entry);
-        this._search_entry.connect('search-changed', () => { 
-            this._handleSearchChanged();
-        });
+        this._search_entry.connect('search-changed',
+                                   Lang.bind(this, this._handleSearchChanged));
 
-        this._back_button.connect('clicked', () => {
-             let action = this.lookup_action('category');
-             action.activate(new GLib.Variant('s', 'emojis')); 
-        });
+        this._back_button.connect('clicked',
+                                  Lang.bind(this, function() {
+                                      let action = this.lookup_action('category');
+                                      action.activate(new GLib.Variant('s', 'emojis'));
+                                  }));
         this._back_button.bind_property('visible',
                                         this._search_active_button, 'visible',
                                         GObject.BindingFlags.SYNC_CREATE |
@@ -114,7 +114,7 @@ var MainWindow = GObject.registerClass({
 
         this._categoryListView =
             new CategoryList.CategoryListView({ vexpand: true });
-        const scroll = new Gtk.ScrolledWindow({
+        let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
         });
@@ -130,18 +130,16 @@ var MainWindow = GObject.registerClass({
 
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
-        this.connect('key-press-event', () => {
-            this._handleKeyPress();
-        });
+        this.connect('key-press-event', Lang.bind(this, this._handleKeyPress));
     }
 
-    vfunc_map () {
+    vfunc_map() {
         super.vfunc_map();
         this._selectFirstSubcategory();
     }
 
     // Select the first subcategory which contains at least one character.
-    _selectFirstSubcategory () {
+    _selectFirstSubcategory() {
         let categoryList = this._categoryListView.get_visible_child();
         let index = 0;
         let row = categoryList.get_row_at_index(index);
@@ -169,8 +167,8 @@ var MainWindow = GObject.registerClass({
         this.notify('search-active');
     }
 
-    _handleSearchChanged (entry) {
-        const text = entry.get_text().replace(/^\s+|\s+$/g, '');
+    _handleSearchChanged(entry) {
+        let text = entry.get_text().replace(/^\s+|\s+$/g, '');
         let keywords = text == '' ? [] : text.split(/\s+/);
         keywords = keywords.map(String.toUpperCase);
         if (keywords != this._searchKeywords) {
@@ -182,22 +180,22 @@ var MainWindow = GObject.registerClass({
         return true;
     }
 
-    _handleKeyPress (self, event) {
+    _handleKeyPress(self, event) {
         if (this._menu_popover.visible)
             return false;
         return this._search_bar.handle_event(event);
     }
 
-    _about () {
-        const aboutDialog = new Gtk.AboutDialog(
+    _about() {
+        let aboutDialog = new Gtk.AboutDialog(
             { artists: [ 'Allan Day <allanpday@gmail.com>',
                          'Jakub Steiner <jimmac@gmail.com>' ],
               authors: [ 'Daiki Ueno <dueno@src.gnome.org>',
                          'Giovanni Campagna <scampa.giovanni@gmail.com>' ],
               // TRANSLATORS: put your names here, one name per line.
-              translator_credits: _('translator-credits'),
-              program_name: _('GNOME Characters'),
-              comments: _('Character Map'),
+              translator_credits: _("translator-credits"),
+              program_name: _("GNOME Characters"),
+              comments: _("Character Map"),
               copyright: 'Copyright 2014-2018 Daiki Ueno',
               license_type: Gtk.License.GPL_2_0,
               logo_icon_name: 'gnome-characters',
@@ -209,28 +207,28 @@ var MainWindow = GObject.registerClass({
             });
 
         aboutDialog.show();
-        aboutDialog.connect('response', () => {
+        aboutDialog.connect('response', function() {
             aboutDialog.destroy();
         });
     }
 
-    _updateTitle (title) {
+    _updateTitle(title) {
         if (this._mainView.filterFontFamily) {
             this._main_headerbar.title =
-                _('%s (%s only)').format(Gettext.gettext(title),
+                _("%s (%s only)").format(Gettext.gettext(title),
                                          this._mainView.filterFontFamily);
         } else {
             this._main_headerbar.title = Gettext.gettext(title);
         }
     }
 
-    _category (action, v) {
+    _category(action, v) {
         this.search_active = false;
 
-        const [name, length] = v.get_string();
+        let [name, length] = v.get_string()
 
         this._categoryListView.set_visible_child_name(name);
-        const categoryList = this._categoryListView.get_visible_child();
+        let categoryList = this._categoryListView.get_visible_child();
         if (categoryList == null)
             return;
 
@@ -248,29 +246,29 @@ var MainWindow = GObject.registerClass({
         this._updateTitle(category.title);
     }
 
-    _subcategory (action, v) {
+    _subcategory(action, v) {
         this.search_active = false;
 
-        const [name, length] = v.get_string();
+        let [name, length] = v.get_string()
 
-        const categoryList = this._categoryListView.get_visible_child();
+        let categoryList = this._categoryListView.get_visible_child();
         if (categoryList == null)
             return;
 
-        const category = categoryList.getCategory(name);
+        let category = categoryList.getCategory(name);
         if (category) {
             this._mainView.setPage(category);
             this._updateTitle(category.title);
         }
     }
 
-    _character (action, v) {
-        const [uc, length] = v.get_string();
+    _character(action, v) {
+        let [uc, length] = v.get_string()
         this._mainView.addToRecent(uc);
     }
 
-    _filterFont (action, v) {
-        let [family, length] = v.get_string();
+    _filterFont(action, v) {
+        let [family, length] = v.get_string()
         if (family == 'None')
             family = null;
         this._mainView.filterFontFamily = family;
@@ -278,11 +276,11 @@ var MainWindow = GObject.registerClass({
         this._menu_popover.hide();
     }
 
-    _find () {
+    _find() {
         this.search_active = !this.search_active;
     }
 
-    setSearchKeywords (keywords) {
+    setSearchKeywords(keywords) {
         this.search_active = keywords.length > 0;
         this._search_entry.set_text(keywords.join(' '));
     }
@@ -317,13 +315,13 @@ const MainView = GObject.registerClass({
         this._fontFilter.setFilterFont(this._filterFontFamily);
     }
 
-    _init (params) {
-        const filtered = Params.filter(params, { categoryListView: null });
+    _init(params) {
+        let filtered = Params.filter(params, { categoryListView: null });
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
         });
-        super._init (params);
+        super._init(params);
 
         this._fontFilter = new CharacterList.FontFilter({});
         this._filterFontFamily = null;
@@ -332,13 +330,13 @@ const MainView = GObject.registerClass({
         this._categoryListView = filtered.categoryListView;
 
         let characterList;
-        const categories = this._categoryListView.getCategoryList();
-        const recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
+        let categories = this._categoryListView.getCategoryList();
+        let recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
                                       hexpand: true, vexpand: false });
 
         for (let i in categories) {
             let category = categories[i];
-            const categoryList = this._categoryListView.get_child_by_name(category.name);
+            let categoryList = this._categoryListView.get_child_by_name(category.name);
             let subcategories = categoryList.getCategoryList();
             for (let j in subcategories) {
                 let subcategory = subcategories[j];
@@ -361,7 +359,7 @@ const MainView = GObject.registerClass({
             }
             recentBox.pack_start(characterList, false, false, 0);
         }
-        const scroll = new Gtk.ScrolledWindow({
+        let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
         });
@@ -373,11 +371,11 @@ const MainView = GObject.registerClass({
         characterList = this._createCharacterList(
             'search-result', _('Search Result Character List'));
         // FIXME: Can't use GtkContainer.child_get_property.
-        characterList.title = _('Search Result');
+        characterList.title = _("Search Result");
         this.add_named(characterList, 'search-result');
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
-        const recentCharacters = Main.settings.get_value('recent-characters');
+        let recentCharacters = Main.settings.get_value('recent-characters');
         this.recentCharacters = recentCharacters.get_strv();
         this._maxRecentCharacters = 100;
         Main.settings.bind('max-recent-characters', this,
@@ -385,49 +383,47 @@ const MainView = GObject.registerClass({
                            Gio.SettingsBindFlags.DEFAULT);
     }
 
-    _createCharacterList (name, accessible_name) {
-        const characterList = new CharacterList.CharacterListView({
+    _createCharacterList(name, accessible_name) {
+        let characterList = new CharacterList.CharacterListView({
             fontFilter: this._fontFilter
         });
         characterList.get_accessible().accessible_name = accessible_name;
-        characterList.connect('character-selected', () => {
-            this._handleCharacterSelected();
-        });
+        characterList.connect('character-selected',
+                              Lang.bind(this, this._handleCharacterSelected));
 
         this._characterLists[name] = characterList;
         return characterList;
     }
 
-    _createRecentCharacterList (name, accessible_name, category) {
+    _createRecentCharacterList(name, accessible_name, category) {
         let characterList = new CharacterList.RecentCharacterListView({
             fontFilter: this._fontFilter,
             category: category
         });
         characterList.get_accessible().accessible_name = accessible_name;
-        characterList.connect('character-selected', () => {
-             this._handleCharacterSelected();
-        });
+        characterList.connect('character-selected',
+                              Lang.bind(this, this._handleCharacterSelected));
 
         this._characterLists[name] = characterList;
         return characterList;
     }
 
-    searchByKeywords (keywords) {
+    searchByKeywords(keywords) {
         this.visible_child_name = 'search-result';
         this.visible_child.searchByKeywords(keywords);
     }
 
-    cancelSearch () {
-        const characterList = this.get_child_by_name('search-result');
+    cancelSearch() {
+        let characterList = this.get_child_by_name('search-result');
         characterList.cancelSearch();
     }
 
-    setPage (category) {
+    setPage(category) {
         if (category.name == 'recent') {
             if (this.recentCharacters.length == 0)
                 this.visible_child_name = 'empty-recent';
             else {
-                const categories = this._categoryListView.getCategoryList();
+                let categories = this._categoryListView.getCategoryList();
                 for (let i in categories) {
                     let category = categories[i];
                     let characterList = this._recentCharacterLists[category.name];
@@ -436,13 +432,13 @@ const MainView = GObject.registerClass({
                 this.visible_child_name = 'recent';
             }
         } else {
-            const characterList = this.get_child_by_name(category.name);
+            let characterList = this.get_child_by_name(category.name);
             characterList.searchByCategory(category);
             this.visible_child = characterList;
         }
     }
 
-    addToRecent (uc) {
+    addToRecent(uc) {
         if (this.recentCharacters.indexOf(uc) < 0) {
             this.recentCharacters.unshift(uc);
             if (this.recentCharacters.length > this._maxRecentCharacters)
@@ -454,12 +450,12 @@ const MainView = GObject.registerClass({
         }
     }
 
-    _addToRecent (widget, uc) {
+    _addToRecent(widget, uc) {
         this.addToRecent(uc);
     }
 
-    _handleCharacterSelected (widget, uc) {
-        const dialog = new Character.CharacterDialog({
+    _handleCharacterSelected(widget, uc) {
+        let dialog = new Character.CharacterDialog({
             character: uc,
             modal: true,
             transient_for: this.get_toplevel(),
@@ -467,10 +463,9 @@ const MainView = GObject.registerClass({
         });
 
         dialog.show();
-        dialog.connect('character-copied', () => {
-             this._addToRecent();
-        });
-        dialog.connect('response', (self, response_id) => {
+        dialog.connect('character-copied',
+                       Lang.bind(this, this._addToRecent));
+        dialog.connect('response', function(self, response_id) {
             if (response_id == Gtk.ResponseType.CLOSE)
                 dialog.destroy();
         });
