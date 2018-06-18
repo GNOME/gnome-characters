@@ -32,10 +32,7 @@ pkg.require({ 'Gdk': '3.0',
               'GObject': '2.0',
               'Gtk': '3.0' });
 
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
+const {GLib, Gio, GObject, Gtk} = imports.gi;
 
 const Util = imports.util;
 const Window = imports.window;
@@ -48,36 +45,35 @@ function initEnvironment() {
     };
 }
 
-const MyApplication = new Lang.Class({
-    Name: 'MyApplication',
-    Extends: Gtk.Application,
+var MyApplication = GObject.registerClass({
+},class MyApplication extends Gtk.Application {
+    _init () {
+        super._init({ application_id: pkg.name, 
+                      flags: Gio.ApplicationFlags.FLAGS_NONE });
 
-    _init: function() {
-        this.parent({ application_id: pkg.name });
+        GLib.set_application_name(_('Characters Application'));
+    }
 
-        GLib.set_application_name(_("Characters Application"));
-    },
-
-    _onQuit: function() {
+    _onQuit () {
         this.quit();
-    },
+    }
 
-    _onSearch: function(action, parameter) {
-        let window = new Window.MainWindow({ application: this });
+    _onSearch (action, parameter) {
+        const window = new Window.MainWindow({ application: this });
         window.setSearchKeywords(parameter.get_strv());
         window.show();
-    },
+    }
 
-    _initAppMenu: function() {
-        let builder = new Gtk.Builder();
+    _initAppMenu () {
+        const builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Characters/app-menu.ui');
 
-        let menu = builder.get_object('app-menu');
+        const menu = builder.get_object('app-menu');
         this.set_app_menu(menu);
-    },
+    }
 
-    vfunc_startup: function() {
-        this.parent();
+    vfunc_startup () {
+        super.vfunc_startup();
 
         Util.loadStyleSheet('/org/gnome/Characters/application.css');
 
@@ -93,16 +89,16 @@ const MyApplication = new Lang.Class({
                                     '/org/gnome/Characters/');
 
         log(_("Characters Application started"));
-    },
+    }
 
-    vfunc_activate: function() {
+    vfunc_activate () {
         (new Window.MainWindow({ application: this })).show();
-    },
+    }
 
-    vfunc_shutdown: function() {
+    vfunc_shutdown() {
         log(_("Characters Application exiting"));
 
-        this.parent();
+        super.vfunc_shutdown();
     }
 });
 
