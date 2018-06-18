@@ -24,11 +24,8 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const Gc = imports.gi.Gc;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+const {Gc, Gio, GLib, GObject, Gtk } = imports.gi;
+
 const Lang = imports.lang;
 const Params = imports.params;
 const CategoryList = imports.categoryList;
@@ -40,9 +37,7 @@ const Gettext = imports.gettext;
 const Main = imports.main;
 const Util = imports.util;
 
-var MainWindow = new Lang.Class({
-    Name: 'MainWindow',
-    Extends: Gtk.ApplicationWindow,
+var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/mainwindow.ui',
     InternalChildren: ['main-headerbar', 'search-active-button',
                        'search-bar', 'search-entry', 'back-button',
@@ -53,12 +48,12 @@ var MainWindow = new Lang.Class({
             'search-active', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
     },
-
-    _init: function(params) {
+}, class MainWindow extends Gtk.ApplicationWindow {
+    _init(params) {
         params = Params.fill(params, { title: GLib.get_application_name(),
                                        default_width: 640,
                                        default_height: 480 });
-        this.parent(params);
+        super._init(params);
 
         this._searchActive = false;
         this._searchKeywords = [];
@@ -133,15 +128,15 @@ var MainWindow = new Lang.Class({
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
         this.connect('key-press-event', Lang.bind(this, this._handleKeyPress));
-    },
+    }
 
-    vfunc_map: function() {
-        this.parent();
+    vfunc_map() {
+        super.vfunc_map();
         this._selectFirstSubcategory();
-    },
+    }
 
     // Select the first subcategory which contains at least one character.
-    _selectFirstSubcategory: function() {
+    _selectFirstSubcategory() {
         let categoryList = this._categoryListView.get_visible_child();
         let index = 0;
         let row = categoryList.get_row_at_index(index);
@@ -149,11 +144,11 @@ var MainWindow = new Lang.Class({
             this._mainView.recentCharacters.length == 0)
             index++;
         categoryList.select_row(categoryList.get_row_at_index(index));
-    },
+    }
 
     get search_active() {
         return this._searchActive;
-    },
+    }
 
     set search_active(v) {
         if (this._searchActive == v)
@@ -167,10 +162,10 @@ var MainWindow = new Lang.Class({
         }
 
         this.notify('search-active');
-    },
+    }
 
-    _handleSearchChanged: function(entry) {
-        let text = entry.get_text().replace(/^\s+|\s+$/g, '');
+    _handleSearchChanged(entry) {
+        const text = entry.get_text().replace(/^\s+|\s+$/g, '');
         let keywords = text == '' ? [] : text.split(/\s+/);
         keywords = keywords.map(String.toUpperCase);
         if (keywords != this._searchKeywords) {
@@ -180,16 +175,16 @@ var MainWindow = new Lang.Class({
                 this._mainView.searchByKeywords(this._searchKeywords);
         }
         return true;
-    },
+    }
 
-    _handleKeyPress: function(self, event) {
+    _handleKeyPress(self, event) {
         if (this._menu_popover.visible)
             return false;
         return this._search_bar.handle_event(event);
-    },
+    }
 
-    _about: function() {
-        let aboutDialog = new Gtk.AboutDialog(
+    _about() {
+        const aboutDialog = new Gtk.AboutDialog(
             { artists: [ 'Allan Day <allanpday@gmail.com>',
                          'Jakub Steiner <jimmac@gmail.com>' ],
               authors: [ 'Daiki Ueno <dueno@src.gnome.org>',
@@ -212,9 +207,9 @@ var MainWindow = new Lang.Class({
         aboutDialog.connect('response', function() {
             aboutDialog.destroy();
         });
-    },
+    }
 
-    _updateTitle: function(title) {
+    _updateTitle(title) {
         if (this._mainView.filterFontFamily) {
             this._main_headerbar.title =
                 _("%s (%s only)").format(Gettext.gettext(title),
@@ -222,9 +217,9 @@ var MainWindow = new Lang.Class({
         } else {
             this._main_headerbar.title = Gettext.gettext(title);
         }
-    },
+    }
 
-    _category: function(action, v) {
+    _category(action, v) {
         this.search_active = false;
 
         let [name, length] = v.get_string()
@@ -246,9 +241,9 @@ var MainWindow = new Lang.Class({
         Util.assertNotEqual(category, null);
         this._mainView.setPage(category);
         this._updateTitle(category.title);
-    },
+    }
 
-    _subcategory: function(action, v) {
+    _subcategory(action, v) {
         this.search_active = false;
 
         let [name, length] = v.get_string()
@@ -262,35 +257,33 @@ var MainWindow = new Lang.Class({
             this._mainView.setPage(category);
             this._updateTitle(category.title);
         }
-    },
+    }
 
-    _character: function(action, v) {
-        let [uc, length] = v.get_string()
+    _character(action, v) {
+        const [uc, length] = v.get_string();
         this._mainView.addToRecent(uc);
-    },
+    }
 
-    _filterFont: function(action, v) {
+    _filterFont(action, v) {
         let [family, length] = v.get_string()
         if (family == 'None')
             family = null;
         this._mainView.filterFontFamily = family;
         this._updateTitle(this._mainView.visible_child.title);
         this._menu_popover.hide();
-    },
+    }
 
-    _find: function() {
+    _find() {
         this.search_active = !this.search_active;
-    },
+    }
 
-    setSearchKeywords: function(keywords) {
+    setSearchKeywords(keywords) {
         this.search_active = keywords.length > 0;
         this._search_entry.set_text(keywords.join(' '));
     }
 });
 
-const MainView = new Lang.Class({
-    Name: 'MainView',
-    Extends: Gtk.Stack,
+const MainView = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/mainview.ui',
     Properties: {
         'max-recent-characters': GObject.ParamSpec.uint(
@@ -298,34 +291,34 @@ const MainView = new Lang.Class({
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
             0, GLib.MAXUINT32, 100)
     },
-
+}, class MainView extends Gtk.Stack {
     get max_recent_characters() {
         return this._maxRecentCharacters;
-    },
+    }
 
     set max_recent_characters(v) {
         this._maxRecentCharacters = v;
         if (this.recentCharacters.length > this._maxRecentCharacters)
             this.recentCharacters = this.recentCharacters.slice(
                 0, this._maxRecentCharacters);
-    },
+    }
 
     get filterFontFamily() {
         return this._filterFontFamily;
-    },
+    }
 
     set filterFontFamily(family) {
         this._filterFontFamily = family;
         this._fontFilter.setFilterFont(this._filterFontFamily);
-    },
+    }
 
-    _init: function(params) {
-        let filtered = Params.filter(params, { categoryListView: null });
+    _init(params) {
+        const filtered = Params.filter(params, { categoryListView: null });
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
         });
-        this.parent(params);
+        super._init(params);
 
         this._fontFilter = new CharacterList.FontFilter({});
         this._filterFontFamily = null;
@@ -385,11 +378,11 @@ const MainView = new Lang.Class({
         Main.settings.bind('max-recent-characters', this,
                            'max-recent-characters',
                            Gio.SettingsBindFlags.DEFAULT);
-    },
+    }
 
-    _createCharacterList: function(name, accessible_name) {
-        let characterList = new CharacterList.CharacterListView({
-            fontFilter: this._fontFilter
+    _createCharacterList(name, accessible_name) {
+        const characterList = new CharacterList.CharacterListView({
+            fontFilter: this._fontFilter,
         });
         characterList.get_accessible().accessible_name = accessible_name;
         characterList.connect('character-selected',
@@ -397,10 +390,10 @@ const MainView = new Lang.Class({
 
         this._characterLists[name] = characterList;
         return characterList;
-    },
+    }
 
-    _createRecentCharacterList: function(name, accessible_name, category) {
-        let characterList = new CharacterList.RecentCharacterListView({
+    _createRecentCharacterList(name, accessible_name, category) {
+        const characterList = new CharacterList.RecentCharacterListView({
             fontFilter: this._fontFilter,
             category: category
         });
@@ -410,19 +403,19 @@ const MainView = new Lang.Class({
 
         this._characterLists[name] = characterList;
         return characterList;
-    },
+    }
 
-    searchByKeywords: function(keywords) {
+    searchByKeywords(keywords) {
         this.visible_child_name = 'search-result';
         this.visible_child.searchByKeywords(keywords);
-    },
+    }
 
-    cancelSearch: function() {
-        let characterList = this.get_child_by_name('search-result');
+    cancelSearch() {
+        const characterList = this.get_child_by_name('search-result');
         characterList.cancelSearch();
-    },
+    }
 
-    setPage: function(category) {
+    setPage(category) {
         if (category.name == 'recent') {
             if (this.recentCharacters.length == 0)
                 this.visible_child_name = 'empty-recent';
@@ -440,9 +433,9 @@ const MainView = new Lang.Class({
             characterList.searchByCategory(category);
             this.visible_child = characterList;
         }
-    },
+    }
 
-    addToRecent: function(uc) {
+    addToRecent(uc) {
         if (this.recentCharacters.indexOf(uc) < 0) {
             this.recentCharacters.unshift(uc);
             if (this.recentCharacters.length > this._maxRecentCharacters)
@@ -452,14 +445,14 @@ const MainView = new Lang.Class({
                 'recent-characters',
                 GLib.Variant.new_strv(this.recentCharacters));
         }
-    },
+    }
 
-    _addToRecent: function(widget, uc) {
+    _addToRecent(widget, uc) {
         this.addToRecent(uc);
-    },
+    }
 
-    _handleCharacterSelected: function(widget, uc) {
-        let dialog = new Character.CharacterDialog({
+    _handleCharacterSelected(widget, uc) {
+        const dialog = new Character.CharacterDialog({
             character: uc,
             modal: true,
             transient_for: this.get_toplevel(),
