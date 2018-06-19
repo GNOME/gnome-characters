@@ -1,0 +1,65 @@
+{
+    "app-id": "org.gnome.CharactersDevel",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.28",
+    "branch": "master",
+    "sdk": "org.gnome.Sdk",
+    "copy-icon": true,
+    "rename-icon": "gnome-characters",
+    "finish-args": [
+        /* X11 + XShm access */
+        "--share=ipc", "--socket=x11",
+        /* Wayland access */
+        "--socket=wayland",
+        /* Needed for dconf to work */
+        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g"
+    },
+    "cleanup": ["/include", "/lib/pkgconfig",
+                "/share/pkgconfig", "/share/aclocal",
+                "/man", "/share/man", "/share/gtk-doc",
+                "*.la", "*.a",
+                "/share/doc", "/share/gir-1.0"
+    ],
+    "modules": [
+        {
+            "name": "gnome-desktop",
+            "config-opts": ["--disable-debug-tools", "--disable-udev"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-desktop/3.28/gnome-desktop-3.28.0.tar.xz",
+                    "sha256": "f1df71c39e32147f6d58f53a9c05b964b00b7c98fbca090419355437c72fd59d"
+                }
+            ]
+        },
+        {
+            "name": "libunistring",
+            "cleanup": [
+                "/share"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.9.tar.xz",
+                    "sha256": "a4d993ecfce16cf503ff7579f5da64619cee66226fb3b998dafb706190d9a833"
+                }
+            ]
+        },
+        {
+            "name": "gnome-characters",
+            "buildsystem": "meson",
+            "config-opts": ["-Ddbus_service_dir=/app/share/dbus-1/services/"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url" : "https://gitlab.gnome.org/gnome/gnome-characters.git"
+                }
+            ]
+        }
+    ]
+}
