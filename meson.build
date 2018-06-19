@@ -6,7 +6,15 @@ project(
   meson_version: '>= 0.42.0'
 )
 
-characters_name = 'org.gnome.Characters'
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  name_suffix = ' (Development Snapshot)'
+else
+  profile = ''
+  name_suffix = ''
+endif
+
+characters_name = 'org.gnome.Characters@0@'.format(profile)
 characters_background_name = characters_name + '.BackgroundService'
 
 characters_version = meson.project_version()
