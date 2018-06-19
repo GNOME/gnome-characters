@@ -28,9 +28,7 @@ cc = meson.get_compiler('c')
 # *** Check for dbus service dir ***
 dbus_service_dir = get_option('dbus_service_dir')
 if dbus_service_dir == ''
-  dbus_dep = dependency('dbus-1', required: false)
-  assert(dbus_dep.found(), 'dbus-1 required but not found, please provide a valid D-Bus service dir')
-  dbus_service_dir = dbus_dep.get_pkgconfig_variable('session_bus_services_dir')
+  dbus_service_dir = join_paths(characters_datadir, 'dbus-1', 'services')
 endif
 
 libunistring_src = '''
