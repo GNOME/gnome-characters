@@ -43,54 +43,65 @@ foreach resource: resources
   )
 endforeach
 
-desktop = characters_name + '.desktop'
+desktop_conf = configuration_data ()
+desktop_conf.set ('appid', characters_application_id)
 
 i18n.merge_file(
-  desktop,
+  'desktop-file',
   type: 'desktop',
-  input: desktop + '.in',
-  output: desktop,
+  input: configure_file (
+    input: characters_name + '.desktop.in',
+    output: characters_name + '.desktop.in',
+    configuration: desktop_conf
+  ),
+  output: characters_application_id + '.desktop',
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(characters_datadir, 'applications')
 )
 
-appdata = characters_name + '.appdata.xml'
-
 i18n.merge_file(
-  appdata,
-  input: appdata + '.in',
-  output: appdata,
+  'appdata-file',
+  input: characters_name + '.appdata.xml.in',
+  output: characters_application_id + 'appdata.xml',
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(characters_datadir, 'metainfo')
 )
 
 service_conf = configuration_data()
+service_conf.set('appid', characters_application_id)
 service_conf.set('PACKAGE_NAME', characters_name)
 service_conf.set('pkgdatadir', characters_pkgdatadir)
 
-services = [
-  characters_name,
-  characters_background_name
-]
+configure_file(
+  input: characters_name + '.service.in',
+  output: characters_application_id + '.service',
+  configuration: service_conf,
+  install: true,
+  install_dir: dbus_service_dir
+)
 
-foreach service: services
-  configure_file(
-    input: service + '.service.in',
-    output: service + '.service',
-    configuration: service_conf,
-    install: true,
-    install_dir: dbus_service_dir
-  )
-endforeach
+configure_file(
+  input: characters_background_name + '.service.in',
+  output: characters_background_name + '.service',
+  configuration: service_conf,
+  install: true,
+  install_dir: dbus_service_dir
+)
 
 install_data(
   characters_name + '.gschema.xml',
   install_dir: join_paths(characters_datadir, 'glib-2.0', 'schemas')
 )
 
-install_data(
-  characters_name + '.search-provider.ini',
+search_provider_conf = configuration_data()
+search_provider_conf.set('appid', characters_application_id)
+
+configure_file(
+  input: characters_name + '.search-provider.ini',
+  output: characters_name + '.search-provider.ini',
+  configuration: search_provider_conf,
+  install: true,
   install_dir: join_paths(characters_datadir, 'gnome-shell', 'search-providers')
 )
