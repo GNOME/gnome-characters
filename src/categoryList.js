@@ -16,14 +16,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+
+const {Gc, Gio, GLib, GObject, Gtk, GnomeDesktop} = imports.gi;
+
+const Gettext = imports.gettext;
 const Lang = imports.lang;
 const Params = imports.params;
-const GnomeDesktop = imports.gi.GnomeDesktop;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const Gtk = imports.gi.Gtk;
-const Gettext = imports.gettext;
-const Gc = imports.gi.Gc;
+
 const Util = imports.util;
 
 const CategoryList = [
@@ -154,13 +153,12 @@ const EmojiCategoryList = [
     }
 ];
 
-const CategoryListRowWidget = new Lang.Class({
-    Name: 'CategoryListRowWidget',
-    Extends: Gtk.ListBoxRow,
+const CategoryListRowWidget = GObject.registerClass({
+}, class CategoryListRowWidget extends Gtk.ListBoxRow {
 
-    _init: function(params, category) {
+    _init (params, category) {
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
         this.category = category;
         this.get_accessible().accessible_name =
             _('%s Category List Row').format(category.title);
@@ -187,14 +185,12 @@ const CategoryListRowWidget = new Lang.Class({
     }
 });
 
-const CategoryListWidget = new Lang.Class({
-    Name: 'CategoryListWidget',
-    Extends: Gtk.ListBox,
-
-    _init: function(params) {
-        let filtered = Params.filter(params, { categoryList: null });
+const CategoryListWidget = GObject.registerClass({
+}, class CategoryListWidget extends Gtk.ListBox {
+    _init(params) {
+        const filtered = Params.filter(params, { categoryList: null });
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
 
         this.get_style_context().add_class('categories');
 
@@ -207,24 +203,24 @@ const CategoryListWidget = new Lang.Class({
             rowWidget.get_style_context().add_class('category');
             this.add(rowWidget);
         }
-    },
+    }
 
-    vfunc_row_selected: function(row) {
+    vfunc_row_selected(row) {
         if (row != null && row.selectable) {
             let toplevel = row.get_toplevel();
             let action = toplevel.lookup_action(row.category.action_name);
             action.activate(new GLib.Variant('s', row.category.name));
         }
-    },
+    }
 
-    populateCategoryList: function() {
-    },
+    populateCategoryList() {
+    }
 
-    getCategoryList: function() {
+    getCategoryList() {
         return this._categoryList;
-    },
+    }
 
-    getCategory: function(name) {
+    getCategory(name) {
         for (let index in this._categoryList) {
             let category = this._categoryList[index];
             if (category.name == name)
@@ -234,11 +230,9 @@ const CategoryListWidget = new Lang.Class({
     }
 });
 
-const LetterCategoryListWidget = new Lang.Class({
-    Name: 'LetterCategoryListWidget',
-    Extends: CategoryListWidget,
-
-    _finishListEngines: function(sources, bus, res) {
+const LetterCategoryListWidget = GObject.registerClass({
+}, class LetterCategoryListWidget extends CategoryListWidget {
+    _finishListEngines(sources, bus, res) {
         try {
             let engines = bus.list_engines_async_finish(res);
             if (engines) {
@@ -250,12 +244,12 @@ const LetterCategoryListWidget = new Lang.Class({
                 }
             }
         } catch (e) {
-            log("Failed to list engines: " + e.message);
+            log(`Failed to list engines: ${e.message}`);
         }
         this._finishBuildScriptList(sources);
-    },
+    }
 
-    _ensureIBusLanguageList: function(sources) {
+    _ensureIBusLanguageList(sources) {
         if (this._ibusLanguageList != null)
             return;
 
@@ -280,9 +274,9 @@ const LetterCategoryListWidget = new Lang.Class({
                                    }));
         } else
             this._finishBuildScriptList(sources);
-    },
+    }
 
-    _finishBuildScriptList: function(sources) {
+    _finishBuildScriptList(sources) {
         let xkbInfo = new GnomeDesktop.XkbInfo();
         let languages = [];
         for (let i in sources) {
@@ -327,9 +321,9 @@ const LetterCategoryListWidget = new Lang.Class({
         allScripts.unshift('Latin');
         let category = this.getCategory('letters');
         category.scripts = allScripts;
-    },
+    }
 
-    populateCategoryList: function() {
+    populateCategoryList() {
         // Populate the "scripts" element of the "Letter" category
         // object, based on the current locale and the input-sources
         // settings.
@@ -361,13 +355,12 @@ const LetterCategoryListWidget = new Lang.Class({
     }
 });
 
-const EmojiCategoryListWidget = new Lang.Class({
-    Name: 'EmojiCategoryListWidget',
-    Extends: CategoryListWidget,
+const EmojiCategoryListWidget = GObject.registerClass({
 
-    _init: function(params) {
+}, class EmojiCategoryListWidget extends CategoryListWidget {
+    _init(params) {
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
 
         let category;
         let rowWidget;
@@ -399,25 +392,23 @@ const EmojiCategoryListWidget = new Lang.Class({
         separatorRowWidget.add(separator);
         this.add(separatorRowWidget);
         this.add(rowWidget);
-    },
+    }
 
-    getCategory: function(name) {
+    getCategory(name) {
         if (name == 'recent')
             return this._recentCategory;
-        return this.parent(name);
+        return super.getCategory(name);
     }
 });
 
-var CategoryListView = new Lang.Class({
-    Name: 'CategoryListView',
-    Extends: Gtk.Stack,
-
-    _init: function(params) {
+var CategoryListView = GObject.registerClass({
+}, class CategoryListView extends Gtk.Stack {
+    _init(params) {
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.SLIDE_RIGHT
         });
-        this.parent(params);
+        super._init(params);
 
         let emojiCategoryList = new EmojiCategoryListWidget({
             categoryList: EmojiCategoryList
@@ -435,17 +426,17 @@ var CategoryListView = new Lang.Class({
 
         this.connect('notify::visible-child-name',
                      Lang.bind(this, this._ensureTransitionType));
-    },
+    }
 
-    _ensureTransitionType: function() {
+    _ensureTransitionType() {
         if (this.get_visible_child_name() == 'emojis') {
             this.transition_type = Gtk.StackTransitionType.SLIDE_RIGHT;
         } else {
             this.transition_type = Gtk.StackTransitionType.SLIDE_LEFT;
         }
-    },
+    }
 
-    getCategoryList: function() {
+    getCategoryList() {
         return this._categoryList;
     }
 });

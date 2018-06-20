@@ -16,22 +16,17 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+const {GLib, GObject, Gtk, Pango} = imports.gi;
+
 const Lang = imports.lang;
 const Params = imports.params;
-const Pango = imports.gi.Pango;
 
-var MenuPopover = new Lang.Class({
-    Name: 'MenuPopover',
-    Extends: Gtk.Popover,
+var MenuPopover = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/menu.ui',
     InternalChildren: ['search-entry', 'font-listbox'],
-
-    _createFontListRow: function(title, family) {
-        let row = new Gtk.ListBoxRow({ visible: true });
+}, class MenuPopover extends Gtk.Popover {
+    _createFontListRow(title, family) {
+        const row = new Gtk.ListBoxRow({ visible: true });
         row.get_style_context().add_class('font');
         row._family = family;
         let label = new Gtk.Label({ label: title,
@@ -40,11 +35,11 @@ var MenuPopover = new Lang.Class({
         label.get_style_context().add_class('font-label');
         row.add(label);
         return row;
-    },
+    }
 
-    _init: function(params) {
+    _init(params) {
         params = Params.fill(params, {});
-        this.parent(params);
+        super._init(params);
 
         this._font_listbox.get_style_context().add_class('fonts');
         let row = this._createFontListRow(_("None"), 'None');
@@ -75,25 +70,25 @@ var MenuPopover = new Lang.Class({
             popover._font_listbox.unselect_all();
             popover.hide();
         });
-    },
+    }
 
-    _handleSearchChanged: function(entry) {
+    _handleSearchChanged(entry) {
         let text = entry.get_text().replace(/^\s+|\s+$/g, '');
         let keywords = text == '' ? [] : text.split(/\s+/);
         this._keywords = keywords.map(String.toLowerCase);
         this._font_listbox.invalidate_filter();
         return true;
-    },
+    }
 
-    _handleRowActivated: function(listBox, row) {
+    _handleRowActivated(listBox, row) {
         if (row != null) {
             let toplevel = this.get_toplevel();
             let action = toplevel.lookup_action('filter-font');
             action.activate(new GLib.Variant('s', row._family));
         }
-    },
+    }
 
-    _filterFunc: function(row) {
+    _filterFunc(row) {
         if (this._keywords.length == 0)
             return true;
         if (row._family == 'None')
@@ -105,9 +100,9 @@ var MenuPopover = new Lang.Class({
                 return nameWord.indexOf(keyword) >= 0;
             });
         });
-    },
+    }
 
-    _headerFunc: function(row, before) {
+    _headerFunc(row, before) {
         if (before && !row.get_header()) {
             let separator = new Gtk.Separator({
                 orientation: Gtk.Orientation.HORIZONTAL

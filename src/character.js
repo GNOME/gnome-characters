@@ -16,20 +16,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+const {Gc, GLib, Gio,GObject,Gtk, Pango} = imports.gi;
+
 const Lang = imports.lang;
 const Params = imports.params;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Pango = imports.gi.Pango;
-const Gc = imports.gi.Gc;
+
 const Main = imports.main;
 const Util = imports.util;
 
-var CharacterDialog = new Lang.Class({
-    Name: 'CharacterDialog',
-    Extends: Gtk.Dialog,
+var CharacterDialog = GObject.registerClass({
+
     Signals: {
         'character-copied': { param_types: [ GObject.TYPE_STRING ] }
     },
@@ -37,14 +33,14 @@ var CharacterDialog = new Lang.Class({
     InternalChildren: ['main-stack', 'character-stack',
                        'character-label', 'missing-label', 'detail-label',
                        'copy-button', 'copy-revealer', 'related-listbox'],
-
-    _init: function(params) {
-        let filtered = Params.filter(params, { character: null,
+}, class CharacterDialog extends Gtk.Dialog {
+    _init(params) {
+        const filtered = Params.filter(params, { character: null,
                                                fontDescription: null });
         params = Params.fill(params, { use_header_bar: true,
                                        width_request: 400,
                                        height_request: 400 });
-        this.parent(params);
+        super._init(params);
 
         this._cancellable = new Gio.Cancellable();
 
@@ -70,9 +66,9 @@ var CharacterDialog = new Lang.Class({
         this._setCharacter(filtered.character);
 
         this._copyRevealerTimeoutId = 0;
-    },
+    }
 
-    _finishSearch: function(result) {
+    _finishSearch(result) {
         let children = this._related_listbox.get_children();
         for (let index in children)
             this._related_listbox.remove(children[index]);
@@ -107,9 +103,9 @@ var CharacterDialog = new Lang.Class({
 
         this._relatedButton.visible =
             this._related_listbox.get_children().length > 0;
-    },
+    }
 
-    _setCharacter: function(uc) {
+    _setCharacter(uc) {
         this._character = uc;
 
         let codePoint = Util.toCodePoint(this._character);
@@ -155,30 +151,30 @@ var CharacterDialog = new Lang.Class({
                     let result = context.search_finish(res);
                     this._finishSearch(result);
                 } catch (e) {
-                    log("Failed to search related: " + e.message);
+                    log(`Failed to search related: ${e.message}`);
                 }
             }));
 
         this._relatedButton.active = false;
         this._main_stack.visible_child_name = 'character';
         this._main_stack.show_all();
-    },
+    }
 
-    _hideCopyRevealer: function() {
+    _hideCopyRevealer() {
         if (this._copyRevealerTimeoutId > 0) {
             GLib.source_remove(this._copyRevealerTimeoutId);
             this._copyRevealerTimeoutId = 0;
             this._copy_revealer.set_reveal_child(false);
         }
-    },
+    }
 
-    _clipboardOwnerChanged: function(clipboard, event) {
+    _clipboardOwnerChanged(clipboard, event) {
         let text = clipboard.wait_for_text();
         if (text != this._character)
             this._hideCopyRevealer();
-    },
+    }
 
-    _copyCharacter: function() {
+    _copyCharacter() {
         if (this._clipboard == null) {
             this._clipboard = Gc.gtk_clipboard_get();
             let clipboardOwnerChanged =
@@ -206,14 +202,14 @@ var CharacterDialog = new Lang.Class({
                          if (this._copyRevealerTimeoutId > 0)
                              GLib.source_remove(this._copyRevealerTimeoutId);
                      }));
-    },
+    }
 
-    _handleRowSelected: function(listBox, row) {
+    _handleRowSelected(listBox, row) {
         if (row != null) {
             this._setCharacter(row._character);
             let toplevel = this.get_transient_for();
             let action = toplevel.lookup_action('character');
             action.activate(new GLib.Variant('s', row._character));
         }
-    },
+    }
 });
