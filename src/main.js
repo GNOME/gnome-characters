@@ -38,6 +38,7 @@ const Util = imports.util;
 const Window = imports.window;
 
 var settings = null;
+var application_id = pkg.name;
 
 function initEnvironment() {
     window.getApp = function() {
@@ -48,7 +49,7 @@ function initEnvironment() {
 var MyApplication = GObject.registerClass({
 },class MyApplication extends Gtk.Application {
     _init () {
-        super._init({ application_id: pkg.name, 
+        super._init({ application_id: application_id,
                       flags: Gio.ApplicationFlags.FLAGS_NONE });
 
         GLib.set_application_name(_('Characters Application'));

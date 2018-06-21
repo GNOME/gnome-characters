@@ -6,8 +6,17 @@ project(
   meson_version: '>= 0.42.0'
 )
 
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  name_suffix = ' (Development Snapshot)'
+else
+  profile = ''
+  name_suffix = ''
+endif
+
 characters_name = 'org.gnome.Characters'
 characters_background_name = characters_name + '.BackgroundService'
+characters_application_id = characters_name + profile
 
 characters_version = meson.project_version()
 
@@ -28,9 +37,7 @@ cc = meson.get_compiler('c')
 # *** Check for dbus service dir ***
 dbus_service_dir = get_option('dbus_service_dir')
 if dbus_service_dir == ''
-  dbus_dep = dependency('dbus-1', required: false)
-  assert(dbus_dep.found(), 'dbus-1 required but not found, please provide a valid D-Bus service dir')
-  dbus_service_dir = dbus_dep.get_pkgconfig_variable('session_bus_services_dir')
+  dbus_service_dir = join_paths(characters_datadir, 'dbus-1', 'services')
 endif
 
 libunistring_src = '''

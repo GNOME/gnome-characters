@@ -1,6 +1,7 @@
 script_conf = configuration_data()
 script_conf.set('GJS', find_program('gjs').path())
 script_conf.set('PACKAGE_VERSION', characters_version)
+script_conf.set('appid', characters_application_id)
 script_conf.set('libdir', characters_libdir)
 script_conf.set('prefix', characters_prefix)
 

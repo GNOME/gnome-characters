@@ -106,6 +106,7 @@ function getSettings(schemaId, path) {
 
 function loadIcon(iconName, size) {
     let theme = Gtk.IconTheme.get_default();
+    theme.add_resource_path('/org/gnome/Characters/icons');
 
     return theme.load_icon(iconName,
                            size,

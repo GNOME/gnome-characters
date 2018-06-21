@@ -434,6 +434,10 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
       iter->character_count = EMOJI_FLAGS_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
+
+    case GC_CATEGORY_LETTER:
+    case GC_CATEGORY_EMOJI:
+      g_assert_not_reached ();
     }
 
   gc_character_iter_init (iter);
@@ -1220,7 +1224,7 @@ gc_filter_characters (GcCategory           category,
 
   for (i = 0; characters[i] != 0; i++)
     {
-      const uint8_t *utf8 = characters[i];
+      const uint8_t *utf8 = (const uint8_t *)characters[i];
       size_t utf8_length = u8_strmblen (utf8);
       uint32_t uc;
       size_t uc_length = 1;
