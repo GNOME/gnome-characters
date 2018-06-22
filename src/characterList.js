@@ -571,6 +571,7 @@ var CharacterListView = GObject.registerClass({
 
     _addSearchResult(result) {
         const characters = Util.searchResultToArray(result);
+        this._characters = [];
         this.setCharacters(this._characters.concat(characters));
     }
 
