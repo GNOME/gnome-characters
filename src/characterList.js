@@ -467,7 +467,9 @@ var CharacterListView = GObject.registerClass({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             visible: true
         });
+
         scroll.add(this._characterList);
+
         let context = scroll.get_style_context();
         context.add_class('character-list-scroll');
         context.save();
@@ -591,6 +593,7 @@ var CharacterListView = GObject.registerClass({
     }
 
     searchByCategory(category) {
+        this._characters = [];
         if ('scripts' in category) {
             this.searchByScripts(category.scripts);
             return;
