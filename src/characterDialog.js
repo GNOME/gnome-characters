@@ -18,10 +18,8 @@
 
 const {Gc, GLib, Gio,GObject,Gtk, Pango} = imports.gi;
 
-const Lang = imports.lang;
 const Params = imports.params;
 
-const Main = imports.main;
 const Util = imports.util;
 
 var CharacterDialog = GObject.registerClass({
@@ -44,23 +42,20 @@ var CharacterDialog = GObject.registerClass({
 
         this._cancellable = new Gio.Cancellable();
 
-        this._copy_button.connect('clicked', Lang.bind(this, this._copyCharacter));
+        this._copy_button.connect('clicked', () => this._copyCharacter());
 
-        this._related_listbox.connect('row-selected',
-                                      Lang.bind(this, this._handleRowSelected));
+        this._related_listbox.connect('row-selected', (listBox, row) => this._handleRowSelected(listBox, row));
 
         this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
         this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
         this._relatedButton.show();
 
-        this._relatedButton.connect(
-            'toggled',
-            Lang.bind(this, function() {
+        this._relatedButton.connect('toggled', () => {
                 if (this._main_stack.visible_child_name == 'character')
                     this._main_stack.visible_child_name = 'related';
                 else
                     this._main_stack.visible_child_name = 'character';
-            }));
+            });
 
         this._fontDescription = filtered.fontDescription;
         this._setCharacter(filtered.character);
@@ -146,14 +141,14 @@ var CharacterDialog = GObject.registerClass({
         context.search(
             -1,
             this._cancellable,
-            Lang.bind(this, function(context, res, user_data) {
+            (context, res) => {
                 try {
                     let result = context.search_finish(res);
                     this._finishSearch(result);
                 } catch (e) {
                     log(`Failed to search related: ${e.message}`);
                 }
-            }));
+            });
 
         this._relatedButton.active = false;
         this._main_stack.visible_child_name = 'character';
@@ -168,7 +163,7 @@ var CharacterDialog = GObject.registerClass({
         }
     }
 
-    _clipboardOwnerChanged(clipboard, event) {
+    _clipboardOwnerChanged(clipboard) {
         let text = clipboard.wait_for_text();
         if (text != this._character)
             this._hideCopyRevealer();
@@ -178,13 +173,8 @@ var CharacterDialog = GObject.registerClass({
         if (this._clipboard == null) {
             this._clipboard = Gc.gtk_clipboard_get();
             let clipboardOwnerChanged =
-                this._clipboard.connect('owner-change',
-                                        Lang.bind(this,
-                                                  this._clipboardOwnerChanged));
-            this.connect('destroy',
-                         Lang.bind(this, function() {
-                             this._clipboard.disconnect(clipboardOwnerChanged);
-                         }));
+                this._clipboard.connect('owner-change', (clipboard) => this._clipboardOwnerChanged(clipboard));
+            this.connect('destroy', () => this._clipboard.disconnect(clipboardOwnerChanged));
         }
         this._clipboard.set_text(this._character, -1);
         this.emit('character-copied', this._character);
@@ -195,13 +185,11 @@ var CharacterDialog = GObject.registerClass({
         this._hideCopyRevealer();
         this._copy_revealer.set_reveal_child(true);
         this._copyRevealerTimeoutId =
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000,
-                             Lang.bind(this, this._hideCopyRevealer));
-        this.connect('destroy',
-                     Lang.bind(this, function() {
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => this._hideCopyRevealer());
+        this.connect('destroy', () => {
                          if (this._copyRevealerTimeoutId > 0)
                              GLib.source_remove(this._copyRevealerTimeoutId);
-                     }));
+                     });
     }
 
     _handleRowSelected(listBox, row) {
