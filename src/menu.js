@@ -16,9 +16,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const {GLib, GObject, Gtk, Pango} = imports.gi;
+const {GLib, GObject, Gtk} = imports.gi;
 
-const Lang = imports.lang;
 const Params = imports.params;
 
 var MenuPopover = GObject.registerClass({
@@ -57,12 +56,10 @@ var MenuPopover = GObject.registerClass({
         }
 
         this._keywords = [];
-        this._search_entry.connect('search-changed',
-                                   Lang.bind(this, this._handleSearchChanged));
-        this._font_listbox.connect('row-activated',
-                                   Lang.bind(this, this._handleRowActivated));
-        this._font_listbox.set_filter_func(Lang.bind(this, this._filterFunc));
-        this._font_listbox.set_header_func(Lang.bind(this, this._headerFunc));
+        this._search_entry.connect('search-changed', (entry) => this._handleSearchChanged(entry));
+        this._font_listbox.connect('row-activated', (listBox, row) => this._handleRowActivated(listBox, row));
+        this._font_listbox.set_filter_func((row) => this._filterFunc(row));
+        this._font_listbox.set_header_func((row, before) => this._headerFunc(row, before));
 
         // This silents warning at Characters exit about this widget being
         // visible but not mapped.  Borrowed from Maps.

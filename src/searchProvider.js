@@ -19,7 +19,6 @@
 
 const {Gc, Gdk, Gio, GLib, GObject} = imports.gi;
 
-const Lang = imports.lang;
 const Util = imports.util;
 
 const MAX_SEARCH_RESULTS = 100;
@@ -55,7 +54,7 @@ const SearchProvider = GObject.registerClass({
         context.search(
             MAX_SEARCH_RESULTS,
             this._cancellable,
-            Lang.bind(this, function(source_object, res, user_data) {
+            (source_object, res, user_data) => {
                 let characters = [];
                 try {
                     let result = context.search_finish(res);
@@ -66,7 +65,7 @@ const SearchProvider = GObject.registerClass({
                 invocation.return_value(new GLib.Variant('(as)', [characters]));
 
                 this._app.release();
-            }));
+            });
     }
 
     GetInitialResultSetAsync(params, invocation) {
@@ -139,7 +138,7 @@ const SearchProvider = GObject.registerClass({
                                                               this._getPlatformData(timestamp)]),
                               null,
                               Gio.DBusCallFlags.NONE,
-                              -1, null, Lang.bind(this, function(connection, result) {
+                              -1, null, (connection, result) => {
                                   try {
                                       connection.call_finish(result);
                                   } catch(e) {
@@ -147,7 +146,7 @@ const SearchProvider = GObject.registerClass({
                                   }
 
                                   this._app.release();
-                              }));
+                              });
     }
 
     LaunchSearch(terms, timestamp) {
