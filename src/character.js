@@ -42,44 +42,9 @@ var CharacterDialog = GObject.registerClass({
 
         this._cancellable = new Gio.Cancellable();
 
-        this._copy_button.connect('clicked', () => {
-                if (this._clipboard == null) {
-                    this._clipboard = Gc.gtk_clipboard_get();
-                    let clipboardOwnerChanged =
-                        this._clipboard.connect('owner-change', (clipboard) => {
-                                                            let text = clipboard.wait_for_text();
-                                                            if (text != this._character)
-                                                                this._hideCopyRevealer();
-                                                        });
+        this._copy_button.connect('clicked', () => this._copyCharacter());
 
-                    this.connect('destroy', () => {
-                                     this._clipboard.disconnect(clipboardOwnerChanged);
-                                 });
-                }
-                this._clipboard.set_text(this._character, -1);
-                this.emit('character-copied', this._character);
-                // Show a feedback message with a revealer.  The message is
-                // hidden after 2 seconds, or when another client set a
-                // different text to clipboard.
-                this._hideCopyRevealer();
-                this._copy_revealer.set_reveal_child(true);
-                this._copyRevealerTimeoutId =
-                    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => { this._hideCopyRevealer(); });
-
-                this.connect('destroy', () => {
-                                 if (this._copyRevealerTimeoutId > 0)
-                                     GLib.source_remove(this._copyRevealerTimeoutId);
-                             });
-        });
-
-        this._related_listbox.connect('row-selected', (widget, row) => {
-                if (row != null) {
-                    this._setCharacter(row._character);
-                    let toplevel = this.get_transient_for();
-                    let action = toplevel.lookup_action('character');
-                    action.activate(new GLib.Variant('s', row._character));
-                }
-        });
+        this._related_listbox.connect('row-selected', (listBox, row) => this._handleRowSelected((listBox, row)));
 
         this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
         this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
@@ -175,7 +140,8 @@ var CharacterDialog = GObject.registerClass({
         let context = new Gc.SearchContext({ criteria: criteria });
         context.search(
             -1,
-            this._cancellable, (context, res) => {
+            this._cancellable,
+            (context, res) => {
                 try {
                     let result = context.search_finish(res);
                     this._finishSearch(result);
@@ -194,6 +160,44 @@ var CharacterDialog = GObject.registerClass({
             GLib.source_remove(this._copyRevealerTimeoutId);
             this._copyRevealerTimeoutId = 0;
             this._copy_revealer.set_reveal_child(false);
+        }
+    }
+
+    _clipboardOwnerChanged(clipboard) {
+        let text = clipboard.wait_for_text();
+        if (text != this._character)
+            this._hideCopyRevealer();
+    }
+
+    _copyCharacter() {
+        if (this._clipboard == null) {
+            this._clipboard = Gc.gtk_clipboard_get();
+            let clipboardOwnerChanged =
+                this._clipboard.connect('owner-change', (clipboard) => this._clipboardOwnerChanged(clipboard));
+            this.connect('destroy', () => this._clipboard.disconnect(clipboardOwnerChanged));
+        }
+        this._clipboard.set_text(this._character, -1);
+        this.emit('character-copied', this._character);
+
+        // Show a feedback message with a revealer.  The message is
+        // hidden after 2 seconds, or when another client set a
+        // different text to clipboard.
+        this._hideCopyRevealer();
+        this._copy_revealer.set_reveal_child(true);
+        this._copyRevealerTimeoutId =
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => this._hideCopyRevealer());
+        this.connect('destroy', () => {
+                         if (this._copyRevealerTimeoutId > 0)
+                             GLib.source_remove(this._copyRevealerTimeoutId);
+                     });
+    }
+
+    _handleRowSelected(listBox, row) {
+        if (row != null) {
+            this._setCharacter(row._character);
+            let toplevel = this.get_transient_for();
+            let action = toplevel.lookup_action('character');
+            action.activate(new GLib.Variant('s', row._character));
         }
     }
 });
