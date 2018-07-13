@@ -64,19 +64,19 @@
             ]
         },
         {
-        	"name" : "noto-fonts-emoji",
-        	"buildsystem" : "simple",
-        	"build-commands" : [
-        		"install -D fonts/NotoColorEmoji.ttf /app/share/fonts/noto",
-        		"install -D LICENSE /app/share/licenses/noto-fonts-emoji/LICENSE"
-        	],
-        	"sources": [
-        		{
-        			"type" : "archive",
-        			"url" : "https://github.com/googlei18n/noto-emoji/archive/v2018-04-24-pistol-update.zip",
-        			"sha256" : "6722056d183d9ae62ba5c8954a541d0f17064450cf261302269b7c3e783975de"
-        		}
-        	]
+            "name" : "noto-fonts-emoji",
+            "buildsystem" : "simple",
+            "build-commands" : [
+                "install -D fonts/NotoColorEmoji.ttf /app/share/fonts/noto",
+                "install -D LICENSE /app/share/licenses/noto-fonts-emoji/LICENSE"
+            ],
+            "sources": [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/googlei18n/noto-emoji/archive/v2018-04-24-pistol-update.zip",
+                    "sha256" : "6722056d183d9ae62ba5c8954a541d0f17064450cf261302269b7c3e783975de"
+                }
+            ]
         },
         {
             "name" : "gnome-characters",
