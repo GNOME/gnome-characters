@@ -16,7 +16,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const Lang = imports.lang;
 const Params = imports.params;
 const {Gc, Gdk, GLib, Gio,GObject,Gtk, Pango, PangoCairo} = imports.gi;
 
@@ -32,8 +31,7 @@ const NUM_COLUMNS = 5;
 const CELL_SIZE = 50;
 
 function getCellSize(fontDescription) {
-    if (fontDescription == null
-        || fontDescription.get_size() == 0)
+    if (fontDescription == null || fontDescription.get_size() == 0)
         return CELL_SIZE;
     return fontDescription.get_size() * 2 / Pango.SCALE;
 }
@@ -459,10 +457,7 @@ var CharacterListView = GObject.registerClass({
             vexpand: true,
             fontDescription: this._fontFilter.fontDescription
         });
-        this._characterList.connect('character-selected',
-                                    Lang.bind(this, function(w, c) {
-                                        this.emit('character-selected', c);
-                                    }));
+        this._characterList.connect('character-selected', (w, c) => this.emit('character-selected', c));
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             visible: true
@@ -474,32 +469,30 @@ var CharacterListView = GObject.registerClass({
         this.add_named(scroll, 'character-list');
         this.visible_child_name = 'character-list';
 
-        this._fontFilter.connect('filter-set',
-                                 Lang.bind(this, this._updateCharacterList));
+        this._fontFilter.connect('filter-set', () => this._updateCharacterList());
 
         this._characters = [];
         this._spinnerTimeoutId = 0;
         this._searchContext = null;
         this._cancellable = new Gio.Cancellable();
-        this._cancellable.connect(Lang.bind(this, function () {
+        this._cancellable.connect(() => {
             this._stopSpinner();
             this._searchContext = null;
             this._characters = [];
             this._updateCharacterList();
-        }));
-        scroll.connect('edge-reached', Lang.bind(this, this._onEdgeReached));
-        scroll.connect('size-allocate', Lang.bind(this, this._onSizeAllocate));
+        });
+        scroll.connect('edge-reached', (scrolled, pos) => this._onEdgeReached(scrolled, pos));
+        scroll.connect('size-allocate', (scrolled, allocation) => this._onSizeAllocate(scrolled, allocation));
     }
 
     _startSpinner() {
         this._stopSpinner();
         this._spinnerTimeoutId =
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000,
-                             Lang.bind(this, function () {
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
                                  this._loading_spinner.start();
                                  this.visible_child_name = 'loading';
                                  this.show_all();
-                             }));
+                             });
     }
 
     _stopSpinner() {
@@ -576,10 +569,7 @@ var CharacterListView = GObject.registerClass({
 
     _searchWithContext(context, count) {
         this._startSpinner();
-        context.search(
-            count,
-            this._cancellable,
-            Lang.bind(this, function(context, res, user_data) {
+        context.search(count, this._cancellable, (context, res, user_data) => {
                 this._stopSpinner();
                 try {
                     let result = context.search_finish(res);
@@ -587,7 +577,7 @@ var CharacterListView = GObject.registerClass({
                 } catch (e) {
                     log(`Failed to search: ${e.message}`);
                 }
-            }));
+            });
     }
 
     searchByCategory(category) {
@@ -644,14 +634,10 @@ var RecentCharacterListView = GObject.registerClass({
             fontDescription: this._fontFilter.fontDescription,
             numRows: 0
         });
-        this._characterList.connect('character-selected',
-                                    Lang.bind(this, function(w, c) {
-                                        this.emit('character-selected', c);
-                                    }));
+        this._characterList.connect('character-selected', (w, c) => this.emit('character-selected', c));
         this.add(this._characterList);
 
-        this._fontFilter.connect('filter-set',
-                                 Lang.bind(this, this._updateCharacterList));
+        this._fontFilter.connect('filter-set', () => this._updateCharacterList());
 
         this._category = filtered.category;
         this._characters = [];
