@@ -219,7 +219,7 @@ var MainWindow = GObject.registerClass({
     _category(action, v) {
         this.search_active = false;
 
-        let [name, length] = v.get_string()
+        let [name, length] = v.get_string();
 
         this._categoryListView.set_visible_child_name(name);
         let categoryList = this._categoryListView.get_visible_child();
@@ -243,7 +243,7 @@ var MainWindow = GObject.registerClass({
     _subcategory(action, v) {
         this.search_active = false;
 
-        let [name, length] = v.get_string()
+        let [name, length] = v.get_string();
 
         let categoryList = this._categoryListView.get_visible_child();
         if (categoryList == null)
@@ -262,7 +262,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _filterFont(action, v) {
-        let [family, length] = v.get_string()
+        let [family, length] = v.get_string();
         if (family == 'None')
             family = null;
         this._mainView.filterFontFamily = family;
