@@ -24,12 +24,12 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const {Gc, Gio, GLib, GObject, Gtk } = imports.gi;
+const {Gio, GLib, GObject, Gtk } = imports.gi;
 
 const Lang = imports.lang;
 const Params = imports.params;
 const CategoryList = imports.categoryList;
-const Character = imports.character;
+const Character = imports.characterDialog;
 const CharacterList = imports.characterList;
 const Menu = imports.menu;
 const Gettext = imports.gettext;
