@@ -44,7 +44,7 @@ var CharacterDialog = GObject.registerClass({
 
         this._copy_button.connect('clicked', () => this._copyCharacter());
 
-        this._related_listbox.connect('row-selected', (listBox, row) => this._handleRowSelected((listBox, row)));
+        this._related_listbox.connect('row-selected', (listBox, row) => this._handleRowSelected(listBox, row));
 
         this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
         this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
@@ -194,6 +194,8 @@ var CharacterDialog = GObject.registerClass({
 
     _handleRowSelected(listBox, row) {
         if (row != null) {
+            log(row);
+            log(listBox);
             this._setCharacter(row._character);
             let toplevel = this.get_transient_for();
             let action = toplevel.lookup_action('character');
