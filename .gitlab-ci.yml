@@ -62,6 +62,7 @@ fedora:rawhide:
     image: fedora:rawhide
     stage: cross_environment
     before_script:
+        - dnf -y upgrade --best --allowrasing
         - dnf install -y 'dnf-command(builddep)' redhat-rpm-config
         - dnf builddep -y gnome-characters
     script:
