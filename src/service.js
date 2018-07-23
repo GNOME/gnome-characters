@@ -32,6 +32,8 @@ const GObject = imports.gi.GObject;
 const Util = imports.util;
 const SearchProvider = imports.searchProvider;
 
+var application_id = pkg.name;
+
 function initEnvironment() {
     window.getApp = function() {
         return Gio.Application.get_default();

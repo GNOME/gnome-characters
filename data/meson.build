@@ -43,6 +43,7 @@ foreach resource: resources
 endforeach
 
 desktop_conf = configuration_data ()
+desktop_conf.set('appid', characters_application_id)
 desktop_conf.set('bindir', characters_bindir)
 
 i18n.merge_file(

@@ -3,7 +3,7 @@ project(
   version: '3.30.0',
   license: 'BSD3',
   default_options: 'buildtype=debugoptimized',
-  meson_version: '>= 0.42.0'
+  meson_version: '>= 0.46.0'
 )
 
 characters_name = 'org.gnome.Characters'

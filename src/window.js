@@ -192,7 +192,7 @@ var MainWindow = GObject.registerClass({
               comments: _("Character Map"),
               copyright: 'Copyright 2014-2018 Daiki Ueno',
               license_type: Gtk.License.GPL_2_0,
-              logo_icon_name: 'gnome-characters',
+              logo_icon_name: Main.application_id,
               version: pkg.version,
               // website: 'https://wiki.gnome.org/Design/Apps/CharacterMap',
               wrap_license: true,

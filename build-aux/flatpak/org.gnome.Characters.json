@@ -6,7 +6,6 @@
     "branch" : "master",
     "sdk" : "org.gnome.Sdk",
     "copy-icon" : true,
-    "rename-icon" : "gnome-characters",
     "finish-args" : [
         "--share=ipc",
         "--socket=x11",
