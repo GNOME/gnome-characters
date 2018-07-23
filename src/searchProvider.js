@@ -19,6 +19,7 @@
 
 const {Gc, Gdk, Gio, GLib, GObject} = imports.gi;
 
+const Service = imports.service;
 const Util = imports.util;
 
 const MAX_SEARCH_RESULTS = 100;
@@ -98,7 +99,7 @@ const SearchProvider = GObject.registerClass({
             ret.push({ name: new GLib.Variant('s', name),
                        id: new GLib.Variant('s', identifiers[i]),
                        description: new GLib.Variant('s', summary),
-                       icon: (new Gio.ThemedIcon({ name: 'gnome-characters' })).serialize(),
+                       icon: (new Gio.ThemedIcon({ name: Service.application_id })).serialize(),
                        clipboardText: new GLib.Variant('s', character)
                      });
         }
