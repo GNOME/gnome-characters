@@ -10,7 +10,7 @@ data/org.gnome.Characters.appdata.xml.in
 data/org.gnome.Characters.desktop.in
 data/org.gnome.Characters.gschema.xml
 src/categoryList.js
-src/character.js
+src/characterDialog.js
 src/characterList.js
 src/main.js
 src/menu.js

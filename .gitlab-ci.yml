@@ -58,10 +58,11 @@ stop_review:
         name: review/$CI_COMMIT_REF_NAME
         action: stop
 
-fedora:rawhide:
-    image: fedora:rawhide
+fedora:latest:
+    image: fedora:latest
     stage: cross_environment
     before_script:
+        - dnf upgrade -y
         - dnf install -y 'dnf-command(builddep)' redhat-rpm-config
         - dnf builddep -y gnome-characters
     script:
