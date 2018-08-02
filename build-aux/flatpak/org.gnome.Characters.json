@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.CharactersDevel",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.28",
+    "runtime-version" : "master",
     "command" : "gnome-characters",
     "branch" : "master",
     "sdk" : "org.gnome.Sdk",
