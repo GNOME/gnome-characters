@@ -44,7 +44,7 @@ apps:
       - home
       - unity7
       - wayland
-    desktop: usr/share/applications/org.gnome.Characters.desktop
+    desktop: usr/share/applications/org.gnome.CharactersDevel.desktop
     environment:
       GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/gnome-characters
@@ -98,7 +98,7 @@ parts:
     after: [gnome-desktop]
     source: .
     plugin: meson
-    meson-parameters: [--prefix=/snap/gnome-calculator/current/usr]
+    meson-parameters: [--prefix=/usr]
     organize:
       snap/gnome-characters/current/usr: usr
     override-build: |
@@ -125,6 +125,7 @@ parts:
       - gperf
       - libgdk-pixbuf2.0-dev
       - libpango1.0-dev
+      - libunistring-dev
 
   libraries:
     plugin: nil
