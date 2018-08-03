@@ -35,7 +35,7 @@ slots:
 
 apps:
   gnome-characters:
-    command: desktop-launch gnome-characters
+    command: desktop-launch ${SNAP}/usr/share/org.gnome.Characters/org.gnome.Characters
     plugs:
       - browser-support
       - desktop
@@ -44,10 +44,10 @@ apps:
       - home
       - unity7
       - wayland
-    desktop: usr/share/applications/org.gnome.CharactersDevel.desktop
+    desktop: usr/share/applications/org.gnome.Characters.desktop
     environment:
       GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
-      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/gnome-characters
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/org.gnome.Characters
 
 parts:
   iso-codes:
@@ -98,16 +98,18 @@ parts:
     after: [gnome-desktop]
     source: .
     plugin: meson
-    meson-parameters: [--prefix=/usr]
+    meson-parameters: [--buildtype=release, --prefix=/snap/gnome-characters/current/usr]
     organize:
       snap/gnome-characters/current/usr: usr
     override-build: |
       sed -i.bak -e 's|=gnome-characters$|=${SNAP}/meta/gui/gnome-characters.png|g' data/org.gnome.Characters.desktop.in
+      sed -i.bak -e 's|=@bindir@/gnome-characters$|=${SNAP}/usr/share/org.gnome.Characters/org.gnome.Characters|g' data/org.gnome.Characters.desktop.in
       sed -i.bak -e 's|@GJS@|/snap/gnome-characters/current/usr/bin/gjs|g' src/org.gnome.Characters.in
       sed -i.bak -e 's|@GJS@|/snap/gnome-characters/current/usr/bin/gjs|g' src/org.gnome.Characters.BackgroundService.in
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
       cp ../src/data/icons/hicolor/256x256/apps/gnome-characters.png $SNAPCRAFT_PART_INSTALL/meta/gui/
+      rm -f $SNAPCRAFT_PART_INSTALL/snap/gnome-characters/current/usr/bin/gnome-characters
     build-attributes: ['no-system-libraries']
     build-packages:
       - desktop-file-utils
@@ -136,9 +138,11 @@ parts:
       - gir1.2-gtk-3.0
       - gir1.2-gnomedesktop-3.0
       - libreadline6
+      - libunistring0
     prime:
       - "usr/bin/gjs*"
       - "usr/lib/*/girepository-1.0*"
       - "usr/lib/*/libmozjs*"
       - "usr/lib/*.*"
       - "lib/*/libreadline.so*"
+      - "usr/lib/*/libunistring.so*"
