@@ -1,16 +1,16 @@
 # Polish translation for gnome-characters.
-# Copyright © 2015-2017 the gnome-characters authors.
+# Copyright © 2015-2018 the gnome-characters authors.
 # This file is distributed under the same license as the gnome-characters package.
-# Piotr Drąg <piotrdrag@gmail.com>, 2015-2017.
-# Aviary.pl <community-poland@mozilla.org>, 2015-2017.
+# Piotr Drąg <piotrdrag@gmail.com>, 2015-2018.
+# Aviary.pl <community-poland@mozilla.org>, 2015-2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-30 14:43+0000\n"
-"PO-Revision-Date: 2017-08-30 16:55+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-07-04 19:17+0000\n"
+"PO-Revision-Date: 2018-08-06 18:50+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -64,7 +64,7 @@ msgstr "Bieżąca strona"
 msgid "Filter by Font"
 msgstr "Filtrowanie według czcionki"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:194
 msgid "GNOME Characters"
 msgstr "Tablica znaków dla środowiska GNOME"
 
@@ -90,7 +90,7 @@ msgstr ""
 "Można także przeglądać znaki według kategorii, takich jak interpunkcja, "
 "obrazki itp."
 
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:49
 msgid "Characters"
 msgstr "Znaki"
 
@@ -122,160 +122,160 @@ msgstr "Czcionka używana do wyświetlania znaków na liście."
 msgid "Maximum recent characters"
 msgstr "Maksymalna liczba ostatnio używanych znaków"
 
-#: src/categoryList.js:33
+#: src/categoryList.js:32
 msgid "Emojis"
 msgstr "Emoji"
 
-#: src/categoryList.js:40 src/categoryList.js:390
+#: src/categoryList.js:39 src/categoryList.js:383
 msgid "Letters & Symbols"
 msgstr "Litery i symbole"
 
-#: src/categoryList.js:50
+#: src/categoryList.js:49
 msgid "Punctuation"
 msgstr "Interpunkcja"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:56
 msgid "Arrows"
 msgstr "Strzałki"
 
-#: src/categoryList.js:64
+#: src/categoryList.js:63
 msgid "Bullets"
 msgstr "Wypunktowanie"
 
-#: src/categoryList.js:71
+#: src/categoryList.js:70
 msgid "Pictures"
 msgstr "Obrazki"
 
-#: src/categoryList.js:78
+#: src/categoryList.js:77
 msgid "Currencies"
 msgstr "Waluty"
 
-#: src/categoryList.js:85
+#: src/categoryList.js:84
 msgid "Math"
 msgstr "Symbole matematyczne"
 
-#: src/categoryList.js:92
+#: src/categoryList.js:91
 msgid "Letters"
 msgstr "Litery"
 
-#: src/categoryList.js:102
+#: src/categoryList.js:101
 msgid "Smileys & People"
 msgstr "Uśmieszki i osoby"
 
-#: src/categoryList.js:109
+#: src/categoryList.js:108
 msgid "Animals & Nature"
 msgstr "Zwierzęta i przyroda"
 
-#: src/categoryList.js:116
+#: src/categoryList.js:115
 msgid "Food & Drink"
 msgstr "Jedzenie i napoje"
 
-#: src/categoryList.js:123
+#: src/categoryList.js:122
 msgid "Activities"
-msgstr "Sport"
+msgstr "Święta i sport"
 
-#: src/categoryList.js:130
+#: src/categoryList.js:129
 msgid "Travel & Places"
 msgstr "Podróże i miejsca"
 
-#: src/categoryList.js:137
+#: src/categoryList.js:136
 msgid "Objects"
 msgstr "Rzeczy"
 
-#: src/categoryList.js:144
+#: src/categoryList.js:143
 msgid "Symbols"
 msgstr "Symbole"
 
-#: src/categoryList.js:151
+#: src/categoryList.js:150
 msgid "Flags"
 msgstr "Flagi"
 
-#: src/categoryList.js:166
+#: src/categoryList.js:164
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Rząd listy kategorii „%s”"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:373
+#: src/categoryList.js:371 src/window.js:365
 msgid "Recently Used"
 msgstr "Ostatnio używane"
 
-#: src/character.js:56
+#: src/character.js:52
 msgid "See Also"
 msgstr "Podobne znaki"
 
-#: src/character.js:122 src/character.js:144
+#: src/character.js:118 src/character.js:140
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:140
+#: src/character.js:136
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "Znaku „%s” nie ma w czcionce %s"
 
-#: src/characterList.js:178
+#: src/characterList.js:171
 msgid "Unassigned"
 msgstr "Nieprzydzielone"
 
-#: src/main.js:58
+#: src/main.js:55
 msgid "Characters Application"
 msgstr "Tablica znaków"
 
-#: src/main.js:95
+#: src/main.js:92
 msgid "Characters Application started"
 msgstr "Uruchomiono tablicę znaków"
 
-#: src/main.js:103
+#: src/main.js:100
 msgid "Characters Application exiting"
 msgstr "Kończenie działania tablicy znaków"
 
-#: src/menu.js:50
+#: src/menu.js:45
 msgid "None"
 msgstr "Brak"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:93
 msgid "Unknown character name"
 msgstr "Nieznana nazwa znaku"
 
-#: src/searchProvider.js:98
+#: src/searchProvider.js:96
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:199
+#: src/window.js:193
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2015-2017\n"
-"Aviary.pl <community-poland@mozilla.org>, 2015-2017"
+"Piotr Drąg <piotrdrag@gmail.com>, 2015-2018\n"
+"Aviary.pl <community-poland@mozilla.org>, 2015-2018"
 
-#: src/window.js:201
+#: src/window.js:195
 msgid "Character Map"
 msgstr "Tablica znaków"
 
-#: src/window.js:221
+#: src/window.js:215
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (tylko %s)"
 
-#: src/window.js:350
+#: src/window.js:342
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista znaków „%s”"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:358
+#: src/window.js:350
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Lista ostatnio używanych znaków „%s”"
 
-#: src/window.js:377
+#: src/window.js:369
 msgid "Search Result Character List"
 msgstr "Wynik wyszukiwania na liście znaków"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:379
+#: src/window.js:371
 msgid "Search Result"
 msgstr "Wyniki wyszukiwania"
