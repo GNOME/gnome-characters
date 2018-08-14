@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2018-02-08 10:05+0000\n"
-"PO-Revision-Date: 2018-02-09 09:54+0100\n"
+"POT-Creation-Date: 2018-07-04 19:17+0000\n"
+"PO-Revision-Date: 2018-08-14 17:57+0200\n"
 "Last-Translator: Alain Lojewski <allomervan@gmail.com>\n"
 "Language-Team: français <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -65,7 +65,7 @@ msgstr "Page actuelle"
 msgid "Filter by Font"
 msgstr "Filtrer par police"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:199
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:194
 msgid "GNOME Characters"
 msgstr "Caractères de GNOME"
 
@@ -91,7 +91,7 @@ msgstr ""
 "Vous pouvez aussi naviguer dans les caractères par catégories, comme par "
 "Ponctuation, Images, etc."
 
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:49
 msgid "Characters"
 msgstr "Caractères"
 
@@ -107,7 +107,7 @@ msgstr "gnome-characters"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "caractères;unicode;ponctuation;math;lettres;emoji;émoticône;"
+msgstr "caractères;unicode;ponctuation;math;lettres;émoji;émoticône;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -121,160 +121,160 @@ msgstr "Utiliser la police pour afficher la liste des caractères."
 msgid "Maximum recent characters"
 msgstr "Nombre maximal de caractères récents"
 
-#: src/categoryList.js:33
+#: src/categoryList.js:32
 msgid "Emojis"
-msgstr "Emojis"
+msgstr "Émojis"
 
-#: src/categoryList.js:40 src/categoryList.js:390
+#: src/categoryList.js:39 src/categoryList.js:383
 msgid "Letters & Symbols"
 msgstr "Lettres et symboles"
 
-#: src/categoryList.js:50
+#: src/categoryList.js:49
 msgid "Punctuation"
 msgstr "Ponctuation"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:56
 msgid "Arrows"
 msgstr "Flèches"
 
-#: src/categoryList.js:64
+#: src/categoryList.js:63
 msgid "Bullets"
 msgstr "Puces"
 
-#: src/categoryList.js:71
+#: src/categoryList.js:70
 msgid "Pictures"
 msgstr "Images"
 
-#: src/categoryList.js:78
+#: src/categoryList.js:77
 msgid "Currencies"
 msgstr "Monnaies"
 
-#: src/categoryList.js:85
+#: src/categoryList.js:84
 msgid "Math"
 msgstr "Math"
 
-#: src/categoryList.js:92
+#: src/categoryList.js:91
 msgid "Letters"
 msgstr "Lettres"
 
-#: src/categoryList.js:102
+#: src/categoryList.js:101
 msgid "Smileys & People"
 msgstr "Émoticônes et personnages"
 
-#: src/categoryList.js:109
+#: src/categoryList.js:108
 msgid "Animals & Nature"
 msgstr "Animaux et nature"
 
-#: src/categoryList.js:116
+#: src/categoryList.js:115
 msgid "Food & Drink"
 msgstr "Nourriture et boisson"
 
-#: src/categoryList.js:123
+#: src/categoryList.js:122
 msgid "Activities"
 msgstr "Activités"
 
-#: src/categoryList.js:130
+#: src/categoryList.js:129
 msgid "Travel & Places"
 msgstr "Voyages et lieux"
 
-#: src/categoryList.js:137
+#: src/categoryList.js:136
 msgid "Objects"
 msgstr "Objets"
 
-#: src/categoryList.js:144
+#: src/categoryList.js:143
 msgid "Symbols"
 msgstr "Symboles"
 
-#: src/categoryList.js:151
+#: src/categoryList.js:150
 msgid "Flags"
 msgstr "Drapeaux"
 
-#: src/categoryList.js:166
+#: src/categoryList.js:164
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Ligne de la catégorie %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:372
+#: src/categoryList.js:371 src/window.js:365
 msgid "Recently Used"
 msgstr "Récemment utilisé"
 
-#: src/character.js:56
+#: src/character.js:52
 msgid "See Also"
 msgstr "Voir aussi"
 
-#: src/character.js:122 src/character.js:144
+#: src/character.js:118 src/character.js:140
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:140
+#: src/character.js:136
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s n’est pas inclus dans %s"
 
-#: src/characterList.js:178
+#: src/characterList.js:171
 msgid "Unassigned"
 msgstr "Non assigné"
 
-#: src/main.js:58
+#: src/main.js:55
 msgid "Characters Application"
 msgstr "Application Caractères"
 
-#: src/main.js:95
+#: src/main.js:92
 msgid "Characters Application started"
 msgstr "Application Caractères démarée"
 
-#: src/main.js:103
+#: src/main.js:100
 msgid "Characters Application exiting"
 msgstr "Fermeture de l'application Caractères"
 
-#: src/menu.js:50
+#: src/menu.js:45
 msgid "None"
 msgstr "Aucun"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:93
 msgid "Unknown character name"
 msgstr "Nom de caractère inconnu"
 
-#: src/searchProvider.js:98
+#: src/searchProvider.js:96
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s : %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:198
+#: src/window.js:193
 msgid "translator-credits"
 msgstr ""
 "Guillaume Bernard <translate@filorin.fr>\n"
 "Alain Lojewski <allomervan@gmail.com>"
 
-#: src/window.js:200
+#: src/window.js:195
 msgid "Character Map"
 msgstr "Table de caractères"
 
-#: src/window.js:220
+#: src/window.js:215
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s seulement)"
 
-#: src/window.js:349
+#: src/window.js:342
 #, javascript-format
 msgid "%s Character List"
 msgstr "Liste de caractères %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:357
+#: src/window.js:350
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Liste de caractères %s récemment utilisée"
 
-#: src/window.js:376
+#: src/window.js:369
 msgid "Search Result Character List"
 msgstr "Liste des caractères issus de la recherche"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:378
+#: src/window.js:371
 msgid "Search Result"
 msgstr "Résultat de la recherche"
