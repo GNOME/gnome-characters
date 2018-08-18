@@ -1,3 +1,16 @@
+3.29.91
+===
+
+- Port to modern JavaScript
+- build: Drop autotools support
+
+New And Updated Translations
+============================
+Claude Paroz (fr)
+Pieter Schalk Schoeman (af)
+Piotr Drąg (pl)
+Waldo Luís Ribeiro (en_GB)
+
 3.28.2
 ===
 
