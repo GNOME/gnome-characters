@@ -1,6 +1,5 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-data/app-menu.ui
 data/characterlist.ui
 data/character.ui
 data/mainview.ui
