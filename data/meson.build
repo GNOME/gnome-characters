@@ -17,7 +17,6 @@ resource_data = files(
   'icons/hicolor/scalable/categories/characters-picture-symbolic.svg',
   'icons/hicolor/scalable/categories/characters-punctuation-symbolic.svg',
   'application.css',
-  'app-menu.ui',
   'characterlist.ui',
   'character.ui',
   'mainview.ui',

@@ -65,14 +65,6 @@ var MyApplication = GObject.registerClass({
         window.show();
     }
 
-    _initAppMenu () {
-        const builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/Characters/app-menu.ui');
-
-        const menu = builder.get_object('app-menu');
-        this.set_app_menu(menu);
-    }
-
     vfunc_startup () {
         super.vfunc_startup();
 
@@ -84,7 +76,7 @@ var MyApplication = GObject.registerClass({
                           { name: 'search',
                             activate: this._onSearch,
                             parameter_type: new GLib.VariantType('as') }]);
-        this._initAppMenu();
+        this.set_accels_for_action('app.quit', ['<Primary>q']);
 
         settings = Util.getSettings('org.gnome.Characters',
                                     '/org/gnome/Characters/');
