@@ -1,0 +1,279 @@
+# Tamil translation for gnome-characters.
+# Copyright (C) 2017 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# sudhakaru <sudhakaru@cdac.in>, 2017.
+# அருள்ராஜன் அ லை <alarulrajan@gmail.com>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-10-29 12:19+0000\n"
+"PO-Revision-Date: 2018-12-11 07:53+0530\n"
+"Last-Translator: அருள்ராஜன் அ லை <alarulrajan@gmail.com>\n"
+"Language-Team: Tamil <>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#: data/characterlist.ui:30
+msgid "Search found no results"
+msgstr "தேடல் முடிவுகள் எதுவும் கிடைக்கவில்லை"
+
+#: data/characterlist.ui:41
+msgid "Try a different search."
+msgstr "வேறொரு தேடலை முயற்சிக்கவும்."
+
+#: data/characterlist.ui:73
+msgid "Loading…"
+msgstr "ஏற்றுதல்..."
+
+#: data/character.ui:68
+msgid "Copy Character"
+msgstr "எழுத்தை நகலெடு"
+
+#: data/character.ui:86
+msgid "Character copied to clipboard"
+msgstr "எழுத்து கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "சமீபத்திய எழுத்துகள் எதுவும் இல்லை"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "நீங்கள் அவற்றைப் பயன்படுத்தினால் எழுத்துகள் இங்கே தோன்றும்"
+
+#: data/mainwindow.ui:12
+msgid "Current page"
+msgstr "தற்போதைய பக்கம்"
+
+#: data/menu.ui:17
+msgid "Filter by Font"
+msgstr "எழுத்துரு மூலம் வடிகட்டவும்"
+
+#: data/menu.ui:54
+#| msgid "Characters"
+msgid "About Characters"
+msgstr "எழுத்துக்களை பற்றி"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+msgid "GNOME Characters"
+msgstr "GNOME எழுத்துக்கள்"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "எழுத்து வரைபட பயன்பாடு"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "நீங்கள் எழுத்துகள், வகைப்படுத்தல், படங்கள், படங்கள் முதலியனவற்றை தேடலாம்"
+
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+msgid "Characters"
+msgstr "எழுத்துக்கள்"
+
+#: data/org.gnome.Characters.desktop.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Characters.desktop.in:7
+msgid "@appid@"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr ""
+"எழுத்துக்குறிகள்; யுனிகோட்; நிறுத்தற்குறிகள்; கணிதம்; கடிதங்கள்; எமோஜி; எமோடிகானைச்;"
+
+#: data/org.gnome.Characters.gschema.xml:5
+msgid "Font to display characters"
+msgstr "எழுத்துகள் காட்ட எழுத்துரு"
+
+#: data/org.gnome.Characters.gschema.xml:6
+msgid "Use the font to render characters on the character list."
+msgstr "பாத்திரம் பட்டியலில் எழுத்துகள் வழங்க எழுத்துரு பயன்படுத்து."
+
+#: data/org.gnome.Characters.gschema.xml:15
+msgid "Maximum recent characters"
+msgstr "சமீபத்திய அதிகபட்ச எழுத்துகள்"
+
+#: src/categoryList.js:31
+msgid "Emojis"
+msgstr "ஈமோஜிகள்"
+
+#: src/categoryList.js:38 src/categoryList.js:378
+msgid "Letters & Symbols"
+msgstr "கடிதங்கள் & சின்னங்கள்"
+
+#: src/categoryList.js:48
+msgid "Punctuation"
+msgstr "நிறுத்தக்குறி"
+
+#: src/categoryList.js:55
+msgid "Arrows"
+msgstr "அம்புகள்"
+
+#: src/categoryList.js:62
+msgid "Bullets"
+msgstr "குண்டுகள்"
+
+#: src/categoryList.js:69
+msgid "Pictures"
+msgstr "படங்கள்"
+
+#: src/categoryList.js:76
+msgid "Currencies"
+msgstr "நாணயங்கள்"
+
+#: src/categoryList.js:83
+msgid "Math"
+msgstr "கணிதம்"
+
+#: src/categoryList.js:90
+msgid "Letters"
+msgstr "எழுத்துக்கள்"
+
+#: src/categoryList.js:100
+msgid "Smileys & People"
+msgstr "ஸ்மைலிகளும் மக்களும்"
+
+#: src/categoryList.js:107
+msgid "Animals & Nature"
+msgstr "விலங்குகள் & இயற்கை"
+
+#: src/categoryList.js:114
+msgid "Food & Drink"
+msgstr "உணவு மற்றும் பானம்"
+
+#: src/categoryList.js:121
+msgid "Activities"
+msgstr "நடவடிக்கைகள்"
+
+#: src/categoryList.js:128
+msgid "Travel & Places"
+msgstr "சுற்றுலா & இடங்கள்"
+
+#: src/categoryList.js:135
+msgid "Objects"
+msgstr "பொருள்கள்"
+
+#: src/categoryList.js:142
+msgid "Symbols"
+msgstr "சின்னங்கள்"
+
+#: src/categoryList.js:149
+msgid "Flags"
+msgstr "கொடிகள்"
+
+#: src/categoryList.js:163
+#, javascript-format
+msgid "%s Category List Row"
+msgstr "%s வகை பட்டியல் வரிசை"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:366 src/window.js:362
+msgid "Recently Used"
+msgstr "சமீபத்தில் பயன்படுத்திய"
+
+#: src/characterDialog.js:49
+msgid "See Also"
+msgstr "மேலும் காண்க"
+
+#: src/characterDialog.js:113 src/characterDialog.js:135
+#, javascript-format
+msgid "Unicode U+%04s"
+msgstr "யுனிகோட் U+%04s"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:131
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s உள்ளே சேர்க்கப்படவில்லை %s"
+
+#: src/characterList.js:169
+msgid "Unassigned"
+msgstr "ஒதுக்கப்படாத"
+
+#: src/main.js:55
+msgid "Characters Application"
+msgstr "எழுத்துகள் விண்ணப்பம்"
+
+#: src/main.js:84
+msgid "Characters Application started"
+msgstr "எழுத்துகள் விண்ணப்பம் தொடங்கியது"
+
+#: src/main.js:92
+msgid "Characters Application exiting"
+msgstr "எழுத்துப்பிழைகள் பயன்பாடு வெளியேறும்"
+
+#: src/menu.js:44
+msgid "None"
+msgstr "எதுவுமில்லை"
+
+#: src/searchProvider.js:93
+msgid "Unknown character name"
+msgstr "அறியப்படாத எழுத்துக்குறி பெயர்"
+
+#: src/searchProvider.js:96
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:190
+msgid "translator-credits"
+msgstr "மொழிபெயர்ப்பாளர்-புகழ்"
+
+#: src/window.js:192
+msgid "Character Map"
+msgstr "எழுத்து வரைபடம்"
+
+#: src/window.js:212
+#, javascript-format
+msgid "%s (%s only)"
+msgstr "%s (%s மட்டுமே)"
+
+#: src/window.js:339
+#, javascript-format
+msgid "%s Character List"
+msgstr "%s எழுத்து பட்டியல்"
+
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:347
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "சமீபத்தில் பயன்படுத்தப்பட்ட %s எழுத்து பட்டியல்"
+
+#: src/window.js:366
+msgid "Search Result Character List"
+msgstr "தேடல் முடிவு எழுத்து பட்டியல்"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:368
+msgid "Search Result"
+msgstr "தேடல் முடிவுகள்"
+
+#~ msgid "About"
+#~ msgstr "பற்றி"
+
+#~ msgid "Quit"
+#~ msgstr "வெளியேறு"
+
+#~ msgid "gnome-characters"
+#~ msgstr "க்னோம் எழுத்துக்கள்"
