@@ -8,27 +8,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-09-08 08:40+0000\n"
-"PO-Revision-Date: 2017-09-12 22:22+0300\n"
-"Last-Translator: Tom Tryfonidis <tomtryf@gnome.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-10-29 12:19+0000\n"
+"PO-Revision-Date: 2018-12-21 00:49+0200\n"
+"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
 "Language-Team: Greek, Modern (1453-) <opensuse-translation-el@opensuse.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Project-Style: gnome\n"
-
-#: data/app-menu.ui:6
-msgid "About"
-msgstr "Περί"
-
-#: data/app-menu.ui:10
-msgid "Quit"
-msgstr "Έξοδος"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
@@ -66,7 +58,11 @@ msgstr "Τρέχουσα σελίδα"
 msgid "Filter by Font"
 msgstr "Φιλτράρισμα κατά γραμματοσειρά"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
+#: data/menu.ui:54
+msgid "About Characters"
+msgstr "Περί Χαρακτήρες"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
 msgid "GNOME Characters"
 msgstr "Χαρακτήρες GNOME"
 
@@ -102,8 +98,8 @@ msgstr "Βοηθητική εφαρμογή εύρεσης και εισαγωγ
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-msgid "gnome-characters"
-msgstr "gnome-characters"
+msgid "@appid@"
+msgstr "@appid@"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -126,130 +122,130 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Μέγιστοι πρόσφατοι χαρακτήρες"
 
-#: src/categoryList.js:33
+#: src/categoryList.js:31
 msgid "Emojis"
 msgstr "Emojis"
 
-#: src/categoryList.js:40 src/categoryList.js:390
+#: src/categoryList.js:38 src/categoryList.js:378
 msgid "Letters & Symbols"
 msgstr "Γράμματα & σύμβολα"
 
-#: src/categoryList.js:50
+#: src/categoryList.js:48
 msgid "Punctuation"
 msgstr "Στίξη"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:55
 msgid "Arrows"
 msgstr "Βέλη"
 
-#: src/categoryList.js:64
+#: src/categoryList.js:62
 msgid "Bullets"
 msgstr "Κουκκίδες"
 
-#: src/categoryList.js:71
+#: src/categoryList.js:69
 msgid "Pictures"
 msgstr "Εικόνες"
 
-#: src/categoryList.js:78
+#: src/categoryList.js:76
 msgid "Currencies"
 msgstr "Νομίσματα"
 
-#: src/categoryList.js:85
+#: src/categoryList.js:83
 msgid "Math"
 msgstr "Μαθηματικά"
 
-#: src/categoryList.js:92
+#: src/categoryList.js:90
 msgid "Letters"
 msgstr "Γράμματα"
 
-#: src/categoryList.js:102
+#: src/categoryList.js:100
 msgid "Smileys & People"
 msgstr "Χαμόγελα & άτομα"
 
-#: src/categoryList.js:109
+#: src/categoryList.js:107
 msgid "Animals & Nature"
 msgstr "Ζώα & φύση"
 
-#: src/categoryList.js:116
+#: src/categoryList.js:114
 msgid "Food & Drink"
 msgstr "Φαγητό & ποτό"
 
-#: src/categoryList.js:123
+#: src/categoryList.js:121
 msgid "Activities"
 msgstr "Δραστηριότητες"
 
-#: src/categoryList.js:130
+#: src/categoryList.js:128
 msgid "Travel & Places"
 msgstr "Ταξίδια & τοποθεσίες"
 
-#: src/categoryList.js:137
+#: src/categoryList.js:135
 msgid "Objects"
 msgstr "Αντικείμενα"
 
-#: src/categoryList.js:144
+#: src/categoryList.js:142
 msgid "Symbols"
 msgstr "Σύμβολα"
 
-#: src/categoryList.js:151
+#: src/categoryList.js:149
 msgid "Flags"
 msgstr "Σημαίες"
 
-#: src/categoryList.js:166
+#: src/categoryList.js:163
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Σειρά λίστας χαρακτήρων %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:373
+#: src/categoryList.js:366 src/window.js:362
 msgid "Recently Used"
 msgstr "Πρόσφατα χρησιμοποιημένα"
 
-#: src/character.js:56
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "Δείτε επίσης"
 
-#: src/character.js:122 src/character.js:144
+#: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:140
+#: src/characterDialog.js:131
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "Το %s δεν υπάρχει στο %s"
 
-#: src/characterList.js:178
+#: src/characterList.js:169
 msgid "Unassigned"
 msgstr "Μη καθορισμένο"
 
-#: src/main.js:58
+#: src/main.js:55
 msgid "Characters Application"
 msgstr "Εφαρμογή χαρακτήρων "
 
-#: src/main.js:95
+#: src/main.js:84
 msgid "Characters Application started"
 msgstr "Άρχισε η εφαρμογή χαρακτήρων"
 
-#: src/main.js:103
+#: src/main.js:92
 msgid "Characters Application exiting"
 msgstr "Έξοδος από την εφαρμογή χαρακτήρων"
 
-#: src/menu.js:50
+#: src/menu.js:44
 msgid "None"
 msgstr "Kανένα"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:93
 msgid "Unknown character name"
 msgstr "Άγνωστο όνομα χαρακτήρα"
 
-#: src/searchProvider.js:98
+#: src/searchProvider.js:96
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:199
+#: src/window.js:190
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -259,34 +255,43 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "http://gnome.gr/"
 
-#: src/window.js:201
+#: src/window.js:192
 msgid "Character Map"
 msgstr "Πίνακας χαρακτήρων"
 
-#: src/window.js:221
+#: src/window.js:212
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (μόνο %s)"
 
-#: src/window.js:350
+#: src/window.js:339
 #, javascript-format
 msgid "%s Character List"
 msgstr "Λίστα χαρακτήρων %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:358
+#: src/window.js:347
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Πρόσφατα χρησιμοποιημένη λίστα χαρακτήρων %s"
 
-#: src/window.js:377
+#: src/window.js:366
 msgid "Search Result Character List"
 msgstr "Αποτέλεσμα αναζήτησης λίστας χαρακτήρων"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:379
+#: src/window.js:368
 msgid "Search Result"
 msgstr "Αποτέλεσμα αναζήτησης"
+
+#~ msgid "About"
+#~ msgstr "Περί"
+
+#~ msgid "Quit"
+#~ msgstr "Έξοδος"
+
+#~ msgid "gnome-characters"
+#~ msgstr "gnome-characters"
 
 #~ msgid "Emoticons"
 #~ msgstr "Εικονίδια διάθεσης"
@@ -296,9 +301,6 @@ msgstr "Αποτέλεσμα αναζήτησης"
 
 #~ msgid "characters;unicode;"
 #~ msgstr "characters;unicode;χαρακτήρες;"
-
-#~ msgid "About Characters"
-#~ msgstr "Περί Χαρακτήρες"
 
 #~ msgid "_New"
 #~ msgstr "_Νέο"
