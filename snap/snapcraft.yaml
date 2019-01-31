@@ -5,7 +5,7 @@ description: |
   Characters is a simple utility application to find and
   insert unusual characters.
 
-grade: devel # must be 'stable' to release into candidate/stable channels
+grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 
 plugs:
@@ -96,6 +96,7 @@ parts:
       - yelp-tools
   gnome-characters:
     after: [gnome-desktop]
+    source-type: git
     source: .
     plugin: meson
     meson-parameters: [--buildtype=release, --prefix=/snap/gnome-characters/current/usr]
