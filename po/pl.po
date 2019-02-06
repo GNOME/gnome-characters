@@ -1,16 +1,16 @@
 # Polish translation for gnome-characters.
-# Copyright © 2015-2018 the gnome-characters authors.
+# Copyright © 2015-2019 the gnome-characters authors.
 # This file is distributed under the same license as the gnome-characters package.
-# Piotr Drąg <piotrdrag@gmail.com>, 2015-2018.
-# Aviary.pl <community-poland@mozilla.org>, 2015-2018.
+# Piotr Drąg <piotrdrag@gmail.com>, 2015-2019.
+# Aviary.pl <community-poland@mozilla.org>, 2015-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2018-07-04 19:17+0000\n"
-"PO-Revision-Date: 2018-08-06 18:50+0200\n"
+"POT-Creation-Date: 2018-10-29 12:19+0000\n"
+"PO-Revision-Date: 2019-02-06 21:12+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -19,14 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-
-#: data/app-menu.ui:6
-msgid "About"
-msgstr "O programie"
-
-#: data/app-menu.ui:10
-msgid "Quit"
-msgstr "Zakończ"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
@@ -64,7 +56,11 @@ msgstr "Bieżąca strona"
 msgid "Filter by Font"
 msgstr "Filtrowanie według czcionki"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:194
+#: data/menu.ui:54
+msgid "About Characters"
+msgstr "O programie"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
 msgid "GNOME Characters"
 msgstr "Tablica znaków dla środowiska GNOME"
 
@@ -90,7 +86,7 @@ msgstr ""
 "Można także przeglądać znaki według kategorii, takich jak interpunkcja, "
 "obrazki itp."
 
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:49
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
 msgid "Characters"
 msgstr "Znaki"
 
@@ -100,8 +96,8 @@ msgstr "Narzędzie do wyszukiwania i wstawiania znaków specjalnych"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-msgid "gnome-characters"
-msgstr "gnome-characters"
+msgid "@appid@"
+msgstr "@appid@"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -122,100 +118,100 @@ msgstr "Czcionka używana do wyświetlania znaków na liście."
 msgid "Maximum recent characters"
 msgstr "Maksymalna liczba ostatnio używanych znaków"
 
-#: src/categoryList.js:32
+#: src/categoryList.js:31
 msgid "Emojis"
 msgstr "Emoji"
 
-#: src/categoryList.js:39 src/categoryList.js:383
+#: src/categoryList.js:38 src/categoryList.js:378
 msgid "Letters & Symbols"
 msgstr "Litery i symbole"
 
-#: src/categoryList.js:49
+#: src/categoryList.js:48
 msgid "Punctuation"
 msgstr "Interpunkcja"
 
-#: src/categoryList.js:56
+#: src/categoryList.js:55
 msgid "Arrows"
 msgstr "Strzałki"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:62
 msgid "Bullets"
 msgstr "Wypunktowanie"
 
-#: src/categoryList.js:70
+#: src/categoryList.js:69
 msgid "Pictures"
 msgstr "Obrazki"
 
-#: src/categoryList.js:77
+#: src/categoryList.js:76
 msgid "Currencies"
 msgstr "Waluty"
 
-#: src/categoryList.js:84
+#: src/categoryList.js:83
 msgid "Math"
 msgstr "Symbole matematyczne"
 
-#: src/categoryList.js:91
+#: src/categoryList.js:90
 msgid "Letters"
 msgstr "Litery"
 
-#: src/categoryList.js:101
+#: src/categoryList.js:100
 msgid "Smileys & People"
 msgstr "Uśmieszki i osoby"
 
-#: src/categoryList.js:108
+#: src/categoryList.js:107
 msgid "Animals & Nature"
 msgstr "Zwierzęta i przyroda"
 
-#: src/categoryList.js:115
+#: src/categoryList.js:114
 msgid "Food & Drink"
 msgstr "Jedzenie i napoje"
 
-#: src/categoryList.js:122
+#: src/categoryList.js:121
 msgid "Activities"
 msgstr "Święta i sport"
 
-#: src/categoryList.js:129
+#: src/categoryList.js:128
 msgid "Travel & Places"
 msgstr "Podróże i miejsca"
 
-#: src/categoryList.js:136
+#: src/categoryList.js:135
 msgid "Objects"
 msgstr "Rzeczy"
 
-#: src/categoryList.js:143
+#: src/categoryList.js:142
 msgid "Symbols"
 msgstr "Symbole"
 
-#: src/categoryList.js:150
+#: src/categoryList.js:149
 msgid "Flags"
 msgstr "Flagi"
 
-#: src/categoryList.js:164
+#: src/categoryList.js:163
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Rząd listy kategorii „%s”"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:371 src/window.js:365
+#: src/categoryList.js:366 src/window.js:362
 msgid "Recently Used"
 msgstr "Ostatnio używane"
 
-#: src/character.js:52
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "Podobne znaki"
 
-#: src/character.js:118 src/character.js:140
+#: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:136
+#: src/characterDialog.js:131
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "Znaku „%s” nie ma w czcionce %s"
 
-#: src/characterList.js:171
+#: src/characterList.js:169
 msgid "Unassigned"
 msgstr "Nieprzydzielone"
 
@@ -223,15 +219,15 @@ msgstr "Nieprzydzielone"
 msgid "Characters Application"
 msgstr "Tablica znaków"
 
-#: src/main.js:92
+#: src/main.js:84
 msgid "Characters Application started"
 msgstr "Uruchomiono tablicę znaków"
 
-#: src/main.js:100
+#: src/main.js:92
 msgid "Characters Application exiting"
 msgstr "Kończenie działania tablicy znaków"
 
-#: src/menu.js:45
+#: src/menu.js:44
 msgid "None"
 msgstr "Brak"
 
@@ -245,37 +241,37 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:193
+#: src/window.js:190
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2015-2018\n"
-"Aviary.pl <community-poland@mozilla.org>, 2015-2018"
+"Piotr Drąg <piotrdrag@gmail.com>, 2015-2019\n"
+"Aviary.pl <community-poland@mozilla.org>, 2015-2019"
 
-#: src/window.js:195
+#: src/window.js:192
 msgid "Character Map"
 msgstr "Tablica znaków"
 
-#: src/window.js:215
+#: src/window.js:212
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (tylko %s)"
 
-#: src/window.js:342
+#: src/window.js:339
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista znaków „%s”"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:350
+#: src/window.js:347
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Lista ostatnio używanych znaków „%s”"
 
-#: src/window.js:369
+#: src/window.js:366
 msgid "Search Result Character List"
 msgstr "Wynik wyszukiwania na liście znaków"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:371
+#: src/window.js:368
 msgid "Search Result"
 msgstr "Wyniki wyszukiwania"
