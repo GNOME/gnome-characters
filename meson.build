@@ -1,7 +1,7 @@
 project(
   'gnome-characters', 'c',
   version: '3.30.0',
-  license: 'BSD3',
+  license: ['BSD3', 'GPL2+'],
   default_options: 'buildtype=debugoptimized',
   meson_version: '>= 0.46.0'
 )
