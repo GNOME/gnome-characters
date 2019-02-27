@@ -43,7 +43,7 @@ libunistring_src = '''
 assert(cc.links(libunistring_src, name: 'libunistring support', args: '-lunistring'), 'libunistring is required but not found')
 
 # Just check that gjs-1.0 is present and recent enough
-dependency('gjs-1.0', version: '>= 1.43.3')
+dependency('gjs-1.0', version: '>= 1.50')
 
 libgc_deps = [
   dependency('gio-2.0'),
