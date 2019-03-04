@@ -104,7 +104,7 @@ msgstr "@appid@"
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
 msgstr ""
-"znaki;unikod;unicode;matematika;ločila;črke;emotikoni;izrazne ikone;emoji"
+"znaki;unikod;unicode;matematika;ločila;črke;emotikoni;izrazne ikone;emoji;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
