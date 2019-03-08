@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
 "POT-Creation-Date: 2018-10-29 12:19+0000\n"
-"PO-Revision-Date: 2019-02-23 22:00+0900\n"
+"PO-Revision-Date: 2019-03-07 15:32+0900\n"
 "Last-Translator: DaeHyun Sung <sungdh86+git@gmail.com>\n"
 "Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -181,7 +181,7 @@ msgstr "기호"
 
 #: src/categoryList.js:149
 msgid "Flags"
-msgstr "국기"
+msgstr "깃발"
 
 #: src/categoryList.js:163
 #, javascript-format
