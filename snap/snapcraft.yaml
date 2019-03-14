@@ -7,12 +7,20 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
+base: core18
+
+passthrough:
+  layout:
+    /usr/share/xml/iso-codes:
+      symlink: $SNAP/gnome-platform/usr/share/xml/iso-codes
+    /usr/share/X11/xkb/rules:
+      symlink: $SNAP/gnome-platform/usr/share/X11/xkb/rules
 
 plugs:
-  gnome-3-26-1604:
+  gnome-3-28-1804:
     interface: content
     target: $SNAP/gnome-platform
-    default-provider: gnome-3-26-1604
+    default-provider: gnome-3-28-1804
   gtk-3-themes:
     interface: content
     target: $SNAP/data-dir/themes
@@ -50,76 +58,42 @@ apps:
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/org.gnome.Characters
 
 parts:
-  iso-codes:
-    after: [desktop-gnome-platform]
-    source: https://ftp.osuosl.org/pub/blfs/conglomeration/iso-codes/iso-codes-3.77.tar.xz
-    plugin: autotools
-    configflags: [--prefix=/snap/gnome-characters/current/usr]
-    organize:
-      snap/gnome-characters/current/usr: usr
-    build-attributes: ['no-system-libraries']
+  desktop-gnome-platform:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk3"]
     build-packages:
-      - gettext
-      - python3
-  gnome-desktop:
-    after: [iso-codes]
-    source: https://gitlab.gnome.org/GNOME/gnome-desktop.git
-    source-type: git
-    source-tag: 3.26.0
-    plugin: autotools
-    override-build: |
-      sed -i.bak -e 's|.*ISO_CODES_PREFIX=.*|ISO_CODES_PREFIX=/snap/gnome-characters/current/usr|g' configure.ac
-      snapcraftctl build
-    configflags: [--prefix=/snap/gnome-characters/current/usr, --disable-date-in-gnome-version, --with-gnome-distributor=Ubuntu]
-    organize:
-      snap/gnome-characters/current/usr: usr
-    build-attributes: ['no-system-libraries']
-    build-packages:
-      - libglib2.0-dev
-      - gnome-common
-      - intltool
-      - gtk-doc-tools
-      - docbook-xml
-      - libx11-dev
-      - xkb-data
-      - libgdk-pixbuf2.0-dev
-      - libgl1-mesa-dev
+      - build-essential
       - libgtk-3-dev
-      - libxml2-dev
-      - libglib2.0-doc
-      - libgtk-3-doc
-      - libseccomp-dev
-      - libudev-dev
-      - gobject-introspection
-      - libgirepository1.0-dev
-      - gsettings-desktop-schemas-dev
-      - yelp-tools
+    override-build: |
+      snapcraftctl build
+      mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
   gnome-characters:
-    after: [gnome-desktop]
+    after: [desktop-gnome-platform]
     source-type: git
     source: .
     plugin: meson
     meson-parameters: [--buildtype=release, --prefix=/snap/gnome-characters/current/usr]
     organize:
       snap/gnome-characters/current/usr: usr
-    override-build: |
-      sed -i.bak -e 's|=gnome-characters$|=${SNAP}/meta/gui/gnome-characters.png|g' data/org.gnome.Characters.desktop.in
+    override-pull: |
+      snapcraftctl pull
+      sed -i.bak -e 's|=@appid@$|=${SNAP}/meta/gui/org.gnome.Characters.svg|g' data/org.gnome.Characters.desktop.in
       sed -i.bak -e 's|=@bindir@/gnome-characters$|=${SNAP}/usr/share/org.gnome.Characters/org.gnome.Characters|g' data/org.gnome.Characters.desktop.in
       sed -i.bak -e 's|@GJS@|/snap/gnome-characters/current/usr/bin/gjs|g' src/org.gnome.Characters.in
       sed -i.bak -e 's|@GJS@|/snap/gnome-characters/current/usr/bin/gjs|g' src/org.gnome.Characters.BackgroundService.in
+    override-build: |
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
-      cp ../src/data/icons/hicolor/256x256/apps/gnome-characters.png $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp ../src/data/icons/hicolor/scalable/apps/org.gnome.Characters.svg $SNAPCRAFT_PART_INSTALL/meta/gui/
       rm -f $SNAPCRAFT_PART_INSTALL/snap/gnome-characters/current/usr/bin/gnome-characters
-    build-attributes: ['no-system-libraries']
     build-packages:
       - desktop-file-utils
       - gettext
-      - gnome-common
       - gsettings-desktop-schemas-dev
-      - intltool
+      - itstool
       - appstream-util
-      - pkg-config
       - libglib2.0-dev
       - libgtk-3-dev
       - libgirepository1.0-dev
@@ -138,8 +112,9 @@ parts:
       - gir1.2-glib-2.0
       - gir1.2-gtk-3.0
       - gir1.2-gnomedesktop-3.0
-      - libreadline6
-      - libunistring0
+      - libreadline5
+      - libunistring2
+      - fonts-noto-color-emoji
     prime:
       - "usr/bin/gjs*"
       - "usr/lib/*/girepository-1.0*"
@@ -147,3 +122,4 @@ parts:
       - "usr/lib/*.*"
       - "lib/*/libreadline.so*"
       - "usr/lib/*/libunistring.so*"
+      - "usr/share/fonts/truetype/noto"
