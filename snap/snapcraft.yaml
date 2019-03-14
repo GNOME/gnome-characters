@@ -79,14 +79,14 @@ parts:
       snap/gnome-characters/current/usr: usr
     override-pull: |
       snapcraftctl pull
-      sed -i.bak -e 's|=@appid@$|=${SNAP}/meta/gui/org.gnome.Characters.svg|g' data/org.gnome.Characters.desktop.in
+      sed -i.bak -e 's|=gnome-characters$|=${SNAP}/meta/gui/gnome-characters.png|g' data/org.gnome.Characters.desktop.in
       sed -i.bak -e 's|=@bindir@/gnome-characters$|=${SNAP}/usr/share/org.gnome.Characters/org.gnome.Characters|g' data/org.gnome.Characters.desktop.in
       sed -i.bak -e 's|@GJS@|/snap/gnome-characters/current/usr/bin/gjs|g' src/org.gnome.Characters.in
       sed -i.bak -e 's|@GJS@|/snap/gnome-characters/current/usr/bin/gjs|g' src/org.gnome.Characters.BackgroundService.in
     override-build: |
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
-      cp ../src/data/icons/hicolor/scalable/apps/org.gnome.Characters.svg $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp ../src/data/icons/hicolor/512x512/apps/gnome-characters.png $SNAPCRAFT_PART_INSTALL/meta/gui/
       rm -f $SNAPCRAFT_PART_INSTALL/snap/gnome-characters/current/usr/bin/gnome-characters
     build-packages:
       - desktop-file-utils
