@@ -9,12 +9,11 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 base: core18
 
-passthrough:
-  layout:
-    /usr/share/xml/iso-codes:
-      symlink: $SNAP/gnome-platform/usr/share/xml/iso-codes
-    /usr/share/X11/xkb/rules:
-      symlink: $SNAP/gnome-platform/usr/share/X11/xkb/rules
+layout:
+  /usr/share/xml/iso-codes:
+    symlink: $SNAP/gnome-platform/usr/share/xml/iso-codes
+  /usr/share/X11/xkb/rules/evdev.xml:
+    symlink: $SNAP/gnome-platform/usr/share/X11/xkb/rules/evdev.xml
 
 plugs:
   gnome-3-28-1804:
