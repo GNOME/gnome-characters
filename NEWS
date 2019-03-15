@@ -1,3 +1,11 @@
+3.32.0
+===
+
+- Update the icon to follow the GNOME 3.32 guidelines
+- Remove app menu following GNOME 3.32 guidelines
+- Fix various javascript deprecation warnings
+- Translation updates
+
 3.30.0
 ===
 
