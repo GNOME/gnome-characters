@@ -19,6 +19,7 @@
 
 const {Gc, Gdk, Gio, GLib, GObject} = imports.gi;
 
+const ByteArray = imports.byteArray;
 const Util = imports.util;
 
 const MAX_SEARCH_RESULTS = 100;
@@ -47,7 +48,7 @@ var SearchProvider = GObject.registerClass({
         this._cancellable.cancel();
         this._cancellable.reset();
 
-        let upper = keywords.map(String.prototype.toUpperCase);
+        let upper = keywords.map(x => x.toUpperCase());
         let criteria = Gc.SearchCriteria.new_keywords(upper);
         let context = new Gc.SearchContext({ criteria: criteria,
                                              flags: Gc.SearchFlag.WORD });
