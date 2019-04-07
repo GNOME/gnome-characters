@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2018-10-29 12:19+0000\n"
+"Report-Msgid-Bugs-To: "
+"https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2019-03-25 19:03+0000\n"
 "PO-Revision-Date: 2019-02-11 19:40+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -96,11 +96,6 @@ msgstr "Tegn"
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Hjælpeværktøj til at finde og indsætte usædvanlige tegn"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "@appid@"
-msgstr "@appid@"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -249,8 +244,9 @@ msgstr ""
 "scootergrisen\n"
 "Alan Mortensen\n"
 "\n"
-"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
-"Mere info: http://www.dansk-gruppen.dk"
+"Dansk-gruppen\n"
+"Websted <http://dansk-gruppen.dk>\n"
+"E-mail <dansk@dansk-gruppen.dk>"
 
 #: src/window.js:192
 msgid "Character Map"
@@ -281,6 +277,9 @@ msgstr "Søgeresultat for tegnliste"
 msgid "Search Result"
 msgstr "Søgeresultat"
 
+#~ msgid "@appid@"
+#~ msgstr "@appid@"
+
 #~ msgid "About"
 #~ msgstr "Om"
 
@@ -298,3 +297,4 @@ msgstr "Søgeresultat"
 
 #~ msgid "characters;unicode;"
 #~ msgstr "tegn;unicode;"
+
