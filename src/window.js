@@ -24,12 +24,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const {Gc, Gio, GLib, GObject, Gtk } = imports.gi;
+const {Gio, GLib, GObject, Gtk } = imports.gi;
 
-const Lang = imports.lang;
 const Params = imports.params;
 const CategoryList = imports.categoryList;
-const Character = imports.character;
+const Character = imports.characterDialog;
 const CharacterList = imports.characterList;
 const Menu = imports.menu;
 const Gettext = imports.gettext;
@@ -93,14 +92,13 @@ var MainWindow = GObject.registerClass({
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
         this._search_bar.connect_entry(this._search_entry);
-        this._search_entry.connect('search-changed',
-                                   Lang.bind(this, this._handleSearchChanged));
+        this._search_entry.connect('search-changed', (entry) => this._handleSearchChanged(entry));
 
-        this._back_button.connect('clicked',
-                                  Lang.bind(this, function() {
+        this._back_button.connect('clicked', () => {
                                       let action = this.lookup_action('category');
                                       action.activate(new GLib.Variant('s', 'emojis'));
                                   }));
+
 
         this._menu_popover = new Menu.MenuPopover({});
         this._menu_button.set_popover(this._menu_popover);
@@ -123,7 +121,7 @@ var MainWindow = GObject.registerClass({
 
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
-        this.connect('key-press-event', Lang.bind(this, this._handleKeyPress));
+        this.connect('key-press-event', (self, event) => this._handleKeyPress(self, event));
     }
 
     vfunc_map() {
@@ -191,7 +189,7 @@ var MainWindow = GObject.registerClass({
               comments: _("Character Map"),
               copyright: 'Copyright 2014-2018 Daiki Ueno',
               license_type: Gtk.License.GPL_2_0,
-              logo_icon_name: 'gnome-characters',
+              logo_icon_name: Main.application_id,
               version: pkg.version,
               // website: 'https://wiki.gnome.org/Design/Apps/CharacterMap',
               wrap_license: true,
@@ -218,7 +216,7 @@ var MainWindow = GObject.registerClass({
     _category(action, v) {
         this.search_active = false;
 
-        let [name, length] = v.get_string()
+        let [name, length] = v.get_string();
 
         this._categoryListView.set_visible_child_name(name);
         let categoryList = this._categoryListView.get_visible_child();
@@ -242,7 +240,7 @@ var MainWindow = GObject.registerClass({
     _subcategory(action, v) {
         this.search_active = false;
 
-        let [name, length] = v.get_string()
+        let [name, length] = v.get_string();
 
         let categoryList = this._categoryListView.get_visible_child();
         if (categoryList == null)
@@ -261,7 +259,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _filterFont(action, v) {
-        let [family, length] = v.get_string()
+        let [family, length] = v.get_string();
         if (family == 'None')
             family = null;
         this._mainView.filterFontFamily = family;
@@ -381,8 +379,7 @@ const MainView = GObject.registerClass({
             fontFilter: this._fontFilter,
         });
         characterList.get_accessible().accessible_name = accessible_name;
-        characterList.connect('character-selected',
-                              Lang.bind(this, this._handleCharacterSelected));
+        characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
 
         this._characterLists[name] = characterList;
         return characterList;
@@ -394,8 +391,7 @@ const MainView = GObject.registerClass({
             category: category
         });
         characterList.get_accessible().accessible_name = accessible_name;
-        characterList.connect('character-selected',
-                              Lang.bind(this, this._handleCharacterSelected));
+        characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
 
         this._characterLists[name] = characterList;
         return characterList;
@@ -456,8 +452,7 @@ const MainView = GObject.registerClass({
         });
 
         dialog.show();
-        dialog.connect('character-copied',
-                       Lang.bind(this, this._addToRecent));
+        dialog.connect('character-copied', (widget, uc) => this._addToRecent(widget, uc));
         dialog.connect('response', function(self, response_id) {
             if (response_id == Gtk.ResponseType.CLOSE)
                 dialog.destroy();

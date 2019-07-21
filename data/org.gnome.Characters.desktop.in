@@ -3,7 +3,7 @@ Type=Application
 Name=Characters
 Comment=Utility application to find and insert unusual characters
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-Icon=gnome-characters
+Icon=@appid@
 Exec=@bindir@/gnome-characters
 DBusActivatable=true
 StartupNotify=true

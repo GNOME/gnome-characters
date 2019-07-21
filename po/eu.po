@@ -4,32 +4,22 @@
 #
 #
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2015, 2016, 2017.
+# Asier Sarasua Garmendia  <asier.sarasua@gmail.com>, 2019.
 msgid ""
-msgstr ""
-"Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-01-18 21:52+0000\n"
-"PO-Revision-Date: 2017-01-27 11:25+0100\n"
-"Last-Translator: \n"
-"Language-Team: Basque <kde-i18n-doc@kde.org>\n"
+msgstr "Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2018-10-29 12:19+0000\n"
+"PO-Revision-Date: 2019-02-26 19:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.5\n"
-
-#: data/app-menu.ui:6
-msgid "About"
-msgstr "Honi buruz"
-
-#: data/app-menu.ui:10
-msgid "Quit"
-msgstr "Irten"
+"X-Generator: OmegaT 4.1.5\n"
 
 #: data/characterlist.ui:30
-#| msgid "Search produced empty result"
 msgid "Search found no results"
 msgstr "Bilaketak ez du emaitzarik aurkitu"
 
@@ -41,14 +31,6 @@ msgstr "Saiatu bestelako bilaketa batekin."
 msgid "Loading…"
 msgstr "Kargatzen..."
 
-#: data/characterlist.ui:108
-msgid "No recent characters found"
-msgstr "Ez da azken aldian erabilitako karaktererik aurkitu"
-
-#: data/characterlist.ui:119
-msgid "Characters will appear here if you use them."
-msgstr "Karaktereak hemen agertuko dira erabiltzen badituzu."
-
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "Kopiatu karakterea"
@@ -56,6 +38,14 @@ msgstr "Kopiatu karakterea"
 #: data/character.ui:86
 msgid "Character copied to clipboard"
 msgstr "Karakterea arbelean kopiatuta"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Ez da azken aldian erabilitako karaktererik aurkitu"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Karaktereak hemen agertuko dira erabiltzen badituzu."
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -65,7 +55,11 @@ msgstr "Uneko orria"
 msgid "Filter by Font"
 msgstr "Iragazi letra-tipoaren arabera"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:166
+#: data/menu.ui:54
+msgid "About Characters"
+msgstr "'Karaktereak' buruz"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
 msgid "GNOME Characters"
 msgstr "GNOMEren Karaktereak"
 
@@ -78,18 +72,13 @@ msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
-msgstr ""
-"'Karaktereak' aplikazio xume bat da ohikoak ez diren karaktereak bilatu eta "
-"txertatzeko. Gako-hitzen arabera bilatzea nahi duzun karakterea bizkor "
-"aurkitzen du."
+msgstr "'Karaktereak' aplikazio xume bat da ohikoak ez diren karaktereak bilatu eta txertatzeko. Gako-hitzen arabera bilatzea nahi duzun karakterea bizkor aurkitzen du."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
-msgstr ""
-"Kategorien arabera ere araka ditzakezu karaktereak. Hala nola, puntuazioa, "
-"irudiak, eta abar."
+msgstr "Kategorien arabera ere araka ditzakezu karaktereak. Hala nola, puntuazioa, irudiak, eta abar."
 
 #: data/org.gnome.Characters.desktop.in:4 src/service.js:51
 msgid "Characters"
@@ -101,8 +90,8 @@ msgstr "Aplikazio bat da ohikoak ez diren karaktereak bilatu eta txertatzeko"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-msgid "gnome-characters"
-msgstr "gnome-characters"
+msgid "@appid@"
+msgstr "@appid@"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -121,124 +110,159 @@ msgstr "Erabili letra-tipoa karaktereak karaktereen zerrendan marrazteko."
 msgid "Maximum recent characters"
 msgstr "Gehienezko azken karaktereak"
 
-#: src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Duela gutxi erabilita"
+#: src/categoryList.js:31
+msgid "Emojis"
+msgstr "Emojiak"
 
-#: src/categoryList.js:39
+#: src/categoryList.js:38 src/categoryList.js:378
+msgid "Letters & Symbols"
+msgstr "Hizkiak eta ikurrak"
+
+#: src/categoryList.js:48
 msgid "Punctuation"
 msgstr "Puntuazioa"
 
-#: src/categoryList.js:45
+#: src/categoryList.js:55
 msgid "Arrows"
 msgstr "Geziak"
 
-#: src/categoryList.js:51
+#: src/categoryList.js:62
 msgid "Bullets"
 msgstr "Buletak"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:69
 msgid "Pictures"
-msgstr "Irudiak"
+msgstr "Argazkiak"
 
-#: src/categoryList.js:63
+#: src/categoryList.js:76
 msgid "Currencies"
 msgstr "Dibisak"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:83
 msgid "Math"
-msgstr "Matematika"
+msgstr "Matematikak"
 
-#: src/categoryList.js:75
+#: src/categoryList.js:90
 msgid "Letters"
 msgstr "Hizkiak"
 
-#: src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Aurpegierak"
+#: src/categoryList.js:100
+msgid "Smileys & People"
+msgstr "Aurpegierak eta jendea"
 
-#: src/categoryList.js:95
+#: src/categoryList.js:107
+msgid "Animals & Nature"
+msgstr "Animaliak eta izadia"
+
+#: src/categoryList.js:114
+msgid "Food & Drink"
+msgstr "Janaria eta edaria"
+
+#: src/categoryList.js:121
+msgid "Activities"
+msgstr "Jarduerak"
+
+#: src/categoryList.js:128
+msgid "Travel & Places"
+msgstr "Bidaiak eta lekuak"
+
+#: src/categoryList.js:135
+msgid "Objects"
+msgstr "Objektuak"
+
+#: src/categoryList.js:142
+msgid "Symbols"
+msgstr "Ikurrak"
+
+#: src/categoryList.js:149
+msgid "Flags"
+msgstr "Banderak"
+
+#: src/categoryList.js:163
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "'%s' kategoria-zerrendako errenkada"
 
-#: src/character.js:53
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:366 src/window.js:362
+msgid "Recently Used"
+msgstr "Duela gutxi erabilita"
+
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "Ikus halaber"
 
-#: src/character.js:117 src/character.js:139
+#: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:135
+#: src/characterDialog.js:131
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "'%s' ez dago '%s' letra-tipoan"
 
-#: src/characterList.js:178
+#: src/characterList.js:169
 msgid "Unassigned"
 msgstr "Esleitu gabea"
 
-#: src/main.js:58
+#: src/main.js:55
 msgid "Characters Application"
 msgstr "'Karaktereak' aplikazioa"
 
-#: src/main.js:95
+#: src/main.js:84
 msgid "Characters Application started"
 msgstr "'Karaktereak' aplikazioa abiarazita"
 
-#: src/main.js:103
+#: src/main.js:92
 msgid "Characters Application exiting"
 msgstr "'Karaktereak' aplikaziotik irteten"
 
-#: src/menu.js:50
+#: src/menu.js:44
 msgid "None"
 msgstr "Bat ere ez"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:93
 msgid "Unknown character name"
 msgstr "Karakterearen izena ezezaguna"
 
-#: src/searchProvider.js:100
+#: src/searchProvider.js:96
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:165
+#: src/window.js:190
 msgid "translator-credits"
-msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
+msgstr "Asier Sarasua Garmendia <asier.sarasua@gmail.com>"
 
-#: src/window.js:167
+#: src/window.js:192
 msgid "Character Map"
 msgstr "Karaktere-mapa"
 
-#: src/window.js:187
+#: src/window.js:212
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s soilik)"
 
-#: src/window.js:273
+#: src/window.js:339
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s karaktere-zerrenda"
 
-#: src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:347
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Azken aldian erabilitako %s karaktere-zerrenda"
+
+#: src/window.js:366
 msgid "Search Result Character List"
 msgstr "Bilaketaren emaitzako karaktere-zerrenda"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:282
+#: src/window.js:368
 msgid "Search Result"
 msgstr "Bilaketaren emaitzak"
 
-#~ msgid "Try another search criteria."
-#~ msgstr "Saiatu bilaketa beste irizpide batekin."
-
-#~ msgid "About Characters"
-#~ msgstr "'Karaktereak' buruz"
-
-#~ msgid "characters;unicode;"
-#~ msgstr "karaktereak;unicode;"

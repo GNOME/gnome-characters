@@ -46,6 +46,14 @@
 	    </child>
 	  </object>
 	</child>
+	<child>
+	  <object class="GtkModelButton">
+	    <property name="visible">True</property>
+	    <property name="can_focus">False</property>
+	    <property name="action_name">win.about</property>
+	    <property name="text" translatable="yes">About Characters</property>
+	  </object>
+	</child>
       </object>
     </child>
   </template>

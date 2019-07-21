@@ -1,6 +1,16 @@
-install_subdir(
-  'hicolor',
-  exclude_files: 'gnome-characters.svg',
-  exclude_directories: ['scalable', '24x24', '512x512'],
-  install_dir: join_paths(characters_datadir, 'icons')
+icons_dir = join_paths(characters_datadir, 'icons')
+
+scalable_path = join_paths('hicolor', 'scalable', 'apps')
+symbolic_path = join_paths('hicolor', 'symbolic', 'apps')
+
+install_data(
+  join_paths(scalable_path, 'org.gnome.Characters.svg'),
+  install_dir: join_paths(icons_dir, scalable_path),
+  rename: '@0@.svg'.format(characters_application_id)
+)
+
+install_data(
+  join_paths(symbolic_path, 'org.gnome.Characters-symbolic.svg'),
+  install_dir: join_paths(icons_dir, symbolic_path),
+  rename: '@0@-symbolic.svg'.format(characters_application_id)
 )

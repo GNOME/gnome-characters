@@ -17,10 +17,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
-const {Gc, Gio, GLib, GObject, Gtk, GnomeDesktop} = imports.gi;
+const {Gc, GLib, GObject, Gtk, GnomeDesktop} = imports.gi;
 
 const Gettext = imports.gettext;
-const Lang = imports.lang;
 const Params = imports.params;
 
 const Util = imports.util;
@@ -267,11 +266,7 @@ const LetterCategoryListWidget = GObject.registerClass({
         ibus.init();
         let bus = new ibus.Bus();
         if (bus.is_connected()) {
-            bus.list_engines_async(-1,
-                                   null,
-                                   Lang.bind(this, function (bus, res) {
-                                       this._finishListEngines(sources, bus, res);
-                                   }));
+            bus.list_engines_async(-1, null, (sources, bus, res) => this._finishListEngines(sources, bus, res));
         } else
             this._finishBuildScriptList(sources);
     }
@@ -424,8 +419,7 @@ var CategoryListView = GObject.registerClass({
 
         this._categoryList = CategoryList.slice();
 
-        this.connect('notify::visible-child-name',
-                     Lang.bind(this, this._ensureTransitionType));
+        this.connect('notify::visible-child-name', () => this._ensureTransitionType());
     }
 
     _ensureTransitionType() {
