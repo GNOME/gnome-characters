@@ -86,6 +86,7 @@ var MainWindow = GObject.registerClass({
         this.bind_property('search-active', this._search_active_button, 'active',
                            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
+
         this.bind_property('search-active',
                            this._search_bar,
                            'search-mode-enabled',
@@ -97,8 +98,7 @@ var MainWindow = GObject.registerClass({
         this._back_button.connect('clicked', () => {
                                       let action = this.lookup_action('category');
                                       action.activate(new GLib.Variant('s', 'emojis'));
-                                  }));
-
+                                  });
 
         this._menu_popover = new Menu.MenuPopover({});
         this._menu_button.set_popover(this._menu_popover);
