@@ -19,13 +19,15 @@
 
 const {Gc, Gdk, Gio, GLib, GObject} = imports.gi;
 
+const ByteArray = imports.byteArray;
+const Service = imports.service;
 const Util = imports.util;
 
 const MAX_SEARCH_RESULTS = 100;
 
-const SearchProviderInterface = Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0).toArray().toString();
+const SearchProviderInterface = ByteArray.toString(Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0).toArray());
 
-const SearchProvider = GObject.registerClass({
+var SearchProvider = GObject.registerClass({
     Name: 'CharactersSearchProvider',
 }, class SearchProvider extends GObject.Object {
     _init(application) {
@@ -47,7 +49,7 @@ const SearchProvider = GObject.registerClass({
         this._cancellable.cancel();
         this._cancellable.reset();
 
-        let upper = keywords.map(String.toUpperCase);
+        let upper = keywords.map(x => x.toUpperCase());
         let criteria = Gc.SearchCriteria.new_keywords(upper);
         let context = new Gc.SearchContext({ criteria: criteria,
                                              flags: Gc.SearchFlag.WORD });
@@ -98,7 +100,7 @@ const SearchProvider = GObject.registerClass({
             ret.push({ name: new GLib.Variant('s', name),
                        id: new GLib.Variant('s', identifiers[i]),
                        description: new GLib.Variant('s', summary),
-                       icon: (new Gio.ThemedIcon({ name: 'gnome-characters' })).serialize(),
+                       icon: (new Gio.ThemedIcon({ name: Service.application_id })).serialize(),
                        clipboardText: new GLib.Variant('s', character)
                      });
         }

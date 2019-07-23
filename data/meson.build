@@ -17,7 +17,6 @@ resource_data = files(
   'icons/hicolor/scalable/categories/characters-picture-symbolic.svg',
   'icons/hicolor/scalable/categories/characters-punctuation-symbolic.svg',
   'application.css',
-  'app-menu.ui',
   'characterlist.ui',
   'character.ui',
   'mainview.ui',
@@ -44,6 +43,7 @@ foreach resource: resources
 endforeach
 
 desktop_conf = configuration_data ()
+desktop_conf.set('appid', characters_application_id)
 desktop_conf.set('bindir', characters_bindir)
 
 i18n.merge_file(

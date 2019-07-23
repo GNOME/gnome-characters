@@ -3,65 +3,74 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Baptiste DARTHENAY <taggit.batisteo@recursor.net>, 2015.
 # Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2015.
+# Carmen Bianca BAKKER <carmen@carmenbianca.eu>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-29 06:45+0000\n"
-"PO-Revision-Date: 2015-10-04 01:36+0200\n"
-"Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
-"Language-Team: Esperanto <gnome-l10n-eo@lists.launchpad.net>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2019-03-25 19:03+0000\n"
+"PO-Revision-Date: 2019-04-06 23:01+0200\n"
+"Last-Translator: Carmen Bianca BAKKER <carmen@carmenbianca.eu>\n"
+"Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "Pri Signoj"
+#: data/characterlist.ui:30
+msgid "Search found no results"
+msgstr "La serĉo trovis neniun rezulton"
 
-#: ../data/app-menu.ui.h:2
-msgid "Quit"
-msgstr "Ĉesi"
+#: data/characterlist.ui:41
+msgid "Try a different search."
+msgstr "Provu alian serĉon."
 
-#: ../data/characterlist.ui.h:1
-msgid "Search produced empty result"
-msgstr "La serĉo produktis malplenan rezulton"
-
-#: ../data/characterlist.ui.h:2
-msgid "Try another search criteria."
-msgstr "Provi aliajn serĉajn kriteriojn."
-
-#: ../data/characterlist.ui.h:3
+#: data/characterlist.ui:73
 msgid "Loading…"
 msgstr "Ŝargante…"
 
-#: ../data/characterlist.ui.h:4
-msgid "No recent characters found"
-msgstr "Ne trovis lastatempan signojn"
-
-#: ../data/characterlist.ui.h:5
-msgid "Characters will appear here if you use them."
-msgstr "Signoj aperos ĉi tie se vi uzas ilin."
-
-#: ../data/character.ui.h:1
+#: data/character.ui:68
 msgid "Copy Character"
 msgstr "Kopii signon"
 
-#: ../data/mainwindow.ui.h:1
+#: data/character.ui:86
+msgid "Character copied to clipboard"
+msgstr "Signo kopiita al tondujo"
+
+#: data/mainview.ui:30
+msgid "No recent characters found"
+msgstr "Ne trovis lastatempan signojn"
+
+#: data/mainview.ui:41
+msgid "Characters will appear here if you use them."
+msgstr "Signoj aperos ĉi tie se vi uzas ilin."
+
+#: data/mainwindow.ui:12
 msgid "Current page"
 msgstr "Aktuala paĝo"
 
-#: ../data/menu.ui.h:1
-msgid "Filter by font"
+#: data/menu.ui:17
+msgid "Filter by Font"
 msgstr "Filtri laŭ tiparo"
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+#: data/menu.ui:54
+msgid "About Characters"
+msgstr "Pri Signoj"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+msgid "GNOME Characters"
+msgstr "GNOME Signoj"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Signa programo"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -71,7 +80,7 @@ msgstr ""
 "Ĝi permesas al vi rapide trovi la signon kiun vi serĉas per serĉi "
 "ŝlosilvortojn."
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+#: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -79,123 +88,201 @@ msgstr ""
 "Vi ankaŭ povas foliumi signojn laŭ kategorioj, kiel Interpunkcio, Bildoj, "
 "ktp."
 
-#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
+#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
 msgid "Characters"
 msgstr "Signoj"
 
-#: ../data/org.gnome.Characters.desktop.in.h:2
+#: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Utila programo por trovi kaj enmeti nekutimajn signojn"
 
-#: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "signoj;unikodo;"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "signoj;unikodo;interpunktio;matematiko;literoj;emoĝio;miensimbolo;"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:1
+#: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
 msgstr "Tiparo por montri signojn"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:2
+#: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
 msgstr "Uzi la tiparon por bildigi signojn sur la signo-listo."
 
-#: ../data/org.gnome.Characters.gschema.xml.h:3
+#: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "Maksimumaj lastatempaj signoj"
 
-#: ../src/categoryList.js:33
-msgid "Recently Used"
-msgstr "Lasttempe uzataj"
+#: src/categoryList.js:31
+msgid "Emojis"
+msgstr "Emoĝioj"
 
-#: ../src/categoryList.js:39
+#: src/categoryList.js:38 src/categoryList.js:378
+msgid "Letters & Symbols"
+msgstr "Literoj & simboloj"
+
+#: src/categoryList.js:48
 msgid "Punctuation"
 msgstr "Interpunkcio"
 
-#: ../src/categoryList.js:45
+#: src/categoryList.js:55
 msgid "Arrows"
 msgstr "Sagoj"
 
-#: ../src/categoryList.js:51
+#: src/categoryList.js:62
 msgid "Bullets"
 msgstr "Kugloj"
 
-#: ../src/categoryList.js:57
+#: src/categoryList.js:69
 msgid "Pictures"
 msgstr "Bildoj"
 
-#: ../src/categoryList.js:63
+#: src/categoryList.js:76
 msgid "Currencies"
 msgstr "Valutoj"
 
-#: ../src/categoryList.js:69
+#: src/categoryList.js:83
 msgid "Math"
 msgstr "Matematiko"
 
-#: ../src/categoryList.js:75
+#: src/categoryList.js:90
 msgid "Letters"
-msgstr "Leteroj"
+msgstr "Literoj"
 
-#: ../src/categoryList.js:81
-msgid "Emoticons"
-msgstr "Miensimboloj"
+#: src/categoryList.js:100
+msgid "Smileys & People"
+msgstr "Mienetoj & homoj"
 
-#: ../src/categoryList.js:96
+#: src/categoryList.js:107
+msgid "Animals & Nature"
+msgstr "Bestoj & naturo"
+
+#: src/categoryList.js:114
+msgid "Food & Drink"
+msgstr "Manĝaĵo & trinkaĵo"
+
+#: src/categoryList.js:121
+msgid "Activities"
+msgstr "Aktivecoj"
+
+#: src/categoryList.js:128
+msgid "Travel & Places"
+msgstr "Vojaĝo & lokoj"
+
+#: src/categoryList.js:135
+msgid "Objects"
+msgstr "Objektoj"
+
+#: src/categoryList.js:142
+msgid "Symbols"
+msgstr "Simboloj"
+
+#: src/categoryList.js:149
+msgid "Flags"
+msgstr "Flagoj"
+
+#: src/categoryList.js:163
+#, javascript-format
 msgid "%s Category List Row"
 msgstr "%s kategoria listvico"
 
-#: ../src/character.js:52
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:366 src/window.js:362
+msgid "Recently Used"
+msgstr "Lasttempe uzataj"
+
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "Vidu ankaŭ"
 
-#: ../src/character.js:114
+#: src/characterDialog.js:113 src/characterDialog.js:135
+#, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikodo U+%04s"
 
-#: ../src/main.js:58
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:131
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s ne inkluziviĝas en %s"
+
+#: src/characterList.js:169
+msgid "Unassigned"
+msgstr "Neasignita"
+
+#: src/main.js:55
 msgid "Characters Application"
 msgstr "Signa programo"
 
-#: ../src/main.js:95
+#: src/main.js:84
 msgid "Characters Application started"
 msgstr "Signa programo ekis"
 
-#: ../src/main.js:103
+#: src/main.js:92
 msgid "Characters Application exiting"
 msgstr "Signa programo finas"
 
-#: ../src/menu.js:39
+#: src/menu.js:44
 msgid "None"
 msgstr "Neniu"
 
-#: ../src/searchProvider.js:94
+#: src/searchProvider.js:93
 msgid "Unknown character name"
 msgstr "Nekonata signo-nomo"
 
-#: ../src/searchProvider.js:97
+#: src/searchProvider.js:96
+#, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: ../src/window.js:165
+#: src/window.js:190
 msgid "translator-credits"
-msgstr "Kristjan SCHMIDT, Baptiste DARTHENAY"
+msgstr ""
+"Kristjan SCHMIDT\n"
+"Baptiste DARTHENAY\n"
+"Carmen Bianca BAKKER <carmen@carmenbianca.eu>"
 
-#: ../src/window.js:166
-msgid "GNOME Characters"
-msgstr "GNOME Signoj"
-
-#: ../src/window.js:167
+#: src/window.js:192
 msgid "Character Map"
 msgstr "Signo-mapo"
 
-#: ../src/window.js:187
+#: src/window.js:212
+#, javascript-format
 msgid "%s (%s only)"
 msgstr "%s(%s nur)"
 
-#: ../src/window.js:273
+#: src/window.js:339
+#, javascript-format
 msgid "%s Character List"
 msgstr "%s signo-listo"
 
-#: ../src/window.js:280
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:347
+#, javascript-format
+msgid "Recently Used %s Character List"
+msgstr "Lasttempe uzata %s signo-listo"
+
+#: src/window.js:366
 msgid "Search Result Character List"
 msgstr "Serĉrezulto de signo-listo"
+
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:368
+msgid "Search Result"
+msgstr "Serĉrezulto"
+
+#~ msgid "gnome-characters"
+#~ msgstr "gnome-characters"
+
+#~ msgid "Quit"
+#~ msgstr "Ĉesi"
+
+#~ msgid "Try another search criteria."
+#~ msgstr "Provi aliajn serĉajn kriteriojn."
+
+#~ msgid "characters;unicode;"
+#~ msgstr "signoj;unikodo;"
+
+#~ msgid "Emoticons"
+#~ msgstr "Miensimboloj"

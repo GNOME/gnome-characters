@@ -1,31 +1,23 @@
 # Hungarian translation for gnome-characters.
-# Copyright (C) 2014-2017 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016, 2017, 2019 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-characters package.
 #
-# Balázs Úr <urbalazs@gmail.com>, 2014, 2015, 2016, 2017.
+# Balázs Úr <urbalazs at gmail dot com>, 2014, 2015, 2016, 2017, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-30 14:55+0000\n"
-"PO-Revision-Date: 2017-09-03 18:01+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-10-29 12:19+0000\n"
+"PO-Revision-Date: 2019-01-27 14:55+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
-"Language-Team: Hungarian <openscope at gmail dot com>\n"
+"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
-
-#: data/app-menu.ui:6
-msgid "About"
-msgstr "Névjegy"
-
-#: data/app-menu.ui:10
-msgid "Quit"
-msgstr "Kilépés"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
@@ -63,7 +55,11 @@ msgstr "Jelenlegi oldal"
 msgid "Filter by Font"
 msgstr "Szűrés betűkészlet szerint"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
+#: data/menu.ui:54
+msgid "About Characters"
+msgstr "A Karakterek névjegye"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
 msgid "GNOME Characters"
 msgstr "GNOME Karakterek"
 
@@ -100,8 +96,8 @@ msgstr ""
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-msgid "gnome-characters"
-msgstr "gnome-characters"
+msgid "@appid@"
+msgstr "@appid@"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -121,162 +117,161 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Maximális legutóbbi karakter"
 
-#: src/categoryList.js:33
+#: src/categoryList.js:31
 msgid "Emojis"
 msgstr "Hangulatjelek"
 
-#: src/categoryList.js:40 src/categoryList.js:390
+#: src/categoryList.js:38 src/categoryList.js:378
 msgid "Letters & Symbols"
 msgstr "Betűk és szimbólumok"
 
-#: src/categoryList.js:50
+#: src/categoryList.js:48
 msgid "Punctuation"
 msgstr "Központozás"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:55
 msgid "Arrows"
 msgstr "Nyilak"
 
-#: src/categoryList.js:64
+#: src/categoryList.js:62
 msgid "Bullets"
 msgstr "Felsorolás"
 
-#: src/categoryList.js:71
+#: src/categoryList.js:69
 msgid "Pictures"
 msgstr "Képek"
 
-#: src/categoryList.js:78
+#: src/categoryList.js:76
 msgid "Currencies"
 msgstr "Pénznemek"
 
-#: src/categoryList.js:85
+#: src/categoryList.js:83
 msgid "Math"
 msgstr "Matematika"
 
-#: src/categoryList.js:92
+#: src/categoryList.js:90
 msgid "Letters"
 msgstr "Betűk"
 
-#: src/categoryList.js:102
+#: src/categoryList.js:100
 msgid "Smileys & People"
 msgstr "Mosolyok és emberek"
 
-#: src/categoryList.js:109
+#: src/categoryList.js:107
 msgid "Animals & Nature"
 msgstr "Állatok és természet"
 
-#: src/categoryList.js:116
+#: src/categoryList.js:114
 msgid "Food & Drink"
 msgstr "Étel és ital"
 
-#: src/categoryList.js:123
+#: src/categoryList.js:121
 msgid "Activities"
 msgstr "Tevékenységek"
 
-#: src/categoryList.js:130
+#: src/categoryList.js:128
 msgid "Travel & Places"
 msgstr "Utazás és helyek"
 
-#: src/categoryList.js:137
+#: src/categoryList.js:135
 msgid "Objects"
 msgstr "Objektumok"
 
-#: src/categoryList.js:144
+#: src/categoryList.js:142
 msgid "Symbols"
 msgstr "Szimbólumok"
 
-#: src/categoryList.js:151
+#: src/categoryList.js:149
 msgid "Flags"
 msgstr "Zászlók"
 
-#: src/categoryList.js:166
+#: src/categoryList.js:163
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s kategórialista sor"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:373
+#: src/categoryList.js:366 src/window.js:362
 msgid "Recently Used"
 msgstr "Legutóbb használt"
 
-#: src/character.js:56
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "Lásd még"
 
-#: src/character.js:122 src/character.js:144
+#: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:140
+#: src/characterDialog.js:131
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s nem található a következőben: %s"
 
-#: src/characterList.js:178
+#: src/characterList.js:169
 msgid "Unassigned"
 msgstr "Nem kiosztott"
 
-#: src/main.js:58
+#: src/main.js:55
 msgid "Characters Application"
 msgstr "Karakterek alkalmazás"
 
-#: src/main.js:95
+#: src/main.js:84
 msgid "Characters Application started"
 msgstr "Karakterek alkalmazás elindítva"
 
-#: src/main.js:103
+#: src/main.js:92
 msgid "Characters Application exiting"
 msgstr "Karakterek alkalmazás kilépés"
 
-#: src/menu.js:50
+#: src/menu.js:44
 msgid "None"
 msgstr "Nincs"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:93
 msgid "Unknown character name"
 msgstr "Ismeretlen karakternév"
 
-#: src/searchProvider.js:98
+#: src/searchProvider.js:96
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:199
+#: src/window.js:190
 msgid "translator-credits"
 msgstr ""
 "Úr Balázs <urbalazs@gmail.com>, 2014.\n"
 "Meskó Balázs <meskobalazs at fedoraproject dot org>, 2017."
 
-#: src/window.js:201
+#: src/window.js:192
 msgid "Character Map"
 msgstr "Karaktertábla"
 
-#: src/window.js:221
+#: src/window.js:212
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (csak %s)"
 
-#: src/window.js:350
+#: src/window.js:339
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s karakterlista"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:358
+#: src/window.js:347
 #, javascript-format
-#| msgid "%s Character List"
 msgid "Recently Used %s Character List"
 msgstr "Legutóbb használt %s karakterlista"
 
-#: src/window.js:377
+#: src/window.js:366
 msgid "Search Result Character List"
 msgstr "Keresési eredmény karakterlista"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:379
+#: src/window.js:368
 msgid "Search Result"
 msgstr "Keresési eredmény"
 

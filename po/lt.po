@@ -2,15 +2,15 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # FULL NAME <EMAIL@ADDRESS>, 2015.
-# Aurimas Černius <aurisc4@gmail.com>, 2015, 2016, 2017.
+# Aurimas Černius <aurisc4@gmail.com>, 2015-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-30 14:55+0000\n"
-"PO-Revision-Date: 2017-09-03 23:14+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2018-10-29 12:19+0000\n"
+"PO-Revision-Date: 2019-02-09 17:21+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -19,15 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 2.91.7\n"
-
-#: data/app-menu.ui:6
-msgid "About"
-msgstr "Apie"
-
-#: data/app-menu.ui:10
-msgid "Quit"
-msgstr "Išeiti"
+"X-Generator: Gtranslator 3.30.1\n"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
@@ -65,7 +57,11 @@ msgstr "Dabartinis puslapis"
 msgid "Filter by Font"
 msgstr "Filtruoti pagal šriftą"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
+#: data/menu.ui:54
+msgid "About Characters"
+msgstr "Apie simbolius"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
 msgid "GNOME Characters"
 msgstr "GNOME simboliai"
 
@@ -100,8 +96,8 @@ msgstr "Programa neįprastų simbolių suradimui ir įterpimui"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Characters.desktop.in:7
-msgid "gnome-characters"
-msgstr "gnome-characters"
+msgid "@appid@"
+msgstr "@appid@"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -120,164 +116,172 @@ msgstr "Naudoti šrifto piešėją simboliams sąraše."
 msgid "Maximum recent characters"
 msgstr "Didžiausiais neseniai naudotų simbolių skaičius"
 
-#: src/categoryList.js:33
+#: src/categoryList.js:31
 msgid "Emojis"
 msgstr "Emoji"
 
-#: src/categoryList.js:40 src/categoryList.js:390
+#: src/categoryList.js:38 src/categoryList.js:378
 msgid "Letters & Symbols"
 msgstr "Raidės ir simboliai"
 
-#: src/categoryList.js:50
+#: src/categoryList.js:48
 msgid "Punctuation"
 msgstr "Skyrybos ženklai"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:55
 msgid "Arrows"
 msgstr "Rodyklės"
 
-#: src/categoryList.js:64
+#: src/categoryList.js:62
 msgid "Bullets"
 msgstr "Punktai"
 
-#: src/categoryList.js:71
+#: src/categoryList.js:69
 msgid "Pictures"
 msgstr "Paveikslėliai"
 
-#: src/categoryList.js:78
+#: src/categoryList.js:76
 msgid "Currencies"
 msgstr "Valiutos"
 
-#: src/categoryList.js:85
+#: src/categoryList.js:83
 msgid "Math"
 msgstr "Matematiniai"
 
-#: src/categoryList.js:92
+#: src/categoryList.js:90
 msgid "Letters"
 msgstr "Raidės"
 
-#: src/categoryList.js:102
+#: src/categoryList.js:100
 msgid "Smileys & People"
 msgstr "Šypsniukai ir žmonės"
 
-#: src/categoryList.js:109
+#: src/categoryList.js:107
 msgid "Animals & Nature"
 msgstr "Gyvūnai ir gamta"
 
-#: src/categoryList.js:116
+#: src/categoryList.js:114
 msgid "Food & Drink"
 msgstr "Maistas ir gėrimai"
 
-#: src/categoryList.js:123
+#: src/categoryList.js:121
 msgid "Activities"
 msgstr "Veiklos"
 
-#: src/categoryList.js:130
+#: src/categoryList.js:128
 msgid "Travel & Places"
 msgstr "Kelionės ir vietos"
 
-#: src/categoryList.js:137
+#: src/categoryList.js:135
 msgid "Objects"
 msgstr "Objektai"
 
-#: src/categoryList.js:144
+#: src/categoryList.js:142
 msgid "Symbols"
 msgstr "Simboliai"
 
-#: src/categoryList.js:151
+#: src/categoryList.js:149
 msgid "Flags"
 msgstr "Požymiai"
 
-#: src/categoryList.js:166
+#: src/categoryList.js:163
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s kategorijų sąrašo eilutė"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:373
+#: src/categoryList.js:366 src/window.js:362
 msgid "Recently Used"
 msgstr "Neseniai naudoti"
 
-#: src/character.js:56
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "Taip pat žiūrėti"
 
-#: src/character.js:122 src/character.js:144
+#: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unikodas U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:140
+#: src/characterDialog.js:131
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s nėra įtrauktas į %s"
 
-#: src/characterList.js:178
+#: src/characterList.js:169
 msgid "Unassigned"
 msgstr "Nepriskirta"
 
-#: src/main.js:58
+#: src/main.js:55
 msgid "Characters Application"
 msgstr "Simbolių programa"
 
-#: src/main.js:95
+#: src/main.js:84
 msgid "Characters Application started"
 msgstr "Simbolių programa paleista"
 
-#: src/main.js:103
+#: src/main.js:92
 msgid "Characters Application exiting"
 msgstr "Simbolių programa baigia darbą"
 
-#: src/menu.js:50
+#: src/menu.js:44
 msgid "None"
 msgstr "Nėra"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:93
 msgid "Unknown character name"
 msgstr "Nežinomas simbolio pavadinimas"
 
-#: src/searchProvider.js:98
+#: src/searchProvider.js:96
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:199
+#: src/window.js:190
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: src/window.js:201
+#: src/window.js:192
 msgid "Character Map"
 msgstr "Simbolių žemėlapis"
 
-#: src/window.js:221
+#: src/window.js:212
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (tik %s)"
 
-#: src/window.js:350
+#: src/window.js:339
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s simbolių sąrašas"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:358
+#: src/window.js:347
 #, javascript-format
-#| msgid "%s Character List"
 msgid "Recently Used %s Character List"
 msgstr "Neseniai naudotų %s simbolių sąrašas"
 
-#: src/window.js:377
+#: src/window.js:366
 msgid "Search Result Character List"
 msgstr "Paieškos rezultatų simbolių sąrašas"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:379
+#: src/window.js:368
 msgid "Search Result"
 msgstr "Paieškos rezultatai"
+
+#~ msgid "About"
+#~ msgstr "Apie"
+
+#~ msgid "Quit"
+#~ msgstr "Išeiti"
+
+#~ msgid "gnome-characters"
+#~ msgstr "gnome-characters"
 
 #~ msgid "Emoticons"
 #~ msgstr "Šypsniukai"
@@ -287,6 +291,3 @@ msgstr "Paieškos rezultatai"
 
 #~ msgid "characters;unicode;"
 #~ msgstr "simboliai;unikodas;"
-
-#~ msgid "About Characters"
-#~ msgstr "Apie simbolius"

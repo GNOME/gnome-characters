@@ -1,9 +1,9 @@
 project(
   'gnome-characters', 'c',
-  version: '3.28.2',
-  license: 'BSD3',
+  version: '3.32.0',
+  license: ['BSD3', 'GPL2+'],
   default_options: 'buildtype=debugoptimized',
-  meson_version: '>= 0.42.0'
+  meson_version: '>= 0.46.0'
 )
 
 characters_name = 'org.gnome.Characters'
@@ -43,7 +43,7 @@ libunistring_src = '''
 assert(cc.links(libunistring_src, name: 'libunistring support', args: '-lunistring'), 'libunistring is required but not found')
 
 # Just check that gjs-1.0 is present and recent enough
-dependency('gjs-1.0', version: '>= 1.43.3')
+dependency('gjs-1.0', version: '>= 1.50')
 
 libgc_deps = [
   dependency('gio-2.0'),
