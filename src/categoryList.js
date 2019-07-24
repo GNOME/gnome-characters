@@ -206,11 +206,8 @@ const CategoryListWidget = GObject.registerClass({
     }
 
     vfunc_row_selected(row) {
-        if (row !== null) {
-            this._lastSelectedRow = row;
-        }
-
         if (row != null && row.selectable) {
+            this._lastSelectedRow = row;
             let toplevel = row.get_toplevel();
             let action = toplevel.lookup_action(row.category.action_name);
             action.activate(new GLib.Variant('s', row.category.name));
