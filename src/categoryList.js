@@ -195,6 +195,7 @@ const CategoryListWidget = GObject.registerClass({
 
         this._categoryList = filtered.categoryList;
         this.populateCategoryList();
+        this._lastSelectedRow = null;
 
         for (let index in this._categoryList) {
             let category = this._categoryList[index];
@@ -205,10 +206,20 @@ const CategoryListWidget = GObject.registerClass({
     }
 
     vfunc_row_selected(row) {
+        if (row !== null) {
+            this._lastSelectedRow = row;
+        }
+
         if (row != null && row.selectable) {
             let toplevel = row.get_toplevel();
             let action = toplevel.lookup_action(row.category.action_name);
             action.activate(new GLib.Variant('s', row.category.name));
+        }
+    }
+
+    restorePreviousSelection() {
+        if (this._lastSelectedRow !== null) {
+            this.select_row(this._lastSelectedRow);
         }
     }
 
