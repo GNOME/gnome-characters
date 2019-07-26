@@ -168,7 +168,7 @@ var MainWindow = GObject.registerClass({
     _handleSearchChanged(entry) {
         const text = entry.get_text().replace(/^\s+|\s+$/g, '');
         let keywords = text == '' ? [] : text.split(/\s+/);
-        keywords = keywords.map(String.toUpperCase);
+        keywords = keywords.map(x => x.toUpperCase());
         if (keywords != this._searchKeywords) {
             this._mainView.cancelSearch();
             this._searchKeywords = keywords;

@@ -72,7 +72,7 @@ var MenuPopover = GObject.registerClass({
     _handleSearchChanged(entry) {
         let text = entry.get_text().replace(/^\s+|\s+$/g, '');
         let keywords = text == '' ? [] : text.split(/\s+/);
-        this._keywords = keywords.map(String.toLowerCase);
+        this._keywords = keywords.map(x => x.toLowerCase());
         this._font_listbox.invalidate_filter();
         return true;
     }
@@ -91,7 +91,7 @@ var MenuPopover = GObject.registerClass({
         if (row._family == 'None')
             return true;
 
-        let nameWords = row._family.split(/\s+/).map(String.toLowerCase);
+        let nameWords = row._family.split(/\s+/).map(x => x.toLowerCase());
         return this._keywords.every(function(keyword, index, array) {
             return nameWords.some(function(nameWord, index, array) {
                 return nameWord.indexOf(keyword) >= 0;
