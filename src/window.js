@@ -156,6 +156,10 @@ var MainWindow = GObject.registerClass({
         if (this._searchActive) {
             let categoryList = this._categoryListView.get_visible_child();
             categoryList.unselect_all();
+            this._updateTitle(_("Search Result"));
+        } else {
+            let categoryList = this._categoryListView.get_visible_child();
+            categoryList.restorePreviousSelection();
         }
 
         this.notify('search-active');
