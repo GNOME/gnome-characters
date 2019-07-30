@@ -1,28 +1,20 @@
 # Norwegian bokmål translation of gnome-characters.
 # Copyright (C) 2003-2005 Free Software Foundation, Inc.
-# Kjartan Maraas <kmaraas@gnome.org>, 2003-2017.
+# Kjartan Maraas <kmaraas@gnome.org>, 2003-2019.
 # Terance Edward Sola <terance@lyse.net>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-characters 3.26.x\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-08-30 14:55+0000\n"
-"PO-Revision-Date: 2017-11-05 12:59+0100\n"
+"Project-Id-Version: gnome-characters 3.34.x\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2019-03-25 19:04+0000\n"
+"PO-Revision-Date: 2019-07-26 10:01+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
-
-#: data/app-menu.ui:6
-msgid "About"
-msgstr "Om"
-
-#: data/app-menu.ui:10
-msgid "Quit"
-msgstr "Avslutt"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
@@ -60,7 +52,11 @@ msgstr "Aktiv side"
 msgid "Filter by Font"
 msgstr "Filtrer etter skrifttype"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
+#: data/menu.ui:54
+msgid "About Characters"
+msgstr "Om Tegn"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
 msgid "GNOME Characters"
 msgstr "GNOME tegn"
 
@@ -93,11 +89,6 @@ msgstr "Tegn"
 msgid "Utility application to find and insert unusual characters"
 msgstr "Verktøy for å finne og sette inn uvanlige tegn"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "gnome-characters"
-msgstr "gnome-characters"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
@@ -115,158 +106,158 @@ msgstr "Bruk skriften til å tegne tegnene i tegnlisten."
 msgid "Maximum recent characters"
 msgstr "Maksimalt antall nylige tegn"
 
-#: src/categoryList.js:33
+#: src/categoryList.js:31
 msgid "Emojis"
 msgstr "Emojier"
 
-#: src/categoryList.js:40 src/categoryList.js:390
+#: src/categoryList.js:38 src/categoryList.js:378
 msgid "Letters & Symbols"
 msgstr "Bokstaver og symboler"
 
-#: src/categoryList.js:50
+#: src/categoryList.js:48
 msgid "Punctuation"
 msgstr "Skilletegn"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:55
 msgid "Arrows"
 msgstr "Piler"
 
-#: src/categoryList.js:64
+#: src/categoryList.js:62
 msgid "Bullets"
 msgstr "Kulepunkter"
 
-#: src/categoryList.js:71
+#: src/categoryList.js:69
 msgid "Pictures"
 msgstr "Bilder"
 
-#: src/categoryList.js:78
+#: src/categoryList.js:76
 msgid "Currencies"
 msgstr "Valutaer"
 
-#: src/categoryList.js:85
+#: src/categoryList.js:83
 msgid "Math"
 msgstr "Matematikk"
 
-#: src/categoryList.js:92
+#: src/categoryList.js:90
 msgid "Letters"
 msgstr "Bokstaver"
 
-#: src/categoryList.js:102
+#: src/categoryList.js:100
 msgid "Smileys & People"
 msgstr "Smiletegn og folk"
 
-#: src/categoryList.js:109
+#: src/categoryList.js:107
 msgid "Animals & Nature"
 msgstr "Dyr og natur"
 
-#: src/categoryList.js:116
+#: src/categoryList.js:114
 msgid "Food & Drink"
 msgstr "Mat og drikke"
 
-#: src/categoryList.js:123
+#: src/categoryList.js:121
 msgid "Activities"
 msgstr "Aktiviteter"
 
-#: src/categoryList.js:130
+#: src/categoryList.js:128
 msgid "Travel & Places"
 msgstr "Reise og steder"
 
-#: src/categoryList.js:137
+#: src/categoryList.js:135
 msgid "Objects"
 msgstr "Objekter"
 
-#: src/categoryList.js:144
+#: src/categoryList.js:142
 msgid "Symbols"
 msgstr "Symboler"
 
-#: src/categoryList.js:151
+#: src/categoryList.js:149
 msgid "Flags"
 msgstr "Flagg"
 
-#: src/categoryList.js:166
+#: src/categoryList.js:163
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s kategorilisterad"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:373
+#: src/categoryList.js:366 src/window.js:362
 msgid "Recently Used"
 msgstr "Nylig brukt"
 
-#: src/character.js:56
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "Se også"
 
-#: src/character.js:122 src/character.js:144
+#: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:140
+#: src/characterDialog.js:131
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s er ikke inkludert i %s"
 
-#: src/characterList.js:178
+#: src/characterList.js:169
 msgid "Unassigned"
 msgstr "Ikke tildelt"
 
-#: src/main.js:58
+#: src/main.js:55
 msgid "Characters Application"
 msgstr "Tegnprogram"
 
-#: src/main.js:95
+#: src/main.js:84
 msgid "Characters Application started"
 msgstr "Tegnprogram startet"
 
-#: src/main.js:103
+#: src/main.js:92
 msgid "Characters Application exiting"
 msgstr "Tegnprogram avslutter"
 
-#: src/menu.js:50
+#: src/menu.js:44
 msgid "None"
 msgstr "Ingen"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Ukjent navn på tegn."
 
-#: src/searchProvider.js:98
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:199
+#: src/window.js:190
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: src/window.js:201
+#: src/window.js:192
 msgid "Character Map"
 msgstr "Tegnkart"
 
-#: src/window.js:221
+#: src/window.js:212
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (kun %s)"
 
-#: src/window.js:350
+#: src/window.js:339
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s tegnliste"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:358
+#: src/window.js:347
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Sist brukt %s tegnliste"
 
-#: src/window.js:377
+#: src/window.js:366
 msgid "Search Result Character List"
 msgstr "Søk i resultattegnlisten"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:379
+#: src/window.js:368
 msgid "Search Result"
 msgstr "Søkeresultat"
