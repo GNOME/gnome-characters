@@ -51,6 +51,21 @@
             ]
         },
         {
+            "name" : "noto-fonts-emoji",
+            "buildsystem" : "simple",
+            "build-commands" : [
+                "install -D fonts/NotoColorEmoji.ttf /app/share/fonts/noto",
+                "install -D LICENSE /app/share/licenses/noto-fonts-emoji/LICENSE"
+            ],
+            "sources": [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/googlefonts/noto-emoji/archive/v2018-08-10-unicode11.tar.gz",
+                    "sha256" : "1275143ca462e773515b9a76bb3a0d072fe4359e66707f8f7d337c772afab9d7"
+                }
+            ]
+        },
+        {
             "name" : "libunistring",
             "cleanup" : [
                 "/share"
