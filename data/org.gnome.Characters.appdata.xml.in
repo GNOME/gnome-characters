@@ -33,4 +33,7 @@
   </kudos>
   <translation type="gettext">org.gnome.Characters</translation>
   <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="3.32.1" date="2019-04-08"/>
+  </releases>
 </component>
