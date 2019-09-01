@@ -4,7 +4,7 @@ Characters is a simple utility application to find and insert unusual
 characters.  It allows you to quickly find the character you are
 looking for by searching for keywords.
 
-<a href='https://flathub.org/apps/details/org.gnome.Characters'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
+[![Download on Flathub](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Flathub-badge-en.svg/240px-Flathub-badge-en.svg.png)](https://flathub.org/apps/details/org.gnome.Characters)
 
 ## Helpful Links
  * [File a Bug in GitLab](https://gitlab.gnome.org/GNOME/gnome-characters/issues)
