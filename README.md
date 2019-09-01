@@ -7,6 +7,7 @@ looking for by searching for keywords.
 [![Download on Flathub](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Flathub-badge-en.svg/240px-Flathub-badge-en.svg.png)](https://flathub.org/apps/details/org.gnome.Characters)
 
 ## Helpful Links
+ * [Homepage](https://wiki.gnome.org/Apps/CharacterMap)
  * [File a Bug in GitLab](https://gitlab.gnome.org/GNOME/gnome-characters/issues)
  * [Download a Release Tarball](https://download.gnome.org/sources/gnome-characters/)
  * [Browse source code in Git version control](https://gitlab.gnome.org/GNOME/gnome-characters)
