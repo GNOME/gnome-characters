@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: org.gnome.Characters 3.15.91.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2018-10-29 12:19+0000\n"
+"POT-Creation-Date: 2019-09-19 15:35+0000\n"
 "PO-Revision-Date: 2019-01-12 21:43+0200\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
@@ -60,7 +60,7 @@ msgstr "フォントで絞り込み"
 msgid "About Characters"
 msgstr "文字について"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
 msgid "GNOME Characters"
 msgstr "GNOME Characters"
 
@@ -91,15 +91,12 @@ msgstr "文字"
 msgid "Utility application to find and insert unusual characters"
 msgstr "珍しい文字を探して挿入するためのユーティリティ"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "@appid@"
-msgstr ""
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;文字;句読点;数字;絵文字;顔文字;"
+msgstr ""
+"characters;unicode;punctuation;math;letters;emoji;emoticon;文字;句読点;数字;"
+"絵文字;顔文字;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -117,7 +114,7 @@ msgstr "最近使われた文字の最大記憶数"
 msgid "Emojis"
 msgstr "絵文字"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:38 src/categoryList.js:386
 msgid "Letters & Symbols"
 msgstr "文字とシンボル"
 
@@ -187,7 +184,7 @@ msgid "%s Category List Row"
 msgstr "%s カテゴリの行"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:374 src/window.js:366
 msgid "Recently Used"
 msgstr "最近の使用"
 
@@ -226,50 +223,50 @@ msgstr "Characters アプリケーションが終了しました"
 msgid "None"
 msgstr "なし"
 
-#: src/searchProvider.js:93
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "文字の名前が不明"
 
-#: src/searchProvider.js:96
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:159 src/window.js:372
+msgid "Search Result"
+msgstr "検索結果"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
+#: src/window.js:194
 msgid "translator-credits"
 msgstr ""
 "Daiki Ueno\n"
 "松澤 二郎 <jmatsuzawa@gnome.org>"
 
-#: src/window.js:192
+#: src/window.js:196
 msgid "Character Map"
 msgstr "文字マップ"
 
-#: src/window.js:212
+#: src/window.js:216
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s のみ)"
 
-#: src/window.js:339
+#: src/window.js:343
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s の文字一覧"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:351
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "最近使われた %s の文字一覧"
 
-#: src/window.js:366
+#: src/window.js:370
 msgid "Search Result Character List"
 msgstr "検索結果の文字一覧"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "検索結果"
 
 #~ msgid "About"
 #~ msgstr "このアプリケーションについて"
