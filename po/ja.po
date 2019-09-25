@@ -1,5 +1,5 @@
 # Japanese translations for org.gnome.Characters package.
-# Copyright (C) 2015 THE org.gnome.Characters'S COPYRIGHT HOLDER
+# Copyright (C) 2015-2019 THE org.gnome.Characters'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the org.gnome.Characters package.
 # Daiki Ueno <ueno@gnu.org>, 2015.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2015, 2017.
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
 "POT-Creation-Date: 2019-09-19 15:35+0000\n"
-"PO-Revision-Date: 2019-01-12 21:43+0200\n"
+"PO-Revision-Date: 2019-09-25 20:30+0200\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -58,7 +58,7 @@ msgstr "フォントで絞り込み"
 
 #: data/menu.ui:54
 msgid "About Characters"
-msgstr "文字について"
+msgstr "“文字”について"
 
 #: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
 msgid "GNOME Characters"
