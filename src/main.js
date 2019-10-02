@@ -84,8 +84,13 @@ var MyApplication = GObject.registerClass({
         log(_("Characters Application started"));
     }
 
-    vfunc_activate () {
-        (new Window.MainWindow({ application: this })).show();
+    vfunc_activate() {
+        if (!this._appwindow) {
+            this._appwindow = new Window.MainWindow({ application: this });
+        }
+
+        this._appwindow.present();
+        log(_("Characters Application activate"));
     }
 
     vfunc_shutdown() {
