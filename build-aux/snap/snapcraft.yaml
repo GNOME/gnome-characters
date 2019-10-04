@@ -1,13 +1,13 @@
 name: gnome-characters
 version: git
-summary: A character map application
-description: |
-  Characters is a simple utility application to find and
-  insert unusual characters.
-
+adopt-info: gnome-characters
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 base: core18
+
+layout:
+  /usr/bin/gjs:
+    symlink: $SNAP/gnome-platform/usr/bin/gjs
 
 slots:
   # for GtkApplication registration
@@ -27,7 +27,8 @@ apps:
     desktop: usr/share/applications/org.gnome.Characters.desktop
     environment:
       GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
-      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/org.gnome.Characters
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/org.gnome.Characters:$SNAP/gnome-platform/usr/lib/
+      GI_TYPELIB_PATH: $SNAP/gnome-platform/usr/lib/gjs/girepository-1.0
 
 parts:
   gnome-characters:
@@ -35,14 +36,13 @@ parts:
     source: .
     plugin: meson
     meson-parameters: [--buildtype=release, --prefix=/snap/gnome-characters/current/usr]
+    parse-info: [usr/share/metainfo/org.gnome.Characters.appdata.xml]
     organize:
       snap/gnome-characters/current/usr: usr
     override-pull: |
       snapcraftctl pull
       sed -i.bak -e 's|=@appid@$|=${SNAP}/meta/gui/org.gnome.Characters.svg|g' data/org.gnome.Characters.desktop.in
       sed -i.bak -e 's|=@bindir@/gnome-characters$|=${SNAP}/usr/share/org.gnome.Characters/org.gnome.Characters|g' data/org.gnome.Characters.desktop.in
-      sed -i.bak -e 's|@GJS@|/snap/gnome-characters/current/usr/bin/gjs|g' src/org.gnome.Characters.in
-      sed -i.bak -e 's|@GJS@|/snap/gnome-characters/current/usr/bin/gjs|g' src/org.gnome.Characters.BackgroundService.in
     override-build: |
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
@@ -67,19 +67,10 @@ parts:
   libraries:
     plugin: nil
     stage-packages:
-      - gjs
-      - gir1.2-gdkpixbuf-2.0
-      - gir1.2-glib-2.0
-      - gir1.2-gtk-3.0
-      - gir1.2-gnomedesktop-3.0
       - libreadline5
       - libunistring2
-      - fonts-noto-color-emoji
     prime:
-      - "usr/bin/gjs*"
-      - "usr/lib/*/girepository-1.0*"
       - "usr/lib/*/libmozjs*"
       - "usr/lib/*.*"
       - "lib/*/libreadline.so*"
       - "usr/lib/*/libunistring.so*"
-      - "usr/share/fonts/truetype/noto"
