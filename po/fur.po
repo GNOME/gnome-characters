@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2018-10-29 12:19+0000\n"
-"PO-Revision-Date: 2018-12-26 16:51+0100\n"
+"POT-Creation-Date: 2019-10-02 14:29+0000\n"
+"PO-Revision-Date: 2019-10-16 17:39+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
@@ -28,7 +28,7 @@ msgstr "Prove une ricercje diferente."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
-msgstr "Daûr a cjamâ..."
+msgstr "Daûr a cjamâ…"
 
 #: data/character.ui:68
 msgid "Copy Character"
@@ -58,7 +58,7 @@ msgstr "Filtri par Caratar"
 msgid "About Characters"
 msgstr "Informazions su Caratars"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
 msgid "GNOME Characters"
 msgstr "Caratars GNOME"
 
@@ -92,11 +92,6 @@ msgstr "Caratars"
 msgid "Utility application to find and insert unusual characters"
 msgstr "Aplicazion par cirî e inserî caratars insolits"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "@appid@"
-msgstr "@appid@"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
@@ -118,7 +113,7 @@ msgstr "Massim numar di caratars recents"
 msgid "Emojis"
 msgstr "Emoji"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:38 src/categoryList.js:386
 msgid "Letters & Symbols"
 msgstr "Letaris e simbui"
 
@@ -188,7 +183,7 @@ msgid "%s Category List Row"
 msgstr "Rie liste categorie %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:374 src/window.js:366
 msgid "Recently Used"
 msgstr "Doprâts di recent"
 
@@ -220,7 +215,11 @@ msgstr "Aplicazion caratars"
 msgid "Characters Application started"
 msgstr "Aplicazion caratars inviade"
 
-#: src/main.js:92
+#: src/main.js:93
+msgid "Characters Application activate"
+msgstr "Aplicazion Caratars ativade"
+
+#: src/main.js:97
 msgid "Characters Application exiting"
 msgstr "Aplicazion caratars daûr a jessî"
 
@@ -228,48 +227,51 @@ msgstr "Aplicazion caratars daûr a jessî"
 msgid "None"
 msgstr "Nissun"
 
-#: src/searchProvider.js:93
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Non caratar no cognossût"
 
-#: src/searchProvider.js:96
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:159 src/window.js:372
+msgid "Search Result"
+msgstr "Risultâts de ricercje"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
+#: src/window.js:194
 msgid "translator-credits"
 msgstr "Fabio Tomat <f.t.public@gmail.com>"
 
-#: src/window.js:192
+#: src/window.js:196
 msgid "Character Map"
 msgstr "Tabele caratars"
 
-#: src/window.js:212
+#: src/window.js:216
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (nome %s)"
 
-#: src/window.js:339
+#: src/window.js:343
 #, javascript-format
 msgid "%s Character List"
 msgstr "Liste caratars %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:351
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Liste caratars di %s doprade di resint"
 
-#: src/window.js:366
+#: src/window.js:370
 msgid "Search Result Character List"
 msgstr "Liste caratars de ricercje"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "Risultâts de ricercje"
+#~ msgid "@appid@"
+#~ msgstr "@appid@"
 
 #~ msgid "About"
 #~ msgstr "Informazions"
