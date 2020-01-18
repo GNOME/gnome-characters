@@ -1,9 +1,9 @@
 # Japanese translations for org.gnome.Characters package.
-# Copyright (C) 2015-2019 THE org.gnome.Characters'S COPYRIGHT HOLDER
+# Copyright (C) 2015-2020 THE org.gnome.Characters'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the org.gnome.Characters package.
 # Daiki Ueno <ueno@gnu.org>, 2015.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2015, 2017.
-# sicklylife <translation@sicklylife.jp>, 2019.
+# sicklylife <translation@sicklylife.jp>, 2019-2020.
 #
 msgid ""
 msgstr ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
 "POT-Creation-Date: 2019-12-27 13:10+0000\n"
-"PO-Revision-Date: 2019-09-25 20:30+0200\n"
+"PO-Revision-Date: 2020-01-17 00:00+0200\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -42,11 +42,11 @@ msgstr "文字をクリップボードにコピーしました"
 
 #: data/mainview.ui:30
 msgid "No recent characters found"
-msgstr "最近使われた文字はありません"
+msgstr "最近使用した文字はありません"
 
 #: data/mainview.ui:41
 msgid "Characters will appear here if you use them."
-msgstr "文字を使うとここに表示されます"
+msgstr "文字を使用するとここに表示されます"
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -104,11 +104,11 @@ msgstr "文字を表示するためのフォント"
 
 #: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
-msgstr "文字一覧に文字を描画するのにそのフォントを使います。"
+msgstr "文字一覧に文字を描画するのに、そのフォントを使用します。"
 
 #: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
-msgstr "最近使われた文字の最大記憶数"
+msgstr "最近使用した文字の最大記憶数"
 
 #: src/categoryList.js:31
 msgid "Emojis"
@@ -213,17 +213,15 @@ msgstr "Characters アプリケーション"
 
 #: src/main.js:84
 msgid "Characters Application started"
-msgstr "Characters アプリケーションが開始しました"
+msgstr "Characters アプリケーションを開始しました"
 
 #: src/main.js:93
-#, fuzzy
-#| msgid "Characters Application started"
 msgid "Characters Application activate"
-msgstr "Characters アプリケーションが開始しました"
+msgstr "Characters アプリケーションをアクティブにします"
 
 #: src/main.js:97
 msgid "Characters Application exiting"
-msgstr "Characters アプリケーションが終了しました"
+msgstr "Characters アプリケーションを終了しました"
 
 #: src/menu.js:44
 msgid "None"
@@ -247,8 +245,9 @@ msgstr "検索結果"
 #: src/window.js:194
 msgid "translator-credits"
 msgstr ""
-"Daiki Ueno\n"
-"松澤 二郎 <jmatsuzawa@gnome.org>"
+"松澤 二郎 <jmatsuzawa@gnome.org>\n"
+"Daiki Ueno <ueno@gnu.org>\n"
+"sicklylife <translation@sicklylife.jp>"
 
 #: src/window.js:196
 msgid "Character Map"
@@ -268,7 +267,7 @@ msgstr "%s の文字一覧"
 #: src/window.js:351
 #, javascript-format
 msgid "Recently Used %s Character List"
-msgstr "最近使われた %s の文字一覧"
+msgstr "最近使用した %s の文字一覧"
 
 #: src/window.js:370
 msgid "Search Result Character List"
