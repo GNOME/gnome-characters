@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: org.gnome.Characters 3.15.91.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2019-09-19 15:35+0000\n"
+"POT-Creation-Date: 2019-12-27 13:10+0000\n"
 "PO-Revision-Date: 2019-09-25 20:30+0200\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
@@ -215,7 +215,13 @@ msgstr "Characters アプリケーション"
 msgid "Characters Application started"
 msgstr "Characters アプリケーションが開始しました"
 
-#: src/main.js:92
+#: src/main.js:93
+#, fuzzy
+#| msgid "Characters Application started"
+msgid "Characters Application activate"
+msgstr "Characters アプリケーションが開始しました"
+
+#: src/main.js:97
 msgid "Characters Application exiting"
 msgstr "Characters アプリケーションが終了しました"
 
