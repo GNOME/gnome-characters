@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2019-03-20 21:06+0000\n"
-"PO-Revision-Date: 2019-03-25 20:02+0100\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"POT-Creation-Date: 2019-10-02 14:29+0000\n"
+"PO-Revision-Date: 2020-01-18 23:58+0100\n"
+"Last-Translator: gogo <linux.hr@protonmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "Filtriraj po slovima"
 msgid "About Characters"
 msgstr "O Znakovima"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
 msgid "GNOME Characters"
 msgstr "GNOME znakovi"
 
@@ -94,11 +94,6 @@ msgstr "Znakovi"
 msgid "Utility application to find and insert unusual characters"
 msgstr "Aplikacija pomagala za pronalazak i umetanje neuobičajenih znakova"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "@appid@"
-msgstr "@appid@"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
@@ -120,7 +115,7 @@ msgstr "Najviše nedavnih znakova"
 msgid "Emojis"
 msgstr "Smajliji"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:38 src/categoryList.js:386
 msgid "Letters & Symbols"
 msgstr "Slova i simboli"
 
@@ -190,7 +185,7 @@ msgid "%s Category List Row"
 msgstr "%s redak popisa kategorije"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:374 src/window.js:366
 msgid "Recently Used"
 msgstr "Nedavno korišteno"
 
@@ -221,7 +216,11 @@ msgstr "Aplikacija znakova"
 msgid "Characters Application started"
 msgstr "Aplikacija znakova pokrenuta"
 
-#: src/main.js:92
+#: src/main.js:93
+msgid "Characters Application activate"
+msgstr "Aplikacija znakova aktivirana"
+
+#: src/main.js:97
 msgid "Characters Application exiting"
 msgstr "Aplikacija znakova zatvorena"
 
@@ -229,48 +228,51 @@ msgstr "Aplikacija znakova zatvorena"
 msgid "None"
 msgstr "Nepoznat"
 
-#: src/searchProvider.js:93
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Nepoznat naziv znaka"
 
-#: src/searchProvider.js:96
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:159 src/window.js:372
+msgid "Search Result"
+msgstr "Rezult pretrage"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
+#: src/window.js:194
 msgid "translator-credits"
 msgstr "gogo https://launchpad.net/~trebelnik-stefina"
 
-#: src/window.js:192
+#: src/window.js:196
 msgid "Character Map"
 msgstr "Mapa znaka"
 
-#: src/window.js:212
+#: src/window.js:216
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s samo)"
 
-#: src/window.js:339
+#: src/window.js:343
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s popis znakova"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:351
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Nedavno korišten %s popis znakova"
 
-#: src/window.js:366
+#: src/window.js:370
 msgid "Search Result Character List"
 msgstr "Pretraži rezultat popisa znakova"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "Rezult pretrage"
+#~ msgid "@appid@"
+#~ msgstr "@appid@"
 
 #~ msgid "About"
 #~ msgstr "O programu"
