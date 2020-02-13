@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the gnome-characters package.
 #
 # Marek Černoch <marek.cernoch@email.cz>, 2015
-# Marek Černocký <marek@manet.cz>, 2014, 2015, 2016, 2017, 2019.
+# Marek Černocký <marek@manet.cz>, 2014, 2015, 2016, 2017, 2019, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2018-10-29 12:19+0000\n"
-"PO-Revision-Date: 2019-02-12 12:56+0100\n"
+"POT-Creation-Date: 2019-10-02 14:29+0000\n"
+"PO-Revision-Date: 2020-02-14 00:49+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -61,7 +61,7 @@ msgstr "Filtrovat podle písma"
 msgid "About Characters"
 msgstr "O aplikaci Znaky"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
 msgid "GNOME Characters"
 msgstr "Znaky GNOME"
 
@@ -94,11 +94,6 @@ msgstr "Znaky"
 msgid "Utility application to find and insert unusual characters"
 msgstr "Pomocná aplikace pro vyhledávání a vkládání méně běžných znaků."
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "@appid@"
-msgstr "@appid@"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
@@ -122,7 +117,7 @@ msgstr "Maximální počet nedávných znaků"
 msgid "Emojis"
 msgstr "Emodži"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:38 src/categoryList.js:386
 msgid "Letters & Symbols"
 msgstr "Písmena a symboly"
 
@@ -192,7 +187,7 @@ msgid "%s Category List Row"
 msgstr "Řádek v seznam znaků %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:374 src/window.js:366
 msgid "Recently Used"
 msgstr "Nedávno použité"
 
@@ -223,7 +218,11 @@ msgstr "Aplikace Znaky"
 msgid "Characters Application started"
 msgstr "Aplikace Znaky je spuštěna"
 
-#: src/main.js:92
+#: src/main.js:93
+msgid "Characters Application activate"
+msgstr "Aplikace Znaky je v provozu"
+
+#: src/main.js:97
 msgid "Characters Application exiting"
 msgstr "Aplikace Znaky se ukončuje"
 
@@ -231,56 +230,47 @@ msgstr "Aplikace Znaky se ukončuje"
 msgid "None"
 msgstr "žádný"
 
-#: src/searchProvider.js:93
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Neznámý název znaku"
 
-#: src/searchProvider.js:96
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:159 src/window.js:372
+msgid "Search Result"
+msgstr "Výsledek hledání"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
+#: src/window.js:194
 msgid "translator-credits"
 msgstr ""
 "Marek Černocký <marek@manet.cz>\n"
 "Marek Černoch <marek.cernoch@email.cz>"
 
-#: src/window.js:192
+#: src/window.js:196
 msgid "Character Map"
 msgstr "Mapa znaků"
 
-#: src/window.js:212
+#: src/window.js:216
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (jen %s)"
 
-#: src/window.js:339
+#: src/window.js:343
 #, javascript-format
 msgid "%s Character List"
 msgstr "Seznam znaků %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:351
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Seznam nedávno použitých znaků %s"
 
-#: src/window.js:366
+#: src/window.js:370
 msgid "Search Result Character List"
 msgstr "Seznam nalezených znaků"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "Výsledek hledání"
-
-#~ msgid "About"
-#~ msgstr "O aplikaci"
-
-#~ msgid "Quit"
-#~ msgstr "Ukončit"
-
-#~ msgid "gnome-characters"
-#~ msgstr "gnome-characters"
