@@ -4,14 +4,14 @@
 #
 # Justin van Steijn <justin.vansteijn@ziggo.nl>, 2015.
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2015, 2016.
-# Nathan Follens <nthn@unseen.is>, 2016-2017, 2019.
+# Nathan Follens <nthn@unseen.is>, 2016-2017, 2019-2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2018-10-29 12:19+0000\n"
-"PO-Revision-Date: 2019-02-24 11:46+0100\n"
+"POT-Creation-Date: 2019-10-02 14:29+0000\n"
+"PO-Revision-Date: 2020-02-24 18:14+0100\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #: data/characterlist.ui:30
 msgid "Search found no results"
@@ -61,7 +61,7 @@ msgstr "Op lettertype filteren"
 msgid "About Characters"
 msgstr "Over Tekens en symbolen"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
 msgid "GNOME Characters"
 msgstr "Gnome Tekens en symbolen"
 
@@ -95,11 +95,6 @@ msgstr "Tekens en symbolen"
 msgid "Utility application to find and insert unusual characters"
 msgstr "Hulpmiddel om bijzondere tekens te zoeken en in te voegen"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "@appid@"
-msgstr "@appid@"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
@@ -123,7 +118,7 @@ msgstr "Maximum aantal onlangs gebruikte tekens"
 msgid "Emojis"
 msgstr "Emoticons"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:38 src/categoryList.js:386
 msgid "Letters & Symbols"
 msgstr "Letters & symbolen"
 
@@ -193,7 +188,7 @@ msgid "%s Category List Row"
 msgstr "%s Categorielijst Rij"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:374 src/window.js:366
 msgid "Recently Used"
 msgstr "Onlangs gebruikt"
 
@@ -224,7 +219,12 @@ msgstr "De toepassing Tekens en symbolen"
 msgid "Characters Application started"
 msgstr "Tekens en symbolen gestart"
 
-#: src/main.js:92
+# ? - Nathan
+#: src/main.js:93
+msgid "Characters Application activate"
+msgstr "Tekens en symbolen geactiveerd"
+
+#: src/main.js:97
 msgid "Characters Application exiting"
 msgstr "Tekens en symbolen is al geopend"
 
@@ -232,17 +232,22 @@ msgstr "Tekens en symbolen is al geopend"
 msgid "None"
 msgstr "Geen"
 
-#: src/searchProvider.js:93
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Naam van teken onbekend"
 
-#: src/searchProvider.js:96
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:159 src/window.js:372
+msgid "Search Result"
+msgstr "Zoekresultaat"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
+#: src/window.js:194
 msgid "translator-credits"
 msgstr ""
 "Justin van Steijn\n"
@@ -250,34 +255,32 @@ msgstr ""
 "Nathan Follens\n"
 "Meer info over Gnome-NL http://nl.gnome.org"
 
-#: src/window.js:192
+#: src/window.js:196
 msgid "Character Map"
 msgstr "Speciale tekens"
 
-#: src/window.js:212
+#: src/window.js:216
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (alleen %s)"
 
-#: src/window.js:339
+#: src/window.js:343
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s tekenlijst"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:351
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Recent gebruikte %s-tekenlijst"
 
-#: src/window.js:366
+#: src/window.js:370
 msgid "Search Result Character List"
 msgstr "Zoekresultaat tekenlijst"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "Zoekresultaat"
+#~ msgid "@appid@"
+#~ msgstr "@appid@"
 
 #~ msgid "About"
 #~ msgstr "Info"
