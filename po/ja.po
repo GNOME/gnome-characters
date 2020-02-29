@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: org.gnome.Characters 3.15.91.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2019-12-27 13:10+0000\n"
-"PO-Revision-Date: 2020-01-17 00:00+0200\n"
+"POT-Creation-Date: 2020-02-27 16:11+0000\n"
+"PO-Revision-Date: 2020-02-29 20:30+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -46,7 +46,7 @@ msgstr "最近使用した文字はありません"
 
 #: data/mainview.ui:41
 msgid "Characters will appear here if you use them."
-msgstr "文字を使用するとここに表示されます"
+msgstr "文字を使用すると、ここに表示されます"
 
 #: data/mainwindow.ui:12
 msgid "Current page"
@@ -81,7 +81,7 @@ msgstr ""
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
-msgstr "また、句読点記号や絵文字のようなカテゴリ別に閲覧することもできます。"
+msgstr "また、句読点記号や絵文字のようなカテゴリー別に閲覧することもできます。"
 
 #: data/org.gnome.Characters.desktop.in:4 src/service.js:51
 msgid "Characters"
@@ -181,7 +181,7 @@ msgstr "旗"
 #: src/categoryList.js:163
 #, javascript-format
 msgid "%s Category List Row"
-msgstr "%s カテゴリの行"
+msgstr "%s カテゴリーの行"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
 #: src/categoryList.js:374 src/window.js:366
@@ -272,12 +272,3 @@ msgstr "最近使用した %s の文字一覧"
 #: src/window.js:370
 msgid "Search Result Character List"
 msgstr "検索結果の文字一覧"
-
-#~ msgid "About"
-#~ msgstr "このアプリケーションについて"
-
-#~ msgid "Quit"
-#~ msgstr "終了"
-
-#~ msgid "gnome-characters"
-#~ msgstr "gnome-characters"
