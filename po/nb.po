@@ -1,14 +1,15 @@
 # Norwegian bokmål translation of gnome-characters.
 # Copyright (C) 2003-2005 Free Software Foundation, Inc.
-# Kjartan Maraas <kmaraas@gnome.org>, 2003-2019.
+# Kjartan Maraas <kmaraas@gnome.org>, 2003-2020.
 # Terance Edward Sola <terance@lyse.net>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-characters 3.34.x\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2019-03-25 19:04+0000\n"
-"PO-Revision-Date: 2019-07-26 10:01+0200\n"
+"Project-Id-Version: gnome-characters 3.36.x\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2020-02-27 16:11+0000\n"
+"PO-Revision-Date: 2020-03-09 14:53+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -56,7 +57,7 @@ msgstr "Filtrer etter skrifttype"
 msgid "About Characters"
 msgstr "Om Tegn"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
 msgid "GNOME Characters"
 msgstr "GNOME tegn"
 
@@ -110,7 +111,7 @@ msgstr "Maksimalt antall nylige tegn"
 msgid "Emojis"
 msgstr "Emojier"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:38 src/categoryList.js:386
 msgid "Letters & Symbols"
 msgstr "Bokstaver og symboler"
 
@@ -180,7 +181,7 @@ msgid "%s Category List Row"
 msgstr "%s kategorilisterad"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:374 src/window.js:366
 msgid "Recently Used"
 msgstr "Nylig brukt"
 
@@ -211,7 +212,11 @@ msgstr "Tegnprogram"
 msgid "Characters Application started"
 msgstr "Tegnprogram startet"
 
-#: src/main.js:92
+#: src/main.js:93
+msgid "Characters Application activate"
+msgstr "Tegnprogram startet"
+
+#: src/main.js:97
 msgid "Characters Application exiting"
 msgstr "Tegnprogram avslutter"
 
@@ -228,36 +233,36 @@ msgstr "Ukjent navn på tegn."
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:159 src/window.js:372
+msgid "Search Result"
+msgstr "Søkeresultat"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
+#: src/window.js:194
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: src/window.js:192
+#: src/window.js:196
 msgid "Character Map"
 msgstr "Tegnkart"
 
-#: src/window.js:212
+#: src/window.js:216
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (kun %s)"
 
-#: src/window.js:339
+#: src/window.js:343
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s tegnliste"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:351
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Sist brukt %s tegnliste"
 
-#: src/window.js:366
+#: src/window.js:370
 msgid "Search Result Character List"
 msgstr "Søk i resultattegnlisten"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "Søkeresultat"
