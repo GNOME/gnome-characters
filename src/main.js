@@ -52,7 +52,7 @@ var MyApplication = GObject.registerClass({
         super._init({ application_id: application_id,
                       flags: Gio.ApplicationFlags.FLAGS_NONE });
 
-        GLib.set_application_name(_('Characters Application'));
+        GLib.set_application_name(_('Characters'));
     }
 
     _onQuit () {
@@ -81,7 +81,7 @@ var MyApplication = GObject.registerClass({
         settings = Util.getSettings('org.gnome.Characters',
                                     '/org/gnome/Characters/');
 
-        log(_("Characters Application started"));
+        log("Characters Application started");
     }
 
     vfunc_activate() {
@@ -90,11 +90,11 @@ var MyApplication = GObject.registerClass({
         }
 
         this._appwindow.present();
-        log(_("Characters Application activate"));
+        log("Characters Application activated");
     }
 
     vfunc_shutdown() {
-        log(_("Characters Application exiting"));
+        log("Characters Application exiting");
 
         super.vfunc_shutdown();
     }
