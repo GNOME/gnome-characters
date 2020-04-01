@@ -8,7 +8,7 @@ looking for by searching for keywords.
  * [File a Bug in GitLab](https://gitlab.gnome.org/GNOME/gnome-characters/issues)
  * [Download a Release Tarball](https://download.gnome.org/sources/gnome-characters/)
  * [Browse source code in Git version control](https://gitlab.gnome.org/GNOME/gnome-characters)
- * [Learn more about Characters](https://wiki.gnome.org/Design/Apps/CharacterMap)
+ * [Learn more about Characters](https://wiki.gnome.org/Apps/Characters)
 
 ## Building
 
