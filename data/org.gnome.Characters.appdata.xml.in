@@ -15,15 +15,15 @@
   </description>
   <screenshots>
     <screenshot type="default" width="1024" height="768">
-      <image>https://raw.github.com/gnome-design-team/gnome-mockups/master/character-map/png/grid.png</image>
+      <image>https://wiki.gnome.org/Apps/Characters?action=AttachFile&do=get&target=gnome-characters-2019-07-19+16-12-56.png</image>
     </screenshot>
   </screenshots>
   <project_group>GNOME</project_group>
   <compulsory_for_desktop>GNOME</compulsory_for_desktop>
-  <url type="homepage">https://wiki.gnome.org/Design/Apps/CharacterMap</url>
-  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters</url>
+  <url type="homepage">https://wiki.gnome.org/Apps/Characters</url>
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-characters/issues/</url>
   <url type="donation">http://www.gnome.org/friends/</url>
-  <url type="help">https://wiki.gnome.org/Apps/Gucharmap</url>
+  <url type="help">https://wiki.gnome.org/Apps/Characters</url>
   <update_contact>dueno_at_src.gnome.org</update_contact>
   <kudos>
     <kudo>HiDpiIcon</kudo>
