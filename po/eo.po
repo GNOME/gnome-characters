@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2019-03-25 19:03+0000\n"
-"PO-Revision-Date: 2019-04-06 23:01+0200\n"
+"POT-Creation-Date: 2020-04-01 19:44+0000\n"
+"PO-Revision-Date: 2020-01-14 21:03+0100\n"
 "Last-Translator: Carmen Bianca BAKKER <carmen@carmenbianca.eu>\n"
 "Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
 "Language: eo\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Project-Style: gnome\n"
 
 #: data/characterlist.ui:30
@@ -62,7 +62,7 @@ msgstr "Filtri laŭ tiparo"
 msgid "About Characters"
 msgstr "Pri Signoj"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
 msgid "GNOME Characters"
 msgstr "GNOME Signoj"
 
@@ -88,7 +88,7 @@ msgstr ""
 "Vi ankaŭ povas foliumi signojn laŭ kategorioj, kiel Interpunkcio, Bildoj, "
 "ktp."
 
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
+#: data/org.gnome.Characters.desktop.in:4 src/main.js:55 src/service.js:51
 msgid "Characters"
 msgstr "Signoj"
 
@@ -117,7 +117,7 @@ msgstr "Maksimumaj lastatempaj signoj"
 msgid "Emojis"
 msgstr "Emoĝioj"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:38 src/categoryList.js:386
 msgid "Letters & Symbols"
 msgstr "Literoj & simboloj"
 
@@ -187,7 +187,7 @@ msgid "%s Category List Row"
 msgstr "%s kategoria listvico"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:374 src/window.js:366
 msgid "Recently Used"
 msgstr "Lasttempe uzataj"
 
@@ -210,67 +210,67 @@ msgstr "%s ne inkluziviĝas en %s"
 msgid "Unassigned"
 msgstr "Neasignita"
 
-#: src/main.js:55
-msgid "Characters Application"
-msgstr "Signa programo"
-
-#: src/main.js:84
-msgid "Characters Application started"
-msgstr "Signa programo ekis"
-
-#: src/main.js:92
-msgid "Characters Application exiting"
-msgstr "Signa programo finas"
-
 #: src/menu.js:44
 msgid "None"
 msgstr "Neniu"
 
-#: src/searchProvider.js:93
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Nekonata signo-nomo"
 
-#: src/searchProvider.js:96
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:159 src/window.js:372
+msgid "Search Result"
+msgstr "Serĉrezulto"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
+#: src/window.js:194
 msgid "translator-credits"
 msgstr ""
 "Kristjan SCHMIDT\n"
 "Baptiste DARTHENAY\n"
 "Carmen Bianca BAKKER <carmen@carmenbianca.eu>"
 
-#: src/window.js:192
+#: src/window.js:196
 msgid "Character Map"
 msgstr "Signo-mapo"
 
-#: src/window.js:212
+#: src/window.js:216
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s(%s nur)"
 
-#: src/window.js:339
+#: src/window.js:343
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s signo-listo"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:351
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Lasttempe uzata %s signo-listo"
 
-#: src/window.js:366
+#: src/window.js:370
 msgid "Search Result Character List"
 msgstr "Serĉrezulto de signo-listo"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "Serĉrezulto"
+#~ msgid "Characters Application"
+#~ msgstr "Signa programo"
+
+#~ msgid "Characters Application started"
+#~ msgstr "Signa aplikaĵo komencis"
+
+#~ msgid "Characters Application activate"
+#~ msgstr "Signa aplikaĵo aktiviĝis"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "Signa aplikaĵo ĉesas"
 
 #~ msgid "gnome-characters"
 #~ msgstr "gnome-characters"
