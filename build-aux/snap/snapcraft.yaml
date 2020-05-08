@@ -41,6 +41,8 @@ parts:
       snap/gnome-characters/current/usr: usr
     override-pull: |
       snapcraftctl pull
+      sed -i -e 's|@GJS@|/usr/bin/gjs|g' src/org.gnome.Characters.in
+      sed -i -e 's|@GJS@|/usr/bin/gjs|g' src/org.gnome.Characters.BackgroundService.in
       sed -i.bak -e 's|=@appid@$|=${SNAP}/meta/gui/org.gnome.Characters.svg|g' data/org.gnome.Characters.desktop.in
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
       cp ../src/data/icons/hicolor/scalable/apps/org.gnome.Characters.svg $SNAPCRAFT_PART_INSTALL/meta/gui/
