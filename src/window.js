@@ -39,8 +39,8 @@ const Util = imports.util;
 var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/mainwindow.ui',
     InternalChildren: ['main-headerbar', 'search-active-button',
-                       'search-bar', 'search-entry', 'back-button',
-                       'menu-button',
+                       'search-bar', 'search-entry', 'sidebar-back-button',
+                       'menu-button', 'leaflet', 'main-back-button',
                        'main-grid', 'main-hbox', 'sidebar-grid'],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
@@ -94,14 +94,22 @@ var MainWindow = GObject.registerClass({
         this._search_bar.connect_entry(this._search_entry);
         this._search_entry.connect('search-changed', (entry) => this._handleSearchChanged(entry));
 
-        this._back_button.connect('clicked', () => {
+        this._sidebar_back_button.connect('clicked', () => {
                                       let action = this.lookup_action('category');
                                       action.activate(new GLib.Variant('s', 'emojis'));
                                   });
-        this._back_button.bind_property('visible',
+        this._sidebar_back_button.bind_property('visible',
                                         this._search_active_button, 'visible',
                                         GObject.BindingFlags.SYNC_CREATE |
                                         GObject.BindingFlags.INVERT_BOOLEAN);
+        this._leaflet.bind_property('folded',
+                                    this._main_back_button,
+                                    'visible',
+                                    GObject.BindingFlags.SYNC_CREATE |
+                                    GObject.BindingFlags.DEFAULT);
+        this._main_back_button.connect('clicked', (() => {
+            this._leaflet.set_visible_child_name("sidebar");
+        }).bind(this));
 
         this._menu_popover = new Menu.MenuPopover({});
         this._menu_button.set_popover(this._menu_popover);
@@ -231,18 +239,11 @@ var MainWindow = GObject.registerClass({
         if (categoryList == null)
             return;
 
-        this._selectFirstSubcategory();
-        let category = categoryList.get_selected_row().category;
-
         if (name == 'emojis') {
-            this._back_button.hide();
+            this._sidebar_back_button.hide();
         } else {
-            this._back_button.show();
+            this._sidebar_back_button.show();
         }
-
-        Util.assertNotEqual(category, null);
-        this._mainView.setPage(category);
-        this._updateTitle(category.title);
     }
 
     _subcategory(action, v) {
@@ -258,6 +259,7 @@ var MainWindow = GObject.registerClass({
         if (category) {
             this._mainView.setPage(category);
             this._updateTitle(category.title);
+            this._leaflet.set_visible_child_name("content");
         }
     }
 

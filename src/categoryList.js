@@ -409,7 +409,7 @@ var CategoryListView = GObject.registerClass({
     _init(params) {
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
-            transition_type: Gtk.StackTransitionType.SLIDE_RIGHT
+            transition_type: Gtk.StackTransitionType.SLIDE_LEFT
         });
         super._init(params);
 

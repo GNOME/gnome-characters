@@ -4,7 +4,7 @@
   <template class="Gjs_MainWindow" parent="HdyApplicationWindow">
     <property name="height-request">660</property>
     <child>
-      <object class="HdyLeaflet">
+      <object class="HdyLeaflet" id="leaflet">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
@@ -35,7 +35,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="back-button">
+                  <object class="GtkButton" id="sidebar-back-button">
                     <property name="can_focus">True</property>
                     <property name="visible">False</property>
                     <style>
@@ -145,6 +145,24 @@
                 <property name="show-close-button">True</property>
                 <property name="has-subtitle">False</property>
                 <property name="title" translatable="yes">Current page</property>
+                <child>
+                  <object class="GtkButton" id="main-back-button">
+                    <property name="can_focus">True</property>
+                    <property name="visible">False</property>
+                    <style>
+                      <class name="image-button" />
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">go-previous-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="pack-type">start</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
