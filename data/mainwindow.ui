@@ -13,63 +13,68 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="HdyHeaderBar" id="sidebar-headerbar">
-                <property name="can_focus">False</property>
+              <object class="HdyWindowHandle">
                 <property name="visible">True</property>
                 <child>
-                  <object class="GtkToggleButton" id="search-active-button">
-                    <property name="can_focus">True</property>
-                    <property name="visible">True</property>
-                    <style>
-                      <class name="image-button" />
-                    </style>
-                    <child>
-                      <object class="GtkImage" id="search-button-image">
-                        <property name="visible">True</property>
-                        <property name="icon-name">edit-find-symbolic</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="pack-type">start</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="sidebar-back-button">
-                    <property name="can_focus">True</property>
-                    <property name="visible">False</property>
-                    <style>
-                      <class name="image-button" />
-                    </style>
-                    <child>
-                      <object class="GtkImage" id="back-button-image">
-                        <property name="visible">True</property>
-                        <property name="icon-name">go-previous-symbolic</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="pack-type">start</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkMenuButton" id="menu-button">
+                  <object class="GtkHeaderBar" id="sidebar-headerbar">
                     <property name="can_focus">False</property>
                     <property name="visible">True</property>
-                    <property name="use_popover">True</property>
-                    <style>
-                      <class name="image-button" />
-                    </style>
                     <child>
-                      <object class="GtkImage" id="menu-button-image">
+                      <object class="GtkToggleButton" id="search-active-button">
+                        <property name="can_focus">True</property>
                         <property name="visible">True</property>
-                        <property name="icon-name">open-menu-symbolic</property>
+                        <style>
+                          <class name="image-button" />
+                        </style>
+                        <child>
+                          <object class="GtkImage" id="search-button-image">
+                            <property name="visible">True</property>
+                            <property name="icon-name">edit-find-symbolic</property>
+                          </object>
+                        </child>
                       </object>
+                      <packing>
+                        <property name="pack-type">start</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="sidebar-back-button">
+                        <property name="can_focus">True</property>
+                        <property name="visible">False</property>
+                        <style>
+                          <class name="image-button" />
+                        </style>
+                        <child>
+                          <object class="GtkImage" id="back-button-image">
+                            <property name="visible">True</property>
+                            <property name="icon-name">go-previous-symbolic</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="pack-type">start</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkMenuButton" id="menu-button">
+                        <property name="can_focus">False</property>
+                        <property name="visible">True</property>
+                        <property name="use_popover">True</property>
+                        <style>
+                          <class name="image-button" />
+                        </style>
+                        <child>
+                          <object class="GtkImage" id="menu-button-image">
+                            <property name="visible">True</property>
+                            <property name="icon-name">open-menu-symbolic</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="pack-type">end</property>
+                      </packing>
                     </child>
                   </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
                 </child>
               </object>
               <packing>
@@ -139,29 +144,34 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="HdyHeaderBar" id="main-headerbar">
-                <property name="can_focus">False</property>
+              <object class="HdyWindowHandle">
                 <property name="visible">True</property>
-                <property name="show-close-button">True</property>
-                <property name="has-subtitle">False</property>
-                <property name="title" translatable="yes">Current page</property>
                 <child>
-                  <object class="GtkButton" id="main-back-button">
-                    <property name="can_focus">True</property>
-                    <property name="visible">False</property>
-                    <style>
-                      <class name="image-button" />
-                    </style>
+                  <object class="GtkHeaderBar" id="main-headerbar">
+                    <property name="can_focus">False</property>
+                    <property name="visible">True</property>
+                    <property name="show-close-button">True</property>
+                    <property name="has-subtitle">False</property>
+                    <property name="title" translatable="yes">Current page</property>
                     <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="icon-name">go-previous-symbolic</property>
+                      <object class="GtkButton" id="main-back-button">
+                        <property name="can_focus">True</property>
+                        <property name="visible">False</property>
+                        <style>
+                          <class name="image-button" />
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="icon-name">go-previous-symbolic</property>
+                          </object>
+                        </child>
                       </object>
+                      <packing>
+                        <property name="pack-type">start</property>
+                      </packing>
                     </child>
                   </object>
-                  <packing>
-                    <property name="pack-type">start</property>
-                  </packing>
                 </child>
               </object>
               <packing>
@@ -205,6 +215,12 @@
       <widget name="main-headerbar"/>
       <widget name="header-separator"/>
     </widgets>
+  </object>
+  <object class="HdyHeaderGroup">
+    <headerbars>
+      <headerbar name="sidebar-headerbar"/>
+      <headerbar name="main-headerbar"/>
+    </headerbars>
   </object>
 </interface>
 
