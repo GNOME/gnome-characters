@@ -120,6 +120,7 @@ var MainWindow = GObject.registerClass({
         });
 
         this._main_hbox.pack_start(this._mainView, true, true, 0);
+        this._sidebar_grid.show_all();
         this._main_grid.show_all();
 
         // Due to limitations of gobject-introspection wrt GdkEvent
