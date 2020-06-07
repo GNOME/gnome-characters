@@ -24,7 +24,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const {Gio, GLib, GObject, Gtk } = imports.gi;
+const {Gio, GLib, GObject, Gtk, Handy } = imports.gi;
 
 const Params = imports.params;
 const CategoryList = imports.categoryList;
@@ -47,7 +47,7 @@ var MainWindow = GObject.registerClass({
             'search-active', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
     },
-}, class MainWindow extends Gtk.ApplicationWindow {
+}, class MainWindow extends Handy.ApplicationWindow {
     _init(params) {
         params = Params.fill(params, { title: GLib.get_application_name(),
                                        default_width: 640,
