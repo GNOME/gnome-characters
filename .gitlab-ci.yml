@@ -9,7 +9,6 @@ flatpak:
     stage: test
     variables:
         MANIFEST_PATH: "build-aux/flatpak/org.gnome.Characters.json"
-        MESON_ARGS: "-Dprofile=development"
         FLATPAK_MODULE: "gnome-characters"
         APP_ID: "org.gnome.CharactersDevel"
         RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
