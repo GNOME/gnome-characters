@@ -27,7 +27,7 @@ msgstr "La cerca no ha donat resultats"
 
 #: data/characterlist.ui:41
 msgid "Try a different search."
-msgstr "Proveu una cerca diferent. "
+msgstr "Proveu una cerca diferent."
 
 #: data/characterlist.ui:73
 msgid "Loading…"
@@ -84,7 +84,7 @@ msgid ""
 "etc."
 msgstr ""
 "També podeu navegar els caràcters per categories, com ara puntuació, "
-"imatges, etc. "
+"imatges, etc."
 
 #: data/org.gnome.Characters.desktop.in:4 src/service.js:51
 msgid "Characters"
