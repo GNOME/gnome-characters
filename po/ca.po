@@ -67,7 +67,7 @@ msgstr "Caràcters del GNOME"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
 msgid "Character map application"
-msgstr "Aplicació per mostrar caràcters"
+msgstr "Aplicació per a mostrar caràcters"
 
 #: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
@@ -75,7 +75,7 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"Caràcters és una aplicació per cercar i inserir caràcters inusuals. Us "
+"Caràcters és una aplicació per a cercar i inserir caràcters inusuals. Us "
 "permet trobar ràpidament els caràcters que esteu cercant usant paraules clau."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
@@ -92,7 +92,7 @@ msgstr "Caràcters"
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
-msgstr "Una aplicació per cercar i inserir caràcters inusuals"
+msgstr "Una aplicació per a cercar i inserir caràcters inusuals"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -106,7 +106,7 @@ msgstr "Tipus de lletra per a mostrar caràcters"
 #: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
 msgstr ""
-"Usa el tipus de lletra per mostrar els caràcters en la llista de caràcters."
+"Usa el tipus de lletra per a mostrar els caràcters en la llista de caràcters."
 
 #: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
