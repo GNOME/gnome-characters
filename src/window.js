@@ -40,8 +40,7 @@ var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/mainwindow.ui',
     InternalChildren: ['main-headerbar', 'search-active-button',
                        'search-bar', 'search-entry', 'back-button',
-                       'menu-button',
-                       'main-grid', 'main-hbox', 'sidebar-grid'],
+                       'menu-button', 'container', 'sidebar'],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
             'search-active', '', '',
@@ -108,19 +107,20 @@ var MainWindow = GObject.registerClass({
 
         this._categoryListView =
             new CategoryList.CategoryListView({ vexpand: true });
+        this._categoryListView.show_all();
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
+            visible: true,
         });
         scroll.add(this._categoryListView);
-        this._sidebar_grid.add(scroll);
+        this._sidebar.add(scroll);
 
         this._mainView = new MainView({
             categoryListView: this._categoryListView
         });
 
-        this._main_hbox.pack_start(this._mainView, true, true, 0);
-        this._main_grid.show_all();
+        this._container.pack_start(this._mainView, true, true, 0);
 
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
