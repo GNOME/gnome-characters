@@ -33,8 +33,8 @@ Gjs_MenuPopover GtkScrolledWindow {
 }
 
 .character-list {
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
+    color: @theme_text_color;
+    background-color: @theme_base_color;
 }
 
 .character-label {
