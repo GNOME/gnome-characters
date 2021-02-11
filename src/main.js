@@ -26,13 +26,16 @@
 
 pkg.initGettext();
 pkg.initFormat();
-pkg.require({ 'Gdk': '3.0',
-              'Gio': '2.0',
-              'GLib': '2.0',
-              'GObject': '2.0',
-              'Gtk': '3.0' });
+pkg.require({ 
+    'Gdk': '3.0',
+    'Gio': '2.0',
+    'GLib': '2.0',
+    'GObject': '2.0',
+    'Gtk': '3.0',
+    'Handy': '1',
+});
 
-const {GLib, Gio, GObject, Gtk} = imports.gi;
+const {GLib, Gio, GObject, Gtk, Handy} = imports.gi;
 
 const Util = imports.util;
 const Window = imports.window;
@@ -88,6 +91,7 @@ var MyApplication = GObject.registerClass({
         if (!this._appwindow) {
             this._appwindow = new Window.MainWindow({ application: this });
         }
+        Handy.init();
 
         this._appwindow.present();
         log("Characters Application activated");

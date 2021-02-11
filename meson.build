@@ -49,6 +49,7 @@ libgc_deps = [
   dependency('gio-2.0'),
   dependency('gtk+-3.0'),
   dependency('pango'),
+  dependency('libhandy-1', version: '>= 1.1'),
   declare_dependency(link_args: '-lunistring')
 ]
 
