@@ -4,12 +4,14 @@
   <template class="Gjs_MainWindow" parent="HdyApplicationWindow">
     <property name="height-request">660</property>
     <child>
-      <object class="HdyLeaflet">
+      <object class="HdyLeaflet" id="leaflet">
         <property name="visible">True</property>
+        <property name="can-swipe-back">True</property>
         <child>
           <object class="GtkBox">
             <property name="orientation">vertical</property>
             <property name="visible">True</property>
+            <property name="width-request">280</property>
             <child>
               <object class="HdyHeaderBar" id="sidebar-headerbar">
                 <property name="visible">True</property>
@@ -55,18 +57,38 @@
           </object>
         </child>
         <child>
-          <object class="HdyWindowHandle" id="header-separator">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
             <property name="visible">True</property>
+            <child>
+              <object class="HdyWindowHandle" id="header-separator">
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkSeparator">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <style>
+                      <class name="sidebar"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
             <child>
               <object class="GtkSeparator">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
+                <property name="vexpand">True</property>
                 <style>
                   <class name="sidebar"/>
                 </style>
               </object>
             </child>
           </object>
+          <packing>
+            <property name="navigatable">False</property>
+          </packing>
         </child>
         <child>
           <object class="GtkBox" id="container">
@@ -81,7 +103,7 @@
                 <child>
                   <object class="GtkButton" id="back-button">
                     <property name="can_focus">True</property>
-                    <property name="visible">False</property>
+                    <property name="visible" bind-source="leaflet" bind-property="folded" bind-flags="sync-create" />
                     <style>
                       <class name="image-button"/>
                     </style>
@@ -136,5 +158,4 @@
       <headerbar name="main-headerbar"/>
     </headerbars>
   </object>
-
 </interface>
