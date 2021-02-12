@@ -32,9 +32,6 @@
                   <object class="GtkToggleButton" id="search-active-button">
                     <property name="can_focus">True</property>
                     <property name="visible">True</property>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
                     <child>
                       <object class="GtkImage" id="search-button-image">
                         <property name="visible">True</property>
@@ -47,9 +44,6 @@
                   <object class="GtkMenuButton">
                     <property name="visible">True</property>
                     <property name="menu-model">primary_menu</property>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
@@ -133,9 +127,6 @@
                   <object class="GtkButton" id="back-button">
                     <property name="can_focus">True</property>
                     <property name="visible" bind-source="leaflet" bind-property="folded" bind-flags="sync-create" />
-                    <style>
-                      <class name="image-button"/>
-                    </style>
                     <child>
                       <object class="GtkImage" id="back-button-image">
                         <property name="visible">True</property>
@@ -152,9 +143,6 @@
                     <property name="can_focus">False</property>
                     <property name="visible">True</property>
                     <property name="use_popover">True</property>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
