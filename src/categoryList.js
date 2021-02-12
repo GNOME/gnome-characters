@@ -159,12 +159,6 @@ const CategoryListRowWidget = GObject.registerClass({
         hbox.pack_start(label, true, true, 0);
 
     }
-
-    select() {
-        let toplevel = this.get_toplevel();
-        let action = toplevel.lookup_action('category');
-        action.activate(new GLib.Variant('s', this.category.name));
-    }
 });
 
 const CategoryListWidget = GObject.registerClass({
@@ -189,7 +183,10 @@ const CategoryListWidget = GObject.registerClass({
 
     vfunc_row_selected(row) {
         if (row != null && row.selectable) {
-            row.select();
+            let toplevel = row.get_toplevel();
+            let action = toplevel.lookup_action('category');
+            action.activate(new GLib.Variant('s', row.category.name));
+            this._lastSelectedRow = row;
         }
     }
     populateCategoryList() {
@@ -206,6 +203,18 @@ const CategoryListWidget = GObject.registerClass({
                 return category;
         }
         return null;
+    }
+
+    restorePreviousSelection() {
+        if (this._lastSelectedRow) {
+            this.select_row(this._lastSelectedRow)
+        }
+    }
+
+    unselect() {
+        let selected = this.get_selected_row()
+        if (selected)
+            this.unselect_row(selected)
     }
 });
 
@@ -343,6 +352,28 @@ const EmojiCategoryListWidget = GObject.registerClass({
     }
 });
 
+const RecentCategoryListWidget = GObject.registerClass({
+
+}, class RecentCategoryListWidget extends CategoryListWidget {
+    _init(params) {
+        super._init(params);
+        this.recentCategory = {
+            name: 'recent',
+            category: Gc.Category.NONE,
+            title: N_('Recently Used'),
+            icon_name: 'document-open-recent-symbolic',
+        };
+        this.recentRow = new CategoryListRowWidget({}, this.recentCategory);
+        this.recentRow.get_style_context().add_class('category');
+        this.recentRow.get_style_context().add_class('recent-category');
+        this.add(this.recentRow)
+    }
+
+    getCategory(name) {
+        return this.recentCategory;
+    }
+});
+
 var CategoryListView = GObject.registerClass({
 }, class CategoryListView extends Gtk.Box {
     _init(params) {
@@ -350,36 +381,38 @@ var CategoryListView = GObject.registerClass({
             hexpand: true, vexpand: true,
             orientation: Gtk.Orientation.VERTICAL,
         });
+        this._lastSelectedList = null;
         super._init(params);
         this.get_style_context().add_class('categories-list');
 
-        let category = {
-            name: 'recent',
-            category: Gc.Category.NONE,
-            title: N_('Recently Used'),
-            icon_name: 'document-open-recent-symbolic',
-        };
-        let recentRow = new CategoryListRowWidget({}, category);
-        recentRow.get_style_context().add_class('category');
-        this.add(recentRow);
+        this._recentCategoryList = new RecentCategoryListWidget();
+        this._recentCategoryList.connect('row-selected', (list, row) => {
+            this._letterCategoryList.unselect();
+            this._emojiCategoryList.unselect();
+            this._lastSelectedList = list;
+            list.select_row(row);
+        });
+        this.add(this._recentCategoryList)
         this.add(new Gtk.Separator({orientation: Gtk.Orientation.HORIZONTAL}));
         
         let emojis_label = new Gtk.Label ({
             label: CategoryList[0].title,
             halign: Gtk.Align.START,
+            margin_top: 12,
+            margin_start: 12,
+            margin_bottom: 12,
+            margin_end: 12,
         }); 
-        emojis_label.get_style_context().add_class("category-title");
+        emojis_label.get_style_context().add_class("heading");
         this.add(emojis_label);
 
         this._emojiCategoryList = new EmojiCategoryListWidget({
             categoryList: EmojiCategoryList
         });
         this._emojiCategoryList.connect('row-selected', (list, row) => {
-            let selected = this._letterCategoryList.get_selected_row();
-            if (selected)
-                this._letterCategoryList.unselect_row(selected);
-
-            recentRow.get_style_context().remove_class('selected');
+            this._letterCategoryList.unselect();
+            this._recentCategoryList.unselect();
+            this._lastSelectedList = list;
             list.select_row(row);
         });
         this.add(this._emojiCategoryList);
@@ -387,18 +420,21 @@ var CategoryListView = GObject.registerClass({
         let letters_label = new Gtk.Label ({
             label: CategoryList[1].title,
             halign: Gtk.Align.START,
+            margin_top: 12,
+            margin_start: 12,
+            margin_bottom: 12,
+            margin_end: 12,
         });
-        letters_label.get_style_context().add_class("category-title");
-
+        letters_label.get_style_context().add_class("heading");
         this.add(letters_label);
+
         this._letterCategoryList = new LetterCategoryListWidget({
             categoryList: LetterCategoryList
         });
         this._letterCategoryList.connect('row-selected', (list, row) => {
-            let selected = this._emojiCategoryList.get_selected_row();
-            if (selected)
-                this._emojiCategoryList.unselect_row(selected);
-            recentRow.get_style_context().remove_class('selected');
+            this._emojiCategoryList.unselect();
+            this._recentCategoryList.unselect();
+            this._lastSelectedList = list;
             list.select_row(row);
         });
         this.add(this._letterCategoryList);
@@ -410,6 +446,8 @@ var CategoryListView = GObject.registerClass({
         switch (name) {
             case 'emojis':
                 return this._emojiCategoryList
+            case 'recent':
+                return this._recentCategoryList
             default:
                 return this._letterCategoryList
         }
@@ -417,5 +455,16 @@ var CategoryListView = GObject.registerClass({
 
     getCategoryList() {
         return this._categoryList;
+    }
+
+    get selectedList() {
+        return this._lastSelectedList
+    }
+    
+
+    restorePreviousSelection() {
+        if (this._lastSelectedList) {
+            this._lastSelectedList.restorePreviousSelection()
+        }
     }
 });

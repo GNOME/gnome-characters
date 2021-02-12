@@ -128,14 +128,13 @@ var MainWindow = GObject.registerClass({
 
     // Select the first subcategory which contains at least one character.
     _selectFirstSubcategory() {
-        /*let categoryList = this._categoryListView.get_visible_child();
-        let index = 0;
-        let row = categoryList.get_row_at_index(index);
-        if (row.category.name == 'recent' &&
-            this._mainView.recentCharacters.length == 0)
-            index++;
-        categoryList.select_row(categoryList.get_row_at_index(index));
-        */
+        let categoryList;
+        if (this._mainView.recentCharacters.length !== 0) {
+            categoryList = this._categoryListView.getCategoryByName('recent');
+        } else {
+            categoryList = this._categoryListView.getCategoryByName('emojis');
+        }
+        categoryList.select_row(categoryList.get_row_at_index(0));
     }
 
     get search_active() {
@@ -148,14 +147,13 @@ var MainWindow = GObject.registerClass({
 
         this._searchActive = v;
 
-        /*if (this._searchActive) {
-            let categoryList = this._categoryListView.get_visible_child();
+        if (this._searchActive) {
+            let categoryList = this._categoryListView.selectedList;
             categoryList.unselect_all();
             this._updateTitle(_("Search Result"));
         } else {
-            let categoryList = this._categoryListView.get_visible_child();
-            categoryList.restorePreviousSelection();
-        }*/
+            this._categoryListView.restorePreviousSelection();
+        }
 
         this.notify('search-active');
     }
@@ -222,11 +220,12 @@ var MainWindow = GObject.registerClass({
         let categoryName;
         if(name.startsWith("emoji")) {
             categoryName = "emojis";
-        } else {    
+        } else if(name === "recent") {
+            categoryName = "recent";
+        } else {
             categoryName = "letters";
-        }
+        } 
         let categoryList = this._categoryListView.getCategoryByName(categoryName);
-        
         let category = categoryList.getCategory(name);
         if (category) {
             this._mainView.setPage(category);
@@ -234,7 +233,6 @@ var MainWindow = GObject.registerClass({
             this._leaflet.navigate(Handy.NavigationDirection.FORWARD);
         }
     }
-
 
     _character(action, v) {
         const [uc, length] = v.get_string();
@@ -338,6 +336,8 @@ const MainView = GObject.registerClass({
             hexpand: false,
         });
         scroll.add(recentBox);
+        recentBox.show_all();
+        scroll.show_all();
         // FIXME: Can't use GtkContainer.child_get_property.
         scroll.title = _('Recently Used');
         this.add_titled(scroll, 'recent', scroll.title);
@@ -391,8 +391,8 @@ const MainView = GObject.registerClass({
     }
 
     setPage(category) {
-        if (category.name == 'recent') {
-            if (this.recentCharacters.length == 0)
+        if (category.name === 'recent') {
+            if (this.recentCharacters.length === 0)
                 this.visible_child_name = 'empty-recent';
             else {
                 let categories = this._categoryListView.getCategoryList();
