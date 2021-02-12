@@ -148,8 +148,7 @@ const CategoryListRowWidget = GObject.registerClass({
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.add(hbox);
 
-        let pixbuf = Util.loadIcon(category.icon_name, 24);
-        let image = Gtk.Image.new_from_pixbuf(pixbuf);
+        let image = Gtk.Image.new_from_icon_name(category.icon_name, Gtk.IconSize.LARGE_TOOLBAR);
         image.get_style_context().add_class('category-icon');
         hbox.pack_start(image, false, false, 2);
 

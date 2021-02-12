@@ -71,6 +71,9 @@ var MyApplication = GObject.registerClass({
     vfunc_startup () {
         super.vfunc_startup();
 
+        let theme = Gtk.IconTheme.get_default();
+        theme.add_resource_path('/org/gnome/Characters/icons');
+
         Util.loadStyleSheet('/org/gnome/Characters/application.css');
 
         Util.initActions(this,

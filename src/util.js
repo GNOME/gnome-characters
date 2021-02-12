@@ -104,15 +104,6 @@ function getSettings(schemaId, path) {
                                   path: path });
 }
 
-function loadIcon(iconName, size) {
-    let theme = Gtk.IconTheme.get_default();
-    theme.add_resource_path('/org/gnome/Characters/icons');
-
-    return theme.load_icon(iconName,
-                           size,
-                           Gtk.IconLookupFlags.GENERIC_FALLBACK);
-}
-
 function assertEqual(one, two) {
     if (one != two)
         throw Error('Assertion failed: ' + one + ' != ' + two);
