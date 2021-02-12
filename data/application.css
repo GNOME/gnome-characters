@@ -1,4 +1,4 @@
-.categories {
+.categories-list, .categories-list list {
     background-color: shade(@theme_bg_color, 0.99);
 }
 
@@ -10,6 +10,7 @@
 .category-icon {
     padding-right: 10px;
 }
+
 
 Gjs_MenuPopover {
     padding: 0;

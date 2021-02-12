@@ -3,57 +3,46 @@
   <requires lib="gtk+" version="3.12"/>
   <template class="Gjs_MenuPopover" parent="GtkPopover">
     <property name="vexpand">True</property>
+    <property name="width-request">250</property>
     <child>
-      <object class="GtkGrid" id="menu-grid">
-	<property name="can_focus">False</property>
-	<property name="visible">True</property>
-	<property name="orientation">vertical</property>
-	<property name="margin">12</property>
-	<property name="row-spacing">12</property>
-	<child>
-	  <object class="GtkLabel" id="label1">
-	    <property name="visible">True</property>
-	    <property name="halign">center</property>
-	    <property name="label" translatable="yes">Filter by Font</property>
-	    <attributes>
-	      <attribute name="weight" value="bold"/>
-	    </attributes>
-	  </object>
-	</child>
-	<child>
-	  <object class="GtkSearchEntry" id="search-entry">
-	    <property name="can_focus">True</property>
-	    <property name="visible">True</property>
-	    <property name="halign">fill</property>
-	  </object>
-	</child>
-	<child>
-	  <object class="GtkScrolledWindow" id="font-scrolled">
-	    <property name="visible">True</property>
-	    <property name="can_focus">False</property>
-	    <property name="shadow-type">in</property>
-	    <property name="hscrollbar_policy">never</property>
-	    <child>
-	      <object class="GtkListBox" id="font-listbox">
-		<property name="can_focus">False</property>
-		<property name="visible">True</property>
-		<property name="vexpand">True</property>
-		<property name="selection_mode">single</property>
-		<child>
-		  <placeholder/>
-		</child>
-	      </object>
-	    </child>
-	  </object>
-	</child>
-	<child>
-	  <object class="GtkModelButton">
-	    <property name="visible">True</property>
-	    <property name="can_focus">False</property>
-	    <property name="action_name">win.about</property>
-	    <property name="text" translatable="yes">About Characters</property>
-	  </object>
-	</child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <property name="margin">12</property>
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Filter by Font</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSearchEntry" id="search-entry">
+            <property name="can_focus">True</property>
+            <property name="visible">True</property>
+            <property name="halign">fill</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="visible">True</property>
+            <property name="vexpand">True</property>
+            <property name="hscrollbar_policy">never</property>
+            <child>
+              <object class="GtkListBox" id="font-listbox">
+                <property name="visible">True</property>
+                <property name="selection_mode">single</property>
+                <style>
+                  <class name="content" />
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>

@@ -39,8 +39,6 @@ var MenuPopover = GObject.registerClass({
     _init(params) {
         params = Params.fill(params, {});
         super._init(params);
-
-        this._font_listbox.get_style_context().add_class('fonts');
         let row = this._createFontListRow(_("None"), 'None');
         this._font_listbox.add(row);
 
@@ -59,7 +57,6 @@ var MenuPopover = GObject.registerClass({
         this._search_entry.connect('search-changed', (entry) => this._handleSearchChanged(entry));
         this._font_listbox.connect('row-activated', (listBox, row) => this._handleRowActivated(listBox, row));
         this._font_listbox.set_filter_func((row) => this._filterFunc(row));
-        this._font_listbox.set_header_func((row, before) => this._headerFunc(row, before));
 
         // This silents warning at Characters exit about this widget being
         // visible but not mapped.  Borrowed from Maps.
@@ -97,14 +94,5 @@ var MenuPopover = GObject.registerClass({
                 return nameWord.indexOf(keyword) >= 0;
             });
         });
-    }
-
-    _headerFunc(row, before) {
-        if (before && !row.get_header()) {
-            let separator = new Gtk.Separator({
-                orientation: Gtk.Orientation.HORIZONTAL
-            });
-            row.set_header (separator);
-        }
     }
 });

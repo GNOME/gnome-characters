@@ -24,7 +24,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const {Gio, GLib, GObject, Gtk } = imports.gi;
+const {Gio, GLib, GObject, Gtk, Handy } = imports.gi;
 
 const Params = imports.params;
 const CategoryList = imports.categoryList;
@@ -38,16 +38,18 @@ const Util = imports.util;
 
 var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/mainwindow.ui',
-    InternalChildren: ['main-headerbar', 'search-active-button',
-                       'search-bar', 'search-entry', 'back-button',
-                       'menu-button',
-                       'main-grid', 'main-hbox', 'sidebar-grid'],
+    InternalChildren: [
+        'main-headerbar', 'search-active-button',
+        'search-bar', 'search-entry', 'back-button',
+        'menu-button', 'container', 'sidebar',
+        'leaflet'
+    ],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
             'search-active', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
     },
-}, class MainWindow extends Gtk.ApplicationWindow {
+}, class MainWindow extends Handy.ApplicationWindow {
     _init(params) {
         params = Params.fill(params, { title: GLib.get_application_name(),
                                        default_width: 640,
@@ -68,10 +70,6 @@ var MainWindow = GObject.registerClass({
                             activate: this._find },
                           { name: 'category',
                             activate: this._category,
-                            parameter_type: new GLib.VariantType('s'),
-                            state: new GLib.Variant('s', 'emojis') },
-                          { name: 'subcategory',
-                            activate: this._subcategory,
                             parameter_type: new GLib.VariantType('s'),
                             state: new GLib.Variant('s', 'emoji-smileys') },
                           { name: 'character',
@@ -95,32 +93,28 @@ var MainWindow = GObject.registerClass({
         this._search_entry.connect('search-changed', (entry) => this._handleSearchChanged(entry));
 
         this._back_button.connect('clicked', () => {
-                                      let action = this.lookup_action('category');
-                                      action.activate(new GLib.Variant('s', 'emojis'));
-                                  });
-        this._back_button.bind_property('visible',
-                                        this._search_active_button, 'visible',
-                                        GObject.BindingFlags.SYNC_CREATE |
-                                        GObject.BindingFlags.INVERT_BOOLEAN);
+            this._leaflet.navigate(Handy.NavigationDirection.BACK);
+        });
 
         this._menu_popover = new Menu.MenuPopover({});
         this._menu_button.set_popover(this._menu_popover);
 
         this._categoryListView =
             new CategoryList.CategoryListView({ vexpand: true });
+        this._categoryListView.show_all();
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
+            visible: true,
         });
         scroll.add(this._categoryListView);
-        this._sidebar_grid.add(scroll);
+        this._sidebar.add(scroll);
 
         this._mainView = new MainView({
             categoryListView: this._categoryListView
         });
 
-        this._main_hbox.pack_start(this._mainView, true, true, 0);
-        this._main_grid.show_all();
+        this._container.pack_start(this._mainView, true, true, 0);
 
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
@@ -134,13 +128,13 @@ var MainWindow = GObject.registerClass({
 
     // Select the first subcategory which contains at least one character.
     _selectFirstSubcategory() {
-        let categoryList = this._categoryListView.get_visible_child();
-        let index = 0;
-        let row = categoryList.get_row_at_index(index);
-        if (row.category.name == 'recent' &&
-            this._mainView.recentCharacters.length == 0)
-            index++;
-        categoryList.select_row(categoryList.get_row_at_index(index));
+        let categoryList;
+        if (this._mainView.recentCharacters.length !== 0) {
+            categoryList = this._categoryListView.getCategoryByName('recent');
+        } else {
+            categoryList = this._categoryListView.getCategoryByName('emojis');
+        }
+        categoryList.select_row(categoryList.get_row_at_index(0));
     }
 
     get search_active() {
@@ -154,12 +148,11 @@ var MainWindow = GObject.registerClass({
         this._searchActive = v;
 
         if (this._searchActive) {
-            let categoryList = this._categoryListView.get_visible_child();
+            let categoryList = this._categoryListView.selectedList;
             categoryList.unselect_all();
             this._updateTitle(_("Search Result"));
         } else {
-            let categoryList = this._categoryListView.get_visible_child();
-            categoryList.restorePreviousSelection();
+            this._categoryListView.restorePreviousSelection();
         }
 
         this.notify('search-active');
@@ -224,39 +217,20 @@ var MainWindow = GObject.registerClass({
         this.search_active = false;
 
         let [name, length] = v.get_string();
-
-        this._categoryListView.set_visible_child_name(name);
-        let categoryList = this._categoryListView.get_visible_child();
-        if (categoryList == null)
-            return;
-
-        this._selectFirstSubcategory();
-        let category = categoryList.get_selected_row().category;
-
-        if (name == 'emojis') {
-            this._back_button.hide();
+        let categoryName;
+        if(name.startsWith("emoji")) {
+            categoryName = "emojis";
+        } else if(name === "recent") {
+            categoryName = "recent";
         } else {
-            this._back_button.show();
-        }
-
-        Util.assertNotEqual(category, null);
-        this._mainView.setPage(category);
-        this._updateTitle(category.title);
-    }
-
-    _subcategory(action, v) {
-        this.search_active = false;
-
-        let [name, length] = v.get_string();
-
-        let categoryList = this._categoryListView.get_visible_child();
-        if (categoryList == null)
-            return;
-
+            categoryName = "letters";
+        } 
+        let categoryList = this._categoryListView.getCategoryByName(categoryName);
         let category = categoryList.getCategory(name);
         if (category) {
             this._mainView.setPage(category);
             this._updateTitle(category.title);
+            this._leaflet.navigate(Handy.NavigationDirection.FORWARD);
         }
     }
 
@@ -334,7 +308,7 @@ const MainView = GObject.registerClass({
 
         for (let i in categories) {
             let category = categories[i];
-            let categoryList = this._categoryListView.get_child_by_name(category.name);
+            let categoryList = this._categoryListView.getCategoryByName(category.name);
             let subcategories = categoryList.getCategoryList();
             for (let j in subcategories) {
                 let subcategory = subcategories[j];
@@ -362,6 +336,8 @@ const MainView = GObject.registerClass({
             hexpand: false,
         });
         scroll.add(recentBox);
+        recentBox.show_all();
+        scroll.show_all();
         // FIXME: Can't use GtkContainer.child_get_property.
         scroll.title = _('Recently Used');
         this.add_titled(scroll, 'recent', scroll.title);
@@ -415,8 +391,8 @@ const MainView = GObject.registerClass({
     }
 
     setPage(category) {
-        if (category.name == 'recent') {
-            if (this.recentCharacters.length == 0)
+        if (category.name === 'recent') {
+            if (this.recentCharacters.length === 0)
                 this.visible_child_name = 'empty-recent';
             else {
                 let categories = this._categoryListView.getCategoryList();

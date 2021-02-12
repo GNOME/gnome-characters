@@ -1,4 +1,4 @@
-include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
+include: "https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml"
 
 stages:
     - test
@@ -16,16 +16,16 @@ flatpak:
     extends: .flatpak
 
 nightly:
-    extends: '.publish_nightly'
+    extends: ".publish_nightly"
     stage: cross_environment
-    dependencies: ['flatpak']
+    dependencies: ["flatpak"]
 
 fedora:latest:
     image: fedora:latest
     stage: cross_environment
     before_script:
         - dnf upgrade -y
-        - dnf install -y 'dnf-command(builddep)' redhat-rpm-config
+        - dnf install -y 'dnf-command(builddep)' redhat-rpm-config git
         - dnf builddep -y gnome-characters
     script:
         - meson _build .

@@ -30,14 +30,12 @@ const CategoryList = [
         category: Gc.Category.EMOJI,
         title: N_('Emojis'),
         icon_name: 'characters-emoji-smileys',
-        action_name: 'category'
     },
     {
         name: 'letters',
         category: Gc.Category.LETTER,
         title: N_('Letters & Symbols'),
         icon_name: 'characters-latin-symbolic',
-        action_name: 'category'
     }
 ];
 
@@ -47,49 +45,42 @@ const LetterCategoryList = [
         category: Gc.Category.LETTER_PUNCTUATION,
         title: N_('Punctuation'),
         icon_name: 'characters-punctuation-symbolic',
-        action_name: 'subcategory'
     },
     {
         name: 'arrow',
         category: Gc.Category.LETTER_ARROW,
         title: N_('Arrows'),
         icon_name: 'characters-arrow-symbolic',
-        action_name: 'subcategory'
     },
     {
         name: 'bullet',
         category: Gc.Category.LETTER_BULLET,
         title: N_('Bullets'),
         icon_name: 'characters-bullet-symbolic',
-        action_name: 'subcategory'
     },
     {
         name: 'picture',
         category: Gc.Category.LETTER_PICTURE,
         title: N_('Pictures'),
         icon_name: 'characters-picture-symbolic',
-        action_name: 'subcategory'
     },
     {
         name: 'currency',
         category: Gc.Category.LETTER_CURRENCY,
         title: N_('Currencies'),
         icon_name: 'characters-currency-symbolic',
-        action_name: 'subcategory'
     },
     {
         name: 'math',
         category: Gc.Category.LETTER_MATH,
         title: N_('Math'),
         icon_name: 'characters-math-symbolic',
-        action_name: 'subcategory'
     },
     {
         name: 'letters',
         category: Gc.Category.LETTER_LATIN,
         title: N_('Letters'),
         icon_name: 'characters-latin-symbolic',
-        action_name: 'subcategory'
     }
 ];
 
@@ -99,56 +90,48 @@ const EmojiCategoryList = [
         category: Gc.Category.EMOJI_SMILEYS,
         title: N_('Smileys & People'),
         icon_name: 'characters-emoji-smileys',
-        action_name: 'subcategory'
     },
     {
         name: 'emoji-animals',
         category: Gc.Category.EMOJI_ANIMALS,
         title: N_('Animals & Nature'),
         icon_name: 'characters-emoji-animals',
-        action_name: 'subcategory'
     },
     {
         name: 'emoji-food',
         category: Gc.Category.EMOJI_FOOD,
         title: N_('Food & Drink'),
         icon_name: 'characters-emoji-food',
-        action_name: 'subcategory'
     },
     {
         name: 'emoji-activities',
         category: Gc.Category.EMOJI_ACTIVITIES,
         title: N_('Activities'),
         icon_name: 'characters-emoji-activities',
-        action_name: 'subcategory'
     },
     {
         name: 'emoji-travel',
         category: Gc.Category.EMOJI_TRAVEL,
         title: N_('Travel & Places'),
         icon_name: 'characters-emoji-travel',
-        action_name: 'subcategory'
     },
     {
         name: 'emoji-objects',
         category: Gc.Category.EMOJI_OBJECTS,
         title: N_('Objects'),
         icon_name: 'characters-emoji-objects',
-        action_name: 'subcategory'
     },
     {
         name: 'emoji-symbols',
         category: Gc.Category.EMOJI_SYMBOLS,
         title: N_('Symbols'),
         icon_name: 'characters-emoji-symbols',
-        action_name: 'subcategory'
     },
     {
         name: 'emoji-flags',
         category: Gc.Category.EMOJI_FLAGS,
         title: N_('Flags'),
         icon_name: 'characters-emoji-flags',
-        action_name: 'subcategory'
     }
 ];
 
@@ -165,8 +148,7 @@ const CategoryListRowWidget = GObject.registerClass({
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.add(hbox);
 
-        let pixbuf = Util.loadIcon(category.icon_name, 24);
-        let image = Gtk.Image.new_from_pixbuf(pixbuf);
+        let image = Gtk.Image.new_from_icon_name(category.icon_name, Gtk.IconSize.LARGE_TOOLBAR);
         image.get_style_context().add_class('category-icon');
         hbox.pack_start(image, false, false, 2);
 
@@ -175,12 +157,6 @@ const CategoryListRowWidget = GObject.registerClass({
         label.get_style_context().add_class('category-label');
         hbox.pack_start(label, true, true, 0);
 
-        if (category.secondary_icon_name) {
-            let pixbuf = Util.loadIcon(category.secondary_icon_name, 16);
-            let image = Gtk.Image.new_from_pixbuf(pixbuf);
-            image.get_style_context().add_class('category-icon');
-            hbox.pack_end(image, false, false, 2);
-        }
     }
 });
 
@@ -191,7 +167,6 @@ const CategoryListWidget = GObject.registerClass({
         params = Params.fill(params, {});
         super._init(params);
 
-        this.get_style_context().add_class('categories');
 
         this._categoryList = filtered.categoryList;
         this.populateCategoryList();
@@ -207,19 +182,12 @@ const CategoryListWidget = GObject.registerClass({
 
     vfunc_row_selected(row) {
         if (row != null && row.selectable) {
-            this._lastSelectedRow = row;
             let toplevel = row.get_toplevel();
-            let action = toplevel.lookup_action(row.category.action_name);
+            let action = toplevel.lookup_action('category');
             action.activate(new GLib.Variant('s', row.category.name));
+            this._lastSelectedRow = row;
         }
     }
-
-    restorePreviousSelection() {
-        if (this._lastSelectedRow !== null) {
-            this.select_row(this._lastSelectedRow);
-        }
-    }
-
     populateCategoryList() {
     }
 
@@ -234,6 +202,18 @@ const CategoryListWidget = GObject.registerClass({
                 return category;
         }
         return null;
+    }
+
+    restorePreviousSelection() {
+        if (this._lastSelectedRow) {
+            this.select_row(this._lastSelectedRow)
+        }
+    }
+
+    unselect() {
+        let selected = this.get_selected_row()
+        if (selected)
+            this.unselect_row(selected)
     }
 });
 
@@ -364,81 +344,126 @@ const EmojiCategoryListWidget = GObject.registerClass({
     _init(params) {
         params = Params.fill(params, {});
         super._init(params);
-
-        let category;
-        let rowWidget;
-
-        category = {
-            name: 'recent',
-            category: Gc.Category.NONE,
-            title: N_('Recently Used'),
-            icon_name: 'document-open-recent-symbolic',
-            action_name: 'subcategory'
-        };
-        rowWidget = new CategoryListRowWidget({}, category);
-        rowWidget.get_style_context().add_class('category');
-        this.prepend(rowWidget);
-        this._recentCategory = category;
-
-        category = {
-            name: 'letters',
-            category: Gc.Category.NONE,
-            title: N_('Letters & Symbols'),
-            icon_name: 'characters-latin-symbolic',
-            secondary_icon_name: 'go-next-symbolic',
-            action_name: 'category',
-        };
-        rowWidget = new CategoryListRowWidget({}, category);
-        rowWidget.get_style_context().add_class('category');
-        let separator = new Gtk.Separator();
-        let separatorRowWidget = new Gtk.ListBoxRow({ selectable: false });
-        separatorRowWidget.add(separator);
-        this.add(separatorRowWidget);
-        this.add(rowWidget);
     }
 
     getCategory(name) {
-        if (name == 'recent')
-            return this._recentCategory;
         return super.getCategory(name);
     }
 });
 
+const RecentCategoryListWidget = GObject.registerClass({
+
+}, class RecentCategoryListWidget extends CategoryListWidget {
+    _init(params) {
+        super._init(params);
+        this.recentCategory = {
+            name: 'recent',
+            category: Gc.Category.NONE,
+            title: N_('Recently Used'),
+            icon_name: 'document-open-recent-symbolic',
+        };
+        this.recentRow = new CategoryListRowWidget({}, this.recentCategory);
+        this.recentRow.get_style_context().add_class('category');
+        this.recentRow.get_style_context().add_class('recent-category');
+        this.add(this.recentRow)
+    }
+
+    getCategory(name) {
+        return this.recentCategory;
+    }
+});
+
 var CategoryListView = GObject.registerClass({
-}, class CategoryListView extends Gtk.Stack {
+}, class CategoryListView extends Gtk.Box {
     _init(params) {
         params = Params.fill(params, {
             hexpand: true, vexpand: true,
-            transition_type: Gtk.StackTransitionType.SLIDE_RIGHT
+            orientation: Gtk.Orientation.VERTICAL,
         });
+        this._lastSelectedList = null;
         super._init(params);
+        this.get_style_context().add_class('categories-list');
 
-        let emojiCategoryList = new EmojiCategoryListWidget({
+        this._recentCategoryList = new RecentCategoryListWidget();
+        this._recentCategoryList.connect('row-selected', (list, row) => {
+            this._letterCategoryList.unselect();
+            this._emojiCategoryList.unselect();
+            this._lastSelectedList = list;
+            list.select_row(row);
+        });
+        this.add(this._recentCategoryList)
+        this.add(new Gtk.Separator({orientation: Gtk.Orientation.HORIZONTAL}));
+        
+        let emojis_label = new Gtk.Label ({
+            label: CategoryList[0].title,
+            halign: Gtk.Align.START,
+            margin_top: 12,
+            margin_start: 12,
+            margin_bottom: 12,
+            margin_end: 12,
+        }); 
+        emojis_label.get_style_context().add_class("heading");
+        this.add(emojis_label);
+
+        this._emojiCategoryList = new EmojiCategoryListWidget({
             categoryList: EmojiCategoryList
         });
-        this.add_named(emojiCategoryList, 'emojis');
+        this._emojiCategoryList.connect('row-selected', (list, row) => {
+            this._letterCategoryList.unselect();
+            this._recentCategoryList.unselect();
+            this._lastSelectedList = list;
+            list.select_row(row);
+        });
+        this.add(this._emojiCategoryList);
 
-        let letterCategoryList = new LetterCategoryListWidget({
+        let letters_label = new Gtk.Label ({
+            label: CategoryList[1].title,
+            halign: Gtk.Align.START,
+            margin_top: 12,
+            margin_start: 12,
+            margin_bottom: 12,
+            margin_end: 12,
+        });
+        letters_label.get_style_context().add_class("heading");
+        this.add(letters_label);
+
+        this._letterCategoryList = new LetterCategoryListWidget({
             categoryList: LetterCategoryList
         });
-        this.add_named(letterCategoryList, 'letters');
-
-        this.set_visible_child_name('emojis');
+        this._letterCategoryList.connect('row-selected', (list, row) => {
+            this._emojiCategoryList.unselect();
+            this._recentCategoryList.unselect();
+            this._lastSelectedList = list;
+            list.select_row(row);
+        });
+        this.add(this._letterCategoryList);
 
         this._categoryList = CategoryList.slice();
-
-        this.connect('notify::visible-child-name', () => this._ensureTransitionType());
     }
 
-    _ensureTransitionType() {
-        if (this.get_visible_child_name() == 'emojis') {
-            this.transition_type = Gtk.StackTransitionType.SLIDE_RIGHT;
-        } else {
-            this.transition_type = Gtk.StackTransitionType.SLIDE_LEFT;
+    getCategoryByName(name) {
+        switch (name) {
+            case 'emojis':
+                return this._emojiCategoryList
+            case 'recent':
+                return this._recentCategoryList
+            default:
+                return this._letterCategoryList
         }
     }
 
     getCategoryList() {
         return this._categoryList;
+    }
+
+    get selectedList() {
+        return this._lastSelectedList
+    }
+    
+
+    restorePreviousSelection() {
+        if (this._lastSelectedList) {
+            this._lastSelectedList.restorePreviousSelection()
+        }
     }
 });
