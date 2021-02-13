@@ -2,200 +2,275 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 #
-# A S Alam <aalam@fedoraproject.org>, 2015.
+# A S Alam <aalam@fedoraproject.org>, 2015, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-30 09:12+0000\n"
-"PO-Revision-Date: 2015-08-30 11:29UTC-0600\n"
-"Last-Translator: A S Alam <aalam@fedoraproject.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2021-02-12 13:46+0000\n"
+"PO-Revision-Date: 2021-02-13 15:56-0800\n"
+"Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 20.08.1\n"
 
-#: ../data/app-menu.ui.h:1
-msgid "About Characters"
-msgstr "ਅੱਖਰਾਂ ਬਾਰੇ"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "ਕੋਈ ਨਤੀਜੇ ਨਹੀਂ"
 
-#: ../data/app-menu.ui.h:2
-msgid "Quit"
-msgstr "ਬਾਹਰ"
+#: data/characterlist.ui:10
+msgid "Try a different search."
+msgstr "ਵੱਖਰੀ ਖੋਜ ਕਰਕੇ ਵੇਖੋ।"
 
-#: ../data/characterlist.ui.h:1
-msgid "Search produced empty result"
-msgstr ""
-
-#: ../data/characterlist.ui.h:2
-msgid "Try another search criteria."
-msgstr ""
-
-#: ../data/characterlist.ui.h:3
+#: data/characterlist.ui:34
 msgid "Loading…"
 msgstr "...ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ"
 
-#: ../data/characterlist.ui.h:4
-msgid "No recent characters found"
-msgstr "ਕੋਈ ਤਾਜ਼ਾ ਅੱਖਰ ਨਹੀਂ ਲੱਭੇ"
-
-#: ../data/characterlist.ui.h:5
-msgid "Characters will appear here if you use them."
-msgstr "ਅੱਖਰ ਇੱਥੇ ਦਿਖਾਈ ਦੇਣਗੇ, ਜੇ ਤੁਸੀਂ ਉਹਨਾਂ ਨੂੰ ਵਰਤਦੇ ਹੋ।"
-
-#: ../data/character.ui.h:1
+#: data/character.ui:68
 msgid "Copy Character"
 msgstr "ਅੱਖਰ ਕਾਪੀ ਕਰੋ"
 
-#: ../data/mainwindow.ui.h:1
-msgid "Current page"
-msgstr "ਮੌਜੂਦਾ ਸਫ਼ਾ"
+#: data/character.ui:86
+#| msgid "Characters Application started"
+msgid "Character copied to clipboard"
+msgstr "ਅੱਖਰ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ"
 
-#: ../data/menu.ui.h:1
-msgid "Filter by font"
+#: data/mainview.ui:10
+#| msgid "No recent characters found"
+msgid "No Recent Characters"
+msgstr "ਕੋਈ ਤਾਜ਼ੇ ਅੱਖਰ ਨਹੀਂ ਹਨ"
+
+#: data/mainview.ui:11
+msgid "Characters will appear here if you use them."
+msgstr "ਅੱਖਰ ਇੱਥੇ ਦਿਖਾਈ ਦੇਣਗੇ, ਜੇ ਤੁਸੀਂ ਉਹਨਾਂ ਨੂੰ ਵਰਤਦੇ ਹੋ।"
+
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ(_K)"
+
+#: data/mainwindow.ui:11
+#| msgid "About Characters"
+msgid "_About Characters"
+msgstr "ਅੱਖਰਾਂ ਬਾਰੇ(_A)"
+
+#: data/mainwindow.ui:30 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "ਅੱਖਰ"
+
+#: data/menu.ui:17
+#| msgid "Filter by font"
+msgid "Filter by Font"
 msgstr "ਫੋਂਟ ਰਾਹੀਂ ਫਿਲਟਰ"
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:1
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:188
+msgid "GNOME Characters"
+msgstr "ਗਨੋਮ ਅੱਖਰ"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+#| msgid "Characters Application"
+msgid "Character map application"
+msgstr "ਅੱਖਰ ਖਾਕਾ ਐਪਲੀਕੇਸ਼ਨ"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
+"ਕਰੈਕਟਰ (ਅੱਖਰ) ਅਸਧਾਰਨ ਅੱਖਰ ਲੱਭਣ ਤੇ ਪਾਉਣ ਵਾਲੀ ਸਰਲ ਸਹੂਲਤ ਵਾਲੀ ਐਪਲੀਕੇਸ਼ਨ ਹੈ। ਇਹ"
+" ਤੁਹਾਨੂੰ ਖਾਸ ਢੰਗ ਰਾਹੀਂ ਲੱਭ ਕੇ ਤੁਹਾਨੂੰ ਅੱਖਰ ਲੱਭਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿੰਦੀ ਹੈ।"
 
-#: ../data/org.gnome.Characters.appdata.xml.in.h:2
+#: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
+"ਤੁਸੀਂ ਵਰਗ ਜਿਵੇਂ ਕਿ ਵਿਰਾਮ-ਚਿੰਨ੍ਹ, ਤਸਵੀਰਾਂ ਰਾਹੀਂ ਵੀ ਅੱਖਰਾਂ ਦੀ ਝਲਕ ਵੇਖ ਸਕਦੇ ਹੋ।"
 
-#: ../data/org.gnome.Characters.desktop.in.h:1 ../src/service.js:51
-msgid "Characters"
-msgstr "ਅੱਖਰ"
-
-#: ../data/org.gnome.Characters.desktop.in.h:2
+#: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "ਅਸਧਾਰਨ ਅੱਖਰ ਲੱਭਣ ਤੇ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਸਹਾਇਕ ਐਪਲੀਕੇਸ਼ਨ"
 
-#: ../data/org.gnome.Characters.desktop.in.h:3
-msgid "characters;unicode;"
-msgstr "ਅੱਖਰ;ਯੂਨੀਕੋਡ;"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgstr "ਅੱਖਰ;ਲਫ਼ਜ਼;ਯੂਨੀਕੋਡ;ਵਿਚਾਰ-ਚਿੰਨ੍ਹ;ਗਣਿਤ;ਵਰਣਮਾਲਾ;ਇਮੋਜ਼ੀ;ਜਜ਼ਬਾਤ;"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:1
+#: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
 msgstr "ਅੱਖਰ ਦਿਖਾਉਣ ਲਈ ਫ਼ੋਂਟ"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:2
+#: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
-msgstr ""
+msgstr "ਅੱਖਰ ਸੂਚੀ ਉੱਤੇ ਰੈਂਡਰ ਕਰਨ ਅੱਖਰਾਂ ਲਈ ਵਰਤੇ ਜਾਣ ਵਾਲੇ ਫ਼ੋਂਟ ਵਰਤੋ।"
 
-#: ../data/org.gnome.Characters.gschema.xml.h:3
+#: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਤਾਜ਼ਾ ਅੱਖਰ"
 
-#: ../src/categoryList.js:33
-msgid "Recently Used"
-msgstr "ਤਾਜ਼ਾ ਵਰਤੇ"
+#: src/categoryList.js:31
+msgid "Emojis"
+msgstr "ਇਮੋਜ਼ੀ"
 
-#: ../src/categoryList.js:39
+#: src/categoryList.js:37
+msgid "Letters & Symbols"
+msgstr "ਅੱਖਰ ਤੇ ਚਿੰਨ੍ਹ"
+
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "ਵਿਰਾਮ ਚਿੰਨ੍ਹ"
 
-#: ../src/categoryList.js:45
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "ਤੀਰ"
 
-#: ../src/categoryList.js:51
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "ਬਿੰਦੀਆਂ"
 
-#: ../src/categoryList.js:57
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "ਤਸਵੀਰਾਂ"
 
-#: ../src/categoryList.js:63
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "ਮੁਦਰਾ"
 
-#: ../src/categoryList.js:69
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "ਗਣਿਤ"
 
-#: ../src/categoryList.js:75
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "ਅੱਖਰ"
 
-#: ../src/categoryList.js:81
-msgid "Emoticons"
-msgstr "ਈਮੋ-ਆਈਕਾਨ"
+#: src/categoryList.js:91
+msgid "Smileys & People"
+msgstr "ਸਮਾਈਲੀ ਤੇ ਲੋਕ"
 
-#: ../src/categoryList.js:96
+#: src/categoryList.js:97
+msgid "Animals & Nature"
+msgstr "ਜਨੌਰ ਤੇ ਕੁਦਰਤ"
+
+#: src/categoryList.js:103
+msgid "Food & Drink"
+msgstr "ਖਾਣ ਪੀਣ"
+
+#: src/categoryList.js:109
+msgid "Activities"
+msgstr "ਸਰਗਰਮੀਆਂ"
+
+#: src/categoryList.js:115
+msgid "Travel & Places"
+msgstr "ਸੈਰ ਸਪਾਟਾ"
+
+#: src/categoryList.js:121
+msgid "Objects"
+msgstr "ਚੀਜ਼ਾਂ"
+
+#: src/categoryList.js:127
+msgid "Symbols"
+msgstr "ਚਿੰਨ੍ਹ"
+
+#: src/categoryList.js:133
+msgid "Flags"
+msgstr "ਝੰਡੇ"
+
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
-msgstr ""
+msgstr "%s ਕੈਟਾਗਰੀ ਸੂਚੀ ਕਤਾਰ"
 
-#: ../src/character.js:52
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/categoryList.js:362 src/window.js:342
+msgid "Recently Used"
+msgstr "ਤਾਜ਼ਾ ਵਰਤੇ"
+
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "ਇਹ ਵੀ ਵੇਖੋ"
 
-#: ../src/character.js:114
+#: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "ਯੂਨੀਕੋਡ U+%04s"
 
-#: ../src/main.js:58
-msgid "Characters Application"
-msgstr "ਅੱਖਰ ਐਪਲੀਕੇਸ਼ਨ"
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:131
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s %s ਵਿੱਚ ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ"
 
-#: ../src/main.js:95
-msgid "Characters Application started"
-msgstr "ਅੱਖਰ ਐਪਲੀਕੇਸ਼ਨ ਸ਼ੁਰੂ ਹੋਈ"
+#: src/characterList.js:169
+msgid "Unassigned"
+msgstr "ਨਾ-ਜਾਰੀ"
 
-#: ../src/main.js:103
-msgid "Characters Application exiting"
-msgstr "ਅੱਖਰ ਐਪਲੀਕੇਸ਼ਨ ਬੰਦ ਹੋ ਰਹੀ ਹੈ"
-
-#: ../src/menu.js:39
+#: src/menu.js:42
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ../src/searchProvider.js:94
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "ਅਣਜਾਣ ਅੱਖਰ ਨਾਂ"
 
-#: ../src/searchProvider.js:97
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#: ../src/window.js:165
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:153 src/window.js:348
+msgid "Search Result"
+msgstr "ਖੋਜ ਨਤੀਜਾ"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:187
 msgid "translator-credits"
 msgstr ""
 "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ\n"
 "ਪੰਜਾਬੀ ਓਪਨਸੋਰਸ ਟੀਮ (POST)"
 
-#: ../src/window.js:166
-msgid "GNOME Characters"
-msgstr "ਗਨੋਮ ਅੱਖਰ"
-
-#: ../src/window.js:167
+#: src/window.js:189
 msgid "Character Map"
 msgstr "ਅੱਖਰ ਨਕਸ਼ਾ"
 
-#: ../src/window.js:187
+#: src/window.js:209
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s ਕੇਵਲ)"
 
-#: ../src/window.js:273
+#: src/window.js:317
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s ਅੱਖਰ ਲਿਸਟ"
 
-#: ../src/window.js:280
-msgid "Search Result Character List"
-msgstr ""
+#. TRANSLATORS: %s will be either 'emojis' or 'letters'
+#: src/window.js:325
+#, javascript-format
+#| msgid "%s Character List"
+msgid "Recently Used %s Character List"
+msgstr "ਹਾਲ ਵਿੱਚ ਵਰਤੀ %s ਅੱਖਰ ਲਿਸਟ "
 
+#: src/window.js:346
+msgid "Search Result Character List"
+msgstr "ਨਤੀਜਾ ਅੱਖਰ ਸੂਚੀ ਖੋਜੋ"
+
+#~ msgid "Quit"
+#~ msgstr "ਬਾਹਰ"
+
+#~ msgid "Current page"
+#~ msgstr "ਮੌਜੂਦਾ ਸਫ਼ਾ"
+
+#~ msgid "characters;unicode;"
+#~ msgstr "ਅੱਖਰ;ਯੂਨੀਕੋਡ;"
+
+#~ msgid "Emoticons"
+#~ msgstr "ਈਮੋ-ਆਈਕਾਨ"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "ਅੱਖਰ ਐਪਲੀਕੇਸ਼ਨ ਬੰਦ ਹੋ ਰਹੀ ਹੈ"
