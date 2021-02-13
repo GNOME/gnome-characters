@@ -51,9 +51,7 @@ var MainWindow = GObject.registerClass({
     },
 }, class MainWindow extends Handy.ApplicationWindow {
     _init(params) {
-        params = Params.fill(params, { title: GLib.get_application_name(),
-                                       default_width: 640,
-                                       default_height: 480 });
+        params = Params.fill(params, { title: GLib.get_application_name() });
         super._init(params);
 
         this._searchActive = false;

@@ -15,6 +15,8 @@
   </menu>
   <template class="Gjs_MainWindow" parent="HdyApplicationWindow">
     <property name="height-request">660</property>
+    <property name="default-width">800</property>
+    <property name="default-height">500</property>
     <child>
       <object class="HdyLeaflet" id="leaflet">
         <property name="visible">True</property>
