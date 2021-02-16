@@ -2,31 +2,32 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Andika Triwidada <andika@gmail.com>, 2015.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2019, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2019-10-19 15:28+0000\n"
-"PO-Revision-Date: 2019-10-28 12:59+0700\n"
+"POT-Creation-Date: 2021-02-12 13:46+0000\n"
+"PO-Revision-Date: 2021-02-16 18:38+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "Pencarian tidak menemukan hasil"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "Tidak Ada Hasil"
 
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "Coba pencarian yang berbeda."
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
 msgstr "Memuat…"
 
@@ -38,27 +39,32 @@ msgstr "Salin Karakter"
 msgid "Character copied to clipboard"
 msgstr "Karakter disalin ke papan klip"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
-msgstr "Tak ada karakter baru-baru ini yang ditemukan"
+#: data/mainview.ui:10
+msgid "No Recent Characters"
+msgstr "Tidak Ada Karakter Baru-Baru Ini"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
 msgstr "Karakter-karater akan muncul di sini bila Anda memakai mereka."
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "Halaman kini"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan Ti_k"
+
+#: data/mainwindow.ui:11
+msgid "_About Characters"
+msgstr "Tent_ang Karakter"
+
+#: data/mainwindow.ui:30 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "Karakter"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "Saring menurut Fonta"
 
-#: data/menu.ui:54
-msgid "About Characters"
-msgstr "Tentang Karakter"
-
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:188
 msgid "GNOME Characters"
 msgstr "GNOME Karakter"
 
@@ -83,10 +89,6 @@ msgid ""
 msgstr ""
 "Anda juga dapat meramban karakter-karakter menurut kategori, seperti Tanda "
 "Baca, Gambar, dsb."
-
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "Karakter"
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
@@ -115,77 +117,77 @@ msgstr "Maksimum karakter baru-baru ini"
 msgid "Emojis"
 msgstr "Emoji"
 
-#: src/categoryList.js:38 src/categoryList.js:386
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "Huruf & Simbol"
 
-#: src/categoryList.js:48
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "Tanda Baca"
 
-#: src/categoryList.js:55
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "Panah"
 
-#: src/categoryList.js:62
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "Bulet"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "Gambar"
 
-#: src/categoryList.js:76
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "Mata Uang"
 
-#: src/categoryList.js:83
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "Matematika"
 
-#: src/categoryList.js:90
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "Huruf"
 
-#: src/categoryList.js:100
+#: src/categoryList.js:91
 msgid "Smileys & People"
 msgstr "Senyum & Orang"
 
-#: src/categoryList.js:107
+#: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "Hewan & Alam"
 
-#: src/categoryList.js:114
+#: src/categoryList.js:103
 msgid "Food & Drink"
 msgstr "Makanan & Minuman"
 
-#: src/categoryList.js:121
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "Aktivitas"
 
-#: src/categoryList.js:128
+#: src/categoryList.js:115
 msgid "Travel & Places"
 msgstr "Perjalanan & Tempat"
 
-#: src/categoryList.js:135
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "Objek"
 
-#: src/categoryList.js:142
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "Simbol"
 
-#: src/categoryList.js:149
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "Bendera"
 
-#: src/categoryList.js:163
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Baris Daftar Kategori %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:374 src/window.js:366
+#: src/categoryList.js:362 src/window.js:342
 msgid "Recently Used"
 msgstr "Baru-baru Ini Dipakai"
 
@@ -208,23 +210,7 @@ msgstr "%s tidak termasuk dalam %s"
 msgid "Unassigned"
 msgstr "Belum ditetapkan"
 
-#: src/main.js:55
-msgid "Characters Application"
-msgstr "Aplikasi Karakter"
-
-#: src/main.js:84
-msgid "Characters Application started"
-msgstr "Aplikasi Karakter dimulai"
-
-#: src/main.js:93
-msgid "Characters Application activate"
-msgstr "Aplikasi Karakter diaktifkan"
-
-#: src/main.js:97
-msgid "Characters Application exiting"
-msgstr "Aplikasi Karakter keluar"
-
-#: src/menu.js:44
+#: src/menu.js:42
 msgid "None"
 msgstr "Nihil"
 
@@ -238,40 +224,58 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:159 src/window.js:372
+#: src/window.js:153 src/window.js:348
 msgid "Search Result"
 msgstr "Hasil Pencarian"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:194
+#: src/window.js:187
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2015, 2016.\n"
-"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2019."
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2019, 2021."
 
-#: src/window.js:196
+#: src/window.js:189
 msgid "Character Map"
 msgstr "Peta Karakter"
 
-#: src/window.js:216
+#: src/window.js:209
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (hanya %s)"
 
-#: src/window.js:343
+#: src/window.js:317
 #, javascript-format
 msgid "%s Character List"
 msgstr "Daftar Karakter %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:351
+#: src/window.js:325
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Daftar Karakter %s yang Baru Saja Digunakan"
 
-#: src/window.js:370
+#: src/window.js:346
 msgid "Search Result Character List"
 msgstr "Daftar Karakter Hasil Pencarian"
+
+#~ msgid "Search found no results"
+#~ msgstr "Pencarian tidak menemukan hasil"
+
+#~ msgid "Current page"
+#~ msgstr "Halaman kini"
+
+#~ msgid "Characters Application"
+#~ msgstr "Aplikasi Karakter"
+
+#~ msgid "Characters Application started"
+#~ msgstr "Aplikasi Karakter dimulai"
+
+#~ msgid "Characters Application activate"
+#~ msgstr "Aplikasi Karakter diaktifkan"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "Aplikasi Karakter keluar"
 
 #~ msgid "@appid@"
 #~ msgstr "@appid@"
