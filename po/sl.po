@@ -2,15 +2,15 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 #
-# Matej Urbančič <mateju@svn.gnome.org>, + 2015–2020.
+# Matej Urbančič <mateju@svn.gnome.org>, + 2015–2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2020-02-29 16:06+0000\n"
-"PO-Revision-Date: 2020-02-29 22:28+0100\n"
+"POT-Creation-Date: 2021-02-16 11:41+0000\n"
+"PO-Revision-Date: 2021-02-18 17:38+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -20,19 +20,19 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.1\n"
 
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "Ni zadetkov"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "Ni najdenih zadetkov"
 
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "Poskusite z drugačnim iskanjem."
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
-msgstr "Poteka nalaganje ..."
+msgstr "Poteka nalaganje …"
 
 #: data/character.ui:68
 msgid "Copy Character"
@@ -42,27 +42,32 @@ msgstr "Kopiraj znak"
 msgid "Character copied to clipboard"
 msgstr "Znak je kopiran v odložišče"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
+#: data/mainview.ui:10
+msgid "No Recent Characters"
 msgstr "Ni nedavno izbranih znakov"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
 msgstr "V tem oknu bodo pokazani vsi uporabljeni znaki."
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "Trenutna stran"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "_Tipkovne bližnjice"
+
+#: data/mainwindow.ui:11
+msgid "_About Characters"
+msgstr "_O programu"
+
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "Znaki"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "Filter pisav"
 
-#: data/menu.ui:54
-msgid "About Characters"
-msgstr "O programu"
-
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:186
 msgid "GNOME Characters"
 msgstr "Znaki GNOME"
 
@@ -87,10 +92,6 @@ msgstr ""
 "Kategorije, kot so Znaki, Ločila, Sličice in podobno, je mogoče tudi "
 "prebrskati."
 
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "Znaki"
-
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Program za iskanje in vstavljanje neobičajnih znakov"
@@ -99,7 +100,7 @@ msgstr "Program za iskanje in vstavljanje neobičajnih znakov"
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
 msgstr ""
-"znaki;unikod;unicode;matematika;ločila;črke;emotikoni;izrazne ikone;emoji"
+"znaki;unikod;unicode;matematika;ločila;črke;emotikoni;izrazne ikone;emoji;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -117,77 +118,77 @@ msgstr "Največje število nedavno uporabljenih znakov"
 msgid "Emojis"
 msgstr "Izrazne ikone"
 
-#: src/categoryList.js:38 src/categoryList.js:386
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "Črke in Simboli"
 
-#: src/categoryList.js:48
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "Ločila"
 
-#: src/categoryList.js:55
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "Puščice"
 
-#: src/categoryList.js:62
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "Vrstične oznake"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "Sličice"
 
-#: src/categoryList.js:76
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "Denarne enote"
 
-#: src/categoryList.js:83
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "Matematični znaki"
 
-#: src/categoryList.js:90
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "Črke"
 
-#: src/categoryList.js:100
+#: src/categoryList.js:91
 msgid "Smileys & People"
 msgstr "Izrazi in Ljudje"
 
-#: src/categoryList.js:107
+#: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "Živali in Narava"
 
-#: src/categoryList.js:114
+#: src/categoryList.js:103
 msgid "Food & Drink"
 msgstr "Hrana in Pijača"
 
-#: src/categoryList.js:121
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "Dejavnosti"
 
-#: src/categoryList.js:128
+#: src/categoryList.js:115
 msgid "Travel & Places"
 msgstr "Potovanja in Mesta"
 
-#: src/categoryList.js:135
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "Predmeti"
 
-#: src/categoryList.js:142
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "Simboli"
 
-#: src/categoryList.js:149
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "Zastavice"
 
-#: src/categoryList.js:163
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Vrstica seznama kategorije %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:374 src/window.js:366
+#: src/categoryList.js:362 src/window.js:340
 msgid "Recently Used"
 msgstr "Nedavno uporabljeno"
 
@@ -210,23 +211,7 @@ msgstr "Znak %s ni vključen v %s"
 msgid "Unassigned"
 msgstr "Nedodeljeno"
 
-#: src/main.js:55
-msgid "Characters Application"
-msgstr "Program Znaki"
-
-#: src/main.js:84
-msgid "Characters Application started"
-msgstr "Program Znaki je zagnan"
-
-#: src/main.js:93
-msgid "Characters Application activate"
-msgstr "Program Znaki je zagnan"
-
-#: src/main.js:97
-msgid "Characters Application exiting"
-msgstr "Program Znaki se končuje"
-
-#: src/menu.js:44
+#: src/menu.js:42
 msgid "None"
 msgstr "Brez"
 
@@ -240,38 +225,56 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:159 src/window.js:372
+#: src/window.js:151 src/window.js:346
 msgid "Search Result"
 msgstr "Zadetki iskanja"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:194
+#: src/window.js:185
 msgid "translator-credits"
 msgstr "Matej Urbančič <matej.urban@svn.gnome.org>"
 
-#: src/window.js:196
+#: src/window.js:187
 msgid "Character Map"
 msgstr "Nabor znakov"
 
-#: src/window.js:216
+#: src/window.js:207
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (le %s)"
 
-#: src/window.js:343
+#: src/window.js:315
 #, javascript-format
 msgid "%s Character List"
 msgstr "Seznam znakov %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:351
+#: src/window.js:323
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Nedavno uporabljen seznam znakov %s"
 
-#: src/window.js:370
+#: src/window.js:344
 msgid "Search Result Character List"
 msgstr "Seznam rezultatov iskanja znakov"
+
+#~ msgid "Search found no results"
+#~ msgstr "Ni zadetkov"
+
+#~ msgid "Current page"
+#~ msgstr "Trenutna stran"
+
+#~ msgid "Characters Application"
+#~ msgstr "Program Znaki"
+
+#~ msgid "Characters Application started"
+#~ msgstr "Program Znaki je zagnan"
+
+#~ msgid "Characters Application activate"
+#~ msgstr "Program Znaki je zagnan"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "Program Znaki se končuje"
 
 #~ msgid "@appid@"
 #~ msgstr "@appid@"
