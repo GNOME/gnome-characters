@@ -60,7 +60,7 @@ i18n.merge_file(
   install_dir: join_paths(characters_datadir, 'applications')
 )
 
-i18n.merge_file(
+appdata_file = i18n.merge_file(
   'appdata-file',
   input: characters_name + '.appdata.xml.in',
   output: characters_application_id + '.appdata.xml',
@@ -68,6 +68,16 @@ i18n.merge_file(
   install: true,
   install_dir: join_paths(characters_datadir, 'metainfo')
 )
+
+appstream_util = find_program('appstream-util', required: false)
+if appstream_util.found()
+  test(
+    'validate-appdata', appstream_util,
+    args: [
+      'validate-relax', '--nonet', appdata_file.full_path()
+    ]
+  )
+endif
 
 service_conf = configuration_data()
 service_conf.set('appid', characters_application_id)
