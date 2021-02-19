@@ -46,6 +46,7 @@
                   <object class="GtkMenuButton">
                     <property name="visible">True</property>
                     <property name="menu-model">primary_menu</property>
+                    <property name="action_name">win.show-primary-menu</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>

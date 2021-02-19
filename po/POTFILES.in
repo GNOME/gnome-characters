@@ -5,6 +5,7 @@ data/character.ui
 data/mainview.ui
 data/mainwindow.ui
 data/menu.ui
+data/shortcuts.ui
 data/org.gnome.Characters.appdata.xml.in
 data/org.gnome.Characters.desktop.in
 data/org.gnome.Characters.gschema.xml
