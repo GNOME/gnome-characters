@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2021-02-16 11:41+0000\n"
-"PO-Revision-Date: 2021-02-18 17:38+0100\n"
+"POT-Creation-Date: 2021-02-21 19:36+0000\n"
+"PO-Revision-Date: 2021-02-21 21:58+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -67,7 +67,32 @@ msgstr "Znaki"
 msgid "Filter by Font"
 msgstr "Filter pisav"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:186
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Splošno"
+
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Odpre meni"
+
+#: data/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Iskanje"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Tipkovne bližnjice‫"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Konča program"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "Znaki GNOME"
 
@@ -188,7 +213,7 @@ msgid "%s Category List Row"
 msgstr "Vrstica seznama kategorije %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:340
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "Nedavno uporabljeno"
 
@@ -225,36 +250,36 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:151 src/window.js:346
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "Zadetki iskanja"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:185
+#: src/window.js:197
 msgid "translator-credits"
 msgstr "Matej Urbančič <matej.urban@svn.gnome.org>"
 
-#: src/window.js:187
+#: src/window.js:199
 msgid "Character Map"
 msgstr "Nabor znakov"
 
-#: src/window.js:207
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (le %s)"
 
-#: src/window.js:315
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "Seznam znakov %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:323
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Nedavno uporabljen seznam znakov %s"
 
-#: src/window.js:344
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "Seznam rezultatov iskanja znakov"
 
@@ -281,9 +306,6 @@ msgstr "Seznam rezultatov iskanja znakov"
 
 #~ msgid "About"
 #~ msgstr "O programu"
-
-#~ msgid "Quit"
-#~ msgstr "Končaj"
 
 #~ msgid "gnome-characters"
 #~ msgstr "gnome-characters"
