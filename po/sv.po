@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2021-02-12 13:46+0000\n"
-"PO-Revision-Date: 2021-02-12 21:21+0100\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-02-21 11:35+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -57,7 +57,7 @@ msgstr "_Tangentbordsgenvägar"
 msgid "_About Characters"
 msgstr "_Om Tecken"
 
-#: data/mainwindow.ui:30 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
 #: src/service.js:51
 msgid "Characters"
 msgstr "Tecken"
@@ -66,7 +66,33 @@ msgstr "Tecken"
 msgid "Filter by Font"
 msgstr "Filtrera efter typsnitt"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:188
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allmänt"
+
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Öppna meny"
+
+# accessible name
+#: data/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Sök"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Tangentbordsgenvägar"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Avsluta"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "GNOME Tecken"
 
@@ -188,7 +214,7 @@ msgid "%s Category List Row"
 msgstr "Listrad för kategorin %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:342
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "Nyligen använda"
 
@@ -227,12 +253,12 @@ msgstr "U+%s, %s: %s"
 
 # accessible name
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:153 src/window.js:348
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "Sökresultat"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:187
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
@@ -240,77 +266,29 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/window.js:189
+#: src/window.js:199
 msgid "Character Map"
 msgstr "Teckentabell"
 
-#: src/window.js:209
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (endast %s)"
 
 # accessible name
-#: src/window.js:317
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s-teckenlista"
 
 # accessible name
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:325
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Lista över senaste %s-tecken"
 
 # accessible name
-#: src/window.js:346
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "Teckenlista för sökresultat"
-
-#~ msgid "Search found no results"
-#~ msgstr "Inga sökresultat hittades"
-
-#~ msgid "Current page"
-#~ msgstr "Aktuell sida"
-
-#~ msgid "Characters Application"
-#~ msgstr "Programmet Tecken"
-
-#~ msgid "Characters Application started"
-#~ msgstr "Programmet Tecken startat"
-
-#~ msgid "Characters Application activate"
-#~ msgstr "Programmet Tecken aktiveras"
-
-#~ msgid "Characters Application exiting"
-#~ msgstr "Programmet Tecken avslutas"
-
-#~ msgid "@appid@"
-#~ msgstr "@appid@"
-
-#~ msgid "About"
-#~ msgstr "Om"
-
-#~ msgid "Quit"
-#~ msgstr "Avsluta"
-
-#~ msgid "gnome-characters"
-#~ msgstr "gnome-characters"
-
-#~ msgid "Emoticons"
-#~ msgstr "Humörsymboler"
-
-#~ msgid "Try another search criteria."
-#~ msgstr "Försök med ett annat sökkriterium."
-
-#~ msgid "characters;unicode;"
-#~ msgstr "tecken;unicode;"
-
-#~ msgid "Latin"
-#~ msgstr "Latin"
-
-#~ msgid "_New"
-#~ msgstr "_Ny"
-
-#~ msgid "Type to Search"
-#~ msgstr "Skriv för att söka"
