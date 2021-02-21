@@ -75,9 +75,12 @@ var MainWindow = GObject.registerClass({
                             parameter_type: new GLib.VariantType('s') },
                           { name: 'filter-font',
                             activate: this._filterFont,
-                            parameter_type: new GLib.VariantType('s') }]);
-
-        this.application.set_accels_for_action('win.find', ['<Primary>F']);
+                            parameter_type: new GLib.VariantType('s') },
+                            { 
+                                name: 'show-primary-menu',
+                                activate: this._togglePrimaryMenu,
+                                state: new GLib.Variant('b', false),
+                            }]);
 
         this.bind_property('search-active', this._search_active_button, 'active',
                            GObject.BindingFlags.SYNC_CREATE |
@@ -113,6 +116,10 @@ var MainWindow = GObject.registerClass({
         });
 
         this._container.pack_start(this._mainView, true, true, 0);
+        
+        let builder = Gtk.Builder.new_from_resource('/org/gnome/Characters/shortcuts.ui');
+        let helpOverlay = builder.get_object("shortcuts");
+        this.set_help_overlay(helpOverlay);
 
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
@@ -122,6 +129,11 @@ var MainWindow = GObject.registerClass({
     vfunc_map() {
         super.vfunc_map();
         this._selectFirstSubcategory();
+    }
+
+    _togglePrimaryMenu(action) {
+        let state = action.get_state().get_boolean();
+        action.set_state(GLib.Variant.new_boolean(!state));
     }
 
     // Select the first subcategory which contains at least one character.
