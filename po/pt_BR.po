@@ -1,26 +1,26 @@
 # Brazilian Portuguese translation for gnome-characters.
-# Copyright (C) 2020 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2021 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2015.
 # Artur de Aquino Morais <artur.morais93@outlook.com>, 2016.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2015-2020.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2015, 2016, 2021.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2015-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2021-02-12 13:46+0000\n"
-"PO-Revision-Date: 2021-02-12 11:57-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-02-21 14:35-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 3.38.0\n"
 "X-Project-Style: gnome\n"
 
 #: data/characterlist.ui:9
@@ -59,7 +59,7 @@ msgstr "A_talhos de teclado"
 msgid "_About Characters"
 msgstr "So_bre o Caracteres"
 
-#: data/mainwindow.ui:30 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
 #: src/service.js:51
 msgid "Characters"
 msgstr "Caracteres"
@@ -68,7 +68,35 @@ msgstr "Caracteres"
 msgid "Filter by Font"
 msgstr "Filtrar por fonte"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:188
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Geral"
+
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Abre o menu"
+
+#: data/shortcuts.ui:25
+#| msgid "Search Result"
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Pesquisa"
+
+#: data/shortcuts.ui:32
+#| msgid "_Keyboard Shortcuts"
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Atalhos de teclado"
+
+#: data/shortcuts.ui:39
+#| msgid "Quit"
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Sai"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "Caracteres do GNOME"
 
@@ -189,7 +217,7 @@ msgid "%s Category List Row"
 msgstr "Linha %s da lista de categoria"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:342
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "Usados recentemente"
 
@@ -226,38 +254,38 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:153 src/window.js:348
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "Resultado da pesquisa"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:187
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>\n"
 "Rafael Fontenelle <rafaelff@gnome.org>"
 
-#: src/window.js:189
+#: src/window.js:199
 msgid "Character Map"
 msgstr "Mapa de caracteres"
 
-#: src/window.js:209
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (apenas %s)"
 
-#: src/window.js:317
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:325
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Lista de caracteres %s recentemente usados"
 
-#: src/window.js:346
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "Resultado da pesquisa da lista de caracteres"
 
@@ -285,9 +313,6 @@ msgstr "Resultado da pesquisa da lista de caracteres"
 
 #~ msgid "About"
 #~ msgstr "Sobre"
-
-#~ msgid "Quit"
-#~ msgstr "Sair"
 
 #~ msgid "gnome-characters"
 #~ msgstr "gnome-characters"
