@@ -1,30 +1,28 @@
 # German translation for gnome-characters.
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
+#
 # Christian Kirbach <Christian.Kirbach@gmail.com>, 2015.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2015.
 # Bernd Homuth <dev@hmt.im>, 2016.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2016, 2017.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2016, 2017, 2021.
 # Tim Sabsch <tim@sabsch.com>, 2019-2021.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2021-02-12 13:46+0000\n"
-"PO-Revision-Date: 2021-02-20 19:05+0100\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
-"Language-Team: German <gnome-de@gnome.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-02-22 19:22+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"X-Generator: Lokalize 20.12.2\n"
 
 #: data/characterlist.ui:9
-#| msgid "Search Result"
 msgid "No Results"
 msgstr "Keine Ergebnisse"
 
@@ -45,7 +43,6 @@ msgid "Character copied to clipboard"
 msgstr "Zeichen in die Zwischenablage kopiert"
 
 #: data/mainview.ui:10
-#| msgid "No recent characters found"
 msgid "No Recent Characters"
 msgstr "Keine kürzlich verwendeten Zeichen"
 
@@ -58,11 +55,10 @@ msgid "_Keyboard Shortcuts"
 msgstr "Tasten_kombinationen"
 
 #: data/mainwindow.ui:11
-#| msgid "About Characters"
 msgid "_About Characters"
 msgstr "_Info zu Zeichen"
 
-#: data/mainwindow.ui:30 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
 #: src/service.js:51
 msgid "Characters"
 msgstr "Zeichen"
@@ -71,7 +67,35 @@ msgstr "Zeichen"
 msgid "Filter by Font"
 msgstr "Nach Schriftart filtern"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:188
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allgemein"
+
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Menü öffnen"
+
+#: data/shortcuts.ui:25
+#| msgid "Search Result"
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Suchen"
+
+#: data/shortcuts.ui:32
+#| msgid "_Keyboard Shortcuts"
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Tastenkombinationen"
+
+#: data/shortcuts.ui:39
+#| msgid "Quit"
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Beenden"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "GNOME Zeichen"
 
@@ -193,7 +217,7 @@ msgid "%s Category List Row"
 msgstr "﻿%s Kategorielistenzeile"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:342
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "Zuletzt verwendet"
 
@@ -230,12 +254,12 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:153 src/window.js:348
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "Suchergebnis"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:187
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "Christian Kirbach <christian.kirbach@gmail.com>, 2015\n"
@@ -243,27 +267,27 @@ msgstr ""
 "Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2015\n"
 "Tim Sabsch <tim@sabsch.com>, 2019-2020"
 
-#: src/window.js:189
+#: src/window.js:199
 msgid "Character Map"
 msgstr "Zeichentabelle"
 
-#: src/window.js:209
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (nur %s)"
 
-#: src/window.js:317
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s Zeichenliste"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:325
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Kürzlich verwendete %s-Zeichenliste"
 
-#: src/window.js:346
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "Suchergebnisse der Zeichenliste"
 
@@ -290,9 +314,6 @@ msgstr "Suchergebnisse der Zeichenliste"
 
 #~ msgid "About"
 #~ msgstr "Info"
-
-#~ msgid "Quit"
-#~ msgstr "Beenden"
 
 #~ msgid "gnome-characters"
 #~ msgstr "gnome-characters"
