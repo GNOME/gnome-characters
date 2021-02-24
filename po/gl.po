@@ -1,28 +1,26 @@
 # English translations for gnome-characters package.
 # Copyright (C) 2015 THE gnome-characters'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
+#
 # Fran <fran@localhost.localdomain>, 2015.
 # Fran Dieguez <frandieguez@gnome.org>, 2015-2021.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-18\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2021-02-12 13:46+0000\n"
-"PO-Revision-Date: 2021-02-12 19:59+0100\n"
-"Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-02-24 13:01+0100\n"
+"Last-Translator: Fran Diéguez <frandieguez@gnome.org>\n"
+"Language-Team: Galician\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"X-Generator: Lokalize 20.12.2\n"
 "X-Project-Style: gnome\n"
 
 #: data/characterlist.ui:9
-#| msgid "Search Result"
 msgid "No Results"
 msgstr "Non hai resultados"
 
@@ -36,14 +34,13 @@ msgstr "Cargando…"
 
 #: data/character.ui:68
 msgid "Copy Character"
-msgstr "Copiar caracter"
+msgstr "Copiar carácter"
 
 #: data/character.ui:86
 msgid "Character copied to clipboard"
-msgstr "Caracter copiado ao portapapeis"
+msgstr "Carácter copiado ao portapapeis"
 
 #: data/mainview.ui:10
-#| msgid "No recent characters found"
 msgid "No Recent Characters"
 msgstr "Non hai caracteres recentes"
 
@@ -56,11 +53,10 @@ msgid "_Keyboard Shortcuts"
 msgstr "Atallos de _teclado"
 
 #: data/mainwindow.ui:11
-#| msgid "About Characters"
 msgid "_About Characters"
 msgstr "_Sobre Caracteres"
 
-#: data/mainwindow.ui:30 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
 #: src/service.js:51
 msgid "Characters"
 msgstr "Caracteres"
@@ -69,7 +65,36 @@ msgstr "Caracteres"
 msgid "Filter by Font"
 msgstr "Filtrar por tipo de letra"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:188
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr ""
+
+#: data/shortcuts.ui:25
+#, fuzzy
+#| msgid "Search Result"
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Resultados da busca"
+
+#: data/shortcuts.ui:32
+#, fuzzy
+#| msgid "_Keyboard Shortcuts"
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Atallos de _teclado"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "Caracteres de GNOME"
 
@@ -84,7 +109,7 @@ msgid ""
 "by searching for keywords."
 msgstr ""
 "Caracteres é unha utilidade sinxela para buscar e inserir caracteres non "
-"normais. Permítelle atopar de forma rápida o caracter que está buscando por "
+"normais. Permítelle atopar de forma rápida o carácter que está buscando por "
 "etiquetas."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
@@ -101,7 +126,7 @@ msgstr "Utilidade para atopar e inserir caracteres non usuais"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "caracters;unicode;puntuación;matemático;letras;emoji;emoticono;"
+msgstr "caracteres;unicode;puntuación;matemático;letras;emoji;emoticono;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -190,7 +215,7 @@ msgid "%s Category List Row"
 msgstr "Fila da lista de categoría %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:342
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "Usados recentemente"
 
@@ -219,7 +244,7 @@ msgstr "Ningún"
 
 #: src/searchProvider.js:94
 msgid "Unknown character name"
-msgstr "Nome de caracter descoñecido"
+msgstr "Nome de carácter descoñecido"
 
 #: src/searchProvider.js:97
 #, javascript-format
@@ -227,36 +252,36 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:153 src/window.js:348
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "Resultados da busca"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:187
+#: src/window.js:197
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@gnome.org>, 2015-2020"
 
-#: src/window.js:189
+#: src/window.js:199
 msgid "Character Map"
 msgstr "Mapa de caracteres"
 
-#: src/window.js:209
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (só %s)"
 
-#: src/window.js:317
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "Lista de caracteres %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:325
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Lista de caracteres %s usados recentemente"
 
-#: src/window.js:346
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "Lista de caracteres dos resultados da busca"
 
