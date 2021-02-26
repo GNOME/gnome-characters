@@ -1,23 +1,22 @@
 # Hungarian translation for gnome-characters.
-# Copyright (C) 2014, 2015, 2016, 2017, 2019, 2020 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016, 2017, 2019, 2020, 2021 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-characters package.
 #
-# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2015, 2016, 2017, 2019, 2020.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2015, 2016, 2017, 2019, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2021-02-12 13:46+0000\n"
-"PO-Revision-Date: 2021-02-12 17:48+0100\n"
-"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-02-26 01:26+0100\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Lokalize 19.12.3\n"
 
 #: data/characterlist.ui:9
 msgid "No Results"
@@ -55,7 +54,7 @@ msgstr "_Gyorsbillentyűk"
 msgid "_About Characters"
 msgstr "A Karakterek _névjegye"
 
-#: data/mainwindow.ui:30 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
 #: src/service.js:51
 msgid "Characters"
 msgstr "Karakterek"
@@ -64,7 +63,34 @@ msgstr "Karakterek"
 msgid "Filter by Font"
 msgstr "Szűrés betűkészlet szerint"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:188
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Általános"
+
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Menü megnyitása"
+
+#: data/shortcuts.ui:25
+#| msgid "Search Result"
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Keresés"
+
+#: data/shortcuts.ui:32
+#| msgid "_Keyboard Shortcuts"
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Gyorsbillentyűk"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Kilépés"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "GNOME Karakterek"
 
@@ -187,7 +213,7 @@ msgid "%s Category List Row"
 msgstr "%s kategórialista sor"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:342
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "Legutóbb használt"
 
@@ -224,56 +250,37 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:153 src/window.js:348
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "Keresési eredmény"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:187
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
 "Úr Balázs <ur dot balazs at fsf dot hu>"
 
-#: src/window.js:189
+#: src/window.js:199
 msgid "Character Map"
 msgstr "Karaktertábla"
 
-#: src/window.js:209
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (csak %s)"
 
-#: src/window.js:317
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s karakterlista"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:325
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Legutóbb használt %s karakterlista"
 
-#: src/window.js:346
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "Keresési eredmény karakterlista"
-
-#~ msgid "Search found no results"
-#~ msgstr "A keresés nem talált semmit"
-
-#~ msgid "Current page"
-#~ msgstr "Jelenlegi oldal"
-
-#~ msgid "Characters Application"
-#~ msgstr "Karakterek alkalmazás"
-
-#~ msgid "Characters Application started"
-#~ msgstr "Karakterek alkalmazás elindítva"
-
-#~| msgid "Characters Application started"
-#~ msgid "Characters Application activate"
-#~ msgstr "Karakterek alkalmazás aktiválása"
-
-#~ msgid "Characters Application exiting"
-#~ msgstr "Karakterek alkalmazás kilépés"
