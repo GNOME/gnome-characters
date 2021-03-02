@@ -8,25 +8,25 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2020-06-01 20:37+0000\n"
-"PO-Revision-Date: 2020-06-26 09:16+0500\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-03-02 08:59+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "Іздеу нәтижелерді қайтармады"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "Нәтижелер жоқ"
 
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "Басқа сөздерді іздеп көріңіз."
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
 msgstr "Жүктеу…"
 
@@ -38,27 +38,57 @@ msgstr "Таңбаны көшіріп алу"
 msgid "Character copied to clipboard"
 msgstr "Таңба алмасу буферіне көшірілді"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
+#: data/mainview.ui:10
+msgid "No Recent Characters"
 msgstr "Жуырдағы таңбалар табылмады"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
 msgstr "Таңбаларды қолдансаңыз, олар осында көрсетіледі."
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "Ағымдағы бет"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "П_ернетақта жарлықтары"
+
+#: data/mainwindow.ui:11
+msgid "_About Characters"
+msgstr "Таңбалар қолданбасы туралы"
+
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "Таңбалар"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "Қаріп бойынша сүзгілеу"
 
-#: data/menu.ui:54
-msgid "About Characters"
-msgstr "Таңбалар қолданбасы туралы"
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Жалпы"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Мәзірді ашу"
+
+#: data/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Іздеу нәтижесі"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Пернетақта жарлықтары"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Шығу"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "GNOME таңбалар қолданбасы"
 
@@ -83,10 +113,6 @@ msgid ""
 msgstr ""
 "Сонымен бірге, сіз таңбаларды санаттар бойынша шола аласыз, мыс. емле "
 "таңбалары, суреттер және т.б."
-
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "Таңбалар"
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
@@ -115,77 +141,77 @@ msgstr "Жуырдағы таңбалардың макс. саны"
 msgid "Emojis"
 msgstr "Эмодзи"
 
-#: src/categoryList.js:38 src/categoryList.js:386
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "Әріптер және таңбалар"
 
-#: src/categoryList.js:48
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "Емле таңбалары"
 
-#: src/categoryList.js:55
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "Сызықшалар"
 
-#: src/categoryList.js:62
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "Маркерлер"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "Суреттер"
 
-#: src/categoryList.js:76
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "Қаржылар"
 
-#: src/categoryList.js:83
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "Математика"
 
-#: src/categoryList.js:90
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "Әріптер"
 
-#: src/categoryList.js:100
+#: src/categoryList.js:91
 msgid "Smileys & People"
 msgstr "Смайликтер және адамдар"
 
-#: src/categoryList.js:107
+#: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "Жануарлар және табиғат"
 
-#: src/categoryList.js:114
+#: src/categoryList.js:103
 msgid "Food & Drink"
 msgstr "Тамақ және сусындар"
 
-#: src/categoryList.js:121
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "Белсенділіктер"
 
-#: src/categoryList.js:128
+#: src/categoryList.js:115
 msgid "Travel & Places"
 msgstr "Саяхат және орындар"
 
-#: src/categoryList.js:135
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "Объекттер"
 
-#: src/categoryList.js:142
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "Таңбалар"
 
-#: src/categoryList.js:149
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "Жалаулар"
 
-#: src/categoryList.js:163
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s санаттар тізімінің жолы"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:374 src/window.js:366
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "Жақында қолданылған"
 
@@ -208,23 +234,7 @@ msgstr "%s %s ішінде жоқ"
 msgid "Unassigned"
 msgstr "Тағайындалмаған"
 
-#: src/main.js:55
-msgid "Characters Application"
-msgstr "Таңбалар қолданбасы"
-
-#: src/main.js:84
-msgid "Characters Application started"
-msgstr "Таңбалар қолданбасы іске қосылды"
-
-#: src/main.js:93
-msgid "Characters Application activate"
-msgstr "Таңбалар қолданбасы белсенді"
-
-#: src/main.js:97
-msgid "Characters Application exiting"
-msgstr "Таңбалар қолданбасы жұмысын аяқтауда"
-
-#: src/menu.js:44
+#: src/menu.js:42
 msgid "None"
 msgstr "Ешнәрсе"
 
@@ -238,47 +248,62 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:159 src/window.js:372
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "Іздеу нәтижесі"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:194
+#: src/window.js:197
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
-#: src/window.js:196
+#: src/window.js:199
 msgid "Character Map"
 msgstr "Таңбалар картасы"
 
-#: src/window.js:216
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (тек %s)"
 
-#: src/window.js:343
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s таңбалар тізімі"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:351
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Соңғы қолданылған %s таңбалар тізімі"
 
-#: src/window.js:370
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "Іздеу нәтижесінің таңбалар тізімі"
+
+#~ msgid "Search found no results"
+#~ msgstr "Іздеу нәтижелерді қайтармады"
+
+#~ msgid "Current page"
+#~ msgstr "Ағымдағы бет"
+
+#~ msgid "Characters Application"
+#~ msgstr "Таңбалар қолданбасы"
+
+#~ msgid "Characters Application started"
+#~ msgstr "Таңбалар қолданбасы іске қосылды"
+
+#~ msgid "Characters Application activate"
+#~ msgstr "Таңбалар қолданбасы белсенді"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "Таңбалар қолданбасы жұмысын аяқтауда"
 
 #~ msgid "@appid@"
 #~ msgstr "@appid@"
 
 #~ msgid "About"
 #~ msgstr "Осы туралы"
-
-#~ msgid "Quit"
-#~ msgstr "Шығу"
 
 #~ msgid "gnome-characters"
 #~ msgstr "gnome-characters"
