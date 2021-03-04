@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2021-02-21 10:03+0000\n"
-"PO-Revision-Date: 2021-03-01 08:28+0100\n"
+"POT-Creation-Date: 2021-03-01 07:30+0000\n"
+"PO-Revision-Date: 2021-03-04 08:54+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -133,7 +133,7 @@ msgstr "Dopre il gjenar di caratar definît pe visualizazion dai caratars."
 
 #: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
-msgstr "Massim numar di caratars recents"
+msgstr "Massim numar di caratars resints"
 
 #: src/categoryList.js:31
 msgid "Emojis"
@@ -211,7 +211,7 @@ msgstr "Rie liste categorie %s"
 #. FIXME: Can't use GtkContainer.child_get_property.
 #: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
-msgstr "Doprâts di recent"
+msgstr "Doprâts di resint"
 
 #: src/characterDialog.js:49
 msgid "See Also"
