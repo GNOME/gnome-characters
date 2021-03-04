@@ -1,32 +1,32 @@
 # Persian translation for gnome-characters.
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Arash Mousavi <mousavi.arash@gmail.com>, 2015, 2016, 2017.
-# Danial Behzadi <dani.behzi@ubuntu.com>, 2018, 2019.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2015-2017.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2018-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2019-10-16 15:41+0000\n"
-"PO-Revision-Date: 2019-10-19 18:57+0330\n"
-"Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-03-04 00:45+0000\n"
+"Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "جست‌وجو نتیجه‌ای نیافت"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "بدون نتیجه"
 
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "جست‌وجویی دیگر را بیازمایید."
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
 msgstr "درحال بار کردن…"
 
@@ -38,27 +38,57 @@ msgstr "رونوشت از نویسه"
 msgid "Character copied to clipboard"
 msgstr "نویسه به تخته‌گیره رونوشت شد"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
-msgstr "نویسهٔ اخیری پیدا نشد"
+#: data/mainview.ui:10
+msgid "No Recent Characters"
+msgstr "نویسهٔ اخیری نیست"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
 msgstr "اگر از نویسه‌ها استفاده کنید، این‌جا ظاهر می‌شوند."
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "صفحهٔ جاری"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "_میان‌برهای صفحه‌کلید"
+
+#: data/mainwindow.ui:11
+msgid "_About Characters"
+msgstr "_دربارهٔ نویسه‌ها"
+
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "نویسه‌ها"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "پالایش بر اساس قلم"
 
-#: data/menu.ui:54
-msgid "About Characters"
-msgstr "دربارهٔ نویسه‌ها"
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "عمومی"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "گشودن فهرست"
+
+#: data/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "جست‌وجو"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "میان‌برهای صفحه‌کلید"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "خروج"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "نویسه‌های گنوم"
 
@@ -81,10 +111,6 @@ msgid ""
 "etc."
 msgstr ""
 "همچنین می‌توانید نویسه‌ها را بر اساس دسته‌بندی‌هایی چون نقطه‌گذاری، عکس‌ها و… بیابید."
-
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "نویسه‌ها"
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
@@ -113,77 +139,77 @@ msgstr "بیشینهٔ نویسه‌های اخیر"
 msgid "Emojis"
 msgstr "اموجی‌ها"
 
-#: src/categoryList.js:38 src/categoryList.js:386
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "حروف و نشانه‌ها"
 
-#: src/categoryList.js:48
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "نقطه‌گذاری"
 
-#: src/categoryList.js:55
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "پیکان‌ها"
 
-#: src/categoryList.js:62
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "نقطه‌ها"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "عکس‌ها"
 
-#: src/categoryList.js:76
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "ارزها"
 
-#: src/categoryList.js:83
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "ریاضی"
 
-#: src/categoryList.js:90
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "حروف"
 
-#: src/categoryList.js:100
+#: src/categoryList.js:91
 msgid "Smileys & People"
 msgstr "شکلک‌ها و افراد"
 
-#: src/categoryList.js:107
+#: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "حیوانات و طبعیت"
 
-#: src/categoryList.js:114
+#: src/categoryList.js:103
 msgid "Food & Drink"
 msgstr "غذا و نوشیدنی"
 
-#: src/categoryList.js:121
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "فعّالیت‌ها"
 
-#: src/categoryList.js:128
+#: src/categoryList.js:115
 msgid "Travel & Places"
 msgstr "سفر و مکان‌ها"
 
-#: src/categoryList.js:135
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "اشیا"
 
-#: src/categoryList.js:142
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "نشانه‌ها"
 
-#: src/categoryList.js:149
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "پرچم‌ها"
 
-#: src/categoryList.js:163
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "ردیفِ فهرستِ شاخه %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:374 src/window.js:366
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "به‌تازگی استفاده شده"
 
@@ -206,23 +232,7 @@ msgstr "%s در %s وجود ندارد"
 msgid "Unassigned"
 msgstr "اختصاص نیافته"
 
-#: src/main.js:55
-msgid "Characters Application"
-msgstr "برنامهٔ نویسه‌ها"
-
-#: src/main.js:84
-msgid "Characters Application started"
-msgstr "برنامهٔ نویسه‌ها شروع شد"
-
-#: src/main.js:93
-msgid "Characters Application activate"
-msgstr "برنامهٔ نویسه‌ها به کار افتاد"
-
-#: src/main.js:97
-msgid "Characters Application exiting"
-msgstr "برنامهٔ نویسه‌ها در حال خروج است"
-
-#: src/menu.js:44
+#: src/menu.js:42
 msgid "None"
 msgstr "هیچ‌کدام"
 
@@ -236,46 +246,61 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s، %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:159 src/window.js:372
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "نتیجهٔ جست‌وجو"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:194
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "آرش موسوی <mousavi.arash@gmail.com>\n"
 "دانیال بهزادی<dani.behzi@ubuntu.com>"
 
-#: src/window.js:196
+#: src/window.js:199
 msgid "Character Map"
 msgstr "نقشهٔ نویسه‌ها"
 
-#: src/window.js:216
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s فقط)"
 
-#: src/window.js:343
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "فهرست نویسه %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:351
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "فهرست نویسه‌های %s به‌تازگی استفاده شده"
 
-#: src/window.js:370
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "فهرست نویسه‌های نتیجهٔ جست‌وجو"
 
+#~ msgid "Search found no results"
+#~ msgstr "جست‌وجو نتیجه‌ای نیافت"
+
+#~ msgid "Current page"
+#~ msgstr "صفحهٔ جاری"
+
+#~ msgid "Characters Application"
+#~ msgstr "برنامهٔ نویسه‌ها"
+
+#~ msgid "Characters Application started"
+#~ msgstr "برنامهٔ نویسه‌ها شروع شد"
+
+#~ msgid "Characters Application activate"
+#~ msgstr "برنامهٔ نویسه‌ها به کار افتاد"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "برنامهٔ نویسه‌ها در حال خروج است"
+
 #~ msgid "About"
 #~ msgstr "درباره"
-
-#~ msgid "Quit"
-#~ msgstr "خروج"
 
 #~ msgid "gnome-characters"
 #~ msgstr "gnome-characters"
