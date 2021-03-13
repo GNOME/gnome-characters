@@ -10,28 +10,28 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2018-10-29 12:19+0000\n"
-"PO-Revision-Date: 2019-03-15 21:31+0800\n"
-"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
+"POT-Creation-Date: 2021-02-22 20:31+0000\n"
+"PO-Revision-Date: 2021-02-23 23:16+0800\n"
+"Last-Translator: mars <gzhqyz@gmail.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "搜索未找到结果"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "未找到结果"
 
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "尝试不同的搜索。"
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
-msgstr "正在加载……"
+msgstr "正在加载…"
 
 #: data/character.ui:68
 msgid "Copy Character"
@@ -41,27 +41,57 @@ msgstr "复制字符"
 msgid "Character copied to clipboard"
 msgstr "字符已复制到剪贴板"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
+#: data/mainview.ui:10
+msgid "No Recent Characters"
 msgstr "未找到最近使用的字符"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
 msgstr "你使用的字符将会在这里显示。"
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "当前页"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "键盘快捷键(_K)"
+
+#: data/mainwindow.ui:11
+msgid "_About Characters"
+msgstr "关于字符(_A)"
+
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "字符"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "按字体筛选"
 
-#: data/menu.ui:54
-msgid "About Characters"
-msgstr "关于字符"
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "常规"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "打开菜单"
+
+#: data/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "搜索"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "键盘快捷键"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "GNOME 字符"
 
@@ -84,18 +114,9 @@ msgid ""
 "etc."
 msgstr "你也可以按照目录浏览字符，比如 标点、图片等。"
 
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "字符"
-
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "查找和插入特殊字符的实用程序"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "@appid@"
-msgstr "@appid@"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -120,77 +141,77 @@ msgstr "最近字符的最大数"
 msgid "Emojis"
 msgstr "Emoji 表情"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "字母与符号"
 
-#: src/categoryList.js:48
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "标点"
 
-#: src/categoryList.js:55
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "箭头"
 
-#: src/categoryList.js:62
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "项目符号"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "图片"
 
-#: src/categoryList.js:76
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "货币"
 
-#: src/categoryList.js:83
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "数学"
 
-#: src/categoryList.js:90
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "字母"
 
-#: src/categoryList.js:100
+#: src/categoryList.js:91
 msgid "Smileys & People"
 msgstr "笑脸与人物"
 
-#: src/categoryList.js:107
+#: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "动物与自然"
 
-#: src/categoryList.js:114
+#: src/categoryList.js:103
 msgid "Food & Drink"
 msgstr "食物与饮料"
 
-#: src/categoryList.js:121
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "活动"
 
-#: src/categoryList.js:128
+#: src/categoryList.js:115
 msgid "Travel & Places"
 msgstr "旅游与地方"
 
-#: src/categoryList.js:135
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "物体"
 
-#: src/categoryList.js:142
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "符号"
 
-#: src/categoryList.js:149
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "标志"
 
-#: src/categoryList.js:163
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s 分类列表行"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "最近使用"
 
@@ -213,73 +234,76 @@ msgstr "字体 %2$s 不包含字符 %1$s"
 msgid "Unassigned"
 msgstr "未分配"
 
-#: src/main.js:55
-msgid "Characters Application"
-msgstr "字符 应用程序"
-
-#: src/main.js:84
-msgid "Characters Application started"
-msgstr "字符 应用程序已打开"
-
-#: src/main.js:92
-msgid "Characters Application exiting"
-msgstr "字符 应用程序正在退出"
-
-#: src/menu.js:44
+#: src/menu.js:42
 msgid "None"
 msgstr "无"
 
-#: src/searchProvider.js:93
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "未知的字符名称"
 
-#: src/searchProvider.js:96
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:163 src/window.js:358
+msgid "Search Result"
+msgstr "搜索结果"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "Jeff Bai <jeffbai@aosc.xyz>, 2015, 2016.\n"
 "Bin Li <binli@gnome.org>, 2016.\n"
 "Dingzhong Chen <wsxy162@gmail.com>, 2015, 2016, 2017, 2019."
 
-#: src/window.js:192
+#: src/window.js:199
 msgid "Character Map"
 msgstr "字符映射表"
 
-#: src/window.js:212
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s（限 %s）"
 
-#: src/window.js:339
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s 字符列表"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "最近使用的 %s 字符列表"
 
-#: src/window.js:366
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "字符列表搜索结果"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "搜索结果"
+#~ msgid "Search found no results"
+#~ msgstr "搜索未找到结果"
+
+#~ msgid "Current page"
+#~ msgstr "当前页"
+
+#~ msgid "@appid@"
+#~ msgstr "@appid@"
+
+#~ msgid "Characters Application"
+#~ msgstr "字符 应用程序"
+
+#~ msgid "Characters Application started"
+#~ msgstr "字符 应用程序已打开"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "字符 应用程序正在退出"
 
 #~ msgid "About"
 #~ msgstr "关于"
-
-#~ msgid "Quit"
-#~ msgstr "退出"
 
 #~ msgid "gnome-characters"
 #~ msgstr "gnome-characters"
