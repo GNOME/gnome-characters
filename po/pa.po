@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2021-02-12 13:46+0000\n"
-"PO-Revision-Date: 2021-02-13 15:56-0800\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-03-14 10:23-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
@@ -35,12 +35,10 @@ msgid "Copy Character"
 msgstr "ਅੱਖਰ ਕਾਪੀ ਕਰੋ"
 
 #: data/character.ui:86
-#| msgid "Characters Application started"
 msgid "Character copied to clipboard"
 msgstr "ਅੱਖਰ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕੀਤਾ"
 
 #: data/mainview.ui:10
-#| msgid "No recent characters found"
 msgid "No Recent Characters"
 msgstr "ਕੋਈ ਤਾਜ਼ੇ ਅੱਖਰ ਨਹੀਂ ਹਨ"
 
@@ -53,26 +51,51 @@ msgid "_Keyboard Shortcuts"
 msgstr "ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ(_K)"
 
 #: data/mainwindow.ui:11
-#| msgid "About Characters"
 msgid "_About Characters"
 msgstr "ਅੱਖਰਾਂ ਬਾਰੇ(_A)"
 
-#: data/mainwindow.ui:30 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
 #: src/service.js:51
 msgid "Characters"
 msgstr "ਅੱਖਰ"
 
 #: data/menu.ui:17
-#| msgid "Filter by font"
 msgid "Filter by Font"
 msgstr "ਫੋਂਟ ਰਾਹੀਂ ਫਿਲਟਰ"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:188
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "ਆਮ"
+
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "ਮੀਨੂ ਖੋਲ੍ਹੋ"
+
+#: data/shortcuts.ui:25
+#| msgid "Search Result"
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "ਖੋਜੋ"
+
+#: data/shortcuts.ui:32
+#| msgid "_Keyboard Shortcuts"
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ"
+
+#: data/shortcuts.ui:39
+#| msgid "Quit"
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "ਬਾਹਰ"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "ਗਨੋਮ ਅੱਖਰ"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
-#| msgid "Characters Application"
 msgid "Character map application"
 msgstr "ਅੱਖਰ ਖਾਕਾ ਐਪਲੀਕੇਸ਼ਨ"
 
@@ -83,7 +106,8 @@ msgid ""
 "by searching for keywords."
 msgstr ""
 "ਕਰੈਕਟਰ (ਅੱਖਰ) ਅਸਧਾਰਨ ਅੱਖਰ ਲੱਭਣ ਤੇ ਪਾਉਣ ਵਾਲੀ ਸਰਲ ਸਹੂਲਤ ਵਾਲੀ ਐਪਲੀਕੇਸ਼ਨ ਹੈ। ਇਹ"
-" ਤੁਹਾਨੂੰ ਖਾਸ ਢੰਗ ਰਾਹੀਂ ਲੱਭ ਕੇ ਤੁਹਾਨੂੰ ਅੱਖਰ ਲੱਭਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿੰਦੀ ਹੈ।"
+" ਤੁਹਾਨੂੰ ਖਾਸ "
+"ਢੰਗ ਰਾਹੀਂ ਲੱਭ ਕੇ ਤੁਹਾਨੂੰ ਅੱਖਰ ਲੱਭਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿੰਦੀ ਹੈ।"
 
 #: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
@@ -187,7 +211,7 @@ msgid "%s Category List Row"
 msgstr "%s ਕੈਟਾਗਰੀ ਸੂਚੀ ਕਤਾਰ"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:342
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "ਤਾਜ਼ਾ ਵਰਤੇ"
 
@@ -224,44 +248,40 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:153 src/window.js:348
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "ਖੋਜ ਨਤੀਜਾ"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:187
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ\n"
 "ਪੰਜਾਬੀ ਓਪਨਸੋਰਸ ਟੀਮ (POST)"
 
-#: src/window.js:189
+#: src/window.js:199
 msgid "Character Map"
 msgstr "ਅੱਖਰ ਨਕਸ਼ਾ"
 
-#: src/window.js:209
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s ਕੇਵਲ)"
 
-#: src/window.js:317
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s ਅੱਖਰ ਲਿਸਟ"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:325
+#: src/window.js:335
 #, javascript-format
-#| msgid "%s Character List"
 msgid "Recently Used %s Character List"
 msgstr "ਹਾਲ ਵਿੱਚ ਵਰਤੀ %s ਅੱਖਰ ਲਿਸਟ "
 
-#: src/window.js:346
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "ਨਤੀਜਾ ਅੱਖਰ ਸੂਚੀ ਖੋਜੋ"
-
-#~ msgid "Quit"
-#~ msgstr "ਬਾਹਰ"
 
 #~ msgid "Current page"
 #~ msgstr "ਮੌਜੂਦਾ ਸਫ਼ਾ"
