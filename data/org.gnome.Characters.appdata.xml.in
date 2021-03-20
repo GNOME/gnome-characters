@@ -33,7 +33,52 @@
   <translation type="gettext">org.gnome.Characters</translation>
   <content_rating type="oars-1.1"/>
   <releases>
-    <release version="40.beta" date="2021-02-13"/>
+    <release version="40.0" date="2021-03-20">
+      <p>Characters has received a visual upgrade, and is now able to be used across mobile and desktop form factors.</p>
+      <p>Characters 40 also comes with updated translations for the following locales:</p>
+      <ul>
+        <li>Bangla (India)</li>
+        <li>Basque</li>
+        <li>Bokmål, Norwegian</li>
+        <li>Catalan</li>
+        <li>Chinese (China)</li>
+        <li>Chinese (Taiwan)</li>
+        <li>Croatian</li>
+        <li>Czech</li>
+        <li>Danish</li>
+        <li>Dutch</li>
+        <li>English (United Kingdom)</li>
+        <li>Esperanto</li>
+        <li>Finnish</li>
+        <li>French</li>
+        <li>Friulian</li>
+        <li>Galician</li>
+        <li>German</li>
+        <li>Greek, Modern (1453-)</li>
+        <li>Hebrew</li>
+        <li>Hungarian</li>
+        <li>Indonesian</li>
+        <li>Italian</li>
+        <li>Japanese</li>
+        <li>Kazakh</li>
+        <li>Korean</li>
+        <li>Latvian</li>
+        <li>Lithuanian</li>
+        <li>Panjabi</li>
+        <li>Persian</li>
+        <li>Polish</li>
+        <li>Portuguese</li>
+        <li>Portuguese (Brazil)</li>
+        <li>Romanian</li>
+        <li>Serbian</li>
+        <li>Slovak</li>
+        <li>Slovenian</li>
+        <li>Spanish</li>
+        <li>Swedish</li>
+        <li>Turkish</li>
+        <li>Ukrainian</li>
+      </ul>
+    </release>
     <release version="3.32.1" date="2019-04-08"/>
   </releases>
 </component>
