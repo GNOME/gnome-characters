@@ -3,32 +3,31 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Seong-ho Cho <shcho@gnome.org>, 2015-2017.
 # DaeHyun Sung <sungdh86@gmail.com>, 2017-2020.
+# Changwoo Ryu <cwryu@debian.org>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2019-10-02 14:29+0000\n"
-"PO-Revision-Date: 2020-02-23 23:21+0900\n"
-"Last-Translator: DaeHyun Sung <sungdh86+git@gmail.com>\n"
-"Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-03-21 19:50+0900\n"
+"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
+"Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3\n"
 
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "검색 결과가 없습니다"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "검색 결과 없음"
 
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "다른 단어로 검색하십시오."
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
 msgstr "불러오는 중…"
 
@@ -40,27 +39,57 @@ msgstr "문자 복사"
 msgid "Character copied to clipboard"
 msgstr "클립보드에 문자를 복사했습니다"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
+#: data/mainview.ui:10
+msgid "No Recent Characters"
 msgstr "최근 문자가 없습니다"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
 msgstr "사용한 문자가 여기에 나타납니다."
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "현재 페이지"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "키보드 바로 가기(_K)"
+
+#: data/mainwindow.ui:11
+msgid "_About Characters"
+msgstr "문자 도구 정보(_A)"
+
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "문자 도구"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "글꼴로 구분"
 
-#: data/menu.ui:54
-msgid "About Characters"
-msgstr "문자 도구 정보"
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "일반"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:195
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "메뉴 열기"
+
+#: data/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "검색"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "키보드 바로 가기"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "끝내기"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "그놈 문자 도구"
 
@@ -82,10 +111,6 @@ msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr "구두기호, 그림 등의 분류 방식으로 문자를 찾아볼 수 있습니다."
-
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "문자 도구"
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
@@ -114,77 +139,77 @@ msgstr "최대 최근 사용 문자"
 msgid "Emojis"
 msgstr "이모지"
 
-#: src/categoryList.js:38 src/categoryList.js:386
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "문자와 기호"
 
-#: src/categoryList.js:48
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "구두 기호"
 
-#: src/categoryList.js:55
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "화살표"
 
-#: src/categoryList.js:62
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "문단 기호"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "그림 문자"
 
-#: src/categoryList.js:76
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "화폐 단위"
 
-#: src/categoryList.js:83
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "수학기호"
 
-#: src/categoryList.js:90
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "문자"
 
-#: src/categoryList.js:100
+#: src/categoryList.js:91
 msgid "Smileys & People"
-msgstr "표정과 사람"
+msgstr "표정 및 사람"
 
-#: src/categoryList.js:107
+#: src/categoryList.js:97
 msgid "Animals & Nature"
-msgstr "동물과 자연"
+msgstr "동물 및 자연"
 
-#: src/categoryList.js:114
+#: src/categoryList.js:103
 msgid "Food & Drink"
-msgstr "음식과 음료"
+msgstr "음식 및 음료"
 
-#: src/categoryList.js:121
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "활동"
 
-#: src/categoryList.js:128
+#: src/categoryList.js:115
 msgid "Travel & Places"
-msgstr "여행과 장소"
+msgstr "여행 및 장소"
 
-#: src/categoryList.js:135
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "사물"
 
-#: src/categoryList.js:142
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "기호"
 
-#: src/categoryList.js:149
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "깃발"
 
-#: src/categoryList.js:163
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s 분류 목록"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:374 src/window.js:366
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "최근 사용"
 
@@ -207,23 +232,7 @@ msgstr "%s이(가) %s에 없습니다"
 msgid "Unassigned"
 msgstr "할당하지 않음"
 
-#: src/main.js:55
-msgid "Characters Application"
-msgstr "문자 도구 프로그램"
-
-#: src/main.js:84
-msgid "Characters Application started"
-msgstr "문자 도구 프로그램을 시작했습니다"
-
-#: src/main.js:93
-msgid "Characters Application activate"
-msgstr "문자 도구 프로그램을 활성화"
-
-#: src/main.js:97
-msgid "Characters Application exiting"
-msgstr "문자 도구 프로그램이 이미 실행중입니다"
-
-#: src/menu.js:44
+#: src/menu.js:42
 msgid "None"
 msgstr "없음"
 
@@ -237,49 +246,38 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:159 src/window.js:372
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "검색 결과"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:194
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "조성호 <shcho@gnome.org>\n"
-"성대현 <sungdh86@gmail.com>"
+"성대현 <sungdh86@gmail.com>\n"
+"류창우 <cwryu@debian.org>"
 
-#: src/window.js:196
+#: src/window.js:199
 msgid "Character Map"
 msgstr "문자표"
 
-#: src/window.js:216
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s(%s만)"
 
-#: src/window.js:343
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s 문자 목록"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:351
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "최근 사용한 %s 문자 목록"
 
-#: src/window.js:370
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "검색 결과 문자 목록"
-
-#~ msgid "@appid@"
-#~ msgstr "@appid@"
-
-#~ msgid "About"
-#~ msgstr "정보"
-
-#~ msgid "Quit"
-#~ msgstr "끝내기"
-
-#~ msgid "gnome-characters"
-#~ msgstr "gnome-characters"
