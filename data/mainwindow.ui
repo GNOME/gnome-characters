@@ -29,6 +29,7 @@
             <child>
               <object class="HdyHeaderBar" id="sidebar-headerbar">
                 <property name="visible">True</property>
+                <property name="show-close-button">True</property>
                 <property name="title" translatable="yes">Characters</property>
                 <child>
                   <object class="GtkToggleButton" id="search-active-button">
@@ -180,6 +181,7 @@
     </widgets>
   </object>
   <object class="HdyHeaderGroup">
+    <property name="decorate-all" bind-source="leaflet" bind-property="folded" bind-flags="sync-create"/>
     <headerbars>
       <headerbar name="sidebar-headerbar"/>
       <headerbar name="main-headerbar"/>
