@@ -2,15 +2,15 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Yosef Or Boczko <yoseforb@gmail.com>, 2014-2020.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2014-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-control-center.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2020-04-01 15:34+0000\n"
-"PO-Revision-Date: 2020-04-01 19:00+0300\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-03-29 22:08+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -18,18 +18,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n>2||n==0) ? 1 : 2\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"X-Generator: Gtranslator 3.38.0\n"
 
-#: data/characterlist.ui:30
-#| msgid "Search produced empty result"
-msgid "Search found no results"
-msgstr "החיפוש לא הניב תוצאות"
+#: data/characterlist.ui:9
+#| msgid "Search Result"
+msgid "No Results"
+msgstr "לא נמצאו תוצאות"
 
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "יש לנסות חיפוש שונה."
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
 msgstr "בטעינה…"
 
@@ -41,29 +41,83 @@ msgstr "העתקת תו"
 msgid "Character copied to clipboard"
 msgstr "תו הועתק ללוח הגזירים"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
-msgstr "לא נמצאו תווים אחרונים"
+#: data/mainview.ui:10
+#| msgid "No recent characters found"
+msgid "No Recent Characters"
+msgstr "אין תווים אחרונים"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
 msgstr "תווים יציג כאן אם הם בשימוש."
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "דף נוכחי"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "_צירופי מקשים"
+
+#: data/mainwindow.ui:11
+#| msgid "About Characters"
+msgid "_About Characters"
+msgstr "על אודות _תווים"
+
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "תווים"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "סינון לפי גופן"
 
-#: data/menu.ui:54
-msgid "About Characters"
-msgstr "על אודות תווים"
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "כללי"
 
-#: data/org.gnome.Characters.desktop.in:4 src/main.js:55 src/service.js:51
-msgid "Characters"
-msgstr "תווים"
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "פתיחת תפריט"
+
+#: data/shortcuts.ui:25
+#| msgid "Search Result"
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "חיפוש"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "צירופי מקשים"
+
+#: data/shortcuts.ui:39
+#| msgid "Quit"
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "יציאה"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
+msgid "GNOME Characters"
+msgstr "‏GNOME תווים"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "יישום מפת תווים"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"תווים זהו יישום שירות פשוט למציאה ולהכנסת תווים בלתי רגילים. הוא מאפשר לך "
+"למצאו במהירות תווים שהנך מחפש באמצעות חיפוש מילות מפתח."
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"כמו כן ניתן לדפדף בתווים באמצעות קטגוריות, כמו סימני פיסוק, תמונות וכו׳."
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
@@ -92,67 +146,67 @@ msgstr "Maximum recent characters"
 msgid "Emojis"
 msgstr "רגשונים"
 
-#: src/categoryList.js:38 src/categoryList.js:386
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "אותיות וסמלים"
 
-#: src/categoryList.js:48
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "פיסוק"
 
-#: src/categoryList.js:55
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "חצים"
 
-#: src/categoryList.js:62
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "תבליטים"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "תמונות"
 
-#: src/categoryList.js:76
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "מטבעות"
 
-#: src/categoryList.js:83
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "מתמטיקה"
 
-#: src/categoryList.js:90
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "אותיות"
 
-#: src/categoryList.js:100
+#: src/categoryList.js:91
 msgid "Smileys & People"
 msgstr "חייכנים ואנשים"
 
-#: src/categoryList.js:107
+#: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "בעלי חיים וטבע"
 
-#: src/categoryList.js:114
+#: src/categoryList.js:103
 msgid "Food & Drink"
 msgstr "אוכל ושתייה"
 
-#: src/categoryList.js:121
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "פעילויות"
 
-#: src/categoryList.js:128
+#: src/categoryList.js:115
 msgid "Travel & Places"
 msgstr "טיולים ומקומות"
 
-#: src/categoryList.js:135
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "עצמים"
 
-#: src/categoryList.js:142
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "סמלים"
 
-#: src/categoryList.js:149
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "דגלים"
 
@@ -164,13 +218,13 @@ msgstr "דגלים"
 #
 # נתיבים:
 # ../src/categoryList.js:94
-#: src/categoryList.js:163
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s רשימת שורות קטגוריה"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:374 src/window.js:366
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
 
@@ -193,7 +247,7 @@ msgstr "%s אינו כלול בתוך %s"
 msgid "Unassigned"
 msgstr "לא מיוחס"
 
-#: src/menu.js:44
+#: src/menu.js:42
 msgid "None"
 msgstr "אף אחד"
 
@@ -207,72 +261,53 @@ msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:159 src/window.js:372
+#: src/window.js:163 src/window.js:358
 msgid "Search Result"
 msgstr "תוצאות חיפוש"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:194
+#: src/window.js:197
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "<a href=\"https://l10n.gnome.org/teams/he/\">מיזם תרגום GNOME לעברית</a>"
 
-#: src/window.js:195
-msgid "GNOME Characters"
-msgstr "‏GNOME תווים"
-
-#: src/window.js:196
+#: src/window.js:199
 msgid "Character Map"
 msgstr "מפת תווים"
 
-#: src/window.js:216
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s בלבד)"
 
-#: src/window.js:343
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s רשימת תווים"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:351
+#: src/window.js:335
 #, javascript-format
-#| msgid "%s Character List"
 msgid "Recently Used %s Character List"
 msgstr "רשימת תווים %s בשימוש לאחרונה"
 
-#: src/window.js:370
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "תוצאות חיפוש תווים"
+
+#~| msgid "Search produced empty result"
+#~ msgid "Search found no results"
+#~ msgstr "החיפוש לא הניב תוצאות"
+
+#~ msgid "Current page"
+#~ msgstr "דף נוכחי"
 
 #~ msgid "About"
 #~ msgstr "על אודות"
 
-#~ msgid "Quit"
-#~ msgstr "יציאה"
-
 #~ msgid "Try another search criteria."
 #~ msgstr "ניתן לנסות תבחין אחר."
-
-#~| msgid "Characters Application"
-#~ msgid "Character map application"
-#~ msgstr "יישום מפת תווים"
-
-#~ msgid ""
-#~ "Characters is a simple utility application to find and insert unusual "
-#~ "characters. It allows you to quickly find the character you are looking "
-#~ "for by searching for keywords."
-#~ msgstr ""
-#~ "תווים זהו יישום שירות פשוט למציאה ולהכנסת תווים בלתי רגילים. הוא מאפשר לך "
-#~ "למצאו במהירות תווים שהנך מחפש באמצעות חיפוש מילות מפתח."
-
-#~ msgid ""
-#~ "You can also browse characters by categories, such as Punctuation, "
-#~ "Pictures, etc."
-#~ msgstr ""
-#~ "כמו כן ניתן לדפדף בתווים באמצעות קטגוריות, כמו סימני פיסוק, תמונות וכו׳."
 
 #~| msgid "Characters"
 #~ msgid "gnome-characters"
