@@ -6,36 +6,27 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Nepali Translation Project\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-10-05 12:50+0000\n"
-"PO-Revision-Date: 2017-10-15 17:43+0545\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-04-07 22:24+0545\n"
 "Last-Translator: Pawan Chitrakar <chautari@gmail.com>\n"
 "Language-Team: Nepali Translation Team <chautari@gmail.com>\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/app-menu.ui:6
-msgid "About"
-msgstr "बारेमा"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "नतिजा छैन"
 
-#: data/app-menu.ui:10
-msgid "Quit"
-msgstr "बन्द गर्नुहोस्"
-
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "खोजिएको नतिजा भेटिएन"
-
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "फरक खोज कोशिश गर्नुहोस् ।."
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
 msgstr "लोड गर्दैछ…"
 
@@ -47,23 +38,57 @@ msgstr "वर्ण प्रतिलिपि बनाउनुहोस्"
 msgid "Character copied to clipboard"
 msgstr "वर्ण क्लिपबोर्डमा प्रतिलिपि"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
-msgstr "हालको वर्ण भेटिएन"
+#: data/mainview.ui:10
+msgid "No Recent Characters"
+msgstr "हालको अक्षर छैन"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
-msgstr "यदि तपाईँले वर्णहरू प्रयोग गर्नुभएमा  यहाँ देखा पर्नेछ।"
+msgstr "यदि तपाईँले वर्णहरू प्रयोग गर्नुभएमा यहाँ देखा पर्नेछ।."
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "हालको पृष्ठ"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "कुञ्जीपाटी सटकर्ट"
+
+#: data/mainwindow.ui:11
+msgid "_About Characters"
+msgstr "जिनोम क्यारेक्टरस् बारेमा"
+
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "वर्ण"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "फन्ट फिल्टर गर्नुहोस्"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:199
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "सामान्य"
+
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "मेनु खोल्नुहोस्"
+
+#: data/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "खोजी"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "किबोर्स सर्टकटहरू"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "बन्द गर्नुहोस्"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "जिनोम क्यारेक्टरस्"
 
@@ -77,24 +102,15 @@ msgid ""
 "you to quickly find the character you are looking for by searching for keywords."
 msgstr ""
 "क्यारेक्टरस् असामान्य वर्णहरू फेला पार्न र सम्मिलित गर्न सरल उपयोगिक अनुप्रयोग हो। यसले तपाईँलाई चाँडै वर्णहरू "
-"खोज्ने र पत्ता लगाउने अनुमति दिन्छ।"
+"खोज्ने र पत्ता लगाउने अनुमति दिन्छ।."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
 msgid "You can also browse characters by categories, such as Punctuation, Pictures, etc."
-msgstr "तपाइँ पनि वर्ग द्वारा वर्णहरू ब्राउज गर्न सक्नुहुन्छ, जस्तै विराम चिन्ह, चित्रहरू आदि।"
-
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "वर्ण"
+msgstr "तपाइँ पनि वर्ग द्वारा वर्णहरू ब्राउज गर्न सक्नुहुन्छ, जस्तै विराम चिन्ह, चित्रहरू आदि।."
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "असामान्य वर्णहरू फेला पार्न र सम्मिलित गर्न उपयोगिक अनुप्रयोग"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "gnome-characters"
-msgstr "gnome-characters"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -107,167 +123,176 @@ msgstr "अक्षर प्रदर्शन गर्न फन्ट"
 
 #: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
-msgstr "अक्षर सूचीमा वर्णहरू प्रस्तुत गर्न फन्ट प्रयोग गर्नुहोस्।"
+msgstr "अक्षर सूचीमा वर्णहरू प्रस्तुत गर्न फन्ट प्रयोग गर्नुहोस्।."
 
 #: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
 msgstr "हालको अधिकतम अक्षर"
 
-#: src/categoryList.js:33
+#: src/categoryList.js:31
 msgid "Emojis"
 msgstr "इमोजिस"
 
-#: src/categoryList.js:40 src/categoryList.js:390
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "अक्षर र प्रतीक"
 
-#: src/categoryList.js:50
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "विराम चिन्ह"
 
-#: src/categoryList.js:57
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "बाँणहरू"
 
-#: src/categoryList.js:64
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "गोली चिन्ह"
 
-#: src/categoryList.js:71
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "तस्वीरहरू"
 
-#: src/categoryList.js:78
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "मुद्रा"
 
-#: src/categoryList.js:85
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "गणित"
 
-#: src/categoryList.js:92
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "अक्षर"
 
-#: src/categoryList.js:102
+#: src/categoryList.js:91
 msgid "Smileys & People"
 msgstr "स्माइलीहरू र मानव"
 
-#: src/categoryList.js:109
+#: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "प्रकृति र जनावर"
 
-#: src/categoryList.js:116
+#: src/categoryList.js:103
 msgid "Food & Drink"
 msgstr "खाद्य र पेय"
 
-#: src/categoryList.js:123
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "गतिविधिहरू"
 
-#: src/categoryList.js:130
+#: src/categoryList.js:115
 msgid "Travel & Places"
 msgstr "यात्रा र स्थानहरू"
 
-#: src/categoryList.js:137
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "वस्तुहरू"
 
-#: src/categoryList.js:144
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "प्रतीक"
 
-#: src/categoryList.js:151
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "झन्डा"
 
-#: src/categoryList.js:166
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "%s को श्रेणी सूची पङ्क्ति"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:372
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "हालै प्रयोग गरिएको"
 
-#: src/character.js:56
+#: src/characterDialog.js:49
 msgid "See Also"
 msgstr "हेर्नुहोस् पनि"
 
-#: src/character.js:122 src/character.js:144
+#: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "युनिकोड U+%04s"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:140
+#: src/characterDialog.js:131
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s , %s मा समावेश गरिएको छैन"
 
-#: src/characterList.js:178
+#: src/characterList.js:169
 msgid "Unassigned"
 msgstr "नतोकिएको"
 
-#: src/main.js:58
-msgid "Characters Application"
-msgstr "क्यारेक्टर अनुप्रयोग"
-
-#: src/main.js:95
-msgid "Characters Application started"
-msgstr "क्यारेक्टर अनुप्रयोग सुरु गरियो"
-
-#: src/main.js:103
-msgid "Characters Application exiting"
-msgstr "क्यारेक्टर अनुप्रयोग निस्कँदै"
-
-#: src/menu.js:50
+#: src/menu.js:42
 msgid "None"
 msgstr "कुनै पनि होइन"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "अज्ञात वर्ण नाम"
 
-#: src/searchProvider.js:98
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:198
-msgid "translator-credits"
-msgstr "Pawan Chitrakar - chautari @gmail.com"
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:163 src/window.js:358
+msgid "Search Result"
+msgstr "खोज परिणाम"
 
-#: src/window.js:200
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:197
+msgid "translator-credits"
+msgstr "pawan chitrakar < chautari@gmail.com >"
+
+#: src/window.js:199
 msgid "Character Map"
 msgstr "क्यारेक्टर मानचित्र"
 
-#: src/window.js:220
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (%s मात्र)"
 
-#: src/window.js:349
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "%s वर्ण सुची"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:357
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "हालको %s वर्ण सुची"
 
-#: src/window.js:376
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "खोज परिणाम वर्ण सुची"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:378
-msgid "Search Result"
-msgstr "खोज परिणाम"
+#~ msgid "About"
+#~ msgstr "बारेमा"
+
+#~ msgid "Search found no results"
+#~ msgstr "खोजिएको नतिजा भेटिएन"
+
+#~ msgid "Current page"
+#~ msgstr "हालको पृष्ठ"
+
+#~ msgid "gnome-characters"
+#~ msgstr "gnome-characters"
+
+#~ msgid "Characters Application"
+#~ msgstr "क्यारेक्टर अनुप्रयोग"
+
+#~ msgid "Characters Application started"
+#~ msgstr "क्यारेक्टर अनुप्रयोग सुरु गरियो"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "क्यारेक्टर अनुप्रयोग निस्कँदै"
 
 #~ msgid "Emoticons"
 #~ msgstr "ईमोटिकनहरू"
