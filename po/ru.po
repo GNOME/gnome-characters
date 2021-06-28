@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2018-10-29 12:19+0000\n"
-"PO-Revision-Date: 2019-02-28 20:43+0300\n"
-"Last-Translator: Stas Solovey <whats_up@tut.by>\n"
+"POT-Creation-Date: 2021-02-21 10:03+0000\n"
+"PO-Revision-Date: 2021-06-27 18:14+0300\n"
+"Last-Translator: Alexey Rubtsov <rushills@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -19,17 +19,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.0\n"
 
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "Поиск не дал результатов"
+#: data/characterlist.ui:9
+msgid "No Results"
+msgstr "Нет результатов"
 
-#: data/characterlist.ui:41
+#: data/characterlist.ui:10
 msgid "Try a different search."
 msgstr "Попробуйте другой поиск."
 
-#: data/characterlist.ui:73
+#: data/characterlist.ui:34
 msgid "Loading…"
 msgstr "Загрузка…"
 
@@ -41,27 +41,57 @@ msgstr "Копировать символ"
 msgid "Character copied to clipboard"
 msgstr "Символ скопирован в буфер обмена"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
-msgstr "Не найдено недавних символов"
+#: data/mainview.ui:10
+msgid "No Recent Characters"
+msgstr "Нет недавних символов"
 
-#: data/mainview.ui:41
+#: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
 msgstr "Здесь будут отображаться символы, которые вы используете."
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "Текущая страница"
+#: data/mainwindow.ui:7
+msgid "_Keyboard Shortcuts"
+msgstr "_Горячие клавиши"
+
+#: data/mainwindow.ui:11
+msgid "_About Characters"
+msgstr "О Символах"
+
+#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: src/service.js:51
+msgid "Characters"
+msgstr "Символы"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
 msgstr "Сортировать по шрифту"
 
-#: data/menu.ui:54
-msgid "About Characters"
-msgstr "О приложении"
+#: data/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Общие"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:191
+#: data/shortcuts.ui:18
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Открыть меню"
+
+#: data/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Поиск"
+
+#: data/shortcuts.ui:32
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Комбинации клавиш"
+
+#: data/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Выйти"
+
+#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
 msgstr "Символы GNOME"
 
@@ -86,18 +116,9 @@ msgstr ""
 "Также можно просматривать символы по категориям, таким как знаки пунктуации, "
 "картинки и т.д."
 
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "Символы"
-
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Простое приложение, для поиска и вставки необычных символов"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "@appid@"
-msgstr "@appid@"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
@@ -121,77 +142,77 @@ msgstr "Максимальное количество недавних симв�
 msgid "Emojis"
 msgstr "Emoji"
 
-#: src/categoryList.js:38 src/categoryList.js:378
+#: src/categoryList.js:37
 msgid "Letters & Symbols"
 msgstr "Буквы и символы"
 
-#: src/categoryList.js:48
+#: src/categoryList.js:46
 msgid "Punctuation"
 msgstr "Пунктуация"
 
-#: src/categoryList.js:55
+#: src/categoryList.js:52
 msgid "Arrows"
 msgstr "Стрелки"
 
-#: src/categoryList.js:62
+#: src/categoryList.js:58
 msgid "Bullets"
 msgstr "Маркеры"
 
-#: src/categoryList.js:69
+#: src/categoryList.js:64
 msgid "Pictures"
 msgstr "Картинки"
 
-#: src/categoryList.js:76
+#: src/categoryList.js:70
 msgid "Currencies"
 msgstr "Валюты"
 
-#: src/categoryList.js:83
+#: src/categoryList.js:76
 msgid "Math"
 msgstr "Математика"
 
-#: src/categoryList.js:90
+#: src/categoryList.js:82
 msgid "Letters"
 msgstr "Буквы"
 
-#: src/categoryList.js:100
+#: src/categoryList.js:91
 msgid "Smileys & People"
 msgstr "Смайлы и люди"
 
-#: src/categoryList.js:107
+#: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "Животные и природа"
 
-#: src/categoryList.js:114
+#: src/categoryList.js:103
 msgid "Food & Drink"
 msgstr "Еда и напитки"
 
-#: src/categoryList.js:121
+#: src/categoryList.js:109
 msgid "Activities"
 msgstr "Занятия"
 
-#: src/categoryList.js:128
+#: src/categoryList.js:115
 msgid "Travel & Places"
 msgstr "Путешествие и места"
 
-#: src/categoryList.js:135
+#: src/categoryList.js:121
 msgid "Objects"
 msgstr "Объекты"
 
-#: src/categoryList.js:142
+#: src/categoryList.js:127
 msgid "Symbols"
 msgstr "Символы"
 
-#: src/categoryList.js:149
+#: src/categoryList.js:133
 msgid "Flags"
 msgstr "Флаги"
 
-#: src/categoryList.js:163
+#: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
 msgstr "Список категорий %s"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:366 src/window.js:362
+#: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
 msgstr "Недавно использованные"
 
@@ -214,70 +235,76 @@ msgstr "%s не содержится в %s"
 msgid "Unassigned"
 msgstr "Не назначено"
 
-#: src/main.js:55
-msgid "Characters Application"
-msgstr "Приложение Символы"
-
-#: src/main.js:84
-msgid "Characters Application started"
-msgstr "Приложение Символы запущено"
-
-#: src/main.js:92
-msgid "Characters Application exiting"
-msgstr "Приложение Символы завершается"
-
-#: src/menu.js:44
+#: src/menu.js:42
 msgid "None"
 msgstr "Нет"
 
-#: src/searchProvider.js:93
+#: src/searchProvider.js:94
 msgid "Unknown character name"
 msgstr "Неизвестное имя символа"
 
-#: src/searchProvider.js:96
+#: src/searchProvider.js:97
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
 
-#. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:190
-msgid "translator-credits"
-msgstr "Stas Solovey <whats_up@tut.by>, 2015-2019."
+#. FIXME: Can't use GtkContainer.child_get_property.
+#: src/window.js:163 src/window.js:358
+msgid "Search Result"
+msgstr "Результат поиска"
 
-#: src/window.js:192
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:197
+msgid "translator-credits"
+msgstr ""
+"Станислав Соловей <whats_up@tut.by>, 2013-2019.\n"
+"Юрий Мясоедов <ymyasoedov@yandex.ru>, 2014.\n"
+"Alexey Rubtsov <rushills@gmail.com>, 2021"
+
+#: src/window.js:199
 msgid "Character Map"
 msgstr "Карта символов"
 
-#: src/window.js:212
+#: src/window.js:219
 #, javascript-format
 msgid "%s (%s only)"
 msgstr "%s (только %s)"
 
-#: src/window.js:339
+#: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
 msgstr "Список символов %s"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:347
+#: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
 msgstr "Недавно использованный список символов %s"
 
-#: src/window.js:366
+#: src/window.js:356
 msgid "Search Result Character List"
 msgstr "Результат поиска в списке символов"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:368
-msgid "Search Result"
-msgstr "Результат поиска"
+#~ msgid "Search found no results"
+#~ msgstr "Поиск не дал результатов"
+
+#~ msgid "Current page"
+#~ msgstr "Текущая страница"
+
+#~ msgid "@appid@"
+#~ msgstr "@appid@"
+
+#~ msgid "Characters Application"
+#~ msgstr "Приложение Символы"
+
+#~ msgid "Characters Application started"
+#~ msgstr "Приложение Символы запущено"
+
+#~ msgid "Characters Application exiting"
+#~ msgstr "Приложение Символы завершается"
 
 #~ msgid "About"
 #~ msgstr "О приложении"
-
-#~ msgid "Quit"
-#~ msgstr "Завершить"
 
 #~ msgid "gnome-characters"
 #~ msgstr "gnome-characters"
