@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>org.gnome.Characters.desktop</id>
-  <name>GNOME Characters</name>
+  <name>Characters</name>
   <summary>Character map application</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>BSD-3-Clause AND GPL-2.0+</project_license>
@@ -20,7 +20,7 @@
   </screenshots>
   <project_group>GNOME</project_group>
   <url type="homepage">https://wiki.gnome.org/Design/Apps/CharacterMap</url>
-  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-characters</url>
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-characters/issues</url>
   <url type="donation">http://www.gnome.org/friends/</url>
   <url type="help">https://wiki.gnome.org/Apps/Gucharmap</url>
   <update_contact>dueno_at_src.gnome.org</update_contact>
