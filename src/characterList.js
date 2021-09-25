@@ -17,7 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 const Params = imports.params;
-const {Gc, Gdk, GLib, Gio,GObject,Gtk, Pango, PangoCairo} = imports.gi;
+const {Gc, Gdk, GLib, Gio,GObject,Gtk, Pango, PangoCairo, Handy} = imports.gi;
 
 const Cairo = imports.cairo;
 
@@ -47,20 +47,24 @@ const CharacterListRow = GObject.registerClass({
         this._characters = filtered.characters;
         this._fontDescription = filtered.fontDescription;
         this._overlayFontDescription = filtered.overlayFontDescription;
+        this._styleManager = Handy.StyleManager.get_default();
     }
 
-    draw(cr, x, y, width, height) {
+    draw(cr, x, y, width, height, styleContext) {
         let layout = PangoCairo.create_layout(cr);
         layout.set_font_description(this._fontDescription);
 
+        this._styleContext = styleContext;
+
         // Draw baseline.
         // FIXME: Pick the baseline color from CSS.
+        let fg_color = this._styleContext.get_color(Gtk.StateFlags.NORMAL);
         cr.setSourceRGBA(114.0 / 255.0, 159.0 / 255.0, 207.0 / 255.0, 1.0);
         cr.setLineWidth(0.5);
         cr.moveTo(x, y + BASELINE_OFFSET * height);
         cr.relLineTo(width, 0);
         cr.stroke();
-        cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
+        cr.setSourceRGBA(fg_color.red, fg_color.green, fg_color.blue, fg_color.alpha);
 
         // Draw characters.  Do centering and attach to the baseline.
         let cellSize = getCellSize(this._fontDescription);
@@ -104,9 +108,9 @@ const CharacterListRow = GObject.registerClass({
         } else {
             // If the character cannot be rendered with the current
             // font settings, show a rectangle calculated from the
-            // base glyph ('A').
+            // base glyphs ('AA').
             if (this._baseGlyphRect == null) {
-                layout.set_text('A', -1);
+                layout.set_text('AA', -1);
                 let [baseLogicalRect, baseInkRect] = layout.get_extents();
                 this._baseGlyphLayoutBaseline = layout.get_baseline();
                 this._baseGlyphRect = baseInkRect;
@@ -173,7 +177,13 @@ const CharacterListRow = GObject.registerClass({
                   (cellRect.width - logicalRect.width / Pango.SCALE) / 2,
                   cellRect.y - logicalRect.y / Pango.SCALE +
                   (cellRect.height - logicalRect.height / Pango.SCALE) / 2);
-        cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
+        let text_color;
+        if (!this._styleManager.dark) {
+            text_color = this._styleContext.get_color(Gtk.StateFlags.NORMAL);
+        } else {
+            text_color = this._styleContext.get_background_color(Gtk.StateFlags.NORMAL);
+        }
+        cr.setSourceRGBA(text_color.red, text_color.green, text_color.blue, text_color.alpha);
         PangoCairo.show_layout(cr, layout);
 
         cr.restore();
@@ -219,7 +229,7 @@ const CharacterListWidget = GObject.registerClass({
         cr.paint();
         cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
         let row = this._createCharacterListRow([this._character]);
-        row.draw(cr, 0, 0, cellSize, cellSize);
+        row.draw(cr, 0, 0, cellSize, cellSize, this.get_style_context());
         Gtk.drag_set_icon_surface(context, this._dragSurface, 0, 0);
     }
 
@@ -346,7 +356,7 @@ const CharacterListWidget = GObject.registerClass({
         let end = Math.min(this._rows.length, Math.ceil(y2 / cellSize));
         for (let index = start; index < end; index++) {
             this._rows[index].draw(cr, 0, index * cellSize,
-                                   allocation.width, cellSize);
+                                   allocation.width, cellSize, context);
         }
     }
 });

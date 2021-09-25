@@ -76,6 +76,9 @@ var MyApplication = GObject.registerClass({
 
         Util.loadStyleSheet('/org/gnome/Characters/application.css');
 
+        let styleManager = Handy.StyleManager.get_default();
+        styleManager.set_color_scheme(Handy.ColorScheme.PREFER_LIGHT);
+
         Util.initActions(this,
                          [{ name: 'quit',
                             activate: this._onQuit },
