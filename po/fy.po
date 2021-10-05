@@ -1,37 +1,33 @@
-# Frisian translation for gnome-characters.
-# Copyright (C) 2021 gnome-characters's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gnome-characters package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# vancha <tjipke@tutanota.com>, 2021.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2021-06-28 10:41+0000\n"
-"PO-Revision-Date: 2021-07-29 16:37+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-"
+"characters/issues\n"
+"POT-Creation-Date: 2021-09-23 06:45+0000\n"
+"PO-Revision-Date: 2021-10-05 09:21+0000\n"
 "Last-Translator: vancha <tjipke@tutanota.com>\n"
-"Language-Team: Western Frisian <none>\n"
+"Language-Team: Western Frisian\n"
 "Language: fy\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: fy_NL\n"
 "X-DL-Team: fy\n"
 "X-DL-Module: gnome-characters\n"
 "X-DL-Branch: master\n"
 "X-DL-Domain: po\n"
 "X-DL-State: None\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 40.0\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Parser: loco_parse_po"
 
 #: data/characterlist.ui:9
 msgid "No Results"
-msgstr "Gjin Resultaten"
+msgstr "Gjin resultaten"
 
 #: data/characterlist.ui:10
 msgid "Try a different search."
-msgstr "Probearje ris om wot oars te sykjen."
+msgstr "Probearje om wat oars te sykjen."
 
 #: data/characterlist.ui:34
 msgid "Loading…"
@@ -39,36 +35,36 @@ msgstr "Lade…"
 
 #: data/character.ui:68
 msgid "Copy Character"
-msgstr "Karakters Kopiearje"
+msgstr "Karakter kopiearje"
 
 #: data/character.ui:86
 msgid "Character copied to clipboard"
-msgstr "Karakters binne nei it klemboerd kopiearre"
+msgstr "Karakters binne nei it klamboerd kopiearre"
 
 #: data/mainview.ui:10
 msgid "No Recent Characters"
-msgstr "Gjin Resinte Karakters"
+msgstr "Gjin resinte karakters"
 
 #: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
-msgstr "Karakters sille hjir sjen litten wurde as jo se brûke."
+msgstr "Karakters sille hjir toand wurde as jo se brûke."
 
 #: data/mainwindow.ui:7
 msgid "_Keyboard Shortcuts"
-msgstr "Toetseboerd _Koartkaaien"
+msgstr "Toetseboerd _koartkaaien"
 
 #: data/mainwindow.ui:11
 msgid "_About Characters"
 msgstr "_Oer Characters"
 
-#: data/mainwindow.ui:33 data/org.gnome.Characters.desktop.in:4 src/main.js:58
+#: data/mainwindow.ui:33 data/org.gnome.Characters.desktop.in:4 src/main.js:58 
 #: src/service.js:51
 msgid "Characters"
 msgstr "Characters"
 
 #: data/menu.ui:17
 msgid "Filter by Font"
-msgstr "Filterje per Lettertype"
+msgstr "Filterje op lettertype"
 
 #: data/shortcuts.ui:13
 msgctxt "shortcut window"
@@ -78,7 +74,7 @@ msgstr "Algemien"
 #: data/shortcuts.ui:18
 msgctxt "shortcut window"
 msgid "Open menu"
-msgstr "Menu Iepenje"
+msgstr "Menu iepenje"
 
 #: data/shortcuts.ui:25
 msgctxt "shortcut window"
@@ -88,12 +84,12 @@ msgstr "Sykje"
 #: data/shortcuts.ui:32
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
-msgstr "Toetseboerd fluchtoetsen"
+msgstr "Fluchtoetsen"
 
 #: data/shortcuts.ui:39
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Ôfslute"
+msgstr "Ofslute"
 
 #: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
@@ -101,7 +97,7 @@ msgstr "GNOME Characters"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
 msgid "Character map application"
-msgstr "Karakter tabel applikaasje"
+msgstr "Karaktertabelapplikaasje"
 
 #: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
@@ -109,35 +105,34 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"Charakters is in maklik te brûken applikaasje foar it fynen en ynfieren fan "
-"ôfwikende karakters. It stelt jo yn steat fluch it karakter te fynen wer om "
-"sykje troch in oantal trefwurden yn te fieren."
+"Characters is in maklik te brûken applikaasje foar it finen en ynfieren fan "
+"ôfwikende karakters. It stelt jo yn steat it karakter te finen dêr't jo om "
+"sykje, troch in oantal trefwurden yn te fieren."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
-"Jo kin ek per kategory troch karakters blêdzje, lykas Punktuaasje, Foto's, "
+"Jo kinne ek per kategory troch karakters blêdzje, lykas Punktuaasje, Foto's, "
 "ensfh."
 
 #: data/org.gnome.Characters.desktop.in:5
 msgid "Utility application to find and insert unusual characters"
-msgstr ""
-"Brûkberens applikaasje foar it fynen en ynfieren fan ôfwikende karakters"
+msgstr "Applikaasje foar it finen en ynfieren fan ôfwikende karakters"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "charakters;unikoade;punktuaasje;wiskunde;letters;emoji;emoticon;"
+msgstr "karakters;unikoade;punktuaasje;wiskunde;letters;emoji;emoticon;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
-msgstr "Lettertype om karakters yn sjen te litten"
+msgstr "Lettertype om karakters yn te toanen"
 
 #: data/org.gnome.Characters.gschema.xml:6
 msgid "Use the font to render characters on the character list."
-msgstr "B"
+msgstr "Brûk it lettertype om karakters op de karakterlist te renderjen "
 
 #: data/org.gnome.Characters.gschema.xml:15
 msgid "Maximum recent characters"
@@ -181,7 +176,7 @@ msgstr "Letters"
 
 #: src/categoryList.js:91
 msgid "Smileys & People"
-msgstr "Smileys & Minsken"
+msgstr "Glimkes & Minsken"
 
 #: src/categoryList.js:97
 msgid "Animals & Nature"
@@ -214,16 +209,16 @@ msgstr "Flaggen"
 #: src/categoryList.js:146
 #, javascript-format
 msgid "%s Category List Row"
-msgstr "%s Kategory List Rigel"
+msgstr "%s Kategorylistrige"
 
 #. FIXME: Can't use GtkContainer.child_get_property.
 #: src/categoryList.js:362 src/window.js:352
 msgid "Recently Used"
-msgstr "Resintlik Brûkt"
+msgstr "Resint brûkt"
 
 #: src/characterDialog.js:49
 msgid "See Also"
-msgstr "Besjuch Ek"
+msgstr "Besjoch ek"
 
 #: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
@@ -242,11 +237,11 @@ msgstr "Net tawiisd"
 
 #: src/menu.js:42
 msgid "None"
-msgstr "Gjin"
+msgstr "Neat"
 
 #: src/searchProvider.js:94
 msgid "Unknown character name"
-msgstr "Ûnbekende karakter namme"
+msgstr "Unbekende karakternamme"
 
 #: src/searchProvider.js:97
 #, javascript-format
@@ -256,16 +251,16 @@ msgstr "U+%s, %s: %s"
 #. FIXME: Can't use GtkContainer.child_get_property.
 #: src/window.js:163 src/window.js:358
 msgid "Search Result"
-msgstr "Syk Resultaat"
+msgstr "Sykresultaat"
 
 #. TRANSLATORS: put your names here, one name per line.
 #: src/window.js:197
 msgid "translator-credits"
-msgstr "Tjipke van der Heide"
+msgstr "Tjipke van der Heide – Wim Benes"
 
 #: src/window.js:199
 msgid "Character Map"
-msgstr "Karakter Tabel"
+msgstr "Karaktertabel"
 
 #: src/window.js:219
 #, javascript-format
@@ -275,14 +270,14 @@ msgstr "%s (allinnich %s)"
 #: src/window.js:327
 #, javascript-format
 msgid "%s Character List"
-msgstr "%s Karakter List"
+msgstr "%s Karakterlist"
 
 #. TRANSLATORS: %s will be either 'emojis' or 'letters'
 #: src/window.js:335
 #, javascript-format
 msgid "Recently Used %s Character List"
-msgstr "Resinklik Brûkte %s Karakter List"
+msgstr "Resint brûkte %s karakterlist"
 
 #: src/window.js:356
 msgid "Search Result Character List"
-msgstr "Sykresultaten Karakter List"
+msgstr "Sykresultaten karakterlist"
