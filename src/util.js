@@ -30,18 +30,6 @@ const Lang = imports.lang;
 const Params = imports.params;
 const System = imports.system;
 
-function loadUI(resourcePath, objects) {
-    let ui = new Gtk.Builder();
-
-    if (objects) {
-        for (let o in objects)
-            ui.expose_object(o, objects[o]);
-    }
-
-    ui.add_from_resource(resourcePath);
-    return ui;
-}
-
 function initActions(actionMap, simpleActionEntries, context) {
     simpleActionEntries.forEach(function(entry) {
         let filtered = Params.filter(entry, { activate: null,
@@ -59,16 +47,6 @@ function initActions(actionMap, simpleActionEntries, context) {
     });
 }
 
-function arrayEqual(one, two) {
-    if (one.length != two.length)
-        return false;
-
-    for (let i = 0; i < one.length; i++)
-        if (one[i] != two[i])
-            return false;
-
-    return true;
-}
 
 function getSettings(schemaId, path) {
     const GioSSS = Gio.SettingsSchemaSource;
@@ -94,16 +72,6 @@ function getSettings(schemaId, path) {
     else
         return new Gio.Settings({ settings_schema: schemaObj,
                                   path: path });
-}
-
-function assertEqual(one, two) {
-    if (one != two)
-        throw Error('Assertion failed: ' + one + ' != ' + two);
-}
-
-function assertNotEqual(one, two) {
-    if (one == two)
-        throw Error('Assertion failed: ' + one + ' == ' + two);
 }
 
 function capitalizeWord(w) {

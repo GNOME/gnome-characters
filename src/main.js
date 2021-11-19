@@ -44,12 +44,6 @@ const Window = imports.window;
 var settings = null;
 var application_id = pkg.name;
 
-function initEnvironment() {
-    window.getApp = function() {
-        return Gio.Application.get_default();
-    };
-}
-
 var MyApplication = GObject.registerClass({
 },class MyApplication extends Adw.Application {
     _init () {
@@ -110,7 +104,5 @@ var MyApplication = GObject.registerClass({
 });
 
 function main(argv) {
-    initEnvironment();
-
     return (new MyApplication()).run(argv);
 }

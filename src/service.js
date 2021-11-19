@@ -34,12 +34,6 @@ const SearchProvider = imports.searchProvider;
 
 var application_id = pkg.name;
 
-function initEnvironment() {
-    window.getApp = function() {
-        return Gio.Application.get_default();
-    };
-}
-
 const BackgroundService = GObject.registerClass({
     // This needs to be a Gtk.Application instead of Gio.Application,
     // to get Gtk.Clipboard working.
@@ -88,7 +82,5 @@ const BackgroundService = GObject.registerClass({
 });
 
 function main(argv) {
-    initEnvironment();
-
     return (new BackgroundService()).run(argv);
 }
