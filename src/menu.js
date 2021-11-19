@@ -32,7 +32,7 @@ var MenuPopover = GObject.registerClass({
                                     visible: true,
                                     halign: Gtk.Align.START });
         label.get_style_context().add_class('font-label');
-        row.add(label);
+        row.set_child(label);
         return row;
     }
 
@@ -40,7 +40,7 @@ var MenuPopover = GObject.registerClass({
         params = Params.fill(params, {});
         super._init(params);
         let row = this._createFontListRow(_("None"), 'None');
-        this._font_listbox.add(row);
+        this._font_listbox.append(row);
 
         let context = this.get_pango_context();
         let families = context.list_families();
@@ -50,7 +50,7 @@ var MenuPopover = GObject.registerClass({
         for (let index in families) {
             row = this._createFontListRow(families[index].get_name(),
                                           families[index].get_name());
-            this._font_listbox.add(row);
+            this._font_listbox.append(row);
         }
 
         this._keywords = [];

@@ -72,13 +72,13 @@ var MyApplication = GObject.registerClass({
     vfunc_startup () {
         super.vfunc_startup();
 
-        let theme = Gtk.IconTheme.get_default();
+        /*let theme = Gtk.IconTheme.get_default();
         theme.add_resource_path('/org/gnome/Characters/icons');
-
+            */
         Util.loadStyleSheet('/org/gnome/Characters/application.css');
 
-        let styleManager = Handy.StyleManager.get_default();
-        styleManager.set_color_scheme(Handy.ColorScheme.PREFER_LIGHT);
+        let styleManager = Adw.StyleManager.get_default();
+        styleManager.set_color_scheme(Adw.ColorScheme.PREFER_LIGHT);
 
         Util.initActions(this,
                          [{ name: 'quit',
@@ -98,10 +98,10 @@ var MyApplication = GObject.registerClass({
     }
 
     vfunc_activate() {
+        Adw.init();
         if (!this._appwindow) {
             this._appwindow = new Window.MainWindow({ application: this });
         }
-        Adw.init();
 
         this._appwindow.present();
         log("Characters Application activated");

@@ -17,7 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 const Params = imports.params;
-const {Gc, Gdk, GLib, Gio,GObject,Gtk, Pango, PangoCairo, Handy} = imports.gi;
+const {Adw, Gc, Gdk, GLib, Gio,GObject,Gtk, Pango, PangoCairo} = imports.gi;
 
 const Cairo = imports.cairo;
 
@@ -47,7 +47,7 @@ const CharacterListRow = GObject.registerClass({
         this._characters = filtered.characters;
         this._fontDescription = filtered.fontDescription;
         this._overlayFontDescription = filtered.overlayFontDescription;
-        this._styleManager = Handy.StyleManager.get_default();
+        this._styleManager = Adw.StyleManager.get_default();
     }
 
     draw(cr, x, y, width, height, styleContext) {
@@ -210,15 +210,16 @@ const CharacterListWidget = GObject.registerClass({
         this._numRows = filtered.numRows;
         this._characters = [];
         this._rows = [];
-        this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
+        /*this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
                         Gdk.EventMask.BUTTON_RELEASE_MASK);
-        this._character = null;
         this.drag_source_set(Gdk.ModifierType.BUTTON1_MASK,
                              null,
                              Gdk.DragAction.COPY);
         this.drag_source_add_text_targets();
+        */
+        this._character = null;
     }
-
+    /*
     vfunc_drag_begin(context) {
         let cellSize = getCellSize(this._fontDescription);
         this._dragSurface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
@@ -256,15 +257,11 @@ const CharacterListWidget = GObject.registerClass({
             this.emit('character-selected', this._character);
         return false;
     }
-
-    vfunc_get_request_mode() {
-        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
-    }
-
     vfunc_get_preferred_height() {
         let [minWidth, natWidth] = this.vfunc_get_preferred_width();
         return this.vfunc_get_preferred_height_for_width(minWidth);
     }
+
 
     vfunc_get_preferred_height_for_width(width) {
         let height = Math.max(this._rows.length, this._numRows) *
@@ -281,6 +278,36 @@ const CharacterListWidget = GObject.registerClass({
         let minWidth = NUM_COLUMNS * cellSize;
         let natWidth = Math.max(this._cellsPerRow, NUM_COLUMNS) * cellSize;
         return [minWidth, natWidth];
+    }
+    vfunc_draw(cr) {
+        // Clear the canvas.
+        let context = this.get_style_context();
+        let fg = context.get_color(Gtk.StateFlags.NORMAL);
+        let bg = context.get_background_color(Gtk.StateFlags.NORMAL);
+
+        cr.setSourceRGBA(bg.red, bg.green, bg.blue, bg.alpha);
+        cr.paint();
+        cr.setSourceRGBA(fg.red, fg.green, fg.blue, fg.alpha);
+
+        // Use device coordinates directly, since PangoCairo doesn't
+        // work well with scaled matrix:
+        // https://bugzilla.gnome.org/show_bug.cgi?id=700592
+        let allocation = this.get_allocation();
+
+        // Redraw rows within the clipped region.
+        let [x1, y1, x2, y2] = cr.clipExtents();
+        let cellSize = getCellSize(this._fontDescription);
+        let start = Math.max(0, Math.floor(y1 / cellSize));
+        let end = Math.min(this._rows.length, Math.ceil(y2 / cellSize));
+        for (let index = start; index < end; index++) {
+            this._rows[index].draw(cr, 0, index * cellSize,
+                                   allocation.width, cellSize, context);
+        }
+    }
+    */
+
+    vfunc_get_request_mode() {
+        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
     }
 
     vfunc_size_allocate(allocation) {
@@ -332,32 +359,6 @@ const CharacterListWidget = GObject.registerClass({
 
         this.queue_resize();
         this.queue_draw();
-    }
-
-    vfunc_draw(cr) {
-        // Clear the canvas.
-        let context = this.get_style_context();
-        let fg = context.get_color(Gtk.StateFlags.NORMAL);
-        let bg = context.get_background_color(Gtk.StateFlags.NORMAL);
-
-        cr.setSourceRGBA(bg.red, bg.green, bg.blue, bg.alpha);
-        cr.paint();
-        cr.setSourceRGBA(fg.red, fg.green, fg.blue, fg.alpha);
-
-        // Use device coordinates directly, since PangoCairo doesn't
-        // work well with scaled matrix:
-        // https://bugzilla.gnome.org/show_bug.cgi?id=700592
-        let allocation = this.get_allocation();
-
-        // Redraw rows within the clipped region.
-        let [x1, y1, x2, y2] = cr.clipExtents();
-        let cellSize = getCellSize(this._fontDescription);
-        let start = Math.max(0, Math.floor(y1 / cellSize));
-        let end = Math.min(this._rows.length, Math.ceil(y2 / cellSize));
-        for (let index = start; index < end; index++) {
-            this._rows[index].draw(cr, 0, index * cellSize,
-                                   allocation.width, cellSize, context);
-        }
     }
 });
 
@@ -473,7 +474,7 @@ var CharacterListView = GObject.registerClass({
             visible: true
         });
 
-        scroll.add(this._characterList);
+        scroll.set_child(this._characterList);
 
         let context = scroll.get_style_context();
         context.add_class('character-list-scroll');
@@ -493,8 +494,10 @@ var CharacterListView = GObject.registerClass({
             this._characters = [];
             this._updateCharacterList();
         });
+        /* TODO: use listmodels & grid view hopefully
         scroll.connect('edge-reached', (scrolled, pos) => this._onEdgeReached(scrolled, pos));
         scroll.connect('size-allocate', (scrolled, allocation) => this._onSizeAllocate(scrolled, allocation));
+        */
     }
 
     _startSpinner() {
@@ -629,7 +632,7 @@ var RecentCharacterListView = GObject.registerClass({
     Signals: {
         'character-selected': { param_types: [ GObject.TYPE_STRING ] },
     },
-}, class RecentCharacterListView extends Gtk.Bin {
+}, class RecentCharacterListView extends Adw.Bin {
     _init(params) {
         const filtered = Params.filter(params, {
             category: null,
@@ -648,7 +651,7 @@ var RecentCharacterListView = GObject.registerClass({
             numRows: 0
         });
         this._characterList.connect('character-selected', (w, c) => this.emit('character-selected', c));
-        this.add(this._characterList);
+        this.set_child(this._characterList);
 
         this._fontFilter.connect('filter-set', () => this._updateCharacterList());
 

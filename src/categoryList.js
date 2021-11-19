@@ -142,20 +142,20 @@ const CategoryListRowWidget = GObject.registerClass({
         params = Params.fill(params, {});
         super._init(params);
         this.category = category;
-        this.get_accessible().accessible_name =
-            _('%s Category List Row').format(category.title);
+        /*this.get_accessible().accessible_name =
+            _('%s Category List Row').format(category.title);*/
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
-        this.add(hbox);
+        this.set_child(hbox);
 
         let image = Gtk.Image.new_from_icon_name(category.icon_name, Gtk.IconSize.LARGE_TOOLBAR);
         image.get_style_context().add_class('category-icon');
-        hbox.pack_start(image, false, false, 2);
+        hbox.append(image);
 
         let label = new Gtk.Label({ label: Gettext.gettext(category.title),
                                     halign: Gtk.Align.START });
         label.get_style_context().add_class('category-label');
-        hbox.pack_start(label, true, true, 0);
+        hbox.append(label);
 
     }
 });
@@ -367,7 +367,7 @@ const RecentCategoryListWidget = GObject.registerClass({
         this.recentRow = new CategoryListRowWidget({}, this.recentCategory);
         this.recentRow.get_style_context().add_class('category');
         this.recentRow.get_style_context().add_class('recent-category');
-        this.add(this.recentRow)
+        this.set_child(this.recentRow)
     }
 
     getCategory(name) {
@@ -387,14 +387,14 @@ var CategoryListView = GObject.registerClass({
         this.get_style_context().add_class('categories-list');
 
         this._recentCategoryList = new RecentCategoryListWidget();
-        this._recentCategoryList.connect('row-selected', (list, row) => {
+        this._recentCategoryList.list.connect('row-selected', (list, row) => {
             this._letterCategoryList.unselect();
             this._emojiCategoryList.unselect();
             this._lastSelectedList = list;
             list.select_row(row);
         });
-        this.add(this._recentCategoryList)
-        this.add(new Gtk.Separator({orientation: Gtk.Orientation.HORIZONTAL}));
+        this.append(this._recentCategoryList)
+        this.append(new Gtk.Separator({orientation: Gtk.Orientation.HORIZONTAL}));
         
         let emojis_label = new Gtk.Label ({
             label: CategoryList[0].title,
@@ -405,18 +405,18 @@ var CategoryListView = GObject.registerClass({
             margin_end: 12,
         }); 
         emojis_label.get_style_context().add_class("heading");
-        this.add(emojis_label);
+        this.append(emojis_label);
 
         this._emojiCategoryList = new EmojiCategoryListWidget({
             categoryList: EmojiCategoryList
         });
-        this._emojiCategoryList.connect('row-selected', (list, row) => {
+        this._emojiCategoryList.list.connect('row-selected', (list, row) => {
             this._letterCategoryList.unselect();
             this._recentCategoryList.unselect();
             this._lastSelectedList = list;
             list.select_row(row);
         });
-        this.add(this._emojiCategoryList);
+        this.append(this._emojiCategoryList);
 
         let letters_label = new Gtk.Label ({
             label: CategoryList[1].title,
@@ -427,18 +427,18 @@ var CategoryListView = GObject.registerClass({
             margin_end: 12,
         });
         letters_label.get_style_context().add_class("heading");
-        this.add(letters_label);
+        this.append(letters_label);
 
         this._letterCategoryList = new LetterCategoryListWidget({
             categoryList: LetterCategoryList
         });
-        this._letterCategoryList.connect('row-selected', (list, row) => {
+        this._letterCategoryList.list.connect('row-selected', (list, row) => {
             this._emojiCategoryList.unselect();
             this._recentCategoryList.unselect();
             this._lastSelectedList = list;
             list.select_row(row);
         });
-        this.add(this._letterCategoryList);
+        this.append(this._letterCategoryList);
 
         this._categoryList = CategoryList.slice();
     }

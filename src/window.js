@@ -102,20 +102,19 @@ var MainWindow = GObject.registerClass({
 
         this._categoryListView =
             new CategoryList.CategoryListView({ vexpand: true });
-        this._categoryListView.show_all();
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
             visible: true,
         });
-        scroll.add(this._categoryListView);
-        this._sidebar.add(scroll);
+        scroll.set_child(this._categoryListView);
+        this._sidebar.append(scroll);
 
         this._mainView = new MainView({
             categoryListView: this._categoryListView
         });
 
-        this._container.pack_start(this._mainView, true, true, 0);
+        this._container.append(this._mainView);
         
         let builder = Gtk.Builder.new_from_resource('/org/gnome/Characters/shortcuts.ui');
         let helpOverlay = builder.get_object("shortcuts");
@@ -123,7 +122,8 @@ var MainWindow = GObject.registerClass({
 
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
-        this.connect('key-press-event', (self, event) => this._handleKeyPress(self, event));
+        // TODO: use EventControllerKey
+        //this.connect('key-press-event', (self, event) => this._handleKeyPress(self, event));
     }
 
     vfunc_map() {
@@ -337,17 +337,15 @@ const MainView = GObject.registerClass({
             this._recentCharacterLists[category.name] = characterList;
             if (i > 0) {
                 let separator = new Gtk.Separator({});
-                recentBox.pack_start(separator, false, false, 0);
+                recentBox.append(separator);
             }
-            recentBox.pack_start(characterList, false, false, 0);
+            recentBox.append(characterList);
         }
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
         });
-        scroll.add(recentBox);
-        recentBox.show_all();
-        scroll.show_all();
+        scroll.set_child(recentBox);
         // FIXME: Can't use GtkContainer.child_get_property.
         scroll.title = _('Recently Used');
         this.add_titled(scroll, 'recent', scroll.title);
@@ -371,7 +369,7 @@ const MainView = GObject.registerClass({
         const characterList = new CharacterList.CharacterListView({
             fontFilter: this._fontFilter,
         });
-        characterList.get_accessible().accessible_name = accessible_name;
+        //characterList.get_accessible().accessible_name = accessible_name;
         characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
 
         this._characterLists[name] = characterList;
@@ -383,7 +381,7 @@ const MainView = GObject.registerClass({
             fontFilter: this._fontFilter,
             category: category
         });
-        characterList.get_accessible().accessible_name = accessible_name;
+        //characterList.get_accessible().accessible_name = accessible_name;
         characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
 
         this._characterLists[name] = characterList;

@@ -56,12 +56,3 @@ Gjs_MenuPopover GtkScrolledWindow {
     border-width: 2pt;
 }
 
-@binding-set ScrollUnmodified {
-  bind "space" { "scroll-child" (page-down, 0) };
-  bind "Up" { "scroll-child" (step-up, 0) };
-  bind "Down" { "scroll-child" (step-down, 0) };
-}
-
-GtkScrolledWindow.character-list-scroll {
-  -gtk-key-bindings: ScrollUnmodified;
-}
