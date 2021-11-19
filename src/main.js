@@ -51,11 +51,13 @@ function initEnvironment() {
 }
 
 var MyApplication = GObject.registerClass({
-},class MyApplication extends Gtk.Application {
+},class MyApplication extends Adw.Application {
     _init () {
-        super._init({ application_id: application_id,
-                      flags: Gio.ApplicationFlags.FLAGS_NONE });
-
+        super._init({
+            application_id: application_id,
+            flags: Gio.ApplicationFlags.FLAGS_NONE,
+            resource_base_path: '/org/gnome/Characters',
+        });
         GLib.set_application_name(_('Characters'));
     }
 
@@ -72,13 +74,7 @@ var MyApplication = GObject.registerClass({
     vfunc_startup () {
         super.vfunc_startup();
 
-        /*let theme = Gtk.IconTheme.get_default();
-        theme.add_resource_path('/org/gnome/Characters/icons');
-            */
-        Util.loadStyleSheet('/org/gnome/Characters/application.css');
-
-        let styleManager = Adw.StyleManager.get_default();
-        styleManager.set_color_scheme(Adw.ColorScheme.PREFER_LIGHT);
+        this.get_style_manager().set_color_scheme(Adw.ColorScheme.PREFER_LIGHT);
 
         Util.initActions(this,
                          [{ name: 'quit',
@@ -98,7 +94,6 @@ var MyApplication = GObject.registerClass({
     }
 
     vfunc_activate() {
-        Adw.init();
         if (!this._appwindow) {
             this._appwindow = new Window.MainWindow({ application: this });
         }

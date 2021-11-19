@@ -7,7 +7,7 @@
     <file preprocess="xml-stripblanks">characterlist.ui</file>
     <file preprocess="xml-stripblanks">shortcuts.ui</file>
     <file preprocess="xml-stripblanks">menu.ui</file>
-    <file>application.css</file>
+    <file>style.css</file>
   </gresource>
   <gresource prefix="/org/gnome/Characters/icons/scalable/categories">
     <file alias="characters-arrow-symbolic.svg">icons/hicolor/scalable/categories/characters-arrow-symbolic.svg</file>
