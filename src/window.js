@@ -140,11 +140,11 @@ var MainWindow = GObject.registerClass({
     _selectFirstSubcategory() {
         let categoryList;
         if (this._mainView.recentCharacters.length !== 0) {
-            categoryList = this._categoryListView.getCategoryByName('recent');
+            categoryList = this._categoryListView.getCategoryByName('recent').list;
         } else {
-            categoryList = this._categoryListView.getCategoryByName('emojis');
+            categoryList = this._categoryListView.getCategoryByName('emojis').list;
         }
-        categoryList.select_row(categoryList.get_row_at_index(0));
+        categoryList.select_row(categoryListget_row_at_index(0));
     }
 
     get search_active() {
