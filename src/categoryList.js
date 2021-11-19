@@ -17,7 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
-const {Gc, GLib, GObject, Gtk, GnomeDesktop} = imports.gi;
+const {Adw, Gc, GLib, GObject, Gtk, GnomeDesktop} = imports.gi;
 
 const Gettext = imports.gettext;
 const Params = imports.params;
@@ -161,10 +161,11 @@ const CategoryListRowWidget = GObject.registerClass({
 });
 
 const CategoryListWidget = GObject.registerClass({
-}, class CategoryListWidget extends Gtk.ListBox {
+}, class CategoryListWidget extends Adw.Bin {
     _init(params) {
         const filtered = Params.filter(params, { categoryList: null });
         params = Params.fill(params, {});
+        this.list = Gtk.ListBox.new();
         super._init(params);
 
 
@@ -176,18 +177,19 @@ const CategoryListWidget = GObject.registerClass({
             let category = this._categoryList[index];
             let rowWidget = new CategoryListRowWidget({}, category);
             rowWidget.get_style_context().add_class('category');
-            this.add(rowWidget);
+            this.list.append(rowWidget);
         }
+
+        this.list.connect('row-selected', (row) => {
+            if (row != null && row.selectable) {
+                let toplevel = row.get_root();
+                let action = toplevel.lookup_action('category');
+                action.activate(new GLib.Variant('s', row.category.name));
+                this._lastSelectedRow = row;
+            }
+        });
     }
 
-    vfunc_row_selected(row) {
-        if (row != null && row.selectable) {
-            let toplevel = row.get_toplevel();
-            let action = toplevel.lookup_action('category');
-            action.activate(new GLib.Variant('s', row.category.name));
-            this._lastSelectedRow = row;
-        }
-    }
     populateCategoryList() {
     }
 
@@ -206,14 +208,14 @@ const CategoryListWidget = GObject.registerClass({
 
     restorePreviousSelection() {
         if (this._lastSelectedRow) {
-            this.select_row(this._lastSelectedRow)
+            this.list.select_row(this._lastSelectedRow)
         }
     }
 
     unselect() {
-        let selected = this.get_selected_row()
+        let selected = this.list.get_selected_row()
         if (selected)
-            this.unselect_row(selected)
+            this.list.unselect_row(selected)
     }
 });
 
