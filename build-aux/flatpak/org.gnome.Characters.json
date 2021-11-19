@@ -9,6 +9,7 @@
         "--share=ipc",
         "--socket=fallback-x11",
         "--socket=wayland",
+        "--device=dri",
         "--metadata=X-DConf=migrate-path=/org/gnome/Characters/"
     ],
     "cleanup" : [
