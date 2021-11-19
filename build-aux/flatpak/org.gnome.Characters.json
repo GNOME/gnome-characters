@@ -30,13 +30,14 @@
             "buildsystem" : "meson",
             "config-opts" : [
                 "-Ddebug-tools=false",
-                "-Dudev=disabled"
+                "-Ddesktop_docs=false",
+                "-Dudev=disabled",
+                "-Dlegacy_library=false"
             ],
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.2.tar.xz",
-                    "sha256" : "099f71b29310c999c28f2bf272c846bbd7efc8c6c438b37d15f374230ce92d2e"
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/gnome-desktop"
                 }
             ]
         },
