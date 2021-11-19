@@ -25,13 +25,12 @@ var MenuPopover = GObject.registerClass({
     InternalChildren: ['search-entry', 'font-listbox'],
 }, class MenuPopover extends Gtk.Popover {
     _createFontListRow(title, family) {
-        const row = new Gtk.ListBoxRow({ visible: true });
-        row.get_style_context().add_class('font');
+        const row = new Gtk.ListBoxRow();
+        row.add_css_class('font');
         row._family = family;
         let label = new Gtk.Label({ label: title,
-                                    visible: true,
                                     halign: Gtk.Align.START });
-        label.get_style_context().add_class('font-label');
+        label.add_css_class('font-label');
         row.set_child(label);
         return row;
     }

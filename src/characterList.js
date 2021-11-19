@@ -202,9 +202,7 @@ const CharacterListWidget = GObject.registerClass({
         });
         params = Params.fill(params, {});
         super._init(params);
-        const context = this.get_style_context();
-        context.add_class('character-list');
-        context.save();
+        this.add_css_class('character-list');
         this._cellsPerRow = CELLS_PER_ROW;
         this._fontDescription = filtered.fontDescription;
         this._numRows = filtered.numRows;
@@ -471,7 +469,6 @@ var CharacterListView = GObject.registerClass({
         this._characterList.connect('character-selected', (w, c) => this.emit('character-selected', c));
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
-            visible: true
         });
 
         scroll.set_child(this._characterList);

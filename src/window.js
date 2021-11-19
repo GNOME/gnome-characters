@@ -105,7 +105,6 @@ var MainWindow = GObject.registerClass({
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
-            visible: true,
         });
         scroll.set_child(this._categoryListView);
         this._sidebar.append(scroll);
@@ -158,7 +157,7 @@ var MainWindow = GObject.registerClass({
         this._searchActive = v;
 
         if (this._searchActive) {
-            let categoryList = this._categoryListView.selectedList;
+            let categoryList = this._categoryListView.selectedList.list;
             categoryList.unselect_all();
             this._updateTitle(_("Search Result"));
         } else {

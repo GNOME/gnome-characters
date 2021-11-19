@@ -80,7 +80,7 @@ var CharacterDialog = GObject.registerClass({
                                                  valign: Gtk.Align.CENTER,
                                                  halign: Gtk.Align.CENTER,
                                                  width_request: 45 });
-            characterLabel.get_style_context().add_class('character');
+            characterLabel.add_css_class('character');
             hbox.pack_start(characterLabel, false, false, 2);
 
             let nameLabel = new Gtk.Label({ label: Util.capitalize(name),

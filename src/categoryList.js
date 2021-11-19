@@ -150,12 +150,12 @@ const CategoryListRowWidget = GObject.registerClass({
 
         let image = Gtk.Image.new_from_icon_name(category.icon_name);
         image.set_icon_size(Gtk.IconSize.LARGE_TOOLBAR);
-        image.get_style_context().add_class('category-icon');
+        image.add_css_class('category-icon');
         hbox.append(image);
 
         let label = new Gtk.Label({ label: Gettext.gettext(category.title),
                                     halign: Gtk.Align.START });
-        label.get_style_context().add_class('category-label');
+        label.add_css_class('category-label');
         hbox.append(label);
 
     }
@@ -177,7 +177,7 @@ const CategoryListWidget = GObject.registerClass({
         for (let index in this._categoryList) {
             let category = this._categoryList[index];
             let rowWidget = new CategoryListRowWidget({}, category);
-            rowWidget.get_style_context().add_class('category');
+            rowWidget.add_css_class('category');
             this.list.append(rowWidget);
         }
 
@@ -366,8 +366,8 @@ const RecentCategoryListWidget = GObject.registerClass({
             icon_name: 'document-open-recent-symbolic',
         };
         this.recentRow = new CategoryListRowWidget({}, this.recentCategory);
-        this.recentRow.get_style_context().add_class('category');
-        this.recentRow.get_style_context().add_class('recent-category');
+        this.recentRow.add_css_class('category');
+        this.recentRow.add_css_class('recent-category');
         this.set_child(this.recentRow)
     }
 
@@ -385,7 +385,7 @@ var CategoryListView = GObject.registerClass({
         });
         this._lastSelectedList = null;
         super._init(params);
-        this.get_style_context().add_class('categories-list');
+        this.add_css_class('categories-list');
 
         this._recentCategoryList = new RecentCategoryListWidget();
         this._recentCategoryList.list.connect('row-selected', (list, row) => {
@@ -405,7 +405,7 @@ var CategoryListView = GObject.registerClass({
             margin_bottom: 12,
             margin_end: 12,
         }); 
-        emojis_label.get_style_context().add_class("heading");
+        emojis_label.add_css_class("heading");
         this.append(emojis_label);
 
         this._emojiCategoryList = new EmojiCategoryListWidget({
@@ -427,7 +427,7 @@ var CategoryListView = GObject.registerClass({
             margin_bottom: 12,
             margin_end: 12,
         });
-        letters_label.get_style_context().add_class("heading");
+        letters_label.add_css_class("heading");
         this.append(letters_label);
 
         this._letterCategoryList = new LetterCategoryListWidget({
