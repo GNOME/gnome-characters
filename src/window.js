@@ -208,9 +208,6 @@ var MainWindow = GObject.registerClass({
             });
 
         aboutDialog.show();
-        aboutDialog.connect('response', function() {
-            aboutDialog.destroy();
-        });
     }
 
     _updateTitle(title) {
