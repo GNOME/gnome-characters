@@ -110,12 +110,6 @@ gboolean              gc_character_is_invisible
                                             (gunichar              uc);
 gint                  gc_character_width    (gunichar              uc);
 
-
-/* GTK+ support.  gtk_clipboard_get() takes an GdkAtom as the first
-   argument, but GdkAtom is not accessible through GI.  */
-
-GtkClipboard         *gc_gtk_clipboard_get  (void);
-
 /* Pango support.  PangoAttrFallback is not accessible from GI.  */
 void                  gc_pango_layout_disable_fallback
                                             (PangoLayout          *layout);

@@ -1250,17 +1250,6 @@ gc_filter_characters (GcCategory           category,
   return result;
 }
 
-/**
- * gc_gtk_clipboard_get:
- *
- * Returns: (transfer none): a #GtkClipboard.
- */
-GtkClipboard *
-gc_gtk_clipboard_get (void)
-{
-  return gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
-}
-
 void
 gc_pango_layout_disable_fallback (PangoLayout *layout)
 {

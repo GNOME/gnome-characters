@@ -38,7 +38,7 @@ gnome.generate_gir(
   identifier_prefix: characters_ns,
   symbol_prefix: characters_ns.to_lower(),
   header: gc_h,
-  includes: ['Gio-2.0', 'Gtk-3.0'],
+  includes: ['Gio-2.0'],
   install: true,
   install_dir_gir: join_paths(characters_pkgdatadir, 'gir-' + characters_gir_version),
   install_dir_typelib: join_paths(characters_pkglibdir, 'girepository-' + characters_gir_version)
