@@ -4,7 +4,7 @@
   <template class="Gjs_MainView" parent="GtkStack">
     <property name="visible">True</property>
     <child>
-      <object class="HdyStatusPage">
+      <object class="AdwStatusPage">
         <property name="visible">True</property>
         <property name="icon_name">characters-punctuation-symbolic</property>
         <property name="title" translatable="yes">No Recent Characters</property>

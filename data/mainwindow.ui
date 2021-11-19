@@ -13,12 +13,12 @@
       </item>
     </section>
   </menu>
-  <template class="Gjs_MainWindow" parent="HdyApplicationWindow">
+  <template class="Gjs_MainWindow" parent="AdwApplicationWindow">
     <property name="height-request">660</property>
     <property name="default-width">800</property>
     <property name="default-height">500</property>
     <child>
-      <object class="HdyLeaflet" id="leaflet">
+      <object class="AdwwLeaflet" id="leaflet">
         <property name="visible">True</property>
         <property name="can-swipe-back">True</property>
         <child>
@@ -27,7 +27,7 @@
             <property name="visible">True</property>
             <property name="width-request">280</property>
             <child>
-              <object class="HdyHeaderBar" id="sidebar-headerbar">
+              <object class="GtkHeaderBar" id="sidebar-headerbar">
                 <property name="visible">True</property>
                 <property name="show-close-button">True</property>
                 <property name="title" translatable="yes">Characters</property>
@@ -89,7 +89,7 @@
             <property name="orientation">vertical</property>
             <property name="visible">True</property>
             <child>
-              <object class="HdyWindowHandle" id="header-separator">
+              <object class="AdwWindowHandle" id="header-separator">
                 <property name="visible">True</property>
                 <child>
                   <object class="GtkSeparator">
@@ -123,7 +123,7 @@
             <property name="orientation">vertical</property>
             <property name="visible">True</property>
             <child>
-              <object class="HdyHeaderBar" id="main-headerbar">
+              <object class="GtkHeaderBar" id="main-headerbar">
                 <property name="visible">True</property>
                 <property name="show-close-button">True</property>
                 <property name="has-subtitle">False</property>

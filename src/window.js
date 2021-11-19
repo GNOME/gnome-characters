@@ -24,7 +24,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const {Gio, GLib, GObject, Gtk, Handy } = imports.gi;
+const {Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
 const Params = imports.params;
 const CategoryList = imports.categoryList;
@@ -49,7 +49,7 @@ var MainWindow = GObject.registerClass({
             'search-active', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
     },
-}, class MainWindow extends Handy.ApplicationWindow {
+}, class MainWindow extends Adw.ApplicationWindow {
     _init(params) {
         params = Params.fill(params, { title: GLib.get_application_name() });
         super._init(params);
@@ -94,7 +94,7 @@ var MainWindow = GObject.registerClass({
         this._search_entry.connect('search-changed', (entry) => this._handleSearchChanged(entry));
 
         this._back_button.connect('clicked', () => {
-            this._leaflet.navigate(Handy.NavigationDirection.BACK);
+            this._leaflet.navigate(Adw.NavigationDirection.BACK);
         });
 
         this._menu_popover = new Menu.MenuPopover({});
@@ -240,7 +240,7 @@ var MainWindow = GObject.registerClass({
         if (category) {
             this._mainView.setPage(category);
             this._updateTitle(category.title);
-            this._leaflet.navigate(Handy.NavigationDirection.FORWARD);
+            this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
         }
     }
 

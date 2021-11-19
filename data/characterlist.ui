@@ -4,7 +4,7 @@
   <template class="Gjs_CharacterListView" parent="GtkStack">
     <property name="visible">True</property>
     <child>
-      <object class="HdyStatusPage">
+      <object class="AdwStatusPage">
         <property name="icon-name">system-search-symbolic</property>
         <property name="title" translatable="yes">No Results</property>
         <property name="description" translatable="yes">Try a different search.</property>
