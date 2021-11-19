@@ -144,7 +144,7 @@ var MainWindow = GObject.registerClass({
         } else {
             categoryList = this._categoryListView.getCategoryByName('emojis').list;
         }
-        categoryList.select_row(categoryListget_row_at_index(0));
+        categoryList.select_row(categoryList.get_row_at_index(0));
     }
 
     get search_active() {
