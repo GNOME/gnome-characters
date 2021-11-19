@@ -183,6 +183,7 @@ const CategoryListWidget = GObject.registerClass({
                 this._lastSelectedRow = row;
             }
         });
+        this.set_child(this.list);
     }
 
     populateCategoryList() {
