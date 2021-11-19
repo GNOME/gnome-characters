@@ -20,7 +20,6 @@
 const {Adw, Gc, GLib, GObject, Gtk, GnomeDesktop} = imports.gi;
 
 const Gettext = imports.gettext;
-const Params = imports.params;
 
 const Util = imports.util;
 
@@ -138,16 +137,14 @@ const EmojiCategoryList = [
 const CategoryListRowWidget = GObject.registerClass({
 }, class CategoryListRowWidget extends Gtk.ListBoxRow {
 
-    _init (params, category) {
-        params = Params.fill(params, {});
-        super._init(params);
+    _init (category) {
+        super._init();
         this.category = category;
         /*this.get_accessible().accessible_name =
             _('%s Category List Row').format(category.title);*/
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.set_child(hbox);
-
         let image = Gtk.Image.new_from_icon_name(category.icon_name);
         image.set_icon_size(Gtk.IconSize.LARGE_TOOLBAR);
         image.add_css_class('category-icon');
@@ -163,20 +160,17 @@ const CategoryListRowWidget = GObject.registerClass({
 
 const CategoryListWidget = GObject.registerClass({
 }, class CategoryListWidget extends Adw.Bin {
-    _init(params) {
-        const filtered = Params.filter(params, { categoryList: null });
-        params = Params.fill(params, {});
+    _init(categories) {
+        super._init({});
+
         this.list = Gtk.ListBox.new();
-        super._init(params);
-
-
-        this._categoryList = filtered.categoryList;
+        this._categories = categories;
         this.populateCategoryList();
         this._lastSelectedRow = null;
 
-        for (let index in this._categoryList) {
-            let category = this._categoryList[index];
-            let rowWidget = new CategoryListRowWidget({}, category);
+        for (let index in this._categories) {
+            let category = this._categories[index];
+            let rowWidget = new CategoryListRowWidget(category);
             rowWidget.add_css_class('category');
             this.list.append(rowWidget);
         }
@@ -195,12 +189,12 @@ const CategoryListWidget = GObject.registerClass({
     }
 
     getCategoryList() {
-        return this._categoryList;
+        return this._categories;
     }
 
     getCategory(name) {
-        for (let index in this._categoryList) {
-            let category = this._categoryList[index];
+        for (let index in this._categories) {
+            let category = this._categories[index];
             if (category.name == name)
                 return category;
         }
@@ -344,9 +338,8 @@ const LetterCategoryListWidget = GObject.registerClass({
 const EmojiCategoryListWidget = GObject.registerClass({
 
 }, class EmojiCategoryListWidget extends CategoryListWidget {
-    _init(params) {
-        params = Params.fill(params, {});
-        super._init(params);
+    _init(categories) {
+        super._init(categories);
     }
 
     getCategory(name) {
@@ -357,15 +350,15 @@ const EmojiCategoryListWidget = GObject.registerClass({
 const RecentCategoryListWidget = GObject.registerClass({
 
 }, class RecentCategoryListWidget extends CategoryListWidget {
-    _init(params) {
-        super._init(params);
+    _init(categories) {
+        super._init(categories);
         this.recentCategory = {
             name: 'recent',
             category: Gc.Category.NONE,
             title: N_('Recently Used'),
             icon_name: 'document-open-recent-symbolic',
         };
-        this.recentRow = new CategoryListRowWidget({}, this.recentCategory);
+        this.recentRow = new CategoryListRowWidget(this.recentCategory);
         this.recentRow.add_css_class('category');
         this.recentRow.add_css_class('recent-category');
         this.set_child(this.recentRow)
@@ -378,13 +371,13 @@ const RecentCategoryListWidget = GObject.registerClass({
 
 var CategoryListView = GObject.registerClass({
 }, class CategoryListView extends Gtk.Box {
-    _init(params) {
-        params = Params.fill(params, {
-            hexpand: true, vexpand: true,
+    _init() {
+        this._lastSelectedList = null;
+        super._init({
+            hexpand: true,
+            vexpand: true,
             orientation: Gtk.Orientation.VERTICAL,
         });
-        this._lastSelectedList = null;
-        super._init(params);
         this.add_css_class('categories-list');
 
         this._recentCategoryList = new RecentCategoryListWidget();
@@ -408,9 +401,7 @@ var CategoryListView = GObject.registerClass({
         emojis_label.add_css_class("heading");
         this.append(emojis_label);
 
-        this._emojiCategoryList = new EmojiCategoryListWidget({
-            categoryList: EmojiCategoryList
-        });
+        this._emojiCategoryList = new EmojiCategoryListWidget(EmojiCategoryList);
         this._emojiCategoryList.list.connect('row-selected', (list, row) => {
             this._letterCategoryList.unselect();
             this._recentCategoryList.unselect();
@@ -430,9 +421,7 @@ var CategoryListView = GObject.registerClass({
         letters_label.add_css_class("heading");
         this.append(letters_label);
 
-        this._letterCategoryList = new LetterCategoryListWidget({
-            categoryList: LetterCategoryList
-        });
+        this._letterCategoryList = new LetterCategoryListWidget(LetterCategoryList);
         this._letterCategoryList.list.connect('row-selected', (list, row) => {
             this._emojiCategoryList.unselect();
             this._recentCategoryList.unselect();

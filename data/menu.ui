@@ -3,6 +3,7 @@
   <template class="Gjs_MenuPopover" parent="GtkPopover">
     <property name="vexpand">True</property>
     <property name="width-request">250</property>
+    <property name="height-request">600</property>
     <child>
       <object class="GtkBox">
         <property name="orientation">vertical</property>

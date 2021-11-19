@@ -75,7 +75,7 @@ var MenuPopover = GObject.registerClass({
 
     _handleRowActivated(listBox, row) {
         if (row != null) {
-            let toplevel = this.get_toplevel();
+            let toplevel = this.get_root();
             let action = toplevel.lookup_action('filter-font');
             action.activate(new GLib.Variant('s', row._family));
         }

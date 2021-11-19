@@ -537,7 +537,6 @@ var CharacterListView = GObject.registerClass({
         } else {
             this.visible_child_name = 'character-list';
         }
-        this.show_all();
     }
 
     _maybeLoadMore() {
@@ -666,6 +665,5 @@ var RecentCharacterListView = GObject.registerClass({
         const [fontDescription, characters] = this._fontFilter.apply(this, this._characters);
         this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
-        this.show_all();
     }
 });

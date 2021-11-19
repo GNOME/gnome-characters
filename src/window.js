@@ -101,7 +101,7 @@ var MainWindow = GObject.registerClass({
         this._menu_button.set_popover(this._menu_popover);
 
         this._categoryListView =
-            new CategoryList.CategoryListView({ vexpand: true });
+            new CategoryList.CategoryListView();
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
