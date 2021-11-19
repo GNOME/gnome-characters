@@ -5,7 +5,6 @@
     <property name="width-request">250</property>
     <child>
       <object class="GtkBox">
-        <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="margin-top">12</property>
         <property name="margin-bottom">12</property>
@@ -14,7 +13,6 @@
         <property name="spacing">12</property>
         <child>
           <object class="GtkLabel">
-            <property name="visible">True</property>
             <property name="halign">center</property>
             <property name="label" translatable="yes">Filter by Font</property>
             <attributes>
@@ -24,19 +22,15 @@
         </child>
         <child>
           <object class="GtkSearchEntry" id="search-entry">
-            <property name="can_focus">True</property>
-            <property name="visible">True</property>
             <property name="halign">fill</property>
           </object>
         </child>
         <child>
           <object class="GtkScrolledWindow">
-            <property name="visible">True</property>
             <property name="vexpand">True</property>
             <property name="hscrollbar_policy">never</property>
             <child>
               <object class="GtkListBox" id="font-listbox">
-                <property name="visible">True</property>
                 <property name="selection_mode">single</property>
                 <style>
                   <class name="content" />
