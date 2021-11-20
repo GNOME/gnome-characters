@@ -392,7 +392,7 @@ var CategoryListView = GObject.registerClass({
         this._recentCategoryList.list.connect('row-selected', (list, row) => {
             this._letterCategoryList.unselect();
             this._emojiCategoryList.unselect();
-            this._lastSelectedList = list;
+            this._lastSelectedList = this._recentCategoryList;
             list.select_row(row);
         });
         this.append(this._recentCategoryList)
@@ -413,7 +413,7 @@ var CategoryListView = GObject.registerClass({
         this._emojiCategoryList.list.connect('row-selected', (list, row) => {
             this._letterCategoryList.unselect();
             this._recentCategoryList.unselect();
-            this._lastSelectedList = list;
+            this._lastSelectedList = this._emojiCategoryList;
             list.select_row(row);
         });
         this.append(this._emojiCategoryList);
@@ -433,7 +433,7 @@ var CategoryListView = GObject.registerClass({
         this._letterCategoryList.list.connect('row-selected', (list, row) => {
             this._emojiCategoryList.unselect();
             this._recentCategoryList.unselect();
-            this._lastSelectedList = list;
+            this._lastSelectedList = this._letterCategoryList;
             list.select_row(row);
         });
         this.append(this._letterCategoryList);
