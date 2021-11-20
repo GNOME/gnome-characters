@@ -45,23 +45,7 @@ assert(cc.links(libunistring_src, name: 'libunistring support', args: '-lunistri
 # Just check that gjs-1.0 is present and recent enough
 dependency('gjs-1.0', version: '>= 1.50')
 dependency('gtk4')
-libhandy = dependency ('libhandy-1', version: '>= 1.1', required: false)
-if not libhandy.found()
-  libhandy_subproject = subproject(
-    'libhandy',
-    default_options: [
-      'examples=false',
-      'glade_catalog=disabled',
-      'tests=false',
-      'vapi=false',
-    ]
-  )
-  libhandy = declare_dependency(
-    dependencies: [
-      libhandy_subproject.get_variable('libhandy_dep'),
-    ]
-  )
-endif
+libhandy = dependency ('libadwaita-1', version: '>= 1.0')
 
 libgc_deps = [
   dependency('gio-2.0'),
