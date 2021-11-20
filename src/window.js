@@ -26,7 +26,7 @@
 
 const {Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
-const {CategoryListView, MainCategories} = imports.categoryList;
+const {Sidebar, MainCategories} = imports.categoryList;
 const {CharacterDialog} = imports.characterDialog;
 const {CharacterListView, FontFilter, RecentCharacterListView} = imports.characterList;
 const {MenuPopover} = imports.menu;
@@ -99,15 +99,7 @@ var MainWindow = GObject.registerClass({
         this._menu_popover = new MenuPopover();
         this._menu_button.set_popover(this._menu_popover);
 
-        this._categoryListView = new CategoryListView();
-        let scroll = new Gtk.ScrolledWindow({
-            hscrollbar_policy: Gtk.PolicyType.NEVER,
-            hexpand: false,
-        });
-        scroll.set_child(this._categoryListView);
-        this._sidebar.append(scroll);
-
-        this._mainView = new MainView(this._categoryListView);
+        this._mainView = new MainView(this._sidebar);
 
         this._container.append(this._mainView);
         
@@ -135,9 +127,9 @@ var MainWindow = GObject.registerClass({
     _selectFirstSubcategory() {
         let categoryList;
         if (this._mainView.recentCharacters.length !== 0) {
-            categoryList = this._categoryListView.getCategoryByName('recent').list;
+            categoryList = this._sidebar.getCategoryByName('recent').list;
         } else {
-            categoryList = this._categoryListView.getCategoryByName('emojis').list;
+            categoryList = this._sidebar.getCategoryByName('emojis').list;
         }
         categoryList.select_row(categoryList.get_row_at_index(0));
     }
@@ -153,11 +145,11 @@ var MainWindow = GObject.registerClass({
         this._searchActive = v;
 
         if (this._searchActive) {
-            let categoryList = this._categoryListView.selectedList.list;
+            let categoryList = this._sidebar.selectedList.list;
             categoryList.unselect_all();
             this._updateTitle(_("Search Result"));
         } else {
-            this._categoryListView.restorePreviousSelection();
+            this._sidebar.restorePreviousSelection();
         }
 
         this.notify('search-active');
@@ -227,7 +219,7 @@ var MainWindow = GObject.registerClass({
         } else {
             categoryName = "letters";
         } 
-        let categoryList = this._categoryListView.getCategoryByName(categoryName);
+        let categoryList = this._sidebar.getCategoryByName(categoryName);
         let category = categoryList.getCategory(name);
         if (category) {
             this._mainView.setPage(category);
@@ -289,7 +281,7 @@ const MainView = GObject.registerClass({
         this._fontFilter.setFilterFont(this._filterFontFamily);
     }
 
-    _init(categoryView) {
+    _init(sidebar) {
         super._init({
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
@@ -299,7 +291,7 @@ const MainView = GObject.registerClass({
         this._filterFontFamily = null;
         this._characterLists = {};
         this._recentCharacterLists = {};
-        this._categoryListView = categoryView;
+        this._sidebar = sidebar;
 
         let characterList;
         let recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
@@ -307,7 +299,7 @@ const MainView = GObject.registerClass({
 
         for (let i in MainCategories) {
             let category = MainCategories[i];
-            let categoryList = this._categoryListView.getCategoryByName(category.name);
+            let categoryList = this._sidebar.getCategoryByName(category.name);
             let subcategories = categoryList.getCategoryList();
             for (let j in subcategories) {
                 let subcategory = subcategories[j];
@@ -387,7 +379,7 @@ const MainView = GObject.registerClass({
             if (this.recentCharacters.length === 0)
                 this.visible_child_name = 'empty-recent';
             else {
-                let categories = this._categoryListView.getCategoryList();
+                let categories = this._sidebar.getCategoryList();
                 for (let i in categories) {
                     let category = categories[i];
                     let characterList = this._recentCharacterLists[category.name];

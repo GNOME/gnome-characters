@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="Gjs_Sidebar" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <property name="vexpand">True</property>
+    <property name="hexpand">True</property>
+    <child>
+        <object class="Gjs_RecentCategoryListWidget" id="recentSection" />
+    </child>
+    <child>
+      <object class="GtkSeparator">
+        <property name="orientation">horizontal</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">Emojis</property>
+        <property name="halign">start</property>
+        <property name="margin-top">12</property>
+        <property name="margin-start">12</property>
+        <property name="margin-bottom">12</property>
+        <property name="margin-end">12</property>
+        <style>
+          <class name="heading" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="Gjs_EmojiCategoryListWidget" id="emojisSection" />
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">Letters &amp; Symbols</property>
+        <property name="halign">start</property>
+        <property name="margin-top">12</property>
+        <property name="margin-start">12</property>
+        <property name="margin-bottom">12</property>
+        <property name="margin-end">12</property>
+        <style>
+          <class name="heading" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="Gjs_LetterCategoryListWidget" id="lettersSection" />
+    </child>
+    <style>
+      <class name="categories-list" />
+    </style>
+  </template>
+</interface>

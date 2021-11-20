@@ -172,7 +172,6 @@ const CategoryListWidget = GObject.registerClass({
 
         this.list = Gtk.ListBox.new();
         this._categories = categories;
-        this.populateCategoryList();
         this._lastSelectedRow = null;
         this._selectedCategory = null;
 
@@ -191,9 +190,6 @@ const CategoryListWidget = GObject.registerClass({
             }
         });
         this.set_child(this.list);
-    }
-
-    populateCategoryList() {
     }
 
     getCategoryList() {
@@ -224,6 +220,11 @@ const CategoryListWidget = GObject.registerClass({
 
 const LetterCategoryListWidget = GObject.registerClass({
 }, class LetterCategoryListWidget extends CategoryListWidget {
+    _init() {
+        super._init(LetterCategoryList);
+        this.populateCategoryList();
+    }
+
     _finishListEngines(sources, bus, res) {
         try {
             let engines = bus.list_engines_async_finish(res);
@@ -346,8 +347,8 @@ const LetterCategoryListWidget = GObject.registerClass({
 const EmojiCategoryListWidget = GObject.registerClass({
 
 }, class EmojiCategoryListWidget extends CategoryListWidget {
-    _init(categories) {
-        super._init(categories);
+    _init() {
+        super._init(EmojiCategoryList);
     }
 
     getCategory(name) {
@@ -358,14 +359,14 @@ const EmojiCategoryListWidget = GObject.registerClass({
 const RecentCategoryListWidget = GObject.registerClass({
 
 }, class RecentCategoryListWidget extends CategoryListWidget {
-    _init(categories) {
-        super._init(categories);
+    _init() {
         this.recentCategory = {
             name: 'recent',
             category: Gc.Category.NONE,
             title: N_('Recently Used'),
             icon_name: 'document-open-recent-symbolic',
         };
+        super._init([this.recentCategory]);
         this.recentRow = new CategoryListRowWidget(this.recentCategory);
         this.recentRow.add_css_class('category');
         this.recentRow.add_css_class('recent-category');
@@ -377,77 +378,45 @@ const RecentCategoryListWidget = GObject.registerClass({
     }
 });
 
-var CategoryListView = GObject.registerClass({
-}, class CategoryListView extends Gtk.Box {
+var Sidebar = GObject.registerClass({
+    Template: 'resource:///org/gnome/Characters/sidebar.ui',
+    InternalChildren: [
+        'recentSection', 'emojisSection', 'lettersSection'
+    ],
+}, class Sidebar extends Gtk.Box {
     _init() {
+        super._init();
         this._lastSelectedList = null;
-        super._init({
-            hexpand: true,
-            vexpand: true,
-            orientation: Gtk.Orientation.VERTICAL,
-        });
-        this.add_css_class('categories-list');
 
-        this._recentCategoryList = new RecentCategoryListWidget();
-        this._recentCategoryList.list.connect('row-selected', (list, row) => {
-            this._letterCategoryList.unselect();
-            this._emojiCategoryList.unselect();
-            this._lastSelectedList = this._recentCategoryList;
+        this._recentSection.list.connect('row-selected', (list, row) => {
+            this._lettersSection.unselect();
+            this._emojisSection.unselect();
+            this._lastSelectedList = this._recentSection;
             list.select_row(row);
         });
-        this.append(this._recentCategoryList)
-        this.append(new Gtk.Separator({orientation: Gtk.Orientation.HORIZONTAL}));
-        
-        let emojis_label = new Gtk.Label ({
-            label: MainCategories[0].title,
-            halign: Gtk.Align.START,
-            margin_top: 12,
-            margin_start: 12,
-            margin_bottom: 12,
-            margin_end: 12,
-        }); 
-        emojis_label.add_css_class("heading");
-        this.append(emojis_label);
-
-        this._emojiCategoryList = new EmojiCategoryListWidget(EmojiCategoryList);
-        this._emojiCategoryList.list.connect('row-selected', (list, row) => {
-            this._letterCategoryList.unselect();
-            this._recentCategoryList.unselect();
-            this._lastSelectedList = this._emojiCategoryList;
+        this._emojisSection.list.connect('row-selected', (list, row) => {
+            this._recentSection.unselect();
+            this._lettersSection.unselect();
+            this._lastSelectedList = this._emojisSection;
             list.select_row(row);
         });
-        this.append(this._emojiCategoryList);
 
-        let letters_label = new Gtk.Label ({
-            label: MainCategories[1].title,
-            halign: Gtk.Align.START,
-            margin_top: 12,
-            margin_start: 12,
-            margin_bottom: 12,
-            margin_end: 12,
-        });
-        letters_label.add_css_class("heading");
-        this.append(letters_label);
-
-        this._letterCategoryList = new LetterCategoryListWidget(LetterCategoryList);
-        this._letterCategoryList.list.connect('row-selected', (list, row) => {
-            this._emojiCategoryList.unselect();
-            this._recentCategoryList.unselect();
-            this._lastSelectedList = this._letterCategoryList;
+        this._lettersSection.list.connect('row-selected', (list, row) => {
+            this._emojisSection.unselect();
+            this._recentSection.unselect();
+            this._lastSelectedList = this._lettersSection;
             list.select_row(row);
         });
-        this.append(this._letterCategoryList);
-
     }
 
     getCategoryByName(name) {
         switch (name) {
             case 'emojis':
-                return this._emojiCategoryList
+                return this._emojisSection
             case 'recent':
-                return this._recentCategoryList
+                return this._recentSection
             default:
-                return this._letterCategoryList
+                return this._lettersSection
         }
     }
 

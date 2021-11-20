@@ -44,7 +44,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkBox" id="sidebar">
+              <object class="GtkBox">
                 <property name="hexpand">False</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
@@ -55,6 +55,15 @@
                       <object class="GtkSearchEntry" id="search-entry">
                         <property name="halign">fill</property>
                       </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="hexpand">false</property>
+                    <property name="hscrollbar-policy">never</property>
+                    <child>
+                      <object class="Gjs_Sidebar" id="sidebar" />
                     </child>
                   </object>
                 </child>

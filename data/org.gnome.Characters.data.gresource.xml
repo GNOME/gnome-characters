@@ -7,6 +7,7 @@
     <file preprocess="xml-stripblanks">characterlist.ui</file>
     <file preprocess="xml-stripblanks">shortcuts.ui</file>
     <file preprocess="xml-stripblanks">menu.ui</file>
+    <file preprocess="xml-stripblanks">sidebar.ui</file>
     <file>style.css</file>
   </gresource>
   <gresource prefix="/org/gnome/Characters/icons/scalable/categories">
