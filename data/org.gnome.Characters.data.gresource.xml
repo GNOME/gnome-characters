@@ -5,7 +5,7 @@
     <file preprocess="xml-stripblanks">mainwindow.ui</file>
     <file preprocess="xml-stripblanks">character.ui</file>
     <file preprocess="xml-stripblanks">characterlist.ui</file>
-    <file preprocess="xml-stripblanks">shortcuts.ui</file>
+    <file preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">shortcuts.ui</file>
     <file preprocess="xml-stripblanks">menu.ui</file>
     <file preprocess="xml-stripblanks">sidebar.ui</file>
     <file>style.css</file>

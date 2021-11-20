@@ -102,10 +102,6 @@ var MainWindow = GObject.registerClass({
         this._mainView = new MainView(this._sidebar);
 
         this._container.append(this._mainView);
-        
-        let builder = Gtk.Builder.new_from_resource('/org/gnome/Characters/shortcuts.ui');
-        let helpOverlay = builder.get_object("shortcuts");
-        this.set_help_overlay(helpOverlay);
 
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
