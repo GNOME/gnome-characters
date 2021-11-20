@@ -21,7 +21,6 @@ foreach script: scripts
 endforeach
 
 common_resource_data = files(
-  'params.js',
   'util.js'
 )
 

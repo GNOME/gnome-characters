@@ -14,7 +14,6 @@ src/characterDialog.js
 src/characterList.js
 src/main.js
 src/menu.js
-src/params.js
 src/searchProvider.js
 src/service.js
 src/util.js

@@ -23,7 +23,7 @@ const Gettext = imports.gettext;
 
 const Util = imports.util;
 
-const CategoryList = [
+var MainCategories = [
     {
         name: 'emojis',
         category: Gc.Category.EMOJI,
@@ -159,6 +159,13 @@ const CategoryListRowWidget = GObject.registerClass({
 });
 
 const CategoryListWidget = GObject.registerClass({
+    Properties: {
+        'selected-category': GObject.ParamSpec.string(
+            'selected-category',
+            'Current active category', 'Currently selected category',
+            GObject.ParamFlags.READWRITE,
+        ""),
+    },
 }, class CategoryListWidget extends Adw.Bin {
     _init(categories) {
         super._init({});
@@ -167,6 +174,7 @@ const CategoryListWidget = GObject.registerClass({
         this._categories = categories;
         this.populateCategoryList();
         this._lastSelectedRow = null;
+        this._selectedCategory = null;
 
         for (let index in this._categories) {
             let category = this._categories[index];
@@ -177,9 +185,8 @@ const CategoryListWidget = GObject.registerClass({
 
         this.list.connect('row-selected', (row) => {
             if (row != null && row.selectable) {
-                let toplevel = row.get_root();
-                let action = toplevel.lookup_action('category');
-                action.activate(new GLib.Variant('s', row.category.name));
+                this._selectedCategory = row.category.name;
+                this.notify('selected-category');
                 this._lastSelectedRow = row;
             }
         });
@@ -392,7 +399,7 @@ var CategoryListView = GObject.registerClass({
         this.append(new Gtk.Separator({orientation: Gtk.Orientation.HORIZONTAL}));
         
         let emojis_label = new Gtk.Label ({
-            label: CategoryList[0].title,
+            label: MainCategories[0].title,
             halign: Gtk.Align.START,
             margin_top: 12,
             margin_start: 12,
@@ -412,7 +419,7 @@ var CategoryListView = GObject.registerClass({
         this.append(this._emojiCategoryList);
 
         let letters_label = new Gtk.Label ({
-            label: CategoryList[1].title,
+            label: MainCategories[1].title,
             halign: Gtk.Align.START,
             margin_top: 12,
             margin_start: 12,
@@ -431,7 +438,6 @@ var CategoryListView = GObject.registerClass({
         });
         this.append(this._letterCategoryList);
 
-        this._categoryList = CategoryList.slice();
     }
 
     getCategoryByName(name) {
@@ -445,15 +451,10 @@ var CategoryListView = GObject.registerClass({
         }
     }
 
-    getCategoryList() {
-        return this._categoryList;
-    }
-
     get selectedList() {
         return this._lastSelectedList
     }
     
-
     restorePreviousSelection() {
         if (this._lastSelectedList) {
             this._lastSelectedList.restorePreviousSelection()

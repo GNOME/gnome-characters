@@ -18,8 +18,6 @@
 
 const {GLib, GObject, Gtk} = imports.gi;
 
-const Params = imports.params;
-
 var MenuPopover = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/menu.ui',
     InternalChildren: ['search-entry', 'font-listbox'],
@@ -35,9 +33,8 @@ var MenuPopover = GObject.registerClass({
         return row;
     }
 
-    _init(params) {
-        params = Params.fill(params, {});
-        super._init(params);
+    _init() {
+        super._init({});
         let row = this._createFontListRow(_("None"), 'None');
         this._font_listbox.append(row);
 

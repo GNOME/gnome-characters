@@ -3,7 +3,6 @@
   <gresource prefix="/org/gnome/Characters/BackgroundService/js">
     <file>service.js</file>
     <file>searchProvider.js</file>
-    <file>params.js</file>
     <file>util.js</file>
   </gresource>
 </gresources>

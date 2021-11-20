@@ -27,22 +27,15 @@
 const {Gc, Gdk, Gio, GObject, Gtk} = imports.gi;
 
 const Lang = imports.lang;
-const Params = imports.params;
 const System = imports.system;
 
 function initActions(actionMap, simpleActionEntries, context) {
-    simpleActionEntries.forEach(function(entry) {
-        let filtered = Params.filter(entry, { activate: null,
-                                              state_changed: null,
-                                              context: null });
-        let action = new Gio.SimpleAction(entry);
+    simpleActionEntries.forEach(({name, parameter_type, state, activate })=>  {
+        let action = new Gio.SimpleAction({name, parameter_type: parameter_type || null, state: state || null});
 
-        let context = filtered.context || actionMap;
-        if (filtered.activate)
-            action.connect('activate', filtered.activate.bind(context));
-        if (filtered.state_changed)
-            action.connect('state-changed', filtered.state_changed.bind(context));
-
+        context = context || actionMap;
+        if (activate)
+            action.connect('activate', activate.bind(context));
         actionMap.add_action(action);
     });
 }

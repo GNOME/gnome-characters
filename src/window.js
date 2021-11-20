@@ -26,11 +26,10 @@
 
 const {Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
-const Params = imports.params;
-const CategoryList = imports.categoryList;
-const Character = imports.characterDialog;
-const CharacterList = imports.characterList;
-const Menu = imports.menu;
+const {CategoryListView, MainCategories} = imports.categoryList;
+const {CharacterDialog} = imports.characterDialog;
+const {CharacterListView, FontFilter, RecentCharacterListView} = imports.characterList;
+const {MenuPopover} = imports.menu;
 const Gettext = imports.gettext;
 
 const Main = imports.main;
@@ -50,9 +49,8 @@ var MainWindow = GObject.registerClass({
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
     },
 }, class MainWindow extends Adw.ApplicationWindow {
-    _init(params) {
-        params = Params.fill(params, { title: GLib.get_application_name() });
-        super._init(params);
+    _init(application) {
+        super._init({ application, title: GLib.get_application_name() });
 
         this._searchActive = false;
         this._searchKeywords = [];
@@ -75,7 +73,8 @@ var MainWindow = GObject.registerClass({
                             parameter_type: new GLib.VariantType('s') },
                           { name: 'filter-font',
                             activate: this._filterFont,
-                            parameter_type: new GLib.VariantType('s') },
+                            parameter_type: new GLib.VariantType('s')
+                            },
                             { 
                                 name: 'show-primary-menu',
                                 activate: this._togglePrimaryMenu,
@@ -97,11 +96,10 @@ var MainWindow = GObject.registerClass({
             this._leaflet.navigate(Adw.NavigationDirection.BACK);
         });
 
-        this._menu_popover = new Menu.MenuPopover({});
+        this._menu_popover = new MenuPopover();
         this._menu_button.set_popover(this._menu_popover);
 
-        this._categoryListView =
-            new CategoryList.CategoryListView();
+        this._categoryListView = new CategoryListView();
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
             hexpand: false,
@@ -109,9 +107,7 @@ var MainWindow = GObject.registerClass({
         scroll.set_child(this._categoryListView);
         this._sidebar.append(scroll);
 
-        this._mainView = new MainView({
-            categoryListView: this._categoryListView
-        });
+        this._mainView = new MainView(this._categoryListView);
 
         this._container.append(this._mainView);
         
@@ -293,27 +289,24 @@ const MainView = GObject.registerClass({
         this._fontFilter.setFilterFont(this._filterFontFamily);
     }
 
-    _init(params) {
-        const filtered = Params.filter(params, { categoryListView: null });
-        params = Params.fill(params, {
+    _init(categoryView) {
+        super._init({
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
         });
-        super._init(params);
 
-        this._fontFilter = new CharacterList.FontFilter({});
+        this._fontFilter = new FontFilter();
         this._filterFontFamily = null;
         this._characterLists = {};
         this._recentCharacterLists = {};
-        this._categoryListView = filtered.categoryListView;
+        this._categoryListView = categoryView;
 
         let characterList;
-        let categories = this._categoryListView.getCategoryList();
         let recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
                                       hexpand: true, vexpand: false });
 
-        for (let i in categories) {
-            let category = categories[i];
+        for (let i in MainCategories) {
+            let category = MainCategories[i];
             let categoryList = this._categoryListView.getCategoryByName(category.name);
             let subcategories = categoryList.getCategoryList();
             for (let j in subcategories) {
@@ -362,9 +355,7 @@ const MainView = GObject.registerClass({
     }
 
     _createCharacterList(name, accessible_name) {
-        const characterList = new CharacterList.CharacterListView({
-            fontFilter: this._fontFilter,
-        });
+        const characterList = new CharacterListView(this._fontFilter);
         //characterList.get_accessible().accessible_name = accessible_name;
         characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
 
@@ -373,10 +364,7 @@ const MainView = GObject.registerClass({
     }
 
     _createRecentCharacterList(name, accessible_name, category) {
-        const characterList = new CharacterList.RecentCharacterListView({
-            fontFilter: this._fontFilter,
-            category: category
-        });
+        const characterList = new RecentCharacterListView(category, this._fontFilter);
         //characterList.get_accessible().accessible_name = accessible_name;
         characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
 
@@ -431,18 +419,10 @@ const MainView = GObject.registerClass({
     }
 
     _handleCharacterSelected(widget, uc) {
-        const dialog = new Character.CharacterDialog({
-            character: uc,
-            modal: true,
-            transient_for: this.get_toplevel(),
-            fontDescription: this._fontFilter.fontDescription
-        });
-
-        dialog.show();
+        const dialog = new CharacterDialog(uc, this._fontFilter.fontDescription);
+        dialog.set_modal(true);
+        dialog.set_transient_for(this.get_root());
         dialog.connect('character-copied', (widget, uc) => this._addToRecent(widget, uc));
-        dialog.connect('response', function(self, response_id) {
-            if (response_id == Gtk.ResponseType.CLOSE)
-                dialog.destroy();
-        });
+        dialog.show();
     }
 });

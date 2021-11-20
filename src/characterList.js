@@ -16,7 +16,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const Params = imports.params;
 const {Adw, Gc, Gdk, GLib, Gio,GObject,Gtk, Pango, PangoCairo} = imports.gi;
 
 const Cairo = imports.cairo;
@@ -38,15 +37,12 @@ function getCellSize(fontDescription) {
 
 const CharacterListRow = GObject.registerClass({
 }, class CharacterListRow extends GObject.Object {
-    _init(params) {
-        const filtered = Params.filter(params, { characters: null,
-                                               fontDescription: null,
-                                               overlayFontDescription: null });
-        params = Params.fill(params, {});
-        super._init(params);
-        this._characters = filtered.characters;
-        this._fontDescription = filtered.fontDescription;
-        this._overlayFontDescription = filtered.overlayFontDescription;
+    _init(characters, fontDescription, overlayFontDescription) {
+        super._init({});
+
+        this._characters = characters;
+        this._fontDescription = fontDescription;
+        this._overlayFontDescription = overlayFontDescription;
         this._styleManager = Adw.StyleManager.get_default();
     }
 
@@ -195,17 +191,15 @@ const CharacterListWidget = GObject.registerClass({
         'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
 }, class CharacterListWidget extends Gtk.DrawingArea {
-    _init(params) {
-        const filtered = Params.filter(params, {
-            fontDescription: null,
-            numRows: NUM_ROWS
+    _init(fontDescription, numRows) {
+        super._init({
+            hexpand: true,
+            vexpand: true,
         });
-        params = Params.fill(params, {});
-        super._init(params);
         this.add_css_class('character-list');
         this._cellsPerRow = CELLS_PER_ROW;
-        this._fontDescription = filtered.fontDescription;
-        this._numRows = filtered.numRows;
+        this._fontDescription = fontDescription;
+        this._numRows = numRows;
         this._characters = [];
         this._rows = [];
         /*this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
@@ -322,13 +316,10 @@ const CharacterListWidget = GObject.registerClass({
 
     _createCharacterListRow(characters) {
         var context = this.get_pango_context();
-        var fontDescription = context.get_font_description();
-        fontDescription.set_size(fontDescription.get_size() * 0.8);
-        let row = new CharacterListRow({
-            characters: characters,
-            fontDescription: this._fontDescription,
-            overlayFontDescription: fontDescription
-        });
+        var overlayFontDescription = context.get_font_description();
+        overlayFontDescription.set_size(fontDescription.get_size() * 0.8);
+
+        let row = new CharacterListRow(characters, this._fontDescription, overlayFontDescription);
         return row;
     }
 
@@ -373,6 +364,15 @@ var FontFilter = GObject.registerClass({
         'filter-set': { param_types: [] }
     },
 }, class FontFilter extends GObject.Object {
+    _init() {
+        super._init({});
+
+        this._fontDescription = null;
+        this._filterFontDescription = null;
+
+        Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
+    }
+
     get font() {
         return this._font;
     }
@@ -394,16 +394,6 @@ var FontFilter = GObject.registerClass({
         if (this._filterFontDescription)
             return this._filterFontDescription;
         return this._fontDescription;
-    }
-
-    _init(params) {
-        params = Params.fill(params, {});
-        super._init(params);
-
-        this._fontDescription = null;
-        this._filterFontDescription = null;
-
-        Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
     }
 
     setFilterFont(v) {
@@ -450,22 +440,14 @@ var CharacterListView = GObject.registerClass({
         'character-selected': { param_types: [ GObject.TYPE_STRING ] }
     },
 }, class CharacterListView extends Gtk.Stack {
-    _init(params) {
-        const filtered = Params.filter(params, {
-            fontFilter: null,
-        });
-        params = Params.fill(params, {
+    _init(fontFilter) {
+        super._init({
             hexpand: true, vexpand: true,
             transition_type: Gtk.StackTransitionType.CROSSFADE
         });
-        super._init(params);
 
-        this._fontFilter = filtered.fontFilter;
-        this._characterList = new CharacterListWidget({
-            hexpand: true,
-            vexpand: true,
-            fontDescription: this._fontFilter.fontDescription
-        });
+        this._fontFilter = fontFilter;
+        this._characterList = new CharacterListWidget(this._fontFilter.fontDescription, NUM_ROWS);
         this._characterList.connect('character-selected', (w, c) => this.emit('character-selected', c));
         let scroll = new Gtk.ScrolledWindow({
             hscrollbar_policy: Gtk.PolicyType.NEVER,
@@ -629,29 +611,19 @@ var RecentCharacterListView = GObject.registerClass({
         'character-selected': { param_types: [ GObject.TYPE_STRING ] },
     },
 }, class RecentCharacterListView extends Adw.Bin {
-    _init(params) {
-        const filtered = Params.filter(params, {
-            category: null,
-            fontFilter: null
-        });
-        params = Params.fill(params, {
+    _init(category, fontFilter) {
+        super._init({
             hexpand: true, vexpand: false
         });
-        super._init(params);
 
-        this._fontFilter = filtered.fontFilter;
-        this._characterList = new CharacterListWidget({
-            hexpand: true,
-            vexpand: true,
-            fontDescription: this._fontFilter.fontDescription,
-            numRows: 0
-        });
+        this._fontFilter = fontFilter;
+        this._characterList = new CharacterListWidget(this._fontFilter.fontDescription, 0);
         this._characterList.connect('character-selected', (w, c) => this.emit('character-selected', c));
         this.set_child(this._characterList);
 
         this._fontFilter.connect('filter-set', () => this._updateCharacterList());
 
-        this._category = filtered.category;
+        this._category = category;
         this._characters = [];
     }
 

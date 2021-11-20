@@ -39,7 +39,7 @@ pkg.require({
 const {GLib, Gio, GObject, Gtk, Adw} = imports.gi;
 
 const Util = imports.util;
-const Window = imports.window;
+const { MainWindow } = imports.window;
 
 var settings = null;
 var application_id = pkg.name;
@@ -60,7 +60,7 @@ var MyApplication = GObject.registerClass({
     }
 
     _onSearch (action, parameter) {
-        const window = new Window.MainWindow({ application: this });
+        const window = new MainWindow(this);
         window.setSearchKeywords(parameter.get_strv());
         window.show();
     }
@@ -89,7 +89,7 @@ var MyApplication = GObject.registerClass({
 
     vfunc_activate() {
         if (!this._appwindow) {
-            this._appwindow = new Window.MainWindow({ application: this });
+            this._appwindow = new MainWindow(this);
         }
 
         this._appwindow.present();

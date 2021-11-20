@@ -18,8 +18,6 @@
 
 const {Gc, GLib, Gio,GObject,Gtk, Pango} = imports.gi;
 
-const Params = imports.params;
-
 const Util = imports.util;
 
 var CharacterDialog = GObject.registerClass({
@@ -32,13 +30,12 @@ var CharacterDialog = GObject.registerClass({
                        'character-label', 'missing-label', 'detail-label',
                        'copy-button', 'copy-revealer', 'related-listbox'],
 }, class CharacterDialog extends Gtk.Dialog {
-    _init(params) {
-        const filtered = Params.filter(params, { character: null,
-                                               fontDescription: null });
-        params = Params.fill(params, { use_header_bar: true,
-                                       width_request: 400,
-                                       height_request: 400 });
-        super._init(params);
+    _init(character, fontDescription) {
+        super._init({
+            use_header_bar: true,
+            width_request: 400,
+            height_request: 400
+       });
 
         this._cancellable = new Gio.Cancellable();
 
@@ -57,8 +54,8 @@ var CharacterDialog = GObject.registerClass({
                     this._main_stack.visible_child_name = 'character';
             });
 
-        this._fontDescription = filtered.fontDescription;
-        this._setCharacter(filtered.character);
+        this._fontDescription = fontDescription;
+        this._setCharacter(character);
 
         this._copyRevealerTimeoutId = 0;
     }
