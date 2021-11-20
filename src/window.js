@@ -40,7 +40,7 @@ var MainWindow = GObject.registerClass({
     InternalChildren: [
         'main-headerbar', 'search-active-button',
         'search-bar', 'search-entry', 'back-button',
-        'menu-button', 'container', 'sidebar',
+        'menuPopover', 'container', 'sidebar',
         'leaflet'
     ],
     Properties: {
@@ -95,9 +95,6 @@ var MainWindow = GObject.registerClass({
         this._back_button.connect('clicked', () => {
             this._leaflet.navigate(Adw.NavigationDirection.BACK);
         });
-
-        this._menu_popover = new MenuPopover();
-        this._menu_button.set_popover(this._menu_popover);
 
         this._mainView = new MainView(this._sidebar);
 
@@ -165,7 +162,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _handleKeyPress(self, event) {
-        if (this._menu_popover.visible)
+        if (this._menuPopover.visible)
             return false;
         return this._search_bar.handle_event(event);
     }
@@ -235,7 +232,7 @@ var MainWindow = GObject.registerClass({
             family = null;
         this._mainView.filterFontFamily = family;
         this._updateTitle(this._mainView.visible_child.title);
-        this._menu_popover.hide();
+        this._menuPopover.hide();
     }
 
     _find() {
