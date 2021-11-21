@@ -95,6 +95,18 @@ var Sidebar = GObject.registerClass({
         'lettersCurrencyRow', 'lettersMathRow', 'lettersLatinRow',
     ],
 }, class Sidebar extends Adw.Bin {
+    _init() {
+        super._init({});
+
+        this.lastSelectedRow = null;
+    }
+
+    restorePreviousSelection() {
+        if (this.lastSelectedRow) {
+            this._list.select_row(this.lastSelectedRow);
+        }
+    }
+
     rowByName(name) {
         switch (name) {
         case 'smileys':

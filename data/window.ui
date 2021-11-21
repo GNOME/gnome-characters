@@ -142,25 +142,6 @@
                 </child>
                 <child>
                   <object class="GtkStackPage">
-                    <property name="name">recent</property>
-                    <property name="child">
-                      <object class="GtkScrolledWindow">
-                        <property name="hscrollbar-policy">never</property>
-                        <property name="hexpand">false</property>
-                        <child>
-                          <object class="GtkBox" id="recentBox">
-                            <property name="orientation">vertical</property>
-                            <property name="hexpand">true</property>
-                            <property name="vexpand">false</property>
-
-                          </object>
-                        </child>
-                      </object>
-                    </property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkStackPage">
                     <property name="name">character-list</property>
                     <property name="child">
                       <object class="GtkScrolledWindow">
@@ -177,7 +158,7 @@
                 </child>
                 <child>
                   <object class="GtkStackPage">
-                    <property name="name">unavailable</property>
+                    <property name="name">no-results</property>
                     <property name="child">
                       <object class="AdwStatusPage">
                         <property name="icon-name">system-search-symbolic</property>

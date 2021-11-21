@@ -39,6 +39,7 @@ const CharacterListRow = GObject.registerClass({
     _init(characters, fontDescription, overlayFontDescription) {
         super._init({});
 
+        this._baseGlyphRect = null;
         this._characters = characters;
         this._fontDescription = fontDescription;
         this._overlayFontDescription = overlayFontDescription;
@@ -172,12 +173,8 @@ const CharacterListRow = GObject.registerClass({
                   (cellRect.width - logicalRect.width / Pango.SCALE) / 2,
         cellRect.y - logicalRect.y / Pango.SCALE +
                   (cellRect.height - logicalRect.height / Pango.SCALE) / 2);
-        let textColor;
-        if (!this._styleManager.dark)
-            textColor = this._styleContext.get_color(Gtk.StateFlags.NORMAL);
-        else
-            textColor = this._styleContext.get_background_color(Gtk.StateFlags.NORMAL);
 
+        let textColor = this._styleContext.lookup_color('foreground_color')[1];
         Gdk.cairo_set_source_rgba(cr, textColor);
         PangoCairo.show_layout(cr, layout);
 
@@ -502,7 +499,6 @@ var CharactersView = GObject.registerClass({
     _updateCharacterList() {
         log('Updating characters list');
         const [fontDescription, characters] = this._fontFilter.filter(this, this._characters);
-        log(JSON.stringify(characters));
         this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
     }
@@ -560,6 +556,7 @@ var CharactersView = GObject.registerClass({
             flags: Gc.SearchFlag.WORD,
         });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
+        return this._characters.length;
     }
 
     searchByScripts(scripts) {

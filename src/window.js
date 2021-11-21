@@ -37,10 +37,10 @@ const Util = imports.util;
 var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/window.ui',
     InternalChildren: [
-        'main-headerbar', 'search-active-button',
+        'search-active-button',
         'search-bar', 'search-entry', 'back-button',
         'menuPopover', 'container', 'sidebar',
-        'leaflet', 'mainStack', 'recentBox', 'windowTitle',
+        'leaflet', 'mainStack', 'windowTitle',
         'charactersView',
     ],
     Properties: {
@@ -64,13 +64,18 @@ var MainWindow = GObject.registerClass({
         this._characterLists = {};
         this._recentCharacterLists = {};
         this._charactersView.setFontFilter(this._fontFilter);
-        this._charactersView.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
+        this._charactersView.connect('character-selected', (widget, uc) => {
+            this._handleCharacterSelected(widget, uc);
+        });
 
 
         this._sidebar.list.connect('row-selected', (sidebar, row) => {
-            this.setPage(row);
-            this._updateTitle(row.title);
-            this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
+            if (row) {
+                this._sidebar.lastSelectedRow = row;
+                this.setPage(row);
+                this._updateTitle(row.title);
+                this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
+            }
         });
 
         /* characterList = this._createCharacterList(
@@ -162,8 +167,7 @@ var MainWindow = GObject.registerClass({
         this._searchActive = v;
 
         if (this._searchActive) {
-            let categoryList = this._sidebar.selectedList.list;
-            categoryList.unselect_all();
+            this._sidebar.list.unselect_all();
             this._updateTitle(_('Search Result'));
         } else {
             this._sidebar.restorePreviousSelection();
@@ -277,13 +281,16 @@ var MainWindow = GObject.registerClass({
     }
 
     searchByKeywords(keywords) {
-        this._mainStack.visible_child_name = 'search-result';
-        this.visible_child.searchByKeywords(keywords);
+        let totalResults = this._charactersView.searchByKeywords(keywords);
+        if(totalResults === 0) {
+            this._mainStack.visible_child_name = 'no-results';
+        } else {
+            this._mainStack.visible_child_name = 'character-list';
+        }
     }
 
     cancelSearch() {
-        const characterList = this._mainStack.get_child_by_name('search-result');
-        characterList.cancelSearch();
+        this._charactersView.cancelSearch();
     }
 
     setPage(pageRow) {
