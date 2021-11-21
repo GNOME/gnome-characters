@@ -53,13 +53,14 @@ const CharacterListRow = GObject.registerClass({
         this._styleContext = styleContext;
         // Draw baseline.
         // FIXME: Pick the baseline color from CSS.
-        let fg_color = this._styleContext.lookup_color('accent_color');
-        cr.setSourceRGBA(114.0 / 255.0, 159.0 / 255.0, 207.0 / 255.0, 1.0);
+        let accent_color = this._styleContext.lookup_color('accent_color')[1];
+        Gdk.cairo_set_source_rgba(cr, accent_color);
         cr.setLineWidth(0.5);
         cr.moveTo(x, y + BASELINE_OFFSET * height);
         cr.relLineTo(width, 0);
         cr.stroke();
-        cr.setSourceRGBA(fg_color.red, fg_color.green, fg_color.blue, fg_color.alpha);
+        let fg_color = this._styleContext.get_color();
+        Gdk.cairo_set_source_rgba(cr, fg_color);
 
         // Draw characters.  Do centering and attach to the baseline.
         let cellSize = getCellSize(this._fontDescription);
