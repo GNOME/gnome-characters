@@ -1,3 +1,4 @@
+/* exported main settings */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (c) 2013 Giovanni Campagna <scampa.giovanni@gmail.com>
@@ -26,7 +27,7 @@
 
 pkg.initGettext();
 pkg.initFormat();
-pkg.require({ 
+pkg.require({
     'Gdk': '4.0',
     'Gio': '2.0',
     'GLib': '2.0',
@@ -36,73 +37,83 @@ pkg.require({
     'GnomeDesktop': '4.0',
 });
 
-const {Gc, GLib, Gio, GObject, Gtk, Adw} = imports.gi;
+const { GLib, Gio, GObject, Adw } = imports.gi;
 
-const Util = imports.util;
+const { CharactersView } = imports.charactersView;
+const { Sidebar } = imports.categoryList;
+const { MenuPopover } = imports.menu;
 const { MainWindow } = imports.window;
 
+const Util = imports.util;
+
 var settings = null;
-var application_id = pkg.name;
+var applicationId = pkg.name;
 
 var MyApplication = GObject.registerClass({
-},class MyApplication extends Adw.Application {
-    _init () {
+}, class MyApplication extends Adw.Application {
+    _init() {
         super._init({
-            application_id: application_id,
+            application_id: applicationId,
             flags: Gio.ApplicationFlags.FLAGS_NONE,
             resource_base_path: '/org/gnome/Characters',
         });
         GLib.set_application_name(_('Characters'));
     }
 
-    _onQuit () {
+    _onQuit() {
         this.quit();
     }
 
-    _onSearch (action, parameter) {
+    _onSearch(action, parameter) {
         const window = new MainWindow(this);
         window.setSearchKeywords(parameter.get_strv());
         window.show();
     }
 
-    vfunc_startup () {
+    vfunc_startup() {
         super.vfunc_startup();
 
         this.get_style_manager().set_color_scheme(Adw.ColorScheme.PREFER_LIGHT);
 
-        Util.initActions(this,
-                         [{ name: 'quit',
-                            activate: this._onQuit },
-                          { name: 'search',
-                            activate: this._onSearch,
-                            parameter_type: new GLib.VariantType('as') }]);
+        Util.initActions(this, [
+            { name: 'quit', activate: this._onQuit },
+            {
+                name: 'search',
+                activate: this._onSearch,
+                parameterType: new GLib.VariantType('as'),
+            },
+        ]);
         this.set_accels_for_action('app.quit', ['<Primary>q']);
         this.set_accels_for_action('win.find', ['<Primary>f']);
         this.set_accels_for_action('win.show-primary-menu', ['F10']);
         this.set_accels_for_action('win.show-help-overlay', ['<Primary>question']);
 
         settings = Util.getSettings('org.gnome.Characters',
-                                    '/org/gnome/Characters/');
+            '/org/gnome/Characters/');
 
-        log("Characters Application started");
+        log('Characters Application started');
     }
 
     vfunc_activate() {
-        if (!this._appwindow) {
+        if (!this._appwindow)
             this._appwindow = new MainWindow(this);
-        }
+
 
         this._appwindow.present();
-        log("Characters Application activated");
+        log('Characters Application activated');
     }
 
     vfunc_shutdown() {
-        log("Characters Application exiting");
+        log('Characters Application exiting');
 
         super.vfunc_shutdown();
     }
 });
 
 function main(argv) {
-    return (new MyApplication()).run(argv);
+    GObject.type_ensure(CharactersView.$gtype);
+    GObject.type_ensure(Sidebar.$gtype);
+    GObject.type_ensure(MenuPopover.$gtype);
+
+    return new MyApplication().run(argv);
 }

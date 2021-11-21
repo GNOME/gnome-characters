@@ -1,3 +1,4 @@
+/* exported CategoryListRowWidget Sidebar */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (C) 2014-2017  Daiki Ueno <dueno@src.gnome.org>
@@ -17,10 +18,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
-const {Adw, Gc, GLib, GObject, Gtk, GnomeDesktop} = imports.gi;
-
-const Gettext = imports.gettext;
-
+const { Adw, Gc, GObject, Gtk, GnomeDesktop } = imports.gi;
 const Util = imports.util;
 
 const CategoryListRowWidget = GObject.registerClass({
@@ -46,22 +44,22 @@ const CategoryListRowWidget = GObject.registerClass({
         ),
     },
 }, class CategoryListRowWidget extends Gtk.ListBoxRow {
-    _init () {
+    _init() {
         super._init();
-        /*this.get_accessible().accessible_name =
+        /* this.get_accessible().accessible_name =
             _('%s Category List Row').format(category.title);*/
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.set_child(hbox);
         let image = Gtk.Image.new();
-        this.bind_property("icon-name", image, "icon-name",
-        GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE);
+        this.bind_property('icon-name', image, 'icon-name',
+            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE);
         image.set_icon_size(Gtk.IconSize.LARGE_TOOLBAR);
         image.add_css_class('category-icon');
         hbox.append(image);
 
         let label = new Gtk.Label({ halign: Gtk.Align.START });
-        this.bind_property("title", label, "label",GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE);
+        this.bind_property('title', label, 'label', GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE);
         label.add_css_class('category-label');
         hbox.append(label);
 
@@ -97,45 +95,41 @@ var Sidebar = GObject.registerClass({
         'lettersCurrencyRow', 'lettersMathRow', 'lettersLatinRow',
     ],
 }, class Sidebar extends Adw.Bin {
-    _init() {
-        super._init();
-    }
-
     rowByName(name) {
-        switch(name) {
-            case 'smileys':
-                return this._emojiSmileysRow;
-            case 'animals':
-                return this._emojiAnimalsRow;
-            case 'food':
-                return this._emojiFoodRow;
-            case 'activities':
-                return this._emojiActivitesRow;
-            case 'travel':
-                return this._emojiTravelRow;
-            case 'objects':
-                return this._emojiObjectsRow;
-            case 'symbols':
-                return this._emojiSymbolsRow;
-            case 'flags':
-                return this._emojiFlagsRow;
-            case 'punctuation':
-                return this._lettersPunctuationRow;
-            case 'arrows':
-                return this._lettersArrowsRow;
-            case 'bullets':
-                return this._lettersBulletsRow;
-            case 'pictures':
-                return this._lettersPicturesRow;
-            case 'currency':
-                return this._lettersCurrencyRow;
-            case 'math':
-                return this._lettersMathRow;
-            case 'latin':
-                return this._lettersLatinRow;
-            default:
-                return this._recentRow;
-       }
+        switch (name) {
+        case 'smileys':
+            return this._emojiSmileysRow;
+        case 'animals':
+            return this._emojiAnimalsRow;
+        case 'food':
+            return this._emojiFoodRow;
+        case 'activities':
+            return this._emojiActivitesRow;
+        case 'travel':
+            return this._emojiTravelRow;
+        case 'objects':
+            return this._emojiObjectsRow;
+        case 'symbols':
+            return this._emojiSymbolsRow;
+        case 'flags':
+            return this._emojiFlagsRow;
+        case 'punctuation':
+            return this._lettersPunctuationRow;
+        case 'arrows':
+            return this._lettersArrowsRow;
+        case 'bullets':
+            return this._lettersBulletsRow;
+        case 'pictures':
+            return this._lettersPicturesRow;
+        case 'currency':
+            return this._lettersCurrencyRow;
+        case 'math':
+            return this._lettersMathRow;
+        case 'latin':
+            return this._lettersLatinRow;
+        default:
+            return this._recentRow;
+        }
     }
 
     selectRowByName(name) {
@@ -154,7 +148,7 @@ var Sidebar = GObject.registerClass({
                 for (let j in engines) {
                     let engine = engines[j];
                     let language = engine.get_language();
-                    if (language != null)
+                    if (language !== null)
                         this._ibusLanguageList[engine.get_name()] = language;
                 }
             }
@@ -165,7 +159,7 @@ var Sidebar = GObject.registerClass({
     }
 
     _ensureIBusLanguageList(sources) {
-        if (this._ibusLanguageList != null)
+        if (this._ibusLanguageList !== null)
             return;
 
         this._ibusLanguageList = {};
@@ -182,9 +176,12 @@ var Sidebar = GObject.registerClass({
         ibus.init();
         let bus = new ibus.Bus();
         if (bus.is_connected()) {
-            bus.list_engines_async(-1, null, (sources, bus, res) => this._finishListEngines(sources, bus, res));
-        } else
+            bus.list_engines_async(-1, null, (sources_, bus_, res) => {
+                this._finishListEngines(sources_, bus_, res);
+            });
+        } else {
             this._finishBuildScriptList(sources);
+        }
     }
 
     _finishBuildScriptList(sources) {
@@ -214,7 +211,7 @@ var Sidebar = GObject.registerClass({
         let allScripts = [];
         for (let i in languages) {
             let language = GnomeDesktop.normalize_locale(languages[i]);
-            if (language == null)
+            if (language === null)
                 continue;
             let scripts = Gc.get_scripts_for_language(languages[i]);
             for (let j in scripts) {
@@ -252,11 +249,11 @@ var Sidebar = GObject.registerClass({
         //
         let settings =
             Util.getSettings('org.gnome.desktop.input-sources',
-                             '/org/gnome/desktop/input-sources/');
+                '/org/gnome/desktop/input-sources/');
         if (settings) {
             let sources = settings.get_value('sources').deep_unpack();
-            let hasIBus = sources.some(function(current, index, array) {
-                return current[0] == 'ibus';
+            let hasIBus = sources.some((current, _index, _array) => {
+                return current[0] === 'ibus';
             });
             if (hasIBus)
                 this._ensureIBusLanguageList(sources);

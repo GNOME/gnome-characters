@@ -13,7 +13,7 @@ scripts = [
 foreach script: scripts
   configure_file(
     input: script + '.in',
-    output: script,
+    output: '@BASENAME@',
     configuration: script_conf,
     install: true,
     install_dir: characters_pkgdatadir

@@ -1,3 +1,4 @@
+/* exported CharactersView FontFilter RecentCharacterListView */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (C) 2014-2015  Daiki Ueno <dueno@src.gnome.org>
@@ -16,9 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const {Adw, Gc, Gdk, GLib, Gio,GObject,Gtk, Pango, Graphene, PangoCairo} = imports.gi;
-
-const Cairo = imports.cairo;
+const { Adw, Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene, PangoCairo } = imports.gi;
 
 const Main = imports.main;
 const Util = imports.util;
@@ -30,7 +29,7 @@ const NUM_COLUMNS = 3;
 const CELL_SIZE = 50;
 
 function getCellSize(fontDescription) {
-    if (fontDescription == null || fontDescription.get_size() == 0)
+    if (fontDescription === null || fontDescription.get_size() === 0)
         return CELL_SIZE;
     return fontDescription.get_size() * 2 / Pango.SCALE;
 }
@@ -53,33 +52,33 @@ const CharacterListRow = GObject.registerClass({
         this._styleContext = styleContext;
         // Draw baseline.
         // FIXME: Pick the baseline color from CSS.
-        let accent_color = this._styleContext.lookup_color('accent_color')[1];
-        Gdk.cairo_set_source_rgba(cr, accent_color);
+        let accentColor = this._styleContext.lookup_color('accent_color')[1];
+        Gdk.cairo_set_source_rgba(cr, accentColor);
         cr.setLineWidth(0.5);
         cr.moveTo(x, y + BASELINE_OFFSET * height);
         cr.relLineTo(width, 0);
         cr.stroke();
-        let fg_color = this._styleContext.get_color();
-        Gdk.cairo_set_source_rgba(cr, fg_color);
+        let fgColor = this._styleContext.get_color();
+        Gdk.cairo_set_source_rgba(cr, fgColor);
 
         // Draw characters.  Do centering and attach to the baseline.
         let cellSize = getCellSize(this._fontDescription);
         for (let i in this._characters) {
             var cellRect = new Gdk.Rectangle({ x: x + cellSize * i,
-                                               y: y,
-                                               width: cellSize,
-                                               height: cellSize });
+                y,
+                width: cellSize,
+                height: cellSize });
             if (Gc.character_is_invisible(this._characters[i])) {
                 this._drawBoundingBox(cr, cellRect, this._characters[i]);
                 this._drawCharacterName(cr, cellRect, this._characters[i]);
             } else {
                 layout.set_text(this._characters[i], -1);
-                if (layout.get_unknown_glyphs_count () == 0) {
+                if (layout.get_unknown_glyphs_count() === 0) {
                     let layoutBaseline = layout.get_baseline();
-                    let [logicalRect, inkRect] = layout.get_extents();
+                    let logicalRect = layout.get_extents()[0];
                     cr.moveTo(x + cellSize * i - logicalRect.x / Pango.SCALE +
                               (cellSize - logicalRect.width / Pango.SCALE) / 2,
-                              y + BASELINE_OFFSET * height -
+                    y + BASELINE_OFFSET * height -
                               layoutBaseline / Pango.SCALE);
                     PangoCairo.show_layout(cr, layout);
                 } else {
@@ -97,17 +96,17 @@ const CharacterListRow = GObject.registerClass({
 
         let shapeRect;
         let layoutBaseline;
-        if (layout.get_unknown_glyphs_count() == 0) {
-            let [logicalRect, inkRect] = layout.get_extents();
+        if (layout.get_unknown_glyphs_count() === 0) {
+            let inkRect = layout.get_extents()[1];
             layoutBaseline = layout.get_baseline();
             shapeRect = inkRect;
         } else {
             // If the character cannot be rendered with the current
             // font settings, show a rectangle calculated from the
             // base glyphs ('AA').
-            if (this._baseGlyphRect == null) {
+            if (this._baseGlyphRect === null) {
                 layout.set_text('AA', -1);
-                let [baseLogicalRect, baseInkRect] = layout.get_extents();
+                let baseInkRect = layout.get_extents()[1];
                 this._baseGlyphLayoutBaseline = layout.get_baseline();
                 this._baseGlyphRect = baseInkRect;
             }
@@ -116,9 +115,9 @@ const CharacterListRow = GObject.registerClass({
                 x: this._baseGlyphRect.x,
                 y: this._baseGlyphRect.y,
                 width: this._baseGlyphRect.width,
-                height: this._baseGlyphRect.height
+                height: this._baseGlyphRect.height,
             });
-            let characterWidth = Gc.character_width (uc);
+            let characterWidth = Gc.character_width(uc);
             if (characterWidth > 1)
                 shapeRect.width *= characterWidth;
         }
@@ -127,8 +126,8 @@ const CharacterListRow = GObject.registerClass({
             (cellRect.width - shapeRect.width / Pango.SCALE) / 2;
         shapeRect.y = cellRect.y + BASELINE_OFFSET * cellRect.height -
             layoutBaseline / Pango.SCALE;
-        shapeRect.width = shapeRect.width / Pango.SCALE;
-        shapeRect.height = shapeRect.height / Pango.SCALE;
+        shapeRect.width /= Pango.SCALE;
+        shapeRect.height /= Pango.SCALE;
         return shapeRect;
     }
 
@@ -144,9 +143,9 @@ const CharacterListRow = GObject.registerClass({
 
         let borderWidth = 1;
         cr.rectangle(shapeRect.x - borderWidth * 2,
-                     shapeRect.y - borderWidth * 2,
-                     shapeRect.width + borderWidth * 2,
-                     shapeRect.height + borderWidth * 2);
+            shapeRect.y - borderWidth * 2,
+            shapeRect.width + borderWidth * 2,
+            shapeRect.height + borderWidth * 2);
         cr.setSourceRGBA(239.0 / 255.0, 239.0 / 255.0, 239.0 / 255.0, 1.0);
         cr.fill();
 
@@ -166,20 +165,20 @@ const CharacterListRow = GObject.registerClass({
         layout.set_alignment(Pango.Alignment.CENTER);
         layout.set_font_description(this._overlayFontDescription);
         let name = Gc.character_name(uc);
-        let text = name == null ? _('Unassigned') : Util.capitalize(name);
+        let text = name === null ? _('Unassigned') : Util.capitalize(name);
         layout.set_text(text, -1);
-        let [logicalRect, inkRect] = layout.get_extents();
+        let logicalRect = layout.get_extents()[0];
         cr.moveTo(cellRect.x - logicalRect.x / Pango.SCALE +
                   (cellRect.width - logicalRect.width / Pango.SCALE) / 2,
-                  cellRect.y - logicalRect.y / Pango.SCALE +
+        cellRect.y - logicalRect.y / Pango.SCALE +
                   (cellRect.height - logicalRect.height / Pango.SCALE) / 2);
-        let text_color;
-        if (!this._styleManager.dark) {
-            text_color = this._styleContext.get_color(Gtk.StateFlags.NORMAL);
-        } else {
-            text_color = this._styleContext.get_background_color(Gtk.StateFlags.NORMAL);
-        }
-        cr.setSourceRGBA(text_color.red, text_color.green, text_color.blue, text_color.alpha);
+        let textColor;
+        if (!this._styleManager.dark)
+            textColor = this._styleContext.get_color(Gtk.StateFlags.NORMAL);
+        else
+            textColor = this._styleContext.get_background_color(Gtk.StateFlags.NORMAL);
+
+        Gdk.cairo_set_source_rgba(cr, textColor);
         PangoCairo.show_layout(cr, layout);
 
         cr.restore();
@@ -188,7 +187,7 @@ const CharacterListRow = GObject.registerClass({
 
 const CharacterListWidget = GObject.registerClass({
     Signals: {
-        'character-selected': { param_types: [ GObject.TYPE_STRING ] }
+        'character-selected': { param_types: [GObject.TYPE_STRING] },
     },
 }, class CharacterListWidget extends Gtk.Widget {
     _init(numRows) {
@@ -201,7 +200,7 @@ const CharacterListWidget = GObject.registerClass({
         this._numRows = numRows;
         this._characters = [];
         this._rows = [];
-        /*this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
+        /* this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
                         Gdk.EventMask.BUTTON_RELEASE_MASK);
         this.drag_source_set(Gdk.ModifierType.BUTTON1_MASK,
                              null,
@@ -226,7 +225,7 @@ const CharacterListWidget = GObject.registerClass({
     }
 
     vfunc_drag_data_get(context, data, info, time) {
-        if (this._character != null)
+        if (this._character !== null)
             data.set_text(this._character, -1);
     }
 
@@ -250,8 +249,8 @@ const CharacterListWidget = GObject.registerClass({
     }
     */
 
-    vfunc_measure(orientation, for_size) {
-        if(orientation === Gtk.Orientation.HORIZONTAL) {
+    vfunc_measure(orientation, _forSize) {
+        if (orientation === Gtk.Orientation.HORIZONTAL) {
             let cellSize = getCellSize(this._fontDescription);
             let minWidth = NUM_COLUMNS * cellSize;
             let natWidth = Math.max(this._cellsPerRow, NUM_COLUMNS) * cellSize;
@@ -259,7 +258,7 @@ const CharacterListWidget = GObject.registerClass({
         } else {
             let height = Math.max(this._rows.length, this._numRows) *
                 getCellSize(this._fontDescription);
-            return [height, height, -1 , -1];
+            return [height, height, -1, -1];
         }
     }
 
@@ -267,8 +266,8 @@ const CharacterListWidget = GObject.registerClass({
         // Clear the canvas.
         let allocation = this.get_allocation();
         let rect = new Graphene.Rect({
-            origin: new Graphene.Point({x: 0, y:0}),
-            size: new Graphene.Size({width: allocation.width, height: allocation.height})
+            origin: new Graphene.Point({ x: 0, y: 0 }),
+            size: new Graphene.Size({ width: allocation.width, height: allocation.height }),
         });
         let cr = snapshot.append_cairo(rect);
 
@@ -281,13 +280,13 @@ const CharacterListWidget = GObject.registerClass({
         // https://bugzilla.gnome.org/show_bug.cgi?id=700592
 
         // Redraw rows within the clipped region.
-        let [x1, y1, x2, y2] = cr.clipExtents();
+        let [_, y1, __, y2] = cr.clipExtents();
         let cellSize = getCellSize(this._fontDescription);
         let start = Math.max(0, Math.floor(y1 / cellSize));
         let end = Math.min(this._rows.length, Math.ceil(y2 / cellSize));
         for (let index = start; index < end; index++) {
             this._rows[index].draw(cr, 0, index * cellSize,
-                                   allocation.width, cellSize, context);
+                allocation.width, cellSize, context);
         }
     }
 
@@ -300,7 +299,7 @@ const CharacterListWidget = GObject.registerClass({
 
         let cellSize = getCellSize(this._fontDescription);
         let cellsPerRow = Math.floor(width / cellSize);
-        if (cellsPerRow != this._cellsPerRow) {
+        if (cellsPerRow !== this._cellsPerRow) {
             // Reflow if the number of cells per row has changed.
             this._cellsPerRow = cellsPerRow;
             this.setCharacters(this._characters);
@@ -326,14 +325,14 @@ const CharacterListWidget = GObject.registerClass({
 
         let start = 0, stop = 1;
         for (; stop <= characters.length; stop++) {
-            if (stop % this._cellsPerRow == 0) {
+            if (stop % this._cellsPerRow === 0) {
                 let rowCharacters = characters.slice(start, stop);
                 let row = this._createCharacterListRow(rowCharacters);
                 this._rows.push(row);
                 start = stop;
             }
         }
-        if (start != stop - 1) {
+        if (start !== stop - 1) {
             let rowCharacters = characters.slice(start, stop);
             let row = this._createCharacterListRow(rowCharacters);
             this._rows.push(row);
@@ -351,10 +350,10 @@ var FontFilter = GObject.registerClass({
         'font': GObject.ParamSpec.string(
             'font', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            'Cantarell 50')
+            'Cantarell 50'),
     },
     Signals: {
-        'filter-set': { param_types: [] }
+        'filter-set': { param_types: [] },
     },
 }, class FontFilter extends GObject.Object {
     _init() {
@@ -372,7 +371,7 @@ var FontFilter = GObject.registerClass({
 
     set font(v) {
         let fontDescription = Pango.FontDescription.from_string(v);
-        if (fontDescription.get_size() == 0)
+        if (fontDescription.get_size() === 0)
             fontDescription.set_size(CELL_SIZE * Pango.SCALE);
 
         if (this._fontDescription &&
@@ -391,23 +390,23 @@ var FontFilter = GObject.registerClass({
 
     setFilterFont(v) {
         let fontDescription;
-        if (v == null) {
+        if (v === null) {
             fontDescription = null;
         } else {
             fontDescription = Pango.FontDescription.from_string(v);
             fontDescription.set_size(this._fontDescription.get_size());
         }
 
-        if ((this._filterFontDescription != null && fontDescription == null) ||
-            (this._filterFontDescription == null && fontDescription != null) ||
-            (this._filterFontDescription != null && fontDescription != null &&
-             !fontDescription.equal(this._filterFontDescription))) {
+        if (this._filterFontDescription !== null && fontDescription === null ||
+            this._filterFontDescription === null && fontDescription !== null ||
+            this._filterFontDescription !== null && fontDescription !== null &&
+             !fontDescription.equal(this._filterFontDescription)) {
             this._filterFontDescription = fontDescription;
             this.emit('filter-set');
         }
     }
 
-    apply(widget, characters) {
+    filter(widget, characters) {
         let fontDescription = this._fontDescription;
         if (this._filterFontDescription) {
             let context = widget.get_pango_context();
@@ -429,7 +428,7 @@ var FontFilter = GObject.registerClass({
 var CharactersView = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/characters_view.ui',
     Signals: {
-        'character-selected': { param_types: [ GObject.TYPE_STRING ] }
+        'character-selected': { param_types: [GObject.TYPE_STRING] },
     },
     Properties: {
         'model': GObject.ParamSpec.object(
@@ -438,7 +437,7 @@ var CharactersView = GObject.registerClass({
             GObject.ParamFlags.READWRITE,
             Gio.ListModel.$gtype,
         ),
-    }
+    },
 }, class CharactersView extends Adw.Bin {
     _init() {
         super._init();
@@ -474,16 +473,16 @@ var CharactersView = GObject.registerClass({
         this._stopSpinner();
         this._spinnerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
-                                 //this._loading_spinner.start();
-                                 //this.visible_child_name = 'loading';
-                             });
+                // this._loading_spinner.start();
+                // this.visible_child_name = 'loading';
+            });
     }
 
     _stopSpinner() {
         if (this._spinnerTimeoutId > 0) {
             GLib.source_remove(this._spinnerTimeoutId);
             this._spinnerTimeoutId = 0;
-            //this._loading_spinner.stop();
+            // this._loading_spinner.stop();
         }
     }
 
@@ -502,7 +501,7 @@ var CharactersView = GObject.registerClass({
 
     _updateCharacterList() {
         log('Updating characters list');
-        const [fontDescription, characters] = this._fontFilter.apply(this, this._characters);
+        const [fontDescription, characters] = this._fontFilter.filter(this, this._characters);
         log(JSON.stringify(characters));
         this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
@@ -531,41 +530,41 @@ var CharactersView = GObject.registerClass({
 
     _searchWithContext(context, count) {
         this._startSpinner();
-        context.search(count, this._cancellable, (context, res, user_data) => {
-                this._stopSpinner();
-                try {
-                    let result = context.search_finish(res);
-                    this._addSearchResult(result);
-                } catch (e) {
-                    log(`Failed to search: ${e.message}`);
-                }
-            });
+        context.search(count, this._cancellable, (ctx, res) => {
+            this._stopSpinner();
+            try {
+                let result = ctx.search_finish(res);
+                this._addSearchResult(result);
+            } catch (e) {
+                log(`Failed to search: ${e.message}`);
+            }
+        });
     }
 
     searchByCategory(category) {
         this._characters = [];
-        /*if ('scripts' in category) {
+        /* if ('scripts' in category) {
             this.searchByScripts(category.scripts);
             return;
         }*/
 
         let criteria = Gc.SearchCriteria.new_category(category);
-        this._searchContext = new Gc.SearchContext({ criteria: criteria });
+        this._searchContext = new Gc.SearchContext({ criteria });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
     }
 
     searchByKeywords(keywords) {
         const criteria = Gc.SearchCriteria.new_keywords(keywords);
         this._searchContext = new Gc.SearchContext({
-            criteria: criteria,
-            flags: Gc.SearchFlag.WORD
+            criteria,
+            flags: Gc.SearchFlag.WORD,
         });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
     }
 
     searchByScripts(scripts) {
         var criteria = Gc.SearchCriteria.new_scripts(scripts);
-        this._searchContext = new Gc.SearchContext({ criteria: criteria });
+        this._searchContext = new Gc.SearchContext({ criteria });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
     }
 
@@ -577,12 +576,12 @@ var CharactersView = GObject.registerClass({
 
 var RecentCharacterListView = GObject.registerClass({
     Signals: {
-        'character-selected': { param_types: [ GObject.TYPE_STRING ] },
+        'character-selected': { param_types: [GObject.TYPE_STRING] },
     },
 }, class RecentCharacterListView extends Adw.Bin {
     _init(category) {
         super._init({
-            hexpand: true, vexpand: false
+            hexpand: true, vexpand: false,
         });
 
         this._characterList = new CharacterListWidget(0);
@@ -606,7 +605,7 @@ var RecentCharacterListView = GObject.registerClass({
     }
 
     _updateCharacterList() {
-        const [fontDescription, characters] = this._fontFilter.apply(this, this._characters);
+        const [fontDescription, characters] = this._fontFilter.filter(this, this._characters);
         this._characterList.setFontDescription(fontDescription);
         this._characterList.setCharacters(characters);
     }

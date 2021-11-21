@@ -3,5 +3,5 @@ imports.package.init({ name: "org.gnome.Characters",
                        version: "@PACKAGE_VERSION@",
                        prefix: "@prefix@",
                        libdir: "@libdir@" });
-imports.main.application_id = "@appid@";
+imports.main.applicationId = "@appid@";
 imports.package.run(imports.main);

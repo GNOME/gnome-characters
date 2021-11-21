@@ -1,3 +1,4 @@
+/* exported capitalize getSettings initActions searchResultToArray toCodePoint */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (c) 2013 Giovanni Campagna <scampa.giovanni@gmail.com>
@@ -24,14 +25,17 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const {Gc, Gdk, Gio, GObject, Gtk} = imports.gi;
+const { Gc, Gio } = imports.gi;
 
-const Lang = imports.lang;
 const System = imports.system;
 
 function initActions(actionMap, simpleActionEntries, context) {
-    simpleActionEntries.forEach(({name, parameter_type, state, activate })=>  {
-        let action = new Gio.SimpleAction({name, parameter_type: parameter_type || null, state: state || null});
+    simpleActionEntries.forEach(({ name, parameterType, state, activate }) =>  {
+        let action = new Gio.SimpleAction({
+            name,
+            parameter_type: parameterType || null,
+            state: state || null,
+        });
 
         context = context || actionMap;
         if (activate)
@@ -48,37 +52,38 @@ function getSettings(schemaId, path) {
     if (!pkg.moduledir.startsWith('resource://')) {
         // Running from the source tree
         schemaSource = GioSSS.new_from_directory(pkg.pkgdatadir,
-                                                 GioSSS.get_default(),
-                                                 false);
+            GioSSS.get_default(),
+            false);
     } else {
         schemaSource = GioSSS.get_default();
     }
 
     let schemaObj = schemaSource.lookup(schemaId, true);
     if (!schemaObj) {
-        log('Missing GSettings schema ' + schemaId);
+        log(`Missing GSettings schema ${schemaId}`);
         System.exit(1);
     }
 
-    if (path === undefined)
+    if (path === undefined) {
         return new Gio.Settings({ settings_schema: schemaObj });
-    else
+    } else {
         return new Gio.Settings({ settings_schema: schemaObj,
-                                  path: path });
+            path });
+    }
 }
 
 function capitalizeWord(w) {
     if (w.length > 0)
-        return w[0].toUpperCase() + w.slice(1).toLowerCase()
+        return w[0].toUpperCase() + w.slice(1).toLowerCase();
     return w;
 }
 
 function capitalize(s) {
-    return s.split(/\s+/).map(function(w) {
-        let acronyms = ["CJK"];
+    return s.split(/\s+/).map(w => {
+        let acronyms = ['CJK'];
         if (acronyms.indexOf(w) > -1)
             return w;
-        let prefixes = ["IDEOGRAPH-", "SELECTOR-"];
+        let prefixes = ['IDEOGRAPH-', 'SELECTOR-'];
         for (let index in prefixes) {
             let prefix = prefixes[index];
             if (w.startsWith(prefix))
@@ -101,8 +106,8 @@ function toCodePoint(s) {
 
 function searchResultToArray(result) {
     let characters = [];
-    for (let index = 0; index < result.len; index++) {
+    for (let index = 0; index < result.len; index++)
         characters.push(Gc.search_result_get(result, index));
-    }
+
     return characters;
 }

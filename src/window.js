@@ -1,3 +1,4 @@
+/* exported MainWindow */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (c) 2013 Giovanni Campagna <scampa.giovanni@gmail.com>
@@ -24,12 +25,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const {Adw, Gio, GLib, GObject, Gtk } = imports.gi;
+const { Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
-const {Sidebar, MainCategories} = imports.categoryList;
-const {CharacterDialog} = imports.characterDialog;
-const {CharactersView, FontFilter, RecentCharacterListView} = imports.charactersView;
-const {MenuPopover} = imports.menu;
+const { CharacterDialog } = imports.characterDialog;
+const { FontFilter, RecentCharacterListView } = imports.charactersView;
 const Gettext = imports.gettext;
 
 const Main = imports.main;
@@ -51,7 +50,7 @@ var MainWindow = GObject.registerClass({
         'max-recent-characters': GObject.ParamSpec.uint(
             'max-recent-characters', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            0, GLib.MAXUINT32, 100)
+            0, GLib.MAXUINT32, 100),
     },
 }, class MainWindow extends Adw.ApplicationWindow {
     _init(application) {
@@ -74,10 +73,7 @@ var MainWindow = GObject.registerClass({
             this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
         });
 
-        let characterList;
-
-
-        /*characterList = this._createCharacterList(
+        /* characterList = this._createCharacterList(
             'search-result', _('Search Result Character List'));
         // FIXME: Can't use GtkContainer.child_get_property.
         characterList.title = _("Search Result");
@@ -88,46 +84,43 @@ var MainWindow = GObject.registerClass({
         this.recentCharacters = recentCharacters.get_strv();
         this._maxRecentCharacters = 100;
         Main.settings.bind('max-recent-characters', this,
-                           'max-recent-characters',
-                           Gio.SettingsBindFlags.DEFAULT);
+            'max-recent-characters',
+            Gio.SettingsBindFlags.DEFAULT);
 
-
-        Util.initActions(this,
-                         [{ name: 'about',
-                            activate: this._about },
-                          { name: 'search-active',
-                            activate: this._toggleSearch,
-                            parameter_type: new GLib.VariantType('b'),
-                            state: new GLib.Variant('b', false) },
-                          { name: 'find',
-                            activate: this._find },
-                          { name: 'category',
-                            activate: this._category,
-                            parameter_type: new GLib.VariantType('s'),
-                            state: new GLib.Variant('s', 'emoji-smileys') },
-                          { name: 'character',
-                            activate: this._character,
-                            parameter_type: new GLib.VariantType('s') },
-                          { name: 'filter-font',
-                            activate: this._filterFont,
-                            parameter_type: new GLib.VariantType('s')
-                            },
-                            { 
-                                name: 'show-primary-menu',
-                                activate: this._togglePrimaryMenu,
-                                state: new GLib.Variant('b', false),
-                            }]);
+        Util.initActions(this, [
+            { name: 'about', activate: this._about },
+            { name: 'search-active',
+                activate: this._toggleSearch,
+                parameterType: new GLib.VariantType('b'),
+                state: new GLib.Variant('b', false) },
+            { name: 'find', activate: this._find },
+            { name: 'category',
+                activate: this._category,
+                parameterType: new GLib.VariantType('s'),
+                state: new GLib.Variant('s', 'emoji-smileys') },
+            { name: 'character',
+                activate: this._character,
+                parameterType: new GLib.VariantType('s') },
+            { name: 'filter-font',
+                activate: this._filterFont,
+                parameterType: new GLib.VariantType('s') },
+            {
+                name: 'show-primary-menu',
+                activate: this._togglePrimaryMenu,
+                state: new GLib.Variant('b', false),
+            },
+        ]);
 
         this.bind_property('search-active', this._search_active_button, 'active',
-                           GObject.BindingFlags.SYNC_CREATE |
+            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
         this.bind_property('search-active',
-                           this._search_bar,
-                           'search-mode-enabled',
-                           GObject.BindingFlags.SYNC_CREATE |
+            this._search_bar,
+            'search-mode-enabled',
+            GObject.BindingFlags.SYNC_CREATE |
                            GObject.BindingFlags.BIDIRECTIONAL);
         this._search_bar.connect_entry(this._search_entry);
-        this._search_entry.connect('search-changed', (entry) => this._handleSearchChanged(entry));
+        this._search_entry.connect('search-changed', entry => this._handleSearchChanged(entry));
 
         this._back_button.connect('clicked', () => {
             this._leaflet.navigate(Adw.NavigationDirection.BACK);
@@ -136,7 +129,7 @@ var MainWindow = GObject.registerClass({
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
         // TODO: use EventControllerKey
-        //this.connect('key-press-event', (self, event) => this._handleKeyPress(self, event));
+        // this.connect('key-press-event', (self, event) => this._handleKeyPress(self, event));
     }
 
     vfunc_map() {
@@ -151,19 +144,19 @@ var MainWindow = GObject.registerClass({
 
     // Select the first subcategory which contains at least one character.
     _selectFirstSubcategory() {
-        if (this.recentCharacters.length !== 0) {
+        if (this.recentCharacters.length !== 0)
             this._sidebar.selectRowByName('recent');
-        } else {
+        else
             this._sidebar.selectRowByName('smileys');
-        }
+
     }
 
-    get search_active() {
+    get searchActive() {
         return this._searchActive;
     }
 
-    set search_active(v) {
-        if (this._searchActive == v)
+    set searchActive(v) {
+        if (this._searchActive === v)
             return;
 
         this._searchActive = v;
@@ -171,7 +164,7 @@ var MainWindow = GObject.registerClass({
         if (this._searchActive) {
             let categoryList = this._sidebar.selectedList.list;
             categoryList.unselect_all();
-            this._updateTitle(_("Search Result"));
+            this._updateTitle(_('Search Result'));
         } else {
             this._sidebar.restorePreviousSelection();
         }
@@ -181,9 +174,9 @@ var MainWindow = GObject.registerClass({
 
     _handleSearchChanged(entry) {
         const text = entry.get_text().replace(/^\s+|\s+$/g, '');
-        let keywords = text == '' ? [] : text.split(/\s+/);
+        let keywords = text === '' ? [] : text.split(/\s+/);
         keywords = keywords.map(x => x.toUpperCase());
-        if (keywords != this._searchKeywords) {
+        if (keywords !== this._searchKeywords) {
             this.cancelSearch();
             this._searchKeywords = keywords;
             if (this._searchKeywords.length > 0)
@@ -200,23 +193,22 @@ var MainWindow = GObject.registerClass({
 
     _about() {
         const aboutDialog = new Gtk.AboutDialog(
-            { artists: [ 'Allan Day <allanpday@gmail.com>',
-                         'Jakub Steiner <jimmac@gmail.com>' ],
-              authors: [ 'Daiki Ueno <dueno@src.gnome.org>',
-                         'Giovanni Campagna <scampa.giovanni@gmail.com>' ],
-              // TRANSLATORS: put your names here, one name per line.
-              translator_credits: _("translator-credits"),
-              program_name: _("GNOME Characters"),
-              comments: _("Character Map"),
-              copyright: 'Copyright 2014-2018 Daiki Ueno',
-              license_type: Gtk.License.GPL_2_0,
-              logo_icon_name: Main.application_id,
-              version: pkg.version,
-              website: 'https://wiki.gnome.org/Apps/Characters',
-              wrap_license: true,
-              modal: true,
-              transient_for: this
-            });
+            { artists: ['Allan Day <allanpday@gmail.com>',
+                'Jakub Steiner <jimmac@gmail.com>'],
+            authors: ['Daiki Ueno <dueno@src.gnome.org>',
+                'Giovanni Campagna <scampa.giovanni@gmail.com>'],
+            // TRANSLATORS: put your names here, one name per line.
+            translator_credits: _('translator-credits'),
+            program_name: _('GNOME Characters'),
+            comments: _('Character Map'),
+            copyright: 'Copyright 2014-2018 Daiki Ueno',
+            license_type: Gtk.License.GPL_2_0,
+            logo_icon_name: Main.applicationId,
+            version: pkg.version,
+            website: 'https://wiki.gnome.org/Apps/Characters',
+            wrap_license: true,
+            modal: true,
+            transient_for: this });
 
         aboutDialog.show();
     }
@@ -224,45 +216,46 @@ var MainWindow = GObject.registerClass({
     _updateTitle(title) {
         if (this.filterFontFamily) {
             this._windowTitle.title =
-                _("%s (%s only)").format(Gettext.gettext(title),
-                                         this.filterFontFamily);
+                _('%s (%s only)').format(Gettext.gettext(title),
+                    this.filterFontFamily);
         } else {
             this._windowTitle.title = Gettext.gettext(title);
         }
     }
 
     _character(action, v) {
-        const [uc, length] = v.get_string();
+        const uc = v.get_string()[0];
         this.addToRecent(uc);
     }
 
     _filterFont(action, v) {
-        let [family, length] = v.get_string();
-        if (family == 'None')
+        let family = v.get_string()[0];
+        if (family === 'None')
             family = null;
         this.filterFontFamily = family;
-        //this._updateTitle(this._stack.visible_child.title);
+        // this._updateTitle(this._stack.visible_child.title);
         this._menuPopover.hide();
     }
 
     _find() {
-        this.search_active = !this.search_active;
+        this.searchActive = !this.searchActive;
     }
 
     setSearchKeywords(keywords) {
-        this.search_active = keywords.length > 0;
+        this.searchActive = keywords.length > 0;
         this._search_entry.set_text(keywords.join(' '));
     }
 
-    get max_recent_characters() {
+    get maxRecentCharacters() {
         return this._maxRecentCharacters;
     }
 
-    set max_recent_characters(v) {
+    set maxRecentCharacters(v) {
         this._maxRecentCharacters = v;
-        if (this.recentCharacters.length > this._maxRecentCharacters)
+        if (this.recentCharacters.length > this._maxRecentCharacters) {
             this.recentCharacters = this.recentCharacters.slice(
                 0, this._maxRecentCharacters);
+        }
     }
 
     get filterFontFamily() {
@@ -274,9 +267,9 @@ var MainWindow = GObject.registerClass({
         this._fontFilter.setFilterFont(this._filterFontFamily);
     }
 
-    _createRecentCharacterList(name, accessible_name, category) {
+    _createRecentCharacterList(name, accessibleName, category) {
         const characterList = new RecentCharacterListView(category, this._fontFilter);
-        //characterList.get_accessible().accessible_name = accessible_name;
+        // characterList.get_accessible().accessible_name = accessibleName;
         characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
 
         this._characterLists[name] = characterList;
@@ -289,46 +282,45 @@ var MainWindow = GObject.registerClass({
     }
 
     cancelSearch() {
-        const characterList = this.mainStack.get_child_by_name('search-result');
+        const characterList = this._mainStack.get_child_by_name('search-result');
         characterList.cancelSearch();
     }
 
     setPage(pageRow) {
         if (pageRow.name === 'recent') {
-            if (this.recentCharacters.length === 0)
+            if (this.recentCharacters.length === 0) {
                 this._mainStack.visible_child_name = 'empty-recent';
-            else {
+            } else {
                 this._charactersView.setCharacters(this.recentCharacters);
-                this._mainStack.visible_child_name = 'recent';
+                this._mainStack.visible_child_name = 'character-list';
             }
         } else {
             this._charactersView.searchByCategory(pageRow.category);
             this._mainStack.visible_child_name = 'character-list';
-            //this._charactersView.model = pageRow.model;
+            // this._charactersView.model = pageRow.model;
         }
     }
 
     addToRecent(uc) {
         if (this.recentCharacters.indexOf(uc) < 0) {
             this.recentCharacters.unshift(uc);
-            if (this.recentCharacters.length > this._maxRecentCharacters)
+            if (this.recentCharacters.length > this._maxRecentCharacters) {
                 this.recentCharacters = this.recentCharacters.slice(
                     0, this._maxRecentCharacters);
+            }
             Main.settings.set_value(
                 'recent-characters',
                 GLib.Variant.new_strv(this.recentCharacters));
         }
     }
 
-    _addToRecent(widget, uc) {
-        this.addToRecent(uc);
-    }
-
     _handleCharacterSelected(widget, uc) {
         const dialog = new CharacterDialog(uc, this._fontFilter.fontDescription);
         dialog.set_modal(true);
         dialog.set_transient_for(this.get_root());
-        dialog.connect('character-copied', (widget, uc) => this._addToRecent(widget, uc));
+        dialog.connect('character-copied', (_widget, char) => {
+            this.addToRecent(char);
+        });
         dialog.show();
     }
 });

@@ -1,3 +1,4 @@
+/* exported applicationId main */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (c) 2012 Giovanni Campagna <scampa.giovanni@gmail.com>
@@ -19,20 +20,19 @@
 
 pkg.initGettext();
 pkg.initFormat();
-pkg.require({ 'Gio': '2.0',
-              'GLib': '2.0',
-              'GObject': '2.0',
-              'Gtk': '3.0' });
+pkg.require({
+    'Gio': '2.0',
+    'GLib': '2.0',
+    'GObject': '2.0',
+    'Gtk': '3.0',
+});
 
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const Gtk = imports.gi.Gtk;
-const GObject = imports.gi.GObject;
+const { Gio, GLib, GObject, Gtk } = imports.gi;
 
 const Util = imports.util;
 const SearchProvider = imports.searchProvider;
 
-var application_id = pkg.name;
+var applicationId = pkg.name;
 
 const BackgroundService = GObject.registerClass({
     // This needs to be a Gtk.Application instead of Gio.Application,
@@ -40,9 +40,9 @@ const BackgroundService = GObject.registerClass({
 }, class BackgroundService extends Gtk.Application {
     _init() {
         super._init({ application_id: pkg.name,
-                      flags: Gio.ApplicationFlags.IS_SERVICE,
-                      inactivity_timeout: 30000 });
-        GLib.set_application_name(_("Characters"));
+            flags: Gio.ApplicationFlags.IS_SERVICE,
+            inactivity_timeout: 30000 });
+        GLib.set_application_name(_('Characters'));
 
         this._searchProvider = new SearchProvider.SearchProvider(this);
     }
@@ -58,7 +58,7 @@ const BackgroundService = GObject.registerClass({
         return true;
     }
 
-/*
+    /*
   Can't do until GApplication is fixed.
 
     vfunc_dbus_unregister(connection, path) {
@@ -71,9 +71,9 @@ const BackgroundService = GObject.registerClass({
     vfunc_startup() {
         super.vfunc_startup();
 
-        Util.initActions(this,
-                         [{ name: 'quit',
-                            activate: this._onQuit }]);
+        Util.initActions(this, [
+            { name: 'quit', activate: this._onQuit },
+        ]);
     }
 
     vfunc_activate() {
@@ -82,5 +82,5 @@ const BackgroundService = GObject.registerClass({
 });
 
 function main(argv) {
-    return (new BackgroundService()).run(argv);
+    return new BackgroundService().run(argv);
 }

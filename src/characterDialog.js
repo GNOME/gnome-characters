@@ -1,3 +1,4 @@
+/* exported CharacterDialog */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (C) 2014-2015  Daiki Ueno <dueno@src.gnome.org>
@@ -16,26 +17,26 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const {Gc, GLib, Gio,GObject,Gtk, Pango} = imports.gi;
+const { Gc, GLib, Gio, GObject, Gtk, Pango } = imports.gi;
 
 const Util = imports.util;
 
 var CharacterDialog = GObject.registerClass({
 
     Signals: {
-        'character-copied': { param_types: [ GObject.TYPE_STRING ] }
+        'character-copied': { param_types: [GObject.TYPE_STRING] },
     },
     Template: 'resource:///org/gnome/Characters/character.ui',
     InternalChildren: ['main-stack', 'character-stack',
-                       'character-label', 'missing-label', 'detail-label',
-                       'copy-button', 'copy-revealer', 'related-listbox'],
+        'character-label', 'missing-label', 'detail-label',
+        'copy-button', 'copy-revealer', 'related-listbox'],
 }, class CharacterDialog extends Gtk.Dialog {
     _init(character, fontDescription) {
         super._init({
             use_header_bar: true,
             width_request: 400,
-            height_request: 400
-       });
+            height_request: 400,
+        });
 
         this._cancellable = new Gio.Cancellable();
 
@@ -43,16 +44,16 @@ var CharacterDialog = GObject.registerClass({
 
         this._related_listbox.connect('row-selected', (listBox, row) => this._handleRowSelected(listBox, row));
 
-        this._relatedButton = new Gtk.ToggleButton({ label: _("See Also") });
+        this._relatedButton = new Gtk.ToggleButton({ label: _('See Also') });
         this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
         this._relatedButton.show();
 
         this._relatedButton.connect('toggled', () => {
-                if (this._main_stack.visible_child_name == 'character')
-                    this._main_stack.visible_child_name = 'related';
-                else
-                    this._main_stack.visible_child_name = 'character';
-            });
+            if (this._main_stack.visible_child_name === 'character')
+                this._main_stack.visible_child_name = 'related';
+            else
+                this._main_stack.visible_child_name = 'character';
+        });
 
         this._fontDescription = fontDescription;
         this._setCharacter(character);
@@ -68,21 +69,21 @@ var CharacterDialog = GObject.registerClass({
         for (let index = 0; index < result.len; index++) {
             let uc = Gc.search_result_get(result, index);
             let name = Gc.character_name(uc);
-            if (name == null)
+            if (name === null)
                 continue;
 
             let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
             let characterLabel = new Gtk.Label({ label: uc,
-                                                 valign: Gtk.Align.CENTER,
-                                                 halign: Gtk.Align.CENTER,
-                                                 width_request: 45 });
+                valign: Gtk.Align.CENTER,
+                halign: Gtk.Align.CENTER,
+                width_request: 45 });
             characterLabel.add_css_class('character');
             hbox.pack_start(characterLabel, false, false, 2);
 
             let nameLabel = new Gtk.Label({ label: Util.capitalize(name),
-                                            halign: Gtk.Align.START,
-                                            ellipsize: Pango.EllipsizeMode.END });
+                halign: Gtk.Align.START,
+                ellipsize: Pango.EllipsizeMode.END });
             hbox.pack_start(nameLabel, true, true, 0);
 
             let row = new Gtk.ListBoxRow();
@@ -104,11 +105,11 @@ var CharacterDialog = GObject.registerClass({
         let codePointHex = codePoint.toString(16).toUpperCase();
 
         let name = Gc.character_name(this._character);
-        if (name != null) {
+        if (name !== null)
             name = Util.capitalize(name);
-        } else {
-            name = _("Unicode U+%04s").format(codePointHex);
-        }
+        else
+            name = _('Unicode U+%04s').format(codePointHex);
+
 
         let headerBar = this.get_header_bar();
         headerBar.title = name;
@@ -119,28 +120,28 @@ var CharacterDialog = GObject.registerClass({
         var pangoContext = this._character_label.get_pango_context();
         var pangoLayout = Pango.Layout.new(pangoContext);
         pangoLayout.set_text(this._character, -1);
-        if (pangoLayout.get_unknown_glyphs_count() == 0) {
+        if (pangoLayout.get_unknown_glyphs_count() === 0) {
             this._character_stack.visible_child_name = 'character';
         } else {
             var fontFamily = this._fontDescription.get_family();
             this._missing_label.label =
                 // TRANSLATORS: the first variable is a character, the second is a font
-                _("%s is not included in %s").format(name, fontFamily);
+                _('%s is not included in %s').format(name, fontFamily);
             this._character_stack.visible_child_name = 'missing';
         }
 
-        this._detail_label.label = _("Unicode U+%04s").format(codePointHex);
+        this._detail_label.label = _('Unicode U+%04s').format(codePointHex);
 
         this._cancellable.cancel();
         this._cancellable.reset();
         let criteria = Gc.SearchCriteria.new_related(this._character);
-        let context = new Gc.SearchContext({ criteria: criteria });
+        let context = new Gc.SearchContext({ criteria });
         context.search(
             -1,
             this._cancellable,
-            (context, res) => {
+            (ctx, res) => {
                 try {
-                    let result = context.search_finish(res);
+                    let result = ctx.search_finish(res);
                     this._finishSearch(result);
                 } catch (e) {
                     log(`Failed to search related: ${e.message}`);
@@ -162,15 +163,15 @@ var CharacterDialog = GObject.registerClass({
 
     _clipboardOwnerChanged(clipboard) {
         let text = clipboard.wait_for_text();
-        if (text != this._character)
+        if (text !== this._character)
             this._hideCopyRevealer();
     }
 
     _copyCharacter() {
-        if (this._clipboard == null) {
+        if (this._clipboard === null) {
             this._clipboard = Gc.gtk_clipboard_get();
             let clipboardOwnerChanged =
-                this._clipboard.connect('owner-change', (clipboard) => this._clipboardOwnerChanged(clipboard));
+                this._clipboard.connect('owner-change', clipboard => this._clipboardOwnerChanged(clipboard));
             this.connect('destroy', () => this._clipboard.disconnect(clipboardOwnerChanged));
         }
         this._clipboard.set_text(this._character, -1);
@@ -184,13 +185,13 @@ var CharacterDialog = GObject.registerClass({
         this._copyRevealerTimeoutId =
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => this._hideCopyRevealer());
         this.connect('destroy', () => {
-                         if (this._copyRevealerTimeoutId > 0)
-                             GLib.source_remove(this._copyRevealerTimeoutId);
-                     });
+            if (this._copyRevealerTimeoutId > 0)
+                GLib.source_remove(this._copyRevealerTimeoutId);
+        });
     }
 
     _handleRowSelected(listBox, row) {
-        if (row != null) {
+        if (row !== null) {
             this._setCharacter(row._character);
             let toplevel = this.get_transient_for();
             let action = toplevel.lookup_action('character');

@@ -1,3 +1,4 @@
+/* exported SearchProvider */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (c) 2013 Giovanni Campagna <scampa.giovanni@gmail.com>
@@ -17,7 +18,7 @@
 // with Gnome Weather; if not, write to the Free Software Foundation,
 // Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-const {Gc, Gdk, Gio, GLib, GObject} = imports.gi;
+const { Gc, Gdk, Gio, GLib, GObject } = imports.gi;
 
 const ByteArray = imports.byteArray;
 const Service = imports.service;
@@ -51,12 +52,12 @@ var SearchProvider = GObject.registerClass({
 
         let upper = keywords.map(x => x.toUpperCase());
         let criteria = Gc.SearchCriteria.new_keywords(upper);
-        let context = new Gc.SearchContext({ criteria: criteria,
-                                             flags: Gc.SearchFlag.WORD });
+        let context = new Gc.SearchContext({ criteria,
+            flags: Gc.SearchFlag.WORD });
         context.search(
             MAX_SEARCH_RESULTS,
             this._cancellable,
-            (source_object, res, user_data) => {
+            (sourceObject, res, _userData) => {
                 let characters = [];
                 try {
                     let result = context.search_finish(res);
@@ -90,19 +91,18 @@ var SearchProvider = GObject.registerClass({
             let codePoint = Util.toCodePoint(character);
             let codePointHex = codePoint.toString(16).toUpperCase();
             let name = Gc.character_name(character);
-            if (name == null)
-                name = _("Unknown character name");
+            if (name === null)
+                name = _('Unknown character name');
             else
                 name = Util.capitalize(name);
-            let summary = _("U+%s, %s: %s").format(codePointHex,
-                                                   character,
-                                                   name);
+            let summary = _('U+%s, %s: %s').format(codePointHex,
+                character,
+                name);
             ret.push({ name: new GLib.Variant('s', name),
-                       id: new GLib.Variant('s', identifiers[i]),
-                       description: new GLib.Variant('s', summary),
-                       icon: (new Gio.ThemedIcon({ name: Service.application_id })).serialize(),
-                       clipboardText: new GLib.Variant('s', character)
-                     });
+                id: new GLib.Variant('s', identifiers[i]),
+                description: new GLib.Variant('s', summary),
+                icon: new Gio.ThemedIcon({ name: Service.applicationId }).serialize(),
+                clipboardText: new GLib.Variant('s', character) });
         }
 
         this._app.release();
@@ -110,7 +110,7 @@ var SearchProvider = GObject.registerClass({
         return ret;
     }
 
-    ActivateResult(id, terms, timestamp) {
+    ActivateResult(id, _terms, _timestamp) {
         let clipboard = Gc.gtk_clipboard_get();
         clipboard.set_text(id, -1);
     }
@@ -122,7 +122,7 @@ var SearchProvider = GObject.registerClass({
 
         let app = Gio.DesktopAppInfo.new('org.gnome.Characters.desktop');
         let id = context.get_startup_notify_id(app, []);
-        return {'desktop-startup-id': new GLib.Variant('s', id) };
+        return { 'desktop-startup-id': new GLib.Variant('s', id) };
     }
 
     _activateAction(action, parameter, timestamp) {
@@ -133,26 +133,26 @@ var SearchProvider = GObject.registerClass({
             wrappedParam = [];
 
         Gio.DBus.session.call('org.gnome.Characters',
-                              '/org/gnome/Characters',
-                              'org.freedesktop.Application',
-                              'ActivateAction',
-                              new GLib.Variant('(sava{sv})', [action, wrappedParam,
-                                                              this._getPlatformData(timestamp)]),
-                              null,
-                              Gio.DBusCallFlags.NONE,
-                              -1, null, (connection, result) => {
-                                  try {
-                                      connection.call_finish(result);
-                                  } catch(e) {
-                                      log(`Failed to launch application: ${e.message}`);
-                                  }
+            '/org/gnome/Characters',
+            'org.freedesktop.Application',
+            'ActivateAction',
+            new GLib.Variant('(sava{sv})', [action, wrappedParam,
+                this._getPlatformData(timestamp)]),
+            null,
+            Gio.DBusCallFlags.NONE,
+            -1, null, (connection, result) => {
+                try {
+                    connection.call_finish(result);
+                } catch (e) {
+                    log(`Failed to launch application: ${e.message}`);
+                }
 
-                                  this._app.release();
-                              });
+                this._app.release();
+            });
     }
 
     LaunchSearch(terms, timestamp) {
         this._activateAction('search', new GLib.Variant('as', terms),
-                             timestamp);
+            timestamp);
     }
 });
