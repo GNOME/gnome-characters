@@ -30,3 +30,16 @@ fedora:latest:
     script:
         - meson _build .
         - ninja -C _build
+
+eslint:
+  image: registry.gitlab.gnome.org/gnome/gnome-shell/fedora/33:2020-11-17.0
+
+  variables:
+    LINT_LOG: "eslint-report.txt"
+  script:
+    - eslint -o $LINT_LOG --no-color src || { cat $LINT_LOG; false; }
+  artifacts:
+    paths:
+      - ${LINT_LOG}
+    when: on_failure
+
