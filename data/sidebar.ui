@@ -44,6 +44,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="emojiSmileysRow">
+            <property name="category">GC_CATEGORY_EMOJI_SMILEYS</property>
             <property name="name">emoji-smileys</property>
             <property name="icon-name">characters-emoji-smileys</property>
             <property name="title" translatable="yes">Smileys &amp; People</property>
@@ -51,6 +52,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="emojiAnimalsRow">
+            <property name="category">GC_CATEGORY_EMOJI_ANIMALS</property>
             <property name="name">emoji-animals</property>
             <property name="icon-name">characters-emoji-animals</property>
             <property name="title" translatable="yes">Animals &amp; Nature</property>
@@ -58,6 +60,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="emojiFoodRow">
+            <property name="category">GC_CATEGORY_EMOJI_FOOD</property>
             <property name="name">emoji-food</property>
             <property name="icon-name">characters-emoji-food</property>
             <property name="title" translatable="yes">Food &amp; Drink</property>
@@ -65,6 +68,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="emojiActivitiesRow">
+            <property name="category">GC_CATEGORY_EMOJI_ACTIVITIES</property>
             <property name="name">emoji-activities</property>
             <property name="icon-name">characters-emoji-activities</property>
             <property name="title" translatable="yes">Activities</property>
@@ -72,6 +76,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="emojiTravelRow">
+            <property name="category">GC_CATEGORY_EMOJI_TRAVEL</property>
             <property name="name">emoji-travel</property>
             <property name="icon-name">characters-emoji-travel</property>
             <property name="title" translatable="yes">Travel &amp; Places</property>
@@ -79,6 +84,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="emojiObjectsRow">
+            <property name="category">GC_CATEGORY_EMOJI_OBJECTS</property>
             <property name="name">emoji-objects</property>
             <property name="icon-name">characters-emoji-objects</property>
             <property name="title" translatable="yes">Objects</property>
@@ -86,6 +92,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="emojiSymbolsRow">
+            <property name="category">GC_CATEGORY_EMOJI_SYMBOLS</property>
             <property name="name">emoji-symbols</property>
             <property name="icon-name">characters-emoji-symbols</property>
             <property name="title" translatable="yes">Symbols</property>
@@ -93,6 +100,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="emojiFlagsRow">
+            <property name="category">GC_CATEGORY_EMOJI_FLAGS</property>
             <property name="name">emoji-flags</property>
             <property name="icon-name">characters-emoji-flags</property>
             <property name="title" translatable="yes">Flags</property>
@@ -119,6 +127,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="lettersPunctuationRow">
+            <property name="category">GC_CATEGORY_LETTER_PUNCTUATION</property>
             <property name="name">punctuation</property>
             <property name="icon-name">characters-punctuation-symbolic</property>
             <property name="title" translatable="yes">Punctuation</property>
@@ -126,6 +135,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="lettersArrowsRow">
+            <property name="category">GC_CATEGORY_LETTER_ARROW</property>
             <property name="name">arrow</property>
             <property name="icon-name">characters-arrow-symbolic</property>
             <property name="title" translatable="yes">Arrows</property>
@@ -133,6 +143,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="lettersBulletsRow">
+            <property name="category">GC_CATEGORY_LETTER_BULLET</property>
             <property name="name">bullet</property>
             <property name="icon-name">characters-bullet-symbolic</property>
             <property name="title" translatable="yes">Bullets</property>
@@ -140,6 +151,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="lettersPicturesRow">
+            <property name="category">GC_CATEGORY_LETTER_PICTURE</property>
             <property name="name">picture</property>
             <property name="icon-name">characters-picture-symbolic</property>
             <property name="title" translatable="yes">Pictures</property>
@@ -147,6 +159,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="lettersCurrencyRow">
+            <property name="category">GC_CATEGORY_LETTER_CURRENCY</property>
             <property name="name">currency</property>
             <property name="icon-name">characters-currency-symbolic</property>
             <property name="title" translatable="yes">Currencies</property>
@@ -154,6 +167,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="lettersMathRow">
+            <property name="category">GC_CATEGORY_LETTER_MATH</property>
             <property name="name">math</property>
             <property name="icon-name">characters-math-symbolic</property>
             <property name="title" translatable="yes">Math</property>
@@ -161,6 +175,7 @@
         </child>
         <child>
           <object class="Gjs_CategoryListRowWidget" id="lettersLatinRow">
+            <property name="category">GC_CATEGORY_LETTER_LATIN</property>
             <property name="name">letters</property>
             <property name="icon-name">characters-latin-symbolic</property>
             <property name="title" translatable="yes">Letters</property>

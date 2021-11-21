@@ -7,6 +7,6 @@
     <file>window.js</file>
     <file>categoryList.js</file>
     <file>characterDialog.js</file>
-    <file>characterList.js</file>
+    <file>charactersView.js</file>
   </gresource>
 </gresources>

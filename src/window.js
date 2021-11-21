@@ -28,7 +28,7 @@ const {Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
 const {Sidebar, MainCategories} = imports.categoryList;
 const {CharacterDialog} = imports.characterDialog;
-const {CharacterListView, FontFilter, RecentCharacterListView} = imports.characterList;
+const {CharactersView, FontFilter, RecentCharacterListView} = imports.charactersView;
 const {MenuPopover} = imports.menu;
 const Gettext = imports.gettext;
 
@@ -42,6 +42,7 @@ var MainWindow = GObject.registerClass({
         'search-bar', 'search-entry', 'back-button',
         'menuPopover', 'container', 'sidebar',
         'leaflet', 'mainStack', 'recentBox', 'windowTitle',
+        'charactersView',
     ],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
@@ -63,40 +64,17 @@ var MainWindow = GObject.registerClass({
         this._filterFontFamily = null;
         this._characterLists = {};
         this._recentCharacterLists = {};
+        this._charactersView.setFontFilter(this._fontFilter);
+        this._charactersView.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
+
 
         this._sidebar.list.connect('row-selected', (sidebar, row) => {
-            this._windowTitle.title = row.title;
+            this.setPage(row);
+            this._updateTitle(row.title);
+            this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
         });
 
         let characterList;
-        /*
-        for (let i in MainCategories) {
-            let category = MainCategories[i];
-            let categoryList = this._sidebar.getCategoryByName(category.name);
-            let subcategories = categoryList.getCategoryList();
-            for (let j in subcategories) {
-                let subcategory = subcategories[j];
-                characterList = this._createCharacterList(
-                    subcategory.name,
-                    _('%s Character List').format(subcategory.title));
-                // FIXME: Can't use GtkContainer.child_get_property.
-                characterList.title = subcategory.title;
-                this._mainStack.add_titled(characterList, subcategory.name, subcategory.title);
-            }
-            characterList = this._createRecentCharacterList(
-                category.name,
-                // TRANSLATORS: %s will be either 'emojis' or 'letters'
-                _('Recently Used %s Character List').format(category.title),
-                category.category);
-            this._recentCharacterLists[category.name] = characterList;
-            if (i > 0) {
-                let separator = new Gtk.Separator({});
-                this._recentBox.append(separator);
-            }
-            this._recentBox.append(characterList);
-        }*/
-
-        // scroll.title = _('Recently Used');
 
 
         /*characterList = this._createCharacterList(
@@ -245,32 +223,11 @@ var MainWindow = GObject.registerClass({
 
     _updateTitle(title) {
         if (this.filterFontFamily) {
-            this._main_headerbar.title =
+            this._windowTitle.title =
                 _("%s (%s only)").format(Gettext.gettext(title),
                                          this.filterFontFamily);
         } else {
-            this._main_headerbar.title = Gettext.gettext(title);
-        }
-    }
-
-    _category(action, v) {
-        this.search_active = false;
-
-        let [name, length] = v.get_string();
-        let categoryName;
-        if(name.startsWith("emoji")) {
-            categoryName = "emojis";
-        } else if(name === "recent") {
-            categoryName = "recent";
-        } else {
-            categoryName = "letters";
-        } 
-        let categoryList = this._sidebar.getCategoryByName(categoryName);
-        let category = categoryList.getCategory(name);
-        if (category) {
-            this.setPage(category);
-            this._updateTitle(category.title);
-            this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
+            this._windowTitle.title = Gettext.gettext(title);
         }
     }
 
@@ -317,15 +274,6 @@ var MainWindow = GObject.registerClass({
         this._fontFilter.setFilterFont(this._filterFontFamily);
     }
 
-    _createCharacterList(name, accessible_name) {
-        const characterList = new CharacterListView(this._fontFilter);
-        //characterList.get_accessible().accessible_name = accessible_name;
-        characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
-
-        this._characterLists[name] = characterList;
-        return characterList;
-    }
-
     _createRecentCharacterList(name, accessible_name, category) {
         const characterList = new RecentCharacterListView(category, this._fontFilter);
         //characterList.get_accessible().accessible_name = accessible_name;
@@ -336,7 +284,7 @@ var MainWindow = GObject.registerClass({
     }
 
     searchByKeywords(keywords) {
-        this.visible_child_name = 'search-result';
+        this._mainStack.visible_child_name = 'search-result';
         this.visible_child.searchByKeywords(keywords);
     }
 
@@ -345,23 +293,18 @@ var MainWindow = GObject.registerClass({
         characterList.cancelSearch();
     }
 
-    setPage(category) {
-        if (category.name === 'recent') {
+    setPage(pageRow) {
+        if (pageRow.name === 'recent') {
             if (this.recentCharacters.length === 0)
-                this.visible_child_name = 'empty-recent';
+                this._mainStack.visible_child_name = 'empty-recent';
             else {
-                let categories = this._sidebar.getCategoryList();
-                for (let i in categories) {
-                    let category = categories[i];
-                    let characterList = this._recentCharacterLists[category.name];
-                    characterList.setCharacters(this.recentCharacters);
-                }
-                this.visible_child_name = 'recent';
+                this._charactersView.setCharacters(this.recentCharacters);
+                this._mainStack.visible_child_name = 'recent';
             }
         } else {
-            let characterList = this.get_child_by_name(category.name);
-            characterList.searchByCategory(category);
-            this.visible_child = characterList;
+            this._charactersView.searchByCategory(pageRow.category);
+            this._mainStack.visible_child_name = 'character-list';
+            //this._charactersView.model = pageRow.model;
         }
     }
 

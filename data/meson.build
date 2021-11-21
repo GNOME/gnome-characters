@@ -17,11 +17,10 @@ resource_data = files(
   'icons/hicolor/scalable/categories/characters-picture-symbolic.svg',
   'icons/hicolor/scalable/categories/characters-punctuation-symbolic.svg',
   'style.css',
-  'characterlist.ui',
   'character.ui',
-  'mainview.ui',
-  'mainwindow.ui',
-  'menu.ui'
+  'characters_view.ui',
+  'menu.ui',
+  'window.ui',
 )
 
 resources = [

@@ -27,7 +27,7 @@ common_resource_data = files(
 resource_data = common_resource_data + files(
   'categoryList.js',
   'characterDialog.js',
-  'characterList.js',
+  'charactersView.js',
   'main.js',
   'menu.js',
   'window.js'

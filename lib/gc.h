@@ -5,7 +5,6 @@
 #define __GC_H__
 
 #include <gio/gio.h>
-#include <gtk/gtk.h>
 #include <pango/pango.h>
 #include "gc-enumtypes.h"
 
@@ -14,7 +13,9 @@ G_BEGIN_DECLS
 /* libunistring support.  In libunistring, the Unicode general
    categories are defined as global constant, which is not accessible
    through GI.  */
-
+/**
+ * GcCategory:
+ */
 typedef enum
 {
   GC_CATEGORY_NONE,

@@ -23,117 +23,6 @@ const Gettext = imports.gettext;
 
 const Util = imports.util;
 
-var MainCategories = [
-    {
-        name: 'emojis',
-        category: Gc.Category.EMOJI,
-        title: N_('Emojis'),
-        icon_name: 'characters-emoji-smileys',
-    },
-    {
-        name: 'letters',
-        category: Gc.Category.LETTER,
-        title: N_('Letters & Symbols'),
-        icon_name: 'characters-latin-symbolic',
-    }
-];
-
-const LetterCategoryList = [
-    {
-        name: 'punctuation',
-        category: Gc.Category.LETTER_PUNCTUATION,
-        title: N_('Punctuation'),
-        icon_name: 'characters-punctuation-symbolic',
-    },
-    {
-        name: 'arrow',
-        category: Gc.Category.LETTER_ARROW,
-        title: N_('Arrows'),
-        icon_name: 'characters-arrow-symbolic',
-    },
-    {
-        name: 'bullet',
-        category: Gc.Category.LETTER_BULLET,
-        title: N_('Bullets'),
-        icon_name: 'characters-bullet-symbolic',
-    },
-    {
-        name: 'picture',
-        category: Gc.Category.LETTER_PICTURE,
-        title: N_('Pictures'),
-        icon_name: 'characters-picture-symbolic',
-    },
-    {
-        name: 'currency',
-        category: Gc.Category.LETTER_CURRENCY,
-        title: N_('Currencies'),
-        icon_name: 'characters-currency-symbolic',
-    },
-    {
-        name: 'math',
-        category: Gc.Category.LETTER_MATH,
-        title: N_('Math'),
-        icon_name: 'characters-math-symbolic',
-    },
-    {
-        name: 'letters',
-        category: Gc.Category.LETTER_LATIN,
-        title: N_('Letters'),
-        icon_name: 'characters-latin-symbolic',
-    }
-];
-
-const EmojiCategoryList = [
-    {
-        name: 'emoji-smileys',
-        category: Gc.Category.EMOJI_SMILEYS,
-        title: N_('Smileys & People'),
-        icon_name: 'characters-emoji-smileys',
-    },
-    {
-        name: 'emoji-animals',
-        category: Gc.Category.EMOJI_ANIMALS,
-        title: N_('Animals & Nature'),
-        icon_name: 'characters-emoji-animals',
-    },
-    {
-        name: 'emoji-food',
-        category: Gc.Category.EMOJI_FOOD,
-        title: N_('Food & Drink'),
-        icon_name: 'characters-emoji-food',
-    },
-    {
-        name: 'emoji-activities',
-        category: Gc.Category.EMOJI_ACTIVITIES,
-        title: N_('Activities'),
-        icon_name: 'characters-emoji-activities',
-    },
-    {
-        name: 'emoji-travel',
-        category: Gc.Category.EMOJI_TRAVEL,
-        title: N_('Travel & Places'),
-        icon_name: 'characters-emoji-travel',
-    },
-    {
-        name: 'emoji-objects',
-        category: Gc.Category.EMOJI_OBJECTS,
-        title: N_('Objects'),
-        icon_name: 'characters-emoji-objects',
-    },
-    {
-        name: 'emoji-symbols',
-        category: Gc.Category.EMOJI_SYMBOLS,
-        title: N_('Symbols'),
-        icon_name: 'characters-emoji-symbols',
-    },
-    {
-        name: 'emoji-flags',
-        category: Gc.Category.EMOJI_FLAGS,
-        title: N_('Flags'),
-        icon_name: 'characters-emoji-flags',
-    }
-];
-
 const CategoryListRowWidget = GObject.registerClass({
     Properties: {
         'title': GObject.ParamSpec.string(
@@ -141,6 +30,13 @@ const CategoryListRowWidget = GObject.registerClass({
             'Category title', 'Category title',
             GObject.ParamFlags.READWRITE,
             '',
+        ),
+        'category': GObject.ParamSpec.enum(
+            'category',
+            'Category', 'Category',
+            GObject.ParamFlags.READWRITE,
+            Gc.Category.$gtype,
+            Gc.Category.NONE,
         ),
         'icon-name': GObject.ParamSpec.string(
             'icon-name',
@@ -178,6 +74,14 @@ const CategoryListRowWidget = GObject.registerClass({
 
     set title(title) {
         this._title = title;
+    }
+
+    get category() {
+        return this._category || Gc.Category.NONE;
+    }
+
+    set category(value) {
+        this._category = value;
     }
 });
 

@@ -36,7 +36,7 @@ pkg.require({
     'GnomeDesktop': '4.0',
 });
 
-const {GLib, Gio, GObject, Gtk, Adw} = imports.gi;
+const {Gc, GLib, Gio, GObject, Gtk, Adw} = imports.gi;
 
 const Util = imports.util;
 const { MainWindow } = imports.window;
