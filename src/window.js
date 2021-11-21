@@ -36,17 +36,21 @@ const Main = imports.main;
 const Util = imports.util;
 
 var MainWindow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Characters/mainwindow.ui',
+    Template: 'resource:///org/gnome/Characters/window.ui',
     InternalChildren: [
         'main-headerbar', 'search-active-button',
         'search-bar', 'search-entry', 'back-button',
         'menuPopover', 'container', 'sidebar',
-        'leaflet'
+        'leaflet', 'mainStack', 'recentBox',
     ],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
             'search-active', '', '',
-            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false)
+            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false),
+        'max-recent-characters': GObject.ParamSpec.uint(
+            'max-recent-characters', '', '',
+            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
+            0, GLib.MAXUINT32, 100)
     },
 }, class MainWindow extends Adw.ApplicationWindow {
     _init(application) {
@@ -54,6 +58,62 @@ var MainWindow = GObject.registerClass({
 
         this._searchActive = false;
         this._searchKeywords = [];
+
+        this._fontFilter = new FontFilter();
+        this._filterFontFamily = null;
+        this._characterLists = {};
+        this._recentCharacterLists = {};
+
+        this._sidebar.connect('notify::selected-item', (sidebar) => {
+            let selectedCategory = sidebar.selectedItem.category;
+            this._main_headerbar.title = selectedCategory.title;
+        });
+
+        let characterList;
+        /*
+        for (let i in MainCategories) {
+            let category = MainCategories[i];
+            let categoryList = this._sidebar.getCategoryByName(category.name);
+            let subcategories = categoryList.getCategoryList();
+            for (let j in subcategories) {
+                let subcategory = subcategories[j];
+                characterList = this._createCharacterList(
+                    subcategory.name,
+                    _('%s Character List').format(subcategory.title));
+                // FIXME: Can't use GtkContainer.child_get_property.
+                characterList.title = subcategory.title;
+                this._mainStack.add_titled(characterList, subcategory.name, subcategory.title);
+            }
+            characterList = this._createRecentCharacterList(
+                category.name,
+                // TRANSLATORS: %s will be either 'emojis' or 'letters'
+                _('Recently Used %s Character List').format(category.title),
+                category.category);
+            this._recentCharacterLists[category.name] = characterList;
+            if (i > 0) {
+                let separator = new Gtk.Separator({});
+                this._recentBox.append(separator);
+            }
+            this._recentBox.append(characterList);
+        }*/
+
+        // scroll.title = _('Recently Used');
+
+
+        /*characterList = this._createCharacterList(
+            'search-result', _('Search Result Character List'));
+        // FIXME: Can't use GtkContainer.child_get_property.
+        characterList.title = _("Search Result");
+        this._mainStack.add_named(characterList, 'search-result');
+        */
+        // FIXME: Can't use GSettings.bind with 'as' from Gjs
+        let recentCharacters = Main.settings.get_value('recent-characters');
+        this.recentCharacters = recentCharacters.get_strv();
+        this._maxRecentCharacters = 100;
+        Main.settings.bind('max-recent-characters', this,
+                           'max-recent-characters',
+                           Gio.SettingsBindFlags.DEFAULT);
+
 
         Util.initActions(this,
                          [{ name: 'about',
@@ -96,10 +156,6 @@ var MainWindow = GObject.registerClass({
             this._leaflet.navigate(Adw.NavigationDirection.BACK);
         });
 
-        this._mainView = new MainView(this._sidebar);
-
-        this._container.append(this._mainView);
-
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
         // TODO: use EventControllerKey
@@ -118,13 +174,11 @@ var MainWindow = GObject.registerClass({
 
     // Select the first subcategory which contains at least one character.
     _selectFirstSubcategory() {
-        let categoryList;
-        if (this._mainView.recentCharacters.length !== 0) {
-            categoryList = this._sidebar.getCategoryByName('recent').list;
+        if (this.recentCharacters.length !== 0) {
+            this._sidebar.selectRowByName('recent');
         } else {
-            categoryList = this._sidebar.getCategoryByName('emojis').list;
+            this._sidebar.selectRowByName('smileys');
         }
-        categoryList.select_row(categoryList.get_row_at_index(0));
     }
 
     get search_active() {
@@ -153,10 +207,10 @@ var MainWindow = GObject.registerClass({
         let keywords = text == '' ? [] : text.split(/\s+/);
         keywords = keywords.map(x => x.toUpperCase());
         if (keywords != this._searchKeywords) {
-            this._mainView.cancelSearch();
+            this.cancelSearch();
             this._searchKeywords = keywords;
             if (this._searchKeywords.length > 0)
-                this._mainView.searchByKeywords(this._searchKeywords);
+                this.searchByKeywords(this._searchKeywords);
         }
         return true;
     }
@@ -191,10 +245,10 @@ var MainWindow = GObject.registerClass({
     }
 
     _updateTitle(title) {
-        if (this._mainView.filterFontFamily) {
+        if (this.filterFontFamily) {
             this._main_headerbar.title =
                 _("%s (%s only)").format(Gettext.gettext(title),
-                                         this._mainView.filterFontFamily);
+                                         this.filterFontFamily);
         } else {
             this._main_headerbar.title = Gettext.gettext(title);
         }
@@ -215,7 +269,7 @@ var MainWindow = GObject.registerClass({
         let categoryList = this._sidebar.getCategoryByName(categoryName);
         let category = categoryList.getCategory(name);
         if (category) {
-            this._mainView.setPage(category);
+            this.setPage(category);
             this._updateTitle(category.title);
             this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
         }
@@ -223,15 +277,15 @@ var MainWindow = GObject.registerClass({
 
     _character(action, v) {
         const [uc, length] = v.get_string();
-        this._mainView.addToRecent(uc);
+        this.addToRecent(uc);
     }
 
     _filterFont(action, v) {
         let [family, length] = v.get_string();
         if (family == 'None')
             family = null;
-        this._mainView.filterFontFamily = family;
-        this._updateTitle(this._mainView.visible_child.title);
+        this.filterFontFamily = family;
+        //this._updateTitle(this._stack.visible_child.title);
         this._menuPopover.hide();
     }
 
@@ -243,17 +297,7 @@ var MainWindow = GObject.registerClass({
         this.search_active = keywords.length > 0;
         this._search_entry.set_text(keywords.join(' '));
     }
-});
 
-const MainView = GObject.registerClass({
-    Template: 'resource:///org/gnome/Characters/mainview.ui',
-    Properties: {
-        'max-recent-characters': GObject.ParamSpec.uint(
-            'max-recent-characters', '', '',
-            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            0, GLib.MAXUINT32, 100)
-    },
-}, class MainView extends Gtk.Stack {
     get max_recent_characters() {
         return this._maxRecentCharacters;
     }
@@ -272,71 +316,6 @@ const MainView = GObject.registerClass({
     set filterFontFamily(family) {
         this._filterFontFamily = family;
         this._fontFilter.setFilterFont(this._filterFontFamily);
-    }
-
-    _init(sidebar) {
-        super._init({
-            hexpand: true, vexpand: true,
-            transition_type: Gtk.StackTransitionType.CROSSFADE
-        });
-
-        this._fontFilter = new FontFilter();
-        this._filterFontFamily = null;
-        this._characterLists = {};
-        this._recentCharacterLists = {};
-        this._sidebar = sidebar;
-
-        let characterList;
-        let recentBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
-                                      hexpand: true, vexpand: false });
-
-        for (let i in MainCategories) {
-            let category = MainCategories[i];
-            let categoryList = this._sidebar.getCategoryByName(category.name);
-            let subcategories = categoryList.getCategoryList();
-            for (let j in subcategories) {
-                let subcategory = subcategories[j];
-                characterList = this._createCharacterList(
-                    subcategory.name,
-                    _('%s Character List').format(subcategory.title));
-                // FIXME: Can't use GtkContainer.child_get_property.
-                characterList.title = subcategory.title;
-                this.add_titled(characterList, subcategory.name, subcategory.title);
-            }
-            characterList = this._createRecentCharacterList(
-                category.name,
-                // TRANSLATORS: %s will be either 'emojis' or 'letters'
-                _('Recently Used %s Character List').format(category.title),
-                category.category);
-            this._recentCharacterLists[category.name] = characterList;
-            if (i > 0) {
-                let separator = new Gtk.Separator({});
-                recentBox.append(separator);
-            }
-            recentBox.append(characterList);
-        }
-        let scroll = new Gtk.ScrolledWindow({
-            hscrollbar_policy: Gtk.PolicyType.NEVER,
-            hexpand: false,
-        });
-        scroll.set_child(recentBox);
-        // FIXME: Can't use GtkContainer.child_get_property.
-        scroll.title = _('Recently Used');
-        this.add_titled(scroll, 'recent', scroll.title);
-
-        characterList = this._createCharacterList(
-            'search-result', _('Search Result Character List'));
-        // FIXME: Can't use GtkContainer.child_get_property.
-        characterList.title = _("Search Result");
-        this.add_named(characterList, 'search-result');
-
-        // FIXME: Can't use GSettings.bind with 'as' from Gjs
-        let recentCharacters = Main.settings.get_value('recent-characters');
-        this.recentCharacters = recentCharacters.get_strv();
-        this._maxRecentCharacters = 100;
-        Main.settings.bind('max-recent-characters', this,
-                           'max-recent-characters',
-                           Gio.SettingsBindFlags.DEFAULT);
     }
 
     _createCharacterList(name, accessible_name) {
@@ -363,7 +342,7 @@ const MainView = GObject.registerClass({
     }
 
     cancelSearch() {
-        const characterList = this.get_child_by_name('search-result');
+        const characterList = this.mainStack.get_child_by_name('search-result');
         characterList.cancelSearch();
     }
 

@@ -135,94 +135,112 @@ const EmojiCategoryList = [
 ];
 
 const CategoryListRowWidget = GObject.registerClass({
+    Properties: {
+        'title': GObject.ParamSpec.string(
+            'title',
+            'Category title', 'Category title',
+            GObject.ParamFlags.READWRITE,
+            '',
+        ),
+        'icon-name': GObject.ParamSpec.string(
+            'icon-name',
+            'Category Icon Name', 'Category Icon Name',
+            GObject.ParamFlags.READWRITE,
+            '',
+        ),
+    },
 }, class CategoryListRowWidget extends Gtk.ListBoxRow {
-
-    _init (category) {
-        super._init();
-        this.category = category;
+    _init () {
+        super._init({});
         /*this.get_accessible().accessible_name =
             _('%s Category List Row').format(category.title);*/
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
         this.set_child(hbox);
-        let image = Gtk.Image.new_from_icon_name(category.icon_name);
+        let image = Gtk.Image.new();
+        this.bind_property("icon-name", image, "icon-name",
+        GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE);
         image.set_icon_size(Gtk.IconSize.LARGE_TOOLBAR);
         image.add_css_class('category-icon');
         hbox.append(image);
 
-        let label = new Gtk.Label({ label: Gettext.gettext(category.title),
-                                    halign: Gtk.Align.START });
+        let label = new Gtk.Label({ halign: Gtk.Align.START });
+        this.bind_property("title", label, "label",GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE);
         label.add_css_class('category-label');
         hbox.append(label);
 
+        this.add_css_class('category');
     }
 });
 
-const CategoryListWidget = GObject.registerClass({
+var Sidebar = GObject.registerClass({
     Properties: {
-        'selected-category': GObject.ParamSpec.string(
-            'selected-category',
+        'selected-item': GObject.ParamSpec.object(
+            'selected-item',
             'Current active category', 'Currently selected category',
             GObject.ParamFlags.READWRITE,
-        ""),
+            Gtk.ListBoxRow.$gtype,
+        ),
     },
-}, class CategoryListWidget extends Adw.Bin {
-    _init(categories) {
-        super._init({});
-
-        this.list = Gtk.ListBox.new();
-        this._categories = categories;
-        this._lastSelectedRow = null;
-        this._selectedCategory = null;
-
-        for (let index in this._categories) {
-            let category = this._categories[index];
-            let rowWidget = new CategoryListRowWidget(category);
-            rowWidget.add_css_class('category');
-            this.list.append(rowWidget);
-        }
-
-        this.list.connect('row-selected', (row) => {
-            if (row != null && row.selectable) {
-                this._selectedCategory = row.category.name;
-                this.notify('selected-category');
-                this._lastSelectedRow = row;
-            }
-        });
-        this.set_child(this.list);
-    }
-
-    getCategoryList() {
-        return this._categories;
-    }
-
-    getCategory(name) {
-        for (let index in this._categories) {
-            let category = this._categories[index];
-            if (category.name == name)
-                return category;
-        }
-        return null;
-    }
-
-    restorePreviousSelection() {
-        if (this._lastSelectedRow) {
-            this.list.select_row(this._lastSelectedRow)
-        }
-    }
-
-    unselect() {
-        let selected = this.list.get_selected_row()
-        if (selected)
-            this.list.unselect_row(selected)
-    }
-});
-
-const LetterCategoryListWidget = GObject.registerClass({
-}, class LetterCategoryListWidget extends CategoryListWidget {
+    Template: 'resource:///org/gnome/Characters/sidebar.ui',
+    InternalChildren: [
+        'list',
+        'recentRow', 'emojiSmileysRow', 'emojiAnimalsRow',
+        'emojiFoodRow', 'emojiActivitiesRow', 'emojiTravelRow',
+        'emojiObjectsRow', 'emojiSymbolsRow', 'emojiFlagsRow',
+        'lettersPunctuationRow', 'lettersArrowsRow',
+        'lettersBulletsRow', 'lettersPicturesRow',
+        'lettersCurrencyRow', 'lettersMathRow', 'lettersLatinRow',
+    ],
+}, class Sidebar extends Adw.Bin {
     _init() {
-        super._init(LetterCategoryList);
-        this.populateCategoryList();
+        super._init();
+    }
+
+    rowByName(name) {
+        switch(name) {
+            case 'smileys':
+                return this._emojiSmileysRow;
+            case 'animals':
+                return this._emojiAnimalsRow;
+            case 'food':
+                return this._emojiFoodRow;
+            case 'activities':
+                return this._emojiActivitesRow;
+            case 'travel':
+                return this._emojiTravelRow;
+            case 'objects':
+                return this._emojiObjectsRow;
+            case 'symbols':
+                return this._emojiSymbolsRow;
+            case 'flags':
+                return this._emojiFlagsRow;
+            case 'punctuation':
+                return this._lettersPunctuationRow;
+            case 'arrows':
+                return this._lettersArrowsRow;
+            case 'bullets':
+                return this._lettersBulletsRow;
+            case 'pictures':
+                return this._lettersPicturesRow;
+            case 'currency':
+                return this._lettersCurrencyRow;
+            case 'math':
+                return this._lettersMathRow;
+            case 'latin':
+                return this._lettersLatinRow;
+            default:
+                return this._recentRow;
+       }
+    }
+
+    selectRowByName(name) {
+        let row = this.rowByName(name);
+        this._list.select_row(row);
+    }
+
+    get selectedItem() {
+        return this._selected_item;
     }
 
     _finishListEngines(sources, bus, res) {
@@ -340,93 +358,6 @@ const LetterCategoryListWidget = GObject.registerClass({
                 this._ensureIBusLanguageList(sources);
             else
                 this._finishBuildScriptList(sources);
-        }
-    }
-});
-
-const EmojiCategoryListWidget = GObject.registerClass({
-
-}, class EmojiCategoryListWidget extends CategoryListWidget {
-    _init() {
-        super._init(EmojiCategoryList);
-    }
-
-    getCategory(name) {
-        return super.getCategory(name);
-    }
-});
-
-const RecentCategoryListWidget = GObject.registerClass({
-
-}, class RecentCategoryListWidget extends CategoryListWidget {
-    _init() {
-        this.recentCategory = {
-            name: 'recent',
-            category: Gc.Category.NONE,
-            title: N_('Recently Used'),
-            icon_name: 'document-open-recent-symbolic',
-        };
-        super._init([this.recentCategory]);
-        this.recentRow = new CategoryListRowWidget(this.recentCategory);
-        this.recentRow.add_css_class('category');
-        this.recentRow.add_css_class('recent-category');
-        this.set_child(this.recentRow)
-    }
-
-    getCategory(name) {
-        return this.recentCategory;
-    }
-});
-
-var Sidebar = GObject.registerClass({
-    Template: 'resource:///org/gnome/Characters/sidebar.ui',
-    InternalChildren: [
-        'recentSection', 'emojisSection', 'lettersSection'
-    ],
-}, class Sidebar extends Gtk.Box {
-    _init() {
-        super._init();
-        this._lastSelectedList = null;
-
-        this._recentSection.list.connect('row-selected', (list, row) => {
-            this._lettersSection.unselect();
-            this._emojisSection.unselect();
-            this._lastSelectedList = this._recentSection;
-            list.select_row(row);
-        });
-        this._emojisSection.list.connect('row-selected', (list, row) => {
-            this._recentSection.unselect();
-            this._lettersSection.unselect();
-            this._lastSelectedList = this._emojisSection;
-            list.select_row(row);
-        });
-
-        this._lettersSection.list.connect('row-selected', (list, row) => {
-            this._emojisSection.unselect();
-            this._recentSection.unselect();
-            this._lastSelectedList = this._lettersSection;
-            list.select_row(row);
-        });
-    }
-
-    getCategoryByName(name) {
-        switch (name) {
-            case 'emojis':
-                return this._emojisSection
-            case 'recent':
-                return this._recentSection
-            default:
-                return this._lettersSection
-        }
-    }
-
-    get selectedList() {
-        return this._lastSelectedList
-    }
-    
-    restorePreviousSelection() {
-        if (this._lastSelectedList) {
-            this._lastSelectedList.restorePreviousSelection()
         }
     }
 });

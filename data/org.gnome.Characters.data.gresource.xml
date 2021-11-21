@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gnome/Characters">
-    <file preprocess="xml-stripblanks">mainview.ui</file>
-    <file preprocess="xml-stripblanks">mainwindow.ui</file>
     <file preprocess="xml-stripblanks">character.ui</file>
     <file preprocess="xml-stripblanks">characterlist.ui</file>
     <file preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">shortcuts.ui</file>
     <file preprocess="xml-stripblanks">menu.ui</file>
     <file preprocess="xml-stripblanks">sidebar.ui</file>
+    <file preprocess="xml-stripblanks">window.ui</file>
     <file>style.css</file>
   </gresource>
   <gresource prefix="/org/gnome/Characters/icons/scalable/categories">

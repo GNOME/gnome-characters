@@ -1,48 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="Gjs_Sidebar" parent="GtkBox">
-    <property name="orientation">vertical</property>
+  <template class="Gjs_Sidebar" parent="AdwBin">
     <property name="vexpand">True</property>
     <property name="hexpand">True</property>
     <child>
-        <object class="Gjs_RecentCategoryListWidget" id="recentSection" />
-    </child>
-    <child>
-      <object class="GtkSeparator">
-        <property name="orientation">horizontal</property>
+      <object class="GtkListBox" id="list">
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="recentRow">
+            <property name="name">recent</property>
+            <property name="icon-name">document-open-recent-symbolic</property>
+            <property name="title" translatable="yes">Recently Used</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="selectable">false</property>
+            <property name="activatable">false</property>
+            <child>
+              <object class="GtkSeparator">
+                <property name="orientation">horizontal</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="selectable">false</property>
+            <property name="activatable">false</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Emojis</property>
+                <property name="halign">start</property>
+                <property name="margin-top">12</property>
+                <property name="margin-start">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="margin-end">12</property>
+                <style>
+                  <class name="heading" />
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="emojiSmileysRow">
+            <property name="name">emoji-smileys</property>
+            <property name="icon-name">characters-emoji-smileys</property>
+            <property name="title" translatable="yes">Smileys &amp; People</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="emojiAnimalsRow">
+            <property name="name">emoji-animals</property>
+            <property name="icon-name">characters-emoji-animals</property>
+            <property name="title" translatable="yes">Animals &amp; Nature</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="emojiFoodRow">
+            <property name="name">emoji-food</property>
+            <property name="icon-name">characters-emoji-food</property>
+            <property name="title" translatable="yes">Food &amp; Drink</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="emojiActivitiesRow">
+            <property name="name">emoji-activities</property>
+            <property name="icon-name">characters-emoji-activities</property>
+            <property name="title" translatable="yes">Activities</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="emojiTravelRow">
+            <property name="name">emoji-travel</property>
+            <property name="icon-name">characters-emoji-travel</property>
+            <property name="title" translatable="yes">Travel &amp; Places</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="emojiObjectsRow">
+            <property name="name">emoji-objects</property>
+            <property name="icon-name">characters-emoji-objects</property>
+            <property name="title" translatable="yes">Objects</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="emojiSymbolsRow">
+            <property name="name">emoji-symbols</property>
+            <property name="icon-name">characters-emoji-symbols</property>
+            <property name="title" translatable="yes">Symbols</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="emojiFlagsRow">
+            <property name="name">emoji-flags</property>
+            <property name="icon-name">characters-emoji-flags</property>
+            <property name="title" translatable="yes">Flags</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="selectable">false</property>
+            <property name="activatable">false</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Letters &amp; Symbols</property>
+                <property name="halign">start</property>
+                <property name="margin-top">12</property>
+                <property name="margin-start">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="margin-end">12</property>
+                <style>
+                  <class name="heading" />
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="lettersPunctuationRow">
+            <property name="name">punctuation</property>
+            <property name="icon-name">characters-punctuation-symbolic</property>
+            <property name="title" translatable="yes">Punctuation</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="lettersArrowsRow">
+            <property name="name">arrow</property>
+            <property name="icon-name">characters-arrow-symbolic</property>
+            <property name="title" translatable="yes">Arrows</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="lettersBulletsRow">
+            <property name="name">bullet</property>
+            <property name="icon-name">characters-bullet-symbolic</property>
+            <property name="title" translatable="yes">Bullets</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="lettersPicturesRow">
+            <property name="name">picture</property>
+            <property name="icon-name">characters-picture-symbolic</property>
+            <property name="title" translatable="yes">Pictures</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="lettersCurrencyRow">
+            <property name="name">currency</property>
+            <property name="icon-name">characters-currency-symbolic</property>
+            <property name="title" translatable="yes">Currencies</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="lettersMathRow">
+            <property name="name">math</property>
+            <property name="icon-name">characters-math-symbolic</property>
+            <property name="title" translatable="yes">Math</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_CategoryListRowWidget" id="lettersLatinRow">
+            <property name="name">letters</property>
+            <property name="icon-name">characters-latin-symbolic</property>
+            <property name="title" translatable="yes">Letters</property>
+          </object>
+        </child>
       </object>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="label" translatable="yes">Emojis</property>
-        <property name="halign">start</property>
-        <property name="margin-top">12</property>
-        <property name="margin-start">12</property>
-        <property name="margin-bottom">12</property>
-        <property name="margin-end">12</property>
-        <style>
-          <class name="heading" />
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="Gjs_EmojiCategoryListWidget" id="emojisSection" />
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="label" translatable="yes">Letters &amp; Symbols</property>
-        <property name="halign">start</property>
-        <property name="margin-top">12</property>
-        <property name="margin-start">12</property>
-        <property name="margin-bottom">12</property>
-        <property name="margin-end">12</property>
-        <style>
-          <class name="heading" />
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="Gjs_LetterCategoryListWidget" id="lettersSection" />
     </child>
     <style>
       <class name="categories-list" />
