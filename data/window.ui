@@ -99,6 +99,9 @@
             <child>
               <object class="GtkHeaderBar" id="main-headerbar">
                 <property name="show-title-buttons">True</property>
+                <property name="title-widget">
+                  <object class="AdwWindowTitle" id="windowTitle" />
+                </property>
                 <child>
                   <object class="GtkRevealer">
                     <property name="transition-type">crossfade</property>

@@ -41,7 +41,7 @@ var MainWindow = GObject.registerClass({
         'main-headerbar', 'search-active-button',
         'search-bar', 'search-entry', 'back-button',
         'menuPopover', 'container', 'sidebar',
-        'leaflet', 'mainStack', 'recentBox',
+        'leaflet', 'mainStack', 'recentBox', 'windowTitle',
     ],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
@@ -64,9 +64,8 @@ var MainWindow = GObject.registerClass({
         this._characterLists = {};
         this._recentCharacterLists = {};
 
-        this._sidebar.connect('notify::selected-item', (sidebar) => {
-            let selectedCategory = sidebar.selectedItem.category;
-            this._main_headerbar.title = selectedCategory.title;
+        this._sidebar.list.connect('row-selected', (sidebar, row) => {
+            this._windowTitle.title = row.title;
         });
 
         let characterList;

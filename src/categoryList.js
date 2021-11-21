@@ -151,7 +151,7 @@ const CategoryListRowWidget = GObject.registerClass({
     },
 }, class CategoryListRowWidget extends Gtk.ListBoxRow {
     _init () {
-        super._init({});
+        super._init();
         /*this.get_accessible().accessible_name =
             _('%s Category List Row').format(category.title);*/
 
@@ -171,17 +171,17 @@ const CategoryListRowWidget = GObject.registerClass({
 
         this.add_css_class('category');
     }
+
+    get title() {
+        return this._title || '';
+    }
+
+    set title(title) {
+        this._title = title;
+    }
 });
 
 var Sidebar = GObject.registerClass({
-    Properties: {
-        'selected-item': GObject.ParamSpec.object(
-            'selected-item',
-            'Current active category', 'Currently selected category',
-            GObject.ParamFlags.READWRITE,
-            Gtk.ListBoxRow.$gtype,
-        ),
-    },
     Template: 'resource:///org/gnome/Characters/sidebar.ui',
     InternalChildren: [
         'list',
@@ -239,8 +239,8 @@ var Sidebar = GObject.registerClass({
         this._list.select_row(row);
     }
 
-    get selectedItem() {
-        return this._selected_item;
+    get list() {
+        return this._list;
     }
 
     _finishListEngines(sources, bus, res) {
