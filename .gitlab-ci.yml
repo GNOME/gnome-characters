@@ -20,17 +20,6 @@ nightly:
     stage: cross_environment
     dependencies: ["flatpak"]
 
-fedora:latest:
-    image: fedora:latest
-    stage: cross_environment
-    before_script:
-        - dnf upgrade -y
-        - dnf install -y 'dnf-command(builddep)' redhat-rpm-config git
-        - dnf builddep -y gnome-characters
-    script:
-        - meson _build .
-        - ninja -C _build
-
 eslint:
   image: registry.gitlab.gnome.org/gnome/gnome-shell/fedora/33:2020-11-17.0
 
