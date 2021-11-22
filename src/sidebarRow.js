@@ -43,24 +43,34 @@ var SidebarRow = GObject.registerClass({
     },
 }, class SidebarRow extends Gtk.ListBoxRow {
     _init() {
-        super._init();
-        /* this.get_accessible().accessible_name =
-            _('%s Category List Row').format(category.title);*/
+        super._init({
+            accessible_role: Gtk.AccessibleRole.ROW,
+        });
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
-        this.set_child(hbox);
+
         let image = Gtk.Image.new();
         this.bind_property('icon-name', image, 'icon-name',
-            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE);
+            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
+        );
         image.set_icon_size(Gtk.IconSize.LARGE_TOOLBAR);
         image.add_css_class('category-icon');
         hbox.append(image);
 
         let label = new Gtk.Label({ halign: Gtk.Align.START });
-        this.bind_property('title', label, 'label', GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE);
+        this.bind_property('title', label, 'label',
+            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
+        );
+        // Because bind_property doesn't work with transform functions
+        // TODO: is this really needed?
+        this.connect('notify::title', (row) => {
+            row.tooltip_text = _('%s Sidebar Row').format(row.title);
+        });
+
         label.add_css_class('category-label');
         hbox.append(label);
 
+        this.set_child(hbox);
         this.add_css_class('category');
     }
 
