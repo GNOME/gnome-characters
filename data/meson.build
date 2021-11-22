@@ -9,7 +9,7 @@ resource_data = files(
   'icons/hicolor/scalable/categories/characters-picture-symbolic.svg',
   'icons/hicolor/scalable/categories/characters-punctuation-symbolic.svg',
   'style.css',
-  'character.ui',
+  'character_dialog.ui',
   'characters_view.ui',
   'menu.ui',
   'shortcuts.ui',

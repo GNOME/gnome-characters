@@ -17,54 +17,49 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, GLib, Gio, GObject, Gtk, Pango } = imports.gi;
+const { Adw, Gc, Gdk, Gio, GObject, Gtk, Pango } = imports.gi;
 
 const Util = imports.util;
 
 var CharacterDialog = GObject.registerClass({
-
     Signals: {
         'character-copied': { param_types: [GObject.TYPE_STRING] },
     },
-    Template: 'resource:///org/gnome/Characters/character.ui',
-    InternalChildren: ['main-stack', 'character-stack',
-        'character-label', 'missing-label', 'detail-label',
-        'copy-button', 'copy-revealer', 'related-listbox'],
-}, class CharacterDialog extends Gtk.Dialog {
+    Template: 'resource:///org/gnome/Characters/character_dialog.ui',
+    InternalChildren: [
+        'mainStack', 'characterStack',
+        'characterLabel', 'missingLabel', 'detailLabel',
+        'seeAlsoRow', 'relatedListbox',
+        'windowTitle', 'revealer', 'toastOverlay',
+    ],
+}, class CharacterDialog extends Adw.Window {
     _init(character, fontDescription) {
-        super._init({
-            use_header_bar: true,
-            width_request: 400,
-            height_request: 400,
-        });
-
+        super._init();
         this._cancellable = new Gio.Cancellable();
-
-        this._copy_button.connect('clicked', () => this._copyCharacter());
-
-        this._related_listbox.connect('row-selected', (listBox, row) => this._handleRowSelected(listBox, row));
-
-        this._relatedButton = new Gtk.ToggleButton({ label: _('See Also') });
-        this.add_action_widget(this._relatedButton, Gtk.ResponseType.HELP);
-        this._relatedButton.show();
-
-        this._relatedButton.connect('toggled', () => {
-            if (this._main_stack.visible_child_name === 'character')
-                this._main_stack.visible_child_name = 'related';
-            else
-                this._main_stack.visible_child_name = 'character';
-        });
-
         this._fontDescription = fontDescription;
-        this._setCharacter(character);
 
-        this._copyRevealerTimeoutId = 0;
+        const actions = new Gio.SimpleActionGroup();
+        Util.initActions(actions, [
+            { name: 'copy', activate: this._copyCharacter.bind(this) },
+            { name: 'see-also', activate: this._seeMore.bind(this) },
+            { name: 'go-back', activate: this._seeCharacter.bind(this) },
+        ]);
+        this.insert_action_group('character', actions);
+
+        this._setCharacter(character);
     }
 
     _finishSearch(result) {
-        let children = this._related_listbox.get_children();
-        for (let index in children)
-            this._related_listbox.remove(children[index]);
+        let children = this._relatedListbox.get_first_child();
+        while (children !== null) {
+            let nextChild = children.get_next_sibling();
+            if (nextChild === null) {
+                this._relatedListbox.remove(children);
+                break;
+            }
+
+            this._relatedListbox.remove(nextChild);
+        }
 
         for (let index = 0; index < result.len; index++) {
             let uc = Gc.search_result_get(result, index);
@@ -72,30 +67,24 @@ var CharacterDialog = GObject.registerClass({
             if (name === null)
                 continue;
 
-            let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
-
-            let characterLabel = new Gtk.Label({ label: uc,
+            let row = new Adw.ActionRow();
+            row.set_title(Util.capitalize(name));
+            row.add_prefix(new Gtk.Label({
+                label: uc,
                 valign: Gtk.Align.CENTER,
                 halign: Gtk.Align.CENTER,
-                width_request: 45 });
-            characterLabel.add_css_class('character');
-            hbox.pack_start(characterLabel, false, false, 2);
-
-            let nameLabel = new Gtk.Label({ label: Util.capitalize(name),
-                halign: Gtk.Align.START,
-                ellipsize: Pango.EllipsizeMode.END });
-            hbox.pack_start(nameLabel, true, true, 0);
-
-            let row = new Gtk.ListBoxRow();
-            row._character = uc;
-            row.add(hbox);
-            row.show_all();
-
-            this._related_listbox.add(row);
+                width_request: 45,
+            }));
+            let gesture = new Gtk.GestureClick();
+            gesture.connect('pressed', () => {
+                this._setCharacter(uc);
+                this._seeCharacter();
+            });
+            row.add_controller(gesture);
+            row.set_activatable(true);
+            this._relatedListbox.append(row);
         }
-
-        this._relatedButton.visible =
-            this._related_listbox.get_children().length > 0;
+        this._seeAlsoRow.visible = result.len > 0;
     }
 
     _setCharacter(uc) {
@@ -108,29 +97,26 @@ var CharacterDialog = GObject.registerClass({
         if (name !== null)
             name = Util.capitalize(name);
         else
-            name = _('Unicode U+%04s').format(codePointHex);
+            name = 'U+%04s'.format(codePointHex);
 
+        this._windowTitle.title = name;
+        this._characterLabel.label = this._character;
+        this._detailLabel.label = 'U+%04s'.format(codePointHex);
 
-        let headerBar = this.get_header_bar();
-        headerBar.title = name;
+        let pangoContext = this._characterLabel.get_pango_context();
+        pangoContext.set_font_description(this._fontDescription);
 
-        this._character_label.override_font(this._fontDescription);
-        this._character_label.label = this._character;
-
-        var pangoContext = this._character_label.get_pango_context();
         var pangoLayout = Pango.Layout.new(pangoContext);
         pangoLayout.set_text(this._character, -1);
         if (pangoLayout.get_unknown_glyphs_count() === 0) {
-            this._character_stack.visible_child_name = 'character';
+            this._characterStack.visible_child_name = 'character';
         } else {
             var fontFamily = this._fontDescription.get_family();
-            this._missing_label.label =
+            this._missingLabel.label =
                 // TRANSLATORS: the first variable is a character, the second is a font
                 _('%s is not included in %s').format(name, fontFamily);
-            this._character_stack.visible_child_name = 'missing';
+            this._characterStack.visible_child_name = 'missing';
         }
-
-        this._detail_label.label = _('Unicode U+%04s').format(codePointHex);
 
         this._cancellable.cancel();
         this._cancellable.reset();
@@ -148,54 +134,30 @@ var CharacterDialog = GObject.registerClass({
                 }
             });
 
-        this._relatedButton.active = false;
-        this._main_stack.visible_child_name = 'character';
-        this._main_stack.show_all();
+        this._seeAlsoRow.visible = false;
     }
 
-    _hideCopyRevealer() {
-        if (this._copyRevealerTimeoutId > 0) {
-            GLib.source_remove(this._copyRevealerTimeoutId);
-            this._copyRevealerTimeoutId = 0;
-            this._copy_revealer.set_reveal_child(false);
-        }
+    _seeMore() {
+        this._revealer.reveal_child = true;
+        this._mainStack.visible_child_name = 'related';
     }
 
-    _clipboardOwnerChanged(clipboard) {
-        let text = clipboard.wait_for_text();
-        if (text !== this._character)
-            this._hideCopyRevealer();
+    _seeCharacter() {
+        this._revealer.reveal_child = false;
+        this._mainStack.visible_child_name = 'character';
     }
 
     _copyCharacter() {
-        if (this._clipboard === null) {
-            this._clipboard = Gc.gtk_clipboard_get();
-            let clipboardOwnerChanged =
-                this._clipboard.connect('owner-change', clipboard => this._clipboardOwnerChanged(clipboard));
-            this.connect('destroy', () => this._clipboard.disconnect(clipboardOwnerChanged));
-        }
-        this._clipboard.set_text(this._character, -1);
+        let display = Gdk.Display.get_default();
+        let clipboard = display.get_clipboard();
+
+        clipboard.set(this._character);
         this.emit('character-copied', this._character);
 
-        // Show a feedback message with a revealer.  The message is
-        // hidden after 2 seconds, or when another client set a
-        // different text to clipboard.
-        this._hideCopyRevealer();
-        this._copy_revealer.set_reveal_child(true);
-        this._copyRevealerTimeoutId =
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => this._hideCopyRevealer());
-        this.connect('destroy', () => {
-            if (this._copyRevealerTimeoutId > 0)
-                GLib.source_remove(this._copyRevealerTimeoutId);
+        const toast = new Adw.Toast({
+            title: _('Character copied to clipboard'),
+            timeout: 2,
         });
-    }
-
-    _handleRowSelected(listBox, row) {
-        if (row !== null) {
-            this._setCharacter(row._character);
-            let toplevel = this.get_transient_for();
-            let action = toplevel.lookup_action('character');
-            action.activate(new GLib.Variant('s', row._character));
-        }
+        this._toastOverlay.add_toast(toast);
     }
 });

@@ -19,26 +19,8 @@ Gjs_MenuPopover GtkScrolledWindow {
     font-size: x-large;
 }
 
-.character-list {
-    color: @theme_text_color;
-    background-color: @theme_base_color;
-}
-
 .character-label {
     font-size: 7em;
     font-weight: bold;
-}
-
-.detail-label {
-    font-size: small;
-}
-
-.related .character {
-    font-size: 3em;
-}
-
-.related .list-row {
-    border-style: groove;
-    border-width: 2pt;
 }
 
