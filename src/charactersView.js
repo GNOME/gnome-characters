@@ -232,7 +232,7 @@ const CharacterListWidget = GObject.registerClass({
     }
     */
 
-    onButtonPress(nPress, x, y) {
+    onButtonPress(gesture, nPress, x, y) {
         let cellSize = getCellSize(this._fontDescription);
         x = Math.floor(x / cellSize);
         y = Math.floor(y / cellSize);
