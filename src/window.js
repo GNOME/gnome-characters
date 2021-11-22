@@ -41,7 +41,7 @@ var MainWindow = GObject.registerClass({
         'search-bar', 'search-entry', 'back-button',
         'menuPopover', 'container', 'sidebar',
         'leaflet', 'mainStack', 'windowTitle',
-        'charactersView',
+        'charactersView', 'scrolledWindow',
     ],
     Properties: {
         'search-active': GObject.ParamSpec.boolean(
@@ -70,6 +70,9 @@ var MainWindow = GObject.registerClass({
 
 
         this._sidebar.list.connect('row-selected', (sidebar, row) => {
+            const adj = this._scrolledWindow.get_vadjustment();
+            adj.set_value(0.0); // scroll back to the top
+            this._charactersView.queue_resize();
             if (row) {
                 this._sidebar.lastSelectedRow = row;
                 this.setPage(row);

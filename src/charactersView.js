@@ -182,169 +182,6 @@ const CharacterListRow = GObject.registerClass({
     }
 });
 
-const CharacterListWidget = GObject.registerClass({
-    Signals: {
-        'character-selected': { param_types: [GObject.TYPE_STRING] },
-    },
-}, class CharacterListWidget extends Gtk.Widget {
-    _init(numRows) {
-        super._init({
-            hexpand: true,
-            vexpand: true,
-        });
-        this.add_css_class('character-list');
-        this._cellsPerRow = CELLS_PER_ROW;
-        this._numRows = numRows;
-        this._characters = [];
-        this._rows = [];
-        /* this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
-                        Gdk.EventMask.BUTTON_RELEASE_MASK);
-        this.drag_source_set(Gdk.ModifierType.BUTTON1_MASK,
-                             null,
-                             Gdk.DragAction.COPY);
-        this.drag_source_add_text_targets();
-        */
-        const gestureClick = new Gtk.GestureClick();
-        gestureClick.connect('pressed', this.onButtonPress.bind(this));
-        gestureClick.connect('released', this.onButtonRelease.bind(this));
-        this.add_controller(gestureClick);
-
-        this._character = null;
-    }
-    /*
-    vfunc_drag_begin(context) {
-        let cellSize = getCellSize(this._fontDescription);
-        this._dragSurface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
-                                                   cellSize,
-                                                   cellSize);
-        let cr = new Cairo.Context(this._dragSurface);
-        cr.setSourceRGBA(1.0, 1.0, 1.0, 1.0);
-        cr.paint();
-        cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
-        let row = this._createCharacterListRow([this._character]);
-        row.draw(cr, 0, 0, cellSize, cellSize, this.get_style_context());
-        Gtk.drag_set_icon_surface(context, this._dragSurface, 0, 0);
-    }
-
-    vfunc_drag_data_get(context, data, info, time) {
-        if (this._character !== null)
-            data.set_text(this._character, -1);
-    }
-    */
-
-    onButtonPress(gesture, nPress, x, y) {
-        let cellSize = getCellSize(this._fontDescription);
-        x = Math.floor(x / cellSize);
-        y = Math.floor(y / cellSize);
-        let index = y * this._cellsPerRow + x;
-        if (index < this._characters.length)
-            this._character = this._characters[index];
-        else
-            this._character = null;
-        return false;
-    }
-
-    onButtonRelease() {
-        if (this._character)
-            this.emit('character-selected', this._character);
-        log(this._character);
-        return false;
-    }
-
-    vfunc_measure(orientation, _forSize) {
-        if (orientation === Gtk.Orientation.HORIZONTAL) {
-            let cellSize = getCellSize(this._fontDescription);
-            let minWidth = NUM_COLUMNS * cellSize;
-            let natWidth = Math.max(this._cellsPerRow, NUM_COLUMNS) * cellSize;
-            return [minWidth, natWidth, -1, -1];
-        } else {
-            let height = Math.max(this._rows.length, this._numRows) *
-                getCellSize(this._fontDescription);
-            return [height, height, -1, -1];
-        }
-    }
-
-    vfunc_snapshot(snapshot) {
-        // Clear the canvas.
-        let allocation = this.get_allocation();
-        let rect = new Graphene.Rect({
-            origin: new Graphene.Point({ x: 0, y: 0 }),
-            size: new Graphene.Size({ width: allocation.width, height: allocation.height }),
-        });
-        let cr = snapshot.append_cairo(rect);
-
-        let context = this.get_style_context();
-        let fg = context.get_color();
-        Gdk.cairo_set_source_rgba(cr, fg);
-
-        // Use device coordinates directly, since PangoCairo doesn't
-        // work well with scaled matrix:
-        // https://bugzilla.gnome.org/show_bug.cgi?id=700592
-
-        // Redraw rows within the clipped region.
-        let [_, y1, __, y2] = cr.clipExtents();
-        let cellSize = getCellSize(this._fontDescription);
-        let start = Math.max(0, Math.floor(y1 / cellSize));
-        let end = Math.min(this._rows.length, Math.ceil(y2 / cellSize));
-        for (let index = start; index < end; index++) {
-            this._rows[index].draw(cr, 0, index * cellSize,
-                allocation.width, cellSize, context);
-        }
-    }
-
-    vfunc_get_request_mode() {
-        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
-    }
-
-    vfunc_size_allocate(width, height, baseline) {
-        super.vfunc_size_allocate(width, height, baseline);
-
-        let cellSize = getCellSize(this._fontDescription);
-        let cellsPerRow = Math.floor(width / cellSize);
-        if (cellsPerRow !== this._cellsPerRow) {
-            // Reflow if the number of cells per row has changed.
-            this._cellsPerRow = cellsPerRow;
-            this.setCharacters(this._characters);
-        }
-    }
-
-    _createCharacterListRow(characters) {
-        var context = this.get_pango_context();
-        var overlayFontDescription = context.get_font_description();
-        overlayFontDescription.set_size(overlayFontDescription.get_size() * 0.8);
-
-        let row = new CharacterListRow(characters, this._fontDescription, overlayFontDescription);
-        return row;
-    }
-
-    setFontDescription(fontDescription) {
-        this._fontDescription = fontDescription;
-    }
-
-    setCharacters(characters) {
-        this._rows = [];
-        this._characters = characters;
-
-        let start = 0, stop = 1;
-        for (; stop <= characters.length; stop++) {
-            if (stop % this._cellsPerRow === 0) {
-                let rowCharacters = characters.slice(start, stop);
-                let row = this._createCharacterListRow(rowCharacters);
-                this._rows.push(row);
-                start = stop;
-            }
-        }
-        if (start !== stop - 1) {
-            let rowCharacters = characters.slice(start, stop);
-            let row = this._createCharacterListRow(rowCharacters);
-            this._rows.push(row);
-        }
-
-        this.queue_resize();
-        this.queue_draw();
-    }
-});
-
 const MAX_SEARCH_RESULTS = 100;
 
 var FontFilter = GObject.registerClass({
@@ -428,27 +265,24 @@ var FontFilter = GObject.registerClass({
 });
 
 var CharactersView = GObject.registerClass({
-    Template: 'resource:///org/gnome/Characters/characters_view.ui',
     Signals: {
         'character-selected': { param_types: [GObject.TYPE_STRING] },
     },
     Properties: {
-        'model': GObject.ParamSpec.object(
-            'model',
-            'Characters List Model', 'Characters List Model',
-            GObject.ParamFlags.READWRITE,
-            Gio.ListModel.$gtype,
-        ),
+        'vscroll-policy': GObject.ParamSpec.override('vscroll-policy', Gtk.Scrollable),
+        'vadjustment': GObject.ParamSpec.override('vadjustment', Gtk.Scrollable),
+        'hscroll-policy': GObject.ParamSpec.override('hscroll-policy', Gtk.Scrollable),
+        'hadjustment': GObject.ParamSpec.override('hadjustment', Gtk.Scrollable),
     },
-}, class CharactersView extends Adw.Bin {
+    Implements: [Gtk.Scrollable],
+}, class CharactersView extends Gtk.Widget {
     _init() {
-        super._init();
+        super._init({
+            vadjustment: new Gtk.Adjustment(),
+            hadjustment: new Gtk.Adjustment(),
+        });
 
-        this._characterList = new CharacterListWidget(NUM_ROWS);
-        this._characterList.connect('character-selected', (w, c) => this.emit('character-selected', c));
-
-        this.set_child(this._characterList);
-
+        this._selectedCharacter = null;
         this._characters = [];
         this._spinnerTimeoutId = 0;
         this._searchContext = null;
@@ -459,14 +293,190 @@ var CharactersView = GObject.registerClass({
             this._characters = [];
             this._updateCharacterList();
         });
-        /* TODO: use listmodels & grid view hopefully
-        scroll.connect('edge-reached', (scrolled, pos) => this._onEdgeReached(scrolled, pos));
-        scroll.connect('size-allocate', (scrolled, allocation) => this._onSizeAllocate(scrolled, allocation));
+
+        this._cellsPerRow = CELLS_PER_ROW;
+        this._numRows = NUM_ROWS;
+        this._rows = [];
+        /* this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
+                        Gdk.EventMask.BUTTON_RELEASE_MASK);
+        this.drag_source_set(Gdk.ModifierType.BUTTON1_MASK,
+                             null,
+                             Gdk.DragAction.COPY);
+        this.drag_source_add_text_targets();
         */
+        const gestureClick = new Gtk.GestureClick();
+        gestureClick.connect('pressed', this.onButtonPress.bind(this));
+        gestureClick.connect('released', this.onButtonRelease.bind(this));
+        this.add_controller(gestureClick);
+    }
+
+    get vadjustment() {
+        return this._vadjustment;
+    }
+
+    set vadjustment(adj) {
+        adj.connect('value-changed', () => {
+            this.queue_draw();
+        });
+        this._vadjustment = adj;
+    }
+
+    get hadjustment() {
+        return this._hadjustment;
+    }
+
+    set hadjustment(adj) {
+        adj.connect('value-changed', () => {
+            this.queue_draw();
+        });
+        this._hadjustment = adj;
+
+    }
+
+    /*
+    vfunc_drag_begin(context) {
+        let cellSize = getCellSize(this._fontDescription);
+        this._dragSurface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
+                                                   cellSize,
+                                                   cellSize);
+        let cr = new Cairo.Context(this._dragSurface);
+        cr.setSourceRGBA(1.0, 1.0, 1.0, 1.0);
+        cr.paint();
+        cr.setSourceRGBA(0.0, 0.0, 0.0, 1.0);
+        let row = this._createCharacterListRow([this._character]);
+        row.draw(cr, 0, 0, cellSize, cellSize, this.get_style_context());
+        Gtk.drag_set_icon_surface(context, this._dragSurface, 0, 0);
+    }
+
+    vfunc_drag_data_get(context, data, info, time) {
+        if (this._character !== null)
+            data.set_text(this._character, -1);
+    }
+    */
+
+    onButtonPress(gesture, nPress, x, y) {
+        let hadj = this.get_hadjustment();
+        let vadj = this.get_vadjustment();
+
+        let cellSize = getCellSize(this._fontDescription);
+        x = Math.floor((x + hadj.get_value()) / cellSize);
+        y = Math.floor((y + vadj.get_value()) / cellSize);
+
+        let index = y * this._cellsPerRow + x;
+        if (index < this._characters.length)
+            this._selectedCharacter = this._characters[index];
+        else
+            this._selectedCharacter = null;
+        return false;
+    }
+
+    onButtonRelease() {
+        if (this._selectedCharacter)
+            this.emit('character-selected', this._selectedCharacter);
+        return false;
+    }
+
+    vfunc_measure(orientation, _forSize) {
+        if (orientation === Gtk.Orientation.HORIZONTAL) {
+            let cellSize = getCellSize(this._fontDescription);
+            let minWidth = NUM_COLUMNS * cellSize;
+            let natWidth = Math.max(this._cellsPerRow, NUM_COLUMNS) * cellSize;
+            return [minWidth, natWidth, -1, -1];
+        } else {
+            let height = Math.max(this._rows.length, this._numRows) *
+                getCellSize(this._fontDescription);
+            return [height, height, -1, -1];
+        }
+    }
+
+    vfunc_snapshot(snapshot) {
+        let hadj = this.get_hadjustment();
+        let vadj = this.get_vadjustment();
+        let rect = new Graphene.Rect({
+            origin: new Graphene.Point({ x: 0, y: 0 }),
+            size: new Graphene.Size({
+                width: hadj.get_page_size(),
+                height: vadj.get_page_size(),
+            }),
+        });
+        let cr = snapshot.append_cairo(rect);
+
+        let context = this.get_style_context();
+        let fg = context.get_color();
+        Gdk.cairo_set_source_rgba(cr, fg);
+
+        let cellSize = getCellSize(this._fontDescription);
+        let start = Math.max(0, Math.floor(vadj.get_value() / cellSize));
+        let end = Math.min(this._rows.length, Math.ceil((vadj.get_value() + vadj.get_page_size()) / cellSize));
+
+        for (let index = start; index < end; index++) {
+            this._rows[index].draw(cr, 0, (index - start) * cellSize,
+                this.get_allocation().width, cellSize, context);
+        }
+    }
+
+    vfunc_get_request_mode() {
+        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
+    }
+
+    vfunc_size_allocate(width, height, baseline) {
+        super.vfunc_size_allocate(width, height, baseline);
+        let cellSize = getCellSize(this._fontDescription);
+        let cellsPerRow = Math.floor(width / cellSize);
+
+        let maxHeight = Math.floor((this._rows.length + BASELINE_OFFSET) * cellSize);
+        let maxWidth = cellsPerRow * cellSize;
+
+        let hadj = this.get_hadjustment();
+        let vadj = this.get_vadjustment();
+        vadj.configure(vadj.get_value(), 0.0, maxHeight, 0.1 * height, 0.9 * height, height);
+        hadj.configure(hadj.get_value(), 0.0, maxWidth, 0.1 * width, 0.9 * width, width);
+
+        if (cellsPerRow !== this._cellsPerRow) {
+            // Reflow if the number of cells per row has changed.
+            this._cellsPerRow = cellsPerRow;
+            this.setCharacters(this._characters);
+        }
+    }
+
+    _createCharacterListRow(characters) {
+        var context = this.get_pango_context();
+        var overlayFontDescription = context.get_font_description();
+        overlayFontDescription.set_size(overlayFontDescription.get_size() * 0.8);
+
+        let row = new CharacterListRow(characters, this._fontDescription, overlayFontDescription);
+        return row;
+    }
+
+    setFontDescription(fontDescription) {
+        this._fontDescription = fontDescription;
+    }
+
+    setCharacters(characters) {
+        this._rows = [];
+        this._characters = characters;
+
+        let start = 0, stop = 1;
+        for (; stop <= characters.length; stop++) {
+            if (stop % this._cellsPerRow === 0) {
+                let rowCharacters = characters.slice(start, stop);
+                let row = this._createCharacterListRow(rowCharacters);
+                this._rows.push(row);
+                start = stop;
+            }
+        }
+        if (start !== stop - 1) {
+            let rowCharacters = characters.slice(start, stop);
+            let row = this._createCharacterListRow(rowCharacters);
+            this._rows.push(row);
+        }
+
+        this.queue_resize();
+        this.queue_draw();
     }
 
     setFontFilter(fontFilter) {
-        this._characterList.setFontDescription(fontFilter.fontDescription);
+        this.setFontDescription(fontFilter.fontDescription);
         fontFilter.connect('filter-set', () => this._updateCharacterList());
         this._fontFilter = fontFilter;
     }
@@ -496,16 +506,11 @@ var CharactersView = GObject.registerClass({
         this.setCharacters(characters);
     }
 
-    setCharacters(characters) {
-        this._characters = characters;
-        this._updateCharacterList();
-    }
-
     _updateCharacterList() {
         log('Updating characters list');
         const [fontDescription, characters] = this._fontFilter.filter(this, this._characters);
-        this._characterList.setFontDescription(fontDescription);
-        this._characterList.setCharacters(characters);
+        this.setFontDescription(fontDescription);
+        this.setCharacters(characters);
     }
 
     get initialSearchCount() {
@@ -573,42 +578,5 @@ var CharactersView = GObject.registerClass({
     cancelSearch() {
         this._cancellable.cancel();
         this._cancellable.reset();
-    }
-});
-
-var RecentCharacterListView = GObject.registerClass({
-    Signals: {
-        'character-selected': { param_types: [GObject.TYPE_STRING] },
-    },
-}, class RecentCharacterListView extends Adw.Bin {
-    _init(category) {
-        super._init({
-            hexpand: true, vexpand: false,
-        });
-
-        this._characterList = new CharacterListWidget(0);
-        this._characterList.connect('character-selected', (w, c) => this.emit('character-selected', c));
-        this.set_child(this._characterList);
-
-        this._category = category;
-        this._characters = [];
-    }
-
-    setFontFilter(fontFilter) {
-        this._characterList.setFontDescription(fontFilter.fontDescription);
-        fontFilter.connect('filter-set', () => this._updateCharacterList());
-        this._fontFilter = fontFilter;
-    }
-
-    setCharacters(characters) {
-        const result = Gc.filter_characters(this._category, characters);
-        this._characters = Util.searchResultToArray(result);
-        this._updateCharacterList();
-    }
-
-    _updateCharacterList() {
-        const [fontDescription, characters] = this._fontFilter.filter(this, this._characters);
-        this._characterList.setFontDescription(fontDescription);
-        this._characterList.setCharacters(characters);
     }
 });

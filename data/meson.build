@@ -10,7 +10,6 @@ resource_data = files(
   'icons/hicolor/scalable/categories/characters-punctuation-symbolic.svg',
   'style.css',
   'character_dialog.ui',
-  'characters_view.ui',
   'menu.ui',
   'shortcuts.ui',
   'sidebar.ui',
