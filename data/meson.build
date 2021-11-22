@@ -4,14 +4,6 @@ resource_data = files(
   'icons/hicolor/scalable/categories/characters-arrow-symbolic.svg',
   'icons/hicolor/scalable/categories/characters-bullet-symbolic.svg',
   'icons/hicolor/scalable/categories/characters-currency-symbolic.svg',
-  'icons/hicolor/scalable/categories/characters-emoji-activities.svg',
-  'icons/hicolor/scalable/categories/characters-emoji-animals.svg',
-  'icons/hicolor/scalable/categories/characters-emoji-flags.svg',
-  'icons/hicolor/scalable/categories/characters-emoji-food.svg',
-  'icons/hicolor/scalable/categories/characters-emoji-objects.svg',
-  'icons/hicolor/scalable/categories/characters-emoji-smileys.svg',
-  'icons/hicolor/scalable/categories/characters-emoji-symbols.svg',
-  'icons/hicolor/scalable/categories/characters-emoji-travel.svg',
   'icons/hicolor/scalable/categories/characters-latin-symbolic.svg',
   'icons/hicolor/scalable/categories/characters-math-symbolic.svg',
   'icons/hicolor/scalable/categories/characters-picture-symbolic.svg',
@@ -20,6 +12,8 @@ resource_data = files(
   'character.ui',
   'characters_view.ui',
   'menu.ui',
+  'shortcuts.ui',
+  'sidebar.ui',
   'window.ui',
 )
 

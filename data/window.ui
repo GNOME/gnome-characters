@@ -21,7 +21,7 @@
         <child>
           <object class="GtkBox">
             <property name="orientation">vertical</property>
-            <property name="width-request">280</property>
+            <property name="width-request">200</property>
             <child>
               <object class="GtkHeaderBar" id="sidebar-headerbar">
                 <property name="show-title-buttons">False</property>

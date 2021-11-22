@@ -49,12 +49,11 @@ var SidebarRow = GObject.registerClass({
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
-        let image = Gtk.Image.new();
+        let image = new Gtk.Image({ margin_end: 10 });
         this.bind_property('icon-name', image, 'icon-name',
             GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
         );
         image.set_icon_size(Gtk.IconSize.LARGE_TOOLBAR);
-        image.add_css_class('category-icon');
         hbox.append(image);
 
         let label = new Gtk.Label({ halign: Gtk.Align.START });
@@ -63,15 +62,13 @@ var SidebarRow = GObject.registerClass({
         );
         // Because bind_property doesn't work with transform functions
         // TODO: is this really needed?
-        this.connect('notify::title', (row) => {
+        this.connect('notify::title', row => {
             row.tooltip_text = _('%s Sidebar Row').format(row.title);
         });
 
-        label.add_css_class('category-label');
         hbox.append(label);
 
         this.set_child(hbox);
-        this.add_css_class('category');
     }
 
     get title() {

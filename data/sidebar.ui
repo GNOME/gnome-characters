@@ -17,24 +17,9 @@
             <property name="selectable">false</property>
             <property name="activatable">false</property>
             <child>
-              <object class="GtkSeparator">
-                <property name="orientation">horizontal</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkListBoxRow">
-            <property name="selectable">false</property>
-            <property name="activatable">false</property>
-            <child>
               <object class="GtkLabel">
                 <property name="label" translatable="yes">Emojis</property>
                 <property name="halign">start</property>
-                <property name="margin-top">12</property>
-                <property name="margin-start">12</property>
-                <property name="margin-bottom">12</property>
-                <property name="margin-end">12</property>
                 <style>
                   <class name="heading" />
                 </style>
@@ -46,7 +31,7 @@
           <object class="Gjs_SidebarRow" id="emojiSmileysRow">
             <property name="category">GC_CATEGORY_EMOJI_SMILEYS</property>
             <property name="name">emoji-smileys</property>
-            <property name="icon-name">characters-emoji-smileys</property>
+            <property name="icon-name">emoji-people-symbolic</property>
             <property name="title" translatable="yes">Smileys &amp; People</property>
           </object>
         </child>
@@ -54,7 +39,7 @@
           <object class="Gjs_SidebarRow" id="emojiAnimalsRow">
             <property name="category">GC_CATEGORY_EMOJI_ANIMALS</property>
             <property name="name">emoji-animals</property>
-            <property name="icon-name">characters-emoji-animals</property>
+            <property name="icon-name">emoji-nature-symbolic</property>
             <property name="title" translatable="yes">Animals &amp; Nature</property>
           </object>
         </child>
@@ -62,31 +47,31 @@
           <object class="Gjs_SidebarRow" id="emojiFoodRow">
             <property name="category">GC_CATEGORY_EMOJI_FOOD</property>
             <property name="name">emoji-food</property>
-            <property name="icon-name">characters-emoji-food</property>
+            <property name="icon-name">emoji-food-symbolic</property>
             <property name="title" translatable="yes">Food &amp; Drink</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiActivitiesRow">
-            <property name="category">GC_CATEGORY_EMOJI_ACTIVITIES</property>
-            <property name="name">emoji-activities</property>
-            <property name="icon-name">characters-emoji-activities</property>
-            <property name="title" translatable="yes">Activities</property>
           </object>
         </child>
         <child>
           <object class="Gjs_SidebarRow" id="emojiTravelRow">
             <property name="category">GC_CATEGORY_EMOJI_TRAVEL</property>
             <property name="name">emoji-travel</property>
-            <property name="icon-name">characters-emoji-travel</property>
+            <property name="icon-name">emoji-travel-symbolic</property>
             <property name="title" translatable="yes">Travel &amp; Places</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_SidebarRow" id="emojiActivitiesRow">
+            <property name="category">GC_CATEGORY_EMOJI_ACTIVITIES</property>
+            <property name="name">emoji-activities</property>
+            <property name="icon-name">emoji-activities-symbolic</property>
+            <property name="title" translatable="yes">Activities</property>
           </object>
         </child>
         <child>
           <object class="Gjs_SidebarRow" id="emojiObjectsRow">
             <property name="category">GC_CATEGORY_EMOJI_OBJECTS</property>
             <property name="name">emoji-objects</property>
-            <property name="icon-name">characters-emoji-objects</property>
+            <property name="icon-name">emoji-objects-symbolic</property>
             <property name="title" translatable="yes">Objects</property>
           </object>
         </child>
@@ -94,7 +79,7 @@
           <object class="Gjs_SidebarRow" id="emojiSymbolsRow">
             <property name="category">GC_CATEGORY_EMOJI_SYMBOLS</property>
             <property name="name">emoji-symbols</property>
-            <property name="icon-name">characters-emoji-symbols</property>
+            <property name="icon-name">emoji-symbols-symbolic</property>
             <property name="title" translatable="yes">Symbols</property>
           </object>
         </child>
@@ -102,7 +87,7 @@
           <object class="Gjs_SidebarRow" id="emojiFlagsRow">
             <property name="category">GC_CATEGORY_EMOJI_FLAGS</property>
             <property name="name">emoji-flags</property>
-            <property name="icon-name">characters-emoji-flags</property>
+            <property name="icon-name">emoji-flags-symbolic</property>
             <property name="title" translatable="yes">Flags</property>
           </object>
         </child>
@@ -114,10 +99,6 @@
               <object class="GtkLabel">
                 <property name="label" translatable="yes">Letters &amp; Symbols</property>
                 <property name="halign">start</property>
-                <property name="margin-top">12</property>
-                <property name="margin-start">12</property>
-                <property name="margin-bottom">12</property>
-                <property name="margin-end">12</property>
                 <style>
                   <class name="heading" />
                 </style>
@@ -181,10 +162,10 @@
             <property name="title" translatable="yes">Letters</property>
           </object>
         </child>
+        <style>
+          <class name="navigation-sidebar" />
+        </style>
       </object>
     </child>
-    <style>
-      <class name="categories-list" />
-    </style>
   </template>
 </interface>
