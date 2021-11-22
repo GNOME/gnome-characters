@@ -204,6 +204,11 @@ const CharacterListWidget = GObject.registerClass({
                              Gdk.DragAction.COPY);
         this.drag_source_add_text_targets();
         */
+        const gestureClick = new Gtk.GestureClick();
+        gestureClick.connect('pressed', this.onButtonPress.bind(this));
+        gestureClick.connect('released', this.onButtonRelease.bind(this));
+        this.add_controller(gestureClick);
+
         this._character = null;
     }
     /*
@@ -225,12 +230,12 @@ const CharacterListWidget = GObject.registerClass({
         if (this._character !== null)
             data.set_text(this._character, -1);
     }
+    */
 
-    vfunc_button_press_event(event) {
-        let allocation = this.get_allocation();
+    onButtonPress(nPress, x, y) {
         let cellSize = getCellSize(this._fontDescription);
-        let x = Math.floor(event.x / cellSize);
-        let y = Math.floor(event.y / cellSize);
+        x = Math.floor(x / cellSize);
+        y = Math.floor(y / cellSize);
         let index = y * this._cellsPerRow + x;
         if (index < this._characters.length)
             this._character = this._characters[index];
@@ -239,12 +244,12 @@ const CharacterListWidget = GObject.registerClass({
         return false;
     }
 
-    vfunc_button_release_event(event) {
+    onButtonRelease() {
         if (this._character)
             this.emit('character-selected', this._character);
+        log(this._character);
         return false;
     }
-    */
 
     vfunc_measure(orientation, _forSize) {
         if (orientation === Gtk.Orientation.HORIZONTAL) {
