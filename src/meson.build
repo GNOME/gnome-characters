@@ -25,11 +25,12 @@ common_resource_data = files(
 )
 
 resource_data = common_resource_data + files(
-  'categoryList.js',
   'characterDialog.js',
   'charactersView.js',
   'main.js',
   'menu.js',
+  'sidebar.js',
+  'sidebarRow.js',
   'window.js'
 )
 resources = [[characters_name, resource_data]]

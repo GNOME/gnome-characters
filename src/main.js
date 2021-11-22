@@ -40,7 +40,7 @@ pkg.require({
 const { GLib, Gio, GObject, Adw } = imports.gi;
 
 const { CharactersView } = imports.charactersView;
-const { Sidebar } = imports.categoryList;
+const { Sidebar } = imports.sidebar;
 const { MenuPopover } = imports.menu;
 const { MainWindow } = imports.window;
 

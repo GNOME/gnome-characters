@@ -6,7 +6,7 @@
     <child>
       <object class="GtkListBox" id="list">
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="recentRow">
+          <object class="Gjs_SidebarRow" id="recentRow">
             <property name="name">recent</property>
             <property name="icon-name">document-open-recent-symbolic</property>
             <property name="title" translatable="yes">Recently Used</property>
@@ -43,7 +43,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="emojiSmileysRow">
+          <object class="Gjs_SidebarRow" id="emojiSmileysRow">
             <property name="category">GC_CATEGORY_EMOJI_SMILEYS</property>
             <property name="name">emoji-smileys</property>
             <property name="icon-name">characters-emoji-smileys</property>
@@ -51,7 +51,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="emojiAnimalsRow">
+          <object class="Gjs_SidebarRow" id="emojiAnimalsRow">
             <property name="category">GC_CATEGORY_EMOJI_ANIMALS</property>
             <property name="name">emoji-animals</property>
             <property name="icon-name">characters-emoji-animals</property>
@@ -59,7 +59,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="emojiFoodRow">
+          <object class="Gjs_SidebarRow" id="emojiFoodRow">
             <property name="category">GC_CATEGORY_EMOJI_FOOD</property>
             <property name="name">emoji-food</property>
             <property name="icon-name">characters-emoji-food</property>
@@ -67,7 +67,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="emojiActivitiesRow">
+          <object class="Gjs_SidebarRow" id="emojiActivitiesRow">
             <property name="category">GC_CATEGORY_EMOJI_ACTIVITIES</property>
             <property name="name">emoji-activities</property>
             <property name="icon-name">characters-emoji-activities</property>
@@ -75,7 +75,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="emojiTravelRow">
+          <object class="Gjs_SidebarRow" id="emojiTravelRow">
             <property name="category">GC_CATEGORY_EMOJI_TRAVEL</property>
             <property name="name">emoji-travel</property>
             <property name="icon-name">characters-emoji-travel</property>
@@ -83,7 +83,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="emojiObjectsRow">
+          <object class="Gjs_SidebarRow" id="emojiObjectsRow">
             <property name="category">GC_CATEGORY_EMOJI_OBJECTS</property>
             <property name="name">emoji-objects</property>
             <property name="icon-name">characters-emoji-objects</property>
@@ -91,7 +91,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="emojiSymbolsRow">
+          <object class="Gjs_SidebarRow" id="emojiSymbolsRow">
             <property name="category">GC_CATEGORY_EMOJI_SYMBOLS</property>
             <property name="name">emoji-symbols</property>
             <property name="icon-name">characters-emoji-symbols</property>
@@ -99,7 +99,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="emojiFlagsRow">
+          <object class="Gjs_SidebarRow" id="emojiFlagsRow">
             <property name="category">GC_CATEGORY_EMOJI_FLAGS</property>
             <property name="name">emoji-flags</property>
             <property name="icon-name">characters-emoji-flags</property>
@@ -126,7 +126,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="lettersPunctuationRow">
+          <object class="Gjs_SidebarRow" id="lettersPunctuationRow">
             <property name="category">GC_CATEGORY_LETTER_PUNCTUATION</property>
             <property name="name">punctuation</property>
             <property name="icon-name">characters-punctuation-symbolic</property>
@@ -134,7 +134,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="lettersArrowsRow">
+          <object class="Gjs_SidebarRow" id="lettersArrowsRow">
             <property name="category">GC_CATEGORY_LETTER_ARROW</property>
             <property name="name">arrow</property>
             <property name="icon-name">characters-arrow-symbolic</property>
@@ -142,7 +142,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="lettersBulletsRow">
+          <object class="Gjs_SidebarRow" id="lettersBulletsRow">
             <property name="category">GC_CATEGORY_LETTER_BULLET</property>
             <property name="name">bullet</property>
             <property name="icon-name">characters-bullet-symbolic</property>
@@ -150,7 +150,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="lettersPicturesRow">
+          <object class="Gjs_SidebarRow" id="lettersPicturesRow">
             <property name="category">GC_CATEGORY_LETTER_PICTURE</property>
             <property name="name">picture</property>
             <property name="icon-name">characters-picture-symbolic</property>
@@ -158,7 +158,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="lettersCurrencyRow">
+          <object class="Gjs_SidebarRow" id="lettersCurrencyRow">
             <property name="category">GC_CATEGORY_LETTER_CURRENCY</property>
             <property name="name">currency</property>
             <property name="icon-name">characters-currency-symbolic</property>
@@ -166,7 +166,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="lettersMathRow">
+          <object class="Gjs_SidebarRow" id="lettersMathRow">
             <property name="category">GC_CATEGORY_LETTER_MATH</property>
             <property name="name">math</property>
             <property name="icon-name">characters-math-symbolic</property>
@@ -174,7 +174,7 @@
           </object>
         </child>
         <child>
-          <object class="Gjs_CategoryListRowWidget" id="lettersLatinRow">
+          <object class="Gjs_SidebarRow" id="lettersLatinRow">
             <property name="category">GC_CATEGORY_LETTER_LATIN</property>
             <property name="name">letters</property>
             <property name="icon-name">characters-latin-symbolic</property>

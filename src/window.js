@@ -282,11 +282,11 @@ var MainWindow = GObject.registerClass({
 
     searchByKeywords(keywords) {
         let totalResults = this._charactersView.searchByKeywords(keywords);
-        if(totalResults === 0) {
+        if (totalResults === 0)
             this._mainStack.visible_child_name = 'no-results';
-        } else {
+        else
             this._mainStack.visible_child_name = 'character-list';
-        }
+
     }
 
     cancelSearch() {
