@@ -1,4 +1,4 @@
-/* exported CharactersView FontFilter RecentCharacterListView */
+/* exported CharactersView FontFilter */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (C) 2014-2015  Daiki Ueno <dueno@src.gnome.org>
@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Adw, Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene, PangoCairo } = imports.gi;
+const { Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene, PangoCairo } = imports.gi;
 
 const Main = imports.main;
 const Util = imports.util;
@@ -43,7 +43,6 @@ const CharacterListRow = GObject.registerClass({
         this._characters = characters;
         this._fontDescription = fontDescription;
         this._overlayFontDescription = overlayFontDescription;
-        this._styleManager = Adw.StyleManager.get_default();
     }
 
     draw(cr, x, y, width, height, styleContext) {
@@ -188,8 +187,9 @@ var FontFilter = GObject.registerClass({
     Properties: {
         'font': GObject.ParamSpec.string(
             'font', '', '',
-            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
-            'Cantarell 50'),
+            GObject.ParamFlags.READWRITE,
+            'Cantarell 50',
+        ),
     },
     Signals: {
         'filter-set': { param_types: [] },
@@ -297,8 +297,7 @@ var CharactersView = GObject.registerClass({
         this._cellsPerRow = CELLS_PER_ROW;
         this._numRows = NUM_ROWS;
         this._rows = [];
-        /* this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK |
-                        Gdk.EventMask.BUTTON_RELEASE_MASK);
+        /*
         this.drag_source_set(Gdk.ModifierType.BUTTON1_MASK,
                              null,
                              Gdk.DragAction.COPY);
@@ -354,7 +353,7 @@ var CharactersView = GObject.registerClass({
     }
     */
 
-    onButtonPress(gesture, nPress, x, y) {
+    onButtonPress(_gesture, _nPress, x, y) {
         let hadj = this.get_hadjustment();
         let vadj = this.get_vadjustment();
 

@@ -28,8 +28,8 @@
 const { Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
 const { CharacterDialog } = imports.characterDialog;
-const { FontFilter, RecentCharacterListView } = imports.charactersView;
-const Gettext = imports.gettext;
+const { FontFilter } = imports.charactersView;
+const { gettext } = imports.gettext;
 
 const Main = imports.main;
 const Util = imports.util;
@@ -142,21 +142,16 @@ var MainWindow = GObject.registerClass({
 
     vfunc_map() {
         super.vfunc_map();
-        this._selectFirstSubcategory();
+        // Select the first subcategory which contains at least one character.
+        if (this.recentCharacters.length !== 0)
+            this._sidebar.selectRowByName('recent');
+        else
+            this._sidebar.selectRowByName('smileys');
     }
 
     _togglePrimaryMenu(action) {
         let state = action.get_state().get_boolean();
         action.set_state(GLib.Variant.new_boolean(!state));
-    }
-
-    // Select the first subcategory which contains at least one character.
-    _selectFirstSubcategory() {
-        if (this.recentCharacters.length !== 0)
-            this._sidebar.selectRowByName('recent');
-        else
-            this._sidebar.selectRowByName('smileys');
-
     }
 
     get searchActive() {
@@ -173,7 +168,7 @@ var MainWindow = GObject.registerClass({
             this._sidebar.list.unselect_all();
             this._updateTitle(_('Search Result'));
         } else {
-            this._sidebar.restorePreviousSelection();
+            this._sidebar.restoreSelection();
         }
 
         this.notify('search-active');
@@ -199,11 +194,15 @@ var MainWindow = GObject.registerClass({
     }
 
     _about() {
-        const aboutDialog = new Gtk.AboutDialog(
-            { artists: ['Allan Day <allanpday@gmail.com>',
-                'Jakub Steiner <jimmac@gmail.com>'],
-            authors: ['Daiki Ueno <dueno@src.gnome.org>',
-                'Giovanni Campagna <scampa.giovanni@gmail.com>'],
+        const aboutDialog = new Gtk.AboutDialog({
+            artists: [
+                'Allan Day <allanpday@gmail.com>',
+                'Jakub Steiner <jimmac@gmail.com>',
+            ],
+            authors: [
+                'Daiki Ueno <dueno@src.gnome.org>',
+                'Giovanni Campagna <scampa.giovanni@gmail.com>',
+            ],
             // TRANSLATORS: put your names here, one name per line.
             translator_credits: _('translator-credits'),
             program_name: _('GNOME Characters'),
@@ -215,19 +214,18 @@ var MainWindow = GObject.registerClass({
             website: 'https://wiki.gnome.org/Apps/Characters',
             wrap_license: true,
             modal: true,
-            transient_for: this });
+            transient_for: this,
+        });
 
         aboutDialog.show();
     }
 
     _updateTitle(title) {
-        if (this.filterFontFamily) {
-            this._windowTitle.title =
-                _('%s (%s only)').format(Gettext.gettext(title),
-                    this.filterFontFamily);
-        } else {
-            this._windowTitle.title = Gettext.gettext(title);
-        }
+        if (this.filterFontFamily)
+            this._windowTitle.title = _('%s (%s only)').format(gettext(title), this.filterFontFamily);
+        else
+            this._windowTitle.title = gettext(title);
+
     }
 
     _character(action, v) {
@@ -240,7 +238,7 @@ var MainWindow = GObject.registerClass({
         if (family === 'None')
             family = null;
         this.filterFontFamily = family;
-        // this._updateTitle(this._stack.visible_child.title);
+        this._updateTitle(this._windowTitle.title);
         this._menuPopover.hide();
     }
 
@@ -272,15 +270,6 @@ var MainWindow = GObject.registerClass({
     set filterFontFamily(family) {
         this._filterFontFamily = family;
         this._fontFilter.setFilterFont(this._filterFontFamily);
-    }
-
-    _createRecentCharacterList(name, accessibleName, category) {
-        const characterList = new RecentCharacterListView(category, this._fontFilter);
-        // characterList.get_accessible().accessible_name = accessibleName;
-        characterList.connect('character-selected', (widget, uc) => this._handleCharacterSelected(widget, uc));
-
-        this._characterLists[name] = characterList;
-        return characterList;
     }
 
     searchByKeywords(keywords) {

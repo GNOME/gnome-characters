@@ -39,9 +39,11 @@ const BackgroundService = GObject.registerClass({
     // to get Gtk.Clipboard working.
 }, class BackgroundService extends Gtk.Application {
     _init() {
-        super._init({ application_id: pkg.name,
+        super._init({
+            application_id: applicationId,
             flags: Gio.ApplicationFlags.IS_SERVICE,
-            inactivity_timeout: 30000 });
+            inactivity_timeout: 30000,
+        });
         GLib.set_application_name(_('Characters'));
 
         this._searchProvider = new SearchProvider.SearchProvider(this);

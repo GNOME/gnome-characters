@@ -112,9 +112,8 @@ var CharacterDialog = GObject.registerClass({
             this._characterStack.visible_child_name = 'character';
         } else {
             var fontFamily = this._fontDescription.get_family();
-            this._missingLabel.label =
-                // TRANSLATORS: the first variable is a character, the second is a font
-                _('%s is not included in %s').format(name, fontFamily);
+            // TRANSLATORS: the first variable is a character, the second is a font
+            this._missingLabel.label = _('%s is not included in %s').format(name, fontFamily);
             this._characterStack.visible_child_name = 'missing';
         }
 

@@ -41,7 +41,10 @@ var Sidebar = GObject.registerClass({
         this.lastSelectedRow = null;
     }
 
-    restorePreviousSelection() {
+    /**
+     * Restore the latest selected item
+     */
+    restoreSelection() {
         if (this.lastSelectedRow)
             this._list.select_row(this.lastSelectedRow);
     }

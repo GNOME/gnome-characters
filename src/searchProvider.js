@@ -52,12 +52,12 @@ var SearchProvider = GObject.registerClass({
 
         let upper = keywords.map(x => x.toUpperCase());
         let criteria = Gc.SearchCriteria.new_keywords(upper);
-        let context = new Gc.SearchContext({ criteria,
-            flags: Gc.SearchFlag.WORD });
+        let context = new Gc.SearchContext({ criteria, flags: Gc.SearchFlag.WORD });
+
         context.search(
             MAX_SEARCH_RESULTS,
             this._cancellable,
-            (sourceObject, res, _userData) => {
+            (_source, res, _userData) => {
                 let characters = [];
                 try {
                     let result = context.search_finish(res);
@@ -95,14 +95,15 @@ var SearchProvider = GObject.registerClass({
                 name = _('Unknown character name');
             else
                 name = Util.capitalize(name);
-            let summary = _('U+%s, %s: %s').format(codePointHex,
-                character,
-                name);
-            ret.push({ name: new GLib.Variant('s', name),
+            let summary = _('U+%s, %s: %s').format(codePointHex, character, name);
+
+            ret.push({
+                name: new GLib.Variant('s', name),
                 id: new GLib.Variant('s', identifiers[i]),
                 description: new GLib.Variant('s', summary),
                 icon: new Gio.ThemedIcon({ name: Service.applicationId }).serialize(),
-                clipboardText: new GLib.Variant('s', character) });
+                clipboardText: new GLib.Variant('s', character),
+            });
         }
 
         this._app.release();
@@ -152,7 +153,6 @@ var SearchProvider = GObject.registerClass({
     }
 
     LaunchSearch(terms, timestamp) {
-        this._activateAction('search', new GLib.Variant('as', terms),
-            timestamp);
+        this._activateAction('search', new GLib.Variant('as', terms), timestamp);
     }
 });

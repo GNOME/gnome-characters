@@ -51,9 +51,7 @@ function getSettings(schemaId, path) {
 
     if (!pkg.moduledir.startsWith('resource://')) {
         // Running from the source tree
-        schemaSource = GioSSS.new_from_directory(pkg.pkgdatadir,
-            GioSSS.get_default(),
-            false);
+        schemaSource = GioSSS.new_from_directory(pkg.pkgdatadir, GioSSS.get_default(), false);
     } else {
         schemaSource = GioSSS.get_default();
     }
@@ -64,12 +62,11 @@ function getSettings(schemaId, path) {
         System.exit(1);
     }
 
-    if (path === undefined) {
+    if (path === undefined)
         return new Gio.Settings({ settings_schema: schemaObj });
-    } else {
-        return new Gio.Settings({ settings_schema: schemaObj,
-            path });
-    }
+    else
+        return new Gio.Settings({ settings_schema: schemaObj, path });
+
 }
 
 function capitalizeWord(w) {
