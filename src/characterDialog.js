@@ -27,7 +27,7 @@ var CharacterDialog = GObject.registerClass({
     },
     Template: 'resource:///org/gnome/Characters/character_dialog.ui',
     InternalChildren: [
-        'mainStack', 'characterStack',
+        'leaflet', 'characterStack',
         'characterLabel', 'missingLabel', 'detailLabel',
         'seeAlsoRow', 'relatedListbox',
         'windowTitle', 'revealer', 'toastOverlay',
@@ -139,12 +139,12 @@ var CharacterDialog = GObject.registerClass({
 
     _seeMore() {
         this._revealer.reveal_child = true;
-        this._mainStack.visible_child_name = 'related';
+        this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
     }
 
     _seeCharacter() {
         this._revealer.reveal_child = false;
-        this._mainStack.visible_child_name = 'character';
+        this._leaflet.navigate(Adw.NavigationDirection.BACK);
     }
 
     _copyCharacter() {
