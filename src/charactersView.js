@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene, PangoCairo } = imports.gi;
+const { Gc, Gdk, GLib, Gio, GObject, Gsk, Gtk, Pango, Graphene, PangoCairo } = imports.gi;
 
 const Main = imports.main;
 const Util = imports.util;
@@ -50,14 +50,6 @@ const CharacterListRow = GObject.registerClass({
         layout.set_font_description(this._fontDescription);
 
         this._styleContext = styleContext;
-        // Draw baseline.
-        // FIXME: Pick the baseline color from CSS.
-        let accentColor = this._styleContext.lookup_color('accent_color')[1];
-        Gdk.cairo_set_source_rgba(cr, accentColor);
-        cr.setLineWidth(0.5);
-        cr.moveTo(x, y + BASELINE_OFFSET * height);
-        cr.relLineTo(width, 0);
-        cr.stroke();
         let fgColor = this._styleContext.get_color();
         Gdk.cairo_set_source_rgba(cr, fgColor);
 
@@ -408,9 +400,19 @@ var CharactersView = GObject.registerClass({
         let start = Math.max(0, Math.floor(vadj.get_value() / cellSize));
         let end = Math.min(this._rows.length, Math.ceil((vadj.get_value() + vadj.get_page_size()) / cellSize));
 
-        for (let index = start; index < end; index++) {
-            this._rows[index].draw(cr, 0, (index - start) * cellSize,
-                this.get_allocation().width, cellSize, context);
+        let accentColor = context.lookup_color('accent_color')[1];
+        accentColor.alpha = 0.3;
+
+         for (let index = start; index < end; index++) {
+            let y = (index - start) * cellSize;
+
+            // Draw baseline.
+            snapshot.append_color(accentColor, new Graphene.Rect({
+                origin: new Graphene.Point({x: 0, y: y + BASELINE_OFFSET * cellSize }),
+                size: new Graphene.Size({width: this.get_allocation().width, height: 2.0})
+            }));
+
+            this._rows[index].draw(cr, 0, y, this.get_allocation().width, cellSize, context);
         }
     }
 
