@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, Gdk, GLib, Gio, GObject, Gsk, Gtk, Pango, Graphene, PangoCairo } = imports.gi;
+const { Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene, PangoCairo } = imports.gi;
 
 const Main = imports.main;
 const Util = imports.util;
@@ -45,39 +45,45 @@ const CharacterListRow = GObject.registerClass({
         this._overlayFontDescription = overlayFontDescription;
     }
 
-    draw(cr, x, y, width, height, styleContext) {
-        let layout = PangoCairo.create_layout(cr);
+    snapshot(snapshot, x, y, pangoContext, styleContext) {
+        let layout = Pango.Layout.new(pangoContext);
         layout.set_font_description(this._fontDescription);
 
         this._styleContext = styleContext;
-        let fgColor = this._styleContext.get_color();
-        Gdk.cairo_set_source_rgba(cr, fgColor);
 
         // Draw characters.  Do centering and attach to the baseline.
         let cellSize = getCellSize(this._fontDescription);
         for (let i in this._characters) {
-            var cellRect = new Gdk.Rectangle({ x: x + cellSize * i,
+            snapshot.save();
+            let character = this._characters[i];
+            let cellRect = new Gdk.Rectangle({
+                x: x + cellSize * i,
                 y,
                 width: cellSize,
-                height: cellSize });
-            if (Gc.character_is_invisible(this._characters[i])) {
-                this._drawBoundingBox(cr, cellRect, this._characters[i]);
-                this._drawCharacterName(cr, cellRect, this._characters[i]);
+                height: cellSize,
+            });
+            if (Gc.character_is_invisible(character)) {
+                // this._drawBoundingBox(cr, cellRect, character);
+                // this._drawCharacterName(cr, cellRect, character);
             } else {
-                layout.set_text(this._characters[i], -1);
+                layout.set_text(character, -1);
                 if (layout.get_unknown_glyphs_count() === 0) {
                     let layoutBaseline = layout.get_baseline();
                     let logicalRect = layout.get_extents()[0];
-                    cr.moveTo(x + cellSize * i - logicalRect.x / Pango.SCALE +
-                              (cellSize - logicalRect.width / Pango.SCALE) / 2,
-                    y + BASELINE_OFFSET * height -
-                              layoutBaseline / Pango.SCALE);
-                    PangoCairo.show_layout(cr, layout);
+                    snapshot.translate(new Graphene.Point({
+                        x: x + cellSize * i - logicalRect.x / Pango.SCALE + (cellSize - logicalRect.width / Pango.SCALE) / 2,
+                        y: y + BASELINE_OFFSET * cellSize - layoutBaseline / Pango.SCALE,
+                    }));
+
+                    let textColor = this._styleContext.lookup_color('foreground_color')[1];
+                    snapshot.append_layout(layout, textColor);
+
                 } else {
-                    this._drawBoundingBox(cr, cellRect, this._characters[i]);
-                    this._drawCharacterName(cr, cellRect, this._characters[i]);
+                    // this._drawBoundingBox(cr, cellRect, character);
+                    // this._drawCharacterName(cr, cellRect, character);
                 }
             }
+            snapshot.restore();
         }
     }
 
@@ -381,38 +387,27 @@ var CharactersView = GObject.registerClass({
     }
 
     vfunc_snapshot(snapshot) {
-        let hadj = this.get_hadjustment();
         let vadj = this.get_vadjustment();
-        let rect = new Graphene.Rect({
-            origin: new Graphene.Point({ x: 0, y: 0 }),
-            size: new Graphene.Size({
-                width: hadj.get_page_size(),
-                height: vadj.get_page_size(),
-            }),
-        });
-        let cr = snapshot.append_cairo(rect);
-
-        let context = this.get_style_context();
-        let fg = context.get_color();
-        Gdk.cairo_set_source_rgba(cr, fg);
+        let styleContext = this.get_style_context();
+        let pangoContext =  this.get_pango_context();
 
         let cellSize = getCellSize(this._fontDescription);
         let start = Math.max(0, Math.floor(vadj.get_value() / cellSize));
         let end = Math.min(this._rows.length, Math.ceil((vadj.get_value() + vadj.get_page_size()) / cellSize));
 
-        let accentColor = context.lookup_color('accent_color')[1];
+        let accentColor = styleContext.lookup_color('accent_color')[1];
         accentColor.alpha = 0.3;
 
-         for (let index = start; index < end; index++) {
+        for (let index = start; index < end; index++) {
             let y = (index - start) * cellSize;
 
             // Draw baseline.
             snapshot.append_color(accentColor, new Graphene.Rect({
-                origin: new Graphene.Point({x: 0, y: y + BASELINE_OFFSET * cellSize }),
-                size: new Graphene.Size({width: this.get_allocation().width, height: 2.0})
+                origin: new Graphene.Point({ x: 0, y: y + BASELINE_OFFSET * cellSize }),
+                size: new Graphene.Size({ width: this.get_allocation().width, height: 2.0 }),
             }));
 
-            this._rows[index].draw(cr, 0, y, this.get_allocation().width, cellSize, context);
+            this._rows[index].snapshot(snapshot, 0, y, pangoContext, styleContext);
         }
     }
 
