@@ -168,8 +168,6 @@ const CharacterListRow = GObject.registerClass({
     }
 });
 
-const MAX_SEARCH_RESULTS = 100;
-
 var CharactersView = GObject.registerClass({
     Signals: {
         'character-selected': { param_types: [GObject.TYPE_STRING] },
@@ -412,29 +410,13 @@ var CharactersView = GObject.registerClass({
         this.setCharacters(characters);
     }
 
-    get initialSearchCount() {
-        // Use our parents allocation; we aren't visible before we do the
-        // initial search, so our allocation is 1x1
-        let allocation = this.get_parent().get_allocation();
-
-        // Sometimes more MAX_SEARCH_RESULTS are visible on screen
-        // (eg. fullscreen at 1080p).  We always present a over-full screen,
-        // otherwise the lazy loading gets broken
-        let cellSize = getCellSize(this._fontDescription);
-        let cellsPerRow = Math.floor(allocation.width / cellSize);
-        // Ensure the rows cause a scroll
-        let heightInRows = Math.ceil((allocation.height + 1) / cellSize);
-
-        return Math.max(MAX_SEARCH_RESULTS, heightInRows * cellsPerRow);
-    }
-
     _addSearchResult(result) {
         const characters = Util.searchResultToArray(result);
         this.setCharacters(this._characters.concat(characters));
     }
 
-    _searchWithContext(context, count) {
-        context.search(count, this._cancellable, (ctx, res) => {
+    _searchWithContext(context) {
+        context.search(Number.MAX_SAFE_INTEGER, this._cancellable, (ctx, res) => {
             try {
                 let result = ctx.search_finish(res);
                 this._addSearchResult(result);
@@ -460,7 +442,7 @@ var CharactersView = GObject.registerClass({
 
         let criteria = Gc.SearchCriteria.new_category(category);
         this._searchContext = new Gc.SearchContext({ criteria });
-        await this._searchWithContext(this._searchContext, this.initialSearchCount);
+        await this._searchWithContext(this._searchContext);
     }
 
     async searchByKeywords(keywords) {
@@ -469,13 +451,13 @@ var CharactersView = GObject.registerClass({
             criteria,
             flags: Gc.SearchFlag.WORD,
         });
-        await this._searchWithContext(this._searchContext, this.initialSearchCount);
+        await this._searchWithContext(this._searchContext);
     }
 
     async _searchByScripts() {
         var criteria = Gc.SearchCriteria.new_scripts(this.scripts);
         this._searchContext = new Gc.SearchContext({ criteria });
-        await this._searchWithContext(this._searchContext, this.initialSearchCount);
+        await this._searchWithContext(this._searchContext);
     }
 
     cancelSearch() {
