@@ -444,39 +444,38 @@ var CharactersView = GObject.registerClass({
         });
     }
 
-    searchByCategory(category) {
+    async searchByCategory(category) {
         this._characters = [];
         // whether to draw a baseline or not
         this.baseline = category <= Gc.Category.LETTER_LATIN;
 
         if (category === Gc.Category.LETTER_LATIN) {
             if (!this._scriptsLoaded)
-                this.populateScripts(); // we run the search once the scripts are loaded
-            else
-                this._searchByScripts();
+                await this.populateScripts(); // we run the search once the scripts are loaded
+
+            await this._searchByScripts();
 
             return;
         }
 
         let criteria = Gc.SearchCriteria.new_category(category);
         this._searchContext = new Gc.SearchContext({ criteria });
-        this._searchWithContext(this._searchContext, this.initialSearchCount);
+        await this._searchWithContext(this._searchContext, this.initialSearchCount);
     }
 
-    searchByKeywords(keywords) {
+    async searchByKeywords(keywords) {
         const criteria = Gc.SearchCriteria.new_keywords(keywords);
         this._searchContext = new Gc.SearchContext({
             criteria,
             flags: Gc.SearchFlag.WORD,
         });
-        this._searchWithContext(this._searchContext, this.initialSearchCount);
-        return this._characters.length;
+        await this._searchWithContext(this._searchContext, this.initialSearchCount);
     }
 
-    _searchByScripts() {
+    async _searchByScripts() {
         var criteria = Gc.SearchCriteria.new_scripts(this.scripts);
         this._searchContext = new Gc.SearchContext({ criteria });
-        this._searchWithContext(this._searchContext, this.initialSearchCount);
+        await this._searchWithContext(this._searchContext, this.initialSearchCount);
     }
 
     cancelSearch() {
