@@ -125,10 +125,10 @@ const CharacterListRow = GObject.registerClass({
         let shapeRect = this._computeBoundingBox(pangoLayout, cellRect, uc);
         let borderWidth = 1;
 
-        let accentColor = styleContext.get_color();
-        accentColor.alpha = 0.05;
+        let boxBgColor = styleContext.get_color();
+        boxBgColor.alpha = 0.05;
 
-        snapshot.append_color(accentColor,
+        snapshot.append_color(boxBgColor,
             new Graphene.Rect({
                 origin: new Graphene.Point({
                     x: shapeRect.x - borderWidth * 2,
@@ -224,6 +224,7 @@ var CharactersView = GObject.registerClass({
         gestureClick.connect('pressed', this.onButtonPress.bind(this));
         gestureClick.connect('released', this.onButtonRelease.bind(this));
         this.add_controller(gestureClick);
+        this.add_css_class('view');
     }
 
     get fontDescription() {
