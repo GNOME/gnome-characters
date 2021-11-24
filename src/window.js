@@ -38,7 +38,7 @@ var MainWindow = GObject.registerClass({
     InternalChildren: [
         'search-active-button',
         'search-bar', 'search-entry', 'back-button',
-        'container', 'sidebar',
+        'container', 'sidebar', 'loadingSpinner',
         'leaflet', 'mainStack', 'windowTitle',
         'charactersView', 'scrolledWindow',
     ],
@@ -122,8 +122,10 @@ var MainWindow = GObject.registerClass({
 
         this._charactersView.connect('notify::loading', view => {
             if (view.loading) {
+                this._loadingSpinner.start();
                 this._mainStack.visible_child_name = 'loading';
             } else {
+                this._loadingSpinner.stop();
                 this._mainStack.visible_child_name = 'character-list';
                 this._mainStack.queue_draw();
             }
