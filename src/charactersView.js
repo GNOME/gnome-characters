@@ -290,10 +290,10 @@ var CharactersView = GObject.registerClass({
         let vadj = this.get_vadjustment();
 
         let cellSize = getCellSize(this._fontDescription);
-        x = Math.floor((x + hadj.get_value() - this._offsetX) / cellSize);
+        x = Math.min(this._cellsPerRow - 1, Math.floor((x + hadj.get_value() - this._offsetX) / cellSize));
         y = Math.floor((y + vadj.get_value()) / cellSize);
 
-        let index = y * this._cellsPerRow + x;
+        let index = y * this._cellsPerRow + Math.max(0, x);
         if (index < this._characters.length)
             this._selectedCharacter = this._characters[index];
         else
