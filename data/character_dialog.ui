@@ -150,6 +150,7 @@
                             <property name="valign">center</property>
                             <child>
                               <object class="GtkListBox" id="relatedListbox">
+                                <property name="selection-mode">none</property>
                                 <style>
                                   <class name="boxed-list" />
                                 </style>
