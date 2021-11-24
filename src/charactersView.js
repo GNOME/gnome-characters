@@ -48,8 +48,6 @@ const CharacterListRow = GObject.registerClass({
         let layout = Pango.Layout.new(pangoContext);
         layout.set_font_description(this._fontDescription);
 
-        this._styleContext = styleContext;
-
         // Draw characters.  Do centering and attach to the baseline.
         let cellSize = getCellSize(this._fontDescription);
         for (let i in this._characters) {
@@ -65,7 +63,7 @@ const CharacterListRow = GObject.registerClass({
             snapshot.save();
             if (Gc.character_is_invisible(character)) {
                 this._drawBoundingBox(snapshot, layout, styleContext, cellRect, character);
-                this._drawCharacterName(snapshot, pangoContext, cellRect, character);
+                this._drawCharacterName(snapshot, pangoContext, styleContext, cellRect, character);
             } else if (layout.get_unknown_glyphs_count() === 0) {
                 let layoutBaseline = layout.get_baseline();
                 let logicalRect = layout.get_extents()[0];
@@ -74,12 +72,12 @@ const CharacterListRow = GObject.registerClass({
                     y: y + BASELINE_OFFSET * cellSize - layoutBaseline / Pango.SCALE,
                 }));
 
-                let textColor = styleContext.lookup_color('window_fg_color')[1];
+                let textColor = styleContext.get_color();
                 snapshot.append_layout(layout, textColor);
 
             } else {
                 this._drawBoundingBox(snapshot, layout, styleContext, cellRect, character);
-                this._drawCharacterName(snapshot, pangoContext, cellRect, character);
+                this._drawCharacterName(snapshot, pangoContext, styleContext, cellRect, character);
             }
             snapshot.restore();
         }
@@ -145,7 +143,7 @@ const CharacterListRow = GObject.registerClass({
         snapshot.restore();
     }
 
-    _drawCharacterName(snapshot, pangoContext, cellRect, uc) {
+    _drawCharacterName(snapshot, pangoContext, styleContext, cellRect, uc) {
         snapshot.save();
 
         let layout = Pango.Layout.new(pangoContext);
@@ -164,7 +162,7 @@ const CharacterListRow = GObject.registerClass({
             y: cellRect.y - logicalRect.y / Pango.SCALE + (cellRect.height - logicalRect.height / Pango.SCALE) / 2,
         }));
 
-        let textColor = this._styleContext.lookup_color('window_fg_color')[1];
+        let textColor = styleContext.get_color();
         snapshot.append_layout(layout, textColor);
         snapshot.restore();
     }
