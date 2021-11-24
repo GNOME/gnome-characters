@@ -2,7 +2,6 @@
 <gresources>
   <gresource prefix="/org/gnome/Characters/js">
     <file>main.js</file>
-    <file>menu.js</file>
     <file>sidebar.js</file>
     <file>sidebarRow.js</file>
     <file>util.js</file>

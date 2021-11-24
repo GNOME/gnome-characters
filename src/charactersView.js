@@ -1,4 +1,4 @@
-/* exported CharactersView FontFilter */
+/* exported CharactersView */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (C) 2014-2015  Daiki Ueno <dueno@src.gnome.org>
@@ -19,7 +19,6 @@
 
 const { Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene } = imports.gi;
 
-const Main = imports.main;
 const Util = imports.util;
 
 const BASELINE_OFFSET = 0.85;
@@ -173,87 +172,6 @@ const CharacterListRow = GObject.registerClass({
 
 const MAX_SEARCH_RESULTS = 100;
 
-var FontFilter = GObject.registerClass({
-    Properties: {
-        'font': GObject.ParamSpec.string(
-            'font', '', '',
-            GObject.ParamFlags.READWRITE,
-            'Cantarell 50',
-        ),
-    },
-    Signals: {
-        'filter-set': { param_types: [] },
-    },
-}, class FontFilter extends GObject.Object {
-    _init() {
-        super._init({});
-
-        this._fontDescription = null;
-        this._filterFontDescription = null;
-
-        Main.settings.bind('font', this, 'font', Gio.SettingsBindFlags.DEFAULT);
-    }
-
-    get font() {
-        return this._font;
-    }
-
-    set font(v) {
-        let fontDescription = Pango.FontDescription.from_string(v);
-        if (fontDescription.get_size() === 0)
-            fontDescription.set_size(CELL_SIZE * Pango.SCALE);
-
-        if (this._fontDescription &&
-            fontDescription.equal(this._fontDescription))
-            return;
-
-        this._font = v;
-        this._fontDescription = fontDescription;
-    }
-
-    get fontDescription() {
-        if (this._filterFontDescription)
-            return this._filterFontDescription;
-        return this._fontDescription;
-    }
-
-    setFilterFont(v) {
-        let fontDescription;
-        if (v === null) {
-            fontDescription = null;
-        } else {
-            fontDescription = Pango.FontDescription.from_string(v);
-            fontDescription.set_size(this._fontDescription.get_size());
-        }
-
-        if (this._filterFontDescription !== null && fontDescription === null ||
-            this._filterFontDescription === null && fontDescription !== null ||
-            this._filterFontDescription !== null && fontDescription !== null &&
-             !fontDescription.equal(this._filterFontDescription)) {
-            this._filterFontDescription = fontDescription;
-            this.emit('filter-set');
-        }
-    }
-
-    filter(widget, characters) {
-        let fontDescription = this._fontDescription;
-        if (this._filterFontDescription) {
-            let context = widget.get_pango_context();
-            let filterFont = context.load_font(this._filterFontDescription);
-            let filteredCharacters = [];
-            for (let index = 0; index < characters.length; index++) {
-                let uc = characters[index];
-                if (Gc.pango_context_font_has_glyph(context, filterFont, uc))
-                    filteredCharacters.push(uc);
-            }
-            characters = filteredCharacters;
-            fontDescription = this._filterFontDescription;
-        }
-
-        return [fontDescription, characters];
-    }
-});
-
 var CharactersView = GObject.registerClass({
     Signals: {
         'character-selected': { param_types: [GObject.TYPE_STRING] },
@@ -273,6 +191,11 @@ var CharactersView = GObject.registerClass({
             overflow: Gtk.Overflow.HIDDEN,
         });
 
+        let context = this.get_pango_context();
+        this._fontDescription = context.get_font_description();
+        this._fontDescription.set_size(CELL_SIZE * Pango.SCALE);
+
+
         this._selectedCharacter = null;
         this._characters = [];
         this._spinnerTimeoutId = 0;
@@ -282,7 +205,6 @@ var CharactersView = GObject.registerClass({
             this._stopSpinner();
             this._searchContext = null;
             this._characters = [];
-            this._updateCharacterList();
         });
 
         this._cellsPerRow = CELLS_PER_ROW;
@@ -298,6 +220,10 @@ var CharactersView = GObject.registerClass({
         gestureClick.connect('pressed', this.onButtonPress.bind(this));
         gestureClick.connect('released', this.onButtonRelease.bind(this));
         this.add_controller(gestureClick);
+    }
+
+    get fontDescription() {
+        return this._fontDescription;
     }
 
     get vadjustment() {
@@ -320,7 +246,6 @@ var CharactersView = GObject.registerClass({
             this.queue_draw();
         });
         this._hadjustment = adj;
-
     }
 
     /*
@@ -466,12 +391,6 @@ var CharactersView = GObject.registerClass({
         this.queue_draw();
     }
 
-    setFontFilter(fontFilter) {
-        this.setFontDescription(fontFilter.fontDescription);
-        fontFilter.connect('filter-set', () => this._updateCharacterList());
-        this._fontFilter = fontFilter;
-    }
-
     _startSpinner() {
         this._stopSpinner();
         this._spinnerTimeoutId =
@@ -497,13 +416,6 @@ var CharactersView = GObject.registerClass({
         this.setCharacters(characters);
     }
 
-    _updateCharacterList() {
-        log('Updating characters list');
-        const [fontDescription, characters] = this._fontFilter.filter(this, this._characters);
-        this.setFontDescription(fontDescription);
-        this.setCharacters(characters);
-    }
-
     get initialSearchCount() {
         // Use our parents allocation; we aren't visible before we do the
         // initial search, so our allocation is 1x1
@@ -512,7 +424,7 @@ var CharactersView = GObject.registerClass({
         // Sometimes more MAX_SEARCH_RESULTS are visible on screen
         // (eg. fullscreen at 1080p).  We always present a over-full screen,
         // otherwise the lazy loading gets broken
-        let cellSize = getCellSize(this._fontFilter.fontDescription);
+        let cellSize = getCellSize(this._fontDescription);
         let cellsPerRow = Math.floor(allocation.width / cellSize);
         // Ensure the rows cause a scroll
         let heightInRows = Math.ceil((allocation.height + 1) / cellSize);

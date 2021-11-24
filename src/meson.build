@@ -28,7 +28,6 @@ resource_data = common_resource_data + files(
   'characterDialog.js',
   'charactersView.js',
   'main.js',
-  'menu.js',
   'sidebar.js',
   'sidebarRow.js',
   'window.js'

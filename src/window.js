@@ -28,7 +28,6 @@
 const { Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
 const { CharacterDialog } = imports.characterDialog;
-const { FontFilter } = imports.charactersView;
 const { gettext } = imports.gettext;
 
 const Main = imports.main;
@@ -39,7 +38,7 @@ var MainWindow = GObject.registerClass({
     InternalChildren: [
         'search-active-button',
         'search-bar', 'search-entry', 'back-button',
-        'menuPopover', 'container', 'sidebar',
+        'container', 'sidebar',
         'leaflet', 'mainStack', 'windowTitle',
         'charactersView', 'scrolledWindow',
     ],
@@ -59,15 +58,12 @@ var MainWindow = GObject.registerClass({
         this._searchActive = false;
         this._searchKeywords = [];
 
-        this._fontFilter = new FontFilter();
-        this._filterFontFamily = null;
         this._characterLists = {};
         this._recentCharacterLists = {};
-        this._charactersView.setFontFilter(this._fontFilter);
+
         this._charactersView.connect('character-selected', (widget, uc) => {
             this._handleCharacterSelected(widget, uc);
         });
-
 
         this._sidebar.list.connect('row-selected', (sidebar, row) => {
             const adj = this._scrolledWindow.get_vadjustment();
@@ -108,9 +104,6 @@ var MainWindow = GObject.registerClass({
                 state: new GLib.Variant('s', 'emoji-smileys') },
             { name: 'character',
                 activate: this._character,
-                parameterType: new GLib.VariantType('s') },
-            { name: 'filter-font',
-                activate: this._filterFont,
                 parameterType: new GLib.VariantType('s') },
             {
                 name: 'show-primary-menu',
@@ -188,8 +181,6 @@ var MainWindow = GObject.registerClass({
     }
 
     _handleKeyPress(self, event) {
-        if (this._menuPopover.visible)
-            return false;
         return this._search_bar.handle_event(event);
     }
 
@@ -221,25 +212,12 @@ var MainWindow = GObject.registerClass({
     }
 
     _updateTitle(title) {
-        if (this.filterFontFamily)
-            this._windowTitle.title = _('%s (%s only)').format(gettext(title), this.filterFontFamily);
-        else
-            this._windowTitle.title = gettext(title);
-
+        this._windowTitle.title = gettext(title);
     }
 
     _character(action, v) {
         const uc = v.get_string()[0];
         this.addToRecent(uc);
-    }
-
-    _filterFont(action, v) {
-        let family = v.get_string()[0];
-        if (family === 'None')
-            family = null;
-        this.filterFontFamily = family;
-        this._updateTitle(this._windowTitle.title);
-        this._menuPopover.hide();
     }
 
     _find() {
@@ -261,15 +239,6 @@ var MainWindow = GObject.registerClass({
             this.recentCharacters = this.recentCharacters.slice(
                 0, this._maxRecentCharacters);
         }
-    }
-
-    get filterFontFamily() {
-        return this._filterFontFamily;
-    }
-
-    set filterFontFamily(family) {
-        this._filterFontFamily = family;
-        this._fontFilter.setFilterFont(this._filterFontFamily);
     }
 
     searchByKeywords(keywords) {
@@ -314,7 +283,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _handleCharacterSelected(widget, uc) {
-        const dialog = new CharacterDialog(uc, this._fontFilter.fontDescription);
+        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription);
         dialog.set_modal(true);
         dialog.set_transient_for(this.get_root());
         dialog.connect('character-copied', (_widget, char) => {

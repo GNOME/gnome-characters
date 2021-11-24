@@ -41,7 +41,6 @@ const { GLib, Gio, GObject, Adw } = imports.gi;
 
 const { CharactersView } = imports.charactersView;
 const { Sidebar } = imports.sidebar;
-const { MenuPopover } = imports.menu;
 const { MainWindow } = imports.window;
 
 const Util = imports.util;
@@ -113,7 +112,6 @@ var MyApplication = GObject.registerClass({
 function main(argv) {
     GObject.type_ensure(CharactersView.$gtype);
     GObject.type_ensure(Sidebar.$gtype);
-    GObject.type_ensure(MenuPopover.$gtype);
 
     return new MyApplication().run(argv);
 }

@@ -119,14 +119,6 @@
                     </child>
                   </object>
                 </child>
-                <child type="end">
-                  <object class="GtkMenuButton" id="menu-button">
-                    <property name="icon-name">view-more-symbolic</property>
-                    <property name="popover">
-                      <object class="Gjs_MenuPopover" id="menuPopover" />
-                    </property>
-                  </object>
-                </child>
               </object>
             </child>
             <child>
