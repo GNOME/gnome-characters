@@ -447,7 +447,7 @@ var CharactersView = GObject.registerClass({
     searchByCategory(category) {
         this._characters = [];
         // whether to draw a baseline or not
-        this.baseline = category >= Gc.Category.NONE && category < Gc.Category.EMOJI;
+        this.baseline = category <= Gc.Category.LETTER_LATIN;
 
         if (category === Gc.Category.LETTER_LATIN) {
             if (!this._scriptsLoaded)

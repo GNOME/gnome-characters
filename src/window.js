@@ -257,6 +257,8 @@ var MainWindow = GObject.registerClass({
 
     setPage(pageRow) {
         if (pageRow.name === 'recent') {
+            // always draw a baseline for recent view
+            this._charactersView.baseline = true;
             if (this.recentCharacters.length === 0) {
                 this._mainStack.visible_child_name = 'empty-recent';
             } else {
