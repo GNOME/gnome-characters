@@ -185,6 +185,12 @@ var CharactersView = GObject.registerClass({
             GObject.ParamFlags.READWRITE,
             false,
         ),
+        'baseline': GObject.ParamSpec.boolean(
+            'baseline',
+            'Baseline', 'Whether to draw a baseline or not',
+            GObject.ParamFlags.READWRITE,
+            true,
+        ),
     },
     Implements: [Gtk.Scrollable],
 }, class CharactersView extends Gtk.Widget {
@@ -329,10 +335,12 @@ var CharactersView = GObject.registerClass({
             let y = (index - start) * cellSize;
 
             // Draw baseline.
-            snapshot.append_color(borderColor, new Graphene.Rect({
-                origin: new Graphene.Point({ x: 0, y: y + BASELINE_OFFSET * cellSize }),
-                size: new Graphene.Size({ width: allocatedWidth, height: 1.0 }),
-            }));
+            if (this.baseline) {
+                snapshot.append_color(borderColor, new Graphene.Rect({
+                    origin: new Graphene.Point({ x: 0, y: y + BASELINE_OFFSET * cellSize }),
+                    size: new Graphene.Size({ width: allocatedWidth, height: 1.0 }),
+                }));
+            }
 
             this._rows[index].snapshot(snapshot, this._offsetX, y, pangoContext, styleContext);
         }
@@ -433,6 +441,9 @@ var CharactersView = GObject.registerClass({
 
     searchByCategory(category) {
         this._characters = [];
+        // whether to draw a baseline or not
+        this.baseline = category >= Gc.Category.NONE && category < Gc.Category.EMOJI;
+
         if (category === Gc.Category.LETTER_LATIN) {
             if (!this._scriptsLoaded)
                 this.populateScripts();
