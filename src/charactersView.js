@@ -229,11 +229,6 @@ var CharactersView = GObject.registerClass({
         gestureClick.connect('released', this.onButtonRelease.bind(this));
         this.add_controller(gestureClick);
         this.add_css_class('view');
-        this.connect('notify::loading', () => {
-            log(this.loading);
-            if (!this.loading)
-                this.queue_draw();
-        });
     }
 
     get fontDescription() {
