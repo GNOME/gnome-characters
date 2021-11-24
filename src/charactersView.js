@@ -270,6 +270,7 @@ var CharactersView = GObject.registerClass({
         super._init({
             vadjustment: new Gtk.Adjustment(),
             hadjustment: new Gtk.Adjustment(),
+            overflow: Gtk.Overflow.HIDDEN,
         });
 
         this._selectedCharacter = null;
@@ -384,8 +385,13 @@ var CharactersView = GObject.registerClass({
         let pangoContext =  this.get_pango_context();
 
         let cellSize = getCellSize(this._fontDescription);
-        let start = Math.max(0, Math.floor(vadj.get_value() / cellSize));
-        let end = Math.min(this._rows.length, Math.ceil((vadj.get_value() + vadj.get_page_size()) / cellSize));
+        let scrollPos = Math.floor(vadj.get_value());
+
+        let start = Math.max(0, Math.floor(scrollPos / cellSize));
+        let end = Math.min(this._rows.length, Math.ceil((scrollPos + vadj.get_page_size()) / cellSize));
+        let offset = scrollPos % cellSize;
+
+        snapshot.translate(new Graphene.Point({ x: 0, y: -offset }));
 
         let accentColor = styleContext.lookup_color('accent_color')[1];
         accentColor.alpha = 0.3;
@@ -403,10 +409,6 @@ var CharactersView = GObject.registerClass({
         }
     }
 
-    vfunc_get_request_mode() {
-        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
-    }
-
     vfunc_size_allocate(width, height, baseline) {
         super.vfunc_size_allocate(width, height, baseline);
         let cellSize = getCellSize(this._fontDescription);
@@ -417,8 +419,8 @@ var CharactersView = GObject.registerClass({
 
         let hadj = this.get_hadjustment();
         let vadj = this.get_vadjustment();
-        vadj.configure(vadj.get_value(), 0.0, maxHeight, 0.1 * height, 0.9 * height, height);
-        hadj.configure(hadj.get_value(), 0.0, maxWidth, 0.1 * width, 0.9 * width, width);
+        vadj.configure(vadj.get_value(), 0.0, maxHeight, 0.1 * height, 0.9 * height, Math.min(height, maxHeight));
+        hadj.configure(hadj.get_value(), 0.0, maxWidth, 0.1 * width, 0.9 * width, Math.min(width, maxWidth));
 
         if (cellsPerRow !== this._cellsPerRow) {
             // Reflow if the number of cells per row has changed.
