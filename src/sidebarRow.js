@@ -46,11 +46,16 @@ var SidebarRow = GObject.registerClass({
         super._init({
             accessible_role: Gtk.AccessibleRole.ROW,
         });
-        this._scripts = [];
+        let hbox = new Gtk.Box({
+            orientation: Gtk.Orientation.HORIZONTAL,
+            margin_top: 12,
+            margin_bottom: 12,
+            margin_start: 6,
+            margin_end: 6,
+            spacing: 12,
+        });
 
-        let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
-
-        let image = new Gtk.Image({ margin_end: 10 });
+        let image = new Gtk.Image();
         this.bind_property('icon-name', image, 'icon-name',
             GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
         );
