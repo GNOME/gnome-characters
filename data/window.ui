@@ -23,8 +23,10 @@
             <property name="orientation">vertical</property>
             <property name="width-request">200</property>
             <child>
-              <object class="GtkHeaderBar" id="sidebar-headerbar">
-                <property name="show-title-buttons">False</property>
+              <object class="AdwHeaderBar" id="sidebarHeaderbar">
+                <binding name="show-end-title-buttons">
+                  <lookup name="folded">leaflet</lookup>
+                </binding>
                 <property name="title-widget">
                   <object class="AdwWindowTitle">
                     <property name="title" translatable="yes">Characters</property>
@@ -102,8 +104,7 @@
           <object class="GtkBox" id="container">
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkHeaderBar" id="main-headerbar">
-                <property name="show-title-buttons">True</property>
+              <object class="AdwHeaderBar" id="mainHeaderbar">
                 <property name="title-widget">
                   <object class="AdwWindowTitle" id="windowTitle" />
                 </property>
@@ -211,8 +212,8 @@
   <object class="GtkSizeGroup">
     <property name="mode">vertical</property>
     <widgets>
-      <widget name="sidebar-headerbar"/>
-      <widget name="main-headerbar"/>
+      <widget name="sidebarHeaderbar"/>
+      <widget name="mainHeaderbar"/>
     </widgets>
   </object>
 </interface>
