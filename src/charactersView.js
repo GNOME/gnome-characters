@@ -288,13 +288,11 @@ var CharactersView = GObject.registerClass({
             this._selectedCharacter = this._characters[index];
         else
             this._selectedCharacter = null;
-        return false;
     }
 
     onButtonRelease() {
         if (this._selectedCharacter)
             this.emit('character-selected', this._selectedCharacter);
-        return false;
     }
 
     vfunc_measure(orientation, _forSize) {
