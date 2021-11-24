@@ -105,6 +105,9 @@
             <property name="orientation">vertical</property>
             <child>
               <object class="AdwHeaderBar" id="mainHeaderbar">
+                <binding name="show-start-title-buttons">
+                  <lookup name="folded">leaflet</lookup>
+                </binding>
                 <property name="title-widget">
                   <object class="AdwWindowTitle" id="windowTitle" />
                 </property>
