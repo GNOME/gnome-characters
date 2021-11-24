@@ -393,16 +393,15 @@ var CharactersView = GObject.registerClass({
 
         snapshot.translate(new Graphene.Point({ x: 0, y: -offset }));
 
-        let accentColor = styleContext.lookup_color('accent_color')[1];
-        accentColor.alpha = 0.3;
+        let borderColor = styleContext.lookup_color("borders")[1];
 
         for (let index = start; index < end; index++) {
             let y = (index - start) * cellSize;
 
             // Draw baseline.
-            snapshot.append_color(accentColor, new Graphene.Rect({
+            snapshot.append_color(borderColor, new Graphene.Rect({
                 origin: new Graphene.Point({ x: 0, y: y + BASELINE_OFFSET * cellSize }),
-                size: new Graphene.Size({ width: this.get_allocation().width, height: 2.0 }),
+                size: new Graphene.Size({ width: this.get_allocation().width, height: 1.0 }),
             }));
 
             this._rows[index].snapshot(snapshot, 0, y, pangoContext, styleContext);
