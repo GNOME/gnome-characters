@@ -46,6 +46,7 @@ var SidebarRow = GObject.registerClass({
         super._init({
             accessible_role: Gtk.AccessibleRole.ROW,
         });
+        this._scripts = [];
 
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
@@ -65,7 +66,6 @@ var SidebarRow = GObject.registerClass({
         this.connect('notify::title', row => {
             row.tooltip_text = _('%s Sidebar Row').format(row.title);
         });
-
         hbox.append(label);
 
         this.set_child(hbox);

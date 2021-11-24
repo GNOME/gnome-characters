@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene } = imports.gi;
+const { Gc, Gdk, Gio, GnomeDesktop, GObject, Gtk, Pango, Graphene } = imports.gi;
 
 const Util = imports.util;
 
@@ -181,6 +181,12 @@ var CharactersView = GObject.registerClass({
         'vadjustment': GObject.ParamSpec.override('vadjustment', Gtk.Scrollable),
         'hscroll-policy': GObject.ParamSpec.override('hscroll-policy', Gtk.Scrollable),
         'hadjustment': GObject.ParamSpec.override('hadjustment', Gtk.Scrollable),
+        'loading': GObject.ParamSpec.boolean(
+            'loading',
+            'Loading', 'Whether the category is still loading',
+            GObject.ParamFlags.READWRITE,
+            false,
+        ),
     },
     Implements: [Gtk.Scrollable],
 }, class CharactersView extends Gtk.Widget {
@@ -191,18 +197,18 @@ var CharactersView = GObject.registerClass({
             overflow: Gtk.Overflow.HIDDEN,
         });
 
+        this._scripts = [];
+        this._scriptsLoaded = false;
+
         let context = this.get_pango_context();
         this._fontDescription = context.get_font_description();
         this._fontDescription.set_size(CELL_SIZE * Pango.SCALE);
 
-
         this._selectedCharacter = null;
         this._characters = [];
-        this._spinnerTimeoutId = 0;
         this._searchContext = null;
         this._cancellable = new Gio.Cancellable();
         this._cancellable.connect(() => {
-            this._stopSpinner();
             this._searchContext = null;
             this._characters = [];
         });
@@ -391,28 +397,8 @@ var CharactersView = GObject.registerClass({
         this.queue_draw();
     }
 
-    _startSpinner() {
-        this._stopSpinner();
-        this._spinnerTimeoutId =
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
-                // this._loading_spinner.start();
-                // this.visible_child_name = 'loading';
-            });
-    }
-
-    _stopSpinner() {
-        if (this._spinnerTimeoutId > 0) {
-            GLib.source_remove(this._spinnerTimeoutId);
-            this._spinnerTimeoutId = 0;
-            // this._loading_spinner.stop();
-        }
-    }
-
     _finishSearch(result) {
-        this._stopSpinner();
-
         let characters = Util.searchResultToArray(result);
-
         this.setCharacters(characters);
     }
 
@@ -438,9 +424,7 @@ var CharactersView = GObject.registerClass({
     }
 
     _searchWithContext(context, count) {
-        this._startSpinner();
         context.search(count, this._cancellable, (ctx, res) => {
-            this._stopSpinner();
             try {
                 let result = ctx.search_finish(res);
                 this._addSearchResult(result);
@@ -452,10 +436,12 @@ var CharactersView = GObject.registerClass({
 
     searchByCategory(category) {
         this._characters = [];
-        /* if ('scripts' in category) {
-            this.searchByScripts(category.scripts);
+        if (category === Gc.Category.LETTER_LATIN) {
+            if (!this._scriptsLoaded)
+                this.populateScripts();
+            this._searchByScripts();
             return;
-        }*/
+        }
 
         let criteria = Gc.SearchCriteria.new_category(category);
         this._searchContext = new Gc.SearchContext({ criteria });
@@ -472,8 +458,8 @@ var CharactersView = GObject.registerClass({
         return this._characters.length;
     }
 
-    searchByScripts(scripts) {
-        var criteria = Gc.SearchCriteria.new_scripts(scripts);
+    _searchByScripts() {
+        var criteria = Gc.SearchCriteria.new_scripts(this.scripts);
         this._searchContext = new Gc.SearchContext({ criteria });
         this._searchWithContext(this._searchContext, this.initialSearchCount);
     }
@@ -481,5 +467,121 @@ var CharactersView = GObject.registerClass({
     cancelSearch() {
         this._cancellable.cancel();
         this._cancellable.reset();
+    }
+
+    // / Specific to GC_CATEGORY_LETTER_LATIN
+    get scripts() {
+        return this._scripts;
+    }
+
+    // / Populate the "scripts" based on the current locale
+    // / and the input-sources settings.
+    populateScripts() {
+        this.loading = true;
+        let settings =
+            Util.getSettings('org.gnome.desktop.input-sources',
+                '/org/gnome/desktop/input-sources/');
+        if (settings) {
+            let sources = settings.get_value('sources').deep_unpack();
+            let hasIBus = sources.some((current, _index, _array) => {
+                return current[0] === 'ibus';
+            });
+            if (hasIBus)
+                this._ensureIBusLanguageList(sources);
+            else
+                this._finishBuildScriptList(sources);
+        }
+    }
+
+    _ensureIBusLanguageList(sources) {
+        if (this._ibusLanguageList !== null)
+            return;
+
+        this._ibusLanguageList = {};
+
+        // Don't assume IBus is always available.
+        let ibus;
+        try {
+            ibus = imports.gi.IBus;
+        } catch (e) {
+            this._finishBuildScriptList(sources);
+            return;
+        }
+
+        ibus.init();
+        let bus = new ibus.Bus();
+        if (bus.is_connected()) {
+            bus.list_engines_async(-1, null, (sources_, bus_, res) => {
+                this._finishListEngines(sources_, bus_, res);
+            });
+        } else {
+            this._finishBuildScriptList(sources);
+        }
+    }
+
+    _finishListEngines(sources, bus, res) {
+        try {
+            let engines = bus.list_engines_async_finish(res);
+            if (engines) {
+                for (let j in engines) {
+                    let engine = engines[j];
+                    let language = engine.get_language();
+                    if (language !== null)
+                        this._ibusLanguageList[engine.get_name()] = language;
+                }
+            }
+        } catch (e) {
+            log(`Failed to list engines: ${e.message}`);
+        }
+        this._finishBuildScriptList(sources);
+    }
+
+    _finishBuildScriptList(sources) {
+        let xkbInfo = new GnomeDesktop.XkbInfo();
+        let languages = [];
+        for (let i in sources) {
+            let [type, id] = sources[i];
+            switch (type) {
+            case 'xkb':
+                // FIXME: Remove this check once gnome-desktop gets the
+                // support for that.
+                if (xkbInfo.get_languages_for_layout) {
+                    languages = languages.concat(
+                        xkbInfo.get_languages_for_layout(id));
+                }
+                break;
+            case 'ibus':
+                if (id in this._ibusLanguageList)
+                    languages.push(this._ibusLanguageList[id]);
+                break;
+            }
+        }
+
+        // Add current locale language to languages.
+        languages.push(Gc.get_current_language());
+
+        let allScripts = [];
+        for (let i in languages) {
+            let language = GnomeDesktop.normalize_locale(languages[i]);
+            if (language === null)
+                continue;
+            let scripts = Gc.get_scripts_for_language(languages[i]);
+            for (let j in scripts) {
+                let script = scripts[j];
+                // Exclude Latin and Han, since Latin is always added
+                // at the top and Han contains too many characters.
+                if (['Latin', 'Han'].indexOf(script) >= 0)
+                    continue;
+                if (allScripts.indexOf(script) >= 0)
+                    continue;
+                allScripts.push(script);
+            }
+        }
+
+        allScripts.unshift('Latin');
+
+        this._scripts = allScripts;
+        this._scriptsLoaded = true;
+        this.loading = false;
     }
 });

@@ -98,13 +98,6 @@ var MainWindow = GObject.registerClass({
                 parameterType: new GLib.VariantType('b'),
                 state: new GLib.Variant('b', false) },
             { name: 'find', activate: this._find },
-            { name: 'category',
-                activate: this._category,
-                parameterType: new GLib.VariantType('s'),
-                state: new GLib.Variant('s', 'emoji-smileys') },
-            { name: 'character',
-                activate: this._character,
-                parameterType: new GLib.VariantType('s') },
             {
                 name: 'show-primary-menu',
                 activate: this._togglePrimaryMenu,
@@ -127,6 +120,14 @@ var MainWindow = GObject.registerClass({
             this._leaflet.navigate(Adw.NavigationDirection.BACK);
         });
 
+        this._charactersView.connect('notify::loading', view => {
+            if (view.loading) {
+                this._mainStack.visible_child_name = 'loading';
+            } else {
+                this._mainStack.visible_child_name = 'character-list';
+                this._mainStack.queue_draw();
+            }
+        });
         // Due to limitations of gobject-introspection wrt GdkEvent
         // and GdkEventKey, this needs to be a signal handler
         // TODO: use EventControllerKey
@@ -264,6 +265,7 @@ var MainWindow = GObject.registerClass({
             }
         } else {
             this._charactersView.searchByCategory(pageRow.category);
+
             this._mainStack.visible_child_name = 'character-list';
             // this._charactersView.model = pageRow.model;
         }
