@@ -231,6 +231,11 @@ var CharactersView = GObject.registerClass({
         gestureClick.connect('released', this.onButtonRelease.bind(this));
         this.add_controller(gestureClick);
         this.add_css_class('view');
+        this.connect('notify::loading', () => {
+            log(this.loading);
+            if (!this.loading)
+                this.queue_draw();
+        });
     }
 
     get fontDescription() {
@@ -446,8 +451,10 @@ var CharactersView = GObject.registerClass({
 
         if (category === Gc.Category.LETTER_LATIN) {
             if (!this._scriptsLoaded)
-                this.populateScripts();
-            this._searchByScripts();
+                this.populateScripts(); // we run the search once the scripts are loaded
+            else
+                this._searchByScripts();
+
             return;
         }
 
@@ -591,5 +598,6 @@ var CharactersView = GObject.registerClass({
         this._scripts = allScripts;
         this._scriptsLoaded = true;
         this.loading = false;
+        this._searchByScripts();
     }
 });
