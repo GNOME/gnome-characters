@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene, PangoCairo } = imports.gi;
+const { Gc, Gdk, GLib, Gio, GObject, Gtk, Pango, Graphene } = imports.gi;
 
 const Main = imports.main;
 const Util = imports.util;
@@ -54,7 +54,6 @@ const CharacterListRow = GObject.registerClass({
         // Draw characters.  Do centering and attach to the baseline.
         let cellSize = getCellSize(this._fontDescription);
         for (let i in this._characters) {
-            snapshot.save();
             let character = this._characters[i];
             let cellRect = new Gdk.Rectangle({
                 x: x + cellSize * i,
@@ -62,36 +61,32 @@ const CharacterListRow = GObject.registerClass({
                 width: cellSize,
                 height: cellSize,
             });
+
+            layout.set_text(character, -1);
+            snapshot.save();
             if (Gc.character_is_invisible(character)) {
-                // this._drawBoundingBox(cr, cellRect, character);
-                // this._drawCharacterName(cr, cellRect, character);
+                this._drawBoundingBox(snapshot, layout, styleContext, cellRect, character);
+                this._drawCharacterName(snapshot, pangoContext, cellRect, character);
+            } else if (layout.get_unknown_glyphs_count() === 0) {
+                let layoutBaseline = layout.get_baseline();
+                let logicalRect = layout.get_extents()[0];
+                snapshot.translate(new Graphene.Point({
+                    x: x + cellSize * i - logicalRect.x / Pango.SCALE + (cellSize - logicalRect.width / Pango.SCALE) / 2,
+                    y: y + BASELINE_OFFSET * cellSize - layoutBaseline / Pango.SCALE,
+                }));
+
+                let textColor = styleContext.lookup_color('window_fg_color')[1];
+                snapshot.append_layout(layout, textColor);
+
             } else {
-                layout.set_text(character, -1);
-                if (layout.get_unknown_glyphs_count() === 0) {
-                    let layoutBaseline = layout.get_baseline();
-                    let logicalRect = layout.get_extents()[0];
-                    snapshot.translate(new Graphene.Point({
-                        x: x + cellSize * i - logicalRect.x / Pango.SCALE + (cellSize - logicalRect.width / Pango.SCALE) / 2,
-                        y: y + BASELINE_OFFSET * cellSize - layoutBaseline / Pango.SCALE,
-                    }));
-
-                    let textColor = this._styleContext.lookup_color('foreground_color')[1];
-                    snapshot.append_layout(layout, textColor);
-
-                } else {
-                    // this._drawBoundingBox(cr, cellRect, character);
-                    // this._drawCharacterName(cr, cellRect, character);
-                }
+                this._drawBoundingBox(snapshot, layout, styleContext, cellRect, character);
+                this._drawCharacterName(snapshot, pangoContext, cellRect, character);
             }
             snapshot.restore();
         }
     }
 
-    _computeBoundingBox(cr, cellRect, uc) {
-        let layout = PangoCairo.create_layout(cr);
-        layout.set_font_description(this._fontDescription);
-        layout.set_text(uc, -1);
-
+    _computeBoundingBox(layout, cellRect, uc) {
         let shapeRect;
         let layoutBaseline;
         if (layout.get_unknown_glyphs_count() === 0) {
@@ -120,42 +115,41 @@ const CharacterListRow = GObject.registerClass({
                 shapeRect.width *= characterWidth;
         }
 
-        shapeRect.x = cellRect.x - shapeRect.x / Pango.SCALE +
-            (cellRect.width - shapeRect.width / Pango.SCALE) / 2;
-        shapeRect.y = cellRect.y + BASELINE_OFFSET * cellRect.height -
-            layoutBaseline / Pango.SCALE;
+        shapeRect.x = cellRect.x - shapeRect.x / Pango.SCALE + (cellRect.width - shapeRect.width / Pango.SCALE) / 2;
+        shapeRect.y = cellRect.y + BASELINE_OFFSET * cellRect.height - layoutBaseline / Pango.SCALE;
         shapeRect.width /= Pango.SCALE;
         shapeRect.height /= Pango.SCALE;
         return shapeRect;
     }
 
-    _drawBoundingBox(cr, cellRect, uc) {
-        cr.save();
-        cr.rectangle(cellRect.x, cellRect.y, cellRect.width, cellRect.height);
-        cr.clip();
+    _drawBoundingBox(snapshot, pangoLayout, styleContext, cellRect, uc) {
+        snapshot.save();
 
-        let layout = PangoCairo.create_layout(cr);
-        layout.set_font_description(this._fontDescription);
-        layout.set_text(uc, -1);
-        let shapeRect = this._computeBoundingBox(cr, cellRect, uc);
-
+        let shapeRect = this._computeBoundingBox(pangoLayout, cellRect, uc);
         let borderWidth = 1;
-        cr.rectangle(shapeRect.x - borderWidth * 2,
-            shapeRect.y - borderWidth * 2,
-            shapeRect.width + borderWidth * 2,
-            shapeRect.height + borderWidth * 2);
-        cr.setSourceRGBA(239.0 / 255.0, 239.0 / 255.0, 239.0 / 255.0, 1.0);
-        cr.fill();
 
-        cr.restore();
+        let accentColor = styleContext.get_color();
+        accentColor.alpha = 0.05;
+
+        snapshot.append_color(accentColor,
+            new Graphene.Rect({
+                origin: new Graphene.Point({
+                    x: shapeRect.x - borderWidth * 2,
+                    y: shapeRect.y - borderWidth * 2,
+                }),
+                size: new Graphene.Size({
+                    width: shapeRect.width + borderWidth * 2,
+                    height: shapeRect.height + borderWidth * 2,
+                }),
+            }),
+        );
+        snapshot.restore();
     }
 
-    _drawCharacterName(cr, cellRect, uc) {
-        cr.save();
-        cr.rectangle(cellRect.x, cellRect.y, cellRect.width, cellRect.height);
-        cr.clip();
+    _drawCharacterName(snapshot, pangoContext, cellRect, uc) {
+        snapshot.save();
 
-        let layout = PangoCairo.create_layout(cr);
+        let layout = Pango.Layout.new(pangoContext);
         layout.set_width(cellRect.width * Pango.SCALE * 0.8);
         layout.set_height(cellRect.height * Pango.SCALE * 0.8);
         layout.set_wrap(Pango.WrapMode.WORD);
@@ -166,16 +160,14 @@ const CharacterListRow = GObject.registerClass({
         let text = name === null ? _('Unassigned') : Util.capitalize(name);
         layout.set_text(text, -1);
         let logicalRect = layout.get_extents()[0];
-        cr.moveTo(cellRect.x - logicalRect.x / Pango.SCALE +
-                  (cellRect.width - logicalRect.width / Pango.SCALE) / 2,
-        cellRect.y - logicalRect.y / Pango.SCALE +
-                  (cellRect.height - logicalRect.height / Pango.SCALE) / 2);
+        snapshot.translate(new Graphene.Point({
+            x: cellRect.x - logicalRect.x / Pango.SCALE + (cellRect.width - logicalRect.width / Pango.SCALE) / 2,
+            y: cellRect.y - logicalRect.y / Pango.SCALE + (cellRect.height - logicalRect.height / Pango.SCALE) / 2,
+        }));
 
-        let textColor = this._styleContext.lookup_color('foreground_color')[1];
-        Gdk.cairo_set_source_rgba(cr, textColor);
-        PangoCairo.show_layout(cr, layout);
-
-        cr.restore();
+        let textColor = this._styleContext.lookup_color('window_fg_color')[1];
+        snapshot.append_layout(layout, textColor);
+        snapshot.restore();
     }
 });
 
