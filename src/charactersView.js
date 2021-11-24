@@ -349,7 +349,7 @@ var CharactersView = GObject.registerClass({
         let vadj = this.get_vadjustment();
 
         let cellSize = getCellSize(this._fontDescription);
-        x = Math.floor((x + hadj.get_value()) / cellSize);
+        x = Math.floor((x + hadj.get_value() - this._offsetX) / cellSize);
         y = Math.floor((y + vadj.get_value()) / cellSize);
 
         let index = y * this._cellsPerRow + x;
@@ -389,11 +389,13 @@ var CharactersView = GObject.registerClass({
 
         let start = Math.max(0, Math.floor(scrollPos / cellSize));
         let end = Math.min(this._rows.length, Math.ceil((scrollPos + vadj.get_page_size()) / cellSize));
-        let offset = scrollPos % cellSize;
+        let offsetY = scrollPos % cellSize;
 
-        snapshot.translate(new Graphene.Point({ x: 0, y: -offset }));
+        snapshot.translate(new Graphene.Point({ x: 0, y: -offsetY }));
 
-        let borderColor = styleContext.lookup_color("borders")[1];
+        let borderColor = styleContext.lookup_color('borders')[1];
+        let allocatedWidth = this.get_allocation().width;
+        this._offsetX = (allocatedWidth - cellSize * this._cellsPerRow) / 2;
 
         for (let index = start; index < end; index++) {
             let y = (index - start) * cellSize;
@@ -401,10 +403,10 @@ var CharactersView = GObject.registerClass({
             // Draw baseline.
             snapshot.append_color(borderColor, new Graphene.Rect({
                 origin: new Graphene.Point({ x: 0, y: y + BASELINE_OFFSET * cellSize }),
-                size: new Graphene.Size({ width: this.get_allocation().width, height: 1.0 }),
+                size: new Graphene.Size({ width: allocatedWidth, height: 1.0 }),
             }));
 
-            this._rows[index].snapshot(snapshot, 0, y, pangoContext, styleContext);
+            this._rows[index].snapshot(snapshot, this._offsetX, y, pangoContext, styleContext);
         }
     }
 
