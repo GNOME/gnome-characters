@@ -33,7 +33,7 @@
                   </object>
                 </property>
                 <child>
-                  <object class="GtkToggleButton" id="search-active-button">
+                  <object class="GtkToggleButton" id="searchButton">
                     <property name="icon-name">edit-find-symbolic</property>
                   </object>
                 </child>
@@ -54,7 +54,7 @@
                   <object class="GtkSearchBar" id="search-bar">
                     <property name="halign">fill</property>
                     <child>
-                      <object class="GtkSearchEntry" id="search-entry">
+                      <object class="GtkSearchEntry" id="searchEntry">
                         <property name="halign">fill</property>
                       </object>
                     </child>

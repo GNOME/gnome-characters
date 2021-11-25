@@ -36,16 +36,12 @@ const Util = imports.util;
 var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/window.ui',
     InternalChildren: [
-        'search-active-button',
-        'search-bar', 'search-entry', 'back-button',
+        'searchButton', 'search-bar', 'searchEntry', 'back-button',
         'container', 'sidebar', 'loadingSpinner',
         'leaflet', 'mainStack', 'windowTitle',
         'charactersView', 'scrolledWindow',
     ],
     Properties: {
-        'search-active': GObject.ParamSpec.boolean(
-            'search-active', '', '',
-            GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE, false),
         'max-recent-characters': GObject.ParamSpec.uint(
             'max-recent-characters', '', '',
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
@@ -55,9 +51,7 @@ var MainWindow = GObject.registerClass({
     _init(application) {
         super._init({ application, title: GLib.get_application_name() });
 
-        this._searchActive = false;
         this._searchKeywords = [];
-
         this._characterLists = {};
         this._recentCharacterLists = {};
 
@@ -77,12 +71,6 @@ var MainWindow = GObject.registerClass({
             }
         });
 
-        /* characterList = this._createCharacterList(
-            'search-result', _('Search Result Character List'));
-        // FIXME: Can't use GtkContainer.child_get_property.
-        characterList.title = _("Search Result");
-        this._mainStack.add_named(characterList, 'search-result');
-        */
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
         let recentCharacters = Main.settings.get_value('recent-characters');
         this.recentCharacters = recentCharacters.get_strv();
@@ -93,11 +81,12 @@ var MainWindow = GObject.registerClass({
 
         Util.initActions(this, [
             { name: 'about', activate: this._about },
-            { name: 'search-active',
-                activate: this._toggleSearch,
-                parameterType: new GLib.VariantType('b'),
-                state: new GLib.Variant('b', false) },
-            { name: 'find', activate: this._find },
+            {
+                name: 'find',
+                activate: () => {
+                    this._searchButton.active = !this._searchButton.active;
+                },
+            },
             {
                 name: 'show-primary-menu',
                 activate: this._togglePrimaryMenu,
@@ -105,16 +94,22 @@ var MainWindow = GObject.registerClass({
             },
         ]);
 
-        this.bind_property('search-active', this._search_active_button, 'active',
-            GObject.BindingFlags.SYNC_CREATE |
-                           GObject.BindingFlags.BIDIRECTIONAL);
-        this.bind_property('search-active',
+        this._searchButton.bind_property('active',
             this._search_bar,
             'search-mode-enabled',
-            GObject.BindingFlags.SYNC_CREATE |
-                           GObject.BindingFlags.BIDIRECTIONAL);
-        this._search_bar.connect_entry(this._search_entry);
-        this._search_entry.connect('search-changed', entry => this._handleSearchChanged(entry));
+            GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL,
+        );
+
+        this._searchEntry.connect('search-changed', entry => this._handleSearchChanged(entry));
+        this._searchEntry.set_key_capture_widget(this);
+        this._searchEntry.connect('search-started', () => {
+            this.searchActive = true;
+            this._searchButton.set_active(true);
+        });
+        this._searchEntry.connect('stop-search', () => {
+            this.searchActive = false;
+            this._searchButton.set_active(false);
+        });
 
         this._back_button.connect('clicked', () => {
             this._leaflet.navigate(Adw.NavigationDirection.BACK);
@@ -130,10 +125,6 @@ var MainWindow = GObject.registerClass({
                 this._mainStack.queue_draw();
             }
         });
-        // Due to limitations of gobject-introspection wrt GdkEvent
-        // and GdkEventKey, this needs to be a signal handler
-        // TODO: use EventControllerKey
-        // this.connect('key-press-event', (self, event) => this._handleKeyPress(self, event));
     }
 
     vfunc_map() {
@@ -150,24 +141,13 @@ var MainWindow = GObject.registerClass({
         action.set_state(GLib.Variant.new_boolean(!state));
     }
 
-    get searchActive() {
-        return this._searchActive;
-    }
-
     set searchActive(v) {
-        if (this._searchActive === v)
-            return;
-
-        this._searchActive = v;
-
-        if (this._searchActive) {
+        if (v) {
             this._sidebar.list.unselect_all();
             this._updateTitle(_('Search Result'));
         } else {
             this._sidebar.restoreSelection();
         }
-
-        this.notify('search-active');
     }
 
     _handleSearchChanged(entry) {
@@ -181,10 +161,6 @@ var MainWindow = GObject.registerClass({
                 this.searchByKeywords(this._searchKeywords);
         }
         return true;
-    }
-
-    _handleKeyPress(self, event) {
-        return this._search_bar.handle_event(event);
     }
 
     _about() {
@@ -223,15 +199,6 @@ var MainWindow = GObject.registerClass({
         this.addToRecent(uc);
     }
 
-    _find() {
-        this.searchActive = !this.searchActive;
-    }
-
-    setSearchKeywords(keywords) {
-        this.searchActive = keywords.length > 0;
-        this._search_entry.set_text(keywords.join(' '));
-    }
-
     get maxRecentCharacters() {
         return this._maxRecentCharacters;
     }
@@ -245,12 +212,13 @@ var MainWindow = GObject.registerClass({
     }
 
     searchByKeywords(keywords) {
-        let totalResults = this._charactersView.searchByKeywords(keywords);
-        if (totalResults === 0)
-            this._mainStack.visible_child_name = 'no-results';
-        else
-            this._mainStack.visible_child_name = 'character-list';
-
+        this._charactersView.searchByKeywords(keywords)
+            .then(totalResults => {
+                if (totalResults === 0)
+                    this._mainStack.visible_child_name = 'no-results';
+                else
+                    this._mainStack.visible_child_name = 'character-list';
+            });
     }
 
     cancelSearch() {
