@@ -28,8 +28,6 @@
 const { Adw, Gio, GLib, GObject, Gtk } = imports.gi;
 
 const { CharacterDialog } = imports.characterDialog;
-const { gettext } = imports.gettext;
-
 const Main = imports.main;
 const Util = imports.util;
 
@@ -66,7 +64,7 @@ var MainWindow = GObject.registerClass({
             if (row) {
                 this._sidebar.lastSelectedRow = row;
                 this.setPage(row);
-                this._updateTitle(row.title);
+                this._windowTitle.title = row.title;
                 this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
             }
         });
@@ -144,7 +142,7 @@ var MainWindow = GObject.registerClass({
     set searchActive(v) {
         if (v) {
             this._sidebar.list.unselect_all();
-            this._updateTitle(_('Search Result'));
+            this._windowTitle.title = _('Search Result');
         } else {
             this._sidebar.restoreSelection();
         }
@@ -155,7 +153,7 @@ var MainWindow = GObject.registerClass({
         let keywords = text === '' ? [] : text.split(/\s+/);
         keywords = keywords.map(x => x.toUpperCase());
         if (keywords !== this._searchKeywords) {
-            this.cancelSearch();
+            this._charactersView.cancelSearch();
             this._searchKeywords = keywords;
             if (this._searchKeywords.length > 0)
                 this.searchByKeywords(this._searchKeywords);
@@ -190,15 +188,6 @@ var MainWindow = GObject.registerClass({
         aboutDialog.show();
     }
 
-    _updateTitle(title) {
-        this._windowTitle.title = gettext(title);
-    }
-
-    _character(action, v) {
-        const uc = v.get_string()[0];
-        this.addToRecent(uc);
-    }
-
     get maxRecentCharacters() {
         return this._maxRecentCharacters;
     }
@@ -219,10 +208,6 @@ var MainWindow = GObject.registerClass({
                 else
                     this._mainStack.visible_child_name = 'character-list';
             });
-    }
-
-    cancelSearch() {
-        this._charactersView.cancelSearch();
     }
 
     setPage(pageRow) {
