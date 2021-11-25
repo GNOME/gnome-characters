@@ -30,7 +30,7 @@ var CharacterDialog = GObject.registerClass({
         'leaflet', 'characterStack',
         'characterLabel', 'missingLabel', 'detailLabel',
         'seeAlsoRow', 'relatedListbox',
-        'windowTitle', 'revealer', 'toastOverlay',
+        'windowTitle', 'toastOverlay',
     ],
 }, class CharacterDialog extends Adw.Window {
     _init(character, fontDescription) {
@@ -137,12 +137,10 @@ var CharacterDialog = GObject.registerClass({
     }
 
     _seeMore() {
-        this._revealer.reveal_child = true;
         this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
     }
 
     _seeCharacter() {
-        this._revealer.reveal_child = false;
         this._leaflet.navigate(Adw.NavigationDirection.BACK);
     }
 
