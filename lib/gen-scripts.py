@@ -45,6 +45,7 @@ def get_language_data(infile, aliases):
             scripts = [script for elements in scripts for script in elements]
 
             scripts = set(scripts)
+            scripts = sorted(scripts)
 
             if len(scripts) == 0:
                 continue
