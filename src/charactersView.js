@@ -19,6 +19,8 @@
 
 const { Gc, Gdk, Gio, GnomeDesktop, GObject, Gtk, Pango, Graphene } = imports.gi;
 
+Gio._promisify(Gc.SearchContext.prototype, 'search', 'search_finish');
+
 const Util = imports.util;
 
 const BASELINE_OFFSET = 0.85;
@@ -400,25 +402,18 @@ var CharactersView = GObject.registerClass({
         this.queue_draw();
     }
 
-    _finishSearch(result) {
-        let characters = Util.searchResultToArray(result);
-        this.setCharacters(characters);
-    }
-
     _addSearchResult(result) {
         const characters = Util.searchResultToArray(result);
         this.setCharacters(this._characters.concat(characters));
     }
 
-    _searchWithContext(context) {
-        context.search(Number.MAX_SAFE_INTEGER, this._cancellable, (ctx, res) => {
-            try {
-                let result = ctx.search_finish(res);
-                this._addSearchResult(result);
-            } catch (e) {
-                log(`Failed to search: ${e.message}`);
-            }
-        });
+    async _searchWithContext(context) {
+        try {
+            let result = await context.search(Number.MAX_SAFE_INTEGER, this._cancellable);
+            this._addSearchResult(result);
+        } catch (e) {
+            log(`Failed to search: ${e.message}`);
+        }
     }
 
     async searchByCategory(category) {
@@ -447,6 +442,7 @@ var CharactersView = GObject.registerClass({
             flags: Gc.SearchFlag.WORD,
         });
         await this._searchWithContext(this._searchContext);
+        return this._characters.length;
     }
 
     async _searchByScripts() {
@@ -467,7 +463,7 @@ var CharactersView = GObject.registerClass({
 
     // / Populate the "scripts" based on the current locale
     // / and the input-sources settings.
-    populateScripts() {
+    async populateScripts() {
         this.loading = true;
         let settings =
             Util.getSettings('org.gnome.desktop.input-sources',
@@ -478,13 +474,13 @@ var CharactersView = GObject.registerClass({
                 return current[0] === 'ibus';
             });
             if (hasIBus)
-                this._ensureIBusLanguageList(sources);
+                await this._ensureIBusLanguageList(sources);
             else
                 this._finishBuildScriptList(sources);
         }
     }
 
-    _ensureIBusLanguageList(sources) {
+    async _ensureIBusLanguageList(sources) {
         if (this._ibusLanguageList !== null)
             return;
 
@@ -498,31 +494,23 @@ var CharactersView = GObject.registerClass({
             this._finishBuildScriptList(sources);
             return;
         }
+        Gio._promisify(ibus.Bus.prototype, 'list_engines_async', 'list_engines_async_finish');
 
         ibus.init();
         let bus = new ibus.Bus();
         if (bus.is_connected()) {
-            bus.list_engines_async(-1, null, (sources_, bus_, res) => {
-                this._finishListEngines(sources_, bus_, res);
-            });
-        } else {
-            this._finishBuildScriptList(sources);
-        }
-    }
-
-    _finishListEngines(sources, bus, res) {
-        try {
-            let engines = bus.list_engines_async_finish(res);
-            if (engines) {
+            let engines = await bus.list_engines_async(-1, null);
+            try {
                 for (let j in engines) {
                     let engine = engines[j];
                     let language = engine.get_language();
                     if (language !== null)
                         this._ibusLanguageList[engine.get_name()] = language;
                 }
+            } catch (e) {
+                log(`Failed to list engines: ${e.message}`);
             }
-        } catch (e) {
-            log(`Failed to list engines: ${e.message}`);
+
         }
         this._finishBuildScriptList(sources);
     }
