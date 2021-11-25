@@ -43,16 +43,6 @@ if dbus_service_dir == ''
   dbus_service_dir = join_paths(characters_datadir, 'dbus-1', 'services')
 endif
 
-libunistring_src = '''
-  #include <uniconv.h>
-  int main() {
-      u8_strconv_from_locale((char*)0);
-  };
-'''
-
-# FIXME: libunistring doesn't have pkgconfig support
-assert(cc.links(libunistring_src, name: 'libunistring support', args: '-lunistring'), 'libunistring is required but not found')
-
 # Just check that gjs-1.0 is present and recent enough
 dependency('gjs-1.0', version: '>= 1.50')
 dependency('gtk4')
@@ -62,7 +52,6 @@ libgc_deps = [
   dependency('gio-2.0'),
   dependency('pango'),
   libhandy,
-  declare_dependency(link_args: '-lunistring')
 ]
 
 if get_option('pangoft2')

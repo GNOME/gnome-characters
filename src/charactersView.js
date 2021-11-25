@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, Gdk, Gio, GnomeDesktop, GObject, Gtk, Pango, Graphene } = imports.gi;
+const { Gc, Gdk, Gio, GLib, GnomeDesktop, GObject, Gtk, Pango, Graphene } = imports.gi;
 
 Gio._promisify(Gc.SearchContext.prototype, 'search', 'search_finish');
 
@@ -546,7 +546,7 @@ var CharactersView = GObject.registerClass({
                 let script = scripts[j];
                 // Exclude Latin and Han, since Latin is always added
                 // at the top and Han contains too many characters.
-                if (['Latin', 'Han'].indexOf(script) >= 0)
+                if ([GLib.UnicodeScript.LATIN, GLib.UnicodeScript.HAN].indexOf(script) >= 0)
                     continue;
                 if (allScripts.indexOf(script) >= 0)
                     continue;
@@ -554,7 +554,7 @@ var CharactersView = GObject.registerClass({
             }
         }
 
-        allScripts.unshift('Latin');
+        allScripts.unshift(GLib.UnicodeScript.LATIN);
 
         this._scripts = allScripts;
         this._scriptsLoaded = true;

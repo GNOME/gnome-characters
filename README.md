@@ -18,7 +18,6 @@ meson --prefix=/usr build
 ninja -C build
 sudo ninja -C build install
 ```
-You will need [libunistring](https://www.gnu.org/software/libunistring/) as a dependency.
 
 ## License
 

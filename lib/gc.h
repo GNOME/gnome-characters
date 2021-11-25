@@ -1,5 +1,4 @@
-/* libgc is a wrapper library to fill the gaps between Gjs and
-   libunistring, pango, GTK+.  */
+/* libgc is a wrapper library to fill the gaps between Gjs and GLib, pango.  */
 
 #ifndef __GC_H__
 #define __GC_H__
@@ -10,9 +9,6 @@
 
 G_BEGIN_DECLS
 
-/* libunistring support.  In libunistring, the Unicode general
-   categories are defined as global constant, which is not accessible
-   through GI.  */
 /**
  * GcCategory:
  */
@@ -83,7 +79,8 @@ GcSearchCriteria     *gc_search_criteria_new_keywords
                                             (const gchar * const * keywords);
 
 GcSearchCriteria     *gc_search_criteria_new_scripts
-                                            (const gchar * const * scripts);
+                                            (const GUnicodeScript *scripts,
+                                             size_t                n_scripts);
 
 GcSearchCriteria     *gc_search_criteria_new_related
                                             (gunichar              uc);
@@ -121,8 +118,9 @@ gboolean              gc_pango_context_font_has_glyph
 
 gchar                *gc_get_current_language
                                             (void);
-const gchar * const * gc_get_scripts_for_language
-                                            (const gchar          *language);
+GUnicodeScript       *gc_get_scripts_for_language
+                                            (const gchar          *language,
+                                             size_t               *n_scripts);
 
 G_END_DECLS
 
