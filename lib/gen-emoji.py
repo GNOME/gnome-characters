@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# Input: https://unicode.org/Public/emoji/5.0/emoji-test.txt
+
 import io
 import re
 
