@@ -2,6 +2,10 @@
 
 # Usage: gen-scripts.py --cldrinfile .../supplementalData.xml \
 #                       --ucdinfile .../PropertyValueAliases.txt
+#
+# The latest sources can be found at:
+# https://github.com/unicode-org/cldr/blob/main/common/supplemental/supplementalData.xml
+# http://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt
 
 import io
 import re
