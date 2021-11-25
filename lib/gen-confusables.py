@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# Input: http://www.unicode.org/Public/security/9.0.0/confusables.txt
+
 import io
 import re
 
