@@ -98,6 +98,15 @@ var MainWindow = GObject.registerClass({
             GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL,
         );
 
+        this._searchButton.connect('toggled', btn => {
+            if (btn.active)
+                this._searchEntry.grab_focus();
+            else
+                this._searchEntry.set_text('');
+
+            this.searchActive = btn.active;
+        });
+
         this._searchEntry.connect('search-changed', entry => this._handleSearchChanged(entry));
         this._searchEntry.set_key_capture_widget(this);
         this._searchEntry.connect('search-started', () => {
