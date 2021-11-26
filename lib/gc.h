@@ -109,7 +109,6 @@ GcSearchResult       *gc_filter_characters  (GcCategory            category,
 gchar                *gc_character_name     (gunichar              uc);
 gboolean              gc_character_is_invisible
                                             (gunichar              uc);
-gint                  gc_character_width    (gunichar              uc);
 
 /* Pango support.  PangoAttrFallback is not accessible from GI.  */
 void                  gc_pango_layout_disable_fallback

@@ -64,7 +64,7 @@ const CharacterListRow = GObject.registerClass({
             layout.set_text(character, -1);
             snapshot.save();
             if (Gc.character_is_invisible(character)) {
-                this._drawBoundingBox(snapshot, layout, styleContext, cellRect, character);
+                this._drawBoundingBox(snapshot, layout, styleContext, cellRect);
                 this._drawCharacterName(snapshot, pangoContext, styleContext, cellRect, character);
             } else if (layout.get_unknown_glyphs_count() === 0) {
                 let layoutBaseline = layout.get_baseline();
@@ -78,14 +78,14 @@ const CharacterListRow = GObject.registerClass({
                 snapshot.append_layout(layout, textColor);
 
             } else {
-                this._drawBoundingBox(snapshot, layout, styleContext, cellRect, character);
+                this._drawBoundingBox(snapshot, layout, styleContext, cellRect);
                 this._drawCharacterName(snapshot, pangoContext, styleContext, cellRect, character);
             }
             snapshot.restore();
         }
     }
 
-    _computeBoundingBox(layout, cellRect, uc) {
+    _computeBoundingBox(layout, cellRect) {
         let shapeRect;
         let layoutBaseline;
         if (layout.get_unknown_glyphs_count() === 0) {
@@ -109,9 +109,6 @@ const CharacterListRow = GObject.registerClass({
                 width: this._baseGlyphRect.width,
                 height: this._baseGlyphRect.height,
             });
-            let characterWidth = Gc.character_width(uc);
-            if (characterWidth > 1)
-                shapeRect.width *= characterWidth;
         }
 
         shapeRect.x = cellRect.x - shapeRect.x / Pango.SCALE + (cellRect.width - shapeRect.width / Pango.SCALE) / 2;
@@ -121,10 +118,10 @@ const CharacterListRow = GObject.registerClass({
         return shapeRect;
     }
 
-    _drawBoundingBox(snapshot, pangoLayout, styleContext, cellRect, uc) {
+    _drawBoundingBox(snapshot, pangoLayout, styleContext, cellRect) {
         snapshot.save();
 
-        let shapeRect = this._computeBoundingBox(pangoLayout, cellRect, uc);
+        let shapeRect = this._computeBoundingBox(pangoLayout, cellRect);
         let borderWidth = 1;
 
         let boxBgColor = styleContext.get_color();
