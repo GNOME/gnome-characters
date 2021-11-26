@@ -37,7 +37,7 @@ var MainWindow = GObject.registerClass({
         'searchButton', 'search-bar', 'searchEntry', 'back-button',
         'container', 'sidebar', 'loadingSpinner',
         'leaflet', 'mainStack', 'windowTitle',
-        'charactersView', 'scrolledWindow',
+        'charactersView', 'scrolledWindow', 'primaryMenuButton',
     ],
     Properties: {
         'max-recent-characters': GObject.ParamSpec.uint(
@@ -85,11 +85,7 @@ var MainWindow = GObject.registerClass({
                     this._searchButton.active = !this._searchButton.active;
                 },
             },
-            {
-                name: 'show-primary-menu',
-                activate: this._togglePrimaryMenu,
-                state: new GLib.Variant('b', false),
-            },
+            { name: 'show-primary-menu', activate: this._showPrimaryMenu },
         ]);
 
         this._searchButton.bind_property('active',
@@ -143,9 +139,9 @@ var MainWindow = GObject.registerClass({
             this._sidebar.selectRowByName('smileys');
     }
 
-    _togglePrimaryMenu(action) {
-        let state = action.get_state().get_boolean();
-        action.set_state(GLib.Variant.new_boolean(!state));
+    _showPrimaryMenu() {
+        const popover = this._primaryMenuButton.get_popover();
+        popover.popup();
     }
 
     set searchActive(v) {

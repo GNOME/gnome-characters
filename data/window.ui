@@ -38,7 +38,7 @@
                   </object>
                 </child>
                 <child type="end">
-                  <object class="GtkMenuButton">
+                  <object class="GtkMenuButton" id="primaryMenuButton">
                     <property name="menu-model">primary_menu</property>
                     <property name="icon-name">open-menu-symbolic</property>
                   </object>
