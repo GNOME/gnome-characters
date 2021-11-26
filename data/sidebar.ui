@@ -32,7 +32,15 @@
             <property name="category">GC_CATEGORY_EMOJI_SMILEYS</property>
             <property name="name">emoji-smileys</property>
             <property name="icon-name">emoji-people-symbolic</property>
-            <property name="title" translatable="yes">Smileys &amp; People</property>
+            <property name="title" translatable="yes">Smileys &amp; Emotion</property>
+          </object>
+        </child>
+        <child>
+          <object class="Gjs_SidebarRow" id="emojiPeopleRow">
+            <property name="category">GC_CATEGORY_EMOJI_PEOPLE</property>
+            <property name="name">emoji-people</property>
+            <property name="icon-name">emoji-body-symbolic</property>
+            <property name="title" translatable="yes">People &amp; Body</property>
           </object>
         </child>
         <child>

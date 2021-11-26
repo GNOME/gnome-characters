@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CLDR_VERSION=27
-UCD_VERSION=9.0.0
-EMOJI_VERSION=5.0
+CLDR_VERSION=40
+UCD_VERSION=14.0.0
+EMOJI_VERSION=14.0
 
 wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/Blocks.txt"
 wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/Jamo.txt"

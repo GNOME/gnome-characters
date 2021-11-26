@@ -127,20 +127,29 @@ get_character_name (gunichar  uc,
 {
   struct CharacterName *res;
   const struct Block *block;
-  static struct Block *cjk_blocks[6];
+  static struct Block *cjk_blocks[8];
+  static struct Block *tangut_blocks[2];
   static struct Block *hangul_block;
   static gsize local_blocks_initialized = 0;
   gsize i;
 
   if (g_once_init_enter (&local_blocks_initialized))
     {
-      static const gunichar cjk_block_starters[6] =
+      static const gunichar cjk_block_starters[8] =
         {
-          0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820
+          0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820, 0x2CEB0, 0x30000
+        };
+
+      static const gunichar tangut_block_starters[2] =
+        {
+          0x17000, 0x18D00
         };
 
       for (i = 0; i < G_N_ELEMENTS (cjk_block_starters); i++)
         cjk_blocks[i] = (struct Block *)find_block (cjk_block_starters[i]);
+
+      for (i = 0; i < G_N_ELEMENTS (tangut_block_starters); i++)
+        tangut_blocks[i] = (struct Block *)find_block (tangut_block_starters[i]);
 
       hangul_block = (struct Block *)find_block (0xAC00);
 
@@ -152,6 +161,13 @@ get_character_name (gunichar  uc,
     if (block == cjk_blocks[i])
       {
         snprintf (buffer, UNINAME_MAX, "CJK UNIFIED IDEOGRAPH-%X", uc);
+        return buffer;
+      }
+
+  for (i = 0; i < G_N_ELEMENTS (tangut_blocks); i++)
+    if (block == tangut_blocks[i])
+      {
+        snprintf (buffer, UNINAME_MAX, "TANGUT IDEOGRAPH-%X", uc);
         return buffer;
       }
 
@@ -523,6 +539,13 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
       gc_character_iter_init (iter);
       iter->characters = emoji_smileys_characters;
       iter->character_count = EMOJI_SMILEYS_CHARACTER_COUNT;
+      iter->filter = filter_all;
+      return;
+
+    case GC_CATEGORY_EMOJI_PEOPLE:
+      gc_character_iter_init (iter);
+      iter->characters = emoji_people_characters;
+      iter->character_count = EMOJI_PEOPLE_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
@@ -1296,6 +1319,7 @@ gc_filter_characters (GcCategory           category,
     size_t length;
   } emoji_tables[] = {
     { emoji_smileys_characters, EMOJI_SMILEYS_CHARACTER_COUNT },
+    { emoji_people_characters, EMOJI_PEOPLE_CHARACTER_COUNT },
     { emoji_animals_characters, EMOJI_ANIMALS_CHARACTER_COUNT },
     { emoji_food_characters, EMOJI_FOOD_CHARACTER_COUNT },
     { emoji_travel_characters, EMOJI_TRAVEL_CHARACTER_COUNT },

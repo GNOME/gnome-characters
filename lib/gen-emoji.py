@@ -6,7 +6,9 @@ import io
 import re
 
 GROUPS = {
-    'Smileys & People': 'smileys',
+    'Smileys & Emotion': 'smileys',
+    'People & Body': 'people',
+    'Component': 'component',
     'Animals & Nature': 'animals',
     'Food & Drink': 'food',
     'Travel & Places': 'travel',
@@ -44,6 +46,9 @@ class Builder(object):
 
     def write(self, groups):
         for name, group in groups.items():
+            if len(group) == 0:
+                continue
+
             print('#define EMOJI_{}_CHARACTER_COUNT {}'.format(
                 GROUPS[name].upper(), len(group)))
             print('static const uint32_t emoji_{}_characters[{}] ='.format(

@@ -25,7 +25,7 @@ var Sidebar = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/sidebar.ui',
     InternalChildren: [
         'list',
-        'recentRow', 'emojiSmileysRow', 'emojiAnimalsRow',
+        'recentRow', 'emojiSmileysRow', 'emojiPeopleRow', 'emojiAnimalsRow',
         'emojiFoodRow', 'emojiActivitiesRow', 'emojiTravelRow',
         'emojiObjectsRow', 'emojiSymbolsRow', 'emojiFlagsRow',
         'lettersPunctuationRow', 'lettersArrowsRow',
@@ -52,6 +52,8 @@ var Sidebar = GObject.registerClass({
         switch (name) {
         case 'smileys':
             return this._emojiSmileysRow;
+        case 'people':
+            return this._emojiPeopleRow;
         case 'animals':
             return this._emojiAnimalsRow;
         case 'food':
