@@ -1,20 +1,16 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-data/characterlist.ui
-data/character.ui
-data/mainview.ui
-data/mainwindow.ui
-data/menu.ui
+data/character_dialog.ui
+data/sidebar.ui
 data/shortcuts.ui
+data/window.ui
 data/org.gnome.Characters.appdata.xml.in
 data/org.gnome.Characters.desktop.in
 data/org.gnome.Characters.gschema.xml
-src/categoryList.js
 src/characterDialog.js
-src/characterList.js
+src/charactersView.js
 src/main.js
-src/menu.js
 src/searchProvider.js
 src/service.js
-src/util.js
+src/sidebarRow.js
 src/window.js
