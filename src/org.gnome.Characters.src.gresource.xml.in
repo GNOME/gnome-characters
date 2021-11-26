@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/gnome/Characters/js">
+  <gresource prefix="/org/gnome/Characters@profile@/js">
     <file>main.js</file>
     <file>sidebar.js</file>
     <file>sidebarRow.js</file>

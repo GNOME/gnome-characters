@@ -46,13 +46,12 @@ const { MainWindow } = imports.window;
 const Util = imports.util;
 
 var settings = null;
-var applicationId = pkg.name;
 
 var MyApplication = GObject.registerClass({
 }, class MyApplication extends Adw.Application {
     _init() {
         super._init({
-            application_id: applicationId,
+            application_id: pkg.name,
             flags: Gio.ApplicationFlags.FLAGS_NONE,
             resource_base_path: '/org/gnome/Characters',
         });
@@ -97,6 +96,8 @@ var MyApplication = GObject.registerClass({
         if (!this._appwindow)
             this._appwindow = new MainWindow(this);
 
+        if (pkg.name.endsWith('Devel'))
+            this._appwindow.add_css_class('devel');
 
         this._appwindow.present();
         log('Characters Application activated');

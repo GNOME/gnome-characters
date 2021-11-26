@@ -1,7 +1,6 @@
 #!@GJS@
-imports.package.init({ name: "org.gnome.Characters",
+imports.package.init({ name: "@appid@",
                        version: "@PACKAGE_VERSION@",
                        prefix: "@prefix@",
                        libdir: "@libdir@" });
-imports.service.applicationId = "@appid@";
 imports.package.run(imports.service);

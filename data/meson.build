@@ -15,46 +15,44 @@ resource_data = files(
   'window.ui',
 )
 
-resources = [
-  [characters_name, resource_data],
-  [characters_background_name, files('ShellSearchProvider2.xml')]
-]
-
-foreach resource: resources
-  name = resource[0] + '.data'
-
-  gnome.compile_resources(
-    name,
-    name + '.gresource.xml',
+gnome.compile_resources(
+    application_id + '.data',
+    'org.gnome.Characters.data.gresource.xml',
     gresource_bundle: true,
-    dependencies: resource[1],
+    dependencies: resource_data,
     install: true,
     install_dir: characters_pkgdatadir
-  )
-endforeach
+)
+
+gnome.compile_resources(
+    application_id + '.BackgroundService.data',
+    'org.gnome.Characters.BackgroundService.data.gresource.xml',
+    gresource_bundle: true,
+    dependencies: files('ShellSearchProvider2.xml'),
+    install: true,
+    install_dir: characters_pkgdatadir
+)
 
 desktop_conf = configuration_data ()
-desktop_conf.set('appid', characters_application_id)
+desktop_conf.set('appid', application_id)
 desktop_conf.set('bindir', characters_bindir)
 
 i18n.merge_file(
-  'desktop-file',
   type: 'desktop',
   input: configure_file (
-    input: characters_name + '.desktop.in',
-    output: characters_name + '.desktop.in',
+    input: 'org.gnome.Characters.desktop.in',
+    output: '@BASENAME@',
     configuration: desktop_conf
   ),
-  output: characters_application_id + '.desktop',
+  output: application_id + '.desktop',
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(characters_datadir, 'applications')
 )
 
 appdata_file = i18n.merge_file(
-  'appdata-file',
-  input: characters_name + '.appdata.xml.in',
-  output: characters_application_id + '.appdata.xml',
+  input: 'org.gnome.Characters.appdata.xml.in',
+  output: application_id + '.appdata.xml',
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(characters_datadir, 'metainfo')
@@ -71,38 +69,37 @@ if appstream_util.found()
 endif
 
 service_conf = configuration_data()
-service_conf.set('appid', characters_application_id)
+service_conf.set('appid', application_id)
 service_conf.set('bindir', characters_bindir)
-service_conf.set('PACKAGE_NAME', characters_name)
 service_conf.set('pkgdatadir', characters_pkgdatadir)
 
 configure_file(
-  input: characters_name + '.service.in',
-  output: characters_application_id + '.service',
+  input: 'org.gnome.Characters.service.in',
+  output: application_id + '.service',
   configuration: service_conf,
   install: true,
   install_dir: dbus_service_dir
 )
 
 configure_file(
-  input: characters_background_name + '.service.in',
-  output: characters_background_name + '.service',
+  input: 'org.gnome.Characters.BackgroundService.service.in',
+  output: application_id + '.BackgroundService.service',
   configuration: service_conf,
   install: true,
   install_dir: dbus_service_dir
 )
 
 install_data(
-  characters_name + '.gschema.xml',
+  'org.gnome.Characters.gschema.xml',
   install_dir: join_paths(characters_datadir, 'glib-2.0', 'schemas')
 )
 
 search_provider_conf = configuration_data()
-search_provider_conf.set('appid', characters_application_id)
+search_provider_conf.set('appid', application_id)
 
 configure_file(
-  input: characters_name + '.search-provider.ini',
-  output: characters_name + '.search-provider.ini',
+  input: 'org.gnome.Characters.search-provider.ini',
+  output: application_id + '.search-provider.ini',
   configuration: search_provider_conf,
   install: true,
   install_dir: join_paths(characters_datadir, 'gnome-shell', 'search-providers')

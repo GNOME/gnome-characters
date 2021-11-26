@@ -32,7 +32,6 @@ const { Gio, GLib, GObject, Gtk } = imports.gi;
 const Util = imports.util;
 const SearchProvider = imports.searchProvider;
 
-var applicationId = pkg.name;
 
 const BackgroundService = GObject.registerClass({
     // This needs to be a Gtk.Application instead of Gio.Application,
@@ -40,7 +39,7 @@ const BackgroundService = GObject.registerClass({
 }, class BackgroundService extends Gtk.Application {
     _init() {
         super._init({
-            application_id: applicationId,
+            application_id: pkg.name,
             flags: Gio.ApplicationFlags.IS_SERVICE,
             inactivity_timeout: 30000,
         });

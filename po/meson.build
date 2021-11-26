@@ -1,1 +1,1 @@
-i18n.gettext(characters_name, preset: 'glib')
+i18n.gettext('org.gnome.Characters', preset: 'glib')

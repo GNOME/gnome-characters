@@ -1,5 +1,5 @@
-installed_tests_execdir = join_paths(characters_libexecdir, 'installed-tests', characters_name)
-installed_tests_metadir = join_paths(characters_datadir, 'installed-tests', characters_name)
+installed_tests_execdir = join_paths(characters_libexecdir, 'installed-tests', application_id)
+installed_tests_metadir = join_paths(characters_datadir, 'installed-tests', application_id)
 
 tests = ['smoke_test.py']
 

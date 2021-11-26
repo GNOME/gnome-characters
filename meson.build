@@ -6,9 +6,20 @@ project(
   meson_version: '>= 0.46.0'
 )
 
-characters_name = 'org.gnome.Characters'
-characters_background_name = characters_name + '.BackgroundService'
-characters_application_id = characters_name + (get_option('buildtype').contains('debug') ? 'Devel' : '')
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  if vcs_tag == ''
+    version_suffix = '-devel'
+  else
+    version_suffix = '-@0@'.format (vcs_tag)
+  endif
+else
+  profile = ''
+  version_suffix = ''
+endif
+application_id = 'org.gnome.Characters@0@'.format(profile)
+background_service_id = application_id + '.BackgroundService'
 
 characters_version = meson.project_version()
 
@@ -18,8 +29,8 @@ characters_datadir = join_paths(characters_prefix, get_option('datadir'))
 characters_libdir = join_paths(characters_prefix, get_option('libdir'))
 characters_libexecdir = join_paths(characters_prefix, get_option('libexecdir'))
 
-characters_pkgdatadir = join_paths(characters_datadir, characters_name)
-characters_pkglibdir = join_paths(characters_libdir, characters_name)
+characters_pkgdatadir = join_paths(characters_datadir, application_id)
+characters_pkglibdir = join_paths(characters_libdir, application_id)
 
 characters_gir_version = '1.0'
 characters_ns = 'Gc'
@@ -84,5 +95,8 @@ configure_file(
 meson.add_install_script(
   'meson_post_install.py',
   characters_datadir,
-  characters_bindir
+  characters_bindir,
+  characters_pkgdatadir,
+  application_id
 )
+
