@@ -40,7 +40,7 @@ desktop_conf.set('bindir', characters_bindir)
 i18n.merge_file(
   type: 'desktop',
   input: configure_file (
-    input: 'org.gnome.Characters.desktop.in',
+    input: 'org.gnome.Characters.desktop.in.in',
     output: '@BASENAME@',
     configuration: desktop_conf
   ),
