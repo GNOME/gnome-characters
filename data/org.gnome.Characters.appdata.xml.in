@@ -33,6 +33,28 @@
   <translation type="gettext">org.gnome.Characters</translation>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="42.alpha" date="2022-01-11">
+      <p>Characters 42.alpha comes with a port to GTK4 and libadwaita. It has gained support for the new dark style preference via libadwaita.</p>
+      <p>Characters 42.alpha also comes with updated translations for the following locales:</p>
+      <ul>
+        <li>Basque</li>
+        <li>Croatian</li>
+        <li>Friulian</li>
+        <li>Galician</li>
+        <li>Hebrew</li>
+        <li>Icelandic</li>
+        <li>Indonesian</li>
+        <li>Latvian</li>
+        <li>Lithuanian</li>
+        <li>Occitan (post 1500)</li>
+        <li>Portuguese</li>
+        <li>Portuguese (Brazil)</li>
+        <li>Russian</li>
+        <li>Slovak</li>
+        <li>Spanish</li>
+        <li>Ukrainian</li>
+      </ul>
+    </release>
     <release version="41.0" date="2021-09-21">
       <p>Characters 41 comes with a fix so that the close button shows on the sidebar at mobile sizes.</p>
       <p>Characters 41 also comes with updated translations for the following locales:</p>

@@ -1,3 +1,27 @@
+42.alpha
+===========
+
+Characters 42.alpha comes with a port to GTK4 and libadwaita. It has
+gained support for the new dark style preference via libadwaita.
+
+* Translation updates:
+ - Basque
+ - Croatian
+ - Friulian
+ - Galician
+ - Hebrew
+ - Icelandic
+ - Indonesian
+ - Latvian
+ - Lithuanian
+ - Occitan (post 1500)
+ - Portuguese
+ - Portuguese (Brazil)
+ - Russian
+ - Slovak
+ - Spanish
+ - Ukrainian
+
 41.0
 =======
 
