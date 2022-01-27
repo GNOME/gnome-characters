@@ -92,6 +92,10 @@ var Sidebar = GObject.registerClass({
         this._list.select_row(row);
     }
 
+    unselectAll() {
+        this._list.unselect_all();
+    }
+
     get list() {
         return this._list;
     }
