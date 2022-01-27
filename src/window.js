@@ -116,6 +116,8 @@ var MainWindow = GObject.registerClass({
 
         this._back_button.connect('clicked', () => {
             this._leaflet.navigate(Adw.NavigationDirection.BACK);
+            if (this._leaflet.get_folded())
+                this._sidebar.unselectAll();
         });
 
         this._charactersView.connect('notify::loading', view => {
@@ -146,7 +148,7 @@ var MainWindow = GObject.registerClass({
 
     set searchActive(v) {
         if (v) {
-            this._sidebar.list.unselect_all();
+            this._sidebar.unselectAll();
             this._windowTitle.title = _('Search Result');
         } else {
             this._sidebar.restoreSelection();
