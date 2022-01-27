@@ -32,6 +32,9 @@ var SearchProvider = GObject.registerClass({
 }, class SearchProvider extends GObject.Object {
     _init(application) {
         this._app = application;
+        const serviceId = application.get_application_id();
+        this._appId = serviceId.replace('.BackgroundService', '');
+        this._appObjectPath = `/${this._appId.split('.').join('/')}`;
 
         this._impl = Gio.DBusExportedObject.wrapJSObject(SearchProviderInterface, this);
         this._cancellable = new Gio.Cancellable();
@@ -100,7 +103,6 @@ var SearchProvider = GObject.registerClass({
                 name: new GLib.Variant('s', name),
                 id: new GLib.Variant('s', identifiers[i]),
                 description: new GLib.Variant('s', summary),
-                icon: new Gio.ThemedIcon({ name: pkg.name }).serialize(),
                 clipboardText: new GLib.Variant('s', character),
             });
         }
@@ -110,9 +112,11 @@ var SearchProvider = GObject.registerClass({
         return ret;
     }
 
-    ActivateResult(id, _terms, _timestamp) {
-        let clipboard = Gc.gtk_clipboard_get();
-        clipboard.set_text(id, -1);
+    ActivateResult(_id, _terms, _timestamp) {
+        log('activating result');
+        const notification = Gio.Notification.new(_('Character copied'));
+        notification.set_body(_('Character was copied successfully'));
+        this._app.send_notification(null, notification);
     }
 
     _getPlatformData(timestamp) {
@@ -120,7 +124,7 @@ var SearchProvider = GObject.registerClass({
         let context = display.get_app_launch_context();
         context.set_timestamp(timestamp);
 
-        let app = Gio.DesktopAppInfo.new('org.gnome.Characters.desktop');
+        let app = Gio.DesktopAppInfo.new(`${this._appId}.desktop`);
         let id = context.get_startup_notify_id(app, []);
         return { 'desktop-startup-id': new GLib.Variant('s', id) };
     }
@@ -132,8 +136,8 @@ var SearchProvider = GObject.registerClass({
         else
             wrappedParam = [];
 
-        Gio.DBus.session.call('org.gnome.Characters',
-            '/org/gnome/Characters',
+        Gio.DBus.session.call(this._appId,
+            this._appObjectPath,
             'org.freedesktop.Application',
             'ActivateAction',
             new GLib.Variant('(sava{sv})', [action, wrappedParam,

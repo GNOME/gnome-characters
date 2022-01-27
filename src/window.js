@@ -217,6 +217,11 @@ var MainWindow = GObject.registerClass({
             });
     }
 
+    setSearchKeywords(terms) {
+        this._searchEntry.set_text(terms.join(' '));
+        this._searchButton.set_active(true);
+    }
+
     setPage(pageRow) {
         if (pageRow.name === 'recent') {
             // always draw a baseline for recent view

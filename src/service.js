@@ -44,7 +44,6 @@ const BackgroundService = GObject.registerClass({
             inactivity_timeout: 30000,
         });
         GLib.set_application_name(_('Characters'));
-
         this._searchProvider = new SearchProvider.SearchProvider(this);
     }
 

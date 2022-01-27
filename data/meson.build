@@ -96,6 +96,8 @@ install_data(
 
 search_provider_conf = configuration_data()
 search_provider_conf.set('appid', application_id)
+search_provider_conf.set('background_service_id', background_service_id)
+search_provider_conf.set('background_service_path', background_service_path)
 
 configure_file(
   input: 'org.gnome.Characters.search-provider.ini',
