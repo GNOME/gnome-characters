@@ -743,7 +743,7 @@ struct _GcSearchCriteria
 static gpointer
 gc_search_criteria_copy (gpointer boxed)
 {
-  GcSearchCriteria *criteria = g_memdup (boxed, sizeof (GcSearchCriteria));
+  GcSearchCriteria *criteria = g_memdup2 (boxed, sizeof (GcSearchCriteria));
 
   if (criteria->type == GC_SEARCH_CRITERIA_KEYWORDS)
     criteria->u.keywords = g_strdupv (criteria->u.keywords);
