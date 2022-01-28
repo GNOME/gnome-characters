@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<gresources>
-  <gresource prefix="/org/gnome/Characters@profile@/BackgroundService/js">
-    <file>service.js</file>
-    <file>searchProvider.js</file>
-    <file>util.js</file>
-  </gresource>
-</gresources>

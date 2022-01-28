@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=@appid@.BackgroundService
-Exec=@pkgdatadir@/@appid@.BackgroundService

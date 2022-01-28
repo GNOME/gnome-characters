@@ -13,6 +13,7 @@ resource_data = files(
   'shortcuts.ui',
   'sidebar.ui',
   'window.ui',
+  'ShellSearchProvider2.xml'
 )
 
 gnome.compile_resources(
@@ -20,15 +21,6 @@ gnome.compile_resources(
     'org.gnome.Characters.data.gresource.xml',
     gresource_bundle: true,
     dependencies: resource_data,
-    install: true,
-    install_dir: characters_pkgdatadir
-)
-
-gnome.compile_resources(
-    application_id + '.BackgroundService.data',
-    'org.gnome.Characters.BackgroundService.data.gresource.xml',
-    gresource_bundle: true,
-    dependencies: files('ShellSearchProvider2.xml'),
     install: true,
     install_dir: characters_pkgdatadir
 )
@@ -81,14 +73,6 @@ configure_file(
   install_dir: dbus_service_dir
 )
 
-configure_file(
-  input: 'org.gnome.Characters.BackgroundService.service.in',
-  output: application_id + '.BackgroundService.service',
-  configuration: service_conf,
-  install: true,
-  install_dir: dbus_service_dir
-)
-
 install_data(
   'org.gnome.Characters.gschema.xml',
   install_dir: join_paths(characters_datadir, 'glib-2.0', 'schemas')
@@ -96,8 +80,7 @@ install_data(
 
 search_provider_conf = configuration_data()
 search_provider_conf.set('appid', application_id)
-search_provider_conf.set('background_service_id', background_service_id)
-search_provider_conf.set('background_service_path', background_service_path)
+search_provider_conf.set('search_provider_path', search_provider_path)
 
 configure_file(
   input: 'org.gnome.Characters.search-provider.ini',

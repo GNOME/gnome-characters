@@ -16,4 +16,7 @@
     <file alias="characters-picture-symbolic.svg">icons/hicolor/scalable/categories/characters-picture-symbolic.svg</file>
     <file alias="characters-punctuation-symbolic.svg">icons/hicolor/scalable/categories/characters-punctuation-symbolic.svg</file>
   </gresource>
+  <gresource prefix="/org/gnome/shell">
+    <file>ShellSearchProvider2.xml</file>
+  </gresource>
 </gresources>

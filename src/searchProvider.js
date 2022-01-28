@@ -18,7 +18,7 @@
 // with Gnome Weather; if not, write to the Free Software Foundation,
 // Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-const { Gc, Gdk, Gio, GLib, GObject } = imports.gi;
+const { Gc, Gio, GLib, GObject } = imports.gi;
 
 const ByteArray = imports.byteArray;
 const Util = imports.util;
@@ -32,9 +32,6 @@ var SearchProvider = GObject.registerClass({
 }, class SearchProvider extends GObject.Object {
     _init(application) {
         this._app = application;
-        const serviceId = application.get_application_id();
-        this._appId = serviceId.replace('.BackgroundService', '');
-        this._appObjectPath = `/${this._appId.split('.').join('/')}`;
 
         this._impl = Gio.DBusExportedObject.wrapJSObject(SearchProviderInterface, this);
         this._cancellable = new Gio.Cancellable();
@@ -68,24 +65,18 @@ var SearchProvider = GObject.registerClass({
                     log(`Failed to search by keywords: ${e.message}`);
                 }
                 invocation.return_value(new GLib.Variant('(as)', [characters]));
-
-                this._app.release();
             });
     }
 
     GetInitialResultSetAsync(params, invocation) {
-        this._app.hold();
         this._runQuery(params[0], invocation);
     }
 
     GetSubsearchResultSetAsync(params, invocation) {
-        this._app.hold();
         this._runQuery(params[1], invocation);
     }
 
     GetResultMetas(identifiers) {
-        this._app.hold();
-
         let ret = [];
 
         for (let i = 0; i < identifiers.length; i++) {
@@ -106,9 +97,6 @@ var SearchProvider = GObject.registerClass({
                 clipboardText: new GLib.Variant('s', character),
             });
         }
-
-        this._app.release();
-
         return ret;
     }
 
@@ -119,43 +107,10 @@ var SearchProvider = GObject.registerClass({
         this._app.send_notification(null, notification);
     }
 
-    _getPlatformData(timestamp) {
-        let display = Gdk.Display.get_default();
-        let context = display.get_app_launch_context();
-        context.set_timestamp(timestamp);
-
-        let app = Gio.DesktopAppInfo.new(`${this._appId}.desktop`);
-        let id = context.get_startup_notify_id(app, []);
-        return { 'desktop-startup-id': new GLib.Variant('s', id) };
-    }
-
-    _activateAction(action, parameter, timestamp) {
-        let wrappedParam;
-        if (parameter)
-            wrappedParam = [parameter];
-        else
-            wrappedParam = [];
-
-        Gio.DBus.session.call(this._appId,
-            this._appObjectPath,
-            'org.freedesktop.Application',
-            'ActivateAction',
-            new GLib.Variant('(sava{sv})', [action, wrappedParam,
-                this._getPlatformData(timestamp)]),
-            null,
-            Gio.DBusCallFlags.NONE,
-            -1, null, (connection, result) => {
-                try {
-                    connection.call_finish(result);
-                } catch (e) {
-                    log(`Failed to launch application: ${e.message}`);
-                }
-
-                this._app.release();
-            });
-    }
-
     LaunchSearch(terms, timestamp) {
-        this._activateAction('search', new GLib.Variant('as', terms), timestamp);
+        this._app.activate();
+        const window = this._app.window;
+        window.setSearchKeywords(terms);
+        window.present_with_time(timestamp);
     }
 });

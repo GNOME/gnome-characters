@@ -10,7 +10,6 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri",
-        "--own-name=org.gnome.CharactersDevel.BackgroundService",
         "--metadata=X-DConf=migrate-path=/org/gnome/Characters/"
     ],
     "cleanup" : [

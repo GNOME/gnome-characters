@@ -44,7 +44,7 @@ const { Sidebar } = imports.sidebar;
 const { MainWindow } = imports.window;
 
 const Util = imports.util;
-
+const SearchProvider = imports.searchProvider;
 var settings = null;
 
 var MyApplication = GObject.registerClass({
@@ -56,16 +56,16 @@ var MyApplication = GObject.registerClass({
             resource_base_path: '/org/gnome/Characters',
         });
         GLib.set_application_name(_('Characters'));
+
+        this._searchProvider = new SearchProvider.SearchProvider(this);
+    }
+
+    get window() {
+        return this._appwindow;
     }
 
     _onQuit() {
         this.quit();
-    }
-
-    _onSearch(action, parameter) {
-        const window = new MainWindow(this);
-        window.setSearchKeywords(parameter.get_strv());
-        window.show();
     }
 
     vfunc_startup() {
@@ -75,11 +75,6 @@ var MyApplication = GObject.registerClass({
 
         Util.initActions(this, [
             { name: 'quit', activate: this._onQuit },
-            {
-                name: 'search',
-                activate: this._onSearch,
-                parameterType: new GLib.VariantType('as'),
-            },
         ]);
         this.set_accels_for_action('app.quit', ['<Primary>q']);
         this.set_accels_for_action('win.find', ['<Primary>f']);
@@ -90,6 +85,13 @@ var MyApplication = GObject.registerClass({
             '/org/gnome/Characters/');
 
         log('Characters Application started');
+    }
+
+    vfunc_dbus_register(connection, path) {
+        const searchProviderPath = `${path}/SearchProvider`;
+        super.vfunc_dbus_register(connection, searchProviderPath);
+        this._searchProvider.export(connection, searchProviderPath);
+        return true;
     }
 
     vfunc_activate() {

@@ -19,8 +19,7 @@ else
   version_suffix = ''
 endif
 application_id = 'org.gnome.Characters@0@'.format(profile)
-background_service_path = '/org/gnome/Characters@0@/BackgroundService'.format(profile)
-background_service_id = application_id + '.BackgroundService'
+search_provider_path = '/org/gnome/Characters@0@/SearchProvider'.format(profile)
 
 characters_version = meson.project_version()
 

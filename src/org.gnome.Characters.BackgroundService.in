@@ -1,6 +1,0 @@
-#!@GJS@
-imports.package.init({ name: "@appid@",
-                       version: "@PACKAGE_VERSION@",
-                       prefix: "@prefix@",
-                       libdir: "@libdir@" });
-imports.package.run(imports.service);
