@@ -88,13 +88,15 @@ var SearchProvider = GObject.registerClass({
                 name = _('Unknown character name');
             else
                 name = Util.capitalize(name);
-            let summary = _('U+%s, %s: %s').format(codePointHex, character, name);
+            let summary = _('U+%s').format(codePointHex);
 
+            let iconData = Util.characterToIconData(character);
             ret.push({
                 name: new GLib.Variant('s', name),
                 id: new GLib.Variant('s', identifiers[i]),
                 description: new GLib.Variant('s', summary),
                 clipboardText: new GLib.Variant('s', character),
+                'icon-data': iconData,
             });
         }
         return ret;

@@ -1,4 +1,4 @@
-/* exported capitalize getSettings initActions searchResultToArray toCodePoint */
+/* exported capitalize getSettings initActions searchResultToArray toCodePoint characterToIconData */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (c) 2013 Giovanni Campagna <scampa.giovanni@gmail.com>
@@ -25,7 +25,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const { Gc, Gio } = imports.gi;
+const { Gc, Gio, GdkPixbuf, Gdk, GLib, Graphene, Gsk, Gtk, PangoCairo, Pango } = imports.gi;
 
 const System = imports.system;
 
@@ -107,4 +107,56 @@ function searchResultToArray(result) {
         characters.push(Gc.search_result_get(result, index));
 
     return characters;
+}
+
+function characterToIconData(character) {
+    let size = 48.0;
+
+    const fontMap = PangoCairo.FontMap.get_default();
+    const context = fontMap.create_context();
+    const layout = Pango.Layout.new(context);
+    layout.set_text(character, -1);
+    let white = new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });
+
+    let [textWidth, textHeight] = layout.get_pixel_size();
+    let textSize = Math.max(textWidth, textHeight);
+
+    const snapshot = Gtk.Snapshot.new();
+
+    let originX = (textSize - textWidth) / 2.0;
+    let originY = (textSize - textHeight) / 2.0;
+    let origin = new Graphene.Point({ x: originX, y: originY });
+
+    let ratio = size / textSize;
+    snapshot.scale(ratio, ratio);
+
+    snapshot.save();
+    snapshot.translate(origin);
+    snapshot.append_layout(layout, white);
+    snapshot.restore();
+
+    const node = snapshot.to_node();
+    const renderer = Gsk.GLRenderer.new();
+    renderer.realize(null);
+    let rect = new Graphene.Rect({
+        origin: new Graphene.Point({ x: 0.0, y: 0.0 }),
+        size: new Graphene.Size({ width: size, height: size }),
+    });
+    const texture = renderer.render_texture(node, rect);
+    const bytes = texture.save_to_png_bytes();
+    renderer.unrealize();
+
+    const stream = Gio.MemoryInputStream.new_from_bytes(bytes);
+    const px = GdkPixbuf.Pixbuf.new_from_stream_at_scale(stream, size / 2.0, size / 2.0, true, null);
+
+    let variantBytes = GLib.Variant.new_from_bytes(GLib.VariantType.new('ay'), px.read_pixel_bytes(), true);
+    return GLib.Variant.new_tuple([
+        new GLib.Variant('i', px.get_width()),
+        new GLib.Variant('i', px.get_height()),
+        new GLib.Variant('i', px.get_rowstride()),
+        new GLib.Variant('b', px.get_has_alpha()),
+        new GLib.Variant('i', px.get_bits_per_sample()),
+        new GLib.Variant('i', px.get_n_channels()),
+        variantBytes,
+    ]);
 }
