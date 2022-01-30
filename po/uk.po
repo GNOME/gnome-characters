@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2022-01-29 13:11+0000\n"
-"PO-Revision-Date: 2022-01-29 19:22+0200\n"
+"POT-Creation-Date: 2022-01-29 21:48+0000\n"
+"PO-Revision-Date: 2022-01-30 08:46+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -221,16 +221,15 @@ msgstr "Невідома назва символу"
 
 #: src/searchProvider.js:91
 #, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgid "U+%s"
+msgstr ""
+"U+%s"
 
-#: src/searchProvider.js:105
-#| msgid "Character Map"
+#: src/searchProvider.js:107
 msgid "Character copied"
 msgstr "Символ скопійовано"
 
-#: src/searchProvider.js:106
-#| msgid "Character copied to clipboard"
+#: src/searchProvider.js:108
 msgid "Character was copied successfully"
 msgstr "Символ було успішно скопійовано"
 
@@ -255,6 +254,9 @@ msgstr "Символи GNOME"
 #: src/window.js:184
 msgid "Character Map"
 msgstr "Таблиця символів"
+
+#~ msgid "U+%s, %s: %s"
+#~ msgstr "U+%s, %s: %s"
 
 #~ msgid "Filter by Font"
 #~ msgstr "Відсіяти за шрифтом"
