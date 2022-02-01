@@ -1,9 +1,9 @@
 # Japanese translations for org.gnome.Characters package.
-# Copyright (C) 2015-2020 THE org.gnome.Characters'S COPYRIGHT HOLDER
+# Copyright (C) 2015, 2017, 2019-2020, 2022 THE org.gnome.Characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the org.gnome.Characters package.
 # Daiki Ueno <ueno@gnu.org>, 2015.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2015, 2017.
-# sicklylife <translation@sicklylife.jp>, 2019-2020.
+# sicklylife <translation@sicklylife.jp>, 2019-2020, 2022.
 #
 msgid ""
 msgstr ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
 "POT-Creation-Date: 2021-09-21 14:51+0000\n"
-"PO-Revision-Date: 2020-02-29 20:30+0900\n"
+"PO-Revision-Date: 2022-02-01 20:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -21,14 +21,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/characterlist.ui:9
-#, fuzzy
-#| msgid "Search Result"
 msgid "No Results"
-msgstr "検索結果"
+msgstr "一致するものがありません"
 
 #: data/characterlist.ui:10
 msgid "Try a different search."
-msgstr "他のキーワードを試してください"
+msgstr "他のキーワードを試してください。"
 
 #: data/characterlist.ui:34
 msgid "Loading…"
@@ -43,24 +41,20 @@ msgid "Character copied to clipboard"
 msgstr "文字をクリップボードにコピーしました"
 
 #: data/mainview.ui:10
-#, fuzzy
-#| msgid "No recent characters found"
 msgid "No Recent Characters"
 msgstr "最近使用した文字はありません"
 
 #: data/mainview.ui:11
 msgid "Characters will appear here if you use them."
-msgstr "文字を使用すると、ここに表示されます"
+msgstr "文字を使用すると、ここに表示されます。"
 
 #: data/mainwindow.ui:7
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "キーボードショートカット(_K)"
 
 #: data/mainwindow.ui:11
-#, fuzzy
-#| msgid "About Characters"
 msgid "_About Characters"
-msgstr "“文字”について"
+msgstr "“文字”について(_A)"
 
 #: data/mainwindow.ui:33 data/org.gnome.Characters.desktop.in:4 src/main.js:58
 #: src/service.js:51
@@ -74,29 +68,27 @@ msgstr "フォントで絞り込み"
 #: data/shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "全般"
 
 #: data/shortcuts.ui:18
 msgctxt "shortcut window"
 msgid "Open menu"
-msgstr ""
+msgstr "メニューを開く"
 
 #: data/shortcuts.ui:25
-#, fuzzy
-#| msgid "Search Result"
 msgctxt "shortcut window"
 msgid "Search"
-msgstr "検索結果"
+msgstr "検索する"
 
 #: data/shortcuts.ui:32
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "キーボードショートカットを表示する"
 
 #: data/shortcuts.ui:39
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "終了する"
 
 #: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
 msgid "GNOME Characters"
