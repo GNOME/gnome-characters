@@ -1,0 +1,252 @@
+# Santali translation of gnome-characters.
+# Copyright (C) 2022, Listed translators
+# This file is distributed under the same license as the gnome-characters package.
+# Prasanta Hembram <prasantahembram720@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2022-02-01 12:09+0000\n"
+"PO-Revision-Date: 2022-02-04 21:21+0530\n"
+"Last-Translator: Prasanta Hembram <prasantahembram720@gmail.com>\n"
+"Language-Team: Santali\n"
+"Language: sat\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2;\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/character_dialog.ui:70
+msgid "_Copy Character"
+msgstr "_ᱪᱤᱱᱦᱟᱹ ᱱᱚᱠᱚᱞ ᱢᱮ"
+
+#: data/character_dialog.ui:91
+msgid "Unicode"
+msgstr "ᱭᱩᱱᱤᱠᱳᱰ"
+
+#: data/character_dialog.ui:105
+msgid "_See Also"
+msgstr "_ᱧᱮᱞ ᱠᱟᱜ ᱢᱮ"
+
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "ᱱᱮᱱᱮ ᱵᱮᱵᱷᱟᱨᱟᱜ"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "ᱤᱢᱚᱡᱤ ᱠᱚ"
+
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "ᱞᱟᱱᱫᱟ ᱠᱩᱜ ᱟᱨ ᱢᱚᱱᱮᱡᱚᱝ"
+
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "ᱦᱟᱲ ᱟᱨ ᱦᱚᱲᱢᱚ"
+
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "ᱡᱤᱣ ᱟᱨ ᱡᱟᱹ"
+
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "ᱡᱚᱢᱟᱜ ᱟᱨ ᱧᱩᱟᱜ"
+
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "ᱫᱟᱬᱟ ᱟᱨ ᱡᱟᱭᱜᱟ"
+
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "ᱠᱟᱹᱢᱤ ᱠᱚ"
+
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "ᱡᱤᱱᱤ ᱠᱚ"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "ᱪᱤᱱᱦᱟᱹ ᱠᱚ"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "ᱯᱚᱛᱠᱟ ᱠᱚ"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "ᱚᱞ ᱟᱨ ᱪᱤᱱᱦᱟᱹ ᱠᱚ"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "ᱴᱷᱮᱠᱮᱫ ᱪᱤᱱᱦᱟᱹ"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "ᱥᱟᱨ ᱠᱚ"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "ᱜᱩᱱ ᱵᱤᱱᱫᱩ ᱠᱚ"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "ᱪᱤᱛᱟᱹᱨ ᱠᱚ"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "ᱴᱟᱠᱟ ᱠᱚ"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "ᱮᱞᱠᱷᱟ"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "ᱟᱠᱷᱚᱨ ᱠᱚ"
+
+#: data/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "ᱥᱟᱱᱟᱢ"
+
+#: data/shortcuts.ui:15
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "ᱢᱮᱱᱩ ᱡᱷᱤᱡᱽ ᱢᱮ"
+
+#: data/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "ᱥᱮᱸᱫᱽᱨᱟ"
+
+#: data/shortcuts.ui:27
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "ᱠᱤᱵᱤᱰ ᱠᱷᱟᱴᱚ"
+
+#: data/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "ᱵᱟᱹᱜᱤ"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_ᱠᱤᱵᱤᱰ ᱠᱷᱟᱴᱚ ᱠᱚ"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_ᱪᱤᱱᱦᱟᱹ ᱵᱟᱵᱚᱛ ᱛᱮ"
+
+#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+msgid "Characters"
+msgstr "ᱪᱤᱱᱦᱟᱹ ᱠᱚ"
+
+#: data/window.ui:138
+msgid "No Recent Characters"
+msgstr "ᱱᱤᱛᱚᱜᱟᱜ ᱪᱤᱱᱦᱟᱹ ᱠᱚ ᱵᱟᱹᱱᱩᱜᱼᱟ"
+
+#: data/window.ui:139
+msgid "Characters will appear here if you use them."
+msgstr "ᱡᱤᱫᱤ ᱟᱢ ᱪᱤᱱᱦᱟᱹ ᱠᱚ ᱵᱮᱵᱷᱟᱨ ᱠᱷᱟᱱᱮᱢ ᱱᱚᱰᱮ ᱦᱟᱹᱡᱩᱜᱼᱟ ᱾"
+
+#: data/window.ui:166
+msgid "No Results"
+msgstr "ᱛᱮᱞᱟ ᱠᱚ ᱵᱟᱹᱱᱩᱜᱼᱟ"
+
+#: data/window.ui:167
+msgid "Try a different search."
+msgstr "ᱮᱴᱟᱜ ᱥᱮᱸᱫᱽᱨᱟ ᱪᱮᱥᱴᱟᱭ ᱢᱮ ᱾"
+
+#: data/window.ui:188
+msgid "Loading…"
+msgstr "ᱞᱟᱫᱮᱜ ᱠᱟᱱᱟ ..."
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "ᱪᱤᱱᱦᱟᱹ ᱱᱟᱠᱷᱟ ᱮᱯᱞᱤᱠᱮᱥᱚᱱ"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"ᱪᱤᱱᱦᱟᱹᱯ ᱠᱚ ᱫᱚ ᱠᱷᱟᱹᱞᱤ ᱢᱤᱫᱴᱟᱹᱝ ᱥᱟᱫᱨᱚᱬ ᱭᱱᱤᱴᱭ ᱮᱯᱞᱤᱠᱮᱥᱚᱱ ᱠᱟᱱᱟ ᱡᱟᱦᱟᱸ ᱛᱮ ᱟᱢ ᱡᱟᱦᱱᱟᱜ "
+"ᱥᱮᱸᱫᱽᱨᱟ ᱟᱨ ᱮᱴᱟᱜ ᱞᱮᱠᱷᱟ ᱪᱤᱱᱦᱟᱹ ᱠᱚ ᱮᱢ ᱪᱷᱚ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱯᱮ ᱾ ᱱᱚᱶᱟ ᱛᱮ ᱡᱟᱦᱱᱟᱜ ᱜᱮ "
+"ᱪᱤᱱᱦᱟᱹ ᱞᱚᱜᱚᱱ ᱜᱮ ᱯᱟᱱᱛᱮ ᱜᱟᱱᱚᱜᱼᱟ ᱾"
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "ᱟᱢ ᱫᱚ ᱛᱷᱚᱠ ᱠᱚ ᱞᱮᱠᱷᱟ, ᱡᱮᱞᱠᱟ ᱪᱤᱠᱷᱱᱟᱹ, ᱪᱤᱛᱟᱹᱨ ᱠᱚ, ᱮᱴᱟᱜ ᱾"
+
+#: data/org.gnome.Characters.desktop.in.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "ᱮᱴᱟᱜ ᱞᱮᱠᱷᱟ ᱪᱤᱱᱦᱟᱹ ᱠᱚ ᱯᱟᱱᱛᱮ ᱟᱨ ᱵᱚᱞᱚ ᱪᱷᱚ ᱞᱟᱹᱜᱤᱫ ᱭᱩᱱᱤᱴᱭ ᱮᱯᱞᱤᱠᱮᱥᱚᱱ"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "ᱪᱤᱱᱦᱟᱹ ᱠᱚ;ᱭᱩᱱᱤᱠᱳᱰ;ᱪᱤᱠᱷᱱᱟᱹ;ᱮᱞᱮᱠᱷ;ᱚᱞ ᱠᱚ;ᱤᱢᱳᱡᱤ;ᱤᱢᱳᱴᱤᱠᱳᱱ;ᱪᱤᱱᱦᱟᱹ ᱠᱚ;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "ᱡᱷᱚᱛᱚ ᱠᱷᱚᱱ ᱡᱟᱹᱥᱛᱤ ᱱᱮᱱᱮ ᱪᱤᱱᱦᱟᱹ ᱠᱚ"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:116
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s ᱫᱚ %s ᱨᱮ ᱵᱟᱝ ᱥᱮᱞᱮᱫ ᱠᱟᱱᱟ"
+
+#: src/characterDialog.js:155
+msgid "Character copied to clipboard"
+msgstr "ᱪᱤᱱᱦᱟᱹ ᱫᱚ ᱠᱞᱤᱯᱵᱳᱰ ᱛᱮ ᱱᱚᱠᱚᱞ ᱮᱱᱟ"
+
+#: src/charactersView.js:156
+msgid "Unassigned"
+msgstr "ᱵᱟᱝ ᱴᱷᱟᱹᱣᱠᱟᱹ ᱣᱟᱜ"
+
+#: src/searchProvider.js:88
+msgid "Unknown character name"
+msgstr "ᱵᱟᱝ ᱵᱟᱲᱟᱭ ᱪᱤᱱᱦᱟᱹ ᱧᱩᱛᱩᱢ"
+
+#: src/searchProvider.js:91
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:107
+msgid "Character copied"
+msgstr "ᱪᱤᱱᱦᱟᱹ ᱱᱚᱠᱚᱞ ᱮᱱᱟ"
+
+#: src/searchProvider.js:108
+msgid "Character was copied successfully"
+msgstr "ᱪᱤᱱᱦᱟᱹ ᱫᱚ ᱨᱟᱹᱥ ᱞᱮᱠᱷᱟᱛᱮ ᱱᱚᱠᱚᱞᱮᱱᱟ"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "%s ᱞᱟᱴᱷᱟᱵᱟᱨ ᱛᱷᱟᱨ"
+
+#: src/window.js:152
+msgid "Search Result"
+msgstr "ᱛᱮᱞᱟ ᱥᱮᱸᱫᱽᱨᱟᱭ ᱢᱮ"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:182
+msgid "translator-credits"
+msgstr "ᱛᱚᱨᱡᱚᱢᱟᱼᱯᱟᱹᱛᱤᱭᱟᱹᱨ ᱠᱚ"
+
+#: src/window.js:183
+msgid "GNOME Characters"
+msgstr "GNOME ᱪᱤᱱᱦᱟᱹ ᱠᱚ"
+
+#: src/window.js:184
+msgid "Character Map"
+msgstr "ᱪᱤᱱᱦᱟᱹ ᱱᱟᱠᱷᱟ"
