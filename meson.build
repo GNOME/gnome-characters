@@ -83,9 +83,13 @@ configure_file(
 
 meson.add_install_script(
   'meson_post_install.py',
-  characters_datadir,
   characters_bindir,
   characters_pkgdatadir,
   application_id
 )
 
+gnome.post_install(
+  gtk_update_icon_cache: true,
+  glib_compile_schemas: true,
+  update_desktop_database: true,
+)
