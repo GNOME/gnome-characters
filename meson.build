@@ -3,7 +3,7 @@ project(
   version: '42.0',
   license: ['BSD-3-Clause', 'GPL-2.0-or-later'],
   default_options: 'buildtype=debugoptimized',
-  meson_version: '>= 0.46.0'
+  meson_version: '>= 0.59.0'
 )
 
 if get_option('profile') == 'development'
@@ -61,7 +61,7 @@ endif
 gnome = import('gnome')
 i18n = import('i18n')
 
-po_dir = join_paths(meson.source_root(), 'po')
+po_dir = join_paths(meson.project_source_root(), 'po')
 
 top_inc = include_directories('.')
 
