@@ -1,0 +1,263 @@
+# Bulgarian translation of gnome-characters po-file.
+# Copyright (C) 2022 Alexander Shopov.
+# This file is distributed under the same license as the gnome-characters package.
+# Alexander Shopov <ash@kambanaria.org>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2022-02-28 17:49+0000\n"
+"PO-Revision-Date: 2022-03-01 16:35+0100\n"
+"Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/character_dialog.ui:70
+msgid "_Copy Character"
+msgstr "_Копиране на знак"
+
+#: data/character_dialog.ui:91
+msgid "Unicode"
+msgstr "Уникод"
+
+#: data/character_dialog.ui:105
+msgid "_See Also"
+msgstr "_Виж още"
+
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "Скоро ползвани"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Емоджи"
+
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "Емотикони и усмивки"
+
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "Хора и тяло"
+
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "Животни и природа"
+
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "Храни и напитки"
+
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "Пътешествия и места"
+
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "Дейности"
+
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "Обекти"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "Символи"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "Знамена"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "Букви и знаци"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "Пунктуация"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "Стрелки"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "Водачи на редове"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "Картинки"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "Валути"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "Математика"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "Букви"
+
+#: data/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Общи"
+
+#: data/shortcuts.ui:15
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Отваряне на меню"
+
+#: data/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Търсене"
+
+#: data/shortcuts.ui:27
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Клавишни комбинации"
+
+#: data/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Спиране на програмата"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавишни комбинации"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_Относно „Знаци“"
+
+#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+msgid "Characters"
+msgstr "Знаци"
+
+#: data/window.ui:138
+msgid "No Recent Characters"
+msgstr "Няма скоро ползвани знаци"
+
+#: data/window.ui:139
+msgid "Characters will appear here if you use them."
+msgstr "При употреба знаците ще се появяват тук."
+
+#: data/window.ui:166
+msgid "No Results"
+msgstr "Няма резултати"
+
+#: data/window.ui:167
+msgid "Try a different search."
+msgstr "Пробвайте различно търсене."
+
+#: data/window.ui:188
+msgid "Loading…"
+msgstr "Зареждане…"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Програма с таблици на знаците"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"„Знаци“ е лесна за ползване програма за намирането и вмъкването на по-редки "
+"знаци. Тя дава възможност бързо да намерите знак като го търсите с ключови "
+"думи."
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Може да разглеждате знаците и по категории като пунктуация, картинки и др."
+
+#: data/org.gnome.Characters.desktop.in.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Помощна програма за намирането и вмъкването на специални знаци"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+"знаци;уникод;юникод;пунктуация;математика;букви;емоджи;емотикони;усмивки;"
+"смайли;символи;characters;unicode;punctuation;math;letters;emoji;emoticon;"
+"symbols;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Максимум на последно ползваните знаци"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:116
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "„%s“ липсва в „%s“"
+
+#: src/characterDialog.js:155
+msgid "Character copied to clipboard"
+msgstr "Знакът е копиран в буфера за обмен"
+
+#: src/charactersView.js:156
+msgid "Unassigned"
+msgstr "Не е зададен"
+
+#: src/searchProvider.js:88
+msgid "Unknown character name"
+msgstr "Знак без име"
+
+#: src/searchProvider.js:91
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:107
+msgid "Character copied"
+msgstr "Знакът е копиран"
+
+#: src/searchProvider.js:108
+msgid "Character was copied successfully"
+msgstr "Знакът е копиран успешно"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "Странична лента на „%s“"
+
+#: src/window.js:152
+msgid "Search Result"
+msgstr "Резултати от търсенето"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:182
+msgid "translator-credits"
+msgstr ""
+"Александър Шопов &lt;<a href='mailto:ash@kambanaria.org'>ash@kambanaria.org</"
+"a>&gt;\n"
+"\n"
+"\n"
+"Проектът за превод на GNOME има нужда от подкрепа.\n"
+"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
+"a> ни.\n"
+"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
+"newticket'>съответния раздел</a>."
+
+#: src/window.js:183
+msgid "GNOME Characters"
+msgstr "Знаци на GNOME"
+
+#: src/window.js:184
+msgid "Character Map"
+msgstr "Карта на знаците"
