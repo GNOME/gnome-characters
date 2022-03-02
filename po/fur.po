@@ -6,16 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2021-11-26 11:12+0000\n"
-"PO-Revision-Date: 2021-12-22 23:20+0100\n"
-"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
+"POT-Creation-Date: 2022-02-26 14:39+0000\n"
+"PO-Revision-Date: 2022-03-01 15:04+0000\n"
+"Last-Translator: Fabio Tomat\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Editor: HaiPO 1.0 Release\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #: data/character_dialog.ui:70
@@ -140,7 +140,7 @@ msgid "_About Characters"
 msgstr "_Informazions su Caratars"
 
 #: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in:4 src/main.js:58 src/service.js:46
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
 msgid "Characters"
 msgstr "Caratars"
 
@@ -175,25 +175,27 @@ msgid ""
 "by searching for keywords."
 msgstr ""
 "Caratars al è un sempliç program par la ricercje e l'inseriment di caratars "
-"insolits. Al permet di cirî di corse dai caratars a mieç di une ricercje par "
-"peraulis clâf."
+"insolits. Al permet di cirî di corse dai caratars a mieç di une ricercje par"
+" peraulis clâf."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
+"You can also browse characters by categories, such as Punctuation, Pictures,"
+" etc."
 msgstr ""
 "Al è pussibil ancje esplorâ i caratars par categorie come puntuazions, "
 "figuris, ecc."
 
-#: data/org.gnome.Characters.desktop.in:5
+#: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Aplicazion par cirî e inserî caratars insolits"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in:13
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr "caratars;unicode;puntuazion;matematiche;letaris;emoji;emoticon;simbui;"
+msgstr ""
+"caratars;unicode;puntuazion;matematiche;letaris;emoji;emoticon;simbui;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
@@ -214,36 +216,47 @@ msgstr "Caratar copiât tes notis"
 msgid "Unassigned"
 msgstr "No assegnât"
 
-#: src/searchProvider.js:94
+#: src/searchProvider.js:88
 msgid "Unknown character name"
 msgstr "Non caratar no cognossût"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:91
 #, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:107
+msgid "Character copied"
+msgstr "Caratar copiât"
+
+#: src/searchProvider.js:108
+msgid "Character was copied successfully"
+msgstr "Il caratar al è stât copiât cun sucès"
 
 #: src/sidebarRow.js:72
 #, javascript-format
 msgid "%s Sidebar Row"
 msgstr "rie de sbare laterâl %s"
 
-#: src/window.js:150
+#: src/window.js:152
 msgid "Search Result"
 msgstr "Risultâts de ricercje"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:180
+#: src/window.js:182
 msgid "translator-credits"
 msgstr "Fabio Tomat <f.t.public@gmail.com>"
 
-#: src/window.js:181
+#: src/window.js:183
 msgid "GNOME Characters"
 msgstr "Caratars GNOME"
 
-#: src/window.js:182
+#: src/window.js:184
 msgid "Character Map"
 msgstr "Tabele caratars"
+
+#~ msgid "U+%s, %s: %s"
+#~ msgstr "U+%s, %s: %s"
 
 #~ msgid "Filter by Font"
 #~ msgstr "Filtri par Caratar"
