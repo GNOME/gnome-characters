@@ -2,15 +2,15 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # FULL NAME <EMAIL@ADDRESS>, 2015.
-# Aurimas Černius <aurisc4@gmail.com>, 2015-2021.
+# Aurimas Černius <aurisc4@gmail.com>, 2015-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2021-11-26 11:12+0000\n"
-"PO-Revision-Date: 2021-12-14 14:00+0200\n"
+"POT-Creation-Date: 2022-02-26 14:39+0000\n"
+"PO-Revision-Date: 2022-03-07 18:17+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -22,17 +22,14 @@ msgstr ""
 "X-Generator: Gtranslator 40.0\n"
 
 #: data/character_dialog.ui:70
-#| msgid "Copy Character"
 msgid "_Copy Character"
 msgstr "_Kopijuoti simbolį"
 
 #: data/character_dialog.ui:91
-#| msgid "Unicode U+%04s"
 msgid "Unicode"
 msgstr "Unikodas"
 
 #: data/character_dialog.ui:105
-#| msgid "See Also"
 msgid "_See Also"
 msgstr "_Taip pat žiūrėti"
 
@@ -45,7 +42,6 @@ msgid "Emojis"
 msgstr "Emoji"
 
 #: data/sidebar.ui:35
-#| msgid "Smileys & People"
 msgid "Smileys & Emotion"
 msgstr "Šypsniukai ir emocijos"
 
@@ -147,7 +143,7 @@ msgid "_About Characters"
 msgstr "_Apie simbolius"
 
 #: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in:4 src/main.js:58 src/service.js:46
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
 msgid "Characters"
 msgstr "Simboliai"
 
@@ -192,13 +188,12 @@ msgstr ""
 "Taip pat galite ieškoti simbolių pagal kategorijas, tokias kaip skyrybos "
 "ženklai, paveikslėliai ir kt."
 
-#: data/org.gnome.Characters.desktop.in:5
+#: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Programa neįprastų simbolių suradimui ir įterpimui"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in:13
-#| msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+#: data/org.gnome.Characters.desktop.in.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 msgstr ""
 "simboliai;unikodas;skyryba;matematika;raidės;šypsniukai;emotikonos;simboliai;"
@@ -221,38 +216,51 @@ msgstr "Simbolis nukopijuotas į iškarpinę"
 msgid "Unassigned"
 msgstr "Nepriskirta"
 
-#: src/searchProvider.js:94
+#: src/searchProvider.js:88
 msgid "Unknown character name"
 msgstr "Nežinomas simbolio pavadinimas"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:91
 #, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:107
+#| msgid "Character Map"
+msgid "Character copied"
+msgstr "Simbolis nukopijuotas"
+
+#: src/searchProvider.js:108
+#| msgid "Character copied to clipboard"
+msgid "Character was copied successfully"
+msgstr "Simbolis sėkmingai nukopijuotas"
 
 #: src/sidebarRow.js:72
 #, javascript-format
 msgid "%s Sidebar Row"
 msgstr "%s šoninės juostos eilutė"
 
-#: src/window.js:150
+#: src/window.js:152
 msgid "Search Result"
 msgstr "Paieškos rezultatai"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:180
+#: src/window.js:182
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: src/window.js:181
+#: src/window.js:183
 msgid "GNOME Characters"
 msgstr "GNOME simboliai"
 
-#: src/window.js:182
+#: src/window.js:184
 msgid "Character Map"
 msgstr "Simbolių žemėlapis"
+
+#~ msgid "U+%s, %s: %s"
+#~ msgstr "U+%s, %s: %s"
 
 #~ msgid "Filter by Font"
 #~ msgstr "Filtruoti pagal šriftą"
