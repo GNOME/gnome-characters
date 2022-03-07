@@ -348,6 +348,12 @@ var CharactersView = GObject.registerClass({
         let cellSize = getCellSize(this._fontDescription);
         let cellsPerRow = Math.floor(width / cellSize);
 
+        if (cellsPerRow !== this._cellsPerRow) {
+            // Reflow if the number of cells per row has changed.
+            this._cellsPerRow = cellsPerRow;
+            this._reflow();
+        }
+
         let maxHeight = Math.floor((this._rows.length + BASELINE_OFFSET) * cellSize);
         let maxWidth = cellsPerRow * cellSize;
 
@@ -355,12 +361,6 @@ var CharactersView = GObject.registerClass({
         let vadj = this.get_vadjustment();
         vadj.configure(vadj.get_value(), 0.0, maxHeight, 0.1 * height, 0.9 * height, Math.min(height, maxHeight));
         hadj.configure(hadj.get_value(), 0.0, maxWidth, 0.1 * width, 0.9 * width, Math.min(width, maxWidth));
-
-        if (cellsPerRow !== this._cellsPerRow) {
-            // Reflow if the number of cells per row has changed.
-            this._cellsPerRow = cellsPerRow;
-            this.setCharacters(this._characters);
-        }
     }
 
     _createCharacterListRow(characters) {
@@ -376,27 +376,29 @@ var CharactersView = GObject.registerClass({
         this._fontDescription = fontDescription;
     }
 
-    setCharacters(characters) {
+    _reflow() {
         this._rows = [];
-        this._characters = characters;
 
         let start = 0, stop = 1;
-        for (; stop <= characters.length; stop++) {
+        for (; stop <= this._characters.length; stop++) {
             if (stop % this._cellsPerRow === 0) {
-                let rowCharacters = characters.slice(start, stop);
+                let rowCharacters = this._characters.slice(start, stop);
                 let row = this._createCharacterListRow(rowCharacters);
                 this._rows.push(row);
                 start = stop;
             }
         }
         if (start !== stop - 1) {
-            let rowCharacters = characters.slice(start, stop);
+            let rowCharacters = this._characters.slice(start, stop);
             let row = this._createCharacterListRow(rowCharacters);
             this._rows.push(row);
         }
+    }
 
+    setCharacters(characters) {
+        this._characters = characters;
+        this._reflow();
         this.queue_resize();
-        this.queue_draw();
     }
 
     _addSearchResult(result) {
