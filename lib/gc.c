@@ -84,6 +84,12 @@ static size_t bullet_character_count = G_N_ELEMENTS (bullet_characters);
 
 #define UNINAME_MAX 256
 
+struct CharacterSequence
+{
+  gunichar uc[EMOJI_SEQUENCE_LENGTH];
+  int length;
+};
+
 static int
 block_compare (gconstpointer a, gconstpointer b)
 {
@@ -120,9 +126,32 @@ character_name_compare (gconstpointer a, gconstpointer b)
   return (*key > element->uc) - (*key < element->uc);
 }
 
+static int
+emoji_compare (gconstpointer a, gconstpointer b)
+{
+  const struct CharacterSequence *key = a;
+  const struct EmojiCharacter *element = b;
+  int i;
+
+  for (i = 0; i < MAX (key->length, element->length); i++)
+    {
+      gunichar auc = i < key->length ? key->uc[i] : 0;
+      gunichar buc = i < element->length ? element->uc[i] : 0;
+
+      if (auc < buc)
+        return -1;
+
+      if (auc > buc)
+        return 1;
+    }
+
+  return 0;
+}
+
 static char *
-get_character_name (gunichar  uc,
-                    gchar    *buffer)
+get_character_name (const gunichar *uc,
+                    int             length,
+                    gchar          *buffer)
 {
   struct CharacterName *res;
   const struct Block *block;
@@ -131,84 +160,102 @@ get_character_name (gunichar  uc,
   static struct Block *hangul_block;
   static gsize local_blocks_initialized = 0;
   gsize i;
+  struct EmojiCharacter *emoji_res;
+  struct CharacterSequence emoji_key;
 
-  if (g_once_init_enter (&local_blocks_initialized))
-    {
-      static const gunichar cjk_block_starters[8] =
-        {
-          0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820, 0x2CEB0, 0x30000
-        };
-
-      static const gunichar tangut_block_starters[2] =
-        {
-          0x17000, 0x18D00
-        };
-
-      for (i = 0; i < G_N_ELEMENTS (cjk_block_starters); i++)
-        cjk_blocks[i] = (struct Block *)find_block (cjk_block_starters[i]);
-
-      for (i = 0; i < G_N_ELEMENTS (tangut_block_starters); i++)
-        tangut_blocks[i] = (struct Block *)find_block (tangut_block_starters[i]);
-
-      hangul_block = (struct Block *)find_block (0xAC00);
-
-      g_once_init_leave (&local_blocks_initialized, 1);
-    }
-
-  block = find_block (uc);
-  for (i = 0; i < G_N_ELEMENTS (cjk_blocks); i++)
-    if (block == cjk_blocks[i])
+  if (length == 1) {
+    if (g_once_init_enter (&local_blocks_initialized))
       {
-        snprintf (buffer, UNINAME_MAX, "CJK UNIFIED IDEOGRAPH-%X", uc);
-        return buffer;
-      }
-
-  for (i = 0; i < G_N_ELEMENTS (tangut_blocks); i++)
-    if (block == tangut_blocks[i])
-      {
-        snprintf (buffer, UNINAME_MAX, "TANGUT IDEOGRAPH-%X", uc);
-        return buffer;
-      }
-
-  if (block == hangul_block)
-    {
-      gunichar decomposition[3] = { 0, 0, 0 };
-      size_t decomposition_length = 3;
-      size_t pos;
-
-      memcpy (buffer, "HANGUL SYLLABLE ", 16);
-      pos = 16;
-
-      if (g_unichar_fully_decompose (uc, FALSE, decomposition,
-                                     decomposition_length))
-        for (i = 0; i < decomposition_length; i++)
+        static const gunichar cjk_block_starters[8] =
           {
-            const struct HangulCharacter *hangul_jamo;
-            size_t len;
+            0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820, 0x2CEB0, 0x30000
+          };
 
-            if (!decomposition[i])
-              break;
+        static const gunichar tangut_block_starters[2] =
+          {
+            0x17000, 0x18D00
+          };
 
-            hangul_jamo = bsearch (&decomposition[i], hangul_chars,
-                                   G_N_ELEMENTS (hangul_chars),
-                                   sizeof (*hangul_chars),
-                                   hangul_compare);
+        for (i = 0; i < G_N_ELEMENTS (cjk_block_starters); i++)
+          cjk_blocks[i] = (struct Block *)find_block (cjk_block_starters[i]);
 
-            len = strlen (hangul_jamo->short_name);
-            memcpy (buffer + pos, hangul_jamo->short_name, len);
-            pos += len;
-          }
-      else
+        for (i = 0; i < G_N_ELEMENTS (tangut_block_starters); i++)
+          tangut_blocks[i] = (struct Block *)find_block (tangut_block_starters[i]);
+
+        hangul_block = (struct Block *)find_block (0xAC00);
+
+        g_once_init_leave (&local_blocks_initialized, 1);
+      }
+
+    block = find_block (uc[0]);
+    for (i = 0; i < G_N_ELEMENTS (cjk_blocks); i++)
+      if (block == cjk_blocks[i])
         {
-          memcpy (buffer + pos, "UNKNOWN", 7);
-          pos += 7;
+          snprintf (buffer, UNINAME_MAX, "CJK UNIFIED IDEOGRAPH-%X", uc[0]);
+          return buffer;
         }
 
-      buffer[pos] = '\0';
+    for (i = 0; i < G_N_ELEMENTS (tangut_blocks); i++)
+      if (block == tangut_blocks[i])
+        {
+          snprintf (buffer, UNINAME_MAX, "TANGUT IDEOGRAPH-%X", uc[0]);
+          return buffer;
+        }
+
+    if (block == hangul_block)
+      {
+        gunichar decomposition[3] = { 0, 0, 0 };
+        size_t decomposition_length = 3;
+        size_t pos;
+
+        memcpy (buffer, "HANGUL SYLLABLE ", 16);
+        pos = 16;
+
+        if (g_unichar_fully_decompose (uc[0], FALSE, decomposition,
+                                       decomposition_length))
+          for (i = 0; i < decomposition_length; i++)
+            {
+              const struct HangulCharacter *hangul_jamo;
+              size_t len;
+
+              if (!decomposition[i])
+                break;
+
+              hangul_jamo = bsearch (&decomposition[i], hangul_chars,
+                                     G_N_ELEMENTS (hangul_chars),
+                                     sizeof (*hangul_chars),
+                                     hangul_compare);
+
+              len = strlen (hangul_jamo->short_name);
+              memcpy (buffer + pos, hangul_jamo->short_name, len);
+              pos += len;
+            }
+        else
+          {
+            memcpy (buffer + pos, "UNKNOWN", 7);
+            pos += 7;
+          }
+
+        buffer[pos] = '\0';
+        return buffer;
+      }
+  }
+
+  memcpy (emoji_key.uc, uc, length * sizeof (gunichar));
+  emoji_key.length = length;
+
+  emoji_res = bsearch (&emoji_key, emoji_characters,
+                       G_N_ELEMENTS (emoji_characters),
+                       sizeof (*emoji_characters),
+                       emoji_compare);
+
+  if (emoji_res)
+    {
+      memcpy (buffer, emoji_res->name, strnlen (emoji_res->name, UNINAME_MAX));
       return buffer;
     }
 
-  res = bsearch (&uc, character_names,
+  res = bsearch (uc, character_names,
                  G_N_ELEMENTS (character_names),
                  sizeof (*character_names),
                  character_name_compare);
@@ -225,11 +272,17 @@ typedef struct GcCharacterIter GcCharacterIter;
 
 struct GcCharacterIter
 {
-  gunichar uc;
+  gunichar uc[EMOJI_SEQUENCE_LENGTH];
+  gssize uc_length;
 
-  const gunichar *characters;
+  struct CharacterSequence *characters;
   gssize character_index;
   gssize character_count;
+
+  const size_t *emoji_indices;
+  gssize emoji_index;
+  gssize emoji_count;
+  gboolean only_composite;
 
   const struct Block *blocks;
   size_t block_index;
@@ -242,11 +295,12 @@ struct GcCharacterIter
   const gchar * const * keywords;
   GcSearchFlag flags;
 
-  gboolean (* filter) (GcCharacterIter *iter, gunichar uc);
+  gboolean (* filter) (GcCharacterIter *iter, const gunichar *uc, int length);
 };
 
 static gboolean gc_character_iter_next (GcCharacterIter      *iter);
-static gunichar gc_character_iter_get  (GcCharacterIter      *iter);
+static gunichar *gc_character_iter_get (GcCharacterIter      *iter,
+                                        gssize               *length);
 
 static void     gc_character_iter_init_for_category
                                        (GcCharacterIter      *iter,
@@ -256,50 +310,105 @@ static void     gc_character_iter_init_for_keywords
                                        (GcCharacterIter      *iter,
                                         const gchar * const * keywords);
 
+static int
+emoji_indices_compare (gconstpointer a, gconstpointer b)
+{
+  const gunichar *key = a;
+  const size_t *index = b;
+  const struct EmojiCharacter *emoji = &emoji_characters[*index];
+
+  return (*key > emoji->uc[0]) - (*key < emoji->uc[0]);
+}
+
+static gboolean
+is_character_emoji (gunichar uc)
+{
+  struct EmojiCharacter *res;
+
+  res = bsearch (&uc, emoji_singular_characters,
+                 G_N_ELEMENTS (emoji_singular_characters),
+                 sizeof (*emoji_singular_characters),
+                 emoji_indices_compare);
+
+  return !!res;
+}
+
 static gboolean
 gc_character_iter_next (GcCharacterIter *iter)
 {
-  gunichar uc = iter->uc;
+  gunichar uc = iter->uc[0];
 
   /* First, search in the explicit character list.  */
   if (iter->character_index < iter->character_count)
     {
-      iter->uc = iter->characters[iter->character_index++];
+      iter->uc_length = iter->characters[iter->character_index].length;
+      memcpy (iter->uc, iter->characters[iter->character_index].uc,
+              iter->uc_length * sizeof (gunichar));
+      iter->character_index++;
       return TRUE;
     }
 
   /* Then go through the Unicode blocks.  */
-  if (!iter->blocks)
-    return FALSE;
-
-  while (TRUE)
+  if (iter->block_index < iter->block_count)
     {
-      if (uc == iter->blocks[iter->block_index].end)
+      while (TRUE)
         {
-          iter->block_index++;
-          uc = -1;
-        }
+          if (uc == iter->blocks[iter->block_index].end)
+            {
+              iter->block_index++;
+              uc = -1;
+            }
 
-      if (uc == -1)
+          if (uc == -1)
+            {
+              while (iter->block_index < iter->block_count
+                     && iter->blocks[iter->block_index].start
+                     == iter->blocks[iter->block_index].end)
+                iter->block_index++;
+              if (iter->block_index == iter->block_count)
+                break;
+              uc = iter->blocks[iter->block_index].start;
+            }
+          else
+            uc++;
+
+          while (uc < iter->blocks[iter->block_index].end
+                 && (!iter->filter (iter, &uc, 1) ||
+                     is_character_emoji (uc)))
+            uc++;
+
+          if (uc < iter->blocks[iter->block_index].end)
+            {
+              iter->uc[0] = uc;
+              iter->uc_length = 1;
+              return TRUE;
+            }
+        }
+    }
+
+  /* Then go through emoji */
+  while (iter->emoji_index < iter->emoji_count)
+    {
+      const struct EmojiCharacter *emoji;
+
+      if (iter->emoji_indices)
         {
-          while (iter->block_index < iter->block_count
-                 && iter->blocks[iter->block_index].start
-                 == iter->blocks[iter->block_index].end)
-            iter->block_index++;
-          if (iter->block_index == iter->block_count)
-            return FALSE;
-          uc = iter->blocks[iter->block_index].start;
+          size_t index = iter->emoji_indices[iter->emoji_index++];
+          emoji = &emoji_characters[index];
         }
       else
-        uc++;
-
-      while (uc < iter->blocks[iter->block_index].end
-             && !iter->filter (iter, uc))
-        uc++;
-
-      if (uc < iter->blocks[iter->block_index].end)
         {
-          iter->uc = uc;
+          emoji = &emoji_characters[iter->emoji_index++];
+        }
+
+      if (FALSE && iter->only_composite && emoji->length == 1)
+        continue;
+
+      if (iter->filter (iter, emoji->uc, emoji->length))
+        {
+          memcpy (iter->uc, emoji->uc, emoji->length * sizeof(gunichar));
+          iter->uc_length = emoji->length;
+
           return TRUE;
         }
     }
@@ -307,9 +416,10 @@ gc_character_iter_next (GcCharacterIter *iter)
   return FALSE;
 }
 
-static gunichar
-gc_character_iter_get (GcCharacterIter *iter)
+static gunichar *
+gc_character_iter_get (GcCharacterIter *iter, gssize *length)
 {
+  *length = iter->uc_length;
   return iter->uc;
 }
 
@@ -317,13 +427,16 @@ static void
 gc_character_iter_init (GcCharacterIter *iter)
 {
   memset (iter, 0, sizeof (GcCharacterIter));
-  iter->uc = -1;
+  iter->uc[0] = -1;
 }
 
 static gboolean
-filter_type (GcCharacterIter *iter, gunichar uc)
+filter_type (GcCharacterIter *iter, const gunichar *uc, int length)
 {
-  return g_unichar_isprint (uc) && g_unichar_type (uc) == iter->type;
+  if (length > 1)
+    return FALSE;
+
+  return g_unichar_isprint (uc[0]) && g_unichar_type (uc[0]) == iter->type;
 }
 
 static void
@@ -338,14 +451,17 @@ gc_character_iter_init_for_type (GcCharacterIter *iter,
 }
 
 static gboolean
-filter_is_punctuation (GcCharacterIter *iter, gunichar uc)
+filter_is_punctuation (GcCharacterIter *iter, const gunichar *uc, int length)
 {
   GUnicodeType type;
 
-  if (!g_unichar_isprint (uc))
+  if (length > 1)
     return FALSE;
 
-  type = g_unichar_type (uc);
+  if (!g_unichar_isprint (uc[0]))
+    return FALSE;
+
+  type = g_unichar_type (uc[0]);
 
   return type == G_UNICODE_CONNECT_PUNCTUATION ||
          type == G_UNICODE_DASH_PUNCTUATION ||
@@ -366,13 +482,19 @@ gc_character_iter_init_for_punctuation (GcCharacterIter *iter)
 }
 
 static gboolean
-filter_is_print (GcCharacterIter *iter, gunichar uc)
+filter_is_print (GcCharacterIter *iter, const gunichar *uc, int length)
 {
-  return g_unichar_isprint (uc);
+  int i;
+
+  for (i = 0; i < length; i++)
+    if (g_unichar_isprint (uc[i]))
+      return TRUE;
+
+  return FALSE;
 }
 
 static gboolean
-filter_all (GcCharacterIter *iter, gunichar uc)
+filter_all (GcCharacterIter *iter, const gunichar *uc, int length)
 {
   return TRUE;
 }
@@ -389,16 +511,19 @@ gc_character_iter_init_for_blocks (GcCharacterIter    *iter,
 }
 
 static gboolean
-filter_scripts (GcCharacterIter *iter, gunichar uc)
+filter_scripts (GcCharacterIter *iter, const gunichar *uc, int length)
 {
   const GUnicodeScript *scripts = iter->scripts;
 
-  if (!g_unichar_isprint (uc))
+  if (length > 1)
+    return FALSE;
+
+  if (!g_unichar_isprint (uc[0]))
     return FALSE;
 
   while (*scripts != G_UNICODE_SCRIPT_INVALID_CODE)
     {
-      if (g_unichar_get_script (uc) == *scripts)
+      if (g_unichar_get_script (uc[0]) == *scripts)
         return TRUE;
       scripts++;
     }
@@ -421,6 +546,8 @@ static void
 gc_character_iter_init_for_category (GcCharacterIter *iter,
                                      GcCategory       category)
 {
+  int i;
+
   switch (category)
     {
     case GC_CATEGORY_NONE:
@@ -464,9 +591,17 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_LETTER_BULLET:
       gc_character_iter_init (iter);
-      iter->characters = bullet_characters;
+      iter->characters = g_new0 (struct CharacterSequence,
+                                 bullet_character_count);
       iter->character_count = bullet_character_count;
       iter->filter = filter_all;
+
+      for (i = 0; i < bullet_character_count; i++)
+        {
+          iter->characters[i].uc[0] = bullet_characters[i];
+          iter->characters[i].length = 1;
+        }
+
       return;
 
     case GC_CATEGORY_LETTER_PICTURE:
@@ -536,64 +671,64 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_EMOJI_SMILEYS:
       gc_character_iter_init (iter);
-      iter->characters = emoji_smileys_characters;
-      iter->character_count = EMOJI_SMILEYS_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_smileys_characters;
+      iter->emoji_count = EMOJI_SMILEYS_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
     case GC_CATEGORY_EMOJI_PEOPLE:
       gc_character_iter_init (iter);
-      iter->characters = emoji_people_characters;
-      iter->character_count = EMOJI_PEOPLE_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_people_characters;
+      iter->emoji_count = EMOJI_PEOPLE_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
     case GC_CATEGORY_EMOJI_ANIMALS:
       gc_character_iter_init (iter);
-      iter->characters = emoji_animals_characters;
-      iter->character_count = EMOJI_ANIMALS_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_animals_characters;
+      iter->emoji_count = EMOJI_ANIMALS_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
     case GC_CATEGORY_EMOJI_FOOD:
       gc_character_iter_init (iter);
-      iter->characters = emoji_food_characters;
-      iter->character_count = EMOJI_FOOD_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_food_characters;
+      iter->emoji_count = EMOJI_FOOD_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
     case GC_CATEGORY_EMOJI_ACTIVITIES:
       gc_character_iter_init (iter);
-      iter->characters = emoji_activities_characters;
-      iter->character_count = EMOJI_ACTIVITIES_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_activities_characters;
+      iter->emoji_count = EMOJI_ACTIVITIES_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
     case GC_CATEGORY_EMOJI_TRAVEL:
       gc_character_iter_init (iter);
-      iter->characters = emoji_travel_characters;
-      iter->character_count = EMOJI_TRAVEL_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_travel_characters;
+      iter->emoji_count = EMOJI_TRAVEL_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
     case GC_CATEGORY_EMOJI_OBJECTS:
       gc_character_iter_init (iter);
-      iter->characters = emoji_objects_characters;
-      iter->character_count = EMOJI_OBJECTS_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_objects_characters;
+      iter->emoji_count = EMOJI_OBJECTS_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
     case GC_CATEGORY_EMOJI_SYMBOLS:
       gc_character_iter_init (iter);
-      iter->characters = emoji_symbols_characters;
-      iter->character_count = EMOJI_SYMBOLS_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_symbols_characters;
+      iter->emoji_count = EMOJI_SYMBOLS_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
     case GC_CATEGORY_EMOJI_FLAGS:
       gc_character_iter_init (iter);
-      iter->characters = emoji_flags_characters;
-      iter->character_count = EMOJI_FLAGS_CHARACTER_COUNT;
+      iter->emoji_indices = emoji_flags_characters;
+      iter->emoji_count = EMOJI_FLAGS_CHARACTER_COUNT;
       iter->filter = filter_all;
       return;
 
@@ -607,35 +742,37 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
 }
 
 static gboolean
-filter_keywords (GcCharacterIter *iter, gunichar uc)
+filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
 {
   const gchar * const * keywords = iter->keywords;
   gchar buffer[UNINAME_MAX];
 
-  if (!g_unichar_isprint (uc))
+  if (!filter_is_print (iter, uc, length))
     return FALSE;
 
   /* Special case if KEYWORDS only contains a single word.  */
   if (*keywords && *(keywords + 1) == NULL)
     {
-      size_t length = strlen (*keywords);
-      char utf8[6];
-      size_t utf8_length = G_N_ELEMENTS (utf8);
+      size_t keyword_length = strlen (*keywords);
+      char *utf8;
+      glong utf8_length;
 
       /* Match against the character itself.  */
-      utf8_length = g_unichar_to_utf8 (uc, utf8);
-      if (utf8_length == length && memcmp (*keywords, utf8, utf8_length) == 0)
+      utf8 = g_ucs4_to_utf8 (uc, length, NULL, &utf8_length, NULL);
+
+      if (utf8_length == keyword_length && memcmp (*keywords, utf8, utf8_length) == 0)
         return TRUE;
 
       /* Match against the hexadecimal code point.  */
-      if (length <= 6
-          && strspn (*keywords, "0123456789abcdefABCDEF") == length
-          && strtoul (*keywords, NULL, 16) == uc)
+      if (length == 1 &&
+          keyword_length <= 6
+          && strspn (*keywords, "0123456789abcdefABCDEF") == keyword_length
+          && strtoul (*keywords, NULL, 16) == uc[0])
         return TRUE;
     }
 
-  /* Match against the name.  */
-  if (!get_character_name (uc, buffer))
+  /* Match against the name. */
+  if (!get_character_name (uc, length, buffer))
     return FALSE;
 
   while (*keywords)
@@ -675,48 +812,83 @@ gc_character_iter_init_for_keywords (GcCharacterIter      *iter,
   gc_character_iter_init (iter);
   iter->blocks = all_blocks;
   iter->block_count = G_N_ELEMENTS (all_blocks);
+  iter->emoji_indices = NULL;
+  iter->emoji_count = EMOJI_CHARACTER_COUNT;
+  iter->only_composite = TRUE;
   iter->filter = filter_keywords;
   iter->keywords = keywords;
 }
 
 /**
- * gc_character_name:
- * @uc: a UCS-4 character
+ * gc_character_is_composite:
+ * @chars: (array length=n_chars): a string consisting of UCS-4 characters
+ * @n_chars: length of @chars
  *
- * Returns: (nullable): a newly allocated character name of @uc.
+ * Returns: whether the character is composite
+ */
+gboolean
+gc_character_is_composite (const gunichar *chars,
+                           int             n_chars)
+{
+  return n_chars > 1;
+}
+
+/**
+ * gc_character_name:
+ * @chars: (array length=n_chars): a string consisting of UCS-4 characters
+ * @n_chars: length of @chars
+ *
+ * Returns: (nullable) (transfer full): a newly allocated character name of @uc.
  */
 gchar *
-gc_character_name (gunichar uc)
+gc_character_name (const gunichar *chars,
+                   int             n_chars)
 {
-  return get_character_name (uc, g_new0 (gchar, UNINAME_MAX));
+  return get_character_name (chars, n_chars, g_new0 (gchar, UNINAME_MAX));
 }
 
 /**
  * gc_character_is_invisible:
- * @uc: a UCS-4 character
+ * @chars: (array length=n_chars): a string consisting of UCS-4 characters
+ * @n_chars: length of @chars
  *
- * Returns: %TRUE if @uc is an invisible character, %FALSE otherwise.
+ * Returns: %TRUE if @chars consists of invisible characters, %FALSE otherwise.
  */
 gboolean
-gc_character_is_invisible (gunichar uc)
+gc_character_is_invisible (const gunichar *chars,
+                           int             n_chars)
 {
-  return g_unichar_isspace (uc) ||
-         g_unichar_iscntrl (uc) ||
-         g_unichar_iszerowidth (uc);
+  int i;
+
+  for (i = 0; i < n_chars; i++) {
+    if (!g_unichar_isspace (chars[i]) &&
+        !g_unichar_iscntrl (chars[i]) &&
+        !g_unichar_iszerowidth (chars[i]))
+      return FALSE;
+  }
+
+  return TRUE;
 }
 
 G_DEFINE_QUARK (gc-search-error-quark, gc_search_error)
 
 G_DEFINE_BOXED_TYPE (GcSearchResult, gc_search_result,
-                     g_array_ref, g_array_unref);
+                     g_ptr_array_ref, g_ptr_array_unref);
 
-gunichar
+/**
+ * gc_search_result_get:
+ * @result: a #GcSearchResult
+ * @index: index of the character to get
+ *
+ * Returns: the character at @index
+ */
+const char *
 gc_search_result_get (GcSearchResult *result, gint index)
 {
-  g_return_val_if_fail (result, G_MAXUINT32);
-  g_return_val_if_fail (0 <= index && index < result->len, G_MAXUINT32);
+  g_return_val_if_fail (result, NULL);
+  g_return_val_if_fail (0 <= index && index < result->len, NULL);
 
-  return g_array_index (result, gunichar, index);
+  return g_ptr_array_index (result, index);
 }
 
 typedef enum
@@ -735,7 +907,7 @@ struct _GcSearchCriteria
     GcCategory category;
     gchar **keywords;
     GUnicodeScript *scripts;
-    gunichar related;
+    gchar *related;
   } u;
 };
 
@@ -746,6 +918,8 @@ gc_search_criteria_copy (gpointer boxed)
 
   if (criteria->type == GC_SEARCH_CRITERIA_KEYWORDS)
     criteria->u.keywords = g_strdupv (criteria->u.keywords);
+  else if (criteria->type == GC_SEARCH_CRITERIA_RELATED)
+    criteria->u.related = g_strdup (criteria->u.related);
 
   return criteria;
 }
@@ -757,6 +931,8 @@ gc_search_criteria_free (gpointer boxed)
 
   if (criteria->type == GC_SEARCH_CRITERIA_KEYWORDS)
     g_strfreev (criteria->u.keywords);
+  else if (criteria->type == GC_SEARCH_CRITERIA_RELATED)
+    g_free (criteria->u.related);
 
   g_free (criteria);
 }
@@ -817,11 +993,11 @@ gc_search_criteria_new_scripts (const GUnicodeScript *scripts,
 }
 
 GcSearchCriteria *
-gc_search_criteria_new_related (gunichar uc)
+gc_search_criteria_new_related (const gchar *character)
 {
   GcSearchCriteria *result = g_new0 (GcSearchCriteria, 1);
   result->type = GC_SEARCH_CRITERIA_RELATED;
-  result->u.related = uc;
+  result->u.related = g_strdup (character);
   return result;
 }
 
@@ -857,6 +1033,19 @@ search_data_free (struct SearchData *data)
   g_slice_free (struct SearchData, data);
 }
 
+static inline void
+append_related_character (GArray         *result,
+                          const gunichar *uc,
+                          int             length)
+{
+  struct CharacterSequence sequence;
+
+  memcpy (sequence.uc, uc, length * sizeof (gunichar));
+  sequence.length = length;
+
+  g_array_append_val (result, sequence);
+}
+
 static void
 add_composited (GArray *result, gunichar base,
                 const struct Block *blocks, size_t count)
@@ -874,7 +1063,7 @@ add_composited (GArray *result, gunichar base,
 
           g_unichar_decompose (uc, &decomposition_base, &unused);
           if (decomposition_base == base)
-            g_array_append_val (result, uc);
+            append_related_character (result, &uc, 1);
         }
     }
 }
@@ -900,18 +1089,33 @@ add_confusables (GArray *result, gunichar uc)
   if (res)
     {
       const struct ConfusableClass *klass = &confusable_classes[res->index];
-      g_array_append_vals (result,
-                           &confusable_characters[klass->offset],
-                           klass->length);
+      int i;
+
+      for (i = klass->offset; i < klass->offset + klass->length; i++)
+        append_related_character (result, &confusable_characters[i], 1);
     }
 }
 
-static gint
-compare_unichar (gconstpointer a,
-                 gconstpointer b)
+static int
+sequence_compare (gconstpointer a, gconstpointer b)
 {
-  const gunichar *auc = a, *buc = b;
-  return *auc == *buc ? 0 : (*auc < *buc ? -1 : 1);
+  const struct CharacterSequence *key = a;
+  const struct CharacterSequence *element = b;
+  int i;
+
+  for (i = 0; i < MAX (key->length, element->length); i++)
+    {
+      gunichar auc = i < key->length ? key->uc[i] : 0;
+      gunichar buc = i < element->length ? element->uc[i] : 0;
+
+      if (auc < buc)
+        return -1;
+
+      if (auc > buc)
+        return 1;
+    }
+
+  return 0;
 }
 
 static void
@@ -921,16 +1125,16 @@ remove_duplicates (GArray *array)
 
   for (i = 0; i < array->len; i++)
     {
-      gunichar *start;
+      struct CharacterSequence *start;
       gint j;
 
-      start = &g_array_index (array, gunichar, i);
+      start = &g_array_index (array, struct CharacterSequence, i);
       for (j = i + 1; j < array->len; j++)
         {
-          gunichar *stop;
+          struct CharacterSequence *stop;
 
-          stop = &g_array_index (array, gunichar, j);
-          if (*start != *stop)
+          stop = &g_array_index (array, struct CharacterSequence, j);
+          if (sequence_compare (start, stop))
             break;
         }
       if (j != i + 1)
@@ -938,41 +1142,113 @@ remove_duplicates (GArray *array)
     }
 }
 
+static inline gboolean
+check_emoji_exists (const gunichar *uc,
+                    int             length)
+{
+  struct CharacterSequence sequence;
+  const struct EmojiCharacter *res;
+
+  memcpy (sequence.uc, uc, length * sizeof (gunichar));
+  sequence.length = length;
+
+  res = bsearch (&sequence, emoji_characters,
+                 G_N_ELEMENTS (emoji_characters),
+                 sizeof (*emoji_characters),
+                 emoji_compare);
+
+  return !!res;
+}
+
+static inline gboolean
+check_emoji_contains_spacer (const gunichar *uc,
+                             int             length)
+{
+  int i;
+
+  for (i = 0; i < length; i++)
+    if (uc[i] == 0x200D)
+      return TRUE;
+
+  return FALSE;
+}
+
 static void
 populate_related_characters (GcCharacterIter *iter)
 {
   GArray *result;
+  gunichar uc;
   gunichar related;
-  size_t i;
+  size_t i, j;
 
-  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
+  result = g_array_new (FALSE, FALSE, sizeof (struct CharacterSequence));
 
-  related = g_unichar_toupper (iter->uc);
-  if (related != iter->uc)
-    g_array_append_val (result, related);
+  if (iter->uc_length > 1)
+    {
+      for (i = 0; i < iter->uc_length;)
+        for (j = iter->uc_length - i; j > 0; j--)
+          {
+            /* We don't want to check the whole sequence */
+            if (j == iter->uc_length)
+              continue;
 
-  related = g_unichar_tolower (iter->uc);
-  if (related != iter->uc)
-    g_array_append_val (result, related);
+            if (j > 1 && !check_emoji_exists (&iter->uc[i], j))
+              continue;
 
-  related = g_unichar_totitle (iter->uc);
-  if (related != iter->uc)
-    g_array_append_val (result, related);
+            if (j > 1 && check_emoji_contains_spacer (&iter->uc[i], j))
+              continue;
 
-  if (g_unichar_get_mirror_char (iter->uc, &related) && related != iter->uc)
-    g_array_append_val (result, related);
+            append_related_character (result, &iter->uc[i], j);
+            i += j;
+            break;
+          }
 
-  if (g_unichar_isalpha (iter->uc))
+      iter->character_count = result->len;
+      iter->characters = (struct CharacterSequence *) g_array_free (result, FALSE);
+
+      return;
+    }
+  else
+    {
+      struct CharacterSequence variation;
+
+      /* Many emoji are formed as a character + U+FE0F VARIATION SELECTOR-16 */
+      variation.uc[0] = *iter->uc;
+      variation.uc[1] = 0xFE0F;
+      variation.length = 2;
+
+      if (check_emoji_exists (variation.uc, variation.length))
+        append_related_character (result, variation.uc, variation.length);
+    }
+
+  uc = iter->uc[0];
+
+  related = g_unichar_toupper (uc);
+  if (related != uc)
+    append_related_character (result, &related, 1);
+
+  related = g_unichar_tolower (uc);
+  if (related != uc)
+    append_related_character (result, &related, 1);
+
+  related = g_unichar_totitle (uc);
+  if (related != uc)
+    append_related_character (result, &related, 1);
+
+  if (g_unichar_get_mirror_char (uc, &related) && related != uc)
+    append_related_character (result, &related, 1);
+
+  if (g_unichar_isalpha (uc))
     {
       GUnicodeScript script;
 
-      script = g_unichar_get_script (iter->uc);
+      script = g_unichar_get_script (uc);
       if (script)
         {
           if (script == G_UNICODE_SCRIPT_HANGUL)
             {
               /* For Hangul, do full canonical decomposition.  */
-              gunichar s = iter->uc;
+              gunichar s = uc;
               gunichar decomposition[3] = { 0, 0, 0 };
               size_t decomposition_length = 3;
 
@@ -985,7 +1261,7 @@ populate_related_characters (GcCharacterIter *iter)
                     if (!hangul_jamo)
                       break;
 
-                    g_array_append_val (result, hangul_jamo);
+                    append_related_character (result, &hangul_jamo, 1);
                   }
             }
           else
@@ -996,10 +1272,10 @@ populate_related_characters (GcCharacterIter *iter)
                  by the first step.  */
               gunichar decomposition_base, unused;
 
-              g_unichar_decompose (iter->uc, &decomposition_base, &unused);
+              g_unichar_decompose (uc, &decomposition_base, &unused);
 
-              if (decomposition_base != iter->uc)
-                g_array_append_val (result, decomposition_base);
+              if (decomposition_base != uc)
+                append_related_character (result, &decomposition_base, 1);
 
               if (script == G_UNICODE_SCRIPT_LATIN)
                 add_composited (result, decomposition_base,
@@ -1014,17 +1290,17 @@ populate_related_characters (GcCharacterIter *iter)
         }
     }
 
-  add_confusables (result, iter->uc);
+  add_confusables (result, uc);
 
-  g_array_sort (result, compare_unichar);
+  g_array_sort (result, sequence_compare);
   remove_duplicates (result);
 
   for (i = 0; i < result->len; i++)
     {
-      gunichar *puc;
+      struct CharacterSequence *puc;
 
-      puc = &g_array_index (result, gunichar, i);
-      if (*puc == iter->uc)
+      puc = &g_array_index (result, struct CharacterSequence, i);
+      if (puc->length == 1 && puc->uc[0] == uc)
         {
           g_array_remove_index (result, i);
           break;
@@ -1032,7 +1308,7 @@ populate_related_characters (GcCharacterIter *iter)
     }
 
   iter->character_count = result->len;
-  iter->characters = (gunichar *) g_array_free (result, FALSE);
+  iter->characters = (struct CharacterSequence *) g_array_free (result, FALSE);
 }
 
 static size_t
@@ -1051,8 +1327,11 @@ init_blocks (struct Block *blocks, const gunichar *starters, size_t size)
 
 static void
 gc_character_iter_init_for_related (GcCharacterIter *iter,
-                                    gunichar         uc)
+                                    const gchar     *character)
 {
+  long ucs4_len = 0;
+  gunichar *ucs4;
+
   if (g_once_init_enter (&latin_blocks_initialized))
     {
       latin_block_count =
@@ -1078,8 +1357,16 @@ gc_character_iter_init_for_related (GcCharacterIter *iter,
     }
 
   gc_character_iter_init (iter);
-  iter->uc = uc;
+
+  /* The result is 0-terminated, so we have to copy it manually */
+  ucs4 = g_utf8_to_ucs4_fast (character, -1, &ucs4_len);
+
+  memcpy (iter->uc, ucs4, ucs4_len * sizeof (gunichar));
+  iter->uc_length = ucs4_len;
+
   populate_related_characters (iter);
+
+  g_free (ucs4);
 }
 
 enum {
@@ -1122,6 +1409,7 @@ gc_search_context_finalize (GObject *object)
 
   g_mutex_clear (&context->lock);
   g_boxed_free (GC_TYPE_SEARCH_CONTEXT, context->criteria);
+  g_free (context->iter.characters);
 
   G_OBJECT_CLASS (gc_search_context_parent_class)->finalize (object);
 }
@@ -1169,13 +1457,16 @@ gc_search_context_search_thread (GTask        *task,
                                  gpointer      task_data,
                                  GCancellable *cancellable)
 {
-  GArray *result;
+  GPtrArray *result;
   struct SearchData *data = task_data;
 
-  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
+  result = g_ptr_array_new_with_free_func (g_free);
   while (gc_character_iter_next (&data->context->iter))
     {
-      gunichar uc;
+      gunichar *uc;
+      gssize len;
+      char *utf8;
+      GError *error = NULL;
 
       if (g_task_return_error_if_cancelled (task))
         {
@@ -1195,15 +1486,24 @@ gc_search_context_search_thread (GTask        *task,
           return;
         }
 
-      uc = gc_character_iter_get (&data->context->iter);
-      g_array_append_val (result, uc);
+      uc = gc_character_iter_get (&data->context->iter, &len);
+      utf8 = g_ucs4_to_utf8 (uc, len, NULL, NULL, &error);
+
+      if (error)
+        {
+          g_critical ("Couldn't convert string to UTF-8: %s", error->message);
+          g_clear_error (&error);
+          continue;
+        }
+
+      g_ptr_array_add (result, utf8);
     }
 
   g_mutex_lock (&data->context->lock);
   data->context->state = GC_SEARCH_STATE_FINISHED;
   g_mutex_unlock (&data->context->lock);
 
-  g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
+  g_task_return_pointer (task, result, (GDestroyNotify) g_ptr_array_unref);
 }
 
 void

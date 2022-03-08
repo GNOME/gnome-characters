@@ -39,7 +39,7 @@ typedef enum
    search criteria written in JS, because the JS code needs to be run
    in the main thread.  */
 
-typedef GArray GcSearchResult;
+typedef GPtrArray GcSearchResult;
 typedef gboolean (*GcSearchFunc) (gunichar uc, gpointer user_data);
 
 #define GC_SEARCH_ERROR (gc_search_error_quark ())
@@ -66,7 +66,7 @@ G_DECLARE_FINAL_TYPE (GcSearchContext, gc_search_context,
 
 GType                 gc_search_result_get_type
                                             (void);
-gunichar              gc_search_result_get  (GcSearchResult       *result,
+const char           *gc_search_result_get  (GcSearchResult       *result,
                                              gint                  index);
 
 GType                 gc_search_criteria_get_type
@@ -83,7 +83,7 @@ GcSearchCriteria     *gc_search_criteria_new_scripts
                                              size_t                n_scripts);
 
 GcSearchCriteria     *gc_search_criteria_new_related
-                                            (gunichar              uc);
+                                            (const gchar          *character);
 
 GcSearchContext      *gc_search_context_new (GcSearchCriteria     *criteria,
                                              GcSearchFlag          flags);
@@ -100,9 +100,14 @@ GcSearchResult       *gc_search_context_search_finish
 gboolean              gc_search_context_is_finished
                                             (GcSearchContext      *context);
 
-gchar                *gc_character_name     (gunichar              uc);
+gboolean              gc_character_is_composite
+                                            (const gunichar       *chars,
+                                             int                   n_chars);
+gchar                *gc_character_name     (const gunichar       *chars,
+                                             int                   n_chars);
 gboolean              gc_character_is_invisible
-                                            (gunichar              uc);
+                                            (const gunichar       *chars,
+                                             int                   n_chars);
 
 gchar                *gc_get_current_language
                                             (void);

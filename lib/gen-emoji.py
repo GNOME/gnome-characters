@@ -15,54 +15,140 @@ GROUPS = {
     'Activities': 'activities',
     'Objects': 'objects',
     'Symbols': 'symbols',
-    'Flags': 'flags'
+    'Flags': 'flags',
+    # Synthetic
+    'Singular': 'singular',
 }
 
 class Builder(object):
     def __init__(self):
         pass
 
+    def sort_data(self, data):
+        group = []
+        indices = []
+
+        data.sort()
+
+        for sequence, name, index in data:
+            group.append((sequence, name))
+            indices.append(index)
+
+        indices = sorted(range(len(indices)), key=indices.__getitem__)
+
+        return group, indices
+
     def read(self, infile):
-        group = None
-        groups = dict()
+        data = []
+        groups = []
+        group_name = None
+        group_start = 0
+        max_length = 0
+        index = 0
         for line in infile:
             m = re.match('# group: (.*)', line)
             if m:
-                groups[m.group(1)] = group = set()
+                if group_name:
+                    groups.append((group_name, group_start))
+
+                group_name = m.group(1)
+                group_start = index
             if line.startswith('#'):
                 continue
             line = line.strip()
             if len(line) == 0:
                 continue
-            (cp, status) = line.split(';', 1)
-            cp = cp.strip()
-            if cp.find(' ') > 0:
-                continue
-            status = status.strip();
-            if not status.startswith('fully-qualified'):
-                continue
-            group.add(int(cp, 16))
-        return groups
 
-    def write(self, groups):
-        for name, group in groups.items():
+            m = re.match('([0-9A-F ]+); fully-qualified\s+#.*E\d+.\d+ (.+)', line)
+            if not m:
+                continue
+
+            cp = m.group(1).strip()
+            sequence = [int(c, 16) for c in cp.split(' ')]
+            max_length = max(max_length, len(sequence))
+
+            name = m.group(2).strip().upper()
+
+            data.append((sequence, name, index))
+            index += 1
+
+        groups.append((group_name, group_start))
+
+        for i in range(len(groups) - 1):
+            groups[i] = (*groups[i], groups[i + 1][1])
+        groups[-1] = (*groups[-1], len(data))
+
+        data.sort()
+
+        indices = []
+        for sequence, name, index in data:
+            indices.append(index)
+
+        groups_data = []
+        for name, start, end in groups:
+            group_indices = [indices.index(i) for i in indices if start <= i < end]
+            group_indices = sorted(group_indices, key=indices.__getitem__)
+
+            groups_data.append((name, group_indices))
+
+        # Make a synthetic group of non-composite emoji
+        singular_indices = []
+        index = 0
+        for sequence, _, _ in data:
+            if len(sequence) == 1:
+                singular_indices.append(index)
+            index += 1
+
+        groups_data.append(('Singular', singular_indices))
+
+        return data, groups_data, max_length
+
+    def write(self, data):
+        data, groups, max_length = data
+
+        print('#define EMOJI_SEQUENCE_LENGTH {}'.format(max_length))
+        print('''\
+struct EmojiCharacter
+{{
+  const gunichar uc[{}];
+  int length;
+  const char *name;
+}};'''.format(max_length))
+
+        print('#define EMOJI_CHARACTER_COUNT {}'.format(
+            len(data)))
+        print('static const struct EmojiCharacter emoji_characters[{}] ='.format(
+            len(data)))
+        print('  {')
+
+        for sequence, charname, _ in data:
+            print('    { { ', end='')
+            print(', '.join(['0x{0:X}'.format(char) for char in sequence]), end='')
+            print(' }}, {0}, "{1}" }},'.format(len(sequence), charname))
+
+        print('  };')
+        print()
+
+        for name, group in groups:
             if len(group) == 0:
                 continue
 
             print('#define EMOJI_{}_CHARACTER_COUNT {}'.format(
                 GROUPS[name].upper(), len(group)))
-            print('static const uint32_t emoji_{}_characters[{}] ='.format(
+
+            print('static const size_t emoji_{}_characters[{}] ='.format(
                 GROUPS[name], len(group)))
             print('  {')
-            print('    ', end='')
-            s = ''
-            for index, cp in enumerate(sorted(group)):
-                s += '0x%X, ' % cp
-                if len(s) > 60:
-                    print(s)
+
+            s = '    '
+            for i in group:
+                s += '%d, ' % i
+                if len(s) > 61:
+                    print(s[:-1])
                     print('    ', end='')
                     s = ''
-            print(s)
+            print(s[:-1])
+
             print('  };')
             print()
 
