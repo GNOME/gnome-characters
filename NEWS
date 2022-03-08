@@ -1,3 +1,19 @@
+42.rc
+===========
+* Fix reflowing in size_allocate() (Alexander Mikhaylenko)
+* Translation updates:
+ - Bulgarian
+ - Croatian
+ - Danish
+ - Finnish
+ - French
+ - Friulian
+ - Korean
+ - Lithuanian
+ - Persian
+ - Polish
+ - Swedish
+
 42.beta
 ===========
 
