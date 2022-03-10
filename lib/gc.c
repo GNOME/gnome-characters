@@ -649,20 +649,20 @@ filter_keywords (GcCharacterIter *iter, gunichar uc)
 
       p = g_strstr_len (buffer, UNINAME_MAX, keyword);
       if (!p)
-	return FALSE;
+        return FALSE;
 
       if (iter->flags & GC_SEARCH_FLAG_WORD)
-	{
-	  while (p)
-	    {
-	      if (p == buffer || g_ascii_isspace (*(p - 1)))
-		break;
-	      p = g_strstr_len (p + 1, UNINAME_MAX, keyword);
-	    }
+        {
+          while (p)
+            {
+              if (p == buffer || g_ascii_isspace (*(p - 1)))
+                break;
+              p = g_strstr_len (p + 1, UNINAME_MAX, keyword);
+            }
 
-	  if (!p)
-	    return FALSE;
-	}
+          if (!p)
+            return FALSE;
+        }
     }
 
   return TRUE;
