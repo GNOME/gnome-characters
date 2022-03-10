@@ -6,6 +6,8 @@
 #include <langinfo.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 #include "blocks.h"
 #include "confusables.h"
@@ -13,9 +15,6 @@
 #include "hangul.h"
 #include "names.h"
 #include "scripts.h"
-
-#define PANGO_ENABLE_ENGINE 1
-#include <pango/pangofc-font.h>
 
 #define LATIN_BLOCK_SIZE 4
 static gsize latin_blocks_initialized;
@@ -1294,124 +1293,6 @@ gboolean
 gc_search_context_is_finished (GcSearchContext *context)
 {
   return context->state == GC_SEARCH_STATE_FINISHED;
-}
-
-static int
-filter_compare (const void *a, const void *b)
-{
-  const uint32_t *ac = a, *bc = b;
-  return *ac == *bc ? 0 : (*ac < *bc ? -1 : 1);
-}
-
-/**
- * gc_filter_characters:
- * @category: a #GcCategory.
- * @characters: (array zero-terminated=1) (element-type utf8): an array of characters
- *
- * Returns: (transfer full): an array of characters.
- */
-GcSearchResult *
-gc_filter_characters (GcCategory           category,
-                      const gchar * const *characters)
-{
-  static const struct {
-    const uint32_t *table;
-    size_t length;
-  } emoji_tables[] = {
-    { emoji_smileys_characters, EMOJI_SMILEYS_CHARACTER_COUNT },
-    { emoji_people_characters, EMOJI_PEOPLE_CHARACTER_COUNT },
-    { emoji_animals_characters, EMOJI_ANIMALS_CHARACTER_COUNT },
-    { emoji_food_characters, EMOJI_FOOD_CHARACTER_COUNT },
-    { emoji_travel_characters, EMOJI_TRAVEL_CHARACTER_COUNT },
-    { emoji_activities_characters, EMOJI_ACTIVITIES_CHARACTER_COUNT },
-    { emoji_objects_characters, EMOJI_OBJECTS_CHARACTER_COUNT },
-    { emoji_symbols_characters, EMOJI_SYMBOLS_CHARACTER_COUNT },
-    { emoji_flags_characters, EMOJI_FLAGS_CHARACTER_COUNT }
-  };
-  GArray *result;
-  size_t i, j;
-
-  result = g_array_new (FALSE, FALSE, sizeof (gunichar));
-
-  g_return_val_if_fail (category == GC_CATEGORY_LETTER || category == GC_CATEGORY_EMOJI, result);
-
-  for (i = 0; characters[i] != 0; i++)
-    {
-      gunichar uc = g_utf8_get_char_validated (characters[i], -1);
-
-      for (j = 0; j < G_N_ELEMENTS(emoji_tables); j++)
-        {
-          uint32_t *res;
-          res = bsearch (&uc, emoji_tables[j].table, emoji_tables[j].length,
-                         sizeof (uint32_t),
-                         filter_compare);
-          if (res)
-            {
-              if (category == GC_CATEGORY_EMOJI)
-                g_array_append_val (result, uc);
-              break;
-            }
-        }
-
-      if (j == G_N_ELEMENTS(emoji_tables) && category == GC_CATEGORY_LETTER)
-        g_array_append_val (result, uc);
-    }
-
-  return result;
-}
-
-void
-gc_pango_layout_disable_fallback (PangoLayout *layout)
-{
-  PangoAttrList *attr_list;
-
-  attr_list = pango_layout_get_attributes (layout);
-  if (!attr_list)
-    {
-      attr_list = pango_attr_list_new ();
-      pango_layout_set_attributes (layout, attr_list);
-    }
-  pango_attr_list_insert (attr_list, pango_attr_fallback_new (FALSE));
-}
-
-gboolean
-gc_pango_context_font_has_glyph (PangoContext *context,
-                                 PangoFont    *font,
-                                 gunichar      uc)
-{
-  PangoLayout *layout;
-  GError *error;
-  gchar *utf8;
-  glong items_written;
-  int retval;
-
-#ifdef HAVE_PANGOFT2
-  if (PANGO_IS_FC_FONT (font))
-    /* Fast path when the font is loaded as PangoFcFont.  */
-    {
-      PangoFcFont *fcfont = PANGO_FC_FONT (font);
-      return pango_fc_font_has_char (fcfont, uc);
-    }
-#endif
-
-  /* Slow path performing actual rendering.  */
-  utf8 = g_ucs4_to_utf8 (&uc, 1, NULL, &items_written, &error);
-  if (!utf8)
-    {
-      g_printerr ("error in decoding: %s\n", error->message);
-      g_error_free (error);
-      return FALSE;
-    }
-
-  layout = pango_layout_new (context);
-  gc_pango_layout_disable_fallback (layout);
-  pango_layout_set_text (layout, utf8, items_written);
-  g_free (utf8);
-
-  retval = pango_layout_get_unknown_glyphs_count (layout);
-  g_object_unref (layout);
-
-  return retval == 0;
 }
 
 /**

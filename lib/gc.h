@@ -1,10 +1,9 @@
-/* libgc is a wrapper library to fill the gaps between Gjs and GLib, pango.  */
+/* libgc is a wrapper library to fill the gaps between Gjs and GLib.  */
 
 #ifndef __GC_H__
 #define __GC_H__
 
 #include <gio/gio.h>
-#include <pango/pango.h>
 #include "gc-enumtypes.h"
 
 G_BEGIN_DECLS
@@ -101,21 +100,9 @@ GcSearchResult       *gc_search_context_search_finish
 gboolean              gc_search_context_is_finished
                                             (GcSearchContext      *context);
 
-GcSearchResult       *gc_filter_characters  (GcCategory            category,
-					     const gchar * const * characters);
-
 gchar                *gc_character_name     (gunichar              uc);
 gboolean              gc_character_is_invisible
                                             (gunichar              uc);
-
-/* Pango support.  PangoAttrFallback is not accessible from GI.  */
-void                  gc_pango_layout_disable_fallback
-                                            (PangoLayout          *layout);
-
-gboolean              gc_pango_context_font_has_glyph
-                                            (PangoContext         *context,
-                                             PangoFont            *font,
-                                             gunichar              uc);
 
 gchar                *gc_get_current_language
                                             (void);
