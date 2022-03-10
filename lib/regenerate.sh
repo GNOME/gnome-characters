@@ -18,5 +18,5 @@ unzip -jo core.zip common/supplemental/supplementalData.xml
 ./gen-confusables.py confusables.txt > confusables.h
 ./gen-emoji.py emoji-test.txt > emoji.h
 ./gen-hangul.py Jamo.txt > hangul.h
-./gen-names.py UnicodeData.txt > names.h
+./gen-names.py UnicodeData.txt emoji-test.txt > names.h
 ./gen-scripts.py supplementalData.xml PropertyValueAliases.txt > scripts.h
