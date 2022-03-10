@@ -87,7 +87,7 @@
                               <object class="GtkListBox">
                                 <property name="selection-mode">none</property>
                                 <child>
-                                  <object class="AdwActionRow">
+                                  <object class="AdwActionRow" id="detailRow">
                                     <property name="title" translatable="yes">Unicode</property>
                                     <child>
                                       <object class="GtkLabel" id="detailLabel">

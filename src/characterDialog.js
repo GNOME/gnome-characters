@@ -28,7 +28,8 @@ var CharacterDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/character_dialog.ui',
     InternalChildren: [
         'leaflet', 'characterStack',
-        'characterLabel', 'missingLabel', 'detailLabel',
+        'characterLabel', 'missingLabel',
+        'detailRow', 'detailLabel',
         'seeAlsoRow', 'relatedListbox',
         'windowTitle', 'toastOverlay',
     ],
@@ -90,18 +91,28 @@ var CharacterDialog = GObject.registerClass({
     _setCharacter(uc) {
         this._character = uc;
 
-        let codePoint = Util.toCodePoint(this._character);
-        let codePointHex = codePoint.toString(16).toUpperCase();
-
         let name = Gc.character_name(this._character);
         if (name !== null)
             name = Util.capitalize(name);
-        else
-            name = 'U+%04s'.format(codePointHex);
+
+        if (Gc.character_is_composite(uc)) {
+            this._detailRow.hide();
+
+            if (name === null)
+                name = _('Unknown character name');
+        } else {
+            let codePoint = Util.toCodePoint(this._character);
+            let codePointHex = codePoint.toString(16).toUpperCase();
+
+            this._detailLabel.label = 'U+%04s'.format(codePointHex);
+            this._detailRow.show();
+
+            if (name === null)
+                name = 'U+%04s'.format(codePointHex);
+        }
 
         this._windowTitle.title = name;
         this._characterLabel.label = this._character;
-        this._detailLabel.label = 'U+%04s'.format(codePointHex);
 
         let pangoContext = this._characterLabel.get_pango_context();
         pangoContext.set_font_description(this._fontDescription);
