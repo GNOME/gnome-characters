@@ -8,95 +8,162 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2021-09-21 14:51+0000\n"
-"PO-Revision-Date: 2021-10-05 08:14+0200\n"
+"POT-Creation-Date: 2022-02-26 14:39+0000\n"
+"PO-Revision-Date: 2022-03-11 08:26+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0\n"
-"X-Generator: Gtranslator 40.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: data/characterlist.ui:9
-#| msgid "Search Result"
-msgid "No Results"
-msgstr "Žiadne výsledky"
+#: data/character_dialog.ui:70
+msgid "_Copy Character"
+msgstr "S_kopírovať znak"
 
-#: data/characterlist.ui:10
-msgid "Try a different search."
-msgstr "Skúste vyhľadať niečo iné."
+#: data/character_dialog.ui:91
+msgid "Unicode"
+msgstr "Unicode"
 
-#: data/characterlist.ui:34
-msgid "Loading…"
-msgstr "Načítava sa…"
+#: data/character_dialog.ui:105
+msgid "_See Also"
+msgstr "_Pozrite tiež"
 
-#: data/character.ui:68
-msgid "Copy Character"
-msgstr "Skopírovať znak"
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "Nedávno použité"
 
-#: data/character.ui:86
-msgid "Character copied to clipboard"
-msgstr "Znak skopírovaný do schránky"
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Emotikony"
 
-#: data/mainview.ui:10
-#| msgid "No recent characters found"
-msgid "No Recent Characters"
-msgstr "Žiadne nedávne znaky"
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "Smajlíky a emócie"
 
-#: data/mainview.ui:11
-msgid "Characters will appear here if you use them."
-msgstr "Tu sa zobrazia znaky, ktoré ste použili."
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "Ľudia a telo"
 
-#: data/mainwindow.ui:7
-msgid "_Keyboard Shortcuts"
-msgstr "_Klávesové skratky"
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "Zvieratá a príroda"
 
-#: data/mainwindow.ui:11
-#| msgid "About Characters"
-msgid "_About Characters"
-msgstr "_O aplikácii Znaky"
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "Jedlo a nápoje"
 
-#: data/mainwindow.ui:33 data/org.gnome.Characters.desktop.in:4 src/main.js:58
-#: src/service.js:51
-msgid "Characters"
-msgstr "Znaky"
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "Cestovanie a miesta"
 
-#: data/menu.ui:17
-msgid "Filter by Font"
-msgstr "Filtrovať podľa písma"
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "Činnosti"
 
-#: data/shortcuts.ui:13
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "Objekty"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "Symboly"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "Vlajky"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "Písmená a symboly"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "Interpunkcie"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "Šípky"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "Odrážky"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "Obrázky"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "Meny"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "Matematika"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "Písmená"
+
+#: data/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Všeobecné"
 
-#: data/shortcuts.ui:18
+#: data/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Otvorenie ponuky"
 
-#: data/shortcuts.ui:25
-#| msgid "Search Result"
+#: data/shortcuts.ui:21
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Hľadanie"
 
-#: data/shortcuts.ui:32
+#: data/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Klávesové skratky"
 
-#: data/shortcuts.ui:39
-#| msgid "Quit"
+#: data/shortcuts.ui:33
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Ukončenie"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
-msgid "GNOME Characters"
-msgstr "Znaky prostredia GNOME"
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové skratky"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_O aplikácii Znaky"
+
+#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+msgid "Characters"
+msgstr "Znaky"
+
+#: data/window.ui:138
+msgid "No Recent Characters"
+msgstr "Žiadne nedávne znaky"
+
+#: data/window.ui:139
+msgid "Characters will appear here if you use them."
+msgstr "Tu sa zobrazia znaky, ktoré ste použili."
+
+#: data/window.ui:166
+msgid "No Results"
+msgstr "Žiadne výsledky"
+
+#: data/window.ui:167
+msgid "Try a different search."
+msgstr "Skúste vyhľadať niečo iné."
+
+#: data/window.ui:188
+msgid "Loading…"
+msgstr "Načítava sa…"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
 msgid "Character map application"
@@ -120,170 +187,102 @@ msgstr ""
 "Môžete tiež prehliadať znaky podľa kategórií, ako sú napríklad Znaky, "
 "Obrázky, atď."
 
-#: data/org.gnome.Characters.desktop.in:5
+#: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Užitočná aplikácia na nájdenie a vloženie neobvyklých znakov"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "znaky;unicode;diakritika;matematika;znaky;emotikona;smajlík;"
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+"znaky;unicode;diakritika;matematika;znaky;písmená;emotikona;smajlík;symboly;"
 
-#: data/org.gnome.Characters.gschema.xml:5
-msgid "Font to display characters"
-msgstr "Písmo zobrazovaných znakov"
-
-#: data/org.gnome.Characters.gschema.xml:6
-msgid "Use the font to render characters on the character list."
-msgstr "Písmo, ktoré sa použije na vykreslenie znakov v zozname znakov."
-
-#: data/org.gnome.Characters.gschema.xml:15
+#: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "Maximálny počet nedávnych znakov"
 
-#: src/categoryList.js:31
-msgid "Emojis"
-msgstr "Emotikony"
-
-#: src/categoryList.js:37
-msgid "Letters & Symbols"
-msgstr "Písmená a symboly"
-
-#: src/categoryList.js:46
-msgid "Punctuation"
-msgstr "Interpunkcie"
-
-#: src/categoryList.js:52
-msgid "Arrows"
-msgstr "Šípky"
-
-#: src/categoryList.js:58
-msgid "Bullets"
-msgstr "Odrážky"
-
-#: src/categoryList.js:64
-msgid "Pictures"
-msgstr "Obrázky"
-
-#: src/categoryList.js:70
-msgid "Currencies"
-msgstr "Meny"
-
-#: src/categoryList.js:76
-msgid "Math"
-msgstr "Matematika"
-
-#: src/categoryList.js:82
-msgid "Letters"
-msgstr "Písmená"
-
-#: src/categoryList.js:91
-msgid "Smileys & People"
-msgstr "Emotikony a ľudia"
-
-#: src/categoryList.js:97
-msgid "Animals & Nature"
-msgstr "Zvieratá a príroda"
-
-#: src/categoryList.js:103
-msgid "Food & Drink"
-msgstr "Jedlo a nápoje"
-
-#: src/categoryList.js:109
-msgid "Activities"
-msgstr "Činnosti"
-
-#: src/categoryList.js:115
-msgid "Travel & Places"
-msgstr "Cestovanie a miesta"
-
-#: src/categoryList.js:121
-msgid "Objects"
-msgstr "Objekty"
-
-#: src/categoryList.js:127
-msgid "Symbols"
-msgstr "Symboly"
-
-#: src/categoryList.js:133
-msgid "Flags"
-msgstr "Vlajky"
-
-#: src/categoryList.js:146
-#, javascript-format
-msgid "%s Category List Row"
-msgstr "Riadok zoznamu kategórie %s"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:352
-msgid "Recently Used"
-msgstr "Nedávno použité"
-
-#: src/characterDialog.js:49
-msgid "See Also"
-msgstr "Pozrite tiež"
-
-#: src/characterDialog.js:113 src/characterDialog.js:135
-#, javascript-format
-msgid "Unicode U+%04s"
-msgstr "Unicode U+%04s"
-
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:131
+#: src/characterDialog.js:116
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "Znak %s nie je zahrnutý v písme %s"
 
-#: src/characterList.js:169
+#: src/characterDialog.js:155
+msgid "Character copied to clipboard"
+msgstr "Znak skopírovaný do schránky"
+
+#: src/charactersView.js:156
 msgid "Unassigned"
 msgstr "Nepriradené"
 
-#: src/menu.js:42
-msgid "None"
-msgstr "Žiadne"
-
-#: src/searchProvider.js:94
+#: src/searchProvider.js:88
 msgid "Unknown character name"
 msgstr "Neznámy názov znaku"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:91
 #, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgid "U+%s"
+msgstr "U+%s"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:163 src/window.js:358
+#: src/searchProvider.js:107
+msgid "Character copied"
+msgstr "Znak skopírovaný"
+
+#: src/searchProvider.js:108
+msgid "Character was copied successfully"
+msgstr "Znak bol úspešne skopírovaný"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "Riadok %s postranného panela"
+
+#: src/window.js:152
 msgid "Search Result"
 msgstr "Výsledok vyhľadávania"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:197
+#: src/window.js:182
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: src/window.js:199
+#: src/window.js:183
+msgid "GNOME Characters"
+msgstr "Znaky prostredia GNOME"
+
+#: src/window.js:184
 msgid "Character Map"
 msgstr "Mapa znakov"
 
-#: src/window.js:219
-#, javascript-format
-msgid "%s (%s only)"
-msgstr "%s (iba %s)"
+#~ msgid "Filter by Font"
+#~ msgstr "Filtrovať podľa písma"
 
-#: src/window.js:327
-#, javascript-format
-msgid "%s Character List"
-msgstr "Zoznam znakov kategórie %s"
+#~ msgid "Font to display characters"
+#~ msgstr "Písmo zobrazovaných znakov"
 
-#. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:335
-#, javascript-format
-msgid "Recently Used %s Character List"
-msgstr "Zoznam nedávno použitých znakov kategórie %s"
+#~ msgid "Use the font to render characters on the character list."
+#~ msgstr "Písmo, ktoré sa použije na vykreslenie znakov v zozname znakov."
 
-#: src/window.js:356
-msgid "Search Result Character List"
-msgstr "Zoznam výsledkov vyhľadávaných znakov"
+#~ msgid "%s Category List Row"
+#~ msgstr "Riadok zoznamu kategórie %s"
+
+#~ msgid "None"
+#~ msgstr "Žiadne"
+
+#~ msgid "U+%s, %s: %s"
+#~ msgstr "U+%s, %s: %s"
+
+#~ msgid "%s (%s only)"
+#~ msgstr "%s (iba %s)"
+
+#~ msgid "%s Character List"
+#~ msgstr "Zoznam znakov kategórie %s"
+
+#~ msgid "Recently Used %s Character List"
+#~ msgstr "Zoznam nedávno použitých znakov kategórie %s"
+
+#~ msgid "Search Result Character List"
+#~ msgstr "Zoznam výsledkov vyhľadávaných znakov"
 
 #~ msgid "About"
 #~ msgstr "O programe"
