@@ -81,14 +81,19 @@ var SearchProvider = GObject.registerClass({
 
         for (let i = 0; i < identifiers.length; i++) {
             let character = identifiers[i];
-            let codePoint = Util.toCodePoint(character);
-            let codePointHex = codePoint.toString(16).toUpperCase();
             let name = Gc.character_name(character);
             if (name === null)
                 name = _('Unknown character name');
             else
                 name = Util.capitalize(name);
-            let summary = _('U+%s').format(codePointHex);
+
+            let summary = '';
+
+            if (!Gc.character_is_composite(character)) {
+                let codePoint = Util.toCodePoint(character);
+                let codePointHex = codePoint.toString(16).toUpperCase();
+                summary = _('U+%s').format(codePointHex);
+            }
 
             let iconData = Util.characterToIconData(character);
             ret.push({
