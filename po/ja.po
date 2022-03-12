@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
 "POT-Creation-Date: 2021-09-21 14:51+0000\n"
-"PO-Revision-Date: 2022-02-01 20:00+0900\n"
+"PO-Revision-Date: 2022-03-12 17:50+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -35,6 +35,10 @@ msgstr "読み込み中…"
 #: data/character.ui:68
 msgid "Copy Character"
 msgstr "文字をコピー"
+
+#: data/character_dialog.ui:70
+msgid "_Copy Character"
+msgstr "文字をコピー(_C)"
 
 #: data/character.ui:86
 msgid "Character copied to clipboard"
@@ -118,11 +122,11 @@ msgid "Utility application to find and insert unusual characters"
 msgstr "珍しい文字を探して挿入するためのユーティリティ"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 msgstr ""
-"characters;unicode;punctuation;math;letters;emoji;emoticon;文字;句読点;数字;"
-"絵文字;顔文字;"
+"characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;文字;ユニ"
+"コード;句読点;数字;絵文字;顔文字;表情;感情;シンボル;"
 
 #: data/org.gnome.Characters.gschema.xml:5
 msgid "Font to display characters"
@@ -176,6 +180,14 @@ msgstr "文字記号"
 msgid "Smileys & People"
 msgstr "顔文字と人"
 
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "顔文字と感情"
+
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "人と体"
+
 #: src/categoryList.js:97
 msgid "Animals & Nature"
 msgstr "動物と自然"
@@ -218,10 +230,18 @@ msgstr "最近の使用"
 msgid "See Also"
 msgstr "関連項目"
 
+#: data/character_dialog.ui:105
+msgid "_See Also"
+msgstr "関連項目(_S)"
+
 #: src/characterDialog.js:113 src/characterDialog.js:135
 #, javascript-format
 msgid "Unicode U+%04s"
 msgstr "Unicode U+%04s"
+
+#: data/character_dialog.ui:91
+msgid "Unicode"
+msgstr "Unicode"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
 #: src/characterDialog.js:131
@@ -245,6 +265,25 @@ msgstr "文字の名前が不明"
 #, javascript-format
 msgid "U+%s, %s: %s"
 msgstr "U+%s, %s: %s"
+
+#: src/searchProvider.js:91
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:107
+msgid "Character copied"
+msgstr "文字をコピーしました"
+
+#: src/searchProvider.js:108
+msgid "Character was copied successfully"
+msgstr "文字を正常にコピーしました"
+
+# ツールチップの文字列
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr ""
 
 #. FIXME: Can't use GtkContainer.child_get_property.
 #: src/window.js:163 src/window.js:358
