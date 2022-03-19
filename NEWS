@@ -1,3 +1,9 @@
+42.0
+===========
+* Port to GTK4 / libadwaita
+* Fixes & improvements to the search provider
+* Translation updates
+
 42.rc
 ===========
 * Fix reflowing in size_allocate() (Alexander Mikhaylenko)
