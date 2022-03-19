@@ -6,19 +6,6 @@ Gjs_MenuPopover GtkScrolledWindow {
     border-width: 1px 0;
 }
 
-.font {
-    padding: 6px 6px;
-}
-
-.banner {
-    color: @insensitive_fg_color;
-}
-
-.banner-label {
-    padding: 10pt;
-    font-size: x-large;
-}
-
 .character-label {
     font-size: 7em;
     font-weight: bold;
