@@ -14,8 +14,11 @@
     </p>
   </description>
   <screenshots>
-    <screenshot type="default" width="1024" height="768">
-      <image>https://raw.github.com/gnome-design-team/gnome-mockups/master/character-map/png/grid.png</image>
+    <screenshot type="default">
+      <image>https://gitlab.gnome.org/GNOME/gnome-characters/raw/main/data/screenshots/screenshot1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://gitlab.gnome.org/GNOME/gnome-characters/raw/main/data/screenshots/screenshot2.png</image>
     </screenshot>
   </screenshots>
   <project_group>GNOME</project_group>
