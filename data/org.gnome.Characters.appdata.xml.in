@@ -19,10 +19,9 @@
     </screenshot>
   </screenshots>
   <project_group>GNOME</project_group>
-  <url type="homepage">https://wiki.gnome.org/Design/Apps/CharacterMap</url>
+  <url type="homepage">https://apps.gnome.org/app/org.gnome.Characters/</url>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-characters/issues</url>
-  <url type="donation">http://www.gnome.org/friends/</url>
-  <url type="help">https://wiki.gnome.org/Apps/Gucharmap</url>
+  <url type="donation">https://www.gnome.org/donate</url>
   <update_contact>dueno_at_src.gnome.org</update_contact>
   <kudos>
     <kudo>HiDpiIcon</kudo>
