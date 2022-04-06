@@ -186,7 +186,7 @@ var MainWindow = GObject.registerClass({
             license_type: Gtk.License.GPL_2_0,
             logo_icon_name: pkg.name,
             version: pkg.version,
-            website: 'https://wiki.gnome.org/Apps/Characters',
+            website: 'https://apps.gnome.org/app/org.gnome.Characters/',
             wrap_license: true,
             modal: true,
             transient_for: this,
