@@ -2,15 +2,15 @@
 # Copyright (C) 2016 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Zander Brown <zbrown@gnome.org>, 2019-2021.
-# Bruce Cowan <bruce@bcowan.me.uk>, 2016-2021.
+# Bruce Cowan <bruce@bcowan.me.uk>, 2016-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2021-02-21 10:03+0000\n"
-"PO-Revision-Date: 2021-03-21 20:11+0000\n"
+"POT-Creation-Date: 2022-02-26 14:39+0000\n"
+"PO-Revision-Date: 2022-04-14 21:44+0100\n"
 "Last-Translator: Bruce Cowan <bruce@bcowan.me.uk>\n"
 "Language-Team: English - United Kingdom <en@li.org>\n"
 "Language: en_GB\n"
@@ -18,84 +18,158 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"X-Generator: Gtranslator 42.0\n"
+"X-DL-Team: en_GB\n"
+"X-DL-Module: gnome-characters\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
 
-#: data/characterlist.ui:9
-msgid "No Results"
-msgstr "No Results"
+#: data/character_dialog.ui:70
+msgid "_Copy Character"
+msgstr "_Copy Character"
 
-#: data/characterlist.ui:10
-msgid "Try a different search."
-msgstr "Try a different search."
+#: data/character_dialog.ui:91
+msgid "Unicode"
+msgstr "Unicode"
 
-#: data/characterlist.ui:34
-msgid "Loading…"
-msgstr "Loading…"
+#: data/character_dialog.ui:105
+msgid "_See Also"
+msgstr "_See Also"
 
-#: data/character.ui:68
-msgid "Copy Character"
-msgstr "Copy Character"
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "Recently Used"
 
-#: data/character.ui:86
-msgid "Character copied to clipboard"
-msgstr "Character copied to clipboard"
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Emojis"
 
-#: data/mainview.ui:10
-msgid "No Recent Characters"
-msgstr "No Recent Characters"
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "Smileys & Emotion"
 
-#: data/mainview.ui:11
-msgid "Characters will appear here if you use them."
-msgstr "Characters will appear here if you use them."
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "People & Body"
 
-#: data/mainwindow.ui:7
-msgid "_Keyboard Shortcuts"
-msgstr "_Keyboard Shortcuts"
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "Animals & Nature"
 
-#: data/mainwindow.ui:11
-msgid "_About Characters"
-msgstr "_About Characters"
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "Food & Drink"
 
-#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
-#: src/service.js:51
-msgid "Characters"
-msgstr "Characters"
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "Travel & Places"
 
-#: data/menu.ui:17
-msgid "Filter by Font"
-msgstr "Filter by Font"
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "Activities"
 
-#: data/shortcuts.ui:13
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "Objects"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "Symbols"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "Flags"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "Letters & Symbols"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "Punctuation"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "Arrows"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "Bullets"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "Pictures"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "Currencies"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "Maths"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "Letters"
+
+#: data/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
-#: data/shortcuts.ui:18
+#: data/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Open menu"
 
-#: data/shortcuts.ui:25
-#| msgid "Search Result"
+#: data/shortcuts.ui:21
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Search"
 
-#: data/shortcuts.ui:32
-#| msgid "_Keyboard Shortcuts"
+#: data/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Keyboard shortcuts"
 
-#: data/shortcuts.ui:39
-#| msgid "Quit"
+#: data/shortcuts.ui:33
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quit"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
-msgid "GNOME Characters"
-msgstr "GNOME Characters"
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Keyboard Shortcuts"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_About Characters"
+
+#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+msgid "Characters"
+msgstr "Characters"
+
+#: data/window.ui:138
+msgid "No Recent Characters"
+msgstr "No Recent Characters"
+
+#: data/window.ui:139
+msgid "Characters will appear here if you use them."
+msgstr "Characters will appear here if you use them."
+
+#: data/window.ui:166
+msgid "No Results"
+msgstr "No Results"
+
+#: data/window.ui:167
+msgid "Try a different search."
+msgstr "Try a different search."
+
+#: data/window.ui:188
+msgid "Loading…"
+msgstr "Loading…"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
 msgid "Character map application"
@@ -119,173 +193,104 @@ msgstr ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 
-#: data/org.gnome.Characters.desktop.in:5
+#: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Utility application to find and insert unusual characters"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "characters;unicode;punctuation;maths;letters;emoji;emoticon;"
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 
-#: data/org.gnome.Characters.gschema.xml:5
-msgid "Font to display characters"
-msgstr "Font to display characters"
-
-#: data/org.gnome.Characters.gschema.xml:6
-msgid "Use the font to render characters on the character list."
-msgstr "Use the font to render characters on the character list."
-
-#: data/org.gnome.Characters.gschema.xml:15
+#: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "Maximum recent characters"
 
-#: src/categoryList.js:31
-msgid "Emojis"
-msgstr "Emojis"
-
-#: src/categoryList.js:37
-msgid "Letters & Symbols"
-msgstr "Letters & Symbols"
-
-#: src/categoryList.js:46
-msgid "Punctuation"
-msgstr "Punctuation"
-
-#: src/categoryList.js:52
-msgid "Arrows"
-msgstr "Arrows"
-
-#: src/categoryList.js:58
-msgid "Bullets"
-msgstr "Bullets"
-
-#: src/categoryList.js:64
-msgid "Pictures"
-msgstr "Pictures"
-
-#: src/categoryList.js:70
-msgid "Currencies"
-msgstr "Currencies"
-
-#: src/categoryList.js:76
-msgid "Math"
-msgstr "Maths"
-
-#: src/categoryList.js:82
-msgid "Letters"
-msgstr "Letters"
-
-#: src/categoryList.js:91
-msgid "Smileys & People"
-msgstr "Smileys & People"
-
-#: src/categoryList.js:97
-msgid "Animals & Nature"
-msgstr "Animals & Nature"
-
-#: src/categoryList.js:103
-msgid "Food & Drink"
-msgstr "Food & Drink"
-
-#: src/categoryList.js:109
-msgid "Activities"
-msgstr "Activities"
-
-#: src/categoryList.js:115
-msgid "Travel & Places"
-msgstr "Travel & Places"
-
-#: src/categoryList.js:121
-msgid "Objects"
-msgstr "Objects"
-
-#: src/categoryList.js:127
-msgid "Symbols"
-msgstr "Symbols"
-
-#: src/categoryList.js:133
-msgid "Flags"
-msgstr "Flags"
-
-#: src/categoryList.js:146
-#, javascript-format
-msgid "%s Category List Row"
-msgstr "%s Category List Row"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:352
-msgid "Recently Used"
-msgstr "Recently Used"
-
-#: src/characterDialog.js:49
-msgid "See Also"
-msgstr "See Also"
-
-#: src/characterDialog.js:113 src/characterDialog.js:135
-#, javascript-format
-msgid "Unicode U+%04s"
-msgstr "Unicode U+%04s"
-
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:131
+#: src/characterDialog.js:116
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s is not included in %s"
 
-#: src/characterList.js:169
+#: src/characterDialog.js:155
+msgid "Character copied to clipboard"
+msgstr "Character copied to clipboard"
+
+#: src/charactersView.js:156
 msgid "Unassigned"
 msgstr "Unassigned"
 
-#: src/menu.js:42
-msgid "None"
-msgstr "None"
-
-#: src/searchProvider.js:94
+#: src/searchProvider.js:88
 msgid "Unknown character name"
 msgstr "Unknown character name"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:91
 #, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgid "U+%s"
+msgstr "U+%s"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:163 src/window.js:358
+#: src/searchProvider.js:107
+msgid "Character copied"
+msgstr "Character copied"
+
+#: src/searchProvider.js:108
+msgid "Character was copied successfully"
+msgstr "Character was copied successfully"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "%s Sidebar Row"
+
+#: src/window.js:152
 msgid "Search Result"
 msgstr "Search Result"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:197
+#: src/window.js:182
 msgid "translator-credits"
 msgstr ""
 "Bruce Cowan <bruce@bcowan.me.uk>\n"
 "Waldo Luís Ribeiro <waldoribeiro@sapo.pt>\n"
 "Zander Brown <zbrown@gnome.org>"
 
-#: src/window.js:199
+#: src/window.js:183
+msgid "GNOME Characters"
+msgstr "GNOME Characters"
+
+#: src/window.js:184
 msgid "Character Map"
 msgstr "Character Map"
 
-#: src/window.js:219
-#, javascript-format
-msgid "%s (%s only)"
-msgstr "%s (%s only)"
+#~ msgid "Filter by Font"
+#~ msgstr "Filter by Font"
 
-#: src/window.js:327
-#, javascript-format
-msgid "%s Character List"
-msgstr "%s Character List"
+#~ msgid "Font to display characters"
+#~ msgstr "Font to display characters"
 
-#. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:335
-#, javascript-format
-msgid "Recently Used %s Character List"
-msgstr "Recently Used %s Character List"
+#~ msgid "Use the font to render characters on the character list."
+#~ msgstr "Use the font to render characters on the character list."
 
-#: src/window.js:356
-msgid "Search Result Character List"
-msgstr "Search Result Character List"
+#~ msgid "%s Category List Row"
+#~ msgstr "%s Category List Row"
+
+#~ msgid "None"
+#~ msgstr "None"
+
+#~ msgid "U+%s, %s: %s"
+#~ msgstr "U+%s, %s: %s"
+
+#~ msgid "%s (%s only)"
+#~ msgstr "%s (%s only)"
+
+#~ msgid "%s Character List"
+#~ msgstr "%s Character List"
+
+#~ msgid "Recently Used %s Character List"
+#~ msgstr "Recently Used %s Character List"
+
+#~ msgid "Search Result Character List"
+#~ msgstr "Search Result Character List"
 
 #~ msgid "Search found no results"
 #~ msgstr "Search found no results"
