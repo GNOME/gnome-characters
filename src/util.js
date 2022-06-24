@@ -147,7 +147,7 @@ function characterToIconData(character) {
     renderer.unrealize();
 
     const stream = Gio.MemoryInputStream.new_from_bytes(bytes);
-    const px = GdkPixbuf.Pixbuf.new_from_stream_at_scale(stream, size / 2.0, size / 2.0, true, null);
+    const px = GdkPixbuf.Pixbuf.new_from_stream_at_scale(stream, size, size, true, null);
 
     let variantBytes = GLib.Variant.new_from_bytes(GLib.VariantType.new('ay'), px.read_pixel_bytes(), true);
     return GLib.Variant.new_tuple([
