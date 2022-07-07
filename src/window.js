@@ -169,30 +169,29 @@ var MainWindow = GObject.registerClass({
     }
 
     _about() {
-        const aboutDialog = new Gtk.AboutDialog({
-            artists: [
+        const aboutWindow = new Adw.AboutWindow({
+            application_name: _('Characters'),
+            application_icon: pkg.name,
+            developer_name: _('The GNOME Project'),
+            designers: [
                 'Allan Day <allanpday@gmail.com>',
                 'Jakub Steiner <jimmac@gmail.com>',
             ],
-            authors: [
+            developers: [
                 'Daiki Ueno <dueno@src.gnome.org>',
                 'Giovanni Campagna <scampa.giovanni@gmail.com>',
             ],
             // TRANSLATORS: put your names here, one name per line.
             translator_credits: _('translator-credits'),
-            program_name: _('GNOME Characters'),
-            comments: _('Character Map'),
             copyright: 'Copyright 2014-2018 Daiki Ueno',
             license_type: Gtk.License.GPL_2_0,
-            logo_icon_name: pkg.name,
             version: pkg.version,
             website: 'https://apps.gnome.org/app/org.gnome.Characters/',
-            wrap_license: true,
-            modal: true,
+            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-characters/-/issues/new',
             transient_for: this,
         });
 
-        aboutDialog.show();
+        aboutWindow.present();
     }
 
     get maxRecentCharacters() {
