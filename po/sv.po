@@ -1,7 +1,7 @@
 # Swedish translation for gnome-characters.
 # Copyright © 2015-2022 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2020, 2021.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2020, 2021, 2022.
 # Sebastian Rasmussen <sebras@gmail.com>, 2015.
 # Luna Jernberg <droidbittin@gmail.com>, 2021, 2022.
 #
@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-02-26 14:39+0000\n"
-"PO-Revision-Date: 2022-03-03 18:06+0100\n"
+"POT-Creation-Date: 2022-07-08 23:19+0000\n"
+"PO-Revision-Date: 2022-07-09 09:33+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 
 #: data/character_dialog.ui:70
 msgid "_Copy Character"
@@ -144,7 +144,7 @@ msgid "_About Characters"
 msgstr "_Om Tecken"
 
 #: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
 msgid "Characters"
 msgstr "Tecken"
 
@@ -205,13 +205,17 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Maximalt antal senaste tecken"
 
+#: src/characterDialog.js:102 src/searchProvider.js:86
+msgid "Unknown character name"
+msgstr "Okänt teckennamn"
+
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:116
+#: src/characterDialog.js:127
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s är inte inkluderat i %s"
 
-#: src/characterDialog.js:155
+#: src/characterDialog.js:166
 msgid "Character copied to clipboard"
 msgstr "Tecken kopierat till urklipp"
 
@@ -219,20 +223,16 @@ msgstr "Tecken kopierat till urklipp"
 msgid "Unassigned"
 msgstr "Otilldelad"
 
-#: src/searchProvider.js:88
-msgid "Unknown character name"
-msgstr "Okänt teckennamn"
-
-#: src/searchProvider.js:91
+#: src/searchProvider.js:95
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:107
+#: src/searchProvider.js:112
 msgid "Character copied"
 msgstr "Tecken kopierat"
 
-#: src/searchProvider.js:108
+#: src/searchProvider.js:113
 msgid "Character was copied successfully"
 msgstr "Lyckades kopiera tecken"
 
@@ -246,8 +246,12 @@ msgstr "%s-sidofältsrad"
 msgid "Search Result"
 msgstr "Sökresultat"
 
+#: src/window.js:175
+msgid "The GNOME Project"
+msgstr "GNOME-projektet"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:182
+#: src/window.js:185
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
@@ -256,13 +260,11 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/window.js:183
-msgid "GNOME Characters"
-msgstr "GNOME Tecken"
+#~ msgid "GNOME Characters"
+#~ msgstr "GNOME Tecken"
 
-#: src/window.js:184
-msgid "Character Map"
-msgstr "Teckentabell"
+#~ msgid "Character Map"
+#~ msgstr "Teckentabell"
 
 #~ msgid "U+%s, %s: %s"
 #~ msgstr "U+%s, %s: %s"
