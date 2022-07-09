@@ -7,16 +7,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2022-01-29 21:48+0000\n"
-"PO-Revision-Date: 2022-01-30 08:46+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues"
+"\n"
+"POT-Creation-Date: 2022-07-09 14:39+0000\n"
+"PO-Revision-Date: 2022-07-09 17:43+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "X-Generator: Lokalize 20.12.0\n"
 "X-Project-Style: gnome\n"
 
@@ -142,7 +144,7 @@ msgid "_About Characters"
 msgstr "_Про «Символи»"
 
 #: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
 msgid "Characters"
 msgstr "Символи"
 
@@ -201,13 +203,17 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Максимально нещодавні символи"
 
+#: src/characterDialog.js:102 src/searchProvider.js:86
+msgid "Unknown character name"
+msgstr "Невідома назва символу"
+
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:116
+#: src/characterDialog.js:127
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s немає в %s"
 
-#: src/characterDialog.js:155
+#: src/characterDialog.js:166
 msgid "Character copied to clipboard"
 msgstr "Символ скопійовано в буфер"
 
@@ -215,21 +221,16 @@ msgstr "Символ скопійовано в буфер"
 msgid "Unassigned"
 msgstr "Не призначено"
 
-#: src/searchProvider.js:88
-msgid "Unknown character name"
-msgstr "Невідома назва символу"
-
-#: src/searchProvider.js:91
+#: src/searchProvider.js:95
 #, javascript-format
 msgid "U+%s"
-msgstr ""
-"U+%s"
+msgstr "U+%s"
 
-#: src/searchProvider.js:107
+#: src/searchProvider.js:112
 msgid "Character copied"
 msgstr "Символ скопійовано"
 
-#: src/searchProvider.js:108
+#: src/searchProvider.js:113
 msgid "Character was copied successfully"
 msgstr "Символ було успішно скопійовано"
 
@@ -242,18 +243,20 @@ msgstr "Рядок бічної панелі %s"
 msgid "Search Result"
 msgstr "Результати пошуку"
 
+#: src/window.js:175
+msgid "The GNOME Project"
+msgstr "Проєкт GNOME"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:182
+#: src/window.js:185
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/window.js:183
-msgid "GNOME Characters"
-msgstr "Символи GNOME"
+#~ msgid "GNOME Characters"
+#~ msgstr "Символи GNOME"
 
-#: src/window.js:184
-msgid "Character Map"
-msgstr "Таблиця символів"
+#~ msgid "Character Map"
+#~ msgstr "Таблиця символів"
 
 #~ msgid "U+%s, %s: %s"
 #~ msgstr "U+%s, %s: %s"
