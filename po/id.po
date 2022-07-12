@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-02-01 12:09+0000\n"
-"PO-Revision-Date: 2022-02-08 09:57+0700\n"
+"POT-Creation-Date: 2022-07-09 14:39+0000\n"
+"PO-Revision-Date: 2022-07-12 17:47+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/character_dialog.ui:70
 msgid "_Copy Character"
@@ -141,7 +141,7 @@ msgid "_About Characters"
 msgstr "Tent_ang Karakter"
 
 #: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
 msgid "Characters"
 msgstr "Karakter"
 
@@ -201,13 +201,17 @@ msgstr "karakter;unikode;tanda baca;matematika;huruf;emoji;emotikon;simbol;"
 msgid "Maximum recent characters"
 msgstr "Maksimum karakter baru-baru ini"
 
+#: src/characterDialog.js:102 src/searchProvider.js:86
+msgid "Unknown character name"
+msgstr "Nama karakter tak dikenal"
+
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:116
+#: src/characterDialog.js:127
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s tidak termasuk dalam %s"
 
-#: src/characterDialog.js:155
+#: src/characterDialog.js:166
 msgid "Character copied to clipboard"
 msgstr "Karakter disalin ke papan klip"
 
@@ -215,20 +219,16 @@ msgstr "Karakter disalin ke papan klip"
 msgid "Unassigned"
 msgstr "Belum ditetapkan"
 
-#: src/searchProvider.js:88
-msgid "Unknown character name"
-msgstr "Nama karakter tak dikenal"
-
-#: src/searchProvider.js:91
+#: src/searchProvider.js:95
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:107
+#: src/searchProvider.js:112
 msgid "Character copied"
 msgstr "Karakter disalin"
 
-#: src/searchProvider.js:108
+#: src/searchProvider.js:113
 msgid "Character was copied successfully"
 msgstr "Karakter berhasil disalin"
 
@@ -241,20 +241,22 @@ msgstr "%s Baris Bilah Sisi"
 msgid "Search Result"
 msgstr "Hasil Pencarian"
 
+#: src/window.js:175
+msgid "The GNOME Project"
+msgstr "Proyek GNOME"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:182
+#: src/window.js:185
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2015, 2016.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2019, 2021, 2022."
 
-#: src/window.js:183
-msgid "GNOME Characters"
-msgstr "GNOME Karakter"
+#~ msgid "GNOME Characters"
+#~ msgstr "GNOME Karakter"
 
-#: src/window.js:184
-msgid "Character Map"
-msgstr "Peta Karakter"
+#~ msgid "Character Map"
+#~ msgstr "Peta Karakter"
 
 #~ msgid "U+%s, %s: %s"
 #~ msgstr "U+%s, %s: %s"
