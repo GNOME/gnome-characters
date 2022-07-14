@@ -1,3 +1,19 @@
+43.alpha
+===========
+* Add support for composite emoji (Alexander Mikhaylenko)
+* Use AdwAboutWindow for an adaptive about window (Christopher Davis)
+* Translation updates:
+ - Dutch
+ - English (United Kingdom)
+ - Georgian
+ - Icelandic
+ - Indonesian
+ - Persian
+ - Portuguese
+ - Russian
+ - Swedish
+ - Ukrainian
+
 42.0
 ===========
 * Port to GTK4 / libadwaita

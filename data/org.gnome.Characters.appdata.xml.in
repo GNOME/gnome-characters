@@ -35,6 +35,24 @@
   <translation type="gettext">org.gnome.Characters</translation>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="43.alpha" date="2022-07-13">
+      <ul>
+        <p>Characters 43.alpha comes with composite emoji support and a new adaptive aboud window.</p>
+        <p>It also comes with updated translations for the following locales:</p>
+        <ul>
+          <li>Dutch</li>
+          <li>English (United Kingdom)</li>
+          <li>Georgian</li>
+          <li>Icelandic</li>
+          <li>Indonesian</li>
+          <li>Persian</li>
+          <li>Portuguese</li>
+          <li>Russian</li>
+          <li>Swedish</li>
+          <li>Ukrainian</li>
+        </ul>
+      </ul>
+    </release>
     <release version="42.0" date="2022-03-19">
       <p>Characters 42.0 comes plenty of changes</p>
       <ul>
