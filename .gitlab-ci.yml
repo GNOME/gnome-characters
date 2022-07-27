@@ -5,7 +5,6 @@ stages:
     - cross_environment
 
 flatpak:
-    image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master
     stage: test
     variables:
         MANIFEST_PATH: "build-aux/flatpak/org.gnome.Characters.json"
