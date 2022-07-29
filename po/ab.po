@@ -1,15 +1,8 @@
-# Abkhazian translation for gnome-characters.
-# Copyright (C) 2022 gnome-characters's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gnome-characters package.
-# Нанба Наала <naala-nanba@rambler.ru>, 2022.
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
 "POT-Creation-Date: 2022-07-09 14:39+0000\n"
-"PO-Revision-Date: 2021-11-26 21:35+0000\n"
 "Last-Translator: Нанба Наала <naala-nanba@rambler.ru>\n"
 "Language-Team: Abkhazian <ab@li.org>\n"
 "Language: ab\n"
@@ -17,7 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-DamnedLies-Scope: partial\n"
 
 #: data/character_dialog.ui:70
 msgid "_Copy Character"
@@ -198,10 +190,8 @@ msgstr ""
 "emoticon;"
 
 #: data/org.gnome.Characters.gschema.xml:8
-#, fuzzy
-#| msgid "No Recent Characters"
 msgid "Maximum recent characters"
-msgstr "Аҵыхәтәантәи асимволқәа ыҟаӡам"
+msgstr ""
 
 #: src/characterDialog.js:102 src/searchProvider.js:86
 msgid "Unknown character name"
@@ -222,20 +212,17 @@ msgid "Unassigned"
 msgstr "Иазкӡам"
 
 #: src/searchProvider.js:95
+#, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
 #: src/searchProvider.js:112
-#, fuzzy
-#| msgid "Character Map"
 msgid "Character copied"
-msgstr "Асимволқәа рыхсаала"
+msgstr ""
 
 #: src/searchProvider.js:113
-#, fuzzy
-#| msgid "Character copied to clipboard"
 msgid "Character was copied successfully"
-msgstr "Асимвол хкыҧхьаауп иаҭныҧсахлара абуфер ахь"
+msgstr ""
 
 #: src/sidebarRow.js:72
 #, javascript-format
@@ -248,7 +235,7 @@ msgstr "Алҵшәа аҧшаара "
 
 #: src/window.js:175
 msgid "The GNOME Project"
-msgstr ""
+msgstr "The GNOME Project"
 
 #. TRANSLATORS: put your names here, one name per line.
 #: src/window.js:185
@@ -256,8 +243,8 @@ msgid "translator-credits"
 msgstr "Нанба Наала <naala-nanba@rambler.ru>, 2022"
 
 #, javascript-format
-#~ msgid "U+%s, %s: %s"
-#~ msgstr "U+%s, %s: %s"
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
 
-#~ msgid "GNOME Characters"
-#~ msgstr "GNOME асимволқәа"
+msgid "GNOME Characters"
+msgstr "GNOME асимволқәа"
