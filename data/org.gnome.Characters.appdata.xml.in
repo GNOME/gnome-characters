@@ -43,6 +43,7 @@
   <translation type="gettext">org.gnome.Characters</translation>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="43.beta" date="2022-08-07" type="development" />
     <release version="43.alpha" date="2022-07-13">
       <ul>
         <p>Characters 43.alpha comes with composite emoji support and a new adaptive aboud window.</p>
