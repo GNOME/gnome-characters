@@ -8,8 +8,8 @@
 msgid ""
 msgstr "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2022-02-01 12:09+0000\n"
-"PO-Revision-Date: 2022-02-05 19:00+0100\n"
+"POT-Creation-Date: 2022-07-09 14:39+0000\n"
+"PO-Revision-Date: 2022-08-07 19:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -140,7 +140,7 @@ msgid "_About Characters"
 msgstr "Karaktereak aplikazioari _buruz"
 
 #: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
 msgid "Characters"
 msgstr "Karaktereak"
 
@@ -194,13 +194,17 @@ msgstr "karaktereak;unicode;puntuazioa;matematika;hizkiak;aurpegierak;emotikonoa
 msgid "Maximum recent characters"
 msgstr "Gehieneko azken karaktereak"
 
+#: src/characterDialog.js:102 src/searchProvider.js:86
+msgid "Unknown character name"
+msgstr "Karakterearen izena ezezaguna"
+
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:116
+#: src/characterDialog.js:127
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "'%s' ez dago '%s' letra-tipoan"
 
-#: src/characterDialog.js:155
+#: src/characterDialog.js:166
 msgid "Character copied to clipboard"
 msgstr "Karakterea arbelean kopiatuta"
 
@@ -208,20 +212,16 @@ msgstr "Karakterea arbelean kopiatuta"
 msgid "Unassigned"
 msgstr "Esleitu gabea"
 
-#: src/searchProvider.js:88
-msgid "Unknown character name"
-msgstr "Karakterearen izena ezezaguna"
-
-#: src/searchProvider.js:91
+#: src/searchProvider.js:95
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:107
+#: src/searchProvider.js:112
 msgid "Character copied"
 msgstr "Karakterea kopiatu da"
 
-#: src/searchProvider.js:108
+#: src/searchProvider.js:113
 msgid "Character was copied successfully"
 msgstr "Karakterea ongi kopiatu da"
 
@@ -234,18 +234,20 @@ msgstr "%s alboko barraren errenkada"
 msgid "Search Result"
 msgstr "Bilaketaren emaitzak"
 
+#: src/window.js:175
+msgid "The GNOME Project"
+msgstr "GNOME proiektua"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:182
+#: src/window.js:185
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: src/window.js:183
-msgid "GNOME Characters"
-msgstr "GNOMEren Karaktereak"
+#~ msgid "GNOME Characters"
+#~ msgstr "GNOMEren Karaktereak"
 
-#: src/window.js:184
-msgid "Character Map"
-msgstr "Karaktere-mapa"
+#~ msgid "Character Map"
+#~ msgstr "Karaktere-mapa"
 
 #~ msgid "U+%s, %s: %s"
 #~ msgstr "U+%s, %s: %s"
