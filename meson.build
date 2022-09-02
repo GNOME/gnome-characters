@@ -43,8 +43,7 @@ if dbus_service_dir == ''
   dbus_service_dir = join_paths(characters_datadir, 'dbus-1', 'services')
 endif
 
-# Just check that gjs-1.0 is present and recent enough
-dependency('gjs-1.0', version: '>= 1.50')
+gjs = dependency('gjs-1.0', version: '>= 1.50')
 dependency('gtk4', version: '>=4.6')
 libhandy = dependency ('libadwaita-1', version: '>= 1.2.alpha')
 

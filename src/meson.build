@@ -1,5 +1,5 @@
 script_conf = configuration_data()
-script_conf.set('GJS', find_program('gjs').path())
+script_conf.set('GJS', gjs.get_variable(pkgconfig: 'gjs_console'))
 script_conf.set('PACKAGE_VERSION', characters_version)
 script_conf.set('appid', application_id)
 script_conf.set('libdir', characters_libdir)
