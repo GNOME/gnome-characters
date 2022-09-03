@@ -43,6 +43,23 @@
   <translation type="gettext">org.gnome.Characters</translation>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="43.rc" date="2022-09-03" type="development">
+      <p>Characters 43.rc comes with updated translations for the following locales:</p>
+      <ul>
+        <li>Catalan</li>
+        <li>Chinese (Taiwan)</li>
+        <li>Croatian</li>
+        <li>Czech</li>
+        <li>Danish</li>
+        <li>Finnish</li>
+        <li>Galician</li>
+        <li>Hungarian</li>
+        <li>Lithuanian</li>
+        <li>Polish</li>
+        <li>Portuguese (Brazil)</li>
+        <li>Slovenian</li>
+      </ul>
+    </release>
     <release version="43.beta" date="2022-08-07" type="development" />
     <release version="43.alpha" date="2022-07-13">
       <ul>
