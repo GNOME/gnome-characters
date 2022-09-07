@@ -2,7 +2,7 @@
 # Copyright (C) 2015, 2016 Seong-ho Cho, et al.
 # This file is distributed under the same license as the gnome-characters package.
 # Seong-ho Cho <shcho@gnome.org>, 2015-2017.
-# DaeHyun Sung <sungdh86@gmail.com>, 2017-2020.
+# DaeHyun Sung <sungdh86@gmail.com>, 2017-2022.
 # Changwoo Ryu <cwryu@debian.org>, 2021-2022.
 #
 msgid ""
@@ -10,15 +10,16 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-02-26 14:39+0000\n"
-"PO-Revision-Date: 2022-03-01 19:45+0900\n"
-"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
+"POT-Creation-Date: 2022-07-09 14:39+0000\n"
+"PO-Revision-Date: 2022-09-07 00:18+0900\n"
+"Last-Translator: DaeHyun Sung <sungdh86+git@gmail.com>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/character_dialog.ui:70
 msgid "_Copy Character"
@@ -142,7 +143,7 @@ msgid "_About Characters"
 msgstr "문자 도구 정보(_A)"
 
 #: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
 msgid "Characters"
 msgstr "문자 도구"
 
@@ -192,19 +193,25 @@ msgstr "자주 사용하지 않는 문자를 찾아 입력하는 유틸리티 �
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr "characters;문자;unicode;유니코드;punctuation;구두기호;구두점;math;수학;letters;언어문자;emoji;이모지;emoticon;이모티콘;symbols;심볼;기호;"
+msgstr ""
+"characters;문자;unicode;유니코드;punctuation;구두기호;구두점;math;수학;"
+"letters;언어문자;emoji;이모지;emoticon;이모티콘;symbols;심볼;기호;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "최대 최근 사용 문자"
 
+#: src/characterDialog.js:102 src/searchProvider.js:86
+msgid "Unknown character name"
+msgstr "알 수 없는 문자 이름"
+
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:116
+#: src/characterDialog.js:127
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s이(가) %s에 없습니다"
 
-#: src/characterDialog.js:155
+#: src/characterDialog.js:166
 msgid "Character copied to clipboard"
 msgstr "클립보드에 문자를 복사했습니다"
 
@@ -212,20 +219,16 @@ msgstr "클립보드에 문자를 복사했습니다"
 msgid "Unassigned"
 msgstr "할당하지 않음"
 
-#: src/searchProvider.js:88
-msgid "Unknown character name"
-msgstr "알 수 없는 문자 이름"
-
-#: src/searchProvider.js:91
+#: src/searchProvider.js:95
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:107
+#: src/searchProvider.js:112
 msgid "Character copied"
 msgstr "문자 복사함"
 
-#: src/searchProvider.js:108
+#: src/searchProvider.js:113
 msgid "Character was copied successfully"
 msgstr "문자를 성공적으로 복사했습니다"
 
@@ -239,18 +242,20 @@ msgstr "%s 가장자리 창 열"
 msgid "Search Result"
 msgstr "검색 결과"
 
+#: src/window.js:175
+msgid "The GNOME Project"
+msgstr "그놈 프로젝트"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:182
+#: src/window.js:185
 msgid "translator-credits"
 msgstr ""
 "조성호 <shcho@gnome.org>\n"
 "성대현 <sungdh86@gmail.com>\n"
 "류창우 <cwryu@debian.org>"
 
-#: src/window.js:183
-msgid "GNOME Characters"
-msgstr "그놈 문자 도구"
+#~ msgid "GNOME Characters"
+#~ msgstr "그놈 문자 도구"
 
-#: src/window.js:184
-msgid "Character Map"
-msgstr "문자표"
+#~ msgid "Character Map"
+#~ msgstr "문자표"
