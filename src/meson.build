@@ -13,6 +13,11 @@ configure_file(
     install_dir: characters_pkgdatadir
 )
 
+install_symlink(
+  'gnome-characters',
+  install_dir: characters_bindir,
+  pointing_to: characters_pkgdatadir / application_id,
+)
 
 resource_data = files(
   'characterDialog.js',

@@ -3,7 +3,7 @@ project(
   version: '44.alpha',
   license: ['BSD-3-Clause', 'GPL-2.0-or-later'],
   default_options: 'buildtype=debugoptimized',
-  meson_version: '>= 0.59.0'
+  meson_version: '>= 0.61.0'
 )
 
 if get_option('profile') == 'development'
@@ -79,13 +79,6 @@ endif
 configure_file(
   output: 'config.h',
   configuration: configuration_data()
-)
-
-meson.add_install_script(
-  'meson_post_install.py',
-  characters_bindir,
-  characters_pkgdatadir,
-  application_id
 )
 
 gnome.post_install(
