@@ -1,6 +1,7 @@
 # Turkish translation for gnome-characters.
-# Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2015-2022 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
+#
 # Kaan Özdinçer <kaanozdincer@gmail.com>, 2015.
 # Muhammet Kara <muhammetk@gmail.com>, 2015, 2016.
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
@@ -11,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gnome characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-07-09 14:39+0000\n"
+"POT-Creation-Date: 2022-07-22 22:42+0000\n"
 "PO-Revision-Date: 2022-07-23 01:39+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
@@ -256,79 +257,3 @@ msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Simge Sezgin <simgeszgn@gmail.com>"
-
-#~ msgid "GNOME Characters"
-#~ msgstr "GNOME Karakterler"
-
-#~ msgid "Character Map"
-#~ msgstr "Karakter Eşlemi"
-
-#~ msgid "Filter by Font"
-#~ msgstr "Yazı tipine göre süz"
-
-#~ msgid "Font to display characters"
-#~ msgstr "Karakterlerin gösterileceği yazı tipi"
-
-#~ msgid "Use the font to render characters on the character list."
-#~ msgstr ""
-#~ "Karakter listesindeki karakterleri gerçeklemede kullanılan yazı tipi."
-
-#~ msgid "%s Category List Row"
-#~ msgstr "%s Kategori Listesi Satırı"
-
-#~ msgid "None"
-#~ msgstr "Hiçbiri"
-
-#~ msgid "U+%s, %s: %s"
-#~ msgstr "U+%s, %s: %s"
-
-#~ msgid "%s (%s only)"
-#~ msgstr "%s (yalnızca %s)"
-
-#~ msgid "%s Character List"
-#~ msgstr "%s Karakter Listesi"
-
-#~ msgid "Recently Used %s Character List"
-#~ msgstr "Son Kullanılan %s Karakter Listesi"
-
-#~ msgid "Search Result Character List"
-#~ msgstr "Karakter Listesi Arama Sonucu"
-
-#~ msgid "Search found no results"
-#~ msgstr "Arama sonuç bulamadı"
-
-#~ msgid "Current page"
-#~ msgstr "Şimdiki sayfa"
-
-#~ msgid "Characters Application"
-#~ msgstr "Karakterler Uygulaması"
-
-#~ msgid "Characters Application started"
-#~ msgstr "Karakterler Uygulaması başladı"
-
-#~ msgid "Characters Application activate"
-#~ msgstr "Karakterler Uygulaması etkin"
-
-#~ msgid "Characters Application exiting"
-#~ msgstr "Karakterler Uygulamasından çıkılıyor"
-
-#~ msgid "@appid@"
-#~ msgstr "@appid@"
-
-#~ msgid "About"
-#~ msgstr "Hakkında"
-
-#~ msgid "gnome-characters"
-#~ msgstr "gnome-characters"
-
-#~ msgid "Emoticons"
-#~ msgstr "Duygu Simgeleri"
-
-#~ msgid "Try another search criteria."
-#~ msgstr "Başka bir arama kıstası deneyin."
-
-#~ msgid "characters;unicode;"
-#~ msgstr "karakterler;unicode;evrensel kod;"
-
-#~ msgid "Latin"
-#~ msgstr "Latince"
