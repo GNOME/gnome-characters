@@ -20,3 +20,12 @@ unzip -jo core.zip common/supplemental/supplementalData.xml
 ./gen-hangul.py Jamo.txt > hangul.h
 ./gen-names.py UnicodeData.txt emoji-test.txt > names.h
 ./gen-scripts.py supplementalData.xml PropertyValueAliases.txt > scripts.h
+
+rm Blocks.txt
+rm Jamo.txt
+rm PropertyValueAliases.txt
+rm UnicodeData.txt
+rm core.zip
+rm supplementalData.xml
+rm emoji-test.txt
+rm confusables.txt
