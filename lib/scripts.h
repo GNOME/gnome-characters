@@ -1,4 +1,4 @@
-#define NLANGUAGES 1142
+#define NLANGUAGES 1144
 struct LanguageScripts
 {
   const gchar *language;
@@ -31,6 +31,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "amo", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "an", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "ang", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
+    { "ann", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "anp", { N_("Devanagari"), NULL }, { 0x44657661, 0 } },
     { "aoz", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "ar_AE", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
@@ -166,8 +167,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "cja", { N_("Cham"), NULL }, { 0x4368616d, 0 } },
     { "cjm", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
     { "cjs", { N_("Cyrillic"), NULL }, { 0x4379726c, 0 } },
-    { "ckb_IQ", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
-    { "ckb_IR", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
+    { "ckb", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
     { "ckt", { N_("Cyrillic"), NULL }, { 0x4379726c, 0 } },
     { "clc", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "co", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
@@ -852,6 +852,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "pfl", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "phn", { N_("Phoenician"), NULL }, { 0x50686e78, 0 } },
     { "pi", { N_("Devanagari"), N_("Sinhala"), N_("Thai"), NULL }, { 0x44657661, 0x53696e68, 0x54686169, 0 } },
+    { "pis", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "pko", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "pl_PL", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "pms", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
@@ -1038,6 +1039,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "tn_BW", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "to_TO", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "tog", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
+    { "tok", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "tpi_PG", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "tr_CY", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "tr_DE", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
