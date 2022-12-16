@@ -1,0 +1,246 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2022-12-16 17:41+0700\n"
+"PO-Revision-Date: 2022-12-16 17:49+0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ie\n"
+
+#: data/character_dialog.ui:70
+msgid "_Copy Character"
+msgstr "_Copiar li caracter"
+
+#: data/character_dialog.ui:91
+msgid "Unicode"
+msgstr "Unicode"
+
+#: data/character_dialog.ui:105
+msgid "_See Also"
+msgstr "_Vi anc"
+
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "Recentmen usat"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Emojis"
+
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "Smileys a emotiones"
+
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "Homes e córpor"
+
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "Animales e natura"
+
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "Manjage e trinkage"
+
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "Turisme e locs"
+
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "Activitás"
+
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "Objectes"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "Simboles"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "Flaggas"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "Lítteres e simboles"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "Punctuation"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "Flechettes"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "List-signes"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "Images"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "Valutas"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "Matematic"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "Lítteres"
+
+#: data/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/shortcuts.ui:15
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Aperter li menú"
+
+#: data/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Serchar"
+
+#: data/shortcuts.ui:27
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Rapid-tastes"
+
+#: data/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Surtir"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Rapid-tastes"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_Pri li Caracteres"
+
+#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+msgid "Characters"
+msgstr "Caracteres"
+
+#: data/window.ui:138
+msgid "No Recent Characters"
+msgstr "Null recent caracteres"
+
+#: data/window.ui:139
+msgid "Characters will appear here if you use them."
+msgstr "Caracteres va aparir ci si on usa les."
+
+#: data/window.ui:166
+msgid "No Results"
+msgstr "Null resultates"
+
+#: data/window.ui:167
+msgid "Try a different search."
+msgstr "Prova un altri sercha."
+
+#: data/window.ui:188
+msgid "Loading…"
+msgstr "Cargante…"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Tabelle de caracteres"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+
+#: data/org.gnome.Characters.desktop.in.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Utensile por trovar e inserter rar caracteres"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+"caracteres;unicode;punctuation;matematica;lítteres;emoji;emoticon;simboles;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Max recent caracteres"
+
+#: src/characterDialog.js:102 src/searchProvider.js:86
+msgid "Unknown character name"
+msgstr "Ínconosset nómine de caracter"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:127
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s ne es includet in %s"
+
+#: src/characterDialog.js:166
+msgid "Character copied to clipboard"
+msgstr "Caracter sta copiat al Paperiere"
+
+#: src/charactersView.js:156
+msgid "Unassigned"
+msgstr "Ínassignat"
+
+#: src/searchProvider.js:95
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:112
+msgid "Character copied"
+msgstr "Caracter copiat"
+
+#: src/searchProvider.js:113
+msgid "Character was copied successfully"
+msgstr "Caracter sta copiat successosimen"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "Range del panel lateral de %s"
+
+#: src/window.js:152
+msgid "Search Result"
+msgstr "Resultate del sercha"
+
+#: src/window.js:175
+msgid "The GNOME Project"
+msgstr "Li projecte GNOME"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:185
+msgid "translator-credits"
+msgstr "OIS <mistresssilvara@hotmail.com>, 2022"
