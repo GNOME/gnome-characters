@@ -1,278 +1,287 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ab10e6d45488175674299c2d7fc854f6\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2021-02-21 10:03+0000\n"
-"PO-Revision-Date: 2021-08-27 09:40\n"
+"Project-Id-Version: gnome-characters master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2022-11-15 18:05+0000\n"
+"PO-Revision-Date: 2022-12-31 13:11+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n%100>=11 && n%100<=14 ? 2 : 3);\n"
-"X-Generator: Poedit 1.8.11\n"
-"X-Crowdin-Project: ab10e6d45488175674299c2d7fc854f6\n"
-"X-Crowdin-Project-ID: 104\n"
-"X-Crowdin-Language: be\n"
-"X-Crowdin-File: /Localizations/Gnome/Development/gnome-characters.master.be.po\n"
-"X-Crowdin-File-ID: 2986\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#: data/characterlist.ui:9
-#| msgid "Search Result"
-msgid "No Results"
-msgstr "Нічога не знойдзена"
+#: data/character_dialog.ui:70
+msgid "_Copy Character"
+msgstr "С_капіяваць знак"
 
-#: data/characterlist.ui:10
-msgid "Try a different search."
-msgstr "Паспрабуйце іншы пошукавы запыт."
+#: data/character_dialog.ui:91
+msgid "Unicode"
+msgstr "Унікод"
 
-#: data/characterlist.ui:34
-msgid "Loading…"
-msgstr "Загрузка…"
+#: data/character_dialog.ui:105
+msgid "_See Also"
+msgstr "Таксама _глядзіце"
 
-#: data/character.ui:68
-msgid "Copy Character"
-msgstr "Скапіяваць знак"
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "Нядаўнія"
 
-#: data/character.ui:86
-msgid "Character copied to clipboard"
-msgstr "Знак скапіяваны ў буфер абмену"
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Эмодзі"
 
-#: data/mainview.ui:10
-#| msgid "No recent characters found"
-msgid "No Recent Characters"
-msgstr "Няма нядаўніх знакаў"
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "Смайлікі і эмоцыі"
 
-#: data/mainview.ui:11
-msgid "Characters will appear here if you use them."
-msgstr "Тут будуць з'яўляцца знакі, якія вы выкарыстоўвалі."
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "Людзі і цела"
 
-#: data/mainwindow.ui:7
-msgid "_Keyboard Shortcuts"
-msgstr "_Спалучэнні клавіш"
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "Жывёлы і прырода"
 
-#: data/mainwindow.ui:11
-#| msgid "Characters"
-msgid "_About Characters"
-msgstr "_Пра знакі"
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "Ежа і напоі"
 
-#: data/mainwindow.ui:32 data/org.gnome.Characters.desktop.in:4 src/main.js:58
-#: src/service.js:51
-msgid "Characters"
-msgstr "Знакі"
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "Падарожжы і месцы"
 
-#: data/menu.ui:17
-msgid "Filter by Font"
-msgstr "Фільтраванне па шрыфту"
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "Віды дзейнасці"
 
-#: data/shortcuts.ui:13
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "Аб'екты"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "Сімвалы"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "Сцягі"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "Літары і сімвалы"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "Пунктуацыя"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "Стрэлкі"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "Маркеры"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "Выявы"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "Валюты"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "Матэматыка"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "Літары"
+
+#: data/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Агульныя"
 
-#: data/shortcuts.ui:18
+#: data/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Адкрыць меню"
 
-#: data/shortcuts.ui:25
-#| msgid "Search Result"
+#: data/shortcuts.ui:21
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Пошук"
 
-#: data/shortcuts.ui:32
+#: data/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Спалучэнні клавіш"
 
-#: data/shortcuts.ui:39
-#| msgid "Quit"
+#: data/shortcuts.ui:33
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Выйсці"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
-msgid "GNOME Characters"
-msgstr "Знакі GNOME"
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Спалучэнні клавіш"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_Пра знакі"
+
+#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+msgid "Characters"
+msgstr "Знакі"
+
+#: data/window.ui:138
+msgid "No Recent Characters"
+msgstr "Няма нядаўніх знакаў"
+
+#: data/window.ui:139
+msgid "Characters will appear here if you use them."
+msgstr "Тут будуць з'яўляцца знакі, якія вы выкарыстоўвалі."
+
+#: data/window.ui:166
+msgid "No Results"
+msgstr "Нічога не знойдзена"
+
+#: data/window.ui:167
+msgid "Try a different search."
+msgstr "Паспрабуйце іншы пошукавы запыт."
+
+#: data/window.ui:188
+msgid "Loading…"
+msgstr "Загрузка…"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
 msgid "Character map application"
 msgstr "Праграма з адмысловымі знакамі"
 
 #: data/org.gnome.Characters.appdata.xml.in:9
-msgid "Characters is a simple utility application to find and insert unusual characters. It allows you to quickly find the character you are looking for by searching for keywords."
-msgstr "Знакі - гэта простая праграма, якая дазваляе шукаць і ўстаўляць незвычайныя знакі. Вы можаце хутка знайсці патрэбны вам знак па ключавых словах."
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Знакі - гэта простая праграма, якая дазваляе шукаць і ўстаўляць незвычайныя "
+"знакі. Вы можаце хутка знайсці патрэбны вам знак па ключавых словах."
 
 #: data/org.gnome.Characters.appdata.xml.in:12
-msgid "You can also browse characters by categories, such as Punctuation, Pictures, etc."
-msgstr "Таксама можна аглядаць знакі па катэгорыях, такіх як пунктуацыя, выявы і інш."
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Таксама можна аглядаць знакі па катэгорыях, такіх як пунктуацыя, выявы і інш."
 
-#: data/org.gnome.Characters.desktop.in:5
+#: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Праграма, якая дазваляе шукаць і ўстаўляць незвычайныя знакі"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "знакі;сімвалы;юнікод;пунктуацыя;матэматыка;літары;эмоцыі;эмодзі;смайл;"
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+"characters;math;emoji;symbols;знакі;сімвалы;юнікод;унікод;пунктуацыя;"
+"матэматыка;літары;эмоцыі;эмодзі;эмоджы;смайл;"
 
-#: data/org.gnome.Characters.gschema.xml:5
-msgid "Font to display characters"
-msgstr "Шрыфт для паказу знакаў"
-
-#: data/org.gnome.Characters.gschema.xml:6
-msgid "Use the font to render characters on the character list."
-msgstr "Выкарыстоўваць гэты шрыфт для паказу знакаў у спісе."
-
-#: data/org.gnome.Characters.gschema.xml:15
+#: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "Найбольшая колькасць знакаў у спісе нядаўніх"
 
-#: src/categoryList.js:31
-msgid "Emojis"
-msgstr "Значкі эмоцый"
-
-#: src/categoryList.js:37
-msgid "Letters & Symbols"
-msgstr "Літары і сімвалы"
-
-#: src/categoryList.js:46
-msgid "Punctuation"
-msgstr "Пунктуацыя"
-
-#: src/categoryList.js:52
-msgid "Arrows"
-msgstr "Стрэлкі"
-
-#: src/categoryList.js:58
-msgid "Bullets"
-msgstr "Маркеры"
-
-#: src/categoryList.js:64
-msgid "Pictures"
-msgstr "Выявы"
-
-#: src/categoryList.js:70
-msgid "Currencies"
-msgstr "Валюты"
-
-#: src/categoryList.js:76
-msgid "Math"
-msgstr "Матэматыка"
-
-#: src/categoryList.js:82
-msgid "Letters"
-msgstr "Літары"
-
-#: src/categoryList.js:91
-msgid "Smileys & People"
-msgstr "Смайлікі і людзі"
-
-#: src/categoryList.js:97
-msgid "Animals & Nature"
-msgstr "Жывёлы і прырода"
-
-#: src/categoryList.js:103
-msgid "Food & Drink"
-msgstr "Ежа і напоі"
-
-#: src/categoryList.js:109
-msgid "Activities"
-msgstr "Заняткі"
-
-#: src/categoryList.js:115
-msgid "Travel & Places"
-msgstr "Падарожжа і месцы"
-
-#: src/categoryList.js:121
-msgid "Objects"
-msgstr "Аб'екты"
-
-#: src/categoryList.js:127
-msgid "Symbols"
-msgstr "Сімвалы"
-
-#: src/categoryList.js:133
-msgid "Flags"
-msgstr "Сцягі"
-
-#: src/categoryList.js:146
-#, javascript-format
-msgid "%s Category List Row"
-msgstr "Радок спіса катэгорыі %s"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:352
-msgid "Recently Used"
-msgstr "Нядаўнія"
-
-#: src/characterDialog.js:49
-msgid "See Also"
-msgstr "Таксама глядзіце"
-
-#: src/characterDialog.js:113 src/characterDialog.js:135
-#, javascript-format
-msgid "Unicode U+%04s"
-msgstr "Юнікод U+%04s"
+#: src/characterDialog.js:102 src/searchProvider.js:86
+msgid "Unknown character name"
+msgstr "Знак з такой назвай невядомы"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:131
+#: src/characterDialog.js:127
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s няма ў %s"
 
-#: src/characterList.js:169
+#: src/characterDialog.js:166
+msgid "Character copied to clipboard"
+msgstr "Знак скапіяваны ў буфер абмену"
+
+#: src/charactersView.js:156
 msgid "Unassigned"
 msgstr "Не прызначаны"
 
-#: src/menu.js:42
-msgid "None"
-msgstr "Няма"
-
-#: src/searchProvider.js:94
-msgid "Unknown character name"
-msgstr "Знак з такой назвай невядомы"
-
-#: src/searchProvider.js:97
+#: src/searchProvider.js:95
 #, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgid "U+%s"
+msgstr "U+%s"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:163 src/window.js:358
+#: src/searchProvider.js:112
+msgid "Character copied"
+msgstr "Знак скапіяваны"
+
+#: src/searchProvider.js:113
+msgid "Character was copied successfully"
+msgstr "Знак паспяхова скапіяваны"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "%s радок бакавой панэлі"
+
+#: src/window.js:152
 msgid "Search Result"
 msgstr "Вынікі пошуку"
 
+#: src/window.js:175
+msgid "The GNOME Project"
+msgstr "Праект GNOME"
+
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:197
+#: src/window.js:185
 msgid "translator-credits"
-msgstr "Gnome Belarusian team"
+msgstr "Юрась Шумовіч <shumovichy@gmail.com>"
 
-#: src/window.js:199
-msgid "Character Map"
-msgstr "Знаказбор"
+#~ msgid "Filter by Font"
+#~ msgstr "Фільтраванне па шрыфту"
 
-#: src/window.js:219
+#~ msgid "GNOME Characters"
+#~ msgstr "Знакі GNOME"
+
+#~ msgid "Font to display characters"
+#~ msgstr "Шрыфт для паказу знакаў"
+
+#~ msgid "Use the font to render characters on the character list."
+#~ msgstr "Выкарыстоўваць гэты шрыфт для паказу знакаў у спісе."
+
 #, javascript-format
-msgid "%s (%s only)"
-msgstr "%s (толькі %s)"
+#~ msgid "%s Category List Row"
+#~ msgstr "Радок спіса катэгорыі %s"
 
-#: src/window.js:327
+#~ msgid "None"
+#~ msgstr "Няма"
+
 #, javascript-format
-msgid "%s Character List"
-msgstr "Спіс знакаў %s"
+#~ msgid "U+%s, %s: %s"
+#~ msgstr "U+%s, %s: %s"
 
-#. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:335
 #, javascript-format
-msgid "Recently Used %s Character List"
-msgstr "Спіс нядаўна выкарыстаных знакаў %s"
+#~ msgid "%s (%s only)"
+#~ msgstr "%s (толькі %s)"
 
-#: src/window.js:356
-msgid "Search Result Character List"
-msgstr "Спіс знойдзеных знакаў"
+#, javascript-format
+#~ msgid "%s Character List"
+#~ msgstr "Спіс знакаў %s"
+
+#, javascript-format
+#~ msgid "Recently Used %s Character List"
+#~ msgstr "Спіс нядаўна выкарыстаных знакаў %s"
+
+#~ msgid "Search Result Character List"
+#~ msgstr "Спіс знойдзеных знакаў"
 
 #~ msgid "About"
 #~ msgstr "Аб праграме"
@@ -297,4 +306,3 @@ msgstr "Спіс знойдзеных знакаў"
 
 #~ msgid "Emoticons"
 #~ msgstr "Эмоцыі"
-
