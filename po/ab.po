@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-11-09 18:57+0000\n"
+"POT-Creation-Date: 2022-12-16 10:51+0000\n"
 "Last-Translator: Нанба Наала <naala-nanba@rambler.ru>\n"
 "Language-Team: Abkhazian <daniel.abzakh@gmail.com>\n"
 "Language: ab\n"
@@ -191,8 +191,6 @@ msgstr ""
 "emoticon;"
 
 #: data/org.gnome.Characters.gschema.xml:8
-#, fuzzy
-#| msgid "No Recent Characters"
 msgid "Maximum recent characters"
 msgstr "Аҵыхәтәантәи асимволқәа ыҟаӡам"
 
