@@ -1,17 +1,10 @@
-# Abkhazian translation for gnome-characters.
-# Copyright (C) 2022 gnome-characters's COPYRIGHT HOLDER
-# This file is distributed under the same license as the gnome-characters package.
-# Нанба Наала <naala-nanba@rambler.ru>, 2022.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2021-11-26 21:35+0000\n"
-"PO-Revision-Date: 2021-11-26 21:35+0000\n"
+"POT-Creation-Date: 2022-07-09 14:39+0000\n"
 "Last-Translator: Нанба Наала <naala-nanba@rambler.ru>\n"
-"Language-Team: Abkhazian <ab@li.org>\n"
+"Language-Team: Abkhazian <daniel.abzakh@gmail.com>\n"
 "Language: ab\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +46,7 @@ msgstr "Аҧсаатәқәеи аҧсабареи"
 
 #: data/sidebar.ui:59
 msgid "Food & Drink"
-msgstr "Афатәи ажәтәи"
+msgstr "Афатәқәеи арыжәтәқәеи"
 
 #: data/sidebar.ui:67
 msgid "Travel & Places"
@@ -141,7 +134,7 @@ msgid "_About Characters"
 msgstr "_Асимволқәа ирызкны"
 
 #: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in:4 src/main.js:58 src/service.js:46
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58
 msgid "Characters"
 msgstr "Асимволқәа"
 
@@ -174,29 +167,38 @@ msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
-msgstr "Асимволқәа-ари имариоу ҧшьуп иалукааша асимволқәа рыҧшаареи аҭагалареи рзы"
-        "Уи ишәнаҭоит алшара ишәҭаху асимвол иаарццакны аҧшаара ихадоу ажәақәа рыла"
-		
+msgstr ""
+"Асимволқәа-ари имариоу ҧшьуп иалукааша асимволқәа рыҧшаареи аҭагалареи рзыУи "
+"ишәнаҭоит алшара ишәҭаху асимвол иаарццакны аҧшаара ихадоу ажәақәа рыла"
+
 #: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
-msgstr "Насгьы асимволқәа шәрышьҭаларц шәылшоит хкыла,иаҳҳәап, апунктуациа адыргақәа, асахьақәа."
+msgstr ""
+"Насгьы асимволқәа шәрышьҭаларц шәылшоит хкыла,иаҳҳәап, апунктуациа "
+"адыргақәа, асахьақәа."
 
-#: data/org.gnome.Characters.desktop.in:5
+#: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "Имариоу аԥшьы иалукааша асимволқәа рыԥшаареи рҭагалареи рзы"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in:13
+#: data/org.gnome.Characters.desktop.in.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr "Асимволқәа;иуникод;апунктуациа;аматематика;анбанқәа;ақьачақьқәа;emoji;emoticon;"
+msgstr ""
+"Асимволқәа;иуникод;апунктуациа;аматематика;анбанқәа;ақьачақьқәа;emoji;"
+"emoticon;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Аҵыхәтәантәи асимволқәа ыҟаӡам"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
 #: src/characterDialog.js:116
 #, javascript-format
 msgid "%s is not included in %s"
-msgstr "%s арбаӡам %s аҟны "
+msgstr "%s арбаӡам %s аҟны"
 
 #: src/characterDialog.js:155
 msgid "Character copied to clipboard"
@@ -206,34 +208,47 @@ msgstr "Асимвол хкыҧхьаауп иаҭныҧсахлара абуф�
 msgid "Unassigned"
 msgstr "Иазкӡам"
 
-#: src/searchProvider.js:94
+#: src/searchProvider.js:88
 msgid "Unknown character name"
 msgstr "Асимвол ахьӡ еилкааӡам"
 
-#: src/searchProvider.js:97
+#: src/searchProvider.js:91
 #, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:107
+msgid "Character copied"
+msgstr "Асимвол ахкьыԥхьаауп"
+
+#: src/searchProvider.js:108
+#, fuzzy
+#| msgid "Character copied to clipboard"
+msgid "Character was copied successfully"
+msgstr "Асимвол хкыҧхьаауп иаҭныҧсахлара абуфер ахь"
 
 #: src/sidebarRow.js:72
 #, javascript-format
 msgid "%s Sidebar Row"
 msgstr "%s Аварахьтәи аҵҟьа ацәаҳәа"
 
-#: src/window.js:150
+#: src/window.js:152
 msgid "Search Result"
-msgstr "Алҵшәа аҧшаара "
+msgstr "Алҵшәа аҧшаара"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:180
+#: src/window.js:182
 msgid "translator-credits"
-msgstr ""
-"Нанба Наала <naala-nanba@rambler.ru>, 2022"
+msgstr "Нанба Наала <naala-nanba@rambler.ru>, 2022"
 
-#: src/window.js:181
+#: src/window.js:183
 msgid "GNOME Characters"
 msgstr "GNOME асимволқәа"
 
-#: src/window.js:182
+#: src/window.js:184
 msgid "Character Map"
 msgstr "Асимволқәа рыхсаала"
+
+#, javascript-format
+msgid "U+%s, %s: %s"
+msgstr "U+%s, %s: %s"
