@@ -34,9 +34,9 @@ const Util = imports.util;
 var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/window.ui',
     InternalChildren: [
-        'searchButton', 'search-bar', 'searchEntry', 'back-button',
+        'searchButton', 'search-bar', 'searchEntry',
         'container', 'sidebar', 'loadingSpinner',
-        'leaflet', 'mainStack', 'windowTitle',
+        'splitView', 'mainStack', 'contentChild',
         'charactersView', 'scrolledWindow', 'primaryMenuButton',
     ],
     Properties: {
@@ -64,8 +64,8 @@ var MainWindow = GObject.registerClass({
             if (row) {
                 this._sidebar.lastSelectedRow = row;
                 this.setPage(row);
-                this._windowTitle.title = row.title;
-                this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
+                this._contentChild.title = row.title;
+                this._splitView.show_content = true;
             }
         });
 
@@ -114,10 +114,8 @@ var MainWindow = GObject.registerClass({
             this._searchButton.set_active(false);
         });
 
-        this._back_button.connect('clicked', () => {
-            this._leaflet.navigate(Adw.NavigationDirection.BACK);
-            if (this._leaflet.get_folded())
-                this._sidebar.unselectAll();
+        this._contentChild.connect('hiding', () => {
+            this._sidebar.unselectAll();
         });
 
         this._charactersView.connect('notify::loading', view => {
@@ -149,7 +147,7 @@ var MainWindow = GObject.registerClass({
     set searchActive(v) {
         if (v) {
             this._sidebar.unselectAll();
-            this._windowTitle.title = _('Search Result');
+            this._contentChild.title = _('Search Result');
         } else {
             this._sidebar.restoreSelection();
         }
