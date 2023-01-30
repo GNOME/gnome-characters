@@ -27,11 +27,11 @@ var CharacterDialog = GObject.registerClass({
     },
     Template: 'resource:///org/gnome/Characters/character_dialog.ui',
     InternalChildren: [
-        'leaflet', 'characterStack',
+        'characterStack',
         'characterLabel', 'missingLabel',
         'detailRow', 'detailLabel',
         'seeAlsoRow', 'relatedListbox',
-        'windowTitle', 'toastOverlay',
+        'toastOverlay',
     ],
 }, class CharacterDialog extends Adw.Window {
     _init(character, fontDescription) {
@@ -42,8 +42,6 @@ var CharacterDialog = GObject.registerClass({
         const actions = new Gio.SimpleActionGroup();
         Util.initActions(actions, [
             { name: 'copy', activate: this._copyCharacter.bind(this) },
-            { name: 'see-also', activate: this._seeMore.bind(this) },
-            { name: 'go-back', activate: this._seeCharacter.bind(this) },
         ]);
         this.insert_action_group('character', actions);
 
@@ -76,12 +74,7 @@ var CharacterDialog = GObject.registerClass({
                 halign: Gtk.Align.CENTER,
                 width_request: 45,
             }));
-            let gesture = new Gtk.GestureClick();
-            gesture.connect('pressed', () => {
-                this._setCharacter(uc);
-                this._seeCharacter();
-            });
-            row.add_controller(gesture);
+            row.action_name = 'navigation.pop';
             row.set_activatable(true);
             this._relatedListbox.append(row);
         }
@@ -111,7 +104,7 @@ var CharacterDialog = GObject.registerClass({
                 name = 'U+%04s'.format(codePointHex);
         }
 
-        this._windowTitle.title = name;
+        this.title = name ? name : '';
         this._characterLabel.label = this._character;
 
         let pangoContext = this._characterLabel.get_pango_context();
@@ -145,14 +138,6 @@ var CharacterDialog = GObject.registerClass({
             });
 
         this._seeAlsoRow.visible = false;
-    }
-
-    _seeMore() {
-        this._leaflet.navigate(Adw.NavigationDirection.FORWARD);
-    }
-
-    _seeCharacter() {
-        this._leaflet.navigate(Adw.NavigationDirection.BACK);
     }
 
     _copyCharacter() {

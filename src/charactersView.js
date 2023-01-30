@@ -227,7 +227,6 @@ var CharactersView = GObject.registerClass({
         gestureClick.connect('pressed', this.onButtonPress.bind(this));
         gestureClick.connect('released', this.onButtonRelease.bind(this));
         this.add_controller(gestureClick);
-        this.add_css_class('view');
     }
 
     get fontDescription() {
