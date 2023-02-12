@@ -139,7 +139,7 @@
                       <object class="AdwStatusPage">
                         <property name="icon_name">characters-punctuation-symbolic</property>
                         <property name="title" translatable="yes">No Recent Characters</property>
-                        <property name="description" translatable="yes">Characters will appear here if you use them.</property>
+                        <property name="description" translatable="yes">Characters will appear here if you use them</property>
                       </object>
                     </property>
                   </object>
@@ -167,7 +167,7 @@
                       <object class="AdwStatusPage">
                         <property name="icon-name">system-search-symbolic</property>
                         <property name="title" translatable="yes">No Results</property>
-                        <property name="description" translatable="yes">Try a different search.</property>
+                        <property name="description" translatable="yes">Try a different search</property>
                       </object>
                     </property>
                   </object>
