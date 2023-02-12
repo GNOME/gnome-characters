@@ -1,3 +1,19 @@
+44.beta
+===========
+* Update for Unicode 15 (Alexander Mikhaylenko)
+* Misc. string updates (Automeris naranja)
+* Avoid downscaling search result icon (Andrew Mayorov)
+* Use action-name properties (Sabri Ünal)
+* Translation updates:
+  - Belarusian (Vasil Pupkin)
+  - Dutch (Nathan Follens)
+  - Greek, Modern (1453-) (Kosmas Martakidis)
+  - Hebrew (Yosef Or Boczko)
+  - Hindi (Hemish)
+  - Icelandic (Sveinn í Felli)
+  - Interlingue (Olga Smirnova)
+  - Turkish (Sabri Ünal)
+
 43.0
 ===========
 * Add support for composite emoji (Alexander Mikhaylenko)
