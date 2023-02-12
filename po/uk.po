@@ -3,14 +3,14 @@
 #
 # Daniel Korostil <ted.korostiled@gmail.com>, 2015-2019.
 # Danylo Korostil <ted.korostiled@gmail.com>, 2020.
-# Yuri Chornoivan <yurchor@ukr.net>, 2021, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues"
 "\n"
-"POT-Creation-Date: 2022-07-09 14:39+0000\n"
-"PO-Revision-Date: 2022-07-09 17:43+0300\n"
+"POT-Creation-Date: 2023-02-12 04:22+0000\n"
+"PO-Revision-Date: 2023-02-12 19:53+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -148,23 +148,40 @@ msgstr "_Про «Символи»"
 msgid "Characters"
 msgstr "Символи"
 
-#: data/window.ui:138
+#: data/window.ui:38
+#| msgctxt "shortcut window"
+#| msgid "Search"
+msgid "Search"
+msgstr "Пошук"
+
+#: data/window.ui:45
+msgid "Main Menu"
+msgstr "Головне меню"
+
+#: data/window.ui:60
+#| msgid "Search Result Character List"
+msgid "Search characters"
+msgstr "Пошук символів"
+
+#: data/window.ui:141
 msgid "No Recent Characters"
 msgstr "Немає недавніх символів"
 
-#: data/window.ui:139
-msgid "Characters will appear here if you use them."
-msgstr "Символи з'являтимуться тут у міру їхнього використання."
+#: data/window.ui:142
+#| msgid "Characters will appear here if you use them."
+msgid "Characters will appear here if you use them"
+msgstr "Символи з'являтимуться тут у міру їхнього використання"
 
-#: data/window.ui:166
+#: data/window.ui:169
 msgid "No Results"
 msgstr "Нічого не знайдено"
 
-#: data/window.ui:167
-msgid "Try a different search."
-msgstr "Спробуйте інший пошук."
+#: data/window.ui:170
+#| msgid "Try a different search."
+msgid "Try a different search"
+msgstr "Спробувати інші критерії пошуку"
 
-#: data/window.ui:188
+#: data/window.ui:191
 msgid "Loading…"
 msgstr "Завантаження…"
 
@@ -284,9 +301,6 @@ msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
 #~ msgid "Recently Used %s Character List"
 #~ msgstr "Нещодавні перелік символів %s"
-
-#~ msgid "Search Result Character List"
-#~ msgstr "Перелік символів з результату пошуку"
 
 #~| msgid "Search produced empty result"
 #~ msgid "Search found no results"
