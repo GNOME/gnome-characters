@@ -35,12 +35,14 @@
                 <child>
                   <object class="GtkToggleButton" id="searchButton">
                     <property name="icon-name">edit-find-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Search</property>
                   </object>
                 </child>
                 <child type="end">
                   <object class="GtkMenuButton" id="primaryMenuButton">
                     <property name="menu-model">primary_menu</property>
                     <property name="icon-name">open-menu-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Main Menu</property>
                   </object>
                 </child>
               </object>
