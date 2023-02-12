@@ -57,6 +57,7 @@
                     <property name="halign">fill</property>
                     <child>
                       <object class="GtkSearchEntry" id="searchEntry">
+                        <property name="placeholder-text" translatable="yes">Search characters</property>
                         <property name="halign">fill</property>
                       </object>
                     </child>
