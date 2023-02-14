@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-07-09 14:39+0000\n"
-"PO-Revision-Date: 2022-07-17 17:34+0200\n"
+"POT-Creation-Date: 2023-02-12 04:22+0000\n"
+"PO-Revision-Date: 2023-02-14 20:44+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Project-Style: gnome\n"
 
 #: data/character_dialog.ui:70
@@ -147,23 +147,35 @@ msgstr "_A prepaus de Caractèrs"
 msgid "Characters"
 msgstr "Caractèrs"
 
-#: data/window.ui:138
+#: data/window.ui:38
+msgid "Search"
+msgstr "Recercar"
+
+#: data/window.ui:45
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/window.ui:60
+msgid "Search characters"
+msgstr "Recercar de caractèrs"
+
+#: data/window.ui:141
 msgid "No Recent Characters"
 msgstr "Cap de caractèr recent pas trobat"
 
-#: data/window.ui:139
-msgid "Characters will appear here if you use them."
-msgstr "Los caractèrs apareisseràn aicí se los utilizatz."
+#: data/window.ui:142
+msgid "Characters will appear here if you use them"
+msgstr "Los caractèrs apareisseràn aicí se los utilizatz"
 
-#: data/window.ui:166
+#: data/window.ui:169
 msgid "No Results"
 msgstr "Pas cap de resultat"
 
-#: data/window.ui:167
-msgid "Try a different search."
-msgstr "Ensajatz una recèrca diferenta."
+#: data/window.ui:170
+msgid "Try a different search"
+msgstr "Ensajatz una recèrca diferenta"
 
-#: data/window.ui:188
+#: data/window.ui:191
 msgid "Loading…"
 msgstr "Cargament…"
 
@@ -285,9 +297,6 @@ msgstr ""
 
 #~ msgid "Recently Used %s Character List"
 #~ msgstr "Lista de caractèrs %s utilizada recentament"
-
-#~ msgid "Search Result Character List"
-#~ msgstr "Lista dels caractèrs eissits de la recèrca"
 
 #~ msgid "About"
 #~ msgstr "A prepaus"
