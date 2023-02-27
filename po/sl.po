@@ -2,15 +2,15 @@
 # Copyright (C) 2015 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 #
-# Matej Urbančič <mateju@src.gnome.org>, + 2015–2022.
+# Matej Urbančič <mateju@src.gnome.org>, + 2015–2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-08-31 10:54+0000\n"
-"PO-Revision-Date: 2022-08-31 20:42+0200\n"
+"POT-Creation-Date: 2023-02-26 10:31+0000\n"
+"PO-Revision-Date: 2023-02-27 21:17+0100\n"
 "Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -148,23 +148,35 @@ msgstr "_O programu"
 msgid "Characters"
 msgstr "Znaki"
 
-#: data/window.ui:138
+#: data/window.ui:38
+msgid "Search"
+msgstr "Iskanje"
+
+#: data/window.ui:45
+msgid "Main Menu"
+msgstr "Glavni meni"
+
+#: data/window.ui:60
+msgid "Search characters"
+msgstr "Iskanje znakov"
+
+#: data/window.ui:141
 msgid "No Recent Characters"
 msgstr "Ni nedavno izbranih znakov"
 
-#: data/window.ui:139
-msgid "Characters will appear here if you use them."
-msgstr "V tem oknu bodo pokazani vsi uporabljeni znaki."
+#: data/window.ui:142
+msgid "Characters will appear here if you use them"
+msgstr "V tem oknu bodo pokazani vsi uporabljeni znaki"
 
-#: data/window.ui:166
+#: data/window.ui:169
 msgid "No Results"
 msgstr "Ni najdenih zadetkov"
 
-#: data/window.ui:167
-msgid "Try a different search."
-msgstr "Poskusite z drugačnim iskanjem."
+#: data/window.ui:170
+msgid "Try a different search"
+msgstr "Poskusite z drugačnim iskalnim nizom"
 
-#: data/window.ui:188
+#: data/window.ui:191
 msgid "Loading…"
 msgstr "Poteka nalaganje …"
 
@@ -290,9 +302,6 @@ msgstr "Matej Urbančič <matej.urban@src.gnome.org>"
 #, javascript-format
 #~ msgid "Recently Used %s Character List"
 #~ msgstr "Nedavno uporabljen seznam znakov %s"
-
-#~ msgid "Search Result Character List"
-#~ msgstr "Seznam rezultatov iskanja znakov"
 
 #~ msgid "Search found no results"
 #~ msgstr "Ni zadetkov"
