@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the gnome-characters package.
 #
 # Marek Černoch <marek.cernoch@email.cz>, 2015
-# Marek Černocký <marek@manet.cz>, 2014, 2015, 2016, 2017, 2019, 2020, 2021, 2022.
+# Marek Černocký <marek@manet.cz>, 2014, 2015, 2016, 2017, 2019, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-07-09 14:39+0000\n"
-"PO-Revision-Date: 2022-08-25 14:15+0200\n"
+"POT-Creation-Date: 2023-02-12 04:22+0000\n"
+"PO-Revision-Date: 2023-03-05 23:20+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -147,23 +147,35 @@ msgstr "O _aplikaci Znaky"
 msgid "Characters"
 msgstr "Znaky"
 
-#: data/window.ui:138
+#: data/window.ui:38
+msgid "Search"
+msgstr "Hledat"
+
+#: data/window.ui:45
+msgid "Main Menu"
+msgstr "Hlavní nabídka"
+
+#: data/window.ui:60
+msgid "Search characters"
+msgstr "hledat znaky"
+
+#: data/window.ui:141
 msgid "No Recent Characters"
 msgstr "Nenalezen žádný nedávný znak"
 
-#: data/window.ui:139
-msgid "Characters will appear here if you use them."
+#: data/window.ui:142
+msgid "Characters will appear here if you use them"
 msgstr "Zde se objeví znaky, které jste již použili."
 
-#: data/window.ui:166
+#: data/window.ui:169
 msgid "No Results"
 msgstr "Žádné výsledky"
 
-#: data/window.ui:167
-msgid "Try a different search."
-msgstr "Zkuste jiné hledání."
+#: data/window.ui:170
+msgid "Try a different search"
+msgstr "Zkuste jiné hledání"
 
-#: data/window.ui:188
+#: data/window.ui:191
 msgid "Loading…"
 msgstr "Načítá se…"
 
