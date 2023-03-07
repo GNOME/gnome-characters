@@ -155,7 +155,7 @@ get_character_name (const gunichar *uc,
 {
   struct CharacterName *res;
   const struct Block *block;
-  static struct Block *cjk_blocks[8];
+  static struct Block *cjk_blocks[9];
   static struct Block *tangut_blocks[2];
   static struct Block *hangul_block;
   static gsize local_blocks_initialized = 0;
@@ -166,9 +166,9 @@ get_character_name (const gunichar *uc,
   if (length == 1) {
     if (g_once_init_enter (&local_blocks_initialized))
       {
-        static const gunichar cjk_block_starters[8] =
+        static const gunichar cjk_block_starters[9] =
           {
-            0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820, 0x2CEB0, 0x30000
+            0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820, 0x2CEB0, 0x30000, 0x31350
           };
 
         static const gunichar tangut_block_starters[2] =
