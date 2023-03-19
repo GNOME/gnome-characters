@@ -1,3 +1,42 @@
+44.0
+=======
+* Update for Unicode 15 (Alexander Mikhaylenko)
+* Misc. string updates (Automeris naranja)
+* Avoid downscaling search result icon (Andrew Mayorov)
+* Use action-name properties (Sabri Ünal)
+* Translation updates:
+  - Basque (Asier Sarasua Garmendia)
+  - Belarusian (Vasil Pupkin)
+  - Bulgarian (Alexander Shopov)
+  - Czech (Marek Černocký)
+  - Danish (Alan Mortensen)
+  - Dutch (Nathan Follens)
+  - Finnish (Jiri Grönroos)
+  - Friulian (Fabio Tomat)
+  - Galician (Fran Dieguez)
+  - Georgian (Ekaterine Papava)
+  - German (Philipp Kiemle)
+  - Greek, Modern (1453-) (Kosmas Martakidis)
+  - Hebrew (Yaron Shahrabani, Yosef Or Boczko)
+  - Hindi (Hemish)
+  - Hungarian (Balázs Úr)
+  - Icelandic (Sveinn í Felli)
+  - Indonesian (Kukuh Syafaat)
+  - Interlingue (Olga Smirnova)
+  - Korean (DaeHyun Sung)
+  - Lithuanian (Aurimas Černius)
+  - Occitan (post 1500) (Quentin PAGÈS)
+  - Persian (MohammadSaleh Kamyab)
+  - Polish (Piotr Drąg)
+  - Portuguese (Hugo Carvalho)
+  - Russian (Aleksandr Melman)
+  - Serbian (Марко Костић)
+  - Slovenian (Matej Urbančič)
+  - Spanish (Daniel)
+  - Swedish (Luna Jernberg)
+  - Turkish (Sabri Ünal)
+  - Ukrainian (Yuri Chornoivan)
+
 44.rc
 =======
 * Translation updates:
