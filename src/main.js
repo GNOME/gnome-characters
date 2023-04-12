@@ -83,6 +83,9 @@ var MyApplication = GObject.registerClass({
         settings = Util.getSettings('org.gnome.Characters',
             '/org/gnome/Characters/');
 
+        if (this.get_flags() & Gio.ApplicationFlags.IS_SERVICE)
+            this.set_inactivity_timeout(10000);
+
         log('Characters Application started');
     }
 

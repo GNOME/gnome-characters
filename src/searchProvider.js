@@ -46,6 +46,7 @@ var SearchProvider = GObject.registerClass({
     }
 
     _runQuery(keywords, invocation) {
+        this._app.hold();
         this._cancellable.cancel();
         this._cancellable.reset();
 
@@ -65,6 +66,7 @@ var SearchProvider = GObject.registerClass({
                     log(`Failed to search by keywords: ${e.message}`);
                 }
                 invocation.return_value(new GLib.Variant('(as)', [characters]));
+                this._app.release();
             });
     }
 
@@ -77,6 +79,7 @@ var SearchProvider = GObject.registerClass({
     }
 
     GetResultMetas(identifiers) {
+        this._app.hold();
         let ret = [];
 
         for (let i = 0; i < identifiers.length; i++) {
@@ -104,6 +107,7 @@ var SearchProvider = GObject.registerClass({
                 'icon-data': iconData,
             });
         }
+        this._app.release();
         return ret;
     }
 
