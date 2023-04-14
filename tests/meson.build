@@ -1,5 +1,9 @@
 xvfb_run = find_program('xvfb-run', required: false)
 
+installed_tests_execdir = join_paths(characters_libexecdir, 'installed-tests', application_id)
+installed_tests_metadir = join_paths(characters_datadir, 'installed-tests', application_id)
+template = 'test.in'
+
 add_test_setup('default',
   is_default: true,
   env: {
@@ -15,29 +19,24 @@ add_test_setup('default',
   exe_wrapper: xvfb_run.found() ? [xvfb_run, '-a'] : [],
 )
 
-if gjs_console.found()
-  js_tests = [
-    'Util',
-  ]
+js_tests = [
+  'Util',
+]
 
-  foreach js_test: js_tests
-    test(js_test,
-      gjs_console,
-      args: files('test@0@.js'.format(js_test)),
-      depends: [
-        gc_gir,
-        settings_schemas,
-      ],
-    )
-  endforeach
-endif
+foreach js_test: js_tests
+  test(js_test,
+    gjs_console,
+    args: files('test@0@.js'.format(js_test)),
+    depends: [
+      gc_gir,
+      settings_schemas,
+    ],
+  )
+endforeach
 
 if not get_option('installed_tests')
   subdir_done()
 endif
-
-installed_tests_execdir = join_paths(characters_libexecdir, 'installed-tests', application_id)
-installed_tests_metadir = join_paths(characters_datadir, 'installed-tests', application_id)
 
 tests = ['smoke_test.py']
 
@@ -47,8 +46,6 @@ install_data(
   tests + tests_data,
   install_dir: installed_tests_execdir
 )
-
-template = 'test.in'
 
 foreach test: tests
   tests_conf = configuration_data()
