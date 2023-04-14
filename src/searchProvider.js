@@ -99,6 +99,9 @@ var SearchProvider = GObject.registerClass({
             }
 
             let iconData = Util.characterToIconData(character);
+            if (!iconData)
+                continue;
+
             ret.push({
                 name: new GLib.Variant('s', name),
                 id: new GLib.Variant('s', identifiers[i]),

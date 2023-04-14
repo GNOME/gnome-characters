@@ -10,3 +10,6 @@ Gtk.init();
 const emojis = ['🍕', '🤌', '🥰'];
 emojis.forEach(e => JsUnit.assertTrue(
     Util.characterToIconData(e) instanceof GLib.Variant));
+
+const whiteSpaces = ['', ' ', '\n', '\r', '\n', '\t', '\t   \n    \n \r      '];
+whiteSpaces.forEach(e => JsUnit.assertNull(Util.characterToIconData(e)));

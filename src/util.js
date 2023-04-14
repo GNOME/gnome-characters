@@ -136,6 +136,12 @@ function characterToIconData(character) {
     snapshot.restore();
 
     const node = snapshot.to_node();
+    // The snapshot may contain no nodes if there's nothing to render, like in
+    // case of a layout that only contains invisible chars:
+    //   https://gitlab.gnome.org/GNOME/gtk/-/issues/5747
+    if (!node)
+        return null;
+
     let renderer = Gsk.GLRenderer.new();
     try {
         renderer.realize(null);
