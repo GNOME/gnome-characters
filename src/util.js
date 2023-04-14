@@ -103,8 +103,12 @@ function toCodePoint(s) {
 
 function searchResultToArray(result) {
     let characters = [];
-    for (let index = 0; index < result.len; index++)
-        characters.push(Gc.search_result_get(result, index));
+    for (let index = 0; index < result.len; index++) {
+        const c = Gc.search_result_get(result, index);
+
+        if (c.trim().length)
+            characters.push(c);
+    }
 
     return characters;
 }

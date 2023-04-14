@@ -38,3 +38,4 @@ function testSearch(keywords, maxResults = 5) {
 
 JsUnit.assertTrue(testSearch('pizza').includes('🍕'));
 JsUnit.assertTrue(testSearch('joy').includes('😂'));
+JsUnit.assertEquals(testSearch('space').length, 0);
