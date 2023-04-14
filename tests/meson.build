@@ -1,3 +1,41 @@
+xvfb_run = find_program('xvfb-run', required: false)
+
+add_test_setup('default',
+  is_default: true,
+  env: {
+    'GI_TYPELIB_PATH': meson.project_build_root() / 'lib',
+    'LD_LIBRARY_PATH': meson.project_build_root() / 'lib',
+    'GJS_PATH': ':'.join([
+        meson.project_source_root() / 'src',
+        meson.project_build_root() / 'src',
+     ]),
+    'GSETTINGS_SCHEMA_DIR': meson.project_build_root() / 'data',
+    'GSETTINGS_BACKEND': 'memory',
+  },
+  exe_wrapper: xvfb_run.found() ? [xvfb_run, '-a'] : [],
+)
+
+if gjs_console.found()
+  js_tests = [
+    'Util',
+  ]
+
+  foreach js_test: js_tests
+    test(js_test,
+      gjs_console,
+      args: files('test@0@.js'.format(js_test)),
+      depends: [
+        gc_gir,
+        settings_schemas,
+      ],
+    )
+  endforeach
+endif
+
+if not get_option('installed_tests')
+  subdir_done()
+endif
+
 installed_tests_execdir = join_paths(characters_libexecdir, 'installed-tests', application_id)
 installed_tests_metadir = join_paths(characters_datadir, 'installed-tests', application_id)
 

@@ -44,6 +44,7 @@ if dbus_service_dir == ''
 endif
 
 gjs = dependency('gjs-1.0', version: '>= 1.50')
+gjs_console = find_program('gjs', required: false)
 dependency('gtk4', version: '>=4.6')
 libhandy = dependency ('libadwaita-1', version: '>= 1.2.alpha')
 
@@ -71,9 +72,7 @@ subdir('data')
 subdir('lib')
 subdir('src')
 
-if get_option('installed_tests')
-  subdir('tests')
-endif
+subdir('tests')
 
 configure_file(
   output: 'config.h',

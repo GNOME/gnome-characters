@@ -30,7 +30,7 @@ libgc = shared_library(
   install_dir: characters_pkglibdir
 )
 
-gnome.generate_gir(
+gc_gir = gnome.generate_gir(
   libgc,
   sources: sources + [gc_enums[0], gc_enums[1], gc_h],
   nsversion: characters_gir_version,

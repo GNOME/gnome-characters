@@ -73,10 +73,20 @@ configure_file(
   install_dir: dbus_service_dir
 )
 
+gschema_file = 'org.gnome.Characters.gschema.xml'
 install_data(
-  'org.gnome.Characters.gschema.xml',
+  gschema_file,
   install_dir: join_paths(characters_datadir, 'glib-2.0', 'schemas')
 )
+
+compile_schemas = find_program('glib-compile-schemas', required: false)
+if compile_schemas.found()
+  settings_schemas = custom_target('settings-schemas',
+    command: [compile_schemas, '@CURRENT_SOURCE_DIR@', '--targetdir=@OUTDIR@'],
+    input: gschema_file,
+    output: 'gschemas.compiled',
+  )
+endif
 
 search_provider_conf = configuration_data()
 search_provider_conf.set('appid', application_id)
