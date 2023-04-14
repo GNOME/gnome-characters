@@ -112,6 +112,9 @@ function searchResultToArray(result) {
 function characterToIconData(character) {
     let size = 48.0;
 
+    if (!character || !character.trim().length)
+        return null;
+
     const fontMap = PangoCairo.FontMap.get_default();
     const context = fontMap.create_context();
     const layout = Pango.Layout.new(context);
