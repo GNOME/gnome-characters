@@ -25,7 +25,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const { Gc, Gio, GdkPixbuf, Gdk, GLib, Graphene, Gsk, Gtk, PangoCairo, Pango } = imports.gi;
+const { Gc, Gio, Gdk, GLib, Graphene, Gsk, Gtk, PangoCairo, Pango } = imports.gi;
 
 const System = imports.system;
 
@@ -162,20 +162,20 @@ function characterToIconData(character) {
         size: new Graphene.Size({ width: size, height: size }),
     });
     const texture = renderer.render_texture(node, rect);
-    const bytes = texture.save_to_png_bytes();
     renderer.unrealize();
 
-    const stream = Gio.MemoryInputStream.new_from_bytes(bytes);
-    const px = GdkPixbuf.Pixbuf.new_from_stream_at_scale(stream, size, size, true, null);
+    const textureDownloader = new Gdk.TextureDownloader(texture);
+    textureDownloader.set_format(Gdk.MemoryFormat.R8G8B8A8);
+    const [bytes, stride] = textureDownloader.download_bytes();
 
-    let variantBytes = GLib.Variant.new_from_bytes(GLib.VariantType.new('ay'), px.read_pixel_bytes(), true);
     return GLib.Variant.new_tuple([
-        new GLib.Variant('i', px.get_width()),
-        new GLib.Variant('i', px.get_height()),
-        new GLib.Variant('i', px.get_rowstride()),
-        new GLib.Variant('b', px.get_has_alpha()),
-        new GLib.Variant('i', px.get_bits_per_sample()),
-        new GLib.Variant('i', px.get_n_channels()),
-        variantBytes,
+        new GLib.Variant('i', texture.get_width()),
+        new GLib.Variant('i', texture.get_height()),
+        new GLib.Variant('i', stride),
+        new GLib.Variant('b', /* has alpha */ true),
+        new GLib.Variant('i', /* bits per sample */ 8),
+        new GLib.Variant('i', /* channels */ 4),
+        GLib.Variant.new_from_bytes(
+            GLib.VariantType.new('ay'), bytes, true),
     ]);
 }
