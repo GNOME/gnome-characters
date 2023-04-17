@@ -1,0 +1,29 @@
+#!/usr/bin/env gjs
+const { GLib, Gio } = imports.gi;
+
+const pkgName = '@pkgname@';
+imports.package.init({
+    name: pkgName,
+    prefix: '@prefix@',
+    libdir: '@libdir@',
+});
+
+const loadResource = (path, baseName, ext) => {
+    const resource = Gio.Resource.load(GLib.build_filenamev([path,
+        `${baseName}.${ext}.gresource`]));
+    resource._register();
+
+    return `resource:///${baseName.replaceAll('.', '/')}/js`;
+};
+
+const dataDir = GLib.build_filenamev([pkg.prefix, 'share', pkgName]);
+imports.searchPath.unshift(loadResource(dataDir, pkgName, 'src'));
+
+loadResource(dataDir, pkgName, 'data');
+
+const currentPath = imports.gi.GLib.path_get_dirname(
+    imports.system.programInvocationName);
+imports.searchPath.unshift(currentPath);
+
+// eslint-disable-next-line no-unused-expressions
+imports[ARGV[0]];

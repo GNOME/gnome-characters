@@ -60,6 +60,7 @@ endif
 
 gnome = import('gnome')
 i18n = import('i18n')
+fs = import('fs')
 
 po_dir = join_paths(meson.project_source_root(), 'po')
 
