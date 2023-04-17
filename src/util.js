@@ -136,8 +136,14 @@ function characterToIconData(character) {
     snapshot.restore();
 
     const node = snapshot.to_node();
-    const renderer = Gsk.GLRenderer.new();
-    renderer.realize(null);
+    let renderer = Gsk.GLRenderer.new();
+    try {
+        renderer.realize(null);
+    } catch (e) {
+        renderer = new Gsk.CairoRenderer();
+        renderer.realize(null);
+    }
+
     let rect = new Graphene.Rect({
         origin: new Graphene.Point({ x: 0.0, y: 0.0 }),
         size: new Graphene.Size({ width: size, height: size }),
