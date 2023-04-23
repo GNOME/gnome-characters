@@ -353,7 +353,7 @@ gc_character_iter_next (GcCharacterIter *iter)
     {
       while (TRUE)
         {
-          if (uc == iter->blocks[iter->block_index].end)
+          if (uc > iter->blocks[iter->block_index].end)
             {
               iter->block_index++;
               uc = -1;
@@ -372,12 +372,12 @@ gc_character_iter_next (GcCharacterIter *iter)
           else
             uc++;
 
-          while (uc < iter->blocks[iter->block_index].end
+          while (uc <= iter->blocks[iter->block_index].end
                  && (!iter->filter (iter, &uc, 1) ||
                      is_character_emoji (uc)))
             uc++;
 
-          if (uc < iter->blocks[iter->block_index].end)
+          if (uc <= iter->blocks[iter->block_index].end)
             {
               iter->uc[0] = uc;
               iter->uc_length = 1;
