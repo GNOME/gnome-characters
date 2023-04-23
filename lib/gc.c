@@ -861,9 +861,7 @@ gc_character_is_invisible (const gunichar *chars,
   int i;
 
   for (i = 0; i < n_chars; i++) {
-    if (!g_unichar_isspace (chars[i]) &&
-        !g_unichar_iscntrl (chars[i]) &&
-        !g_unichar_iszerowidth (chars[i]))
+    if (g_unichar_isgraph (chars[i]))
       return FALSE;
   }
 
