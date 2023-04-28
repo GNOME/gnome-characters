@@ -1,28 +1,28 @@
 # Brazilian Portuguese translation for gnome-characters.
-# Copyright (C) 2022 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2023 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2015.
 # Artur de Aquino Morais <artur.morais93@outlook.com>, 2016.
 # Enrico Nicoletto <liverig@gmail.com>, 2014, 2015, 2016, 2021.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2015-2022.
 # Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.
-# Leônidas Araújo <leorusvellt@hotmail.com>, 2022.
+# Leônidas Araújo <leorusvellt@hotmail.com>, 2022-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-08-01 16:44+0000\n"
-"PO-Revision-Date: 2022-08-02 14:25-0300\n"
+"POT-Creation-Date: 2023-03-26 12:38+0000\n"
+"PO-Revision-Date: 2023-04-12 09:39-0300\n"
 "Last-Translator: Leônidas Araújo <leorusvellt@hotmail.com>\n"
-"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
+"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 40.0\n"
+"X-Generator: Gtranslator 42.0\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: gnome-characters\n"
@@ -156,23 +156,35 @@ msgstr "So_bre o Caracteres"
 msgid "Characters"
 msgstr "Caracteres"
 
-#: data/window.ui:138
+#: data/window.ui:38
+msgid "Search"
+msgstr "Pesquisa"
+
+#: data/window.ui:45
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: data/window.ui:60
+msgid "Search characters"
+msgstr "Pesquisar caracteres"
+
+#: data/window.ui:141
 msgid "No Recent Characters"
 msgstr "Sem caracteres recentes"
 
-#: data/window.ui:139
-msgid "Characters will appear here if you use them."
-msgstr "Caracteres irão aparecer aqui se você usá-los."
+#: data/window.ui:142
+msgid "Characters will appear here if you use them"
+msgstr "Caracteres irão aparecer aqui se você usá-los"
 
-#: data/window.ui:166
+#: data/window.ui:169
 msgid "No Results"
 msgstr "Sem resultados"
 
-#: data/window.ui:167
-msgid "Try a different search."
-msgstr "Tente uma pesquisa diferente."
+#: data/window.ui:170
+msgid "Try a different search"
+msgstr "Tente uma pesquisa diferente"
 
-#: data/window.ui:188
+#: data/window.ui:191
 msgid "Loading…"
 msgstr "Carregando…"
 
@@ -297,9 +309,6 @@ msgstr ""
 
 #~ msgid "Recently Used %s Character List"
 #~ msgstr "Lista de caracteres %s recentemente usados"
-
-#~ msgid "Search Result Character List"
-#~ msgstr "Resultado da pesquisa da lista de caracteres"
 
 #~ msgid "Search found no results"
 #~ msgstr "A pesquisa localizou nenhum resultado"
