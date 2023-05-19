@@ -5,15 +5,16 @@
 # Bin Li <binli@gnome.org>, 2016.
 # Dingzhong Chen <wsxy162@gmail.com>, 2015, 2016, 2017, 2019.
 # lumingzh <lumingzh@qq.com>, 2022.
+# Nanling <neithern@outlook.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2022-07-09 14:39+0000\n"
-"PO-Revision-Date: 2022-07-10 08:36+0800\n"
-"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"POT-Creation-Date: 2023-05-05 12:37+0000\n"
+"PO-Revision-Date: 2023-05-05 22:12+0800\n"
+"Last-Translator: Nanling <neithern@outlook.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -148,23 +149,35 @@ msgstr "关于字符(_A)"
 msgid "Characters"
 msgstr "字符"
 
-#: data/window.ui:138
+#: data/window.ui:38
+msgid "Search"
+msgstr "搜索"
+
+#: data/window.ui:45
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: data/window.ui:60
+msgid "Search characters"
+msgstr "搜索字符"
+
+#: data/window.ui:141
 msgid "No Recent Characters"
 msgstr "未找到最近使用的字符"
 
-#: data/window.ui:139
-msgid "Characters will appear here if you use them."
-msgstr "你使用的字符将会在这里显示。"
+#: data/window.ui:142
+msgid "Characters will appear here if you use them"
+msgstr "你使用的字符将会在这里显示"
 
-#: data/window.ui:166
+#: data/window.ui:169
 msgid "No Results"
 msgstr "未找到结果"
 
-#: data/window.ui:167
-msgid "Try a different search."
-msgstr "尝试不同的搜索。"
+#: data/window.ui:170
+msgid "Try a different search"
+msgstr "尝试不同的搜索"
 
-#: data/window.ui:188
+#: data/window.ui:191
 msgid "Loading…"
 msgstr "正在加载…"
 
@@ -287,9 +300,6 @@ msgstr ""
 
 #~ msgid "Recently Used %s Character List"
 #~ msgstr "最近使用的 %s 字符列表"
-
-#~ msgid "Search Result Character List"
-#~ msgstr "字符列表搜索结果"
 
 #~ msgid "Search found no results"
 #~ msgstr "搜索未找到结果"
