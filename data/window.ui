@@ -43,18 +43,16 @@
                 </child>
                 <child type="top">
                   <object class="GtkSearchBar" id="search-bar">
-                    <property name="halign">fill</property>
                     <child>
                       <object class="GtkSearchEntry" id="searchEntry">
                         <property name="placeholder-text" translatable="yes">Search characters</property>
-                        <property name="halign">fill</property>
+                        <property name="hexpand">True</property>
                       </object>
                     </child>
                   </object>
                 </child>
                 <child>
                   <object class="GtkScrolledWindow">
-                    <property name="hexpand">false</property>
                     <property name="hscrollbar-policy">never</property>
                     <child>
                       <object class="Gjs_Sidebar" id="sidebar" />
