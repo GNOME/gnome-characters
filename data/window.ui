@@ -19,6 +19,7 @@
     <property name="height-request">200</property>
     <child>
       <object class="AdwNavigationSplitView" id="splitView">
+        <property name="max-sidebar-width">280</property>
         <property name="sidebar">
           <object class="AdwNavigationPage">
             <property name="title" translatable="yes">Characters</property>
