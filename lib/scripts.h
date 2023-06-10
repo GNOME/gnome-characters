@@ -1,4 +1,4 @@
-#define NLANGUAGES 1144
+#define NLANGUAGES 1145
 struct LanguageScripts
 {
   const gchar *language;
@@ -268,6 +268,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "en_CK", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "en_CL", { N_("Deseret"), N_("Shavian"), NULL }, { 0x44737274, 0x53686177, 0 } },
     { "en_CM", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
+    { "en_CQ", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "en_CX", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "en_CY", { N_("Deseret"), N_("Shavian"), NULL }, { 0x44737274, 0x53686177, 0 } },
     { "en_CZ", { N_("Deseret"), N_("Shavian"), NULL }, { 0x44737274, 0x53686177, 0 } },

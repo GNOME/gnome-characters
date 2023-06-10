@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CLDR_VERSION=42
-UCD_VERSION=15.0.0
+CLDR_VERSION=43
+UCD_VERSION=15.1.0
 EMOJI_VERSION=15.0
 
 wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/Blocks.txt"
