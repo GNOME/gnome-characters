@@ -85,7 +85,6 @@ var MainWindow = GObject.registerClass({
                     this._searchButton.active = !this._searchButton.active;
                 },
             },
-            { name: 'show-primary-menu', activate: this._showPrimaryMenu },
         ]);
 
         this._searchButton.bind_property('active',
@@ -137,11 +136,6 @@ var MainWindow = GObject.registerClass({
             this._sidebar.selectRowByName('recent');
         else
             this._sidebar.selectRowByName('smileys');
-    }
-
-    _showPrimaryMenu() {
-        const popover = this._primaryMenuButton.get_popover();
-        popover.popup();
     }
 
     set searchActive(v) {
