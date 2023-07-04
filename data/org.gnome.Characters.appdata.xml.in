@@ -43,6 +43,21 @@
   <translation type="gettext">org.gnome.Characters</translation>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="45.alpha" date="2023-07-04">
+      <p>Characters 45.alpha brings support for Unicode 15.0.1 and new CJK extensions, in addition to miscellaneous bug fixes.</p>
+      <p>It also comes with translation updates for the following locales:</p>
+      <ul>
+        <li>Chinese (China) (Boyuan Yang)</li>
+        <li>Dutch (Nathan Follens)</li>
+        <li>English (United Kingdom) (Bruce Cowan)</li>
+        <li>French (Guillaume Bernard)</li>
+        <li>Greek, Modern (1453-) (Efstathios Iosifidis)</li>
+        <li>Icelandic (Sveinn í Felli)</li>
+        <li>Italian (Gianvito Cavasoli)</li>
+        <li>Portuguese (Brazil) (Leônidas Araújo)</li>
+        <li>Slovak (Dušan Kazik)</li>
+      </ul>
+    </release>
     <release version="44.0" date="2023-03-19">
       <p>Characters 44.0 brings support for Unicode 15.</p>
       <p>It also comes with translation updates for the following locales:</p>

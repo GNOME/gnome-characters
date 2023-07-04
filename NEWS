@@ -1,6 +1,28 @@
+45.alpha
+========
+* Update for Unicode 15.0.1 (Alice Mikhaylenko)
+* Add support for new Unicode CJK extensions (Alice Mikhaylenko)
+* Bugs fixed:
+  - #82 Unable to search and display the character "䷿" U+4DFF (Jeremias Ortega)
+  - #96 The "Latin Small Letter Long S" (ſ — U+017F) is missing from the
+    application (Jeremias Ortega)
+  - #113 Nonspacing marks should not be considered invisible (Jeremias Ortega)
+  - #124 44.rc: search provider crashes on shutdown (Marco Trevisan (Treviño))
+
+* Translation updates:
+  - Chinese (China) (Boyuan Yang)
+  - Dutch (Nathan Follens)
+  - English (United Kingdom) (Bruce Cowan)
+  - French (Guillaume Bernard)
+  - Greek, Modern (1453-) (Efstathios Iosifidis)
+  - Icelandic (Sveinn í Felli)
+  - Italian (Gianvito Cavasoli)
+  - Portuguese (Brazil) (Leônidas Araújo)
+  - Slovak (Dušan Kazik)
+
 44.0
 =======
-* Update for Unicode 15 (Alexander Mikhaylenko)
+* Update for Unicode 15 (Alice Mikhaylenko)
 * Misc. string updates (Automeris naranja)
 * Avoid downscaling search result icon (Andrew Mayorov)
 * Use action-name properties (Sabri Ünal)
@@ -72,7 +94,7 @@
 
 44.beta
 ===========
-* Update for Unicode 15 (Alexander Mikhaylenko)
+* Update for Unicode 15 (Alice Mikhaylenko)
 * Misc. string updates (Automeris naranja)
 * Avoid downscaling search result icon (Andrew Mayorov)
 * Use action-name properties (Sabri Ünal)
@@ -88,7 +110,7 @@
 
 43.0
 ===========
-* Add support for composite emoji (Alexander Mikhaylenko)
+* Add support for composite emoji (Alice Mikhaylenko)
 * Use AdwAboutWindow for an adaptive about window (Christopher Davis)
 * Translation updates:
  - Abkhazian
@@ -152,7 +174,7 @@
 
 43.alpha
 ===========
-* Add support for composite emoji (Alexander Mikhaylenko)
+* Add support for composite emoji (Alice Mikhaylenko)
 * Use AdwAboutWindow for an adaptive about window (Christopher Davis)
 * Translation updates:
  - Dutch
@@ -174,7 +196,7 @@
 
 42.rc
 ===========
-* Fix reflowing in size_allocate() (Alexander Mikhaylenko)
+* Fix reflowing in size_allocate() (Alice Mikhaylenko)
 * Translation updates:
  - Bulgarian
  - Croatian
