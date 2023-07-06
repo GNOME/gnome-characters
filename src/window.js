@@ -71,7 +71,7 @@ var MainWindow = GObject.registerClass({
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
         let recentCharacters = Main.settings.get_value('recent-characters');
-        this.recentCharacters = recentCharacters.get_strv();
+        this.recentCharacters = recentCharacters.deepUnpack();
         this._maxRecentCharacters = 100;
         Main.settings.bind('max-recent-characters', this,
             'max-recent-characters',
