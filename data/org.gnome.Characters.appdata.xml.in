@@ -44,121 +44,129 @@
   <content_rating type="oars-1.1"/>
   <releases>
     <release version="45.alpha" date="2023-07-04">
-      <p>Characters 45.alpha brings support for Unicode 15.0.1 and new CJK extensions, in addition to miscellaneous bug fixes.</p>
-      <p>It also comes with translation updates for the following locales:</p>
-      <ul>
-        <li>Chinese (China) (Boyuan Yang)</li>
-        <li>Dutch (Nathan Follens)</li>
-        <li>English (United Kingdom) (Bruce Cowan)</li>
-        <li>French (Guillaume Bernard)</li>
-        <li>Greek, Modern (1453-) (Efstathios Iosifidis)</li>
-        <li>Icelandic (Sveinn í Felli)</li>
-        <li>Italian (Gianvito Cavasoli)</li>
-        <li>Portuguese (Brazil) (Leônidas Araújo)</li>
-        <li>Slovak (Dušan Kazik)</li>
-      </ul>
+      <description>
+        <p>Characters 45.alpha brings support for Unicode 15.0.1 and new CJK extensions, in addition to miscellaneous bug fixes.</p>
+        <p>It also comes with translation updates for the following locales:</p>
+        <ul>
+          <li>Chinese (China) (Boyuan Yang)</li>
+          <li>Dutch (Nathan Follens)</li>
+          <li>English (United Kingdom) (Bruce Cowan)</li>
+          <li>French (Guillaume Bernard)</li>
+          <li>Greek, Modern (1453-) (Efstathios Iosifidis)</li>
+          <li>Icelandic (Sveinn í Felli)</li>
+          <li>Italian (Gianvito Cavasoli)</li>
+          <li>Portuguese (Brazil) (Leônidas Araújo)</li>
+          <li>Slovak (Dušan Kazik)</li>
+        </ul>
+      </description>
     </release>
     <release version="44.0" date="2023-03-19">
-      <p>Characters 44.0 brings support for Unicode 15.</p>
-      <p>It also comes with translation updates for the following locales:</p>
-      <ul>
-        <li>Basque (Asier Sarasua Garmendia)</li>
-        <li>Belarusian (Vasil Pupkin)</li>
-        <li>Bulgarian (Alexander Shopov)</li>
-        <li>Czech (Marek Černocký)</li>
-        <li>Danish (Alan Mortensen)</li>
-        <li>Dutch (Nathan Follens)</li>
-        <li>Finnish (Jiri Grönroos)</li>
-        <li>Friulian (Fabio Tomat)</li>
-        <li>Galician (Fran Dieguez)</li>
-        <li>Georgian (Ekaterine Papava)</li>
-        <li>German (Philipp Kiemle)</li>
-        <li>Greek, Modern (1453-) (Kosmas Martakidis)</li>
-        <li>Hebrew (Yaron Shahrabani, Yosef Or Boczko)</li>
-        <li>Hindi (Hemish)</li>
-        <li>Hungarian (Balázs Úr)</li>
-        <li>Icelandic (Sveinn í Felli)</li>
-        <li>Indonesian (Kukuh Syafaat)</li>
-        <li>Interlingue (Olga Smirnova)</li>
-        <li>Korean (DaeHyun Sung)</li>
-        <li>Lithuanian (Aurimas Černius)</li>
-        <li>Occitan (post 1500) (Quentin PAGÈS)</li>
-        <li>Persian (MohammadSaleh Kamyab)</li>
-        <li>Polish (Piotr Drąg)</li>
-        <li>Portuguese (Hugo Carvalho)</li>
-        <li>Russian (Aleksandr Melman)</li>
-        <li>Serbian (Марко Костић)</li>
-        <li>Slovenian (Matej Urbančič)</li>
-        <li>Spanish (Daniel)</li>
-        <li>Swedish (Luna Jernberg)</li>
-        <li>Turkish (Sabri Ünal)</li>
-        <li>Ukrainian (Yuri Chornoivan)</li>
-      </ul>
+      <description>
+        <p>Characters 44.0 brings support for Unicode 15.</p>
+        <p>It also comes with translation updates for the following locales:</p>
+        <ul>
+          <li>Basque (Asier Sarasua Garmendia)</li>
+          <li>Belarusian (Vasil Pupkin)</li>
+          <li>Bulgarian (Alexander Shopov)</li>
+          <li>Czech (Marek Černocký)</li>
+          <li>Danish (Alan Mortensen)</li>
+          <li>Dutch (Nathan Follens)</li>
+          <li>Finnish (Jiri Grönroos)</li>
+          <li>Friulian (Fabio Tomat)</li>
+          <li>Galician (Fran Dieguez)</li>
+          <li>Georgian (Ekaterine Papava)</li>
+          <li>German (Philipp Kiemle)</li>
+          <li>Greek, Modern (1453-) (Kosmas Martakidis)</li>
+          <li>Hebrew (Yaron Shahrabani, Yosef Or Boczko)</li>
+          <li>Hindi (Hemish)</li>
+          <li>Hungarian (Balázs Úr)</li>
+          <li>Icelandic (Sveinn í Felli)</li>
+          <li>Indonesian (Kukuh Syafaat)</li>
+          <li>Interlingue (Olga Smirnova)</li>
+          <li>Korean (DaeHyun Sung)</li>
+          <li>Lithuanian (Aurimas Černius)</li>
+          <li>Occitan (post 1500) (Quentin PAGÈS)</li>
+          <li>Persian (MohammadSaleh Kamyab)</li>
+          <li>Polish (Piotr Drąg)</li>
+          <li>Portuguese (Hugo Carvalho)</li>
+          <li>Russian (Aleksandr Melman)</li>
+          <li>Serbian (Марко Костић)</li>
+          <li>Slovenian (Matej Urbančič)</li>
+          <li>Spanish (Daniel)</li>
+          <li>Swedish (Luna Jernberg)</li>
+          <li>Turkish (Sabri Ünal)</li>
+          <li>Ukrainian (Yuri Chornoivan)</li>
+        </ul>
+      </description>
     </release>
     <release version="43.0" date="2022-09-18">
-      <p>Characters 43.0 brings support for composite emoji, allowing you to use emoji with different skin tones, genders, colors, and more.</p>
-      <p>It also comes with updated translations for the following locales:</p>
-      <ul>
-        <li>Abkhazian</li>
-        <li>Basque</li>
-        <li>Bulgarian</li>
-        <li>Catalan</li>
-        <li>Chinese (China)</li>
-        <li>Chinese (Taiwan)</li>
-        <li>Croatian</li>
-        <li>Czech</li>
-        <li>Danish</li>
-        <li>Dutch</li>
-        <li>English (United Kingdom)</li>
-        <li>Finnish</li>
-        <li>French</li>
-        <li>Friulian</li>
-        <li>Galician</li>
-        <li>Georgian</li>
-        <li>German</li>
-        <li>Hebrew</li>
-        <li>Hungarian</li>
-        <li>Icelandic</li>
-        <li>Indonesian</li>
-        <li>Korean</li>
-        <li>Latvian</li>
-        <li>Lithuanian</li>
-        <li>Nepali</li>
-        <li>Occitan (post 1500)</li>
-        <li>Persian</li>
-        <li>Polish</li>
-        <li>Portuguese</li>
-        <li>Portuguese (Brazil)</li>
-        <li>Russian</li>
-        <li>Santali</li>
-        <li>Serbian</li>
-        <li>Slovenian</li>
-        <li>Spanish</li>
-        <li>Swedish</li>
-        <li>Turkish</li>
-        <li>Ukrainian</li>
-      </ul>
+      <description>
+        <p>Characters 43.0 brings support for composite emoji, allowing you to use emoji with different skin tones, genders, colors, and more.</p>
+        <p>It also comes with updated translations for the following locales:</p>
+        <ul>
+          <li>Abkhazian</li>
+          <li>Basque</li>
+          <li>Bulgarian</li>
+          <li>Catalan</li>
+          <li>Chinese (China)</li>
+          <li>Chinese (Taiwan)</li>
+          <li>Croatian</li>
+          <li>Czech</li>
+          <li>Danish</li>
+          <li>Dutch</li>
+          <li>English (United Kingdom)</li>
+          <li>Finnish</li>
+          <li>French</li>
+          <li>Friulian</li>
+          <li>Galician</li>
+          <li>Georgian</li>
+          <li>German</li>
+          <li>Hebrew</li>
+          <li>Hungarian</li>
+          <li>Icelandic</li>
+          <li>Indonesian</li>
+          <li>Korean</li>
+          <li>Latvian</li>
+          <li>Lithuanian</li>
+          <li>Nepali</li>
+          <li>Occitan (post 1500)</li>
+          <li>Persian</li>
+          <li>Polish</li>
+          <li>Portuguese</li>
+          <li>Portuguese (Brazil)</li>
+          <li>Russian</li>
+          <li>Santali</li>
+          <li>Serbian</li>
+          <li>Slovenian</li>
+          <li>Spanish</li>
+          <li>Swedish</li>
+          <li>Turkish</li>
+          <li>Ukrainian</li>
+        </ul>
+      </description>
     </release>
     <release version="43~rc" date="2022-09-03" type="development">
-      <p>Characters 43.rc comes with updated translations for the following locales:</p>
-      <ul>
-        <li>Catalan</li>
-        <li>Chinese (Taiwan)</li>
-        <li>Croatian</li>
-        <li>Czech</li>
-        <li>Danish</li>
-        <li>Finnish</li>
-        <li>Galician</li>
-        <li>Hungarian</li>
-        <li>Lithuanian</li>
-        <li>Polish</li>
-        <li>Portuguese (Brazil)</li>
-        <li>Slovenian</li>
-      </ul>
+      <description>
+        <p>Characters 43.rc comes with updated translations for the following locales:</p>
+        <ul>
+          <li>Catalan</li>
+          <li>Chinese (Taiwan)</li>
+          <li>Croatian</li>
+          <li>Czech</li>
+          <li>Danish</li>
+          <li>Finnish</li>
+          <li>Galician</li>
+          <li>Hungarian</li>
+          <li>Lithuanian</li>
+          <li>Polish</li>
+          <li>Portuguese (Brazil)</li>
+          <li>Slovenian</li>
+        </ul>
+      </description>
     </release>
     <release version="43~beta" date="2022-08-07" type="development" />
     <release version="43~alpha" date="2022-07-13">
-      <ul>
+      <description>
         <p>Characters 43.alpha comes with composite emoji support and a new adaptive aboud window.</p>
         <p>It also comes with updated translations for the following locales:</p>
         <ul>
@@ -173,82 +181,88 @@
           <li>Swedish</li>
           <li>Ukrainian</li>
         </ul>
-      </ul>
+      </description>
     </release>
     <release version="42.0" date="2022-03-19">
-      <p>Characters 42.0 comes plenty of changes</p>
-      <ul>
-        <li>Port to GTK 4 / libadwaita</li>
-        <li>Proper dark theme support</li>
-        <li>Fix various search provider related issues</li>
-        <li>Search provider now displays the character on the search results</li>
-        <li>Translations updates</li>
-      </ul>
+      <description>
+        <p>Characters 42.0 comes plenty of changes</p>
+        <ul>
+          <li>Port to GTK 4 / libadwaita</li>
+          <li>Proper dark theme support</li>
+          <li>Fix various search provider related issues</li>
+          <li>Search provider now displays the character on the search results</li>
+          <li>Translations updates</li>
+        </ul>
+      </description>
     </release>
     <release version="41.0" date="2021-09-21">
-      <p>Characters 41 comes with a fix so that the close button shows on the sidebar at mobile sizes.</p>
-      <p>Characters 41 also comes with updated translations for the following locales:</p>
-      <ul>
-        <li>Belarusian</li>
-        <li>Chinese (Taiwan)</li>
-        <li>Danish</li>
-        <li>Dutch</li>
-        <li>English (United Kingdom)</li>
-        <li>Greek, Modern (1453-)</li>
-        <li>Hebrew</li>
-        <li>Korean</li>
-        <li>Nepali</li>
-        <li>Occitan (post 1500)</li>
-        <li>Russian</li>
-        <li>Tamil</li>
-        <li>Western Frisian</li>
-      </ul>
+      <description>
+        <p>Characters 41 comes with a fix so that the close button shows on the sidebar at mobile sizes.</p>
+        <p>Characters 41 also comes with updated translations for the following locales:</p>
+        <ul>
+          <li>Belarusian</li>
+          <li>Chinese (Taiwan)</li>
+          <li>Danish</li>
+          <li>Dutch</li>
+          <li>English (United Kingdom)</li>
+          <li>Greek, Modern (1453-)</li>
+          <li>Hebrew</li>
+          <li>Korean</li>
+          <li>Nepali</li>
+          <li>Occitan (post 1500)</li>
+          <li>Russian</li>
+          <li>Tamil</li>
+          <li>Western Frisian</li>
+        </ul>
+      </description>
     </release>
     <release version="40.0" date="2021-03-20">
-      <p>Characters has received a visual upgrade, and is now able to be used across mobile and desktop form factors.</p>
-      <p>Characters 40 also comes with updated translations for the following locales:</p>
-      <ul>
-        <li>Bangla (India)</li>
-        <li>Basque</li>
-        <li>Bokmål, Norwegian</li>
-        <li>Catalan</li>
-        <li>Chinese (China)</li>
-        <li>Chinese (Taiwan)</li>
-        <li>Croatian</li>
-        <li>Czech</li>
-        <li>Danish</li>
-        <li>Dutch</li>
-        <li>English (United Kingdom)</li>
-        <li>Esperanto</li>
-        <li>Finnish</li>
-        <li>French</li>
-        <li>Friulian</li>
-        <li>Galician</li>
-        <li>German</li>
-        <li>Greek, Modern (1453-)</li>
-        <li>Hebrew</li>
-        <li>Hungarian</li>
-        <li>Indonesian</li>
-        <li>Italian</li>
-        <li>Japanese</li>
-        <li>Kazakh</li>
-        <li>Korean</li>
-        <li>Latvian</li>
-        <li>Lithuanian</li>
-        <li>Panjabi</li>
-        <li>Persian</li>
-        <li>Polish</li>
-        <li>Portuguese</li>
-        <li>Portuguese (Brazil)</li>
-        <li>Romanian</li>
-        <li>Serbian</li>
-        <li>Slovak</li>
-        <li>Slovenian</li>
-        <li>Spanish</li>
-        <li>Swedish</li>
-        <li>Turkish</li>
-        <li>Ukrainian</li>
-      </ul>
+      <description>
+        <p>Characters has received a visual upgrade, and is now able to be used across mobile and desktop form factors.</p>
+        <p>Characters 40 also comes with updated translations for the following locales:</p>
+        <ul>
+          <li>Bangla (India)</li>
+          <li>Basque</li>
+          <li>Bokmål, Norwegian</li>
+          <li>Catalan</li>
+          <li>Chinese (China)</li>
+          <li>Chinese (Taiwan)</li>
+          <li>Croatian</li>
+          <li>Czech</li>
+          <li>Danish</li>
+          <li>Dutch</li>
+          <li>English (United Kingdom)</li>
+          <li>Esperanto</li>
+          <li>Finnish</li>
+          <li>French</li>
+          <li>Friulian</li>
+          <li>Galician</li>
+          <li>German</li>
+          <li>Greek, Modern (1453-)</li>
+          <li>Hebrew</li>
+          <li>Hungarian</li>
+          <li>Indonesian</li>
+          <li>Italian</li>
+          <li>Japanese</li>
+          <li>Kazakh</li>
+          <li>Korean</li>
+          <li>Latvian</li>
+          <li>Lithuanian</li>
+          <li>Panjabi</li>
+          <li>Persian</li>
+          <li>Polish</li>
+          <li>Portuguese</li>
+          <li>Portuguese (Brazil)</li>
+          <li>Romanian</li>
+          <li>Serbian</li>
+          <li>Slovak</li>
+          <li>Slovenian</li>
+          <li>Spanish</li>
+          <li>Swedish</li>
+          <li>Turkish</li>
+          <li>Ukrainian</li>
+        </ul>
+      </description>
     </release>
     <release version="3.32.1" date="2019-04-08"/>
   </releases>
