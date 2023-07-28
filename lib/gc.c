@@ -793,7 +793,7 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
       if (length >= UNINAME_MAX)
         return FALSE;
 
-      p = g_strstr_len (buffer, UNINAME_MAX, keyword);
+      p = strstr (buffer, keyword);
       if (!p)
         return FALSE;
 
@@ -803,7 +803,7 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
             {
               if (p == buffer || g_ascii_isspace (*(p - 1)))
                 break;
-              p = g_strstr_len (p + 1, UNINAME_MAX, keyword);
+              p = strstr (p + 1, keyword);
             }
 
           if (!p)
