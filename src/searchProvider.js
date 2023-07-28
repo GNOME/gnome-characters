@@ -23,7 +23,7 @@ const { Gc, Gio, GLib, GObject } = imports.gi;
 const ByteArray = imports.byteArray;
 const Util = imports.util;
 
-const MAX_SEARCH_RESULTS = 100;
+const MAX_SEARCH_RESULTS = 20;
 
 const SearchProviderInterface = ByteArray.toString(Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0).toArray());
 
