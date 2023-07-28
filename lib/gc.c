@@ -787,6 +787,13 @@ parse_hex (const char *str,
   return TRUE;
 }
 
+#define UTF8_LENGTH(Char)              \
+  ((Char) < 0x80 ? 1 :                 \
+   ((Char) < 0x800 ? 2 :               \
+    ((Char) < 0x10000 ? 3 :            \
+     ((Char) < 0x200000 ? 4 :          \
+      ((Char) < 0x4000000 ? 5 : 6)))))
+
 static gboolean
 filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
 {
@@ -802,21 +809,28 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
     {
       const char *keyword = keywords[0];
       size_t keyword_length = keywords_lengths[0];
-      char *utf8;
-      glong utf8_length;
+      glong utf8_length = 0;
       gulong hex_value;
 
-      /* Match against the character itself.  */
-      utf8 = g_ucs4_to_utf8 (uc, length, NULL, &utf8_length, NULL);
+      for (int i = 0; i < length; i++)
+        utf8_length += UTF8_LENGTH (uc[i]);
 
-      if (utf8_length == keyword_length && memcmp (keyword, utf8, utf8_length) == 0)
+      if (utf8_length == keyword_length)
         {
-          g_free (utf8);
+          guint pos = 0;
+
+          for (const char *iter = keyword;
+               *iter;
+               iter = g_utf8_next_char (iter), pos++)
+            {
+              if (pos >= length || uc[pos] != g_utf8_get_char (iter))
+                goto try_hex_match;
+            }
+
           return TRUE;
         }
 
-      g_free (utf8);
-
+    try_hex_match:
       /* Match against the hexadecimal code point.  */
       if (length == 1 &&
           keyword_length <= 6 &&
