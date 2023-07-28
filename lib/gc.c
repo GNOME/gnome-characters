@@ -192,6 +192,7 @@ get_character_name (const gunichar *uc,
       if (block == cjk_blocks[i])
         {
           snprintf (buffer, UNINAME_MAX, "CJK UNIFIED IDEOGRAPH-%X", uc[0]);
+          buffer[UNINAME_MAX] = 0;
           return buffer;
         }
 
@@ -199,6 +200,7 @@ get_character_name (const gunichar *uc,
       if (block == tangut_blocks[i])
         {
           snprintf (buffer, UNINAME_MAX, "TANGUT IDEOGRAPH-%X", uc[0]);
+          buffer[UNINAME_MAX] = 0;
           return buffer;
         }
 
@@ -251,7 +253,9 @@ get_character_name (const gunichar *uc,
 
   if (emoji_res)
     {
-      memcpy (buffer, emoji_res->name, strnlen (emoji_res->name, UNINAME_MAX));
+      size_t len = strnlen (emoji_res->name, UNINAME_MAX);
+      memcpy (buffer, emoji_res->name, len);
+      buffer[len] = 0;
       return buffer;
     }
 
@@ -261,7 +265,9 @@ get_character_name (const gunichar *uc,
                  character_name_compare);
   if (res)
     {
-      memcpy (buffer, res->name, strnlen (res->name, UNINAME_MAX));
+      size_t len = strnlen (res->name, UNINAME_MAX);
+      memcpy (buffer, res->name, len);
+      buffer[len] = 0;
       return buffer;
     }
 
@@ -748,7 +754,7 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
 {
   const gchar * const * keywords = iter->keywords;
   const gsize *keywords_lengths = iter->keywords_lengths;
-  gchar buffer[UNINAME_MAX];
+  gchar buffer[UNINAME_MAX+1];
 
   if (!filter_is_print (iter, uc, length))
     return FALSE;
@@ -849,7 +855,7 @@ gchar *
 gc_character_name (const gunichar *chars,
                    int             n_chars)
 {
-  return get_character_name (chars, n_chars, g_new0 (gchar, UNINAME_MAX));
+  return get_character_name (chars, n_chars, g_new (gchar, UNINAME_MAX+1));
 }
 
 /**
