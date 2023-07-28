@@ -293,6 +293,7 @@ struct GcCharacterIter
 
   GUnicodeType type;
   const gchar * const * keywords;
+  const gsize *keywords_lengths;
   GcSearchFlag flags;
 
   gboolean (* filter) (GcCharacterIter *iter, const gunichar *uc, int length);
@@ -308,7 +309,8 @@ static void     gc_character_iter_init_for_category
 
 static void     gc_character_iter_init_for_keywords
                                        (GcCharacterIter      *iter,
-                                        const gchar * const * keywords);
+                                        const gchar * const  *keywords,
+                                        const gsize          *keywords_lengths);
 
 static int
 emoji_indices_compare (gconstpointer a, gconstpointer b)
@@ -745,6 +747,7 @@ static gboolean
 filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
 {
   const gchar * const * keywords = iter->keywords;
+  const gsize *keywords_lengths = iter->keywords_lengths;
   gchar buffer[UNINAME_MAX];
 
   if (!filter_is_print (iter, uc, length))
@@ -753,7 +756,7 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
   /* Special case if KEYWORDS only contains a single word.  */
   if (*keywords && *(keywords + 1) == NULL)
     {
-      size_t keyword_length = strlen (*keywords);
+      size_t keyword_length = keywords_lengths[0];
       char *utf8;
       glong utf8_length;
 
@@ -775,10 +778,10 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
   if (!get_character_name (uc, length, buffer))
     return FALSE;
 
-  while (*keywords)
+  for (guint i = 0; keywords[i] != NULL; i++)
     {
-      const gchar *keyword = *keywords++;
-      size_t length = strlen (keyword);
+      const gchar *keyword = keywords[i];
+      size_t length = keywords_lengths[i];
       gchar *p;
 
       if (length >= UNINAME_MAX)
@@ -806,8 +809,9 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
 }
 
 static void
-gc_character_iter_init_for_keywords (GcCharacterIter      *iter,
-                                     const gchar * const * keywords)
+gc_character_iter_init_for_keywords (GcCharacterIter     *iter,
+                                     const gchar * const *keywords,
+                                     const size_t        *keywords_lengths)
 {
   gc_character_iter_init (iter);
   iter->blocks = all_blocks;
@@ -817,6 +821,7 @@ gc_character_iter_init_for_keywords (GcCharacterIter      *iter,
   iter->only_composite = TRUE;
   iter->filter = filter_keywords;
   iter->keywords = keywords;
+  iter->keywords_lengths = keywords_lengths;
 }
 
 /**
@@ -903,7 +908,11 @@ struct _GcSearchCriteria
 
   union {
     GcCategory category;
-    gchar **keywords;
+    struct {
+      guint n_keywords;
+      gchar **keywords;
+      size_t *keywords_lengths;
+    };
     GUnicodeScript *scripts;
     gchar *related;
   } u;
@@ -915,9 +924,16 @@ gc_search_criteria_copy (gpointer boxed)
   GcSearchCriteria *criteria = g_memdup2 (boxed, sizeof (GcSearchCriteria));
 
   if (criteria->type == GC_SEARCH_CRITERIA_KEYWORDS)
-    criteria->u.keywords = g_strdupv (criteria->u.keywords);
+    {
+      criteria->u.n_keywords = criteria->u.n_keywords;
+      criteria->u.keywords = g_strdupv (criteria->u.keywords);
+      criteria->u.keywords_lengths = g_memdup2 (criteria->u.keywords_lengths,
+                                                sizeof (size_t) * criteria->u.n_keywords);
+    }
   else if (criteria->type == GC_SEARCH_CRITERIA_RELATED)
-    criteria->u.related = g_strdup (criteria->u.related);
+    {
+      criteria->u.related = g_strdup (criteria->u.related);
+    }
 
   return criteria;
 }
@@ -928,9 +944,14 @@ gc_search_criteria_free (gpointer boxed)
   GcSearchCriteria *criteria = boxed;
 
   if (criteria->type == GC_SEARCH_CRITERIA_KEYWORDS)
-    g_strfreev (criteria->u.keywords);
+    {
+      g_strfreev (criteria->u.keywords);
+      g_free (criteria->u.keywords_lengths);
+    }
   else if (criteria->type == GC_SEARCH_CRITERIA_RELATED)
-    g_free (criteria->u.related);
+    {
+      g_free (criteria->u.related);
+    }
 
   g_free (criteria);
 }
@@ -963,8 +984,18 @@ GcSearchCriteria *
 gc_search_criteria_new_keywords (const gchar * const * keywords)
 {
   GcSearchCriteria *result = g_new0 (GcSearchCriteria, 1);
+
   result->type = GC_SEARCH_CRITERIA_KEYWORDS;
-  result->u.keywords = g_strdupv ((gchar **) keywords);
+
+  if (keywords != NULL)
+    {
+      result->u.n_keywords = g_strv_length ((gchar **)keywords);
+      result->u.keywords = g_strdupv ((gchar **) keywords);
+      result->u.keywords_lengths = g_new0 (gsize, result->u.n_keywords);
+      for (guint i = 0; i < result->u.n_keywords; i++)
+        result->u.keywords_lengths[i] = strlen (keywords[i]);
+    }
+
   return result;
 }
 
@@ -1527,7 +1558,8 @@ gc_search_context_search  (GcSearchContext    *context,
           break;
         case GC_SEARCH_CRITERIA_KEYWORDS:
           gc_character_iter_init_for_keywords (&context->iter,
-                                               (const gchar * const *) context->criteria->u.keywords);
+                                               (const gchar * const *) context->criteria->u.keywords,
+                                               context->criteria->u.keywords_lengths);
           break;
         case GC_SEARCH_CRITERIA_SCRIPTS:
           gc_character_iter_init_for_scripts (&context->iter,
