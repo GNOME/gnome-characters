@@ -855,7 +855,12 @@ gchar *
 gc_character_name (const gunichar *chars,
                    int             n_chars)
 {
-  return get_character_name (chars, n_chars, g_new (gchar, UNINAME_MAX+1));
+  gchar buffer[UNINAME_MAX+1];
+
+  if (!get_character_name (chars, n_chars, buffer))
+    return NULL;
+
+  return g_strdup (buffer);
 }
 
 /**
