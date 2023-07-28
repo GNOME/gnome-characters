@@ -749,6 +749,44 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
   return;
 }
 
+static inline gboolean
+parse_hex (const char *str,
+           gulong     *out_value)
+{
+  gulong value = 0;
+
+  if (*str == 0)
+    return FALSE;
+
+  for (; *str; str++)
+    {
+      value *= 16;
+
+      switch (*str)
+        {
+        case 'A': case 'B': case 'C': case 'D': case 'E': case 'F':
+          value += *str - 'A';
+          break;
+
+        case 'a': case 'b': case 'c': case 'd': case 'e': case 'f':
+          value += *str - 'a';
+          break;
+
+        case '0': case '1': case '2': case '3': case '4':
+        case '5': case '6': case '7': case '8': case '9':
+          value += *str - '0';
+          break;
+
+        default:
+          return FALSE;
+        }
+    }
+
+  *out_value = value;
+
+  return TRUE;
+}
+
 static gboolean
 filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
 {
@@ -760,23 +798,25 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
     return FALSE;
 
   /* Special case if KEYWORDS only contains a single word.  */
-  if (*keywords && *(keywords + 1) == NULL)
+  if (keywords[0] != NULL && keywords[1] == NULL)
     {
+      const char *keyword = keywords[0];
       size_t keyword_length = keywords_lengths[0];
       char *utf8;
       glong utf8_length;
+      gulong hex_value;
 
       /* Match against the character itself.  */
       utf8 = g_ucs4_to_utf8 (uc, length, NULL, &utf8_length, NULL);
 
-      if (utf8_length == keyword_length && memcmp (*keywords, utf8, utf8_length) == 0)
+      if (utf8_length == keyword_length && memcmp (keyword, utf8, utf8_length) == 0)
         return TRUE;
 
       /* Match against the hexadecimal code point.  */
       if (length == 1 &&
-          keyword_length <= 6
-          && strspn (*keywords, "0123456789abcdefABCDEF") == keyword_length
-          && strtoul (*keywords, NULL, 16) == uc[0])
+          keyword_length <= 6 &&
+          parse_hex (keyword, &hex_value) &&
+          hex_value == uc[0])
         return TRUE;
     }
 
