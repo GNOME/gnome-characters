@@ -1539,6 +1539,7 @@ gc_search_context_search_thread (GTask        *task,
 {
   GPtrArray *result;
   struct SearchData *data = task_data;
+  guint iterations = 0;
 
   result = g_ptr_array_new_with_free_func (g_free);
   while (gc_character_iter_next (&data->context->iter))
@@ -1548,7 +1549,8 @@ gc_search_context_search_thread (GTask        *task,
       char *utf8;
       GError *error = NULL;
 
-      if (g_task_return_error_if_cancelled (task))
+      if (iterations % 2048 == 0 &&
+          g_task_return_error_if_cancelled (task))
         {
           g_mutex_lock (&data->context->lock);
           data->context->state = GC_SEARCH_STATE_NOT_STARTED;
@@ -1577,6 +1579,8 @@ gc_search_context_search_thread (GTask        *task,
         }
 
       g_ptr_array_add (result, utf8);
+
+      iterations++;
     }
 
   g_mutex_lock (&data->context->lock);
