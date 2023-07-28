@@ -810,7 +810,12 @@ filter_keywords (GcCharacterIter *iter, const gunichar *uc, int length)
       utf8 = g_ucs4_to_utf8 (uc, length, NULL, &utf8_length, NULL);
 
       if (utf8_length == keyword_length && memcmp (keyword, utf8, utf8_length) == 0)
-        return TRUE;
+        {
+          g_free (utf8);
+          return TRUE;
+        }
+
+      g_free (utf8);
 
       /* Match against the hexadecimal code point.  */
       if (length == 1 &&
