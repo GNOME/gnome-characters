@@ -49,16 +49,7 @@ var CharacterDialog = GObject.registerClass({
     }
 
     _finishSearch(result) {
-        let children = this._relatedListbox.get_first_child();
-        while (children !== null) {
-            let nextChild = children.get_next_sibling();
-            if (nextChild === null) {
-                this._relatedListbox.remove(children);
-                break;
-            }
-
-            this._relatedListbox.remove(nextChild);
-        }
+        this._relatedListbox.remove_all();
 
         for (let index = 0; index < result.len; index++) {
             let uc = Gc.search_result_get(result, index);
