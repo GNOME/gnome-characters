@@ -30,7 +30,7 @@ var CharacterDialog = GObject.registerClass({
         'characterStack', 'navigationView',
         'characterLabel', 'missingLabel',
         'detailRow', 'detailLabel',
-        'seeAlsoRow', 'relatedListbox',
+        'seeAlsoRow', 'relatedPage', 'relatedListbox',
         'toastOverlay',
     ],
 }, class CharacterDialog extends Adw.Window {
@@ -45,14 +45,26 @@ var CharacterDialog = GObject.registerClass({
         ]);
         this.insert_action_group('character', actions);
 
+        this._relatedPage.connect('hidden', () => {
+            this._populateRelatedPage();
+        });
+
         this._setCharacter(character);
     }
 
     _finishSearch(result) {
+        this._related = result;
+        this._seeAlsoRow.visible = result.len > 0;
+
+        if (!this._relatedPage.get_mapped())
+            this._populateRelatedPage();
+    }
+
+    _populateRelatedPage() {
         this._relatedListbox.remove_all();
 
-        for (let index = 0; index < result.len; index++) {
-            let uc = Gc.search_result_get(result, index);
+        for (let index = 0; index < this._related.len; index++) {
+            let uc = Gc.search_result_get(this._related, index);
             let name = Gc.character_name(uc);
             if (name === null)
                 continue;
@@ -72,7 +84,6 @@ var CharacterDialog = GObject.registerClass({
             row.set_activatable(true);
             this._relatedListbox.append(row);
         }
-        this._seeAlsoRow.visible = result.len > 0;
     }
 
     _setCharacter(uc) {

@@ -120,7 +120,7 @@
               </object>
             </child>
             <child>
-              <object class="AdwNavigationPage">
+              <object class="AdwNavigationPage" id="relatedPage">
                 <property name="tag">related</property>
                 <property name="title" translatable="yes">See Also</property>
                 <property name="child">
