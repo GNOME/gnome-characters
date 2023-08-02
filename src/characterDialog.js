@@ -27,7 +27,7 @@ var CharacterDialog = GObject.registerClass({
     },
     Template: 'resource:///org/gnome/Characters/character_dialog.ui',
     InternalChildren: [
-        'characterStack',
+        'characterStack', 'navigationView',
         'characterLabel', 'missingLabel',
         'detailRow', 'detailLabel',
         'seeAlsoRow', 'relatedListbox',
@@ -74,7 +74,10 @@ var CharacterDialog = GObject.registerClass({
                 halign: Gtk.Align.CENTER,
                 width_request: 45,
             }));
-            row.action_name = 'navigation.pop';
+            row.connect('activated', () => {
+                this._setCharacter(uc);
+                this._navigationView.pop();
+            });
             row.set_activatable(true);
             this._relatedListbox.append(row);
         }
