@@ -4,35 +4,39 @@
 # Jeff Bai <jeffbai@aosc.xyz>, 2015, 2016.
 # Bin Li <binli@gnome.org>, 2016.
 # Dingzhong Chen <wsxy162@gmail.com>, 2015, 2016, 2017, 2019.
-# lumingzh <lumingzh@qq.com>, 2022.
+# lumingzh <lumingzh@qq.com>, 2022-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-02-12 04:22+0000\n"
-"PO-Revision-Date: 2023-03-22 15:51+0800\n"
+"POT-Creation-Date: 2023-07-02 10:39+0000\n"
+"PO-Revision-Date: 2023-08-05 16:16+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 42.0\n"
 
-#: data/character_dialog.ui:70
+#: data/character_dialog.ui:63
 msgid "_Copy Character"
 msgstr "复制字符(_C)"
 
-#: data/character_dialog.ui:91
+#: data/character_dialog.ui:84
 msgid "Unicode"
 msgstr "万国码（Unicode）"
 
-#: data/character_dialog.ui:105
+#: data/character_dialog.ui:98
 msgid "_See Also"
 msgstr "另见(_S)"
+
+#: data/character_dialog.ui:125
+msgid "See Also"
+msgstr "另见"
 
 #: data/sidebar.ui:12
 msgid "Recently Used"
@@ -117,8 +121,8 @@ msgstr "常规"
 
 #: data/shortcuts.ui:15
 msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "打开菜单"
+msgid "Open Main Menu"
+msgstr "打开主菜单"
 
 #: data/shortcuts.ui:21
 msgctxt "shortcut window"
@@ -127,8 +131,8 @@ msgstr "搜索"
 
 #: data/shortcuts.ui:27
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "键盘快捷键"
+msgid "Show Keyboard Shortcuts"
+msgstr "显示键盘快捷键"
 
 #: data/shortcuts.ui:33
 msgctxt "shortcut window"
@@ -143,40 +147,40 @@ msgstr "键盘快捷键(_K)"
 msgid "_About Characters"
 msgstr "关于字符(_A)"
 
-#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
 msgid "Characters"
 msgstr "字符"
 
-#: data/window.ui:38
+#: data/window.ui:32
 msgid "Search"
 msgstr "搜索"
 
-#: data/window.ui:45
+#: data/window.ui:39
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: data/window.ui:60
+#: data/window.ui:49
 msgid "Search characters"
 msgstr "搜索字符"
 
-#: data/window.ui:141
+#: data/window.ui:89
 msgid "No Recent Characters"
 msgstr "未找到最近使用的字符"
 
-#: data/window.ui:142
+#: data/window.ui:90
 msgid "Characters will appear here if you use them"
 msgstr "你使用的字符将会在这里显示"
 
-#: data/window.ui:169
+#: data/window.ui:117
 msgid "No Results"
 msgstr "未找到结果"
 
-#: data/window.ui:170
+#: data/window.ui:118
 msgid "Try a different search"
 msgstr "尝试不同的搜索"
 
-#: data/window.ui:191
+#: data/window.ui:139
 msgid "Loading…"
 msgstr "正在加载…"
 
@@ -214,17 +218,17 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "最近字符的最大数"
 
-#: src/characterDialog.js:102 src/searchProvider.js:86
+#: src/characterDialog.js:95 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "未知的字符名称"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:127
+#: src/characterDialog.js:120
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "字体 %2$s 不包含字符 %1$s"
 
-#: src/characterDialog.js:166
+#: src/characterDialog.js:151
 msgid "Character copied to clipboard"
 msgstr "字符已复制到剪贴板"
 
@@ -232,16 +236,16 @@ msgstr "字符已复制到剪贴板"
 msgid "Unassigned"
 msgstr "未分配"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:112
+#: src/searchProvider.js:119
 msgid "Character copied"
 msgstr "字符已复制"
 
-#: src/searchProvider.js:113
+#: src/searchProvider.js:120
 msgid "Character was copied successfully"
 msgstr "字符已成功复制"
 
@@ -250,22 +254,30 @@ msgstr "字符已成功复制"
 msgid "%s Sidebar Row"
 msgstr "%s 侧边栏行"
 
-#: src/window.js:152
+#: src/window.js:144
 msgid "Search Result"
 msgstr "搜索结果"
 
-#: src/window.js:175
+#: src/window.js:167
 msgid "The GNOME Project"
 msgstr "GNOME 项目"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:185
+#: src/window.js:177
 msgid "translator-credits"
 msgstr ""
 "Jeff Bai <jeffbai@aosc.xyz>, 2015, 2016.\n"
 "Bin Li <binli@gnome.org>, 2016.\n"
 "Dingzhong Chen <wsxy162@gmail.com>, 2015, 2016, 2017, 2019.\n"
-"lumingzh <lumingzh@qq.com>,2022."
+"lumingzh <lumingzh@qq.com>, 2022-2023."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open menu"
+#~ msgstr "打开菜单"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "键盘快捷键"
 
 #~ msgid "GNOME Characters"
 #~ msgstr "GNOME 字符"
