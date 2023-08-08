@@ -6,35 +6,40 @@
 # Muhammet Kara <muhammetk@gmail.com>, 2015, 2016.
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2016, 2017, 2021, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-02-12 04:22+0000\n"
-"PO-Revision-Date: 2023-02-12 16:34+0300\n"
+"POT-Creation-Date: 2023-06-19 16:49+0000\n"
+"PO-Revision-Date: 2023-07-29 23:07+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-POOTLE-MTIME: 1434360284.000000\n"
 
-#: data/character_dialog.ui:70
+#: data/character_dialog.ui:63
 msgid "_Copy Character"
 msgstr "Karakteri _Kopyala"
 
-#: data/character_dialog.ui:91
+#: data/character_dialog.ui:84
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:105
+#: data/character_dialog.ui:98
 msgid "_See Also"
 msgstr "Ayrıca _Bakınız"
+
+#: data/character_dialog.ui:125
+msgid "See Also"
+msgstr "Ayrıca Bakınız"
 
 #: data/sidebar.ui:12
 msgid "Recently Used"
@@ -119,8 +124,8 @@ msgstr "Genel"
 
 #: data/shortcuts.ui:15
 msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Menüyü aç"
+msgid "Open Main Menu"
+msgstr "Ana Menüyü Aç"
 
 #: data/shortcuts.ui:21
 msgctxt "shortcut window"
@@ -129,8 +134,8 @@ msgstr "Ara"
 
 #: data/shortcuts.ui:27
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Klavye kısayolları"
+msgid "Show Keyboard Shortcuts"
+msgstr "Klavye Kısayollarını Göster"
 
 #: data/shortcuts.ui:33
 msgctxt "shortcut window"
@@ -145,40 +150,40 @@ msgstr "_Klavye Kısayolları"
 msgid "_About Characters"
 msgstr "Karakterler _Hakkında"
 
-#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
 msgid "Characters"
 msgstr "Karakterler"
 
-#: data/window.ui:38
+#: data/window.ui:32
 msgid "Search"
 msgstr "Ara"
 
-#: data/window.ui:45
+#: data/window.ui:39
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/window.ui:60
+#: data/window.ui:49
 msgid "Search characters"
 msgstr "Karakter ara"
 
-#: data/window.ui:141
+#: data/window.ui:89
 msgid "No Recent Characters"
 msgstr "Son Karakter Yok"
 
-#: data/window.ui:142
+#: data/window.ui:90
 msgid "Characters will appear here if you use them"
 msgstr "Eğer kullanırsanız karakterler burada belirecek"
 
-#: data/window.ui:169
+#: data/window.ui:117
 msgid "No Results"
 msgstr "Sonuç Yok"
 
-#: data/window.ui:170
+#: data/window.ui:118
 msgid "Try a different search"
 msgstr "Başka arama dene"
 
-#: data/window.ui:191
+#: data/window.ui:139
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
@@ -218,17 +223,17 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Azami son karakterler"
 
-#: src/characterDialog.js:102 src/searchProvider.js:86
+#: src/characterDialog.js:95 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Bilinmeyen karakter adı"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:127
+#: src/characterDialog.js:120
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s, %s içinde bulunmuyor"
 
-#: src/characterDialog.js:166
+#: src/characterDialog.js:151
 msgid "Character copied to clipboard"
 msgstr "Karakter panoya kopyalandı"
 
@@ -236,16 +241,16 @@ msgstr "Karakter panoya kopyalandı"
 msgid "Unassigned"
 msgstr "Atanmamış"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:112
+#: src/searchProvider.js:119
 msgid "Character copied"
 msgstr "Karakter kopyalandı"
 
-#: src/searchProvider.js:113
+#: src/searchProvider.js:120
 msgid "Character was copied successfully"
 msgstr "Karakter başarıyla kopyalandı"
 
@@ -254,16 +259,16 @@ msgstr "Karakter başarıyla kopyalandı"
 msgid "%s Sidebar Row"
 msgstr "%s Kenar Çubuğu Satırı"
 
-#: src/window.js:152
+#: src/window.js:144
 msgid "Search Result"
 msgstr "Arama Sonucu"
 
-#: src/window.js:175
+#: src/window.js:167
 msgid "The GNOME Project"
 msgstr "GNOME Projesi"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:185
+#: src/window.js:177
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
