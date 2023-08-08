@@ -65,7 +65,7 @@ function getSettings(schemaId, path) {
     if (path === undefined)
         return new Gio.Settings({ settings_schema: schemaObj });
     else
-        return new Gio.Settings({ settings_schema: schemaObj, path });
+        return Gio.Settings.new_full(schemaObj, null, path);
 
 }
 
