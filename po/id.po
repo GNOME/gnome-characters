@@ -9,27 +9,31 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-02-12 04:22+0000\n"
-"PO-Revision-Date: 2023-02-13 09:48+0700\n"
+"POT-Creation-Date: 2023-06-19 16:49+0000\n"
+"PO-Revision-Date: 2023-08-09 20:38+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
-#: data/character_dialog.ui:70
+#: data/character_dialog.ui:63
 msgid "_Copy Character"
 msgstr "_Salin Karakter"
 
-#: data/character_dialog.ui:91
+#: data/character_dialog.ui:84
 msgid "Unicode"
 msgstr "Unikode"
 
-#: data/character_dialog.ui:105
+#: data/character_dialog.ui:98
 msgid "_See Also"
 msgstr "Lihat _Juga"
+
+#: data/character_dialog.ui:125
+msgid "See Also"
+msgstr "Lihat Juga"
 
 #: data/sidebar.ui:12
 msgid "Recently Used"
@@ -114,8 +118,8 @@ msgstr "Umum"
 
 #: data/shortcuts.ui:15
 msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Buka menu"
+msgid "Open Main Menu"
+msgstr "Buka Menu Utama"
 
 #: data/shortcuts.ui:21
 msgctxt "shortcut window"
@@ -124,8 +128,8 @@ msgstr "Cari"
 
 #: data/shortcuts.ui:27
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Pintasan papan tik"
+msgid "Show Keyboard Shortcuts"
+msgstr "Tampilkan Pintasan Papan Tik"
 
 #: data/shortcuts.ui:33
 msgctxt "shortcut window"
@@ -140,40 +144,40 @@ msgstr "Pintasan Papan Ti_k"
 msgid "_About Characters"
 msgstr "Tent_ang Karakter"
 
-#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
 msgid "Characters"
 msgstr "Karakter"
 
-#: data/window.ui:38
+#: data/window.ui:32
 msgid "Search"
 msgstr "Cari"
 
-#: data/window.ui:45
+#: data/window.ui:39
 msgid "Main Menu"
 msgstr "Menu Utama"
 
-#: data/window.ui:60
+#: data/window.ui:49
 msgid "Search characters"
 msgstr "Cari karakter"
 
-#: data/window.ui:141
+#: data/window.ui:89
 msgid "No Recent Characters"
 msgstr "Tidak Ada Karakter Baru-Baru Ini"
 
-#: data/window.ui:142
+#: data/window.ui:90
 msgid "Characters will appear here if you use them"
 msgstr "Karakter akan muncul di sini jika Anda menggunakannya"
 
-#: data/window.ui:169
+#: data/window.ui:117
 msgid "No Results"
 msgstr "Tidak Ada Hasil"
 
-#: data/window.ui:170
+#: data/window.ui:118
 msgid "Try a different search"
 msgstr "Cobalah pencarian lain"
 
-#: data/window.ui:191
+#: data/window.ui:139
 msgid "Loading…"
 msgstr "Memuat…"
 
@@ -213,17 +217,17 @@ msgstr "karakter;unikode;tanda baca;matematika;huruf;emoji;emotikon;simbol;"
 msgid "Maximum recent characters"
 msgstr "Maksimum karakter baru-baru ini"
 
-#: src/characterDialog.js:102 src/searchProvider.js:86
+#: src/characterDialog.js:95 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Nama karakter tak dikenal"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:127
+#: src/characterDialog.js:120
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s tidak termasuk dalam %s"
 
-#: src/characterDialog.js:166
+#: src/characterDialog.js:151
 msgid "Character copied to clipboard"
 msgstr "Karakter disalin ke papan klip"
 
@@ -231,16 +235,16 @@ msgstr "Karakter disalin ke papan klip"
 msgid "Unassigned"
 msgstr "Belum ditetapkan"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:112
+#: src/searchProvider.js:119
 msgid "Character copied"
 msgstr "Karakter disalin"
 
-#: src/searchProvider.js:113
+#: src/searchProvider.js:120
 msgid "Character was copied successfully"
 msgstr "Karakter berhasil disalin"
 
@@ -249,20 +253,28 @@ msgstr "Karakter berhasil disalin"
 msgid "%s Sidebar Row"
 msgstr "%s Baris Bilah Sisi"
 
-#: src/window.js:152
+#: src/window.js:144
 msgid "Search Result"
 msgstr "Hasil Pencarian"
 
-#: src/window.js:175
+#: src/window.js:167
 msgid "The GNOME Project"
 msgstr "Proyek GNOME"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:185
+#: src/window.js:177
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2015, 2016.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2019, 2021, 2022, 2023."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open menu"
+#~ msgstr "Buka menu"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Pintasan papan tik"
 
 #~ msgid "GNOME Characters"
 #~ msgstr "GNOME Karakter"
