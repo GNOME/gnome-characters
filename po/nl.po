@@ -11,28 +11,32 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-02-12 04:22+0000\n"
-"PO-Revision-Date: 2023-03-26 14:37+0200\n"
+"POT-Creation-Date: 2023-08-28 10:17+0000\n"
+"PO-Revision-Date: 2023-09-03 15:32+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
-"Language-Team: Dutch <https://matrix.to/#/#nl:gnome.org>\n"
+"Language-Team: GNOME-NL <https://matrix.to/#/#nl:gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
-#: data/character_dialog.ui:70
+#: data/character_dialog.ui:63
 msgid "_Copy Character"
 msgstr "Teken _kopiëren"
 
-#: data/character_dialog.ui:91
+#: data/character_dialog.ui:84
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:105
+#: data/character_dialog.ui:98
 msgid "_See Also"
 msgstr "_Zie ook"
+
+#: data/character_dialog.ui:125
+msgid "See Also"
+msgstr "Zie ook"
 
 #: data/sidebar.ui:12
 msgid "Recently Used"
@@ -117,8 +121,8 @@ msgstr "Algemeen"
 
 #: data/shortcuts.ui:15
 msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Menu openen"
+msgid "Open Main Menu"
+msgstr "Hoofdmenu openen"
 
 #: data/shortcuts.ui:21
 msgctxt "shortcut window"
@@ -127,8 +131,8 @@ msgstr "Zoeken"
 
 #: data/shortcuts.ui:27
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Sneltoetsen"
+msgid "Show Keyboard Shortcuts"
+msgstr "Sneltoetsen tonen"
 
 #: data/shortcuts.ui:33
 msgctxt "shortcut window"
@@ -143,40 +147,40 @@ msgstr "_Sneltoetsen"
 msgid "_About Characters"
 msgstr "_Over Tekens en symbolen"
 
-#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
 msgid "Characters"
 msgstr "Tekens en symbolen"
 
-#: data/window.ui:38
+#: data/window.ui:32
 msgid "Search"
 msgstr "Zoeken"
 
-#: data/window.ui:45
+#: data/window.ui:39
 msgid "Main Menu"
 msgstr "Hoofdmenu"
 
-#: data/window.ui:60
+#: data/window.ui:49
 msgid "Search characters"
 msgstr "Tekens zoeken"
 
-#: data/window.ui:141
+#: data/window.ui:89
 msgid "No Recent Characters"
 msgstr "Geen onlangs gebruikte tekens"
 
-#: data/window.ui:142
+#: data/window.ui:90
 msgid "Characters will appear here if you use them"
 msgstr "Tekens verschijnen hier wanneer u ze gebruikt"
 
-#: data/window.ui:169
+#: data/window.ui:117
 msgid "No Results"
 msgstr "Geen resultaten"
 
-#: data/window.ui:170
+#: data/window.ui:118
 msgid "Try a different search"
 msgstr "Probeer een andere zoekopdracht"
 
-#: data/window.ui:191
+#: data/window.ui:139
 msgid "Loading…"
 msgstr "Laden…"
 
@@ -217,17 +221,17 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Maximum aantal onlangs gebruikte tekens"
 
-#: src/characterDialog.js:102 src/searchProvider.js:86
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Naam van teken onbekend"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:127
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s zit niet in %s"
 
-#: src/characterDialog.js:166
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Teken gekopieerd naar het klembord"
 
@@ -235,16 +239,16 @@ msgstr "Teken gekopieerd naar het klembord"
 msgid "Unassigned"
 msgstr "Niet toegewezen"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:112
+#: src/searchProvider.js:119
 msgid "Character copied"
 msgstr "Teken gekopieerd"
 
-#: src/searchProvider.js:113
+#: src/searchProvider.js:120
 msgid "Character was copied successfully"
 msgstr "Teken is succesvol gekopieerd"
 
@@ -253,23 +257,31 @@ msgstr "Teken is succesvol gekopieerd"
 msgid "%s Sidebar Row"
 msgstr "%s-zijbalkrij"
 
-#: src/window.js:152
+#: src/window.js:144
 msgid "Search Result"
 msgstr "Zoekresultaat"
 
-#: src/window.js:175
+#: src/window.js:167
 msgid "The GNOME Project"
-msgstr "Het Gnome-project"
+msgstr "Het GNOME-project"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:185
+#: src/window.js:177
 msgid "translator-credits"
 msgstr ""
 "Justin van Steijn\n"
 "Hannie Dumoleyn\n"
 "Nathan Follens <nfollens@gnome.org>\n"
 "Philip Goto <philip.goto@gmail.com>\n"
-"Meer info over Gnome-NL http://nl.gnome.org"
+"Meer info over GNOME-NL https://nl.gnome.org"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open menu"
+#~ msgstr "Menu openen"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Sneltoetsen"
 
 #~ msgid "GNOME Characters"
 #~ msgstr "Gnome Tekens en symbolen"
