@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-08-28 10:17+0000\n"
+"POT-Creation-Date: 2023-09-03 13:32+0000\n"
 "PO-Revision-Date: 2023-09-03 15:32+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: GNOME-NL <https://matrix.to/#/#nl:gnome.org>\n"
@@ -186,7 +186,7 @@ msgstr "Laden…"
 
 #: data/org.gnome.Characters.appdata.xml.in:5
 msgid "Character map application"
-msgstr "De toepassing Tekens en symbolen"
+msgstr "Gebruik eenvoudig speciale tekens en symbolen"
 
 #: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
