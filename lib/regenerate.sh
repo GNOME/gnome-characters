@@ -2,7 +2,7 @@
 
 CLDR_VERSION=43
 UCD_VERSION=15.1.0
-EMOJI_VERSION=15.0
+EMOJI_VERSION=15.1
 
 wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/Blocks.txt"
 wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/Jamo.txt"
