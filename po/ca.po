@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2022-07-09 14:39+0000\n"
-"PO-Revision-Date: 2022-08-31 11:05+0100\n"
+"POT-Creation-Date: 2023-06-19 16:49+0000\n"
+"PO-Revision-Date: 2023-09-16 11:05+0100\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -20,17 +20,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: data/character_dialog.ui:70
+#: data/character_dialog.ui:63
 msgid "_Copy Character"
 msgstr "_Copia el caràcter"
 
-#: data/character_dialog.ui:91
+#: data/character_dialog.ui:84
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:105
+#: data/character_dialog.ui:98
 msgid "_See Also"
 msgstr "_Vegeu també"
+
+#: data/character_dialog.ui:125
+msgid "See Also"
+msgstr "Vegeu també"
 
 #: data/sidebar.ui:12
 msgid "Recently Used"
@@ -115,7 +119,7 @@ msgstr "General"
 
 #: data/shortcuts.ui:15
 msgctxt "shortcut window"
-msgid "Open menu"
+msgid "Open Main Menu"
 msgstr "Obre el menú"
 
 #: data/shortcuts.ui:21
@@ -125,8 +129,8 @@ msgstr "Cerca"
 
 #: data/shortcuts.ui:27
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Dreceres de teclat"
+msgid "Show Keyboard Shortcuts"
+msgstr "Mostra les dreceres de teclat"
 
 #: data/shortcuts.ui:33
 msgctxt "shortcut window"
@@ -141,28 +145,40 @@ msgstr "_Dreceres de teclat"
 msgid "_About Characters"
 msgstr "_Quant al Caràcters"
 
-#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
 msgid "Characters"
 msgstr "Caràcters"
 
-#: data/window.ui:138
+#: data/window.ui:32
+msgid "Search"
+msgstr "Cerca"
+
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/window.ui:49
+msgid "Search characters"
+msgstr "Cerca caràcters"
+
+#: data/window.ui:89
 msgid "No Recent Characters"
 msgstr "No s'han trobat caràcters recents"
 
-#: data/window.ui:139
-msgid "Characters will appear here if you use them."
-msgstr "Els caràcters apareixen aquí si els utilitzeu."
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr "Els caràcters apareixen aquí si els utilitzeu"
 
-#: data/window.ui:166
+#: data/window.ui:117
 msgid "No Results"
 msgstr "Sense resultats"
 
-#: data/window.ui:167
-msgid "Try a different search."
-msgstr "Proveu una cerca diferent."
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr "Proveu una cerca diferent"
 
-#: data/window.ui:188
+#: data/window.ui:139
 msgid "Loading…"
 msgstr "S'està carregant..."
 
@@ -202,17 +218,17 @@ msgstr "caràcters;unicode;puntuació;mates;lletres;emoji;emoticona;símbols;"
 msgid "Maximum recent characters"
 msgstr "Màxim de caràcters recents"
 
-#: src/characterDialog.js:102 src/searchProvider.js:86
+#: src/characterDialog.js:95 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Nom de caràcter desconegut"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:127
+#: src/characterDialog.js:120
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s no està inclòs a %s"
 
-#: src/characterDialog.js:166
+#: src/characterDialog.js:151
 msgid "Character copied to clipboard"
 msgstr "El caràcter s'ha copiat al porta-retalls"
 
@@ -220,16 +236,16 @@ msgstr "El caràcter s'ha copiat al porta-retalls"
 msgid "Unassigned"
 msgstr "No assignat"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:112
+#: src/searchProvider.js:119
 msgid "Character copied"
 msgstr "S'ha copiat el caràcter"
 
-#: src/searchProvider.js:113
+#: src/searchProvider.js:120
 msgid "Character was copied successfully"
 msgstr "El caràcter s'ha copiat correctament"
 
@@ -238,17 +254,18 @@ msgstr "El caràcter s'ha copiat correctament"
 msgid "%s Sidebar Row"
 msgstr "Fila de la barra lateral %s"
 
-#: src/window.js:152
+#: src/window.js:144
 msgid "Search Result"
 msgstr "Resultat de la cerca"
 
-#: src/window.js:175
+#: src/window.js:167
 msgid "The GNOME Project"
 msgstr "El projecte GNOME"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:185
+#: src/window.js:177
 msgid "translator-credits"
 msgstr ""
-"Jordi Mas i Hernàndez <jmas@softcatala.org>, 2015, 2022\n"
+"Jordi Mas i Hernàndez <jmas@softcatala.org>, 2015, 2022-2023\n"
 "Joan Mas Lloret <joan.mas.lloret@gmail.com>, 2022"
+
