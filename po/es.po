@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: gnome-characters.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
+"POT-Creation-Date: 2023-08-28 10:17+0000\n"
 "PO-Revision-Date: 2023-08-08 07:45+0200\n"
 "Last-Translator: Daniel Mustieles García <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
@@ -46,11 +46,11 @@ msgstr "Usados recientemente"
 
 #: data/sidebar.ui:21
 msgid "Emojis"
-msgstr "Emoticonos"
+msgstr "Emojis"
 
 #: data/sidebar.ui:35
 msgid "Smileys & Emotion"
-msgstr "Caritas y emoticonos"
+msgstr "Caritas y emojis"
 
 #: data/sidebar.ui:43
 msgid "People & Body"
@@ -217,23 +217,23 @@ msgstr ""
 #: data/org.gnome.Characters.desktop.in.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 msgstr ""
-"caracteres;unicode;puntuación;matemáticas;letras;emoji;emoticono;símbolos;"
+"caracteres;unicode;puntuación;matemáticas;letras;emoji;emoji;símbolos;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "Número máximo de caracteres recientes"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Nombre de carácter desconocido"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s no está incluido en %s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Carácter copiado al portapapeles"
 
@@ -344,7 +344,7 @@ msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2015"
 #~ msgstr "gnome-characters"
 
 #~ msgid "Emoticons"
-#~ msgstr "Emoticonos"
+#~ msgstr "Emojis"
 
 #~ msgid "Try another search criteria."
 #~ msgstr "Pruebe otro criterio de búsqueda."
