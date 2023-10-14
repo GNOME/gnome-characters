@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gnome characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-07-29 23:07+0300\n"
+"POT-Creation-Date: 2023-08-28 10:17+0000\n"
+"PO-Revision-Date: 2023-10-13 15:51+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-POOTLE-MTIME: 1434360284.000000\n"
 
 #: data/character_dialog.ui:63
@@ -223,17 +223,17 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Azami son karakterler"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Bilinmeyen karakter adı"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s, %s içinde bulunmuyor"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Karakter panoya kopyalandı"
 
@@ -252,7 +252,7 @@ msgstr "Karakter kopyalandı"
 
 #: src/searchProvider.js:120
 msgid "Character was copied successfully"
-msgstr "Karakter başarıyla kopyalandı"
+msgstr "Karakter kopyalandı"
 
 #: src/sidebarRow.js:72
 #, javascript-format
