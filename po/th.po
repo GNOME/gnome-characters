@@ -1,0 +1,264 @@
+# Thai translation for gnome-characters.
+# Copyright (C) 2023 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# Aefgh Threenine <aefgh39622@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues\n"
+"POT-Creation-Date: 2023-10-24 03:55+0000\n"
+"PO-Revision-Date: 2023-12-20 22:19+0700\n"
+"Last-Translator: \n"
+"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#: data/character_dialog.ui:63
+msgid "_Copy Character"
+msgstr ""
+
+#: data/character_dialog.ui:84
+msgid "Unicode"
+msgstr ""
+
+#: data/character_dialog.ui:98
+msgid "_See Also"
+msgstr ""
+
+#: data/character_dialog.ui:125
+msgid "See Also"
+msgstr ""
+
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "ใช้ล่าสุด"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "อีโมจิ"
+
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "หน้ายิ้ม & อารมณ์"
+
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "ผู้คน & ร่างกาย"
+
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "สัตว์ & ธรรมชาติ"
+
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "อาหาร & เครื่องดื่ม"
+
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "ท่องเที่ยว & สถานที่"
+
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "กิจกรรม"
+
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "วัตถุ"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "สัญลักษณ์"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "ธง"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "ตัวอักษร & สัญลักษณ์"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "เครื่องหมายวรรคตอน"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "ลูกศร"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "จุดนำ"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "รูปภาพ"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "สกุลเงิน"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "คณิตศาสตร์"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "ตัวอักษร"
+
+#: data/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/shortcuts.ui:15
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr ""
+
+#: data/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Search"
+msgstr ""
+
+#: data/shortcuts.ui:27
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr ""
+
+#: data/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr ""
+
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+msgid "Characters"
+msgstr "อักขระ"
+
+#: data/window.ui:32
+msgid "Search"
+msgstr ""
+
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr ""
+
+#: data/window.ui:49
+msgid "Search characters"
+msgstr ""
+
+#: data/window.ui:89
+msgid "No Recent Characters"
+msgstr ""
+
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr ""
+
+#: data/window.ui:117
+msgid "No Results"
+msgstr ""
+
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr ""
+
+#: data/window.ui:139
+msgid "Loading…"
+msgstr "กำลังโหลด…"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "แอปพลิเคชันผังอักขระ"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"\"อักขระ\" เป็นแอปพลิเคชันอรรถประโยชน์อย่างง่ายสำหรับหาและแทรกอักขระพิเศษ "
+"โดยให้คุณหาอักขระที่ต้องการได้อย่างรวดเร็วโดยค้นหาด้วยคำสำคัญ"
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "คุณยังสามารถท่องดูอักขระตามหมวดหมู่ต่างๆ ได้ เช่น เครื่องหมายวรรคตอน รูปภาพ ฯลฯ"
+
+#: data/org.gnome.Characters.desktop.in.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "แอปพลิเคชันอรรถประโยชน์สำหรับหาและแทรกอักขระพิเศษ"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+"อักขระ;ยูนิโคด;เครื่องหมายวรรคตอน;คณิตศาสตร์;ตัวอักษร;อีโมจิ;อีโมติคอน;สัญลักษณ์;characters;"
+"unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "จำนวนสูงสุดของอักขระล่าสุด"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
+msgid "Unknown character name"
+msgstr "ไม่ทราบชื่ออักขระ"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:125
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s ไม่มีใน %s"
+
+#: src/characterDialog.js:156
+msgid "Character copied to clipboard"
+msgstr "คัดลอกอักขระลงคลิปบอร์ดแล้ว"
+
+#: src/charactersView.js:156
+msgid "Unassigned"
+msgstr "ไม่ได้มีการกำหนดไว้"
+
+#: src/searchProvider.js:98
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:119
+msgid "Character copied"
+msgstr ""
+
+#: src/searchProvider.js:120
+msgid "Character was copied successfully"
+msgstr ""
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr ""
+
+#: src/window.js:144
+msgid "Search Result"
+msgstr "ผลการค้นหา"
+
+#: src/window.js:167
+msgid "The GNOME Project"
+msgstr "โครงการ GNOME"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:177
+msgid "translator-credits"
+msgstr "Aefgh Threenine <aefgh39622@gmail.com>"
