@@ -8,7 +8,7 @@
   <shortdesc xml:lang="en">A character map application</shortdesc>
   <description>Characters is a simple utility application to find and
   insert unusual characters.</description>
-  <homepage rdf:resource="https://apps.gnome.org/app/org.gnome.Characters/" />
+  <homepage rdf:resource="https://apps.gnome.org/Characters/" />
   <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/gnome-characters/issues/" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#core" />
   <programming-language>JavaScript</programming-language>

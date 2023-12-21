@@ -178,7 +178,7 @@ var MainWindow = GObject.registerClass({
             copyright: 'Copyright 2014-2018 Daiki Ueno',
             license_type: Gtk.License.GPL_2_0,
             version: pkg.version,
-            website: 'https://apps.gnome.org/app/org.gnome.Characters/',
+            website: 'https://apps.gnome.org/Characters/',
             issue_url: 'https://gitlab.gnome.org/GNOME/gnome-characters/-/issues/new',
             transient_for: this,
         });
