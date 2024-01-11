@@ -1,4 +1,4 @@
-#define NLANGUAGES 1145
+#define NLANGUAGES 1148
 struct LanguageScripts
 {
   const gchar *language;
@@ -118,6 +118,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "bkm", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "bku", { N_("Buhid"), NULL }, { 0x42756864, 0 } },
     { "bla", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
+    { "blo", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "blt", { N_("Tai_Viet"), NULL }, { 0x54617674, 0 } },
     { "bm", { N_("Latin"), N_("Nko"), NULL }, { 0x4c61746e, 0x4e6b6f6f, 0 } },
     { "bmq", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
@@ -572,6 +573,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "ibb", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "id", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
     { "id_ID", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
+    { "ie", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "ife", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "ig", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "ii", { N_("Yi"), NULL }, { 0x59696969, 0 } },
@@ -665,6 +667,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "kwk", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "kxm", { N_("Thai"), NULL }, { 0x54686169, 0 } },
     { "kxp", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
+    { "kxv", { N_("Devanagari"), N_("Oriya"), N_("Telugu"), NULL }, { 0x44657661, 0x4f727961, 0x54656c75, 0 } },
     { "ky_KG", { N_("Arabic"), N_("Cyrillic"), N_("Latin"), NULL }, { 0x41726162, 0x4379726c, 0x4c61746e, 0 } },
     { "kyu", { N_("Kayah_Li"), NULL }, { 0x4b616c69, 0 } },
     { "la_VA", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
