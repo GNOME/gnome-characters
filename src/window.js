@@ -161,7 +161,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _about() {
-        const aboutWindow = new Adw.AboutWindow({
+        const aboutDialog = new Adw.AboutDialog({
             application_name: _('Characters'),
             application_icon: pkg.name,
             developer_name: _('The GNOME Project'),
@@ -180,10 +180,9 @@ var MainWindow = GObject.registerClass({
             version: pkg.version,
             website: 'https://apps.gnome.org/Characters/',
             issue_url: 'https://gitlab.gnome.org/GNOME/gnome-characters/-/issues/new',
-            transient_for: this,
         });
 
-        aboutWindow.present();
+        aboutDialog.present(this);
     }
 
     get maxRecentCharacters() {
