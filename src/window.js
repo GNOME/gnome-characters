@@ -246,11 +246,9 @@ var MainWindow = GObject.registerClass({
 
     _handleCharacterSelected(widget, uc) {
         const dialog = new CharacterDialog(uc, this._charactersView.fontDescription);
-        dialog.set_modal(true);
-        dialog.set_transient_for(this.get_root());
         dialog.connect('character-copied', (_widget, char) => {
             this.addToRecent(char);
         });
-        dialog.show();
+        dialog.present(this);
     }
 });

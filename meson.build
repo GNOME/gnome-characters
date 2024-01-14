@@ -46,12 +46,12 @@ endif
 gjs = dependency('gjs-1.0', version: '>= 1.50')
 gjs_console = find_program(gjs.get_variable(pkgconfig: 'gjs_console'), required: true)
 dependency('gtk4', version: '>=4.6')
-libhandy = dependency ('libadwaita-1', version: '>= 1.4')
+libadwaita = dependency ('libadwaita-1', version: '>= 1.5.alpha')
 
 libgc_deps = [
   dependency('gio-2.0'),
   dependency('pango'),
-  libhandy,
+  libadwaita,
 ]
 
 if get_option('pangoft2')

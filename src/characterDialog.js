@@ -33,7 +33,7 @@ var CharacterDialog = GObject.registerClass({
         'seeAlsoRow', 'relatedPage', 'relatedListbox',
         'toastOverlay',
     ],
-}, class CharacterDialog extends Adw.Window {
+}, class CharacterDialog extends Adw.Dialog {
     _init(character, fontDescription) {
         super._init();
         this._cancellable = new Gio.Cancellable();

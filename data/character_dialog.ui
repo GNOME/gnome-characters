@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="Gjs_CharacterDialog" parent="AdwWindow">
-    <property name="default-width">360</property>
-    <property name="default-height">500</property>
+  <template class="Gjs_CharacterDialog" parent="AdwDialog">
+    <property name="content-width">360</property>
+    <property name="content-height">500</property>
     <child>
       <object class="AdwToastOverlay" id="toastOverlay">
         <property name="child">
@@ -16,103 +16,109 @@
                       <object class="AdwHeaderBar"/>
                     </child>
                     <child>
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="halign">fill</property>
-                        <property name="valign">center</property>
-                        <child>
-                          <object class="GtkStack" id="characterStack">
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="name">character</property>
-                                <property name="child">
-                                  <object class="GtkLabel" id="characterLabel">
-                                    <property name="ellipsize">end</property>
-                                    <property name="halign">center</property>
-                                    <property name="valign">center</property>
-                                    <style>
-                                      <class name="character-label" />
-                                    </style>
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="name">missing</property>
-                                <property name="child">
-                                  <object class="GtkLabel" id="missingLabel">
-                                    <property name="halign">center</property>
-                                    <property name="valign">center</property>
-                                    <property name="wrap">True</property>
-                                    <property name="wrap-mode">word</property>
-                                    <property name="width-chars">28</property>
-                                    <property name="max-width-chars">28</property>
-                                    <property name="justify">center</property>
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="margin-top">18</property>
-                            <property name="margin-bottom">18</property>
-                            <property name="halign">center</property>
-                            <property name="label" translatable="yes">_Copy Character</property>
-                            <property name="use-underline">true</property>
-                            <property name="action-name">character.copy</property>
-                            <style>
-                              <class name="pill" />
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="AdwClamp">
-                            <property name="margin-top">18</property>
-                            <property name="margin-bottom">18</property>
-                            <property name="margin-start">18</property>
-                            <property name="margin-end">18</property>
-                            <property name="vexpand">True</property>
+                      <object class="GtkScrolledWindow">
+                        <property name="hscrollbar-policy">never</property>
+                        <property name="vexpand">True</property>
+                        <property name="child">
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="halign">fill</property>
                             <property name="valign">center</property>
                             <child>
-                              <object class="GtkListBox">
-                                <property name="selection-mode">none</property>
+                              <object class="GtkStack" id="characterStack">
                                 <child>
-                                  <object class="AdwActionRow" id="detailRow">
-                                    <property name="title" translatable="yes">Unicode</property>
-                                    <child>
-                                      <object class="GtkLabel" id="detailLabel">
-                                        <property name="selectable">True</property>
+                                  <object class="GtkStackPage">
+                                    <property name="name">character</property>
+                                    <property name="child">
+                                      <object class="GtkLabel" id="characterLabel">
+                                        <property name="ellipsize">end</property>
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
                                         <style>
-                                          <class name="dim-label" />
+                                          <class name="character-label" />
                                         </style>
                                       </object>
-                                    </child>
+                                    </property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="AdwActionRow" id="seeAlsoRow">
-                                    <property name="use-underline">true</property>
-                                    <property name="title" translatable="yes">_See Also</property>
-                                    <property name="action-name">navigation.push</property>
-                                    <property name="action-target">'related'</property>
-                                    <property name="activatable">true</property>
-                                    <child>
-                                      <object class="GtkImage">
-                                        <property name="icon-name">go-next-symbolic</property>
+                                  <object class="GtkStackPage">
+                                    <property name="name">missing</property>
+                                    <property name="child">
+                                      <object class="GtkLabel" id="missingLabel">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="wrap">True</property>
+                                        <property name="wrap-mode">word</property>
+                                        <property name="width-chars">28</property>
+                                        <property name="max-width-chars">28</property>
+                                        <property name="justify">center</property>
                                       </object>
-                                    </child>
+                                    </property>
                                   </object>
                                 </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="margin-top">18</property>
+                                <property name="margin-bottom">18</property>
+                                <property name="halign">center</property>
+                                <property name="label" translatable="yes">_Copy Character</property>
+                                <property name="use-underline">true</property>
+                                <property name="action-name">character.copy</property>
                                 <style>
-                                  <class name="boxed-list" />
+                                  <class name="pill" />
                                 </style>
                               </object>
                             </child>
+                            <child>
+                              <object class="AdwClamp">
+                                <property name="margin-top">18</property>
+                                <property name="margin-bottom">18</property>
+                                <property name="margin-start">18</property>
+                                <property name="margin-end">18</property>
+                                <property name="vexpand">True</property>
+                                <property name="valign">center</property>
+                                <child>
+                                  <object class="GtkListBox">
+                                    <property name="selection-mode">none</property>
+                                    <child>
+                                      <object class="AdwActionRow" id="detailRow">
+                                        <property name="title" translatable="yes">Unicode</property>
+                                        <child>
+                                          <object class="GtkLabel" id="detailLabel">
+                                            <property name="selectable">True</property>
+                                            <style>
+                                              <class name="dim-label" />
+                                            </style>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="AdwActionRow" id="seeAlsoRow">
+                                        <property name="use-underline">true</property>
+                                        <property name="title" translatable="yes">_See Also</property>
+                                        <property name="action-name">navigation.push</property>
+                                        <property name="action-target">'related'</property>
+                                        <property name="activatable">true</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="icon-name">go-next-symbolic</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <style>
+                                      <class name="boxed-list" />
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
                           </object>
-                        </child>
+                        </property>
                       </object>
                     </child>
                   </object>
@@ -158,17 +164,6 @@
             </child>
           </object>
         </property>
-      </object>
-    </child>
-    <child>
-      <object class='GtkShortcutController'>
-        <property name='scope'>global</property>
-        <child>
-          <object class='GtkShortcut'>
-            <property name='trigger'>Escape</property>
-            <property name='action'>action(window.close)</property>
-          </object>
-        </child>
       </object>
     </child>
   </template>
