@@ -1,19 +1,19 @@
 # Turkish translation for gnome-characters.
-# Copyright (C) 2015-2023 gnome-characters's COPYRIGHT HOLDER
+# Copyright (C) 2015-202 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 #
 # Kaan Özdinçer <kaanozdincer@gmail.com>, 2015.
 # Muhammet Kara <muhammetk@gmail.com>, 2015, 2016.
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2016, 2017, 2021, 2022.
-# Sabri Ünal <libreajans@gmail.com>, 2023.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2016, 2017, 2021, 2022, 2023, 2024.
+# Sabri Ünal <libreajans@gmail.com>, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-08-28 10:17+0000\n"
+"POT-Creation-Date: 2023-10-24 03:55+0000\n"
 "PO-Revision-Date: 2023-10-13 15:51+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
