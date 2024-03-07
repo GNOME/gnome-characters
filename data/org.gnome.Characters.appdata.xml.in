@@ -51,9 +51,9 @@
   <launchable type="desktop-id">org.gnome.Characters.desktop</launchable>
   <content_rating type="oars-1.1"/>
   <releases>
-    <release version="45.alpha" date="2023-07-04">
+    <release version="45.0" date="2023-07-17">
       <description>
-        <p>Characters 45.alpha brings support for Unicode 15.0.1 and new CJK extensions, in addition to miscellaneous bug fixes.</p>
+        <p>Characters 45 brings support for Unicode 15.0.1 and new CJK extensions, in addition to miscellaneous bug fixes.</p>
         <p>It also comes with translation updates for the following locales:</p>
         <ul>
           <li>Chinese (China) (Boyuan Yang)</li>
