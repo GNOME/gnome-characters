@@ -28,6 +28,7 @@
     <name>The GNOME Project</name>
   </developer>
   <url type="homepage">https://apps.gnome.org/Characters/</url>
+  <url type="contribute">https://welcome.gnome.org/app/Characters/</url>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-characters/issues</url>
   <url type="translate">https://l10n.gnome.org/module/gnome-characters</url>
   <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-characters</url>
