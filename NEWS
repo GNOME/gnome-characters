@@ -1,3 +1,15 @@
+46.0
+====
+* Update to CLDR 44 (Alice Mikhaylenko)
+* Update to Emoji 15.1 (Alice Mikhaylenko)
+* Improve appdata for AppStream 1.0 (Sabri Ünal)
+* Translation updates:
+  - British (Andi Chandler)
+  - Turkish (Sabri Ünal)
+  - Serbian (Марко Костић)
+  - Spanish (Daniel Mustieles)
+  - Esperanto (Kristjan SCHMIDT)
+
 45.alpha
 ========
 * Update for Unicode 15.0.1 (Alice Mikhaylenko)
