@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-16\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-09-07 15:20+0200\n"
+"POT-Creation-Date: 2023-10-24 03:55+0000\n"
+"PO-Revision-Date: 2024-04-02 20:15+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Project-Style: gnome\n"
 
 #: data/character_dialog.ui:63
@@ -202,7 +202,7 @@ msgid ""
 "etc."
 msgstr ""
 "Tanben podètz navegar dins los caractèrs per categorias, coma per "
-"Ponctuacion, Imatges, etc."
+"Pontuacion, Imatges, etc."
 
 #: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
@@ -218,17 +218,17 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Nombre maximal de caractèrs recents"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Nom de caractèr desconegut"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s es pas inclús dins %s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Caractèrs copiats dempuèi lo quichapapièrs"
 
