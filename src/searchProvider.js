@@ -118,6 +118,7 @@ var SearchProvider = GObject.registerClass({
         log('activating result');
         const notification = Gio.Notification.new(_('Character copied'));
         notification.set_body(_('Character was copied successfully'));
+        notification.isTransient = true;
         this._app.send_notification(null, notification);
     }
 
