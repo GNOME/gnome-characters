@@ -12,7 +12,7 @@ class Builder(object):
     def read(self, ucdfile, emojifile):
         emoji = set()
         for line in emojifile:
-            m = re.match('([0-9A-F ]+); fully-qualified\s+#.*E\d+.\d+ (.+)', line)
+            m = re.match(r'([0-9A-F ]+); fully-qualified\s+#.*E\d+.\d+ (.+)', line)
 
             if not m:
                 continue

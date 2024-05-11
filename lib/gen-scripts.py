@@ -73,7 +73,7 @@ def get_aliases(infile):
     for line in infile:
         if not line.startswith('sc'):
             continue
-        (sc, iso, ucd, *comment) = re.split('\s*;\s*', line.strip())
+        (sc, iso, ucd, *comment) = re.split(r'\s*;\s*', line.strip())
         result[iso] = ucd
     return result
 

@@ -46,7 +46,7 @@ class Builder(object):
         max_length = 0
         index = 0
         for line in infile:
-            m = re.match('# group: (.*)', line)
+            m = re.match(r'# group: (.*)', line)
             if m:
                 if group_name:
                     groups.append((group_name, group_start))
@@ -59,7 +59,7 @@ class Builder(object):
             if len(line) == 0:
                 continue
 
-            m = re.match('([0-9A-F ]+); fully-qualified\s+#.*E\d+.\d+ (.+)', line)
+            m = re.match(r'([0-9A-F ]+); fully-qualified\s+#.*E\d+.\d+ (.+)', line)
             if not m:
                 continue
 

@@ -19,7 +19,7 @@ class Builder(object):
                 continue
             (source, target, _type) = line.split(';', 2)
             source = int(source.strip(), 16)
-            target = [int(x, 16) for x in re.split('\s+', target.strip())]
+            target = [int(x, 16) for x in re.split(r'\s+', target.strip())]
             if len(target) > 1:
                 continue
             source_classes = [c for c in classes if source in c]
