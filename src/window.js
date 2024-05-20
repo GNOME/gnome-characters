@@ -179,7 +179,7 @@ var MainWindow = GObject.registerClass({
             license_type: Gtk.License.GPL_2_0,
             version: pkg.version,
             website: 'https://apps.gnome.org/Characters/',
-            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-characters/-/issues/new',
+            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-characters/-/issues/',
         });
 
         aboutDialog.present(this);
