@@ -1,11 +1,3 @@
-Gjs_MenuPopover {
-    padding: 0;
-}
-
-Gjs_MenuPopover GtkScrolledWindow {
-    border-width: 1px 0;
-}
-
 .character-label {
     font-size: 7em;
     font-weight: bold;
