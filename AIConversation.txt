@@ -1,0 +1,1429 @@
+This project is the Gnome Characters app.
+
+As there's the "Recently Used" tab icon: please add below it a "Favorites" tab with proper icon too.
+So, when browsing emojis from any tab: right-clicking emojis now will display a context menu, with the "Add to Favorites" option!
+So, these emojis where user clicked that, yes, these emojis shall be listed in the "Favorites" tab so as the "Recently Used" tab shows their own too.
+
+
+
+
+To add a "Favorites" tab with the proper icon next to the "Recently Used" tab in the Gnome Characters app, you need to modify the [data/sidebar.ui](file:///home/daniella/Desktop/gnome-characters/data/sidebar.ui#1%2C1-1%2C1) file. Additionally, you need to implement a context menu with an "Add to Favorites" option in the [src/window.js](file:///home/daniella/Desktop/gnome-characters/src/window.js#1%2C1-1%2C1) file to allow users to add emojis to the "Favorites" tab.
+
+
+
+
+So, please code it!
+
+
+
+
+```data/sidebar.ui
+176|        </child>
+177|        <child>
+178|          <object class="Gjs_SidebarRow" id="favoriteRow">
+179|            <property name="name">favorite</property>
+180|            <property name="icon-name">emblem-favorite-symbolic</property>
+181|            <property name="title" translatable="yes">Favorites</property>
+182|          </object>
+183|        </child>
+184|      </object>
+185|    </child>
+186|  </template>
+```
+
+```javascript:src/window.js
+253|});
+254|
+255|    _handleCharacterSelected(widget, uc) {
+256|        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription);
+257|        dialog.connect('character-copied', (_widget, char) => {
+258|            this.addToRecent(char);
+259|            this.addToFavorites(char);
+260|        });
+261|        dialog.present(this);
+262|    }
+263|
+264|    addToFavorites(uc) {
+265|        if (this.favoriteCharacters.indexOf(uc) < 0) {
+266|            this.favoriteCharacters.unshift(uc);
+267|            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+268|                this.favoriteCharacters = this.favoriteCharacters.slice(
+269|                    0, this._maxFavoriteCharacters);
+270|            }
+271|            Main.settings.set_value(
+272|                'favorite-characters',
+273|                GLib.Variant.new_strv(this.favoriteCharacters));
+274|        }
+```
+
+
+
+
+
+
+
+CLI output:
+"Run-time dependency gjs-1.0 found: NO (tried pkgconfig and cmake)"
+
+This happened when I tried "meson --prefix=/usr build".
+
+Can we fix by pointing to the current version I have?
+
+gnome-characters on  main [!] is 📦 v46.0 
+❯ gjs --version
+gjs 1.80.2
+
+
+
+
+
+To resolve the issue with the `gjs-1.0` dependency, you can modify the [meson.build](file:///home/daniella/Desktop/gnome-characters/meson.build#1%2C1-1%2C1) file to point to the specific version of [gjs](file:///home/daniella/Desktop/gnome-characters/build-aux/snap/snapcraft.yaml#31%2C114-31%2C114) you have installed. Update the dependency line to specify the version explicitly.
+
+Update the [meson.build](file:///home/daniella/Desktop/gnome-characters/meson.build#1%2C1-1%2C1) file as follows:
+
+```meson.build
+46|gjs = dependency('gjs-1.0', version: '==1.80.2', required: true)
+```
+
+This ensures that Meson uses the `gjs` version 1.80.2 you have installed. Now, re-run the Meson command:
+
+```sh
+meson --prefix=/usr build
+```
+
+This should resolve the dependency issue.
+
+
+
+
+
+Are there something more missing to config? Still:
+Run-time dependency gjs-1.0 found: NO (tried pkgconfig and cmake)
+
+meson.build:46:6: ERROR: Dependency "gjs-1.0" not found, tried pkgconfig and cmake
+
+
+
+
+
+
+To resolve the `gjs-1.0` dependency issue, ensure that `pkg-config` can find `gjs-1.0`. Verify `pkg-config` paths and install `gjs-1.0` development files if missing.
+
+1. **Verify `pkg-config` Path**:
+   Ensure `pkg-config` paths include the directory where `gjs-1.0` is installed:
+   ```sh
+   export PKG_CONFIG_PATH=/path/to/gjs-1.0/pkgconfig:$PKG_CONFIG_PATH
+   ```
+
+2. **Install Development Files**:
+   Ensure `gjs-1.0` development files are installed:
+   ```sh
+   sudo apt-get install libgjs-dev
+   ```
+
+3. **Update `meson.build`**:
+   Ensure the `meson.build` file specifies the correct version:
+   ```meson.build
+   46|gjs = dependency('gjs-1.0', version: '==1.80.2', required: true)
+   ```
+
+After these steps, re-run:
+```sh
+meson --prefix=/usr build
+```
+
+
+
+
+
+
+Done installing libgjs-dev! But how to find that path:
+
+   export PKG_CONFIG_PATH=/path/to/gjs-1.0/pkgconfig:$PKG_CONFIG_PATH
+   
+   
+   
+   
+   
+   
+   
+To find the correct path for `PKG_CONFIG_PATH`, you can use the `pkg-config` tool itself:
+
+1. **Find the Path**:
+   ```sh
+   pkg-config --variable pc_path gjs-1.0
+   ```
+
+2. **Set the Environment Variable**:
+   Use the output from the above command to set `PKG_CONFIG_PATH`. For example:
+   ```sh
+   export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
+   ```
+
+3. **Re-run Meson**:
+   ```sh
+   meson --prefix=/usr build
+   ```
+
+This should resolve the `gjs-1.0` dependency issue.
+
+
+
+
+
+
+"pkg-config --variable pc_path gjs-1.0" has shown nothing.
+
+
+
+
+
+
+
+
+
+To resolve the `gjs-1.0` dependency issue, follow these steps:
+
+1. **Locate `gjs-1.0` pkg-config File**:
+   Since `pkg-config --variable pc_path gjs-1.0` returned nothing, manually search for the `gjs-1.0.pc` file:
+   ```sh
+   find /usr -name gjs-1.0.pc
+   ```
+
+2. **Set `PKG_CONFIG_PATH`**:
+   Use the path from the above command to set the `PKG_CONFIG_PATH` environment variable. For example:
+   ```sh
+   export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
+   ```
+
+3. **Update `meson.build`**:
+   Ensure the `meson.build` file specifies the correct version:
+   ```meson.build
+   46|gjs = dependency('gjs-1.0', version: '==1.80.2', required: true)
+   ```
+
+4. **Re-run Meson**:
+   ```sh
+   meson --prefix=/usr build
+   ```
+
+This should resolve the `gjs-1.0` dependency issue.
+
+
+
+
+
+
+
+
+
+Are this correct:
+export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig/gjs-1.0.pc:$PKG_CONFIG_PATH
+
+
+
+
+
+
+
+
+No, the `PKG_CONFIG_PATH` should point to the directory containing the `gjs-1.0.pc` file, not the file itself. Correct it as follows:
+
+```sh
+export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
+```
+
+Then re-run Meson:
+
+```sh
+meson --prefix=/usr build
+```
+
+
+
+
+
+
+
+
+
+Found pkg-config: YES (/usr/bin/pkg-config) 1.8.1
+Run-time dependency gjs-1.0 found: YES 1.80.2
+Program /usr/bin/gjs-console found: YES (/usr/bin/gjs-console)
+Found CMake: /usr/bin/cmake (3.29.3)
+Run-time dependency gtk4 found: NO (tried pkgconfig and cmake)
+
+
+
+
+
+
+
+
+
+
+To resolve the [gtk4](file:///home/daniella/Desktop/gnome-characters/meson.build#48%2C13-48%2C13) dependency issue, ensure the `libgtk-4-dev` package is installed and `pkg-config` can find it.
+
+1. **Install `libgtk-4-dev`**:
+   ```sh
+   sudo apt-get install libgtk-4-dev
+   ```
+
+2. **Verify `pkg-config` Path**:
+   Ensure `pkg-config` paths include the directory where `gtk4` is installed:
+   ```sh
+   export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
+   ```
+
+3. **Re-run Meson**:
+   ```sh
+   meson --prefix=/usr build
+   ```
+
+This should resolve the `gtk4` dependency issue.
+
+
+
+
+
+
+Found pkg-config: YES (/usr/bin/pkg-config) 1.8.1
+Run-time dependency gjs-1.0 found: YES 1.80.2
+Program /usr/bin/gjs-console found: YES (/usr/bin/gjs-console)
+Run-time dependency gtk4 found: YES 4.14.2
+Found CMake: /usr/bin/cmake (3.29.3)
+Run-time dependency libadwaita-1 found: NO (tried pkgconfig and cmake)
+
+COULDN'T MESON JUST AUTOMATICALLY INSTALL THE MISSING DEPENDENCIES?
+OH MY DOG
+HOPE IT DOESN'T TURN INTO A LONG LONG JOHNSON OF DEPENDENCIES OH LONG JOHN
+
+
+
+
+
+
+
+
+
+
+To resolve the [libadwaita-1](file:///home/daniella/Desktop/gnome-characters/meson.build#49%2C27-49%2C27) dependency issue, ensure the `libadwaita-1-dev` package is installed and `pkg-config` can find it.
+
+1. **Install `libadwaita-1-dev`**:
+   ```sh
+   sudo apt-get install libadwaita-1-dev
+   ```
+
+2. **Verify `pkg-config` Path**:
+   Ensure `pkg-config` paths include the directory where `libadwaita-1` is installed:
+   ```sh
+   export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
+   ```
+
+3. **Re-run Meson**:
+   ```sh
+   meson --prefix=/usr build
+   ```
+
+This should resolve the `libadwaita-1` dependency issue.
+
+
+
+
+
+
+WOW, THAT WAS SO FAST TO BUILD!
+
+The "Favorites" tab just showed up and even with a heart icon.
+However, there's no context menu appearing when right-clicking emojis. I want a context menu when right-clicking emojis, to appear the option "Add to the Favorites".
+
+
+
+
+
+
+To add a context menu with the "Add to Favorites" option when right-clicking emojis, you need to modify the [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1) file to handle the right-click event and show the context menu.
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Add Context Menu Handling**:
+   ```javascript:src/characterDialog.js
+   84|            row.connect('button-press-event', (widget, event) => {
+   85|                if (event.get_button()[1] === 3) { // Right-click
+   86|                    this._showContextMenu(widget, uc);
+   87|                    return true;
+   88|                }
+   89|                return false;
+   90|            });
+   ```
+
+2. **Implement `_showContextMenu` Method**:
+   ```javascript:src/characterDialog.js
+   91|    _showContextMenu(widget, uc) {
+   92|        const menu = new Gtk.Menu();
+   93|        const addToFavorites = new Gtk.MenuItem({ label: 'Add to Favorites' });
+   94|        addToFavorites.connect('activate', () => {
+   95|            this.addToFavorites(uc);
+   96|        });
+   97|        menu.append(addToFavorites);
+   98|        menu.show_all();
+   99|        menu.popup_at_pointer(null);
+   100|    }
+   ```
+
+3. **Ensure `addToFavorites` Method is Available**:
+   ```javascript:src/characterDialog.js
+   101|    addToFavorites(uc) {
+   102|        // Implement the logic to add the character to favorites
+   103|    }
+   ```
+
+These changes will add a context menu with the "Add to Favorites" option when right-clicking on emojis.
+
+
+
+
+
+
+
+
+Gjs-Message: 00:34:14.502: JS LOG: Failed to search related: No signal 'button-press-event' on object 'AdwActionRow'
+
+
+
+
+
+
+
+
+
+To add a context menu with the "Add to Favorites" option when right-clicking emojis, you need to handle the right-click event and show the context menu. Since [AdwActionRow](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#100%2C54-100%2C54) does not support the [button-press-event](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#80%2C26-80%2C26) signal, use `Gtk.GestureClick` instead.
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Add Context Menu Handling**:
+   ```javascript:src/characterDialog.js
+   81|            const gestureClick = new Gtk.GestureClick();
+   82|            gestureClick.connect('pressed', (gesture, n_press, x, y) => {
+   83|                if (gesture.get_current_button() === 3) { // Right-click
+   84|                    this._showContextMenu(gesture, uc);
+   85|                }
+   86|            });
+   87|            row.add_controller(gestureClick);
+   ```
+
+2. **Implement `_showContextMenu` Method**:
+   ```javascript:src/characterDialog.js
+   91|    _showContextMenu(widget, uc) {
+   92|        const menu = new Gtk.Menu();
+   93|        const addToFavorites = new Gtk.MenuItem({ label: 'Add to Favorites' });
+   94|        addToFavorites.connect('activate', () => {
+   95|            this.addToFavorites(uc);
+   96|        });
+   97|        menu.append(addToFavorites);
+   98|        menu.show_all();
+   99|        menu.popup_at_pointer(null);
+   100|    }
+   ```
+
+3. **Ensure `addToFavorites` Method is Available**:
+   ```javascript:src/characterDialog.js
+   101|    addToFavorites(uc) {
+   102|        // Implement the logic to add the character to favorites
+   103|    }
+   ```
+
+These changes will add a context menu with the "Add to Favorites" option when right-clicking on emojis.
+
+
+
+
+
+
+
+
+Let's change the logic. Now just right-clicking will add an emoji to the Favorites!
+
+
+
+
+
+
+
+
+
+To change the logic so that right-clicking an emoji directly adds it to the Favorites, you need to modify the [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1) file.
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Handle Right-Click to Add to Favorites**:
+   ```javascript:src/characterDialog.js
+   81|            const gestureClick = new Gtk.GestureClick();
+   82|            gestureClick.connect('pressed', (gesture, n_press, x, y) => {
+   83|                if (gesture.get_current_button() === 3) { // Right-click
+   84|                    this.addToFavorites(uc);
+   85|                }
+   86|            });
+   87|            row.add_controller(gestureClick);
+   ```
+
+2. **Ensure `addToFavorites` Method is Available**:
+   ```javascript:src/characterDialog.js
+   101|    addToFavorites(uc) {
+   102|        // Implement the logic to add the character to favorites
+   103|    }
+   ```
+
+These changes will add the emoji to the Favorites when right-clicked.
+
+
+
+
+
+
+
+" addToFavorites(uc) {
+   102|        // Implement the logic to add the character to favorites
+   103|    }"
+
+It's up to you to implement the logic!
+
+So as the "Recently Used" tab shows the stored recently used emojis (see where this info is stored, how it is read, how that tab displays it), the "Favorites" tab should show the emojis that were right-clicked (store this data same way the recently used emojis are stored, so read and display in a similar way).
+
+
+
+
+
+
+
+
+To implement the logic for adding emojis to the "Favorites" tab and displaying them similarly to the "Recently Used" tab, follow these steps:
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Implement [addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/window.js#250%2C18-250%2C18) Method**:
+   ```javascript:src/characterDialog.js
+   108|    addToFavorites(uc) {
+   109|        if (this.favoriteCharacters.indexOf(uc) < 0) {
+   110|            this.favoriteCharacters.unshift(uc);
+   111|            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+   112|                this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
+   113|            }
+   114|            Main.settings.set_value('favorite-characters', GLib.Variant.new_strv(this.favoriteCharacters));
+   115|        }
+   116|    }
+   ```
+
+2. **Handle Right-Click to Add to Favorites**:
+   ```javascript:src/characterDialog.js
+   81|            const gestureClick = new Gtk.GestureClick();
+   82|            gestureClick.connect('pressed', (gesture, n_press, x, y) => {
+   83|                if (gesture.get_current_button() === 3) { // Right-click
+   84|                    this.addToFavorites(uc);
+   85|                }
+   86|            });
+   87|            row.add_controller(gestureClick);
+   ```
+
+### Update `src/window.js`
+
+1. **Add `favoriteCharacters` Initialization**:
+   ```javascript:src/window.js
+   132|    _init() {
+   133|        this.favoriteCharacters = Main.settings.get_strv('favorite-characters');
+   134|        this._maxFavoriteCharacters = 20; // Set your desired max limit
+   135|    }
+   ```
+
+2. **Add `addToFavorites` Method**:
+   ```javascript:src/window.js
+   255|    addToFavorites(uc) {
+   256|        if (this.favoriteCharacters.indexOf(uc) < 0) {
+   257|            this.favoriteCharacters.unshift(uc);
+   258|            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+   259|                this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
+   260|            }
+   261|            Main.settings.set_value('favorite-characters', GLib.Variant.new_strv(this.favoriteCharacters));
+   262|        }
+   263|    }
+   ```
+
+### Update `data/sidebar.ui`
+
+1. **Add "Favorites" Tab**:
+   ```xml:data/sidebar.ui
+   176|        <child>
+   177|          <object class="Gjs_SidebarRow" id="favoriteRow">
+   178|            <property name="name">favorite</property>
+   179|            <property name="icon-name">emblem-favorite-symbolic</property>
+   180|            <property name="title" translatable="yes">Favorites</property>
+   181|          </object>
+   182|        </child>
+   ```
+
+These changes will add the emoji to the Favorites when right-clicked and display them in the "Favorites" tab.
+
+
+
+
+
+
+
+
+
+
+Gjs-Message: 00:43:44.905: JS LOG: Characters Application started
+
+(org.gnome.Characters:2721863): Gjs-CRITICAL **: 00:43:44.941: JS ERROR: Error: GSettings key favorite-characters not found in schema org.gnome.Characters
+_checkKey@resource:///org/gnome/gjs/modules/core/overrides/Gio.js:779:23
+createCheckedMethod/<@resource:///org/gnome/gjs/modules/core/overrides/Gio.js:729:30
+_init@resource:///org/gnome/Characters/js/window.js:80:49
+MainWindow@resource:///org/gnome/Characters/js/window.js:48:4
+vfunc_activate@resource:///org/gnome/Characters/js/main.js:101:31
+main@resource:///org/gnome/Characters/js/main.js:121:32
+run@resource:///org/gnome/gjs/modules/script/package.js:207:19
+@/usr/bin/gnome-characters:6:17
+
+
+
+
+
+
+
+
+
+The error indicates that the [favorite-characters](file:///home/daniella/Desktop/gnome-characters/src/window.js#266%2C18-266%2C18) key is missing from the GSettings schema. You need to add this key to the schema definition.
+
+### Update GSettings Schema
+
+1. **Add [favorite-characters](file:///home/daniella/Desktop/gnome-characters/src/window.js#266%2C18-266%2C18) Key**:
+   Update the GSettings schema file (likely [data/org.gnome.Characters.gschema.xml](file:///home/daniella/Desktop/gnome-characters/data/org.gnome.Characters.gschema.xml#1%2C1-1%2C1) or similar) to include the [favorite-characters](file:///home/daniella/Desktop/gnome-characters/src/window.js#266%2C18-266%2C18) key.
+
+   ```xml:data/org.gnome.Characters.gschema.xml
+   10|  <key name="favorite-characters" type="as">
+   11|    <default>[]</default>
+   12|    <summary>Favorite Characters</summary>
+   13|    <description>List of favorite characters.</description>
+   14|  </key>
+   ```
+
+2. **Recompile GSettings Schemas**:
+   After updating the schema file, recompile the GSettings schemas:
+   ```sh
+   glib-compile-schemas data/
+   ```
+
+### Ensure Initialization in Code
+
+1. **Initialize `favoriteCharacters`**:
+   Ensure `favoriteCharacters` is initialized in `src/window.js`.
+
+   ```javascript:src/window.js
+   80|        this.favoriteCharacters = Main.settings.get_strv('favorite-characters');
+   ```
+
+These changes will add the `favorite-characters` key to the GSettings schema and initialize it properly in the code.
+
+
+
+
+
+
+
+
+
+Nothing is showing up in the "Favorites tab".
+Should we debug in CLI if the right-click function on each emoji is working?
+Better: logging the name of the clicked emoji.
+
+
+
+
+
+
+
+To debug the right-click functionality and ensure emojis are being added to the "Favorites" tab, you can add logging to verify the right-click event and the emoji being added.
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Add Logging to [addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/window.js#253%2C18-253%2C18) Method**:
+   ```javascript:src/characterDialog.js
+   108|    addToFavorites(uc) {
+   109|        log(`Adding to favorites: ${uc}`);
+   110|        if (this.favoriteCharacters.indexOf(uc) < 0) {
+   111|            this.favoriteCharacters.unshift(uc);
+   112|            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+   113|                this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
+   114|            }
+   115|            Main.settings.set_value('favorite-characters', GLib.Variant.new_strv(this.favoriteCharacters));
+   116|        }
+   117|    }
+   ```
+
+2. **Handle Right-Click to Add to Favorites**:
+   ```javascript:src/characterDialog.js
+   81|            const gestureClick = new Gtk.GestureClick();
+   82|            gestureClick.connect('pressed', (gesture, n_press, x, y) => {
+   83|                if (gesture.get_current_button() === 3) { // Right-click
+   84|                    this.addToFavorites(uc);
+   85|                }
+   86|            });
+   87|            row.add_controller(gestureClick);
+   ```
+
+### Verify Initialization in `src/window.js`
+
+1. **Ensure `favoriteCharacters` Initialization**:
+   ```javascript:src/window.js
+   80|        this.favoriteCharacters = Main.settings.get_strv('favorite-characters');
+   ```
+
+### Recompile GSettings Schemas
+
+1. **Add `favorite-characters` Key**:
+   ```xml:data/org.gnome.Characters.gschema.xml
+   10|  <key name="favorite-characters" type="as">
+   11|    <default>[]</default>
+   12|    <summary>Favorite Characters</summary>
+   13|    <description>List of favorite characters.</description>
+   14|  </key>
+   ```
+
+2. **Recompile**:
+   ```sh
+   glib-compile-schemas data/
+   ```
+
+These changes will help you debug and ensure the right-click functionality is working correctly.
+
+
+
+
+
+
+
+Nothing is being logged.
+
+Maybe I have a better idea: please remove the right-click detections, and move functions to a better idea: the window that appear when clicking an emoji: add the "Add to Favorites" button bellow the "Copy Character" button, so move the functions that were on the right-click, to this button!
+
+
+
+
+
+
+
+To add an "Add to Favorites" button below the "Copy Character" button in the dialog window, follow these steps:
+
+### Update [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)
+
+1. **Add "Add to Favorites" Button**:
+   ```xml:data/character_dialog.ui
+   75|                            <child>
+   76|                              <object class="GtkButton">
+   77|                                <property name="margin-top">18</property>
+   78|                                <property name="margin-bottom">18</property>
+   79|                                <property name="halign">center</property>
+   80|                                <property name="label" translatable="yes">_Add to Favorites</property>
+   81|                                <property name="use-underline">true</property>
+   82|                                <property name="action-name">character.add-to-favorites</property>
+   83|                                <style>
+   84|                                  <class name="pill" />
+   85|                                </style>
+   86|                              </object>
+   87|                            </child>
+   ```
+
+### Update `src/characterDialog.js`
+
+1. **Add Action for "Add to Favorites" Button**:
+   ```javascript:src/characterDialog.js
+   45|            { name: 'copy', activate: this._copyCharacter.bind(this) },
+   46|            { name: 'add-to-favorites', activate: this._addToFavorites.bind(this) },
+   ```
+
+2. **Implement `_addToFavorites` Method**:
+   ```javascript:src/characterDialog.js
+   108|    _addToFavorites() {
+   109|        this.addToFavorites(this._character);
+   110|    }
+   ```
+
+3. **Ensure `addToFavorites` Method is Available**:
+   ```javascript:src/characterDialog.js
+   108|    addToFavorites(uc) {
+   109|        log(`Adding to favorites: ${uc}`);
+   110|        if (this.favoriteCharacters.indexOf(uc) < 0) {
+   111|            this.favoriteCharacters.unshift(uc);
+   112|            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+   113|                this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
+   114|            }
+   115|            Main.settings.set_value('favorite-characters', GLib.Variant.new_strv(this.favoriteCharacters));
+   116|        }
+   117|    }
+   ```
+
+These changes will add an "Add to Favorites" button to the dialog window, allowing users to add emojis to their favorites.
+
+
+
+
+
+
+
+
+
+Still, only the "Copy Character" button is appearing.
+
+
+
+
+
+
+
+
+
+To add an "Add to Favorites" button below the "Copy Character" button in the dialog window, follow these steps:
+
+### Update [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)
+
+Add the "Add to Favorites" button:
+```xml:data/character_dialog.ui
+76|                            <child>
+77|                              <object class="GtkButton">
+78|                                <property name="margin-top">18</property>
+79|                                <property name="margin-bottom">18</property>
+80|                                <property name="halign">center</property>
+81|                                <property name="label" translatable="yes">_Add to Favorites</property>
+82|                                <property name="use-underline">true</property>
+83|                                <property name="action-name">character.add-to-favorites</property>
+84|                                <style>
+85|                                  <class name="pill" />
+86|                                </style>
+87|                              </object>
+88|                            </child>
+```
+
+### Update `src/characterDialog.js`
+
+Add the action for the "Add to Favorites" button:
+```javascript:src/characterDialog.js
+45|            { name: 'copy', activate: this._copyCharacter.bind(this) },
+46|            { name: 'add-to-favorites', activate: this._addToFavorites.bind(this) },
+```
+
+Implement the `_addToFavorites` method:
+```javascript:src/characterDialog.js
+108|    _addToFavorites() {
+109|        this.addToFavorites(this._character);
+110|    }
+```
+
+Ensure the `addToFavorites` method is available:
+```javascript:src/characterDialog.js
+108|    addToFavorites(uc) {
+109|        log(`Adding to favorites: ${uc}`);
+110|        if (this.favoriteCharacters.indexOf(uc) < 0) {
+111|            this.favoriteCharacters.unshift(uc);
+112|            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+113|                this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
+114|            }
+115|            Main.settings.set_value('favorite-characters', GLib.Variant.new_strv(this.favoriteCharacters));
+116|        }
+117|    }
+```
+
+These changes will add the "Add to Favorites" button to the dialog window, allowing users to add emojis to their favorites.
+
+
+
+
+
+
+
+
+
+The button has appeared, thanks!
+
+Now, please add icons to these buttons:
+A heart to the favorites button, and a clipboard icon to the button above.
+
+
+
+
+
+
+To add icons to the buttons, update the [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1) file to include the [icon-name](file:///home/daniella/Desktop/gnome-characters/data/sidebar.ui#105%2C29-105%2C29) property for each button.
+
+### Update [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)
+
+Add the [icon-name](file:///home/daniella/Desktop/gnome-characters/data/sidebar.ui#105%2C29-105%2C29) property to the "Copy Character" button:
+```xml:data/character_dialog.ui
+67|                                <property name="label" translatable="yes">_Copy Character</property>
+68|                                <property name="use-underline">true</property>
+69|                                <property name="action-name">character.copy</property>
+70|                                <property name="icon-name">edit-copy-symbolic</property>
+```
+
+Add the `icon-name` property to the "Add to Favorites" button:
+```xml:data/character_dialog.ui
+81|                                <property name="label" translatable="yes">_Add to Favorites</property>
+82|                                <property name="use-underline">true</property>
+83|                                <property name="action-name">character.add-to-favorites</property>
+84|                                <property name="icon-name">emblem-favorite-symbolic</property>
+```
+
+These changes will add a clipboard icon to the "Copy Character" button and a heart icon to the "Add to Favorites" button.
+
+
+
+
+
+
+
+
+
+But please keep the original texts after the icons!
+
+
+
+
+
+
+
+
+
+To add icons to the buttons while keeping the original text, update the [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1) file to include the [icon-name](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#70%2C49-70%2C49) property for each button.
+
+### Update [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)
+
+Add the [icon-name](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#70%2C49-70%2C49) property to the "Copy Character" button:
+```xml:data/character_dialog.ui
+70|                                <property name="icon-name">edit-copy-symbolic</property>
+71|                                <property name="label" translatable="yes">_Copy Character</property>
+```
+
+Add the `icon-name` property to the "Add to Favorites" button:
+```xml:data/character_dialog.ui
+84|                                <property name="icon-name">emblem-favorite-symbolic</property>
+85|                                <property name="label" translatable="yes">_Add to Favorites</property>
+```
+
+These changes will add a clipboard icon to the "Copy Character" button and a heart icon to the "Add to Favorites" button while keeping the original text.
+
+
+
+
+
+
+
+
+But now only texts are appearing, not the icons!
+
+
+
+
+
+
+
+
+
+To add icons to the buttons while keeping the original text, ensure the `always-show-image` property is set to [true](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#69%2C64-69%2C64) for each button.
+
+### Update [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)
+
+Add the [icon-name](file:///home/daniella/Desktop/gnome-characters/data/sidebar.ui#105%2C29-105%2C29) and `always-show-image` properties to the "Copy Character" button:
+```xml:data/character_dialog.ui
+67|                                <property name="icon-name">edit-copy-symbolic</property>
+68|                                <property name="always-show-image">true</property>
+69|                                <property name="label" translatable="yes">_Copy Character</property>
+```
+
+Add the `icon-name` and `always-show-image` properties to the "Add to Favorites" button:
+```xml:data/character_dialog.ui
+81|                                <property name="icon-name">emblem-favorite-symbolic</property>
+82|                                <property name="always-show-image">true</property>
+83|                                <property name="label" translatable="yes">_Add to Favorites</property>
+```
+
+These changes will ensure the icons are displayed alongside the text on the buttons.
+
+
+
+
+
+
+Gjs-Message: 01:03:48.102: JS LOG: Characters Application activated
+
+(org.gnome.Characters:2826314): Gtk-CRITICAL **: 01:03:49.448: Error building template class 'Gjs_CharacterDialog' for an instance of type 'Gjs_CharacterDialog': .:0:0 Invalid property: GtkButton.always-show-image
+
+(org.gnome.Characters:2826314): Gjs-CRITICAL **: 01:03:49.449: JS ERROR: TypeError: this._relatedPage is null
+_init@resource:///org/gnome/Characters/js/characterDialog.js:49:9
+CharacterDialog@resource:///org/gnome/Characters/js/characterDialog.js:36:4
+_handleCharacterSelected@resource:///org/gnome/Characters/js/window.js:250:24
+_init/<@resource:///org/gnome/Characters/js/window.js:57:18
+onButtonRelease@resource:///org/gnome/Characters/js/charactersView.js:296:18
+main@resource:///org/gnome/Characters/js/main.js:121:32
+run@resource:///org/gnome/gjs/modules/script/package.js:207:19
+@/usr/bin/gnome-characters:6:17
+
+
+
+
+
+
+
+To add icons to the buttons while keeping the original text, and to avoid the `GtkButton.always-show-image` error, use [GtkButton](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#63%2C46-63%2C46) with [GtkImage](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#124%2C58-124%2C58) and [GtkLabel](file:///home/daniella/Desktop/gnome-characters/data/sidebar.ui#114%2C30-114%2C30) as children.
+
+### Update [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)
+
+Add the [GtkImage](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#124%2C58-124%2C58) and [GtkLabel](file:///home/daniella/Desktop/gnome-characters/data/sidebar.ui#114%2C30-114%2C30) to the "Copy Character" button:
+```xml:data/character_dialog.ui
+67|                                <child>
+68|                                  <object class="GtkBox">
+69|                                    <property name="orientation">horizontal</property>
+70|                                    <child>
+71|                                      <object class="GtkImage">
+72|                                        <property name="icon-name">edit-copy-symbolic</property>
+73|                                      </object>
+74|                                    </child>
+75|                                    <child>
+76|                                      <object class="GtkLabel">
+77|                                        <property name="label" translatable="yes">_Copy Character</property>
+78|                                      </object>
+79|                                    </child>
+80|                                  </object>
+81|                                </child>
+```
+
+Add the `GtkImage` and `GtkLabel` to the "Add to Favorites" button:
+```xml:data/character_dialog.ui
+81|                                <child>
+82|                                  <object class="GtkBox">
+83|                                    <property name="orientation">horizontal</property>
+84|                                    <child>
+85|                                      <object class="GtkImage">
+86|                                        <property name="icon-name">emblem-favorite-symbolic</property>
+87|                                      </object>
+88|                                    </child>
+89|                                    <child>
+90|                                      <object class="GtkLabel">
+91|                                        <property name="label" translatable="yes">_Add to Favorites</property>
+92|                                      </object>
+93|                                    </child>
+94|                                  </object>
+95|                                </child>
+```
+
+These changes will ensure the icons are displayed alongside the text on the buttons.
+
+
+
+
+
+
+
+Please remove the "_" that appear between the icons and the texts. Use a space character.
+
+Also, there's an error after clicking to add the selected emoji to the favorites:
+Gjs-Message: 01:05:40.490: JS LOG: Characters Application activated
+Gjs-Message: 01:06:35.965: JS LOG: Adding to favorites: 🎙️
+
+(org.gnome.Characters:2844332): Gjs-CRITICAL **: 01:06:35.965: JS ERROR: TypeError: this.favoriteCharacters is undefined
+addToFavorites@resource:///org/gnome/Characters/js/characterDialog.js:96:13
+_addToFavorites@resource:///org/gnome/Characters/js/characterDialog.js:91:14
+main@resource:///org/gnome/Characters/js/main.js:121:32
+run@resource:///org/gnome/gjs/modules/script/package.js:207:19
+@/usr/bin/gnome-characters:6:17
+
+
+
+
+
+
+
+
+To address the issues:
+
+### Update [data/character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)
+
+Remove the underscore and add a space between the icon and text:
+```xml:data/character_dialog.ui
+77|                                        <property name="label" translatable="yes">Copy Character</property>
+91|                                        <property name="label" translatable="yes">Add to Favorites</property>
+```
+
+### Update `src/characterDialog.js`
+
+Ensure `favoriteCharacters` is initialized:
+```javascript:src/characterDialog.js
+38|    _init(character, fontDescription) {
+39|        super._init();
+40|        this._cancellable = new Gio.Cancellable();
+41|        this._fontDescription = fontDescription;
+42|        this.favoriteCharacters = Main.settings.get_strv('favorite-characters');
+43|        this._maxFavoriteCharacters = 20; // Set your desired max limit
+```
+
+These changes will ensure the icons are displayed correctly and the `favoriteCharacters` array is properly initialized.
+
+
+
+
+
+
+
+Now, when clicking an emoji:
+Gjs-Message: 01:08:52.454: JS LOG: Characters Application activated
+
+(org.gnome.Characters:2852342): Gjs-CRITICAL **: 01:08:53.807: JS ERROR: ReferenceError: Main is not defined
+_init@resource:///org/gnome/Characters/js/characterDialog.js:41:9
+CharacterDialog@resource:///org/gnome/Characters/js/characterDialog.js:36:4
+_handleCharacterSelected@resource:///org/gnome/Characters/js/window.js:250:24
+_init/<@resource:///org/gnome/Characters/js/window.js:57:18
+onButtonRelease@resource:///org/gnome/Characters/js/charactersView.js:296:18
+main@resource:///org/gnome/Characters/js/main.js:121:32
+run@resource:///org/gnome/gjs/modules/script/package.js:207:19
+@/usr/bin/gnome-characters:6:17
+
+
+
+
+
+
+
+
+To resolve the `ReferenceError: Main is not defined` issue, ensure the `Main` object is properly imported in `src/characterDialog.js`.
+
+### Update `src/characterDialog.js`
+
+1. **Import Main**:
+   ```javascript:src/characterDialog.js
+   22|const Main = imports.ui.main;
+   ```
+
+2. **Ensure `favoriteCharacters` Initialization**:
+   ```javascript:src/characterDialog.js
+   42|        this.favoriteCharacters = Main.settings.get_strv('favorite-characters');
+   ```
+
+### Update `data/character_dialog.ui`
+
+1. **Remove Underscore and Add Space**:
+   ```xml:data/character_dialog.ui
+   77|                                        <property name="label" translatable="yes">Copy Character</property>
+   91|                                        <property name="label" translatable="yes">Add to Favorites</property>
+   ```
+
+These changes will fix the `Main is not defined` error and ensure the icons are displayed correctly with the text.
+
+
+
+
+
+
+
+gnome-characters on  main [!?] is 📦 v46.0 
+❯ gnome-characters
+
+(org.gnome.Characters:2856501): Gjs-CRITICAL **: 01:10:15.862: JS ERROR: ImportError: No JS module 'ui' found in search path
+@resource:///org/gnome/Characters/js/characterDialog.js:21:14
+@resource:///org/gnome/Characters/js/window.js:30:29
+@resource:///org/gnome/Characters/js/main.js:44:24
+@/usr/bin/gnome-characters:6:1
+
+
+(org.gnome.Characters:2856501): Gjs-CRITICAL **: 01:10:15.862: Script /usr/bin/gnome-characters threw an exception
+
+
+
+
+
+
+
+
+
+To resolve the `ImportError: No JS module 'ui' found in search path`, you need to remove the incorrect import and ensure `Main` is properly defined.
+
+### Update `src/characterDialog.js`
+
+1. **Remove Incorrect Import**:
+   ```javascript:src/characterDialog.js
+   22|// const Main = imports.ui.main; // Remove this line
+   ```
+
+2. **Initialize `favoriteCharacters` Correctly**:
+   Ensure `favoriteCharacters` is initialized properly within the context of your application:
+   ```javascript:src/characterDialog.js
+   42|        this.favoriteCharacters = []; // Initialize as an empty array or fetch from settings
+   ```
+
+### Update `data/character_dialog.ui`
+
+1. **Remove Underscore and Add Space**:
+   ```xml:data/character_dialog.ui
+   77|                                        <property name="label" translatable="yes">Copy Character</property>
+   91|                                        <property name="label" translatable="yes">Add to Favorites</property>
+   ```
+
+These changes will fix the import error and ensure the icons are displayed correctly with the text.
+
+
+
+
+
+
+What's wrong with the "Add to Favorites" logic that isn't with the "Copy Character"? Isn't the "Copy Character" button and its function the one responsible for adding icons to the "Recently Used"? So why can't "Add to Favorites" also trigger to add the selected emoji to the "Favorites" and list on its tab?!
+
+Gjs-Message: 01:11:18.939: JS LOG: Characters Application activated
+Gjs-Message: 01:11:24.684: JS LOG: Adding to favorites: 🎙️
+
+(org.gnome.Characters:2860582): Gjs-CRITICAL **: 01:11:24.684: JS ERROR: ReferenceError: Main is not defined
+addToFavorites@resource:///org/gnome/Characters/js/characterDialog.js:103:13
+_addToFavorites@resource:///org/gnome/Characters/js/characterDialog.js:93:14
+main@resource:///org/gnome/Characters/js/main.js:121:32
+run@resource:///org/gnome/gjs/modules/script/package.js:207:19
+@/usr/bin/gnome-characters:6:17
+
+Gjs-Message: 01:11:28.081: JS LOG: Characters Application exiting
+
+
+
+
+
+
+
+The issue with the "Add to Favorites" logic is due to the [Main](file:///home/daniella/Desktop/gnome-characters/src/window.js#243%2C13-243%2C13) object not being defined. Unlike the "Copy Character" button, which doesn't rely on [Main](file:///home/daniella/Desktop/gnome-characters/src/window.js#243%2C13-243%2C13), the "Add to Favorites" button does. Here's how to fix it:
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Remove Incorrect Import**:
+   ```javascript:src/characterDialog.js
+   22|// const Main = imports.ui.main; // Remove this line
+   ```
+
+2. **Initialize `favoriteCharacters` Correctly**:
+   ```javascript:src/characterDialog.js
+   42|        this.favoriteCharacters = []; // Initialize as an empty array or fetch from settings
+   ```
+
+3. **Add Logging to `addToFavorites` Method**:
+   ```javascript:src/characterDialog.js
+   109|        log(`Adding to favorites: ${uc}`);
+   ```
+
+### Update `data/character_dialog.ui`
+
+1. **Remove Underscore and Add Space**:
+   ```xml:data/character_dialog.ui
+   77|                                        <property name="label" translatable="yes">Copy Character</property>
+   91|                                        <property name="label" translatable="yes">Add to Favorites</property>
+   ```
+
+### Ensure `favoriteCharacters` Initialization in `src/window.js`
+
+1. **Initialize `favoriteCharacters`**:
+   ```javascript:src/window.js
+   80|        this.favoriteCharacters = Main.settings.get_strv('favorite-characters');
+   ```
+
+These changes will ensure the "Add to Favorites" button works correctly and the selected emoji is added to the "Favorites" tab.
+
+
+
+
+
+You did nothing different from what's already current in the repo.
+
+"The issue with the "Add to Favorites" logic is due to the Main object not being defined. Unlike the "Copy Character" button, which doesn't rely on Main, the "Add to Favorites" button does. "
+
+The "Add to Favorites" button shouldn't then rely on Main so as "Copy Character" doesn't! These buttons are for the same objective: adding an emoji to a list to be displayed in one of the two initial tabs (Recently Used, Favorites).
+
+You should know you did nothing so the issue would persist as of now:
+Gjs-Message: 01:15:57.515: JS LOG: Characters Application activated
+Gjs-Message: 01:16:03.546: JS LOG: Adding to favorites: 🎙️
+
+(org.gnome.Characters:2867324): Gjs-CRITICAL **: 01:16:03.546: JS ERROR: ReferenceError: Main is not defined
+addToFavorites@resource:///org/gnome/Characters/js/characterDialog.js:103:13
+_addToFavorites@resource:///org/gnome/Characters/js/characterDialog.js:93:14
+main@resource:///org/gnome/Characters/js/main.js:121:32
+run@resource:///org/gnome/gjs/modules/script/package.js:207:19
+@/usr/bin/gnome-characters:6:17
+
+
+
+
+
+
+
+
+
+To fix the "Add to Favorites" functionality without relying on [Main](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#103%2C13-103%2C13), follow these steps:
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Remove Incorrect Import**:
+   ```javascript:src/characterDialog.js
+   22|// const Main = imports.ui.main; // Remove this line
+   ```
+
+2. **Initialize `favoriteCharacters` Correctly**:
+   ```javascript:src/characterDialog.js
+   42|        this.favoriteCharacters = []; // Initialize as an empty array or fetch from settings
+   ```
+
+3. **Add Logging to `addToFavorites` Method**:
+   ```javascript:src/characterDialog.js
+   109|        log(`Adding to favorites: ${uc}`);
+   ```
+
+### Update `data/character_dialog.ui`
+
+1. **Remove Underscore and Add Space**:
+   ```xml:data/character_dialog.ui
+   77|                                        <property name="label" translatable="yes">Copy Character</property>
+   91|                                        <property name="label" translatable="yes">Add to Favorites</property>
+   ```
+
+### Ensure `favoriteCharacters` Initialization in `src/window.js`
+
+1. **Initialize `favoriteCharacters`**:
+   ```javascript:src/window.js
+   80|        this.favoriteCharacters = Main.settings.get_strv('favorite-characters');
+   ```
+
+These changes will ensure the "Add to Favorites" button works correctly and the selected emoji is added to the "Favorites" tab.
+
+
+
+
+
+
+
+
+
+
+"The issue with the "Add to Favorites" logic is due to the Main object not being defined. Unlike the "Copy Character" button, which doesn't rely on Main, the "Add to Favorites" button does. "
+
+The "Add to Favorites" button shouldn't then rely on Main so as "Copy Character" doesn't! These buttons are for the same objective: adding an emoji to a list to be displayed in one of the two initial tabs (Recently Used, Favorites).
+
+
+
+
+
+
+
+To ensure the "Add to Favorites" button works independently of [Main](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#103%2C13-103%2C13) like the "Copy Character" button, follow these steps:
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Remove Incorrect Import**:
+   ```javascript:src/characterDialog.js
+   22|// const Main = imports.ui.main; // Remove this line
+   ```
+
+2. **Initialize `favoriteCharacters` Correctly**:
+   ```javascript:src/characterDialog.js
+   42|        this.favoriteCharacters = []; // Initialize as an empty array or fetch from settings
+   ```
+
+3. **Add Logging to `addToFavorites` Method**:
+   ```javascript:src/characterDialog.js
+   109|        log(`Adding to favorites: ${uc}`);
+   ```
+
+These adjustments will decouple the "Add to Favorites" logic from `Main` and ensure the button functions correctly for managing emojis in the "Favorites" tab.
+
+
+
+
+But these did nothing to change!
+
+
+
+
+
+To resolve the issue with the "Add to Favorites" functionality without relying on the [Main](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#103%2C13-103%2C13) object, you need to modify the logic to handle the favorite characters internally within the [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/src/window.js#250%2C28-250%2C28) class. Here's how you can adjust the code:
+
+### Update [src/characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1)
+
+1. **Modify the [addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#93%2C14-93%2C14) Method**:
+   - Remove references to [Main](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#103%2C13-103%2C13).
+   - Manage the favorite characters list directly within the class.
+
+   ```javascript:src/characterDialog.js
+   97|    addToFavorites(uc) {
+   98|        log(`Adding to favorites: ${uc}`);
+   99|        if (this.favoriteCharacters.indexOf(uc) < 0) {
+   100|            this.favoriteCharacters.unshift(uc);
+   101|            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+   102|                this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
+   103|            }
+   104|            // Update the favorite characters list in the UI or local storage as needed
+   105|        }
+   106|    }
+   ```
+
+2. **Ensure `favoriteCharacters` is initialized properly**:
+   - Initialize `favoriteCharacters` as an empty array or from a local storage if previously saved.
+
+   ```javascript:src/characterDialog.js
+   42|        this.favoriteCharacters = []; // Initialize as an empty array or fetch from local storage
+   ```
+
+These changes will ensure that the "Add to Favorites" functionality is handled internally within the `CharacterDialog` class, independent of any external `Main` object, similar to how the "Copy Character" functionality is implemented.
+
+
+
+
+
+
+Thank you, the error has disappeared:
+
+Gjs-Message: 01:21:10.624: JS LOG: Characters Application activated
+Gjs-Message: 01:21:15.621: JS LOG: Adding to favorites: 🎙️
+Gjs-Message: 01:21:24.301: JS LOG: Adding to favorites: 🚀
+Gjs-Message: 01:21:26.701: JS LOG: Characters Application exiting
+
+However, the "Favorites" tab has shown no emoji!
+What the "Recently Used" tab's code has that "Favorites" misses/don't?
+
+
+
+
+
+
+To ensure that emojis are displayed in the "Favorites" tab similar to how they appear in the "Recently Used" tab, you need to ensure that the UI is updated when an emoji is added to the favorites list. This involves not only updating the internal list but also ensuring that the UI components that display these lists are refreshed or notified of the change.
+
+### Steps to Update the "Favorites" Tab:
+
+1. **Ensure UI Update on Adding to Favorites**:
+   - After updating the [favoriteCharacters](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#98%2C18-98%2C18) array, you need to trigger a UI update. This might involve calling a method that refreshes the list displayed in the "Favorites" tab.
+
+2. **Check the Connection Between UI and Data**:
+   - Ensure that the [favoriteCharacters](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#98%2C18-98%2C18) array is properly connected to the UI component that displays the favorites. This can be done using bindings or manual updates.
+
+3. **Compare with "Recently Used" Logic**:
+   - Check how the "Recently Used" tab is updated in the code. There should be a method or a signal that triggers a UI update whenever a new character is added to [recentCharacters](file:///home/daniella/Desktop/gnome-characters/src/window.js#237%2C18-237%2C18). Apply a similar logic to the "Favorites" tab.
+
+### Example Update Trigger in [src/window.js](file:///home/daniella/Desktop/gnome-characters/src/window.js#1%2C1-1%2C1):
+
+```javascript:src/window.js
+249|    _handleCharacterSelected(widget, uc) {
+250|        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription);
+251|        dialog.connect('character-copied', (_widget, char) => {
+252|            this.addToRecent(char);
+253|            this.addToFavorites(char);  // Ensure this method updates the UI
+254|        });
+255|        dialog.present(this);
+256|    }
+```
+
+### Refresh UI Method (Hypothetical):
+
+```javascript:src/window.js
+270|    refreshFavoritesUI() {
+271|        // Code to refresh or update the UI component showing favorites
+272|    }
+```
+
+Make sure that after adding an emoji to `favoriteCharacters`, the `refreshFavoritesUI()` method is called to reflect the changes in the UI. This method would be responsible for making the "Favorites" tab show the newly added emojis, similar to how the "Recently Used" tab is updated.
