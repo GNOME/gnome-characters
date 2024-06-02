@@ -113,7 +113,7 @@
                                 </style>
                               </object>
                             </child>
-                            <child>
+                            <!-- <child>
                               <object class="GtkButton" id="remove-from-favorites-button">
                                 <property name="margin-top">18</property>
                                 <property name="margin-bottom">18</property>
@@ -139,7 +139,7 @@
                                   <class name="pill" />
                                 </style>
                               </object>
-                            </child>
+                            </child> -->
                             <child>
                               <object class="AdwClamp">
                                 <property name="margin-top">18</property>

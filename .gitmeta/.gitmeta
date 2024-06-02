@@ -1,12 +1,12 @@
-commit QmWRHDQsTJJL2q1cvsoxmKZXxNKYmTHUhF8r3Rc3UMSKUV
+commit QmeWEaqsDsAtg4S3GRgnKTCFtHkqHvqgXkKo5Gb42WLMis
 Branch: main
 Signed-off by: danimesq.eth (0xDDfC2e10702d8A781727A34D83B3bb3CA94a3E91)
-Signature: a820368d2c31ed192a7aa53fe482a4494fcc3327970b42e065f09c5f4f530c41275ec7b5511e2358ee02818c4868e497e8edffa2d7a366244e5e0662d8e6ebe000
+Signature: 7293fa88c5f34855fc23d9c856a707809f67ba07f2fe90aa96f9ab6f6f64596969f73bc9580017cbc751c16a887c3803f8ccc185a8a552f83cead4f9c0a0ca2700
 
 ------------------------------
 
-Commit CID if including git's SHA1: QmP2on1XU8NtvR2E8Gt24rt1GpWHoXdGgQyEaJrh5hRFCT
-Commit CID if containing only file hashes: QmZGMpieaTWJDEEJbfGGbE8tFbhyTrCL9vo9skXvvSjwHd
+Commit CID if including git's SHA1: QmVXXsXTijcwXjHT15AW5qDZAwQ1XsKLuKaNyadLcvhiXe
+Commit CID if containing only file hashes: Qma7dmCig9jEGgWfTCFVYhbaeMjPN5C2GTVwtRiDoieMF6
 
 ------------------------------
 
@@ -17,11 +17,15 @@ Remote URL: https://gitlab.gnome.org/GNOME/gnome-characters.git
 
 ------------------------------
 
-chown -h 1000:1000 'AIConversation.txt'
-chmod 0664 'AIConversation.txt'
-/usr/bin/touch -hcmd "2024-06-02 16:52:15.0690119590 -0300" 'AIConversation.txt'
-/usr/bin/touch -hcad "2024-06-02 16:53:03.8994338030 -0300" 'AIConversation.txt'
-chown -h 1000:1000 'ninja.log.html5'
-chmod 0664 'ninja.log.html5'
-/usr/bin/touch -hcmd "2024-06-02 16:52:49.6716016800 -0300" 'ninja.log.html5'
-/usr/bin/touch -hcad "2024-06-02 16:53:41.1569963380 -0300" 'ninja.log.html5'
+chown -h 1000:1000 'data/character_dialog.ui'
+chmod 0664 'data/character_dialog.ui'
+/usr/bin/touch -hcmd "2024-06-02 16:47:40.0103987600 -0300" 'data/character_dialog.ui'
+/usr/bin/touch -hcad "2024-06-02 16:47:40.0293985170 -0300" 'data/character_dialog.ui'
+chown -h 1000:1000 'src/characterDialog.js'
+chmod 0664 'src/characterDialog.js'
+/usr/bin/touch -hcmd "2024-06-02 16:45:29.3361122260 -0300" 'src/characterDialog.js'
+/usr/bin/touch -hcad "2024-06-02 16:45:29.3541119840 -0300" 'src/characterDialog.js'
+chown -h 1000:1000 'src/window.js'
+chmod 0664 'src/window.js'
+/usr/bin/touch -hcmd "2024-06-02 16:40:12.0927223150 -0300" 'src/window.js'
+/usr/bin/touch -hcad "2024-06-02 16:40:12.2417199510 -0300" 'src/window.js'

@@ -229,7 +229,7 @@ var MainWindow = GObject.registerClass({
         } else if (pageRow.name === 'favorite') {
             console.log('Favorites tab selected');
             this._charactersView.baseline = false;
-            this._loadButton('remove-from-favorites');
+            this._loadButton('add-to-favorites');
             if (this.favoriteCharacters.length === 0) {
                 this._mainStack.visible_child_name = 'empty-favorite';
             } else {
@@ -247,8 +247,9 @@ var MainWindow = GObject.registerClass({
     _loadButton(actionName) {
         let button = this._favoritesButton; // Assuming this._favoritesButton is your dynamic button
         if (actionName === 'remove-from-favorites') {
-            button.label = "Remove from Favorites";
-            button.action_name = "character.remove-from-favorites";
+            // Commented out the lines related to "Remove from Favorites" button
+            // button.label = "Remove from Favorites";
+            // button.action_name = "character.remove-from-favorites";
         } else {
             button.label = "Add to Favorites";
             button.action_name = "character.add-to-favorites";

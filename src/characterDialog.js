@@ -48,7 +48,7 @@ var CharacterDialog = GObject.registerClass({
         Util.initActions(actions, [
             { name: 'copy', activate: this._copyCharacter.bind(this) },
             { name: 'add-to-favorites', activate: this._addToFavorites.bind(this) },
-            { name: 'remove-from-favorites', activate: this._removeFromFavorites.bind(this) }, // New action
+            // { name: 'remove-from-favorites', activate: this._removeFromFavorites.bind(this) }, // New action
         ]);
         this.insert_action_group('character', actions);
 
@@ -56,34 +56,34 @@ var CharacterDialog = GObject.registerClass({
             this._populateRelatedPage();
         });
 
-        if (this._fromFavorites) {
-            this._addRemoveFromFavoritesButton();
-        }
+        // if (this._fromFavorites) {
+        //     this._addRemoveFromFavoritesButton();
+        // }
 
         this._setCharacter(character);
     }
 
-    _addRemoveFromFavoritesButton() {
-        const button = new Gtk.Button({
-            label: "Remove from Favorites",
-            action_name: "character.remove-from-favorites"
-        });
-        button.connect('clicked', () => {
-            this._removeFromFavorites();
-        });
-        this._buttonBox.add(button); // Ensure this container is correctly referenced
-    }
+    // _addRemoveFromFavoritesButton() {
+    //     const button = new Gtk.Button({
+    //         label: "Remove from Favorites",
+    //         action_name: "character.remove-from-favorites"
+    //     });
+    //     // button.connect('clicked', () => {
+    //     //     this._removeFromFavorites();
+    //     // });
+    //     // this._buttonBox.add(button); // Ensure this container is correctly referenced
+    // }
 
-    _removeFromFavorites() {
-        console.log('Remove from Favorites button clicked'); // Log when button is clicked
-        const index = this.favoriteCharacters.indexOf(this._character);
-        if (index > -1) {
-            this.favoriteCharacters.splice(index, 1);
-            console.log('Removed from favorites:', this._character);
-            console.log('Updated favorites:', this.favoriteCharacters);
-        }
-        this.emit('remove-from-favorites', this._character);
-    }
+    // _removeFromFavorites() {
+    //     console.log('Remove from Favorites button clicked'); // Log when button is clicked
+    //     const index = this.favoriteCharacters.indexOf(this._character);
+    //     if (index > -1) {
+    //         this.favoriteCharacters.splice(index, 1);
+    //         console.log('Removed from favorites:', this._character);
+    //         console.log('Updated favorites:', this.favoriteCharacters);
+    //     }
+    //     this.emit('remove-from-favorites', this._character);
+    // }
 
     _finishSearch(result) {
         this._related = result;
