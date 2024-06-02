@@ -48,6 +48,7 @@ var CharacterDialog = GObject.registerClass({
         Util.initActions(actions, [
             { name: 'copy', activate: this._copyCharacter.bind(this) },
             { name: 'add-to-favorites', activate: this._addToFavorites.bind(this) },
+            { name: 'remove-from-favorites', activate: this._removeFromFavorites.bind(this) }, // New action
         ]);
         this.insert_action_group('character', actions);
 
@@ -70,13 +71,18 @@ var CharacterDialog = GObject.registerClass({
         button.connect('clicked', () => {
             this._removeFromFavorites();
         });
-        this._buttonBox.add(button); // Assuming there's a container for buttons
+        this._buttonBox.add(button); // Ensure this container is correctly referenced
     }
 
     _removeFromFavorites() {
-        // Logic to remove the character from favorites
+        console.log('Remove from Favorites button clicked'); // Log when button is clicked
+        const index = this.favoriteCharacters.indexOf(this._character);
+        if (index > -1) {
+            this.favoriteCharacters.splice(index, 1);
+            console.log('Removed from favorites:', this._character);
+            console.log('Updated favorites:', this.favoriteCharacters);
+        }
         this.emit('remove-from-favorites', this._character);
-        // Update UI or show a notification
     }
 
     _finishSearch(result) {
@@ -210,4 +216,3 @@ var CharacterDialog = GObject.registerClass({
         this._toastOverlay.add_toast(toast);
     }
 });
-
