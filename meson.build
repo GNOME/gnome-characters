@@ -43,7 +43,7 @@ if dbus_service_dir == ''
   dbus_service_dir = join_paths(characters_datadir, 'dbus-1', 'services')
 endif
 
-gjs = dependency('gjs-1.0', version: '==1.80.2', required: true)
+gjs = dependency('gjs-1.0', version: '<=1.80.2', required: true)
 gjs_console = find_program(gjs.get_variable(pkgconfig: 'gjs_console'), required: true)
 dependency('gtk4', version: '>=4.6')
 libadwaita = dependency ('libadwaita-1', version: '>= 1.5.alpha')
