@@ -25,6 +25,7 @@ var CharacterDialog = GObject.registerClass({
     Signals: {
         'character-copied': { param_types: [GObject.TYPE_STRING] },
         'add-to-favorites': { param_types: [GObject.TYPE_STRING] },  // New signal
+        'remove-from-favorites': { param_types: [GObject.TYPE_STRING] }, // New signal
     },
     Template: 'resource:///org/gnome/Characters/character_dialog.ui',
     InternalChildren: [
@@ -35,12 +36,13 @@ var CharacterDialog = GObject.registerClass({
         'toastOverlay',
     ],
 }, class CharacterDialog extends Adw.Dialog {
-    _init(character, fontDescription) {
+    _init(character, fontDescription, fromFavorites) {
         super._init();
         this._cancellable = new Gio.Cancellable();
         this._fontDescription = fontDescription;
         this.favoriteCharacters = []; // Initialize as an empty array or fetch from settings
         this._maxFavoriteCharacters = 20; // Set your desired max limit
+        this._fromFavorites = fromFavorites; // Store the new parameter
 
         const actions = new Gio.SimpleActionGroup();
         Util.initActions(actions, [
@@ -53,7 +55,28 @@ var CharacterDialog = GObject.registerClass({
             this._populateRelatedPage();
         });
 
+        if (this._fromFavorites) {
+            this._addRemoveFromFavoritesButton();
+        }
+
         this._setCharacter(character);
+    }
+
+    _addRemoveFromFavoritesButton() {
+        const button = new Gtk.Button({
+            label: "Remove from Favorites",
+            action_name: "character.remove-from-favorites"
+        });
+        button.connect('clicked', () => {
+            this._removeFromFavorites();
+        });
+        this._buttonBox.add(button); // Assuming there's a container for buttons
+    }
+
+    _removeFromFavorites() {
+        // Logic to remove the character from favorites
+        this.emit('remove-from-favorites', this._character);
+        // Update UI or show a notification
     }
 
     _finishSearch(result) {
@@ -187,3 +210,4 @@ var CharacterDialog = GObject.registerClass({
         this._toastOverlay.add_toast(toast);
     }
 });
+

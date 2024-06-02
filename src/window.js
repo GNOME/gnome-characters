@@ -217,6 +217,7 @@ var MainWindow = GObject.registerClass({
 
     setPage(pageRow) {
         if (pageRow.name === 'recent') {
+            console.log('Favorites tab deselected'); // Log message when switching to 'Recently Used' from 'Favorites'
             // always draw a baseline for recent view
             this._charactersView.baseline = true;
             if (this.recentCharacters.length === 0) {
@@ -226,6 +227,7 @@ var MainWindow = GObject.registerClass({
                 this._mainStack.visible_child_name = 'character-list';
             }
         } else if (pageRow.name === 'favorite') {
+            console.log('Favorites tab selected'); // Log message when Favorites tab is selected
             this._charactersView.baseline = false; // Assuming no baseline needed for favorites
             if (this.favoriteCharacters.length === 0) {
                 this._mainStack.visible_child_name = 'empty-favorite'; // Assuming an empty favorite view
@@ -234,6 +236,7 @@ var MainWindow = GObject.registerClass({
                 this._mainStack.visible_child_name = 'character-list';
             }
         } else {
+            console.log('Favorites tab deselected'); // Log message when Favorites tab is deselected
             this._charactersView.searchByCategory(pageRow.category);
 
             this._mainStack.visible_child_name = 'character-list';
