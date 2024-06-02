@@ -255,10 +255,10 @@ var MainWindow = GObject.registerClass({
     }
 
     _handleCharacterSelected(widget, uc) {
-        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription);
+        const fromFavorites = this._sidebar.selectedRow && this._sidebar.selectedRow.name === 'favorite';
+        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription, fromFavorites);
         dialog.connect('character-copied', (_widget, char) => {
             this.addToRecent(char);
-            this.addToFavorites(char);  // Ensure this method updates the UI
         });
         dialog.present(this);
     }
