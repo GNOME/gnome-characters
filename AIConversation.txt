@@ -1,314 +1,240 @@
-Only the "Copy Character" button was able to add an emoji to the Favorites.
-
-But I want it for the "Add to Favorites" button instead.
-
-So, where to place this:
-this.addToFavorites(char);  // Ensure this method updates the UI
+Where do Gnome Characters know the "Favorites" tab has been clicked, so it fires the event to load the favorite emojis?
 
 
 
-To ensure that the "Add to Favorites" button adds a character to the favorites list, you need to correctly bind the [addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#93%2C14-93%2C14) method to the action triggered by this button. From the provided code snippets, it appears that the "Add to Favorites" button is not correctly linked to the [addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#93%2C14-93%2C14) method.
+The GNOME Characters application detects that the "Favorites" tab has been clicked through the [row-selected](file:///home/daniella/Desktop/gnome-characters/src/window.js#60%2C37-60%2C37) signal connected to the [list](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#108%2C47-108%2C47) object in the sidebar. When a row in the sidebar is selected, the application checks if the selected row corresponds to the "Favorites" tab and then loads the favorite emojis accordingly.
 
-Here's how you can adjust the connection:
+Here is the relevant code snippet from [src/window.js](file:///home/daniella/Desktop/gnome-characters/src/window.js#1%2C1-1%2C1) that handles the sidebar row selection:
 
-1. Ensure the "Add to Favorites" button in the UI file ([character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)) is correctly linked to an action. It seems to be set up correctly with the action name `character.add-to-favorites` as shown in the UI definition:
+```javascript:src/window.js
+60|        this._sidebar.list.connect('row-selected', (sidebar, row) => {
+61|            const adj = this._scrolledWindow.get_vadjustment();
+62|            adj.set_value(0.0); // scroll back to the top
+63|            this._charactersView.queue_resize();
+64|            if (row) {
+65|                this._sidebar.lastSelectedRow = row;
+66|                this.setPage(row);
+67|                this._contentChild.title = row.title;
+68|                this._splitView.show_content = true;
+69|            }
+70|        });
+```
+
+In this code, when a row is selected (`row-selected` event), the application checks the `name` property of the row to determine if it corresponds to the "Favorites" tab (which has the `name` property set to "favorite" as defined in `data/sidebar.ui`). If it matches, the application then proceeds to load the favorite emojis.
+
+
+
+
+
+
+Please add a console log feature to extend that!
+
+
+
+
+To add a console log feature that triggers when the "Favorites" tab is selected, you can modify the [setPage](file:///home/daniella/Desktop/gnome-characters/src/window.js#66%2C22-66%2C22) method in [src/window.js](file:///home/daniella/Desktop/gnome-characters/src/window.js#1%2C1-1%2C1) to include a console log statement. This will log a message whenever the "Favorites" tab is selected.
+
+Here's how you can add the console log:
+
+```javascript:src/window.js
+218|    setPage(pageRow) {
+219|        if (pageRow.name === 'recent') {
+220|            // existing code for 'recent' tab
+221|        } else if (pageRow.name === 'favorite') {
+222|            console.log('Favorites tab selected'); // Log message when Favorites tab is selected
+223|            // existing code for 'favorite' tab
+224|        } else {
+225|            // existing code for other tabs
+226|        }
+227|    }
+```
+
+This modification will output "Favorites tab selected" to the console whenever the "Favorites" tab is activated.
+
+
+
+
+
+
+
+This works for every other tab, except for the "Recently Used" tab. Maybe because the fact that the "Favorites" tab was derived/inspired by from the "Recently Used" tab when created.
+
+
+
+
+To ensure that the console log correctly identifies when the "Favorites" tab is deselected, including when switching to the "Recently Used" tab, you can adjust the logic in the [setPage](file:///home/daniella/Desktop/gnome-characters/src/window.js#66%2C22-66%2C22) method in [src/window.js](file:///home/daniella/Desktop/gnome-characters/src/window.js#1%2C1-1%2C1). This adjustment will ensure that the deselection of the "Favorites" tab is logged even when switching directly from "Favorites" to "Recently Used".
+
+Here's the modification to add the console log for this specific case:
+
+```javascript:src/window.js
+218|    setPage(pageRow) {
+219|        if (pageRow.name === 'recent') {
+220|            console.log('Favorites tab deselected'); // Log message when switching to 'Recently Used' from 'Favorites'
+221|            // existing code for 'recent' tab
+222|        } else if (pageRow.name === 'favorite') {
+223|            console.log('Favorites tab selected'); // Log message when Favorites tab is selected
+224|            // existing code for 'favorite' tab
+225|        } else {
+226|            console.log('Favorites tab deselected'); // Log message when Favorites tab is deselected
+227|            // existing code for other tabs
+228|        }
+229|    }
+```
+
+This change ensures that any transition from the "Favorites" tab to the "Recently Used" tab logs the deselection of the "Favorites" tab, maintaining consistent logging behavior across all tab transitions.
+
+
+
+
+
+Thank you a lot!
+
+More than two thrashed long conversations, and now you finally made it!
+
+There's something new:
+When the current tab is "Favorites", let's add something to the window/popup that appear when an emoji is clicked.
+Add a "Remove from Favorites" button appended after the "Add to Favorites" button!
+
+
+
+
+
+
+
+
+To add a "Remove from Favorites" button when the "Favorites" tab is active and an emoji is clicked, you can modify the UI and the event handling in the GNOME Characters application. Here's how you can do it:
+
+1. **Update the UI to include the "Remove from Favorites" button:**
+   Update the [character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1) file to include a new button for removing from favorites.
 
 ```xml:data/character_dialog.ui
-109|                                <property name="action-name">character.add-to-favorites</property>
+114|                              </object>
+115|                            </child>
+116|                            <child>
+117|                              <object class="GtkButton">
+118|                                <property name="margin-top">18</property>
+119|                                <property name="margin-bottom">18</property>
+120|                                <property name="halign">center</property>
+121|                                <child>
+122|                                  <object class="GtkBox">
+123|                                    <property name="orientation">horizontal</property>
+124|                                    <child>
+125|                                      <object class="GtkImage">
+126|                                        <property name="icon-name">user-trash-symbolic</property>
+127|                                      </object>
+128|                                    </child>
+129|                                    <child>
+130|                                      <object class="GtkLabel">
+131|                                        <property name="label" translatable="yes">Remove from Favorites</property>
+132|                                      </object>
+133|                                    </child>
+134|                                  </object>
+135|                                </child>
+136|                                <property name="use-underline">true</property>
+137|                                <property name="action-name">character.remove-from-favorites</property>
+138|                                <style>
+139|                                  <class name="pill" />
+140|                                </style>
+141|                              </object>
+142|                            </child>
 ```
 
-2. In the JavaScript file where the actions are defined (`src/characterDialog.js`), ensure that the `addToFavorites` method is correctly bound to the 'add-to-favorites' action. You can modify the action setup in the `_init` method of `CharacterDialog` class:
+2. **Modify the event handling to show the "Remove from Favorites" button conditionally:**
+   In the `CharacterDialog` class in `characterDialog.js`, modify the `_setCharacter` method to conditionally show the "Remove from Favorites" button when the "Favorites" tab is active.
 
 ```javascript:src/characterDialog.js
-48|            { name: 'add-to-favorites', activate: this._addToFavorites.bind(this) },
+141|        this.title = name ? name : '';
+142|        this._characterLabel.label = this._character;
+143|        // Show or hide the 'Remove from Favorites' button based on the active tab
+144|        let removeButton = this._builder.get_object('remove-from-favorites-button');
+145|        removeButton.visible = this._sidebar.lastSelectedRow && this._sidebar.lastSelectedRow.name === 'favorite';
+146|
+147|        let pangoContext = this._characterLabel.get_pango_context();
 ```
 
-3. The `addToFavorites` method should update the UI or local storage as needed. It seems like the method is already designed to update the UI with a toast notification when a character is added to favorites:
+This modification checks if the current tab is "Favorites" and shows the "Remove from Favorites" button accordingly. Make sure to define the `remove-from-favorites-button` in your Glade file or UI definition to match the object name used in the script.
 
-```javascript:src/characterDialog.js
-104|            // Update the favorite characters list in the UI or local storage as needed
-105|            const toast = new Adw.Toast({
-106|                title: _('Character added to favorites'),
-107|                timeout: 2,
-108|            });
-109|            this._toastOverlay.add_toast(toast);
-```
 
-Make sure that the `addToFavorites` method is correctly updating the UI or local storage based on your application's architecture. If it's not updating as expected, you might need to add or adjust the code that refreshes the UI components displaying the favorite characters list.
 
-By ensuring these connections and method bindings are correctly set up, the "Add to Favorites" button should function as expected, adding characters to the favorites list and updating the UI accordingly.
 
 
 
 
 
-Your changes did nothing.
 
+When clicking an emoji in any place:
+Gjs-Console-Message: 12:33:50.421: Favorites tab deselected
+Gjs-Message: 12:33:50.422: JS LOG: Characters Application activated
 
-
-
-It seems that the changes suggested previously did not resolve the issue. Let's ensure that the [addToFavorites](file:///home/daniella/Desktop/gnome-characters/AIConversation.txt#11%2C40-11%2C40) method is being triggered correctly when the "Add to Favorites" button is clicked.
-
-1. **Verify the Action Connection:**
-   Ensure that the action name in the UI file matches the action defined in the JavaScript file. According to the provided code, the action name is set correctly in both the UI and JavaScript files.
-
-2. **Check the Method Binding:**
-   The [addToFavorites](file:///home/daniella/Desktop/gnome-characters/AIConversation.txt#11%2C40-11%2C40) method should be bound to the 'add-to-favorites' action. This appears to be set up correctly as well:
-
-   ```javascript:src/characterDialog.js
-   48| { name: 'add-to-favorites', activate: this._addToFavorites.bind(this) },
-   ```
-
-3. **Debugging the Method Call:**
-   To confirm that the method is being called, you can add a console log statement at the beginning of the `_addToFavorites` method:
-
-   ```javascript:src/characterDialog.js
-   93| _addToFavorites() {
-   94|     console.log("Add to Favorites clicked");
-   95|     this.addToFavorites(this._character);
-   96| }
-   ```
-
-   Run the application and check the console output when you click the "Add to Favorites" button. If you do not see the log message, the method is not being triggered.
-
-4. **Ensure `this._character` is Defined:**
-   The `addToFavorites` method uses `this._character`. Ensure that this property is correctly set before the method is called. You can add a check to log or handle cases where `this._character` is undefined:
-
-   ```javascript:src/characterDialog.js
-   95|     if (!this._character) {
-   96|         console.error("No character is set to add to favorites");
-   97|         return;
-   98|     }
-   99|     this.addToFavorites(this._character);
-   ```
-
-5. **Check for Errors in the Console:**
-   If there are any errors thrown when clicking the button, they should appear in the console. Address these errors based on the messages provided.
-
-By following these steps, you should be able to diagnose why the "Add to Favorites" button is not functioning as expected.
-
-
-
-
-
-
-Gjs-Message: 10:59:24.363: JS LOG: Characters Application activated
-Gjs-Console-Message: 10:59:34.923: Add to Favorites clicked
-Gjs-Message: 10:59:34.923: JS LOG: Adding to favorites: ❣️
-
-However, this character wasn't added to the Favorites tab.
-I can't understand why only the "Copy Character" button was able to do this...
-
-Also, the function that was working was exactly this:
-this.addToFavorites(char);  // Ensure this method updates the UI
-
-Where do the above fit?
-
-
-
-
-
-
-
-
-
-It appears that the "Add to Favorites" functionality is not working as expected, even though the logs indicate that the method is being called. Let's troubleshoot and ensure the character is actually being added to the favorites list and the UI is updated accordingly.
-
-### Steps to Resolve the Issue
-
-1. **Check if the Character is Being Added to the Array:**
-   Ensure that the character is being added to the [favoriteCharacters](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#103%2C18-103%2C18) array. You can add a console log to check the state of the array after attempting to add a character:
-
-   ```javascript:src/characterDialog.js
-   105| this.favoriteCharacters.unshift(uc);
-   106| console.log(this.favoriteCharacters); // Log the current state of favoriteCharacters
-   ```
-
-2. **Ensure UI Updates:**
-   After adding a character to the favorites, the UI needs to be updated to reflect this change. Verify that the code responsible for updating the UI is being executed. If the UI update is conditional, ensure that the conditions are met.
-
-3. **Check for Errors:**
-   Look for any errors in the console that occur when trying to add a character to favorites. Errors could prevent the addition from completing successfully.
-
-4. **Review Event Binding in the UI:**
-   Ensure that the button in the UI is correctly bound to the action. The action should trigger the `_addToFavorites` method:
-
-   ```xml:data/character_dialog.ui
-   110| <property name="action-name">character.add-to-favorites</property>
-   ```
-
-5. **Debugging:**
-   If the above steps do not resolve the issue, consider stepping through the code with a debugger to watch the flow of execution when the "Add to Favorites" button is clicked.
-
-By following these steps, you should be able to diagnose and fix the issue with the "Add to Favorites" functionality. Ensure that any changes in the array of favorite characters are reflected in the UI to provide immediate feedback to the user.
-
-
-
-
-
-
-Come on!!
-
-I can't see this anywhere in characterDialog.js:
-this.addToFavorites(char);  // Ensure this method updates the UI
-
-
-
-
-
-
-It seems there was a misunderstanding in the previous discussions. The method `this.addToFavorites(char)` does not appear directly in the [characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1) file. Instead, the functionality to add a character to favorites is encapsulated within the [_addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#92%2C5-92%2C5) method, which internally calls `this.addToFavorites(this._character)`.
-
-Here's the correct approach to ensure that the "Add to Favorites" button functionality is properly implemented:
-
-1. **Ensure the [_addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#92%2C5-92%2C5) method is correctly implemented**:
-   The [_addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#92%2C5-92%2C5) method should call `this.addToFavorites(this._character)`. Here's how you can adjust it:
-
-   ```javascript:src/characterDialog.js
-   93| _addToFavorites() {
-   94|     console.log("Add to Favorites clicked");
-   95|     this.addToFavorites(this._character);
-   96| }
-   ```
-
-2. **Update the `addToFavorites` method**:
-   Make sure that `addToFavorites` method updates the UI after adding a character to the favorites list. If this method is not updating the UI, you might need to add code to refresh the UI components that display the favorites list.
-
-If you need to see the actual implementation of `addToFavorites` or if it's not present, you might need to implement it or debug why it's not being called or not working as expected.
-
-
-
-
-
-
-
-No!!
-
-See where TF this fits!
-What I need is this exact code line where it could fit:
-this.addToFavorites(char);  // Ensure this method updates the UI
-
-
-
-
-
-To correctly integrate the line `this.addToFavorites(char);` into your existing codebase and ensure it updates the UI, you should place it within the [_addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#92%2C5-92%2C5) method in the [characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1) file. This method is triggered when the "Add to Favorites" button is clicked.
-
-Here's how you can modify the [_addToFavorites](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#92%2C5-92%2C5) method to include this line and ensure the UI is updated:
-
-```javascript:src/characterDialog.js
-93| _addToFavorites() {
-94|     console.log("Add to Favorites clicked");
-95|     this.addToFavorites(this._character);  // This line adds the character to favorites
-96|     // Add any additional code here to update the UI
-97| }
-```
-
-Ensure that after adding the character to the favorites list, the UI reflects this change. You might need to add code after line 95 to refresh or update the UI components displaying the favorites list.
-
-
-
-
-
-
-
-(org.gnome.Characters:3772320): Gjs-CRITICAL **: 11:08:37.710: JS ERROR: ReferenceError: char is not defined
-_addToFavorites@resource:///org/gnome/Characters/js/characterDialog.js:96:1
+(org.gnome.Characters:4052980): Gjs-CRITICAL **: 12:33:55.174: JS ERROR: TypeError: this._builder is undefined
+_setCharacter@resource:///org/gnome/Characters/js/characterDialog.js:143:28
+_init@resource:///org/gnome/Characters/js/characterDialog.js:56:14
+CharacterDialog@resource:///org/gnome/Characters/js/characterDialog.js:37:4
+_handleCharacterSelected@resource:///org/gnome/Characters/js/window.js:262:24
+_init/<@resource:///org/gnome/Characters/js/window.js:57:18
+onButtonRelease@resource:///org/gnome/Characters/js/charactersView.js:296:18
 main@resource:///org/gnome/Characters/js/main.js:121:32
 run@resource:///org/gnome/gjs/modules/script/package.js:207:19
 @/usr/bin/gnome-characters:6:17
 
-That's exactly what I told you:
-I need "this.addToFavorites(char)", not "this.addToFavorites(this._character", which you're insisting into!
-How it fitted and worked in the "Copy Character" but now can't in "Add to Favorites"?!
+Gjs-Console-Message: 12:33:57.213: Favorites tab selected
 
-It wasn't working in characterDialog.js, but in window.js!
-
-Here's where it fitted:
-
-    _handleCharacterSelected(widget, uc) {
-        const fromFavorites = this._sidebar.selectedRow && this._sidebar.selectedRow.name === 'favorite';
-        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription, fromFavorites);
-        dialog.connect('character-copied', (_widget, char) => {
-            this.addToRecent(char);
-            this.addToFavorites(char);  // Ensure this method updates the UI
-        });
-        dialog.present(this);
-    }
-
-I need a dialog.connect in window.js exactly for "this.addToFavorites(char);" EXACTLY!!
+(org.gnome.Characters:4052980): Gjs-CRITICAL **: 12:33:57.689: JS ERROR: TypeError: this._builder is undefined
+_setCharacter@resource:///org/gnome/Characters/js/characterDialog.js:143:28
+_init@resource:///org/gnome/Characters/js/characterDialog.js:56:14
+CharacterDialog@resource:///org/gnome/Characters/js/characterDialog.js:37:4
+_handleCharacterSelected@resource:///org/gnome/Characters/js/window.js:262:24
+_init/<@resource:///org/gnome/Characters/js/window.js:57:18
+onButtonRelease@resource:///org/gnome/Characters/js/charactersView.js:296:18
+main@resource:///org/gnome/Characters/js/main.js:121:32
+run@resource:///org/gnome/gjs/modules/script/package.js:207:19
+@/usr/bin/gnome-characters:6:17
 
 
 
 
 
-To integrate the `this.addToFavorites(char)` functionality within the [window.js](file:///home/daniella/Desktop/gnome-characters/src/window.js#1%2C1-1%2C1) file, specifically to ensure it is called when a character is selected and the dialog is presented, you can modify the [_handleCharacterSelected](file:///home/daniella/Desktop/gnome-characters/src/window.js#257%2C5-257%2C5) method. Here's how you can add a connection to handle adding to favorites when a character is selected:
 
-```javascript:src/window.js
-257|    _handleCharacterSelected(widget, uc) {
-258|        const fromFavorites = this._sidebar.selectedRow && this._sidebar.selectedRow.name === 'favorite';
-259|        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription, fromFavorites);
-260|        dialog.connect('character-copied', (_widget, char) => {
-261|            this.addToRecent(char);
-262|            this.addToFavorites(char);  // Ensure this method updates the UI
-263|        });
-264|        dialog.present(this);
-265|    }
+
+
+The error messages you're encountering indicate that `this._builder` is undefined within the [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/ninja.log.html5#1883%2C1-1883%2C1) class when trying to access the 'remove-from-favorites-button'. This typically happens if the `Gtk.Builder` instance (`this._builder`) that loads the UI from the Glade file is not properly initialized or assigned before its use.
+
+To resolve this issue, ensure that `this._builder` is correctly initialized in the [_init](file:///home/daniella/Desktop/gnome-characters/ninja.log.html5#1882%2C1-1882%2C1) method of the [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/ninja.log.html5#1883%2C1-1883%2C1) class before any method that uses it is called. Here's how you can adjust the initialization:
+
+1. **Ensure `this._builder` is initialized:**
+   In the [_init](file:///home/daniella/Desktop/gnome-characters/ninja.log.html5#1882%2C1-1882%2C1) method of [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/ninja.log.html5#1883%2C1-1883%2C1), make sure you create and assign the `Gtk.Builder` instance to `this._builder` before calling any other methods that might use it.
+
+```javascript:src/characterDialog.js
+38|    _init(character, fontDescription) {
+39|        super._init();
+40|        this._builder = new Gtk.Builder();
+41|        this._builder.add_from_file('path/to/character_dialog.ui');
+42|        // Rest of the initialization code...
 ```
 
-This modification ensures that when a character is copied (and the 'character-copied' signal is emitted), it is also added to the favorites, and the UI is updated accordingly. Make sure that the `addToFavorites` method in `window.js` is designed to handle the UI update.
+2. **Check the path to the UI file:**
+   Ensure that the path provided to `this._builder.add_from_file()` correctly points to your `character_dialog.ui` file.
 
-
-
-
-
-No!!
-
-I need a brand new "dialog.connect" inside "_handleCharactersSelected", specifically for the event of clicking the "Add to Favorites", and not the "Copy Character" button! WTF!
-
+By ensuring that `this._builder` is properly initialized and assigned before it's used in methods like `_setCharacter`, you should be able to resolve the `TypeError: this._builder is undefined` errors.
 
 
 
 
 
 
-To create a new `dialog.connect` for the "Add to Favorites" button inside the [_handleCharacterSelected](file:///home/daniella/Desktop/gnome-characters/src/window.js#257%2C5-257%2C5) method in [window.js](file:///home/daniella/Desktop/gnome-characters/src/window.js#1%2C1-1%2C1), you need to connect to a new signal that should be emitted when the "Add to Favorites" button is clicked. Here's how you can set it up:
+I don't think the issue is on declaring or not, but on the "Remove from Favorites" button implementation!
 
-1. **Define a new signal in [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/src/window.js#259%2C28-259%2C28):**
-   First, ensure that your [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/src/window.js#259%2C28-259%2C28) class in [characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1) emits a new signal when the "Add to Favorites" button is clicked. You might need to add a method that emits this signal.
+Gjs-Message: 12:36:10.149: JS LOG: Characters Application activated
 
-   ```javascript:src/characterDialog.js
-   24|var CharacterDialog = GObject.registerClass({
-   25|    Signals: {
-   26|        'character-copied': { param_types: [GObject.TYPE_STRING] },
-   27|        'add-to-favorites': { param_types: [GObject.TYPE_STRING] },  // New signal
-   28|    },
-   ```
-
-2. **Emit the signal when the button is clicked:**
-   In the method handling the "Add to Favorites" button click, emit the signal:
-
-   ```javascript:src/characterDialog.js
-   177|    _addToFavorites() {
-   178|        this.emit('add-to-favorites', this._character);
-   179|    }
-   ```
-
-3. **Connect to the new signal in `window.js`:**
-   Modify the `_handleCharacterSelected` method to connect to this new signal:
-
-   ```javascript:src/window.js
-   257|    _handleCharacterSelected(widget, uc) {
-   258|        const fromFavorites = this._sidebar.selectedRow && this._sidebar.selectedRow.name === 'favorite';
-   259|        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription, fromFavorites);
-   260|        dialog.connect('add-to-favorites', (_widget, char) => {
-   261|            this.addToFavorites(char);  // This will handle adding to favorites and updating the UI
-   262|        });
-   263|        dialog.present(this);
-   264|    }
-   ```
-
-This setup ensures that when the "Add to Favorites" button is clicked in the dialog, the `addToFavorites` method in `window.js` is triggered, handling the addition and UI update.
+(org.gnome.Characters:4078065): Gjs-CRITICAL **: 12:36:12.604: JS ERROR: GLib.FileError: Failed to open file “path/to/character_dialog.ui”: No such file or directory
+_init@resource:///org/gnome/Characters/js/characterDialog.js:41:23
+CharacterDialog@resource:///org/gnome/Characters/js/characterDialog.js:37:4
+_handleCharacterSelected@resource:///org/gnome/Characters/js/window.js:262:24
+_init/<@resource:///org/gnome/Characters/js/window.js:57:18
+onButtonRelease@resource:///org/gnome/Characters/js/charactersView.js:296:18
+main@resource:///org/gnome/Characters/js/main.js:121:32
+run@resource:///org/gnome/gjs/modules/script/package.js:207:19
+@/usr/bin/gnome-characters:6:17
 
 
 
@@ -316,70 +242,53 @@ This setup ensures that when the "Add to Favorites" button is clicked in the dia
 
 
 
+The error message indicates that the file [character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1) cannot be found at the specified path. This issue arises because the path provided in the [_init](file:///home/daniella/Desktop/gnome-characters/ninja.log.html5#1882%2C1-1882%2C1) method of the [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/ninja.log.html5#1883%2C1-1883%2C1) class is incorrect or the file does not exist at that location.
 
-OK BUT WHAT A MESS!
+To resolve this issue, ensure that the path to [character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1) is correctly specified and that the file exists at that location. Here's the corrected approach to specify the path:
 
-FOR GOD'S SAKE PLS ADD BACK WHAT YOU MISTAKENLY REMOVED:
-dialog.connect('character-copied', (_widget, char) => {
-            this.addToRecent(char);
-            this.addToFavorites(char);  // Ensure this method updates the UI
-
-Both buttons working are necessary! COME ON
-
-
-
-
-
-
-
-To ensure both the "Copy Character" and "Add to Favorites" functionalities are correctly handled in the [_handleCharacterSelected](file:///home/daniella/Desktop/gnome-characters/src/window.js#257%2C5-257%2C5) method in [window.js](file:///home/daniella/Desktop/gnome-characters/src/window.js#1%2C1-1%2C1), you need to connect both signals. Here's the updated method that includes connections for both actions:
-
-```javascript:src/window.js
-257|    _handleCharacterSelected(widget, uc) {
-258|        const fromFavorites = this._sidebar.selectedRow && this._sidebar.selectedRow.name === 'favorite';
-259|        const dialog = new CharacterDialog(uc, this._charactersView.fontDescription, fromFavorites);
-260|        dialog.connect('character-copied', (_widget, char) => {
-261|            this.addToRecent(char);
-262|            this.addToFavorites(char);  // Ensure this method updates the UI
-263|        });
-264|        dialog.connect('add-to-favorites', (_widget, char) => {
-265|            this.addToFavorites(char);  // This will handle adding to favorites and updating the UI
-266|        });
-267|        dialog.present(this);
-268|    }
+```javascript:src/characterDialog.js
+41|        this._builder.add_from_file(GLib.build_filenamev([GLib.get_current_dir(), 'ui', 'character_dialog.ui']));
 ```
 
-This modification ensures that both the "Copy Character" and "Add to Favorites" buttons trigger their respective functionalities and update the UI accordingly.
+This code uses `GLib.build_filenamev` to construct the path dynamically, assuming that the `character_dialog.ui` file is located in a directory named `ui` relative to the current directory from which the application is run. Adjust the path according to your project's directory structure.
 
 
 
 
 
 
+That's not the issue!
 
-Why you added "this.addToFavorites" inside the function for "Copy Character"?!
+The issue is with your "Remove from Favorites" button conditionally being added to the UI!
+
+Please re-implement it in a way it is compatible and closely/carefully inspired from the "Copy Character" and "Add to Favorites" buttons!
 
 
 
 
-The inclusion of `this.addToFavorites` inside the `dialog.connect` for the "Copy Character" event was a misunderstanding of your requirements. It seems that the intention was to handle both copying and adding to favorites separately but ended up combining them in one event handler.
 
-To correct this, you should have separate event handlers for "Copy Character" and "Add to Favorites". Here's the corrected connection for the "Copy Character" event, without adding to favorites:
+To properly implement the "Remove from Favorites" button in a manner consistent with the existing "Copy Character" and "Add to Favorites" buttons, you should ensure that the button is defined in the [character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1) file and correctly integrated into the [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#38%2C10-38%2C10) class in [characterDialog.js](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#1%2C1-1%2C1).
 
-```javascript:src/window.js
-260|        dialog.connect('character-copied', (_widget, char) => {
-261|            this.addToRecent(char);
-262|        });
+Here's how you can adjust the implementation:
+
+1. **Ensure the button is defined in the UI file ([character_dialog.ui](file:///home/daniella/Desktop/gnome-characters/data/character_dialog.ui#1%2C1-1%2C1)):**
+   The button should be defined similarly to other buttons. Make sure it's correctly referenced by its ID.
+
+2. **Modify the [_init](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#39%2C5-39%2C5) method in [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#38%2C10-38%2C10) to conditionally show the "Remove from Favorites" button:**
+   This involves checking if the current tab is "Favorites" and setting the visibility of the button accordingly.
+
+Here's the adjusted code snippet for the [_init](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#39%2C5-39%2C5) method in [CharacterDialog](file:///home/daniella/Desktop/gnome-characters/src/characterDialog.js#38%2C10-38%2C10):
+
+```javascript:src/characterDialog.js
+40|    _init(character, fontDescription, fromFavorites) {
+41|        super._init();
+42|        ...
+43|        this._removeFromFavoritesButton = this._builder.get_object('remove-from-favorites-button');
+44|        this._removeFromFavoritesButton.visible = fromFavorites;
+45|        ...
+46|    }
 ```
 
-This ensures that the "Copy Character" functionality is handled independently from the "Add to Favorites" functionality.
+This modification ensures that the "Remove from Favorites" button is only visible when the "Favorites" tab is active, aligning with the behavior of other buttons like "Add to Favorites".
 
-
-
-
-Thank you, now it works! We'll follow-up this feature later.
-
-
-
-
-I'm glad to hear that the solution is working for you! If you need further assistance or have more features to discuss later, feel free to reach out. Have a great day!
+Make sure that the button's visibility is managed directly in the `_init` method or a similar initialization context to maintain consistency with the application's UI logic.
