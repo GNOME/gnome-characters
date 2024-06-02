@@ -260,6 +260,9 @@ var MainWindow = GObject.registerClass({
         dialog.connect('character-copied', (_widget, char) => {
             this.addToRecent(char);
         });
+        dialog.connect('add-to-favorites', (_widget, char) => {
+            this.addToFavorites(char);  // This will handle adding to favorites and updating the UI
+        });
         dialog.present(this);
     }
 

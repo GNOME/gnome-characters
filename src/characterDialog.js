@@ -24,6 +24,7 @@ const Util = imports.util;
 var CharacterDialog = GObject.registerClass({
     Signals: {
         'character-copied': { param_types: [GObject.TYPE_STRING] },
+        'add-to-favorites': { param_types: [GObject.TYPE_STRING] },  // New signal
     },
     Template: 'resource:///org/gnome/Characters/character_dialog.ui',
     InternalChildren: [
@@ -90,13 +91,17 @@ var CharacterDialog = GObject.registerClass({
     }
 
     _addToFavorites() {
-        this.addToFavorites(this._character);
+        console.log("Add to Favorites clicked");
+        this.addToFavorites(this._character);  // This line adds the character to favorites
+        // Add any additional code here to update the UI
+        this.emit('add-to-favorites', this._character); // Emit the new signal
     }
 
     addToFavorites(uc) {
         log(`Adding to favorites: ${uc}`);
         if (this.favoriteCharacters.indexOf(uc) < 0) {
             this.favoriteCharacters.unshift(uc);
+            console.log(this.favoriteCharacters); // Log the current state of favoriteCharacters
             if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
                 this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
             }

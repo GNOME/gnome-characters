@@ -1,12 +1,12 @@
-commit QmPQCd8oiPBud92B8zGRc8iq5mhnsaEMBDGdd233NgzJiS
+commit QmV5Wej3XaFsk8d6Ee523V7ke1BuETQYALQfG2bAhLu5qN
 Branch: main
 Signed-off by: danimesq.eth (0xDDfC2e10702d8A781727A34D83B3bb3CA94a3E91)
-Signature: 158147f17b3971f52eb9eb4c2a113ae713531d88480d0368ad5d8e9e03899ae12a716726c61b820639ff7e6572e1855eae3de6ae006f07b5b4865c14223e3cda01
+Signature: db29760918019ee70547678289dd9839bd3ce31fb92a60714899953322d782df09d65153d793d0021158918a0900353a1b733c988c337e434c42b60b639896f800
 
 ------------------------------
 
-Commit CID if including git's SHA1: QmYQ2NDM3AaNR1eJgzNCunK43dn3x1MVd5LG1NLQWR3FaV
-Commit CID if containing only file hashes: QmQFzrPYrximLgod1gj67JEbfSEpYdveUh18i2brjeqYYF
+Commit CID if including git's SHA1: QmQoChMCzRsgnEGcoxuh4aXZPm714t9YAVGPWDKYuwrDRg
+Commit CID if containing only file hashes: QmP1KJJm81FDyhu6DPC87dS2HqwAUFKDimLJXCJcoj5HQr
 
 ------------------------------
 
@@ -17,7 +17,11 @@ Remote URL: https://gitlab.gnome.org/GNOME/gnome-characters.git
 
 ------------------------------
 
-chown -h 1000:1000 'AIConversation.txt'
-chmod 0664 'AIConversation.txt'
-/usr/bin/touch -hcmd "2024-06-02 11:27:21.6189862030 -0300" 'AIConversation.txt'
-/usr/bin/touch -hcad "2024-06-02 11:27:28.9938494570 -0300" 'AIConversation.txt'
+chown -h 1000:1000 'src/characterDialog.js'
+chmod 0664 'src/characterDialog.js'
+/usr/bin/touch -hcmd "2024-06-02 11:19:25.9346091430 -0300" 'src/characterDialog.js'
+/usr/bin/touch -hcad "2024-06-02 11:19:25.9526083820 -0300" 'src/characterDialog.js'
+chown -h 1000:1000 'src/window.js'
+chmod 0664 'src/window.js'
+/usr/bin/touch -hcmd "2024-06-02 11:21:37.4026625120 -0300" 'src/window.js'
+/usr/bin/touch -hcad "2024-06-02 11:21:37.4226618440 -0300" 'src/window.js'
