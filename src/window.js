@@ -48,7 +48,8 @@ var MainWindow = GObject.registerClass({
 }, class MainWindow extends Adw.ApplicationWindow {
     _init(application) {
         super._init({ application, title: GLib.get_application_name() });
-
+        // Initialize the dynamic favorites button
+        this._favoritesButton = new Gtk.Button();
         this._searchKeywords = [];
         this._characterLists = {};
         this._recentCharacterLists = {};
@@ -217,8 +218,7 @@ var MainWindow = GObject.registerClass({
 
     setPage(pageRow) {
         if (pageRow.name === 'recent') {
-            console.log('Favorites tab deselected'); // Log message when switching to 'Recently Used' from 'Favorites'
-            // always draw a baseline for recent view
+            console.log('Favorites tab deselected');
             this._charactersView.baseline = true;
             if (this.recentCharacters.length === 0) {
                 this._mainStack.visible_child_name = 'empty-recent';
@@ -227,21 +227,33 @@ var MainWindow = GObject.registerClass({
                 this._mainStack.visible_child_name = 'character-list';
             }
         } else if (pageRow.name === 'favorite') {
-            console.log('Favorites tab selected'); // Log message when Favorites tab is selected
-            this._charactersView.baseline = false; // Assuming no baseline needed for favorites
+            console.log('Favorites tab selected');
+            this._charactersView.baseline = false;
+            this._loadButton('remove-from-favorites');
             if (this.favoriteCharacters.length === 0) {
-                this._mainStack.visible_child_name = 'empty-favorite'; // Assuming an empty favorite view
+                this._mainStack.visible_child_name = 'empty-favorite';
             } else {
                 this._charactersView.setCharacters(this.favoriteCharacters);
                 this._mainStack.visible_child_name = 'character-list';
             }
         } else {
-            console.log('Favorites tab deselected'); // Log message when Favorites tab is deselected
+            console.log('Favorites tab deselected');
+            this._loadButton('add-to-favorites');
             this._charactersView.searchByCategory(pageRow.category);
-
             this._mainStack.visible_child_name = 'character-list';
-            // this._charactersView.model = pageRow.model;
         }
+    }
+
+    _loadButton(actionName) {
+        let button = this._favoritesButton; // Assuming this._favoritesButton is your dynamic button
+        if (actionName === 'remove-from-favorites') {
+            button.label = "Remove from Favorites";
+            button.action_name = "character.remove-from-favorites";
+        } else {
+            button.label = "Add to Favorites";
+            button.action_name = "character.add-to-favorites";
+        }
+        button.visible = true;
     }
 
     addToRecent(uc) {
