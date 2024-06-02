@@ -13,6 +13,13 @@
           </object>
         </child>
         <child>
+          <object class="Gjs_SidebarRow" id="favoriteRow">
+            <property name="name">favorite</property>
+            <property name="icon-name">emblem-favorite-symbolic</property>
+            <property name="title" translatable="yes">Favorites</property>
+          </object>
+        </child>
+        <child>
           <object class="GtkListBoxRow">
             <property name="selectable">false</property>
             <property name="activatable">false</property>

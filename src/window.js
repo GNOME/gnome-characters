@@ -77,6 +77,9 @@ var MainWindow = GObject.registerClass({
             'max-recent-characters',
             Gio.SettingsBindFlags.DEFAULT);
 
+        this.favoriteCharacters = Main.settings.get_strv('favorite-characters');
+        this._maxFavoriteCharacters = 20; // Set your desired max limit
+
         Util.initActions(this, [
             { name: 'about', activate: this._about },
             {
@@ -247,7 +250,21 @@ var MainWindow = GObject.registerClass({
         const dialog = new CharacterDialog(uc, this._charactersView.fontDescription);
         dialog.connect('character-copied', (_widget, char) => {
             this.addToRecent(char);
+            this.addToFavorites(char);  // Ensure this method updates the UI
         });
         dialog.present(this);
+    }
+
+    addToFavorites(uc) {
+        if (this.favoriteCharacters.indexOf(uc) < 0) {
+            this.favoriteCharacters.unshift(uc);
+            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+                this.favoriteCharacters = this.favoriteCharacters.slice(
+                    0, this._maxFavoriteCharacters);
+            }
+            Main.settings.set_value(
+                'favorite-characters',
+                GLib.Variant.new_strv(this.favoriteCharacters));
+        }
     }
 });

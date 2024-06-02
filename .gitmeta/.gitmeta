@@ -1,12 +1,12 @@
-commit QmTYuvFcwMchknWTQ48CEeiJo1vqCCTrF5PWrytHXM6eLC
+commit QmRHymi5oVUnmmvng74eY3tpNscntowiw7oBmZ1FPcDzKx
 Branch: main
 Signed-off by:  (0xDDfC2e10702d8A781727A34D83B3bb3CA94a3E91)
-Signature: 43d3504e6723331ff80b8bc46d83f857ed747a7e9b37cf2b5a7076f456874dd576c75019cb0d5b66f663a6b7d4f476beb7c10fc29ecd61f62bcd156fdba153e601
+Signature: 872df473add300b17520605cf3ec67416d33c5b59baee5e5658a80872c315aeb637fd9229b5edcb6ca1a7a5459031617704b2227fe26bac41133fc6452a989c000
 
 ------------------------------
 
-Commit CID if including git's SHA1: QmV46Vwisw18gM6NXKfi2ofxFTMLV7SZ9fpVFX4deUTJot
-Commit CID if containing only file hashes: QmVHjqmZEA95HJ7P8BqB2HjupX8XRhBaSprtzkew5VqQ1L
+Commit CID if including git's SHA1: QmXgfGhfvYV7EMNokhuqpvY7JCH79FgujXReSsyobk53ut
+Commit CID if containing only file hashes: QmRi7z3ywnGxp2X29vgrBPBFM2KGkheoXcb7QzwpZAubBi
 
 ------------------------------
 
@@ -17,7 +17,27 @@ Remote URL: https://gitlab.gnome.org/GNOME/gnome-characters.git
 
 ------------------------------
 
-chown -h 1000:1000 'AIConversation.txt'
-chmod 0664 'AIConversation.txt'
-/usr/bin/touch -hcmd "2024-06-02 08:50:18.3410043770 -0300" 'AIConversation.txt'
-/usr/bin/touch -hcad "2024-06-02 08:50:23.7819713430 -0300" 'AIConversation.txt'
+chown -h 1000:1000 'data/character_dialog.ui'
+chmod 0664 'data/character_dialog.ui'
+/usr/bin/touch -hcmd "2024-06-02 01:08:28.0804438860 -0300" 'data/character_dialog.ui'
+/usr/bin/touch -hcad "2024-06-02 01:08:28.1114443520 -0300" 'data/character_dialog.ui'
+chown -h 1000:1000 'data/org.gnome.Characters.gschema.xml'
+chmod 0664 'data/org.gnome.Characters.gschema.xml'
+/usr/bin/touch -hcmd "2024-06-02 00:45:26.3769404690 -0300" 'data/org.gnome.Characters.gschema.xml'
+/usr/bin/touch -hcad "2024-06-02 00:45:26.3939399500 -0300" 'data/org.gnome.Characters.gschema.xml'
+chown -h 1000:1000 'data/sidebar.ui'
+chmod 0664 'data/sidebar.ui'
+/usr/bin/touch -hcmd "2024-06-01 23:47:10.0006677300 -0300" 'data/sidebar.ui'
+/usr/bin/touch -hcad "2024-06-01 23:47:10.0226673760 -0300" 'data/sidebar.ui'
+chown -h 1000:1000 'meson.build'
+chmod 0664 'meson.build'
+/usr/bin/touch -hcmd "2024-06-02 00:08:54.2517782210 -0300" 'meson.build'
+/usr/bin/touch -hcad "2024-06-02 00:08:54.2707794720 -0300" 'meson.build'
+chown -h 1000:1000 'src/characterDialog.js'
+chmod 0664 'src/characterDialog.js'
+/usr/bin/touch -hcmd "2024-06-02 01:21:02.1551930180 -0300" 'src/characterDialog.js'
+/usr/bin/touch -hcad "2024-06-02 01:21:02.1721929970 -0300" 'src/characterDialog.js'
+chown -h 1000:1000 'src/window.js'
+chmod 0664 'src/window.js'
+/usr/bin/touch -hcmd "2024-06-02 01:24:22.7267773750 -0300" 'src/window.js'
+/usr/bin/touch -hcad "2024-06-02 01:24:22.7427773300 -0300" 'src/window.js'

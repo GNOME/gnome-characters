@@ -38,10 +38,13 @@ var CharacterDialog = GObject.registerClass({
         super._init();
         this._cancellable = new Gio.Cancellable();
         this._fontDescription = fontDescription;
+        this.favoriteCharacters = []; // Initialize as an empty array or fetch from settings
+        this._maxFavoriteCharacters = 20; // Set your desired max limit
 
         const actions = new Gio.SimpleActionGroup();
         Util.initActions(actions, [
             { name: 'copy', activate: this._copyCharacter.bind(this) },
+            { name: 'add-to-favorites', activate: this._addToFavorites.bind(this) },
         ]);
         this.insert_action_group('character', actions);
 
@@ -83,6 +86,21 @@ var CharacterDialog = GObject.registerClass({
             });
             row.set_activatable(true);
             this._relatedListbox.append(row);
+        }
+    }
+
+    _addToFavorites() {
+        this.addToFavorites(this._character);
+    }
+
+    addToFavorites(uc) {
+        log(`Adding to favorites: ${uc}`);
+        if (this.favoriteCharacters.indexOf(uc) < 0) {
+            this.favoriteCharacters.unshift(uc);
+            if (this.favoriteCharacters.length > this._maxFavoriteCharacters) {
+                this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
+            }
+            // Update the favorite characters list in the UI or local storage as needed
         }
     }
 

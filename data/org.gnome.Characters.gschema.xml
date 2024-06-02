@@ -7,5 +7,10 @@
       <default>100</default>
       <summary>Maximum recent characters</summary>
     </key>
+    <key name="favorite-characters" type="as">
+      <default>[]</default>
+      <summary>Favorite Characters</summary>
+      <description>List of favorite characters.</description>
+   </key>
   </schema>
 </schemalist>
