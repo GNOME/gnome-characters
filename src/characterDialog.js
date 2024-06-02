@@ -101,6 +101,11 @@ var CharacterDialog = GObject.registerClass({
                 this.favoriteCharacters = this.favoriteCharacters.slice(0, this._maxFavoriteCharacters);
             }
             // Update the favorite characters list in the UI or local storage as needed
+            const toast = new Adw.Toast({
+                title: _('Character added to favorites'),
+                timeout: 2,
+            });
+            this._toastOverlay.add_toast(toast);
         }
     }
 

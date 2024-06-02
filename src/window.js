@@ -225,6 +225,14 @@ var MainWindow = GObject.registerClass({
                 this._charactersView.setCharacters(this.recentCharacters);
                 this._mainStack.visible_child_name = 'character-list';
             }
+        } else if (pageRow.name === 'favorite') {
+            this._charactersView.baseline = false; // Assuming no baseline needed for favorites
+            if (this.favoriteCharacters.length === 0) {
+                this._mainStack.visible_child_name = 'empty-favorite'; // Assuming an empty favorite view
+            } else {
+                this._charactersView.setCharacters(this.favoriteCharacters);
+                this._mainStack.visible_child_name = 'character-list';
+            }
         } else {
             this._charactersView.searchByCategory(pageRow.category);
 
