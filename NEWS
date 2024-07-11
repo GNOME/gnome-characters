@@ -1,3 +1,16 @@
+47.alpha
+====
+* Update to CLDR 45 (Alice Mikhaylenko)
+* Use adaptive dialogs (Christopher Davis)
+* Translation updates:
+  - Bangla (Mahdi Hasan)
+  - French (Alexandre Franke)
+  - Hindi (Guntupalli Karunakar, Scrambled 777)
+  - Icelandic (Sveinn í Felli)
+  - Kabyle (Rachida SACI)
+  - Kinyarwanda (Angelo Verlain Shema)
+  - Occitan (post 1500) (Quentin PAGÈS)
+
 46.0
 ====
 * Update to CLDR 44 (Alice Mikhaylenko)
