@@ -43,7 +43,11 @@ i18n.merge_file(
 )
 
 appdata_file = i18n.merge_file(
-  input: 'org.gnome.Characters.appdata.xml.in',
+  input: configure_file (
+    input: 'org.gnome.Characters.appdata.xml.in.in',
+    output: '@BASENAME@',
+    configuration: desktop_conf
+  ),
   output: application_id + '.appdata.xml',
   po_dir: po_dir,
   install: true,

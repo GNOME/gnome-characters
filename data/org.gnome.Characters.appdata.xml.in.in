@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>org.gnome.Characters.desktop</id>
+  <id>@appid@</id>
   <name>Characters</name>
   <summary>Character map application</summary>
   <metadata_license>CC0-1.0</metadata_license>
@@ -27,6 +27,7 @@
   <developer id="org.gnome">
     <name>The GNOME Project</name>
   </developer>
+  <launchable type="desktop-id">@appid@.desktop</launchable>
   <url type="homepage">https://apps.gnome.org/Characters/</url>
   <url type="contribute">https://welcome.gnome.org/app/Characters/</url>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnome-characters/issues</url>
