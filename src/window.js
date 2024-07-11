@@ -35,9 +35,9 @@ var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/window.ui',
     InternalChildren: [
         'searchButton', 'search-bar', 'searchEntry',
-        'container', 'sidebar', 'loadingSpinner',
-        'splitView', 'mainStack', 'contentChild',
-        'charactersView', 'scrolledWindow', 'primaryMenuButton',
+        'container', 'sidebar', 'splitView',
+        'mainStack', 'contentChild', 'charactersView',
+        'scrolledWindow', 'primaryMenuButton',
     ],
     Properties: {
         'max-recent-characters': GObject.ParamSpec.uint(
@@ -119,10 +119,8 @@ var MainWindow = GObject.registerClass({
 
         this._charactersView.connect('notify::loading', view => {
             if (view.loading) {
-                this._loadingSpinner.start();
                 this._mainStack.visible_child_name = 'loading';
             } else {
-                this._loadingSpinner.stop();
                 this._mainStack.visible_child_name = 'character-list';
                 this._mainStack.queue_draw();
             }

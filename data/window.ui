@@ -124,26 +124,7 @@
                       <object class="GtkStackPage">
                         <property name="name">loading</property>
                         <property name="child">
-                          <object class="GtkBox">
-                            <property name="orientation">vertical</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <child>
-                              <object class="GtkSpinner" id="loadingSpinner">
-                                <property name="width-request">128</property>
-                                <property name="height-request">128</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">Loading…</property>
-                                <style>
-                                  <class name="title"/>
-                                  <class name="large-title"/>
-                                </style>
-                              </object>
-                            </child>
-                          </object>
+                          <object class="AdwSpinner"/>
                         </property>
                       </object>
                     </child>
