@@ -4,7 +4,7 @@ data/character_dialog.ui
 data/sidebar.ui
 data/shortcuts.ui
 data/window.ui
-data/org.gnome.Characters.appdata.xml.in
+data/org.gnome.Characters.appdata.xml.in.in
 data/org.gnome.Characters.desktop.in.in
 data/org.gnome.Characters.gschema.xml
 src/characterDialog.js
