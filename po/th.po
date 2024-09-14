@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/\n"
-"POT-Creation-Date: 2024-09-03 20:56+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues/\n"
+"POT-Creation-Date: 2024-09-14 18:38+0000\n"
 "PO-Revision-Date: 2024-09-15 01:36+0700\n"
 "Last-Translator: \n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -17,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
 
-#: data/character_dialog.ui:67
+#: data/character_dialog.ui:63
 msgid "_Copy Character"
 msgstr "_คัดลอกอักขระ"
 
-#: data/character_dialog.ui:88
+#: data/character_dialog.ui:84
 msgid "Unicode"
 msgstr "ยูนิโค้ด"
 
-#: data/character_dialog.ui:102
+#: data/character_dialog.ui:98
 msgid "_See Also"
 msgstr "_ดูเพิ่ม"
 
-#: data/character_dialog.ui:131
+#: data/character_dialog.ui:125
 msgid "See Also"
 msgstr "ดูเพิ่ม"
 
@@ -142,8 +143,8 @@ msgstr "ปุ่_มลัดแป้นพิมพ์"
 msgid "_About Characters"
 msgstr "เ_กี่ยวกับ “อักขระ”"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:163
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
 msgid "Characters"
 msgstr "อักขระ"
 
@@ -175,26 +176,31 @@ msgstr "ไม่พบผลลัพธ์"
 msgid "Try a different search"
 msgstr "ลองค้นหาด้วยคำอื่น"
 
-#: data/org.gnome.Characters.appdata.xml.in.in:5
+#: data/window.ui:139
+msgid "Loading…"
+msgstr "กำลังโหลด…"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
 msgid "Character map application"
 msgstr "แอปพลิเคชันผังอักขระ"
 
-#: data/org.gnome.Characters.appdata.xml.in.in:9
+#: data/org.gnome.Characters.appdata.xml.in:9
 msgid ""
-"Characters is a simple utility application to find and insert unusual characters. It "
-"allows you to quickly find the character you are looking for by searching for "
-"keywords."
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
 "\"อักขระ\" เป็นแอปพลิเคชันอรรถประโยชน์อย่างง่ายสำหรับหาและแทรกอักขระพิเศษ "
 "โดยให้คุณหาอักขระที่ต้องการได้อย่างรวดเร็วโดยค้นหาด้วยคำสำคัญ"
 
-#: data/org.gnome.Characters.appdata.xml.in.in:12
+#: data/org.gnome.Characters.appdata.xml.in:12
 msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, etc."
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
 msgstr "คุณยังสามารถท่องดูอักขระตามหมวดหมู่ต่างๆ ได้ เช่น เครื่องหมายวรรคตอน รูปภาพ ฯลฯ"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Characters.appdata.xml.in.in:26 src/window.js:165
+#: data/org.gnome.Characters.appdata.xml.in:26 src/window.js:167
 msgid "The GNOME Project"
 msgstr "โครงการ GNOME"
 
@@ -206,8 +212,8 @@ msgstr "แอปพลิเคชันอรรถประโยชน์ส
 #: data/org.gnome.Characters.desktop.in.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 msgstr ""
-"อักขระ;ยูนิโคด;เครื่องหมายวรรคตอน;คณิตศาสตร์;ตัวอักษร;อีโมจิ;อีโมติคอน;สัญลักษณ์;characters;unicode;"
-"punctuation;math;letters;emoji;emoticon;symbols;"
+"อักขระ;ยูนิโคด;เครื่องหมายวรรคตอน;คณิตศาสตร์;ตัวอักษร;อีโมจิ;อีโมติคอน;สัญลักษณ์;characters;"
+"unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
@@ -249,14 +255,11 @@ msgstr "อักขระถูกคัดลอกเรียบร้อย
 msgid "%s Sidebar Row"
 msgstr "แถวแถบข้าง %s"
 
-#: src/window.js:142
+#: src/window.js:144
 msgid "Search Result"
 msgstr "ผลการค้นหา"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:175
+#: src/window.js:177
 msgid "translator-credits"
 msgstr "Aefgh Threenine <aefgh39622@gmail.com>"
-
-#~ msgid "Loading…"
-#~ msgstr "กำลังโหลด…"
