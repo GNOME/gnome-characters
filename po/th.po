@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/\n"
-"POT-Creation-Date: 2024-08-24 12:52+0000\n"
-"PO-Revision-Date: 2024-08-31 15:26+0700\n"
+"POT-Creation-Date: 2024-09-03 20:56+0000\n"
+"PO-Revision-Date: 2024-09-15 01:36+0700\n"
 "Last-Translator: \n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -43,23 +43,23 @@ msgstr "อีโมจิ"
 
 #: data/sidebar.ui:35
 msgid "Smileys & Emotion"
-msgstr "หน้ายิ้ม & อารมณ์"
+msgstr "หน้ายิ้มและอารมณ์"
 
 #: data/sidebar.ui:43
 msgid "People & Body"
-msgstr "ผู้คน & ร่างกาย"
+msgstr "ผู้คนและร่างกาย"
 
 #: data/sidebar.ui:51
 msgid "Animals & Nature"
-msgstr "สัตว์ & ธรรมชาติ"
+msgstr "สัตว์และธรรมชาติ"
 
 #: data/sidebar.ui:59
 msgid "Food & Drink"
-msgstr "อาหาร & เครื่องดื่ม"
+msgstr "อาหารและเครื่องดื่ม"
 
 #: data/sidebar.ui:67
 msgid "Travel & Places"
-msgstr "ท่องเที่ยว & สถานที่"
+msgstr "ท่องเที่ยวและสถานที่"
 
 #: data/sidebar.ui:75
 msgid "Activities"
@@ -79,7 +79,7 @@ msgstr "ธง"
 
 #: data/sidebar.ui:108
 msgid "Letters & Symbols"
-msgstr "ตัวอักษร & สัญลักษณ์"
+msgstr "ตัวอักษรและสัญลักษณ์"
 
 #: data/sidebar.ui:122
 msgid "Punctuation"
