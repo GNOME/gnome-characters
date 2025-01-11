@@ -1,4 +1,4 @@
-#define NLANGUAGES 1151
+#define NLANGUAGES 1154
 struct LanguageScripts
 {
   const gchar *language;
@@ -235,6 +235,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "dyu", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "dz_BT", { N_("Tibetan"), NULL }, { 0x54696274, 0 } },
     { "ebu", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
+    { "ecy", { N_("Cypriot"), NULL }, { 0x43707274, 0 } },
     { "ee", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "efi", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "egl", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
@@ -515,6 +516,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "gld", { N_("Cyrillic"), NULL }, { 0x4379726c, 0 } },
     { "glk", { N_("Arabic"), NULL }, { 0x41726162, 0 } },
     { "gmh", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
+    { "gmy", { N_("Linear_B"), NULL }, { 0x4c696e62, 0 } },
     { "gn_PY", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "goh", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "gon", { N_("Devanagari"), N_("Telugu"), NULL }, { 0x44657661, 0x54656c75, 0 } },
@@ -522,7 +524,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "gos", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "got", { N_("Gothic"), NULL }, { 0x476f7468, 0 } },
     { "grb", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
-    { "grc", { N_("Cypriot"), N_("Greek"), N_("Linear_B"), NULL }, { 0x43707274, 0x4772656b, 0x4c696e62, 0 } },
+    { "grc", { N_("Greek"), NULL }, { 0x4772656b, 0 } },
     { "grt", { N_("Bengali"), NULL }, { 0x42656e67, 0 } },
     { "gsw_CH", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "gsw_LI", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
@@ -607,6 +609,7 @@ struct LanguageScripts language_scripts[NLANGUAGES] =
     { "kaj", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "kam", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
     { "kao", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
+    { "kaw", { N_("Balinese"), N_("Javanese"), N_("Kawi"), NULL }, { 0x42616c69, 0x4a617661, 0x4b617769, 0 } },
     { "kbd", { N_("Cyrillic"), NULL }, { 0x4379726c, 0 } },
     { "kca", { N_("Cyrillic"), NULL }, { 0x4379726c, 0 } },
     { "kcg", { N_("Latin"), NULL }, { 0x4c61746e, 0 } },
