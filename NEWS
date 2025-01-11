@@ -1,3 +1,8 @@
+48.alpha
+========
+* Update to CLDR 46 (Alice Mikhaylenko)
+* Remove the X-GNOME-Utilities category (Daniel Rusek)
+
 47.0
 ===
 * Update to Emoji 16.0 (Alice Mikhaylenko)
