@@ -1,0 +1,270 @@
+# Interlingua translation for gnome-characters.
+# Copyright (C) 2025 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FULL NAME <EMAIL@ADDRESS>, 2025.
+# Emilio Sepúlveda <emism.translations@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues/\n"
+"POT-Creation-Date: 2025-01-12 17:47+0000\n"
+"PO-Revision-Date: 2025-02-13 19:21-0300\n"
+"Last-Translator: Emilio Sepúlveda <emism.translations@gmail.com>\n"
+"Language-Team: Interlingua <softinterlingua@gmail.com>\n"
+"Language: ia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-DL-Lang: ia\n"
+"X-DL-Module: gnome-characters\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"X-Generator: Gtranslator 47.1\n"
+
+#: data/character_dialog.ui:67
+msgid "_Copy Character"
+msgstr "_Copiar character"
+
+#: data/character_dialog.ui:88
+msgid "Unicode"
+msgstr "Unicode"
+
+#: data/character_dialog.ui:102
+msgid "_See Also"
+msgstr "_Vider anque"
+
+#: data/character_dialog.ui:131
+msgid "See Also"
+msgstr "Vider anque"
+
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "Recentemente usate"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Emojis"
+
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "Surrisos e emotiones"
+
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "Personas e corpore"
+
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "Animales e natura"
+
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "Alimentos e bibitas"
+
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "Viages e locos"
+
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "Activitates"
+
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "Objectos"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "Symbolos"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "Bandieras"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "Litteras e symbolos"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "Punctuation"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "Flechas"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "Punctas"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "Imagines"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "Monetas"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "Mathematica"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "Litteras"
+
+#: data/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/shortcuts.ui:15
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Aperir menu principal"
+
+#: data/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Cercar"
+
+#: data/shortcuts.ui:27
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Monstrar commandos curte de claviero"
+
+#: data/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quitar"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Commandos curte de claviero"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_A proposito de Characteres"
+
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:163
+msgid "Characters"
+msgstr "Characteres"
+
+#: data/window.ui:32
+msgid "Search"
+msgstr "Cerca"
+
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: data/window.ui:49
+msgid "Search characters"
+msgstr "Cercar characteres"
+
+#: data/window.ui:89
+msgid "No Recent Characters"
+msgstr "Necun characteres recente"
+
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr "Le characteres apparera hic si tu los usa"
+
+#: data/window.ui:117
+msgid "No Results"
+msgstr "Necun resultatos"
+
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr "Trova un cerca differente"
+
+#: data/org.gnome.Characters.appdata.xml.in.in:5
+msgid "Character map application"
+msgstr "Application de mappa de characteres"
+
+#: data/org.gnome.Characters.appdata.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Characteres es un application de utensile simple pro trovar e insertar "
+"characteres inusual. Iste application te permitte trovar rapidemente le "
+"character que tu cerca con parolas clave."
+
+#: data/org.gnome.Characters.appdata.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Tu anque pote percurrer le characteres per categorias, como punctuation, "
+"imagines, etc."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.appdata.xml.in.in:26 src/window.js:165
+msgid "The GNOME Project"
+msgstr "Le projecto GNOME"
+
+#: data/org.gnome.Characters.desktop.in.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Application utensile pro trovar e insertar characteres inusual"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+"characteres;unicode;punctuation;math;litteras;emoji;emoticones;symbolos;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Maxime de characteres recente"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
+msgid "Unknown character name"
+msgstr "Nomine de character non cognoscite"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:125
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s non es includite in %s"
+
+#: src/characterDialog.js:156
+msgid "Character copied to clipboard"
+msgstr "Character copiate al area de transferentia"
+
+#: src/charactersView.js:156
+msgid "Unassigned"
+msgstr "Non assignate"
+
+#: src/searchProvider.js:98
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:119
+msgid "Character copied"
+msgstr "Character copiate"
+
+#: src/searchProvider.js:120
+msgid "Character was copied successfully"
+msgstr "Le character ha essite copiate correctemente"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "Fila de barra lateral %s"
+
+#: src/window.js:142
+msgid "Search Result"
+msgstr "Resultato de cerca"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:175
+msgid "translator-credits"
+msgstr "Emilio Sepúlveda <emism.translations@gmail.com>"
