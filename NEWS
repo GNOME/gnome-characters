@@ -1,3 +1,13 @@
+48.0
+====
+* Update to CLDR 46.1 (Alice Mikhaylenko)
+* Update libadwaita and glib version requirements (Jeremy Bícha)
+* Translations updates:
+  - Arabic (Ali)
+  - Norwegian Bokmål (Brage Fuglseth)
+  - Malayalam (Murukesh S Kumar)
+  - Interlingua (Emilio Sepúlveda)
+
 48.alpha
 ========
 * Update to CLDR 46 (Alice Mikhaylenko)

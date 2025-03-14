@@ -53,12 +53,20 @@
   <launchable type="desktop-id">org.gnome.Characters.desktop</launchable>
   <content_rating type="oars-1.1"/>
   <releases>
-    <release version="48.alpha" date="2025-01-11" type="development">
+    <release version="48.0" date="2025-03-14">
       <description>
-        <p>Characters 48.alpha release.</p>
+        <p>Characters 48.0 release.</p>
         <ul>
-          <li>Update to CLDR 46 (Alice Mikhaylenko)</li>
+          <li>Update to CLDR 46.1 (Alice Mikhaylenko)</li>
           <li>Remove the X-GNOME-Utilities category (Daniel Rusek)</li>
+          <li>Update libadwaita and glib version requirements (Jeremy Bícha)</li>
+        </ul>
+        <p>It also comes with translation updates for the following locales:</p>
+        <ul>
+          <li>Arabic (Ali)</li>
+          <li>Norwegian Bokmål (Brage Fuglseth)</li>
+          <li>Malayalam (Murukesh S Kumar)</li>
+          <li>Interlingua (Emilio Sepúlveda)</li>
         </ul>
       </description>
     </release>
