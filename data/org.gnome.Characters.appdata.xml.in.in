@@ -62,7 +62,7 @@
         </ul>
       </description>
     </release>
-    <release version="47.alpha" date="2024-07-11">
+    <release version="47.0" date="2024-09-16">
       <description>
         <p>Characters 47.alpha brings support for CLDR 55, and uses adaptive dialogs.</p>
         <p>It also comes with translation updates for the following locales:</p>
