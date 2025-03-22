@@ -1,0 +1,252 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR uwussimo@icloud.com, 2022.
+# Baxrom Raxmatov 2025
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues/\n"
+"POT-Creation-Date: 2025-03-10 17:47+0000\n"
+"PO-Revision-Date: 2025-03-22 20:05+0500\n"
+"Last-Translator: Baxrom Raxmatov magdiyevbahrom@gmail.com\n"
+"Language-Team: Uzbek <cctld@uzinfocom.uz>\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/character_dialog.ui:70
+msgid "_Copy Character"
+msgstr "_Belgini nusxalash"
+
+#: data/character_dialog.ui:91
+msgid "Unicode"
+msgstr "Unicode"
+
+#: data/character_dialog.ui:105
+msgid "_See Also"
+msgstr "_Shuningdek qarang"
+
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "Yaqinda ishlatilgan"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Emojilar"
+
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "Smayllar & hissiyotlar"
+
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "Odamlar & tana"
+
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "Hayvonlar & tabiat"
+
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "Oziq-ovqat & ichimliklar"
+
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "Sayohat & Joylar"
+
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "Faoliyatlar"
+
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "Ob'ektlar"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "Belgilar"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "Bayroqlar"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "Harflar & belgilar"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "Tinish belgilari"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "Ko'rsatkichlar"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "O'qlar"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "Rasmlar"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "Valyutalar"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "Matematika"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "Xatlar"
+
+#: data/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Umumiy"
+
+#: data/shortcuts.ui:15
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Menyuni oching"
+
+#: data/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Qidiruv"
+
+#: data/shortcuts.ui:27
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Klaviatura yorliqlari"
+
+#: data/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Chiqish"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Klaviatura yorliqlari"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_Qahramonlar haqida"
+
+#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+msgid "Characters"
+msgstr "Belgilar"
+
+#: data/window.ui:138
+msgid "No Recent Characters"
+msgstr "Oxirgi belgilar yo'q"
+
+#: data/window.ui:139
+msgid "Characters will appear here if you use them."
+msgstr "Agar siz ulardan foydalansangiz, belgilar shu yerda paydo bo'ladi."
+
+#: data/window.ui:166
+msgid "No Results"
+msgstr "Natijalar yoʻq"
+
+#: data/window.ui:167
+msgid "Try a different search."
+msgstr "Boshqa qidiruvni sinab ko'ring."
+
+#: data/window.ui:188
+msgid "Loading…"
+msgstr "Yuklanmoqda…"
+
+#: data/org.gnome.Characters.appdata.xml.in:5
+msgid "Character map application"
+msgstr "Belgilar xaritasi dasturi"
+
+#: data/org.gnome.Characters.appdata.xml.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Belgilar - bu g'ayrioddiy narsalarni topish va kiritish uchun oddiy "
+"yordamchi dasturbelgilar. Bu sizga izlayotgan personajni tezda topish "
+"imkonini beradi kalit so'zlarni qidirish orqali."
+
+#: data/org.gnome.Characters.appdata.xml.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Shuningdek, siz belgilarni tinish belgilari, rasmlar kabi toifalar bo'yicha "
+"ko'rishingiz mumkin.va boshqalar."
+
+#: data/org.gnome.Characters.desktop.in.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Noodatiy belgilarni topish va kiritish uchun yordamchi dastur"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+"belgilar;unikod;tinish belgilari;matematika;harflar;emoji;emotsiya;ramzlar;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Maksimal oxirgi belgilar"
+
+#: src/characterDialog.js:102 src/searchProvider.js:86
+msgid "Unknown character name"
+msgstr "Noma'lum belgi nomi"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:127
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s %s tarkibiga kiritilmagan"
+
+#: src/characterDialog.js:166
+msgid "Character copied to clipboard"
+msgstr "Belgilar vaqtinchalik xotiraga nusxalandi"
+
+#: src/charactersView.js:156
+msgid "Unassigned"
+msgstr "Tayinlanmagan"
+
+#: src/searchProvider.js:95
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:112
+msgid "Character copied"
+msgstr "Belgidan nusxa olindi"
+
+#: src/searchProvider.js:113
+msgid "Character was copied successfully"
+msgstr "Belgi muvaffaqiyatli nusxalandi"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "%s yon panel qatori"
+
+#: src/window.js:152
+msgid "Search Result"
+msgstr "Qidiruv natijasi"
+
+#: src/window.js:175
+msgid "The GNOME Project"
+msgstr "GNOME loyihasi"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:185
+msgid "translator-credits"
+msgstr "tarjimonlar uchun minnatdorchilik"
