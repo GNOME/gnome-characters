@@ -1,6 +1,10 @@
 variables:
     FLATPAK_MODULE: "gnome-characters"
     TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
+    MANIFEST_PATH: "build-aux/flatpak/org.gnome.Characters.json"
+    APP_ID: "org.gnome.CharactersDevel"
+    RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
+    BUNDLE: "gnome-characters.flatpak"
 
 include:
   - project: 'gnome/citemplates'
@@ -17,17 +21,21 @@ stages:
 
 flatpak:
     stage: test
-    variables:
-        MANIFEST_PATH: "build-aux/flatpak/org.gnome.Characters.json"
-        APP_ID: "org.gnome.CharactersDevel"
-        RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
-        BUNDLE: "gnome-characters.flatpak"
     extends: .flatpak
+
+flatpak-aarch64:
+    stage: test
+    extends: .flatpak@aarch64
 
 nightly:
     extends: ".publish_nightly"
     stage: cross_environment
     dependencies: ["flatpak"]
+
+nightly-aarch64:
+    extends: ".publish_nightly"
+    stage: cross_environment
+    dependencies: ['flatpak-aarch64']
 
 eslint:
   image: registry.gitlab.gnome.org/gnome/gnome-shell/fedora/36:2022-07-06.0
