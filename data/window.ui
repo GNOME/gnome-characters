@@ -140,6 +140,7 @@
       <object class="AdwBreakpoint">
         <condition>max-width: 500px</condition>
         <setter object="splitView" property="collapsed">True</setter>
+        <setter object="sidebar" property="mode">page</setter>
       </object>
     </child>
   </template>

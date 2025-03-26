@@ -1,4 +1,4 @@
-/* exported SidebarRow */
+/* exported SidebarItem */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (C) 2014-2017  Daiki Ueno <dueno@src.gnome.org>
@@ -17,16 +17,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, GObject, Gtk } = imports.gi;
+const { Gc, GObject, Adw } = imports.gi;
 
-var SidebarRow = GObject.registerClass({
+var SidebarItem = GObject.registerClass({
     Properties: {
-        'title': GObject.ParamSpec.string(
-            'title',
-            'Category title', 'Category title',
-            GObject.ParamFlags.READWRITE,
-            '',
-        ),
         'category': GObject.ParamSpec.enum(
             'category',
             'Category', 'Category',
@@ -34,56 +28,8 @@ var SidebarRow = GObject.registerClass({
             Gc.Category.$gtype,
             Gc.Category.NONE,
         ),
-        'icon-name': GObject.ParamSpec.string(
-            'icon-name',
-            'Category Icon Name', 'Category Icon Name',
-            GObject.ParamFlags.READWRITE,
-            '',
-        ),
     },
-}, class SidebarRow extends Gtk.ListBoxRow {
-    _init() {
-        super._init({
-            accessible_role: Gtk.AccessibleRole.ROW,
-        });
-        let hbox = new Gtk.Box({
-            orientation: Gtk.Orientation.HORIZONTAL,
-            margin_top: 12,
-            margin_bottom: 12,
-            margin_start: 6,
-            margin_end: 6,
-            spacing: 12,
-        });
-
-        let image = new Gtk.Image();
-        this.bind_property('icon-name', image, 'icon-name',
-            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
-        );
-        image.set_icon_size(Gtk.IconSize.LARGE_TOOLBAR);
-        hbox.append(image);
-
-        let label = new Gtk.Label({ halign: Gtk.Align.START });
-        this.bind_property('title', label, 'label',
-            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
-        );
-        // Because bind_property doesn't work with transform functions
-        // TODO: is this really needed?
-        this.connect('notify::title', row => {
-            row.tooltip_text = _('%s Sidebar Row').format(row.title);
-        });
-        hbox.append(label);
-
-        this.set_child(hbox);
-    }
-
-    get title() {
-        return this._title || '';
-    }
-
-    set title(title) {
-        this._title = title;
-    }
-
+}, class SidebarItem extends Adw.SidebarItem {
     get category() {
         return this._category || Gc.Category.NONE;
     }
