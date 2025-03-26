@@ -18,13 +18,13 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
-const { Adw, GObject } = imports.gi;
-const { SidebarRow } = imports.sidebarRow;
+const { Adw, Gtk, GObject } = imports.gi;
+const { SidebarItem } = imports.sidebarItem;
 
 var Sidebar = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/sidebar.ui',
     InternalChildren: [
-        'list',
+        'sidebar',
         'recentRow', 'emojiSmileysRow', 'emojiPeopleRow', 'emojiAnimalsRow',
         'emojiFoodRow', 'emojiActivitiesRow', 'emojiTravelRow',
         'emojiObjectsRow', 'emojiSymbolsRow', 'emojiFlagsRow',
@@ -32,23 +32,39 @@ var Sidebar = GObject.registerClass({
         'lettersBulletsRow', 'lettersPicturesRow',
         'lettersCurrencyRow', 'lettersMathRow', 'lettersLatinRow',
     ],
+    Properties: {
+        'mode': GObject.ParamSpec.enum(
+            'mode',
+            'Mode', 'Mode',
+            GObject.ParamFlags.READWRITE,
+            Adw.SidebarMode.$gtype,
+            Adw.SidebarMode.SIDEBAR,
+        ),
+    },
+    Signals: {
+        'activated': { param_types: [] },
+    },
 }, class Sidebar extends Adw.Bin {
     _init() {
-        GObject.type_ensure(SidebarRow.$gtype);
+        GObject.type_ensure(SidebarItem.$gtype);
         super._init({});
 
-        this.lastSelectedRow = null;
+        this._sidebar.connect('activated', _index => {
+            this.emit('activated');
+        });
+
+        this.lastSelectedItem = null;
     }
 
     /**
      * Restore the latest selected item
      */
     restoreSelection() {
-        if (this.lastSelectedRow)
-            this._list.select_row(this.lastSelectedRow);
+        if (this.lastSelectedItem)
+            this._sidebar.selected = this.lastSelectedItem.get_index();
     }
 
-    rowByName(name) {
+    itemByName(name) {
         switch (name) {
         case 'smileys':
             return this._emojiSmileysRow;
@@ -82,21 +98,31 @@ var Sidebar = GObject.registerClass({
             return this._lettersMathRow;
         case 'latin':
             return this._lettersLatinRow;
+        case 'recent':
         default:
             return this._recentRow;
         }
     }
 
     selectRowByName(name) {
-        let row = this.rowByName(name);
-        this._list.select_row(row);
+        let item = this.itemByName(name);
+        this._sidebar.selected = item.get_index();
+        this.emit('activated');
     }
 
     unselectAll() {
-        this._list.unselect_all();
+        this._sidebar.selected = Gtk.INVALID_LIST_POSITION;
     }
 
-    get list() {
-        return this._list;
+    get sidebar() {
+        return this._sidebar;
+    }
+
+    get mode() {
+        return this.sidebar.mode;
+    }
+
+    set mode(value) {
+        this.sidebar.mode = value;
     }
 });

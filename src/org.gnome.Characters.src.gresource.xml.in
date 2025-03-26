@@ -3,7 +3,7 @@
   <gresource prefix="/org/gnome/Characters@profile@/js">
     <file>main.js</file>
     <file>sidebar.js</file>
-    <file>sidebarRow.js</file>
+    <file>sidebarItem.js</file>
     <file>util.js</file>
     <file>window.js</file>
     <file>characterDialog.js</file>

@@ -46,7 +46,7 @@ endif
 gjs = dependency('gjs-1.0', version: '>= 1.50')
 gjs_console = find_program(gjs.get_variable(pkgconfig: 'gjs_console'), required: true)
 dependency('gtk4', version: '>=4.6')
-libadwaita = dependency ('libadwaita-1', version: '>= 1.8.alpha')
+libadwaita = dependency ('libadwaita-1', version: '>= 1.9.alpha')
 
 libgc_deps = [
   dependency('gio-2.0', version: '>= 2.83.0'),

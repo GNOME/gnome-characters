@@ -4,175 +4,140 @@
     <property name="vexpand">True</property>
     <property name="hexpand">True</property>
     <child>
-      <object class="GtkListBox" id="list">
+      <object class="AdwSidebar" id="sidebar">
         <child>
-          <object class="Gjs_SidebarRow" id="recentRow">
-            <property name="name">recent</property>
-            <property name="icon-name">document-open-recent-symbolic</property>
-            <property name="title" translatable="yes">Recently Used</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkListBoxRow">
-            <property name="selectable">false</property>
-            <property name="activatable">false</property>
+          <object class="AdwSidebarSection">
             <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="yes">Emojis</property>
-                <property name="halign">start</property>
-                <style>
-                  <class name="heading" />
-                </style>
+              <object class="Gjs_SidebarItem" id="recentRow">
+                <property name="icon-name">document-open-recent-symbolic</property>
+                <property name="title" translatable="yes">Recently Used</property>
+                <property name="category">GC_CATEGORY_NONE</property>
               </object>
             </child>
           </object>
         </child>
         <child>
-          <object class="Gjs_SidebarRow" id="emojiSmileysRow">
-            <property name="category">GC_CATEGORY_EMOJI_SMILEYS</property>
-            <property name="name">emoji-smileys</property>
-            <property name="icon-name">emoji-people-symbolic</property>
-            <property name="title" translatable="yes">Smileys &amp; Emotion</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiPeopleRow">
-            <property name="category">GC_CATEGORY_EMOJI_PEOPLE</property>
-            <property name="name">emoji-people</property>
-            <property name="icon-name">emoji-body-symbolic</property>
-            <property name="title" translatable="yes">People &amp; Body</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiAnimalsRow">
-            <property name="category">GC_CATEGORY_EMOJI_ANIMALS</property>
-            <property name="name">emoji-animals</property>
-            <property name="icon-name">emoji-nature-symbolic</property>
-            <property name="title" translatable="yes">Animals &amp; Nature</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiFoodRow">
-            <property name="category">GC_CATEGORY_EMOJI_FOOD</property>
-            <property name="name">emoji-food</property>
-            <property name="icon-name">emoji-food-symbolic</property>
-            <property name="title" translatable="yes">Food &amp; Drink</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiTravelRow">
-            <property name="category">GC_CATEGORY_EMOJI_TRAVEL</property>
-            <property name="name">emoji-travel</property>
-            <property name="icon-name">emoji-travel-symbolic</property>
-            <property name="title" translatable="yes">Travel &amp; Places</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiActivitiesRow">
-            <property name="category">GC_CATEGORY_EMOJI_ACTIVITIES</property>
-            <property name="name">emoji-activities</property>
-            <property name="icon-name">emoji-activities-symbolic</property>
-            <property name="title" translatable="yes">Activities</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiObjectsRow">
-            <property name="category">GC_CATEGORY_EMOJI_OBJECTS</property>
-            <property name="name">emoji-objects</property>
-            <property name="icon-name">emoji-objects-symbolic</property>
-            <property name="title" translatable="yes">Objects</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiSymbolsRow">
-            <property name="category">GC_CATEGORY_EMOJI_SYMBOLS</property>
-            <property name="name">emoji-symbols</property>
-            <property name="icon-name">emoji-symbols-symbolic</property>
-            <property name="title" translatable="yes">Symbols</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="emojiFlagsRow">
-            <property name="category">GC_CATEGORY_EMOJI_FLAGS</property>
-            <property name="name">emoji-flags</property>
-            <property name="icon-name">emoji-flags-symbolic</property>
-            <property name="title" translatable="yes">Flags</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkListBoxRow">
-            <property name="selectable">false</property>
-            <property name="activatable">false</property>
+          <object class="AdwSidebarSection">
+            <property name="title" translatable="yes">Emojis</property>
             <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="yes">Letters &amp; Symbols</property>
-                <property name="halign">start</property>
-                <style>
-                  <class name="heading" />
-                </style>
+              <object class="Gjs_SidebarItem" id="emojiSmileysRow">
+                <property name="icon-name">emoji-people-symbolic</property>
+                <property name="title" translatable="yes">Smileys &amp; Emotion</property>
+                <property name="category">GC_CATEGORY_EMOJI_SMILEYS</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="emojiPeopleRow">
+                <property name="icon-name">emoji-body-symbolic</property>
+                <property name="title" translatable="yes">People &amp; Body</property>
+                <property name="category">GC_CATEGORY_EMOJI_PEOPLE</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="emojiAnimalsRow">
+                <property name="icon-name">emoji-nature-symbolic</property>
+                <property name="title" translatable="yes">Animals &amp; Nature</property>
+                <property name="category">GC_CATEGORY_EMOJI_ANIMALS</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="emojiFoodRow">
+                <property name="icon-name">emoji-food-symbolic</property>
+                <property name="title" translatable="yes">Food &amp; Drink</property>
+                <property name="category">GC_CATEGORY_EMOJI_FOOD</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="emojiTravelRow">
+                <property name="icon-name">emoji-travel-symbolic</property>
+                <property name="title" translatable="yes">Travel &amp; Places</property>
+                <property name="category">GC_CATEGORY_EMOJI_TRAVEL</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="emojiActivitiesRow">
+                <property name="icon-name">emoji-activities-symbolic</property>
+                <property name="title" translatable="yes">Activities</property>
+                <property name="category">GC_CATEGORY_EMOJI_ACTIVITIES</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="emojiObjectsRow">
+                <property name="icon-name">emoji-objects-symbolic</property>
+                <property name="title" translatable="yes">Objects</property>
+                <property name="category">GC_CATEGORY_EMOJI_OBJECTS</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="emojiSymbolsRow">
+                <property name="icon-name">emoji-symbols-symbolic</property>
+                <property name="title" translatable="yes">Symbols</property>
+                <property name="category">GC_CATEGORY_EMOJI_SYMBOLS</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="emojiFlagsRow">
+                <property name="icon-name">emoji-flags-symbolic</property>
+                <property name="title" translatable="yes">Flags</property>
+                <property name="category">GC_CATEGORY_EMOJI_FLAGS</property>
               </object>
             </child>
           </object>
         </child>
         <child>
-          <object class="Gjs_SidebarRow" id="lettersPunctuationRow">
-            <property name="category">GC_CATEGORY_LETTER_PUNCTUATION</property>
-            <property name="name">punctuation</property>
-            <property name="icon-name">characters-punctuation-symbolic</property>
-            <property name="title" translatable="yes">Punctuation</property>
+          <object class="AdwSidebarSection">
+            <property name="title" translatable="yes">Letters &amp; Symbols</property>
+            <child>
+              <object class="Gjs_SidebarItem" id="lettersPunctuationRow">
+                <property name="icon-name">characters-punctuation-symbolic</property>
+                <property name="title" translatable="yes">Punctuation</property>
+                <property name="category">GC_CATEGORY_LETTER_PUNCTUATION</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="lettersArrowsRow">
+                <property name="icon-name">characters-arrow-symbolic</property>
+                <property name="title" translatable="yes">Arrows</property>
+                <property name="category">GC_CATEGORY_LETTER_ARROW</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="lettersBulletsRow">
+                <property name="icon-name">characters-bullet-symbolic</property>
+                <property name="title" translatable="yes">Bullets</property>
+                <property name="category">GC_CATEGORY_LETTER_BULLET</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="lettersPicturesRow">
+                <property name="icon-name">characters-picture-symbolic</property>
+                <property name="title" translatable="yes">Pictures</property>
+                <property name="category">GC_CATEGORY_LETTER_PICTURE</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="lettersCurrencyRow">
+                <property name="icon-name">characters-currency-symbolic</property>
+                <property name="title" translatable="yes">Currencies</property>
+                <property name="category">GC_CATEGORY_LETTER_CURRENCY</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="lettersMathRow">
+                <property name="icon-name">characters-math-symbolic</property>
+                <property name="title" translatable="yes">Math</property>
+                <property name="category">GC_CATEGORY_LETTER_MATH</property>
+              </object>
+            </child>
+            <child>
+              <object class="Gjs_SidebarItem" id="lettersLatinRow">
+                <property name="icon-name">characters-latin-symbolic</property>
+                <property name="title" translatable="yes">Letters</property>
+                <property name="category">GC_CATEGORY_LETTER_LATIN</property>
+              </object>
+            </child>
           </object>
         </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="lettersArrowsRow">
-            <property name="category">GC_CATEGORY_LETTER_ARROW</property>
-            <property name="name">arrow</property>
-            <property name="icon-name">characters-arrow-symbolic</property>
-            <property name="title" translatable="yes">Arrows</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="lettersBulletsRow">
-            <property name="category">GC_CATEGORY_LETTER_BULLET</property>
-            <property name="name">bullet</property>
-            <property name="icon-name">characters-bullet-symbolic</property>
-            <property name="title" translatable="yes">Bullets</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="lettersPicturesRow">
-            <property name="category">GC_CATEGORY_LETTER_PICTURE</property>
-            <property name="name">picture</property>
-            <property name="icon-name">characters-picture-symbolic</property>
-            <property name="title" translatable="yes">Pictures</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="lettersCurrencyRow">
-            <property name="category">GC_CATEGORY_LETTER_CURRENCY</property>
-            <property name="name">currency</property>
-            <property name="icon-name">characters-currency-symbolic</property>
-            <property name="title" translatable="yes">Currencies</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="lettersMathRow">
-            <property name="category">GC_CATEGORY_LETTER_MATH</property>
-            <property name="name">math</property>
-            <property name="icon-name">characters-math-symbolic</property>
-            <property name="title" translatable="yes">Math</property>
-          </object>
-        </child>
-        <child>
-          <object class="Gjs_SidebarRow" id="lettersLatinRow">
-            <property name="category">GC_CATEGORY_LETTER_LATIN</property>
-            <property name="name">letters</property>
-            <property name="icon-name">characters-latin-symbolic</property>
-            <property name="title" translatable="yes">Letters</property>
-          </object>
-        </child>
-        <style>
-          <class name="navigation-sidebar" />
-        </style>
       </object>
     </child>
   </template>

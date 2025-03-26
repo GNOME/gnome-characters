@@ -11,5 +11,5 @@ src/characterDialog.js
 src/charactersView.js
 src/main.js
 src/searchProvider.js
-src/sidebarRow.js
+src/sidebarItem.js
 src/window.js

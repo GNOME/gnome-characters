@@ -24,7 +24,7 @@ resource_data = files(
   'charactersView.js',
   'main.js',
   'sidebar.js',
-  'sidebarRow.js',
+  'sidebarItem.js',
   'window.js',
   'searchProvider.js',
   'util.js',

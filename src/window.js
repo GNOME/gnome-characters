@@ -25,7 +25,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const { Adw, Gio, GLib, GObject, Gtk } = imports.gi;
+const { Adw, Gio, GLib, GObject, Gtk, Gc } = imports.gi;
 
 const { CharacterDialog } = imports.characterDialog;
 const Main = imports.main;
@@ -57,14 +57,15 @@ var MainWindow = GObject.registerClass({
             this._handleCharacterSelected(widget, uc);
         });
 
-        this._sidebar.list.connect('row-selected', (sidebar, row) => {
+        this._sidebar.connect('activated', () => {
             const adj = this._scrolledWindow.get_vadjustment();
             adj.set_value(0.0); // scroll back to the top
             this._charactersView.queue_resize();
-            if (row) {
-                this._sidebar.lastSelectedRow = row;
-                this.setPage(row);
-                this._contentChild.title = row.title;
+            let item = this._sidebar.sidebar.selected_item;
+            if (item) {
+                this._sidebar.lastSelectedItem = item;
+                this.setPage(item);
+                this._contentChild.title = item.title;
                 this._splitView.show_content = true;
             }
         });
@@ -111,10 +112,6 @@ var MainWindow = GObject.registerClass({
         this._searchEntry.connect('stop-search', () => {
             this.searchActive = false;
             this._searchButton.set_active(false);
-        });
-
-        this._contentChild.connect('hiding', () => {
-            this._sidebar.unselectAll();
         });
 
         this._charactersView.connect('notify::loading', view => {
@@ -211,8 +208,8 @@ var MainWindow = GObject.registerClass({
         this._searchButton.set_active(true);
     }
 
-    setPage(pageRow) {
-        if (pageRow.name === 'recent') {
+    setPage(pageItem) {
+        if (pageItem.category === Gc.Category.NONE) {
             // always draw a baseline for recent view
             this._charactersView.baseline = true;
             if (this.recentCharacters.length === 0) {
@@ -222,7 +219,7 @@ var MainWindow = GObject.registerClass({
                 this._mainStack.visible_child_name = 'character-list';
             }
         } else {
-            this._charactersView.searchByCategory(pageRow.category);
+            this._charactersView.searchByCategory(pageItem.category);
 
             this._mainStack.visible_child_name = 'character-list';
             // this._charactersView.model = pageRow.model;
