@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
-"POT-Creation-Date: 2025-03-10 17:47+0000\n"
-"PO-Revision-Date: 2025-03-22 20:05+0500\n"
+"POT-Creation-Date: 2025-03-22 15:13+0000\n"
+"PO-Revision-Date: 2025-03-29 22:05+0500\n"
 "Last-Translator: Baxrom Raxmatov magdiyevbahrom@gmail.com\n"
 "Language-Team: Uzbek <cctld@uzinfocom.uz>\n"
 "Language: uz\n"
@@ -20,17 +20,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
 
-#: data/character_dialog.ui:70
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Belgini nusxalash"
 
-#: data/character_dialog.ui:91
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:105
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_Shuningdek qarang"
+
+#: data/character_dialog.ui:131
+msgid "See Also"
+msgstr "Shuningdek qarang"
 
 #: data/sidebar.ui:12
 msgid "Recently Used"
@@ -115,8 +119,8 @@ msgstr "Umumiy"
 
 #: data/shortcuts.ui:15
 msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Menyuni oching"
+msgid "Open Main Menu"
+msgstr "Asosiy menyuni oching"
 
 #: data/shortcuts.ui:21
 msgctxt "shortcut window"
@@ -125,8 +129,8 @@ msgstr "Qidiruv"
 
 #: data/shortcuts.ui:27
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Klaviatura yorliqlari"
+msgid "Show Keyboard Shortcuts"
+msgstr "Klaviatura yorliqlarini ko’rsatish"
 
 #: data/shortcuts.ui:33
 msgctxt "shortcut window"
@@ -141,36 +145,44 @@ msgstr "_Klaviatura yorliqlari"
 msgid "_About Characters"
 msgstr "_Qahramonlar haqida"
 
-#: data/window.ui:32 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:173
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:163
 msgid "Characters"
 msgstr "Belgilar"
 
-#: data/window.ui:138
+#: data/window.ui:32
+msgid "Search"
+msgstr "Qidiruv"
+
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "Asosiy menyu"
+
+#: data/window.ui:49
+msgid "Search characters"
+msgstr "Belgilarni qidirish"
+
+#: data/window.ui:89
 msgid "No Recent Characters"
 msgstr "Oxirgi belgilar yo'q"
 
-#: data/window.ui:139
-msgid "Characters will appear here if you use them."
-msgstr "Agar siz ulardan foydalansangiz, belgilar shu yerda paydo bo'ladi."
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr "Agar siz ulardan foydalansangiz, belgilar shu yerda paydo bo'ladi"
 
-#: data/window.ui:166
+#: data/window.ui:117
 msgid "No Results"
 msgstr "Natijalar yoʻq"
 
-#: data/window.ui:167
-msgid "Try a different search."
-msgstr "Boshqa qidiruvni sinab ko'ring."
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr "Boshqa qidiruvni sinab ko'ring"
 
-#: data/window.ui:188
-msgid "Loading…"
-msgstr "Yuklanmoqda…"
-
-#: data/org.gnome.Characters.appdata.xml.in:5
+#: data/org.gnome.Characters.appdata.xml.in.in:5
 msgid "Character map application"
 msgstr "Belgilar xaritasi dasturi"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.appdata.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -180,13 +192,18 @@ msgstr ""
 "yordamchi dasturbelgilar. Bu sizga izlayotgan personajni tezda topish "
 "imkonini beradi kalit so'zlarni qidirish orqali."
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.appdata.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
 "Shuningdek, siz belgilarni tinish belgilari, rasmlar kabi toifalar bo'yicha "
 "ko'rishingiz mumkin.va boshqalar."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.appdata.xml.in.in:26 src/window.js:165
+msgid "The GNOME Project"
+msgstr "GNOME loyihasi"
 
 #: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
@@ -202,17 +219,17 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "Maksimal oxirgi belgilar"
 
-#: src/characterDialog.js:102 src/searchProvider.js:86
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Noma'lum belgi nomi"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:127
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s %s tarkibiga kiritilmagan"
 
-#: src/characterDialog.js:166
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Belgilar vaqtinchalik xotiraga nusxalandi"
 
@@ -220,16 +237,16 @@ msgstr "Belgilar vaqtinchalik xotiraga nusxalandi"
 msgid "Unassigned"
 msgstr "Tayinlanmagan"
 
-#: src/searchProvider.js:95
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:112
+#: src/searchProvider.js:119
 msgid "Character copied"
 msgstr "Belgidan nusxa olindi"
 
-#: src/searchProvider.js:113
+#: src/searchProvider.js:120
 msgid "Character was copied successfully"
 msgstr "Belgi muvaffaqiyatli nusxalandi"
 
@@ -238,15 +255,18 @@ msgstr "Belgi muvaffaqiyatli nusxalandi"
 msgid "%s Sidebar Row"
 msgstr "%s yon panel qatori"
 
-#: src/window.js:152
+#: src/window.js:142
 msgid "Search Result"
 msgstr "Qidiruv natijasi"
 
-#: src/window.js:175
-msgid "The GNOME Project"
-msgstr "GNOME loyihasi"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:185
+#: src/window.js:175
 msgid "translator-credits"
-msgstr "tarjimonlar uchun minnatdorchilik"
+msgstr "Baxrom Raxmatov <magdiyevbahrom@gmail.com>"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Klaviatura yorliqlari"
+
+#~ msgid "Loading…"
+#~ msgstr "Yuklanmoqda…"
