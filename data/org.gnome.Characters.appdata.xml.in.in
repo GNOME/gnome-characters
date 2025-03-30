@@ -35,12 +35,6 @@
   <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-characters</url>
   <url type="donation">https://www.gnome.org/donate</url>
   <update_contact>dueno_at_src.gnome.org</update_contact>
-  <kudos>
-    <kudo>HiDpiIcon</kudo>
-    <kudo>HighContrast</kudo>
-    <kudo>ModernToolkit</kudo>
-    <kudo>SearchProvider</kudo>
-  </kudos>
   <recommends>
     <control>keyboard</control>
     <control>pointing</control>
