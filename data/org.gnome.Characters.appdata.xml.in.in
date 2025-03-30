@@ -46,6 +46,10 @@
   <translation type="gettext">org.gnome.Characters</translation>
   <launchable type="desktop-id">org.gnome.Characters.desktop</launchable>
   <content_rating type="oars-1.1"/>
+  <branding>
+    <color type="primary" scheme_preference="light">#f9f06b</color>
+    <color type="primary" scheme_preference="dark">#26a269</color>
+  </branding>
   <releases>
     <release version="48.0" date="2025-03-14">
       <description>
