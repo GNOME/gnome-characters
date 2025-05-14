@@ -1,123 +1,212 @@
 # Japanese translations for org.gnome.Characters package.
-# Copyright (C) 2015, 2017, 2019-2020, 2022 THE org.gnome.Characters's COPYRIGHT HOLDER
+# Copyright (C) 2015, 2017, 2019-2020, 2022, 2025 THE org.gnome.Characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the org.gnome.Characters package.
 # Daiki Ueno <ueno@gnu.org>, 2015.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2015, 2017.
 # sicklylife <translation@sicklylife.jp>, 2019-2020, 2022.
+# Kusano Takayuki <https://bsky.app/profile/tkusano.jp>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: org.gnome.Characters 3.15.91.1\n"
+"Project-Id-Version: org.gnome.Characters main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2021-09-21 14:51+0000\n"
-"PO-Revision-Date: 2022-03-12 17:50+0900\n"
-"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
-"Language-Team: Japanese\n"
+"issues/\n"
+"POT-Creation-Date: 2025-05-13 06:29+0000\n"
+"PO-Revision-Date: 2025-05-14 17:46+0900\n"
+"Last-Translator: Kusano Takayuki <https://bsky.app/profile/tkusano.jp>\n"
+"Language-Team: Japanese https://l10n.gnome.org/teams/ja/\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/characterlist.ui:9
-msgid "No Results"
-msgstr "一致するものがありません"
-
-#: data/characterlist.ui:10
-msgid "Try a different search."
-msgstr "他のキーワードを試してください。"
-
-#: data/characterlist.ui:34
-msgid "Loading…"
-msgstr "読み込み中…"
-
-#: data/character.ui:68
-msgid "Copy Character"
-msgstr "文字をコピー"
-
-#: data/character_dialog.ui:70
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "文字をコピー(_C)"
 
-#: data/character.ui:86
-msgid "Character copied to clipboard"
-msgstr "文字をクリップボードにコピーしました"
+#: data/character_dialog.ui:88
+msgid "Unicode"
+msgstr "Unicode"
 
-#: data/mainview.ui:10
-msgid "No Recent Characters"
-msgstr "最近使用した文字はありません"
+#: data/character_dialog.ui:102
+msgid "_See Also"
+msgstr "関連項目(_S)"
 
-#: data/mainview.ui:11
-msgid "Characters will appear here if you use them."
-msgstr "文字を使用すると、ここに表示されます。"
+#: data/character_dialog.ui:131
+msgid "See Also"
+msgstr "関連項目"
 
-#: data/mainwindow.ui:7
-msgid "_Keyboard Shortcuts"
-msgstr "キーボードショートカット(_K)"
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "最近使用した文字"
 
-#: data/mainwindow.ui:11
-msgid "_About Characters"
-msgstr "“文字”について(_A)"
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "絵文字"
 
-#: data/mainwindow.ui:33 data/org.gnome.Characters.desktop.in:4 src/main.js:58
-#: src/service.js:51
-msgid "Characters"
-msgstr "文字"
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "顔文字と感情"
 
-#: data/menu.ui:17
-msgid "Filter by Font"
-msgstr "フォントで絞り込み"
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "人と体"
 
-#: data/shortcuts.ui:13
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "動物と自然"
+
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "食品と飲料"
+
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "旅行と場所"
+
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "活動"
+
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "物体"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "シンボル"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "旗"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "文字とシンボル"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "句読点記号"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "矢印記号"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "見出し記号"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "絵文字"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "通貨記号"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "数学記号"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "文字記号"
+
+#: data/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "全般"
 
-#: data/shortcuts.ui:18
+#: data/shortcuts.ui:15
 msgctxt "shortcut window"
-msgid "Open menu"
+msgid "Open Main Menu"
 msgstr "メニューを開く"
 
-#: data/shortcuts.ui:25
+#: data/shortcuts.ui:21
 msgctxt "shortcut window"
 msgid "Search"
-msgstr "検索する"
+msgstr "検索"
 
-#: data/shortcuts.ui:32
+#: data/shortcuts.ui:27
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "キーボードショートカットを表示する"
+msgid "Show Keyboard Shortcuts"
+msgstr "キーボードショートカットを表示"
 
-#: data/shortcuts.ui:39
+#: data/shortcuts.ui:33
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "終了する"
+msgstr "終了"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:198
-msgid "GNOME Characters"
-msgstr "GNOME Characters"
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "キーボードショートカット(_K)"
 
-#: data/org.gnome.Characters.appdata.xml.in:5
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "“文字”について(_A)"
+
+#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in.in:4
+#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:163
+msgid "Characters"
+msgstr "文字"
+
+# ツールチップ
+#: data/window.ui:32
+msgid "Search"
+msgstr "検索"
+
+# ツールチップ
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "メインメニュー"
+
+# 検索用エントリーの placeholder-text
+#: data/window.ui:49
+msgid "Search characters"
+msgstr "文字を検索"
+
+#: data/window.ui:89
+msgid "No Recent Characters"
+msgstr "最近使用した文字はありません"
+
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr "使用した文字はここに表示されます"
+
+#: data/window.ui:117
+msgid "No Results"
+msgstr "一致するものがありません"
+
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr "他のキーワードを試してください"
+
+#: data/org.gnome.Characters.appdata.xml.in.in:5
 msgid "Character map application"
 msgstr "文字マップアプリケーション"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.appdata.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"Characters は珍しい文字を探して挿入するためのシンプルなユーティリティです。"
-"キーワード検索により、素早く文字を発見できます。"
+"“文字”は珍しい文字を探して挿入するためのシンプルなユーティリティです。キー"
+"ワード検索により、素早く文字を発見できます。"
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.appdata.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr "また、句読点記号や絵文字のようなカテゴリー別に閲覧することもできます。"
 
-#: data/org.gnome.Characters.desktop.in:5
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.appdata.xml.in.in:26 src/window.js:165
+msgid "The GNOME Project"
+msgstr "The GNOME Project"
+
+#: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
 msgstr "珍しい文字を探して挿入するためのユーティリティ"
 
@@ -128,199 +217,115 @@ msgstr ""
 "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;文字;ユニ"
 "コード;句読点;数字;絵文字;顔文字;表情;感情;シンボル;"
 
-#: data/org.gnome.Characters.gschema.xml:5
-msgid "Font to display characters"
-msgstr "文字を表示するためのフォント"
-
-#: data/org.gnome.Characters.gschema.xml:6
-msgid "Use the font to render characters on the character list."
-msgstr "文字一覧に文字を描画するのに、そのフォントを使用します。"
-
-#: data/org.gnome.Characters.gschema.xml:15
+#: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "最近使用した文字の最大記憶数"
 
-#: src/categoryList.js:31
-msgid "Emojis"
-msgstr "絵文字"
-
-#: src/categoryList.js:37
-msgid "Letters & Symbols"
-msgstr "文字とシンボル"
-
-#: src/categoryList.js:46
-msgid "Punctuation"
-msgstr "句読点記号"
-
-#: src/categoryList.js:52
-msgid "Arrows"
-msgstr "矢印記号"
-
-#: src/categoryList.js:58
-msgid "Bullets"
-msgstr "見出し記号"
-
-#: src/categoryList.js:64
-msgid "Pictures"
-msgstr "絵文字"
-
-#: src/categoryList.js:70
-msgid "Currencies"
-msgstr "通貨記号"
-
-#: src/categoryList.js:76
-msgid "Math"
-msgstr "数学記号"
-
-#: src/categoryList.js:82
-msgid "Letters"
-msgstr "文字記号"
-
-#: src/categoryList.js:91
-msgid "Smileys & People"
-msgstr "顔文字と人"
-
-#: data/sidebar.ui:35
-msgid "Smileys & Emotion"
-msgstr "顔文字と感情"
-
-#: data/sidebar.ui:43
-msgid "People & Body"
-msgstr "人と体"
-
-#: src/categoryList.js:97
-msgid "Animals & Nature"
-msgstr "動物と自然"
-
-#: src/categoryList.js:103
-msgid "Food & Drink"
-msgstr "食品と飲料"
-
-#: src/categoryList.js:109
-msgid "Activities"
-msgstr "活動"
-
-#: src/categoryList.js:115
-msgid "Travel & Places"
-msgstr "旅行と場所"
-
-#: src/categoryList.js:121
-msgid "Objects"
-msgstr "物体"
-
-#: src/categoryList.js:127
-msgid "Symbols"
-msgstr "シンボル"
-
-#: src/categoryList.js:133
-msgid "Flags"
-msgstr "旗"
-
-#: src/categoryList.js:146
-#, javascript-format
-msgid "%s Category List Row"
-msgstr "%s カテゴリーの行"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:362 src/window.js:352
-msgid "Recently Used"
-msgstr "最近の使用"
-
-#: src/characterDialog.js:49
-msgid "See Also"
-msgstr "関連項目"
-
-#: data/character_dialog.ui:105
-msgid "_See Also"
-msgstr "関連項目(_S)"
-
-#: src/characterDialog.js:113 src/characterDialog.js:135
-#, javascript-format
-msgid "Unicode U+%04s"
-msgstr "Unicode U+%04s"
-
-#: data/character_dialog.ui:91
-msgid "Unicode"
-msgstr "Unicode"
+#: src/characterDialog.js:100 src/searchProvider.js:89
+msgid "Unknown character name"
+msgstr "文字の名前が不明"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:131
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "文字 %s はフォント %s に含まれていません"
 
-#: src/characterList.js:169
+#: src/characterDialog.js:156
+msgid "Character copied to clipboard"
+msgstr "クリップボードにコピーしました"
+
+#: src/charactersView.js:156
 msgid "Unassigned"
 msgstr "未割り当て"
 
-#: src/menu.js:42
-msgid "None"
-msgstr "なし"
-
-#: src/searchProvider.js:94
-msgid "Unknown character name"
-msgstr "文字の名前が不明"
-
-#: src/searchProvider.js:97
-#, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
-
-#: src/searchProvider.js:91
+#: src/searchProvider.js:98
 #, javascript-format
 msgid "U+%s"
 msgstr "U+%s"
 
-#: src/searchProvider.js:107
+#: src/searchProvider.js:119
 msgid "Character copied"
 msgstr "文字をコピーしました"
 
-#: src/searchProvider.js:108
+#: src/searchProvider.js:120
 msgid "Character was copied successfully"
 msgstr "文字を正常にコピーしました"
 
-# ツールチップの文字列
+# ツールチップの文字列。%s はサイドバーの行のタイトル
 #: src/sidebarRow.js:72
 #, javascript-format
 msgid "%s Sidebar Row"
-msgstr ""
+msgstr "%sカテゴリーの文字"
 
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:163 src/window.js:358
+#: src/window.js:142
 msgid "Search Result"
 msgstr "検索結果"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:197
+#: src/window.js:175
 msgid "translator-credits"
 msgstr ""
 "松澤 二郎 <jmatsuzawa@gnome.org>\n"
 "Daiki Ueno <ueno@gnu.org>\n"
-"sicklylife <translation@sicklylife.jp>"
+"sicklylife <translation@sicklylife.jp>\n"
+"Japanese Translation Team https://l10n.gnome.org/teams/ja/\n"
+"Kusano Takayuki https://bsky.app/profile/tkusano.jp"
 
-#: src/window.js:199
-msgid "Character Map"
-msgstr "文字マップ"
+#~ msgid "Loading…"
+#~ msgstr "読み込み中…"
 
-#: src/window.js:219
+#~ msgid "Copy Character"
+#~ msgstr "文字をコピー"
+
+#~ msgid "Filter by Font"
+#~ msgstr "フォントで絞り込み"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "キーボードショートカットを表示する"
+
+#~ msgid "GNOME Characters"
+#~ msgstr "GNOME Characters"
+
+#~ msgid "Font to display characters"
+#~ msgstr "文字を表示するためのフォント"
+
+#~ msgid "Use the font to render characters on the character list."
+#~ msgstr "文字一覧に文字を描画するのに、そのフォントを使用します。"
+
+#~ msgid "Smileys & People"
+#~ msgstr "顔文字と人"
+
 #, javascript-format
-msgid "%s (%s only)"
-msgstr "%s (%s のみ)"
+#~ msgid "%s Category List Row"
+#~ msgstr "%s カテゴリーの行"
 
-#: src/window.js:327
 #, javascript-format
-msgid "%s Character List"
-msgstr "%s の文字一覧"
+#~ msgid "Unicode U+%04s"
+#~ msgstr "Unicode U+%04s"
 
-#. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:335
+#~ msgid "None"
+#~ msgstr "なし"
+
 #, javascript-format
-msgid "Recently Used %s Character List"
-msgstr "最近使用した %s の文字一覧"
+#~ msgid "U+%s, %s: %s"
+#~ msgstr "U+%s, %s: %s"
 
-#: src/window.js:356
-msgid "Search Result Character List"
-msgstr "検索結果の文字一覧"
+#~ msgid "Character Map"
+#~ msgstr "文字マップ"
+
+#, javascript-format
+#~ msgid "%s (%s only)"
+#~ msgstr "%s (%s のみ)"
+
+#, javascript-format
+#~ msgid "%s Character List"
+#~ msgstr "%s の文字一覧"
+
+#, javascript-format
+#~ msgid "Recently Used %s Character List"
+#~ msgstr "最近使用した %s の文字一覧"
 
 #~ msgid "Search found no results"
 #~ msgstr "見つかりません"
