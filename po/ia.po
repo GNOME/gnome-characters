@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
-"POT-Creation-Date: 2025-01-12 17:47+0000\n"
-"PO-Revision-Date: 2025-02-13 19:21-0300\n"
+"POT-Creation-Date: 2025-05-10 15:07+0000\n"
+"PO-Revision-Date: 2025-05-20 20:04-0400\n"
 "Last-Translator: Emilio Sepúlveda <emism.translations@gmail.com>\n"
 "Language-Team: Interlingua <softinterlingua@gmail.com>\n"
 "Language: ia\n"
@@ -23,7 +23,8 @@ msgstr ""
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Gtranslator 48.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/character_dialog.ui:67
 msgid "_Copy Character"
@@ -135,7 +136,7 @@ msgstr "Cercar"
 #: data/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
-msgstr "Monstrar commandos curte de claviero"
+msgstr "Monstrar vias breve de claviero"
 
 #: data/shortcuts.ui:33
 msgctxt "shortcut window"
@@ -144,7 +145,7 @@ msgstr "Quitar"
 
 #: data/window.ui:6
 msgid "_Keyboard Shortcuts"
-msgstr "_Commandos curte de claviero"
+msgstr "Vias breve de _claviero"
 
 #: data/window.ui:10
 msgid "_About Characters"
@@ -165,7 +166,7 @@ msgstr "Menu principal"
 
 #: data/window.ui:49
 msgid "Search characters"
-msgstr "Cercar characteres"
+msgstr "Cerca characteres"
 
 #: data/window.ui:89
 msgid "No Recent Characters"
@@ -181,7 +182,7 @@ msgstr "Necun resultatos"
 
 #: data/window.ui:118
 msgid "Try a different search"
-msgstr "Trova un cerca differente"
+msgstr "Tenta un recerca differente"
 
 #: data/org.gnome.Characters.appdata.xml.in.in:5
 msgid "Character map application"
@@ -193,7 +194,7 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"Characteres es un application de utensile simple pro trovar e insertar "
+"Characteres es un application de utensile simple pro cercar e insertar "
 "characteres inusual. Iste application te permitte trovar rapidemente le "
 "character que tu cerca con parolas clave."
 
@@ -212,13 +213,12 @@ msgstr "Le projecto GNOME"
 
 #: data/org.gnome.Characters.desktop.in.in:5
 msgid "Utility application to find and insert unusual characters"
-msgstr "Application utensile pro trovar e insertar characteres inusual"
+msgstr "Application utensile pro cercar e inserer characteres inusual"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in.in:13
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr ""
-"characteres;unicode;punctuation;math;litteras;emoji;emoticones;symbolos;"
+msgstr "characteres;unicode;punctuation;math;litteras;emoji;emoticones;symbolos;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
@@ -226,7 +226,7 @@ msgstr "Maxime de characteres recente"
 
 #: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
-msgstr "Nomine de character non cognoscite"
+msgstr "Nomine de character incognite"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
 #: src/characterDialog.js:125
@@ -262,7 +262,7 @@ msgstr "Fila de barra lateral %s"
 
 #: src/window.js:142
 msgid "Search Result"
-msgstr "Resultato de cerca"
+msgstr "Resultato de recerca"
 
 #. TRANSLATORS: put your names here, one name per line.
 #: src/window.js:175
