@@ -1,0 +1,259 @@
+# Azerbaijani translation for gnome-characters.
+# Copyright (C) 2025 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# rehimov <jhonaluman@gmail.com>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/\n"
+"POT-Creation-Date: 2025-05-10 15:07+0000\n"
+"PO-Revision-Date: 2025-05-10 15:07+0000\n"
+"Last-Translator: Ramal Rəhimov <jhonaluman@gmail.com>\n"
+"Language-Team: Azerbaijani <az@li.org>\n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/character_dialog.ui:67
+msgid "_Copy Character"
+msgstr "_Simvolu Kopyala"
+
+#: data/character_dialog.ui:88
+msgid "Unicode"
+msgstr "Unikod"
+
+#: data/character_dialog.ui:102
+msgid "_See Also"
+msgstr "_Əlavə Bax"
+
+#: data/character_dialog.ui:131
+msgid "See Also"
+msgstr "Əlavə Bax"
+
+#: data/sidebar.ui:12
+msgid "Recently Used"
+msgstr "Son İstifadə Olunanlar"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Emojilər"
+
+#: data/sidebar.ui:35
+msgid "Smileys & Emotion"
+msgstr "Gülümsəyənlər və Emosiyalar"
+
+#: data/sidebar.ui:43
+msgid "People & Body"
+msgstr "İnsanlar və Bədən"
+
+#: data/sidebar.ui:51
+msgid "Animals & Nature"
+msgstr "Heyvanlar və Təbiət"
+
+#: data/sidebar.ui:59
+msgid "Food & Drink"
+msgstr "Qida və İçkilər"
+
+#: data/sidebar.ui:67
+msgid "Travel & Places"
+msgstr "Səyahət və Məkanlar"
+
+#: data/sidebar.ui:75
+msgid "Activities"
+msgstr "Fəaliyyətlər"
+
+#: data/sidebar.ui:83
+msgid "Objects"
+msgstr "Əşyalar"
+
+#: data/sidebar.ui:91
+msgid "Symbols"
+msgstr "Simvollar"
+
+#: data/sidebar.ui:99
+msgid "Flags"
+msgstr "Bayraqlar"
+
+#: data/sidebar.ui:108
+msgid "Letters & Symbols"
+msgstr "Hərflər və Simvollar"
+
+#: data/sidebar.ui:122
+msgid "Punctuation"
+msgstr "Durğu İşarələri"
+
+#: data/sidebar.ui:130
+msgid "Arrows"
+msgstr "Oxlar"
+
+#: data/sidebar.ui:138
+msgid "Bullets"
+msgstr "Nişanələr"
+
+#: data/sidebar.ui:146
+msgid "Pictures"
+msgstr "Şəkillər"
+
+#: data/sidebar.ui:154
+msgid "Currencies"
+msgstr "Valyutalar"
+
+#: data/sidebar.ui:162
+msgid "Math"
+msgstr "Riyaziyyat"
+
+#: data/sidebar.ui:170
+msgid "Letters"
+msgstr "Hərflər"
+
+#: data/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ümumi"
+
+#: data/shortcuts.ui:15
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Əsas Menyunu Aç"
+
+#: data/shortcuts.ui:21
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Axtarış"
+
+#: data/shortcuts.ui:27
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Klaviatura Qısayollarını Göstər"
+
+#: data/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çıx"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Klaviatura Qısayolları"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_“Simvollar” Haqqında"
+
+#: data/window.ui:24
+msgid "Characters"
+msgstr "Simvollar"
+
+#: data/window.ui:32
+msgid "Search"
+msgstr "Axtar"
+
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "Əsas Menyu"
+
+#: data/window.ui:49
+msgid "Search characters"
+msgstr "Simvolları axtar"
+
+#: data/window.ui:89
+msgid "No Recent Characters"
+msgstr "Son istifadə olunan simvol yoxdur"
+
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr "İstifadə etdiyiniz simvollar burada görünəcək"
+
+#: data/window.ui:117
+msgid "No Results"
+msgstr "Nəticə Tapılmadı"
+
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr "Fərqli axtarış cəhd edin"
+
+#: data/org.gnome.Characters.appdata.xml.in.in:5
+msgid "Character map application"
+msgstr "Simvol xəritəsi tətbiqi"
+
+#: data/org.gnome.Characters.appdata.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"“Simvollar” nadir simvolları tapmaq və yerləşdirmək üçün sadə bir yardımçı "
+"tətbiqdir. Açar sözlər ilə axtarış edərək istədiyiniz simvolu tez bir zamanda "
+"tapmağa imkan verir."
+
+#: data/org.gnome.Characters.appdata.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Simvolları həmçinin durğu işarələri, şəkillər və s. kimi kateqoriyalar üzrə "
+"gözdən keçirə bilərsiniz."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.appdata.xml.in.in:26 src/window.js:165
+msgid "The GNOME Project"
+msgstr "GNOME Layihəsi"
+
+#: data/org.gnome.Characters.desktop.in.in:5
+msgid "Utility application to find and insert unusual characters"
+msgstr "Nadir simvolları tapmaq və yerləşdirmək üçün yardımçı tətbiq"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:13
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Maksimum son istifadə olunan simvollar"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
+msgid "Unknown character name"
+msgstr "Naməlum simvol adı"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:125
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s, %s daxilində yoxdur"
+
+#: src/characterDialog.js:156
+msgid "Character copied to clipboard"
+msgstr "Simvol mübadilə yaddaşına kopyalandı"
+
+#: src/charactersView.js:156
+msgid "Unassigned"
+msgstr "Təyin edilməmiş"
+
+#: src/searchProvider.js:98
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:119
+msgid "Character copied"
+msgstr "Simvol kopyalandı"
+
+#: src/searchProvider.js:120
+msgid "Character was copied successfully"
+msgstr "Simvol uğurla kopyalandı"
+
+#: src/sidebarRow.js:72
+#, javascript-format
+msgid "%s Sidebar Row"
+msgstr "%s Yan Panel Sətri"
+
+#: src/window.js:142
+msgid "Search Result"
+msgstr "Axtarış Nəticəsi"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:175
+msgid "translator-credits"
+msgstr "Ramal Rəhimov"
