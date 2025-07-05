@@ -166,6 +166,7 @@ var MainWindow = GObject.registerClass({
             designers: [
                 'Allan Day <allanpday@gmail.com>',
                 'Jakub Steiner <jimmac@gmail.com>',
+                'Hylke Bons <hello@planetpeanut.studio>',
             ],
             developers: [
                 'Daiki Ueno <dueno@src.gnome.org>',
