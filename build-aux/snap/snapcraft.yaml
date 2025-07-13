@@ -36,7 +36,7 @@ parts:
     source: .
     plugin: meson
     meson-parameters: [--buildtype=release, --prefix=/snap/gnome-characters/current/usr]
-    parse-info: [usr/share/metainfo/org.gnome.Characters.appdata.xml]
+    parse-info: [usr/share/metainfo/org.gnome.Characters.metainfo.xml]
     organize:
       snap/gnome-characters/current/usr: usr
     override-pull: |

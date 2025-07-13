@@ -42,13 +42,13 @@ i18n.merge_file(
   install_dir: join_paths(characters_datadir, 'applications')
 )
 
-appdata_file = i18n.merge_file(
+metainfo_file = i18n.merge_file(
   input: configure_file (
-    input: 'org.gnome.Characters.appdata.xml.in.in',
+    input: 'org.gnome.Characters.metainfo.xml.in.in',
     output: '@BASENAME@',
     configuration: desktop_conf
   ),
-  output: application_id + '.appdata.xml',
+  output: application_id + '.metainfo.xml',
   po_dir: po_dir,
   install: true,
   install_dir: join_paths(characters_datadir, 'metainfo')
@@ -57,9 +57,9 @@ appdata_file = i18n.merge_file(
 appstreamcli = find_program('appstreamcli', required: false)
 if appstreamcli.found()
   test(
-    'validate-appdata', appstreamcli,
+    'validate-metainfo', appstreamcli,
     args: [
-      'validate', '--no-net', '--explain', appdata_file,
+      'validate', '--no-net', '--explain', metainfo_file,
     ]
   )
 endif
