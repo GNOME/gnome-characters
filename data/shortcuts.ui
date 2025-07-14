@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkShortcutsWindow" id="help_overlay">
-    <property name="modal">True</property>
+  <object class="AdwShortcutsDialog" id="shortcuts_dialog">
     <child>
-      <object class="GtkShortcutsSection">
-        <property name="section-name">shortcuts</property>
-        <property name="max-height">10</property>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">General</property>
         <child>
-          <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes" context="shortcut window">General</property>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="accelerator">F10</property>
-                <property name="title" translatable="yes" context="shortcut window">Open Main Menu</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="action-name">win.find</property>
-                <property name="title" translatable="yes" context="shortcut window">Search</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="action-name">win.show-help-overlay</property>
-                <property name="title" translatable="yes" context="shortcut window">Show Keyboard Shortcuts</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="action-name">app.quit</property>
-                <property name="title" translatable="yes" context="shortcut window">Quit</property>
-              </object>
-            </child>
+          <object class="AdwShortcutsItem">
+            <property name="accelerator">F10</property>
+            <property name="title" translatable="yes" context="shortcut window">Open Main Menu</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="action-name">win.find</property>
+            <property name="title" translatable="yes" context="shortcut window">Search</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="action-name">app.shortcuts</property>
+            <property name="title" translatable="yes" context="shortcut window">Show Keyboard Shortcuts</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="action-name">app.quit</property>
+            <property name="title" translatable="yes" context="shortcut window">Quit</property>
           </object>
         </child>
       </object>

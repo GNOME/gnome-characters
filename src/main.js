@@ -78,7 +78,6 @@ var MyApplication = GObject.registerClass({
         ]);
         this.set_accels_for_action('app.quit', ['<Primary>q']);
         this.set_accels_for_action('win.find', ['<Primary>f']);
-        this.set_accels_for_action('win.show-help-overlay', ['<Primary>question']);
 
         settings = Util.getSettings('org.gnome.Characters',
             '/org/gnome/Characters/');
