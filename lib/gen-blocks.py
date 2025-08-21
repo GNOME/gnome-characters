@@ -27,18 +27,19 @@ class Builder(object):
 
     def write(self, data):
         print('''\
+#include <glib.h>
+
 struct Block
 {
   gunichar start;
   gunichar end;
   const char *name;
 };''')
-        print('static const struct Block all_blocks[] =\n  {')
-        s = ''
-        offset = 0
+        print('static const struct Block all_blocks[] =')
+        print('{')
         for start, end, name in data:
-            print('    {{ 0x{0}, 0x{1}, "{2}" }},'.format(start, end, name))
-        print('  };')
+            print('  {{ 0x{0}, 0x{1}, "{2}" }},'.format(start, end, name))
+        print('};')
 
 if __name__ == '__main__':
     import argparse

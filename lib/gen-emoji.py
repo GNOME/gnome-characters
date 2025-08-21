@@ -106,27 +106,30 @@ class Builder(object):
     def write(self, data):
         data, groups, max_length = data
 
-        print('#define EMOJI_SEQUENCE_LENGTH {}'.format(max_length))
         print('''\
+#include <glib.h>
+#include <stddef.h>
+
+#define EMOJI_SEQUENCE_LENGTH {}
 struct EmojiCharacter
 {{
   const gunichar uc[{}];
   int length;
   const char *name;
-}};'''.format(max_length))
+}};'''.format(max_length, max_length))
 
         print('#define EMOJI_CHARACTER_COUNT {}'.format(
             len(data)))
         print('static const struct EmojiCharacter emoji_characters[{}] ='.format(
             len(data)))
-        print('  {')
+        print('{')
 
         for sequence, charname, _ in data:
-            print('    { { ', end='')
+            print('  { { ', end='')
             print(', '.join(['0x{0:X}'.format(char) for char in sequence]), end='')
             print(' }}, {0}, "{1}" }},'.format(len(sequence), charname))
 
-        print('  };')
+        print('};')
         print()
 
         for name, group in groups:
@@ -138,18 +141,16 @@ struct EmojiCharacter
 
             print('static const size_t emoji_{}_characters[{}] ='.format(
                 GROUPS[name], len(group)))
-            print('  {')
+            print('{')
 
-            s = '    '
-            for i in group:
-                s += '%d, ' % i
-                if len(s) > 61:
-                    print(s[:-1])
-                    print('    ', end='')
-                    s = ''
-            print(s[:-1])
+            for i in range(0, len(group), 10):
+                chunk = group[i:i+10]
+                s = '  ' + ', '.join('%d' % x for x in chunk)
+                if i + 10 < len(group):
+                    s += ','
+                print(s)
 
-            print('  };')
+            print('};')
             print()
 
 if __name__ == '__main__':

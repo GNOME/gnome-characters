@@ -78,21 +78,25 @@ def get_aliases(infile):
     return result
 
 def build_header(data):
-    print('#define NLANGUAGES {0}'.format(len(data)))
+    max_scripts = max([len(v[0]) for v in data.values()])+1
+    max_iso = max([len(v[1]) for v in data.values()])+1
     print('''\
+#include <glib.h>
+#include <glib/gi18n.h>
+
+#define NLANGUAGES {0}
 struct LanguageScripts
 {{
   const gchar *language;
-  const gchar *scripts[{0}];
-  const guint32 iso15924[{1}];
-}};'''.format(max([len(v[0]) for v in data.values()])+1, max([len(v[1]) for v in data.values()])+1))
-    print('''\
-struct LanguageScripts language_scripts[NLANGUAGES] =
-  {''')
+  const gchar *scripts[{1}];
+  const guint32 iso15924[{2}];
+}};'''.format(len(data), max_scripts, max_iso))
+    print('struct LanguageScripts language_scripts[NLANGUAGES] =')
+    print('{')
     for index, (lang, (scripts, iso15924)) in enumerate(sorted(data.items(), key=lambda x: x[0])):
         scripts_array = ', '.join(['N_("{0}")'.format(script) for script in scripts] + ['NULL'])
         iso15924_array = ', '.join(['{0}'.format(iso) for iso in iso15924] + ['0'])
-        print('    {{ "{0}", {{ {1} }}, {{ {2} }} }}'.format(lang, scripts_array, iso15924_array), end='')
+        print('  {{ "{0}", {{ {1} }}, {{ {2} }} }}'.format(lang, scripts_array, iso15924_array), end='')
         if index + 1 < len(data):
             print(',')
         else:

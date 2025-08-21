@@ -39,38 +39,57 @@ class Builder(object):
     def write(self, data):
         classes = []
         character_to_class = {}
-        print('static const uint32_t confusable_characters[] =\n  {')
-        print('    ', end='')
-        s = ''
+        print('''\
+#include <stdint.h>
+
+static const uint32_t confusable_characters[] =
+{''')
         offset = 0
+        all_chars = []
         for index, characters in enumerate(data):
-            length = 0
-            for c in sorted(characters):
-                s += '0x%X, ' % c
-                length += 1
-                if len(s) > 60:
-                    print(s)
-                    print('    ', end='')
-                    s = ''
+            sorted_chars = sorted(characters)
+            all_chars.extend(sorted_chars)
+            for c in sorted_chars:
                 character_to_class[c] = index
-            classes.append((offset, length))
-            offset += length
-        if len(s) > 0:
-            print(s)
-        print('  };')
+            classes.append((offset, len(sorted_chars)))
+            offset += len(sorted_chars)
+
+        formatted = ['0x%X' % c for c in all_chars]
+        output = ', '.join(formatted)
+
+        while output:
+            if len(output) <= 76:
+                print('  ' + output)
+                break
+            split_point = output.rfind(', ', 0, 77)
+            if split_point == -1:
+                split_point = output.find(', ', 77)
+            print('  ' + output[:split_point + 1])
+            output = output[split_point + 2:]
+        print('};')
         print()
-        print('struct ConfusableClass\n{\n  uint16_t offset;\n  uint16_t length;\n};')
-        print('static const struct ConfusableClass confusable_classes[] =\n  {')
+        print('struct ConfusableClass')
+        print('{')
+        print('  uint16_t offset;')
+        print('  uint16_t length;')
+        print('};')
+        print('static const struct ConfusableClass confusable_classes[] =')
+        print('{')
         for offset, length in classes:
-            print('    { %d, %d }, ' % (offset, length))
-        print('  };')
+            print('  { %d, %d },' % (offset, length))
+        print('};')
         print()
-        print('struct ConfusableCharacterClass\n{\n  uint32_t uc;\n  uint16_t index;\n};')
-        print('static const struct ConfusableCharacterClass confusable_character_classes[] =\n  {')
+        print('struct ConfusableCharacterClass')
+        print('{')
+        print('  uint32_t uc;')
+        print('  uint16_t index;')
+        print('};')
+        print('static const struct ConfusableCharacterClass confusable_character_classes[] =')
+        print('{')
         for character, index in sorted(character_to_class.items(),
                                        key=lambda x: x[0]):
-            print('    { 0x%X, %d }, ' % (character, index))
-        print('  };')
+            print('  { 0x%X, %d },' % (character, index))
+        print('};')
             
 
 if __name__ == '__main__':
