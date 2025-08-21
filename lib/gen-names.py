@@ -48,17 +48,18 @@ class Builder(object):
 
     def write(self, data):
         print('''\
+#include <glib.h>
+
 struct CharacterName
 {
   gunichar uc;
   const char *name;
 };''')
-        print('static const struct CharacterName character_names[] =\n  {')
-        s = ''
-        offset = 0
+        print('static const struct CharacterName character_names[] =')
+        print('{')
         for codepoint, name in data:
-            print('    {{ 0x{0}, "{1}" }},'.format(codepoint, name))
-        print('  };')
+            print('  {{ 0x{0}, "{1}" }},'.format(codepoint, name))
+        print('};')
 
 if __name__ == '__main__':
     import argparse
