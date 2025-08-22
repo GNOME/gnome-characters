@@ -10,13 +10,15 @@ wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/PropertyValueAliases.tx
 wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/UnicodeData.txt"
 wget -c "https://www.unicode.org/Public/cldr/$CLDR_VERSION/core.zip"
 wget -c "https://www.unicode.org/Public/emoji/$EMOJI_VERSION/emoji-test.txt"
+wget -c "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/en/annotations.json"
 wget -c "https://www.unicode.org/Public/security/$UCD_VERSION/confusables.txt"
 
 unzip -jo core.zip common/supplemental/supplementalData.xml
 
 ./gen-blocks.py Blocks.txt > blocks.h
 ./gen-confusables.py confusables.txt > confusables.h
-./gen-emoji.py emoji-test.txt > emoji.h
+./gen-emoji.py emoji-test.txt annotations.json > emoji.h
+./gen-keyword-trie.py emoji-test.txt annotations.json >search-trie.sh
 ./gen-hangul.py Jamo.txt > hangul.h
 ./gen-names.py UnicodeData.txt emoji-test.txt > names.h
 ./gen-scripts.py supplementalData.xml PropertyValueAliases.txt > scripts.h
@@ -28,4 +30,5 @@ rm UnicodeData.txt
 rm core.zip
 rm supplementalData.xml
 rm emoji-test.txt
+rm annotations.json
 rm confusables.txt

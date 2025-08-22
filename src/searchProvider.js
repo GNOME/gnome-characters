@@ -52,7 +52,7 @@ var SearchProvider = GObject.registerClass({
 
         let upper = keywords.map(x => x.toUpperCase());
         let criteria = Gc.SearchCriteria.new_keywords(upper);
-        let context = new Gc.SearchContext({ criteria, flags: Gc.SearchFlag.WORD });
+        let context = new Gc.SearchContext({ criteria, flags: Gc.SearchFlag.WORD | Gc.SearchFlag.KEYWORD });
 
         context.search(
             MAX_SEARCH_RESULTS,

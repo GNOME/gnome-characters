@@ -1,6 +1,6 @@
 gc_h = 'gc.h'
 
-sources = files('gc.c')
+sources = files('gc.c', 'top-collector.c')
 
 enum_types = 'gc-enumtypes'
 

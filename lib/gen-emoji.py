@@ -3,7 +3,8 @@
 # Input: https://unicode.org/Public/emoji/5.0/emoji-test.txt
 
 import io
-import re
+from collections import defaultdict
+from generator_utils import EmojiDataParser
 
 GROUPS = {
     'Smileys & Emotion': 'smileys',
@@ -39,67 +40,31 @@ class Builder(object):
         return group, indices
 
     def read(self, infile):
+        parser = EmojiDataParser(infile.name)
+        emojis = parser.by_codepoint()
+
         data = []
-        groups = []
-        group_name = None
-        group_start = 0
         max_length = 0
-        index = 0
-        for line in infile:
-            m = re.match(r'# group: (.*)', line)
-            if m:
-                if group_name:
-                    groups.append((group_name, group_start))
 
-                group_name = m.group(1)
-                group_start = index
-            if line.startswith('#'):
-                continue
-            line = line.strip()
-            if len(line) == 0:
-                continue
-
-            m = re.match(r'([0-9A-F ]+); fully-qualified\s+#.*E\d+.\d+ (.+)', line)
-            if not m:
-                continue
-
-            cp = m.group(1).strip()
-            sequence = [int(c, 16) for c in cp.split(' ')]
+        for index, emoji in enumerate(emojis):
+            sequence = emoji.codepoints.values
             max_length = max(max_length, len(sequence))
-
-            name = m.group(2).strip().upper()
+            name = emoji.name
 
             data.append((sequence, name, index))
-            index += 1
 
-        groups.append((group_name, group_start))
-
-        for i in range(len(groups) - 1):
-            groups[i] = (*groups[i], groups[i + 1][1])
-        groups[-1] = (*groups[-1], len(data))
-
-        data.sort()
-
-        indices = []
-        for sequence, name, index in data:
-            indices.append(index)
-
-        groups_data = []
-        for name, start, end in groups:
-            group_indices = [indices.index(i) for i in indices if start <= i < end]
-            group_indices = sorted(group_indices, key=indices.__getitem__)
-
-            groups_data.append((name, group_indices))
+        groups_data = defaultdict(list)
+        for group_name in GROUPS.keys():
+            for index in parser.get_group(group_name):
+              groups_data[group_name].append(index)
 
         # Make a synthetic group of non-composite emoji
         singular_indices = []
-        index = 0
-        for sequence, _, _ in data:
+        for index, (sequence, _, _) in enumerate(data):
             if len(sequence) == 1:
                 singular_indices.append(index)
-            index += 1
 
-        groups_data.append(('Singular', singular_indices))
+        groups_data['Singular'] = singular_indices
 
         return data, groups_data, max_length
 
@@ -132,7 +97,7 @@ struct EmojiCharacter
         print('};')
         print()
 
-        for name, group in groups:
+        for name, group in groups.items():
             if len(group) == 0:
                 continue
 

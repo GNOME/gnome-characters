@@ -2,3 +2,16 @@
 .flatpak-builder/
 _build/
 /build/
+/build-flatpak/
+
+# Python / uv
+.venv/
+uv.lock
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/

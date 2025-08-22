@@ -6,6 +6,8 @@
 #include "gc-enumtypes.h"
 #include <gio/gio.h>
 
+#define GC_CMP(a, b) (((a) > (b)) - ((a) < (b)))
+
 G_BEGIN_DECLS
 
 /**
@@ -51,7 +53,8 @@ typedef enum {
 
 typedef enum {
   GC_SEARCH_FLAG_NONE = 0,
-  GC_SEARCH_FLAG_WORD = 1 << 0
+  GC_SEARCH_FLAG_WORD = 1 << 0,
+  GC_SEARCH_FLAG_KEYWORD = 1 << 1
 } GcSearchFlag;
 
 #define GC_TYPE_SEARCH_CRITERIA (gc_search_criteria_get_type ())

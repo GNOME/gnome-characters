@@ -19,6 +19,22 @@ ninja -C build
 sudo ninja -C build install
 ```
 
+## Testing
+
+There are some JS tests which test Characters itself. Run these:
+
+```sh
+cd build
+G_MESSAGES_DEBUG=all G_DEBUG=fatal-criticals meson test --verbose
+```
+
+There are also tests for the Python scripts which generate header files:
+
+```sh
+uv sync --group dev  # Install dev dependencies
+uv run pytest  # Run the tests
+```
+
 ## License
 
 Files from [gtk-js-app](https://github.com/gcampax/gtk-js-app) are

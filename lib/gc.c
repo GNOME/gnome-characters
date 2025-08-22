@@ -12,9 +12,12 @@
 #include "blocks.h"
 #include "confusables.h"
 #include "emoji.h"
+#include "glib.h"
+#include "search-trie.h"
 #include "hangul.h"
 #include "names.h"
 #include "scripts.h"
+#include "top-collector.h"
 
 #define LATIN_BLOCK_SIZE 4
 static gsize latin_blocks_initialized;
@@ -83,6 +86,99 @@ static const gunichar bullet_characters[] =
 static size_t bullet_character_count = G_N_ELEMENTS (bullet_characters);
 
 #define UNINAME_MAX 256
+
+/**
+ * gc_utf8_normalize_and_collapse_whitespace:
+ * @str: a UTF-8 encoded nul-terminated string
+ * @len: length of @str, in bytes, or -1 if @str is nul-terminated
+ *
+ * Normalises a UTF-8 string using Unicode NFKC form and collapses runs of
+ * whitespace characters into single spaces.
+ *
+ * The function first validates the string using `g_utf8_validate`. Then it
+ * applies G_NORMALIZE_ALL (NFKC) normalisation to convert the string into
+ * canonical form, standardising compatibility characters (such as ligatures and
+ * superscripts) to their standard forms. It then collapses any sequence of
+ * Unicode whitespace characters into a single ASCII space character and trims
+ * leading and trailing whitespace.
+ *
+ * Unicode whitespace characters include not only ASCII spaces, tabs, and
+ * newlines, but also various Unicode separator characters such as non-breaking
+ * spaces, em spaces, and line/paragraph separators.
+ *
+ * The input string must be valid UTF-8. If the string is not valid UTF-8, the
+ * function returns %NULL.
+ *
+ * Returns: (transfer full): a newly allocated normalised string with
+ *   collapsed whitespace, or %NULL if @str is not valid UTF-8.
+ *   The returned string should be freed with g_free() when no longer needed.
+ **/
+gchar *
+gc_utf8_normalize_and_collapse_whitespace (const gchar *str,
+                                           gssize       len)
+{
+  g_return_val_if_fail (str != NULL, NULL);
+
+  g_autofree gchar *normalised = g_utf8_normalize (str, len, G_NORMALIZE_ALL);
+
+  /* Invalid UTF-8 input */
+  if (normalised == NULL)
+    {
+      return NULL;
+    }
+
+  /* Skip leading Unicode whitespace */
+  const gchar *p;
+  for (p = normalised; *p != '\0' && g_unichar_isspace (g_utf8_get_char (p)); p = g_utf8_next_char (p))
+    ;
+
+  /* Skip trailing Unicode whitespace */
+  const gchar *end = normalised + strlen (normalised);
+  while (end > p)
+    {
+      const gchar *prev = g_utf8_find_prev_char (normalised, end);
+      if (!g_unichar_isspace (g_utf8_get_char (prev)))
+        {
+          break;
+        }
+      end = prev;
+    }
+
+  /* `str` was all whitespace */
+  if (p >= end)
+    {
+      return g_strdup ("");
+    }
+
+
+  GString *result = g_string_new (NULL);
+
+  gboolean in_whitespace = FALSE;
+  /* Iterate through the normalised string, collapsing to ASCII space */
+  for (; p < end; p = g_utf8_next_char (p))
+    {
+      gunichar ch = g_utf8_get_char (p);
+
+      if (g_unichar_isspace (ch))
+        {
+          if (in_whitespace)
+            {
+              continue;
+            }
+
+          g_string_append_c (result, ' ');
+          in_whitespace = TRUE;
+
+          continue;
+        }
+
+      /* Non-whitespace character */
+      g_string_append_unichar (result, ch);
+      in_whitespace = FALSE;
+    }
+
+  return g_string_free (result, FALSE);
+}
 
 struct CharacterSequence
 {
@@ -171,9 +267,8 @@ get_character_name (const gunichar *uc,
     {
       if (g_once_init_enter (&local_blocks_initialized))
         {
-          static const gunichar cjk_block_starters[10] =
-          {
-            0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820, 0x2CEB0, 0x2EBF0, 0x30000, 0x31350
+          static const gunichar cjk_block_starters[10] = {
+            0x4E00,  0x3400,  0x20000, 0x2A700, 0x2B740, 0x2B820, 0x2CEB0, 0x2EBF0, 0x30000, 0x31350
           };
 
           static const gunichar tangut_block_starters[2] =
@@ -364,6 +459,33 @@ gc_character_iter_next (GcCharacterIter *iter)
       return TRUE;
     }
 
+  /* First go through emoji */
+  while (iter->emoji_index < iter->emoji_count)
+    {
+      const struct EmojiCharacter *emoji;
+
+      if (iter->emoji_indices)
+        {
+          size_t index = iter->emoji_indices[iter->emoji_index++];
+          emoji = &emoji_characters[index];
+        }
+      else
+        {
+          emoji = &emoji_characters[iter->emoji_index++];
+        }
+
+      if (FALSE && iter->only_composite && emoji->length == 1)
+        continue;
+
+      if (iter->filter (iter, emoji->uc, emoji->length))
+        {
+          memcpy (iter->uc, emoji->uc, emoji->length * sizeof (gunichar));
+          iter->uc_length = emoji->length;
+
+          return TRUE;
+        }
+    }
+
   /* Then go through the Unicode blocks.  */
   if (iter->block_index < iter->block_count)
     {
@@ -389,8 +511,7 @@ gc_character_iter_next (GcCharacterIter *iter)
             uc++;
 
           while (uc <= iter->blocks[iter->block_index].end
-                 && (!iter->filter (iter, &uc, 1) ||
-                     is_character_emoji (uc)))
+                 && (!iter->filter (iter, &uc, 1) || is_character_emoji (uc)))
             uc++;
 
           if (uc <= iter->blocks[iter->block_index].end)
@@ -399,33 +520,6 @@ gc_character_iter_next (GcCharacterIter *iter)
               iter->uc_length = 1;
               return TRUE;
             }
-        }
-    }
-
-  /* Then go through emoji */
-  while (iter->emoji_index < iter->emoji_count)
-    {
-      const struct EmojiCharacter *emoji;
-
-      if (iter->emoji_indices)
-        {
-          size_t index = iter->emoji_indices[iter->emoji_index++];
-          emoji = &emoji_characters[index];
-        }
-      else
-        {
-          emoji = &emoji_characters[iter->emoji_index++];
-        }
-
-      if (FALSE && iter->only_composite && emoji->length == 1)
-        continue;
-
-      if (iter->filter (iter, emoji->uc, emoji->length))
-        {
-          memcpy (iter->uc, emoji->uc, emoji->length * sizeof(gunichar));
-          iter->uc_length = emoji->length;
-
-          return TRUE;
         }
     }
 
@@ -618,8 +712,7 @@ gc_character_iter_init_for_category (GcCharacterIter *iter,
 
     case GC_CATEGORY_LETTER_BULLET:
       gc_character_iter_init (iter);
-      iter->characters = g_new0 (struct CharacterSequence,
-                                 bullet_character_count);
+      iter->characters = g_new0 (struct CharacterSequence, bullet_character_count);
       iter->character_count = bullet_character_count;
       iter->filter = filter_all;
 
@@ -813,6 +906,335 @@ parse_hex (const char *str,
            ((Char) < 0x200000 ? 4 :          \
             ((Char) < 0x4000000 ? 5 : 6)))))
 
+/* Structure for character search results with match flags */
+typedef struct
+{
+  gsize item_index;               /* Index into emoji array or other character data */
+  const MatchEntry *match_entry;  /* Pointer to match entry containing flags */
+  const gchar *search_pos;        /* Search position for scoring */
+  gboolean is_emoji;              /* Whether this result is an emoji */
+} CharacterSearchResult;
+
+static gboolean
+check_item_is_emoji (gsize                         item_index,
+                     const struct EmojiCharacter **out_emoji)
+{
+  if (item_index < EMOJI_CHARACTER_COUNT)
+    {
+      if (out_emoji)
+        *out_emoji = &emoji_characters[item_index];
+      return TRUE;
+    }
+
+  /* For indices beyond the emoji array, it's a non-emoji CLDR character */
+  if (out_emoji)
+    *out_emoji = NULL;
+  return FALSE;
+}
+
+
+/**
+ * keyword_child_compare:
+ * @key: pointer to search string (remaining portion to match)
+ * @elem: pointer to a #TrieChild structure
+ *
+ * Comparator function for bsearch() on TrieChild edges in a radix trie.
+ *
+ * Compares the search string with the child's label to determine if the label
+ * is a prefix of the search string. This enables binary search through a node's
+ * children to find the matching edge.
+ *
+ * Returns: 0 if the child's label is a prefix of the search string,
+ *          negative if search string < label lexicographically,
+ *          positive if search string > label lexicographically
+ */
+static gint
+keyword_child_compare (gconstpointer key,
+                       gconstpointer elem)
+{
+  const gchar *search_str = (const gchar *)key;
+  const TrieChild *child = elem;
+  const char *label = &trie_labels[child->label_offset];
+
+  return strncmp (search_str, label, child->label_length);
+}
+
+/**
+ * search_result_hash:
+ * @key: CharacterSearchResult pointer
+ *
+ * Hash function for CharacterSearchResult based only on item_index.
+ * This ensures duplicate characters are detected regardless of match quality.
+ *
+ * Returns: hash value for the character
+ */
+static guint
+search_result_hash (gconstpointer key)
+{
+  const CharacterSearchResult *result = key;
+  return g_direct_hash (GSIZE_TO_POINTER (result->item_index));
+}
+
+/**
+ * search_result_equal:
+ * @a: First CharacterSearchResult pointer
+ * @b: Second CharacterSearchResult pointer
+ *
+ * Equality function for CharacterSearchResult based only on item_index.
+ * This ensures duplicate characters are detected regardless of match quality.
+ *
+ * Returns: %TRUE if the characters are the same
+ */
+static gboolean
+search_result_equal (gconstpointer a,
+                     gconstpointer b)
+{
+  const CharacterSearchResult *result_a = a;
+  const CharacterSearchResult *result_b = b;
+  return result_a->item_index == result_b->item_index;
+}
+
+/**
+ * calculate_item_score:
+ * @entry: Match entry containing flags for the item
+ * @pos: Current search position pointer (determines if search is complete)
+ * @is_emoji: Whether this item is an emoji character
+ * @item_idx: Item index (unused, for future extensibility)
+ *
+ * Calculates a numeric score for ranking search results based on match quality.
+ * Higher scores indicate better matches and appear earlier in results.
+ *
+ * Scoring factors:
+ * - Complete matches: Full name/keyword/token matches receive higher base
+ *   scores when the entire search term has been consumed
+ * - Partial matches: Prefix matches receive a lower base scor
+ * - Match source: Name matches are preferred over keyword matches
+ * - Content priority: Emoji are prioritised in results with a significant bonus
+ *
+ * Returns: Calculated score for ranking the search result
+ */
+static guint32
+calculate_item_score (const MatchEntry *entry,
+                      const gchar      *pos,
+                      gboolean          is_emoji,
+                      gsize             item_idx)
+{
+  guint32 score = 0;
+
+  /* Base score from match type - only award FULL scores if search is complete */
+  if (MATCH_IS_FULL_NAME (entry->flags, pos))
+    score += 3000;
+  else if (MATCH_IS_FULL_KEYWORD (entry->flags, pos))
+    score += 2500;
+  else if (MATCH_IS_FULL_TOKEN (entry->flags, pos))
+    score += 2000;
+  else
+    score += 1000;
+
+  /* Matches on the emoji name (prefix) are better than keyword matches */
+  if (MATCH_IS_FROM_NAME (entry->flags))
+    score += 500;
+  else if (MATCH_IS_FROM_KEYWORD (entry->flags))
+    score += 300;
+
+  /* Emoji are prioritised in results */
+  if (is_emoji)
+    score += 5000;
+
+  return score;
+}
+
+/**
+ * compare_search_results:
+ * @a: First CharacterSearchResult pointer
+ * @b: Second CharacterSearchResult pointer
+ * @user_data: Unused (for GCompareDataFunc compatibility)
+ *
+ * Comparison function for TopCollector that ranks search results by score.
+ * Higher scores (better matches) sort first.
+ *
+ * Returns: negative if a scores higher, positive if b scores higher
+ */
+static gint
+compare_search_results (gconstpointer a,
+                        gconstpointer b,
+                        gpointer      user_data)
+{
+  const CharacterSearchResult *result_a = a;
+  const CharacterSearchResult *result_b = b;
+
+  /* Calculate scores for both results */
+  guint32 score_a = calculate_item_score (result_a->match_entry,
+                                          result_a->search_pos,
+                                          result_a->is_emoji,
+                                          result_a->item_index);
+  guint32 score_b = calculate_item_score (result_b->match_entry,
+                                          result_b->search_pos,
+                                          result_b->is_emoji,
+                                          result_b->item_index);
+
+  /* Higher scores are better, so invert the comparison */
+  gint score_cmp = -GC_CMP (score_a, score_b);
+  if (score_cmp != 0)
+    return score_cmp;
+
+  /* If scores are equal, sort by item index for stability */
+  return GC_CMP (result_a->item_index, result_b->item_index);
+}
+
+/**
+ * collect_items_from_node:
+ * @node_id: Trie node ID to collect items from
+ * @collector: TopCollector to add results to
+ * @pos: Search position for determining match completeness
+ *
+ * Collects all character/emoji items from a trie node and adds them to the
+ * TopCollector. The collector handles deduplication based on item_index and
+ * maintains only the top-scoring results.
+ */
+static void
+collect_items_from_node (gsize         node_id,
+                         TopCollector *collector,
+                         const gchar  *pos) {
+  const TrieNode *node = &trie_nodes[node_id];
+
+  for (guint16 i = 0; i < node->entries_count; i++)
+    {
+      guint32 entry_offset = node->entries_offset + i;
+      const MatchEntry *entry = &match_entries[entry_offset];
+      gsize item_idx = entry->item_index;
+
+      /* TopCollector handles deduplication, so no need to check duplicates here */
+
+      const struct EmojiCharacter *emoji = NULL;
+      gboolean is_emoji = check_item_is_emoji (item_idx, &emoji);
+
+      CharacterSearchResult *result = g_new (CharacterSearchResult, 1);
+      result->item_index = item_idx;
+      result->match_entry = entry;
+      result->search_pos = pos;
+      result->is_emoji = is_emoji;
+
+      /* Add to collector - it handles deduplication and maintains top results */
+      top_collector_add (collector, result, result);
+    }
+}
+
+/**
+ * collect_continuation_items:
+ * @node_id: Starting trie node ID for continuation search
+ * @collector: TopCollector to add results to
+ * @remaining_pos: Search position indicating incomplete search for scoring
+ *
+ * Recursively collects items from a trie subtree, representing
+ * characters/emojis that would match if the user continued typing. For example,
+ * when searching "joy", this collects "joystick" from the continuation
+ * branches.
+ *
+ * Items from continuation nodes receive lower scores since they represent partial
+ * matches that require additional input to complete.
+ */
+static void
+collect_continuation_items (gsize         node_id,
+                            TopCollector *collector,
+                            const gchar  *remaining_pos) {
+
+  const TrieNode *node = &trie_nodes[node_id];
+
+  /* Collect items from this node using the remaining position */
+  collect_items_from_node (node_id, collector, remaining_pos);
+
+  /* Recursively collect from children */
+  for (guint16 i = 0; i < node->children_count; i++)
+    {
+      guint32 child_offset = node->children_offset + i;
+      const TrieChild *child = &trie_children[child_offset];
+
+      const gchar *child_remaining = remaining_pos + child->label_length;
+      collect_continuation_items (child->node_id, collector, child_remaining);
+    }
+}
+
+
+/**
+ * search_characters_by_keyword:
+ * @search_term: Search string to match
+ * @collector: TopCollector to add results to
+ *
+ * Searches for characters/emojis matching the search term using the radix trie.
+ * Adds CharacterSearchResult entries to the collector, which handles
+ * deduplication and maintains only the top-scoring results.
+ *
+ * This function handles both exact matches and continuation matches for
+ * typeahead functionality.
+ */
+static void
+search_characters_by_keyword (const gchar  *search_term,
+                              TopCollector *collector)
+{
+  g_debug ("Searching for term: '%s'", search_term);
+
+  if (!search_term || !*search_term)
+    return;
+
+  /* normalise the search term */
+  g_autofree gchar *casefolded_term = g_utf8_casefold (search_term, -1);
+  g_autofree gchar *normalized_term = gc_utf8_normalize_and_collapse_whitespace (casefolded_term, -1);
+
+  if (!normalized_term)
+    {
+      g_warning ("search term is not valid UTF-8: '%s'", search_term);
+      return;
+    }
+
+  /* Start at the root node (index 0) */
+  gsize current_node = 0;
+  const gchar *p = normalized_term;
+
+  /* Traverse the radix trie following the search term */
+  while (*p != '\0')
+    {
+      const TrieNode *node = &trie_nodes[current_node];
+      if (node->children_count == 0)
+        return;
+
+      /* Binary search through children to find matching edge */
+      const TrieChild *children_array = &trie_children[node->children_offset];
+      const TrieChild *child = bsearch (p,
+                                        children_array,
+                                        node->children_count,
+                                        sizeof(TrieChild),
+                                        keyword_child_compare);
+
+      if (!child)
+        return;
+
+      /* got a match */
+      p += child->label_length;
+      current_node = child->node_id;
+    }
+
+  const gchar *search_pos = p; /* p points to end of consumed search term */
+
+
+  /* Collect items from the final node (exact matches) */
+  collect_items_from_node (current_node, collector, search_pos);
+
+  /* Collect continuation items if search is complete */
+  if (MATCH_IS_COMPLETE (search_pos))
+    {
+      const TrieNode *node = &trie_nodes[current_node];
+      for (guint16 i = 0; i < node->children_count; i++)
+        {
+          guint32 child_offset = node->children_offset + i;
+          const TrieChild *child = &trie_children[child_offset];
+          /* For continuations, there are still characters to consume (the child's label) */
+          const gchar *continuation_pos = "remaining";
+          collect_continuation_items (child->node_id, collector, continuation_pos);
+        }
+    }
+}
+
 static gboolean
 filter_keywords (GcCharacterIter *iter,
                  const gunichar  *uc,
@@ -855,8 +1277,8 @@ try_hex_match:
       /* Match against the hexadecimal code point.  */
       if (length == 1 &&
           keyword_length <= 6 &&
-          parse_hex (keyword, &hex_value) &&
-          hex_value == uc[0])
+          parse_hex (keyword, &hex_value)
+          && hex_value == uc[0])
         return TRUE;
     }
 
@@ -1330,7 +1752,7 @@ populate_related_characters (GcCharacterIter *iter)
           }
 
       iter->character_count = result->len;
-      iter->characters = (struct CharacterSequence *) g_array_free (result, FALSE);
+      iter->characters = (struct CharacterSequence *)g_array_free (result, FALSE);
 
       return;
     }
@@ -1411,7 +1833,7 @@ populate_related_characters (GcCharacterIter *iter)
                                 hiragana_blocks, hiragana_block_count);
               else if (script == G_UNICODE_SCRIPT_KATAKANA)
                 add_composited (result, decomposition_base,
-                                katakana_blocks, katakana_block_count);
+                                katakana_blocks,  katakana_block_count);
             }
         }
     }
@@ -1462,9 +1884,8 @@ gc_character_iter_init_for_related (GcCharacterIter *iter,
 
   if (g_once_init_enter (&latin_blocks_initialized))
     {
-      latin_block_count =
-        init_blocks (latin_blocks, latin_block_starters,
-                     LATIN_BLOCK_SIZE);
+      latin_block_count = init_blocks (latin_blocks, latin_block_starters,
+                                       LATIN_BLOCK_SIZE);
       g_once_init_leave (&latin_blocks_initialized, 1);
     }
 
@@ -1478,9 +1899,8 @@ gc_character_iter_init_for_related (GcCharacterIter *iter,
 
   if (g_once_init_enter (&katakana_blocks_initialized))
     {
-      katakana_block_count =
-        init_blocks (katakana_blocks, katakana_block_starters,
-                     KATAKANA_BLOCK_SIZE);
+      katakana_block_count = init_blocks (katakana_blocks, katakana_block_starters,
+                                          KATAKANA_BLOCK_SIZE);
       g_once_init_leave (&katakana_blocks_initialized, 1);
     }
 
@@ -1504,7 +1924,9 @@ enum {
   SEARCH_CONTEXT_LAST_PROP
 };
 
-static GParamSpec *search_context_props[SEARCH_CONTEXT_LAST_PROP] = { NULL, };
+static GParamSpec *search_context_props[SEARCH_CONTEXT_LAST_PROP] = {
+  NULL,
+};
 
 G_DEFINE_TYPE (GcSearchContext, gc_search_context, G_TYPE_OBJECT);
 
@@ -1579,63 +2001,136 @@ gc_search_context_new (GcSearchCriteria *criteria,
                        NULL);
 }
 
+
+static GHashTable *
+add_keyword_search_results (GPtrArray         *result,
+                            struct SearchData *data,
+                            const gchar       *keyword)
+{
+  /* Create TopCollector to manage results */
+  g_autoptr(TopCollector) collector = top_collector_new (data->max_matches,
+                                                         search_result_hash,
+                                                         search_result_equal,
+                                                         compare_search_results,
+                                                         g_free);
+
+  /* Perform the search */
+  search_characters_by_keyword (keyword, collector);
+
+  /* Get final results from collector */
+  g_autoptr(GPtrArray) keyword_results = top_collector_steal (collector);
+  GHashTable *seen_chars = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+
+  /* Convert keyword search results to UTF-8 strings */
+  for (guint i = 0; i < keyword_results->len; i++)
+    {
+      CharacterSearchResult *result_item = g_ptr_array_index (keyword_results, i);
+      g_autofree char *utf8 = NULL;
+      g_autoptr(GError) error = NULL;
+
+      if (result_item->is_emoji && result_item->item_index < EMOJI_CHARACTER_COUNT)
+        {
+          /* It's an emoji - get it from the emoji array */
+          const struct EmojiCharacter *emoji = &emoji_characters[result_item->item_index];
+          utf8 = g_ucs4_to_utf8 (emoji->uc, emoji->length, NULL, NULL, &error);
+        }
+      else
+        {
+          /* It's a non-emoji CLDR character
+           * For now, we skip non-emoji items since we don't have a way to get their UTF-8
+           * TODO: The trie generator should include a way to get the UTF-8 for all items
+           */
+          continue;
+        }
+
+      if (error)
+        {
+          g_critical ("Couldn't convert character to UTF-8: %s", error->message);
+          continue;
+        }
+
+      /* Track this character to avoid duplicates */
+      g_hash_table_insert (seen_chars, g_strdup (utf8), NULL);
+      g_ptr_array_add (result, g_steal_pointer (&utf8));
+    }
+
+  return g_steal_pointer (&seen_chars);
+}
+
 static void
 gc_search_context_search_thread (GTask        *task,
                                  gpointer      source_object,
                                  gpointer      task_data,
                                  GCancellable *cancellable)
 {
-  GPtrArray *result;
   struct SearchData *data = task_data;
+  GcSearchContext *context = data->context;
+  g_autoptr(GPtrArray) result = g_ptr_array_new_with_free_func (g_free);
+  g_autoptr(GHashTable) seen_chars = NULL;
   guint iterations = 0;
 
-  result = g_ptr_array_new_with_free_func (g_free);
-  while (gc_character_iter_next (&data->context->iter))
+  /* First, perform fast keyword search if applicable */
+  if ((context->flags & GC_SEARCH_FLAG_KEYWORD) &&
+      context->criteria->type == GC_SEARCH_CRITERIA_KEYWORDS &&
+      context->criteria->u.keywords[0] != NULL &&
+      context->criteria->u.keywords[1] == NULL)
+    {
+      const gchar *keyword = context->criteria->u.keywords[0];
+      seen_chars = add_keyword_search_results (result, data, keyword);
+
+      /* If we have enough results, return early */
+      if (data->max_matches > 0 && result->len >= data->max_matches)
+        {
+          g_mutex_lock (&context->lock);
+          context->state = GC_SEARCH_STATE_FINISHED;
+          g_mutex_unlock (&context->lock);
+          g_task_return_pointer (task, g_steal_pointer (&result), (GDestroyNotify) g_ptr_array_unref);
+          return;
+        }
+    }
+
+  /* Continue with iterator-based search for additional results */
+  while ((data->max_matches == 0 || result->len < data->max_matches) &&
+         gc_character_iter_next (&context->iter))
     {
       gunichar *uc;
       gssize len;
-      char *utf8;
-      GError *error = NULL;
+      g_autoptr(GError) error = NULL;
 
       if (iterations % 2048 == 0 &&
           g_task_return_error_if_cancelled (task))
         {
-          g_mutex_lock (&data->context->lock);
-          data->context->state = GC_SEARCH_STATE_NOT_STARTED;
-          g_mutex_unlock (&data->context->lock);
+          g_mutex_lock (&context->lock);
+          context->state = GC_SEARCH_STATE_NOT_STARTED;
+          g_mutex_unlock (&context->lock);
           return;
         }
 
-      if (result->len == data->max_matches)
-        {
-          g_mutex_lock (&data->context->lock);
-          data->context->state = GC_SEARCH_STATE_STEP_FINISHED;
-          g_mutex_unlock (&data->context->lock);
-
-          g_task_return_pointer (task, result, (GDestroyNotify) g_array_unref);
-          return;
-        }
-
-      uc = gc_character_iter_get (&data->context->iter, &len);
-      utf8 = g_ucs4_to_utf8 (uc, len, NULL, NULL, &error);
+      uc = gc_character_iter_get (&context->iter, &len);
+      g_autofree char *utf8 = g_ucs4_to_utf8 (uc, len, NULL, NULL, &error);
 
       if (error)
         {
           g_critical ("Couldn't convert string to UTF-8: %s", error->message);
-          g_clear_error (&error);
           continue;
         }
 
-      g_ptr_array_add (result, utf8);
+      /* Skip if we already have this character from keyword search */
+      if (seen_chars && g_hash_table_contains (seen_chars, utf8))
+        {
+          continue;
+        }
 
+      g_debug ("Found character: %s", utf8);
+      g_ptr_array_add (result, g_steal_pointer (&utf8));
       iterations++;
     }
 
-  g_mutex_lock (&data->context->lock);
-  data->context->state = GC_SEARCH_STATE_FINISHED;
-  g_mutex_unlock (&data->context->lock);
+  g_mutex_lock (&context->lock);
+  context->state = GC_SEARCH_STATE_FINISHED;
+  g_mutex_unlock (&context->lock);
 
-  g_task_return_pointer (task, result, (GDestroyNotify) g_ptr_array_unref);
+  g_task_return_pointer (task, g_steal_pointer (&result), (GDestroyNotify) g_ptr_array_unref);
 }
 
 void
@@ -1661,7 +2156,7 @@ gc_search_context_search  (GcSearchContext    *context,
           break;
         case GC_SEARCH_CRITERIA_KEYWORDS:
           gc_character_iter_init_for_keywords (&context->iter,
-                                               (const gchar * const *) context->criteria->u.keywords,
+                                               (const gchar *const *)context->criteria->u.keywords,
                                                context->criteria->u.keywords_lengths);
           break;
         case GC_SEARCH_CRITERIA_SCRIPTS:

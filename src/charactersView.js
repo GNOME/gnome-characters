@@ -437,7 +437,7 @@ var CharactersView = GObject.registerClass({
         const criteria = Gc.SearchCriteria.new_keywords(keywords);
         this._searchContext = new Gc.SearchContext({
             criteria,
-            flags: Gc.SearchFlag.WORD,
+            flags: Gc.SearchFlag.WORD | Gc.SearchFlag.KEYWORD,
         });
         await this._searchWithContext(this._searchContext);
         return this._characters.length;
