@@ -1,3 +1,20 @@
+49.rc
+=====
+* ci: Build flatpak for aarch64 (Alice Mikhaylenko)
+* appdata: Set component to "desktop-application" (AsciiWolf)
+* appdata: Add branding (Maximiliano Sandoval)
+* appdata: Remove kudos (Maximiliano Sandoval)
+* Update to CLDR 47 (Alice Mikhaylenko)
+* Translation updates:
+  - Azerbaijani (Ramal Rəhimov)
+  - Chinese (Taiwan) (Yi-Jyun Pan)
+  - Interlingua (International Auxiliary Language Association) (Emilio
+    Sepúlveda)
+  - Japanese (Takayuki KUSANO)
+  - Nepali (Pawan Chitrakar)
+  - Romanian (Antonio Marin)
+  - Uzbek (Baxrom Raxmatov)
+
 48.0
 ====
 * Update to CLDR 46.1 (Alice Mikhaylenko)
