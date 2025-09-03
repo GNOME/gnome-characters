@@ -2,24 +2,24 @@
 
 # Input: http://www.unicode.org/Public/security/9.0.0/confusables.txt
 
-import io
 import re
 
-class Builder(object):
+
+class Builder:
     def __init__(self):
         pass
 
     def read(self, infile):
         classes = []
         for line in infile:
-            if line.startswith('#'):
+            if line.startswith("#"):
                 continue
             line = line.strip()
             if len(line) == 0:
                 continue
-            (source, target, _type) = line.split(';', 2)
+            (source, target, _type) = line.split(";", 2)
             source = int(source.strip(), 16)
-            target = [int(x, 16) for x in re.split(r'\s+', target.strip())]
+            target = [int(x, 16) for x in re.split(r"\s+", target.strip())]
             if len(target) > 1:
                 continue
             source_classes = [c for c in classes if source in c]
@@ -39,11 +39,11 @@ class Builder(object):
     def write(self, data):
         classes = []
         character_to_class = {}
-        print('''\
+        print("""\
 #include <stdint.h>
 
 static const uint32_t confusable_characters[] =
-{''')
+{""")
         offset = 0
         all_chars = []
         for index, characters in enumerate(data):
@@ -54,53 +54,55 @@ static const uint32_t confusable_characters[] =
             classes.append((offset, len(sorted_chars)))
             offset += len(sorted_chars)
 
-        formatted = ['0x%X' % c for c in all_chars]
-        output = ', '.join(formatted)
+        formatted = [f"0x{c:X}" for c in all_chars]
+        output = ", ".join(formatted)
 
         while output:
             if len(output) <= 76:
-                print('  ' + output)
+                print("  " + output)
                 break
-            split_point = output.rfind(', ', 0, 77)
+            split_point = output.rfind(", ", 0, 77)
             if split_point == -1:
-                split_point = output.find(', ', 77)
-            print('  ' + output[:split_point + 1])
-            output = output[split_point + 2:]
-        print('};')
+                split_point = output.find(", ", 77)
+            print("  " + output[: split_point + 1])
+            output = output[split_point + 2 :]
+        print("};")
         print()
-        print('struct ConfusableClass')
-        print('{')
-        print('  uint16_t offset;')
-        print('  uint16_t length;')
-        print('};')
-        print('static const struct ConfusableClass confusable_classes[] =')
-        print('{')
+        print("struct ConfusableClass")
+        print("{")
+        print("  uint16_t offset;")
+        print("  uint16_t length;")
+        print("};")
+        print("static const struct ConfusableClass confusable_classes[] =")
+        print("{")
         for offset, length in classes:
-            print('  { %d, %d },' % (offset, length))
-        print('};')
+            print(f"  {{ {offset}, {length} }},")
+        print("};")
         print()
-        print('struct ConfusableCharacterClass')
-        print('{')
-        print('  uint32_t uc;')
-        print('  uint16_t index;')
-        print('};')
-        print('static const struct ConfusableCharacterClass confusable_character_classes[] =')
-        print('{')
-        for character, index in sorted(character_to_class.items(),
-                                       key=lambda x: x[0]):
-            print('  { 0x%X, %d },' % (character, index))
-        print('};')
-            
+        print("struct ConfusableCharacterClass")
+        print("{")
+        print("  uint32_t uc;")
+        print("  uint16_t index;")
+        print("};")
+        print(
+            "static const struct ConfusableCharacterClass "
+            "confusable_character_classes[] ="
+        )
+        print("{")
+        for character, index in sorted(character_to_class.items(), key=lambda x: x[0]):
+            print(f"  {{ 0x{character:X}, {index} }},")
+        print("};")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     import argparse
-    
-    parser = argparse.ArgumentParser(description='build')
-    parser.add_argument('infile', type=argparse.FileType('r'),
-                        help='input file')
+
+    parser = argparse.ArgumentParser(description="build")
+    parser.add_argument(
+        "infile", type=argparse.FileType("r", encoding="utf_8_sig"), help="input file"
+    )
     args = parser.parse_args()
-    
+
     builder = Builder()
-    # FIXME: argparse.FileType(encoding=...) is available since Python 3.4
-    data = builder.read(io.open(args.infile.name, encoding='utf_8_sig'))
+    data = builder.read(args.infile)
     builder.write(data)

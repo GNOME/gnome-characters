@@ -2,25 +2,25 @@
 
 # Input: https://unicode.org/Public/emoji/5.0/emoji-test.txt
 
-import io
 import re
 
 GROUPS = {
-    'Smileys & Emotion': 'smileys',
-    'People & Body': 'people',
-    'Component': 'component',
-    'Animals & Nature': 'animals',
-    'Food & Drink': 'food',
-    'Travel & Places': 'travel',
-    'Activities': 'activities',
-    'Objects': 'objects',
-    'Symbols': 'symbols',
-    'Flags': 'flags',
+    "Smileys & Emotion": "smileys",
+    "People & Body": "people",
+    "Component": "component",
+    "Animals & Nature": "animals",
+    "Food & Drink": "food",
+    "Travel & Places": "travel",
+    "Activities": "activities",
+    "Objects": "objects",
+    "Symbols": "symbols",
+    "Flags": "flags",
     # Synthetic
-    'Singular': 'singular',
+    "Singular": "singular",
 }
 
-class Builder(object):
+
+class Builder:
     def __init__(self):
         pass
 
@@ -46,25 +46,25 @@ class Builder(object):
         max_length = 0
         index = 0
         for line in infile:
-            m = re.match(r'# group: (.*)', line)
+            m = re.match(r"# group: (.*)", line)
             if m:
                 if group_name:
                     groups.append((group_name, group_start))
 
                 group_name = m.group(1)
                 group_start = index
-            if line.startswith('#'):
+            if line.startswith("#"):
                 continue
             line = line.strip()
             if len(line) == 0:
                 continue
 
-            m = re.match(r'([0-9A-F ]+); fully-qualified\s+#.*E\d+.\d+ (.+)', line)
+            m = re.match(r"([0-9A-F ]+); fully-qualified\s+#.*E\d+.\d+ (.+)", line)
             if not m:
                 continue
 
             cp = m.group(1).strip()
-            sequence = [int(c, 16) for c in cp.split(' ')]
+            sequence = [int(c, 16) for c in cp.split(" ")]
             max_length = max(max_length, len(sequence))
 
             name = m.group(2).strip().upper()
@@ -99,69 +99,68 @@ class Builder(object):
                 singular_indices.append(index)
             index += 1
 
-        groups_data.append(('Singular', singular_indices))
+        groups_data.append(("Singular", singular_indices))
 
         return data, groups_data, max_length
 
     def write(self, data):
         data, groups, max_length = data
 
-        print('''\
+        print(f"""\
 #include <glib.h>
 #include <stddef.h>
 
-#define EMOJI_SEQUENCE_LENGTH {}
+#define EMOJI_SEQUENCE_LENGTH {max_length}
 struct EmojiCharacter
 {{
-  const gunichar uc[{}];
+  const gunichar uc[{max_length}];
   int length;
   const char *name;
-}};'''.format(max_length, max_length))
+}};""")
 
-        print('#define EMOJI_CHARACTER_COUNT {}'.format(
-            len(data)))
-        print('static const struct EmojiCharacter emoji_characters[{}] ='.format(
-            len(data)))
-        print('{')
+        print(f"#define EMOJI_CHARACTER_COUNT {len(data)}")
+        print(f"static const struct EmojiCharacter emoji_characters[{len(data)}] =")
+        print("{")
 
         for sequence, charname, _ in data:
-            print('  { { ', end='')
-            print(', '.join(['0x{0:X}'.format(char) for char in sequence]), end='')
-            print(' }}, {0}, "{1}" }},'.format(len(sequence), charname))
+            print("  { { ", end="")
+            print(", ".join([f"0x{char:X}" for char in sequence]), end="")
+            print(f' }}, {len(sequence)}, "{charname}" }},')
 
-        print('};')
+        print("};")
         print()
 
         for name, group in groups:
             if len(group) == 0:
                 continue
 
-            print('#define EMOJI_{}_CHARACTER_COUNT {}'.format(
-                GROUPS[name].upper(), len(group)))
+            print(f"#define EMOJI_{GROUPS[name].upper()}_CHARACTER_COUNT {len(group)}")
 
-            print('static const size_t emoji_{}_characters[{}] ='.format(
-                GROUPS[name], len(group)))
-            print('{')
+            print(
+                f"static const size_t emoji_{GROUPS[name]}_characters[{len(group)}] ="
+            )
+            print("{")
 
             for i in range(0, len(group), 10):
-                chunk = group[i:i+10]
-                s = '  ' + ', '.join('%d' % x for x in chunk)
+                chunk = group[i : i + 10]
+                s = "  " + ", ".join(f"{x}" for x in chunk)
                 if i + 10 < len(group):
-                    s += ','
+                    s += ","
                 print(s)
 
-            print('};')
+            print("};")
             print()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     import argparse
-    
-    parser = argparse.ArgumentParser(description='build')
-    parser.add_argument('infile', type=argparse.FileType('r'),
-                        help='input file')
+
+    parser = argparse.ArgumentParser(description="build")
+    parser.add_argument(
+        "infile", type=argparse.FileType("r", encoding="utf_8_sig"), help="input file"
+    )
     args = parser.parse_args()
-    
+
     builder = Builder()
-    # FIXME: argparse.FileType(encoding=...) is available since Python 3.4
-    data = builder.read(io.open(args.infile.name, encoding='utf_8_sig'))
+    data = builder.read(args.infile)
     builder.write(data)

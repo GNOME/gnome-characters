@@ -56,3 +56,30 @@ uncrustify:
         - dnf install -y uncrustify
         - uncrustify --version
         - uncrustify -c uncrustify.cfg --check lib/*.c lib/*.h
+
+.base_uv:
+    stage: test
+    interruptible: true
+    image:
+        name: ghcr.io/astral-sh/uv:0.8.14-alpine3.22
+        entrypoint: [""]
+    cache:
+        - key: uv.lock
+          paths:
+              - .uv-cache
+    before_script:
+        - cd "${CI_PROJECT_DIR}"
+        - uv sync --locked --group dev
+
+Ruff Check:
+    extends: .base_uv
+    script:
+        - uv run --locked ruff check --output-format=gitlab > code-quality-report.json
+    artifacts:
+        reports:
+            codequality: $CI_PROJECT_DIR/code-quality-report.json
+
+Ruff Format:
+    extends: .base_uv
+    script:
+        - uv run --locked ruff format --diff
