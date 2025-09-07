@@ -25,39 +25,32 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-pkg.initGettext();
-pkg.initFormat();
-pkg.require({
-    'Gdk': '4.0',
-    'Gio': '2.0',
-    'GLib': '2.0',
-    'GObject': '2.0',
-    'Gtk': '4.0',
-    'Adw': '1',
-    'GnomeDesktop': '4.0',
-});
+import Adw from 'gi://Adw?version=1';
+import Gdk_ from 'gi://Gdk?version=4.0';
+import Gio from 'gi://Gio?version=2.0';
+import GLib from 'gi://GLib?version=2.0';
+import GObject from 'gi://GObject?version=2.0';
+import Gtk_ from 'gi://Gtk?version=4.0';
+import GnomeDesktop_ from 'gi://GnomeDesktop?version=4.0';
 
-const { GLib, Gio, GObject, Adw } = imports.gi;
+import { CharactersView } from './charactersView.js';
+import { Sidebar } from './sidebar.js';
+import { MainWindow } from './window.js';
+import * as Util from './util.js';
+import { SearchProvider } from './searchProvider.js';
+export let settings = null;
 
-const { CharactersView } = imports.charactersView;
-const { Sidebar } = imports.sidebar;
-const { MainWindow } = imports.window;
-
-const Util = imports.util;
-const SearchProvider = imports.searchProvider;
-var settings = null;
-
-var MyApplication = GObject.registerClass({
+const MyApplication = GObject.registerClass({
 }, class MyApplication extends Adw.Application {
-    _init() {
-        super._init({
+    constructor() {
+        super({
             application_id: pkg.name,
             flags: Gio.ApplicationFlags.FLAGS_NONE,
             resource_base_path: '/org/gnome/Characters',
         });
         GLib.set_application_name(_('Characters'));
 
-        this._searchProvider = new SearchProvider.SearchProvider(this);
+        this._searchProvider = new SearchProvider(this);
     }
 
     get window() {
@@ -97,6 +90,8 @@ var MyApplication = GObject.registerClass({
     }
 
     vfunc_activate() {
+        super.vfunc_activate();
+
         if (!this._appwindow)
             this._appwindow = new MainWindow(this);
 
@@ -114,9 +109,19 @@ var MyApplication = GObject.registerClass({
     }
 });
 
-function main(argv) {
+pkg.initGettext();
+pkg.initFormat();
+
+/**
+ * Main entry point for the application
+ *
+ * @param {string[]} argv - Command line arguments
+ */
+export function main(argv) {
     GObject.type_ensure(CharactersView.$gtype);
     GObject.type_ensure(Sidebar.$gtype);
 
-    return new MyApplication().run(argv);
+    return new MyApplication().runAsync(
+        [imports.system.programInvocationName].concat(argv)
+    );
 }

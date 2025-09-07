@@ -25,13 +25,17 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const { Adw, Gio, GLib, GObject, Gtk } = imports.gi;
+import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const { CharacterDialog } = imports.characterDialog;
-const Main = imports.main;
-const Util = imports.util;
+import { CharacterDialog } from './characterDialog.js';
+import { settings } from './main.js';
+import * as Util from './util.js';
 
-var MainWindow = GObject.registerClass({
+export const MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/window.ui',
     InternalChildren: [
         'searchButton', 'search-bar', 'searchEntry',
@@ -45,9 +49,13 @@ var MainWindow = GObject.registerClass({
             GObject.ParamFlags.READABLE | GObject.ParamFlags.WRITABLE,
             0, GLib.MAXUINT32, 100),
     },
-}, class MainWindow extends Adw.ApplicationWindow {
-    _init(application) {
-        super._init({ application, title: GLib.get_application_name() });
+},
+class MainWindow extends Adw.ApplicationWindow {
+    constructor(application) {
+        super({
+            application,
+            title: GLib.get_application_name(),
+        });
 
         this._searchKeywords = [];
         this._characterLists = {};
@@ -57,23 +65,23 @@ var MainWindow = GObject.registerClass({
             this._handleCharacterSelected(widget, uc);
         });
 
-        this._sidebar.list.connect('row-selected', (sidebar, row) => {
+        this._sidebar.list.connect('row-selected', async (sidebar, row) => {
             const adj = this._scrolledWindow.get_vadjustment();
             adj.set_value(0.0); // scroll back to the top
             this._charactersView.queue_resize();
             if (row) {
                 this._sidebar.lastSelectedRow = row;
-                this.setPage(row);
+                await this.setPage(row);
                 this._contentChild.title = row.title;
                 this._splitView.show_content = true;
             }
         });
 
         // FIXME: Can't use GSettings.bind with 'as' from Gjs
-        let recentCharacters = Main.settings.get_value('recent-characters');
+        let recentCharacters = settings.get_value('recent-characters');
         this.recentCharacters = recentCharacters.deepUnpack();
         this._maxRecentCharacters = 100;
-        Main.settings.bind('max-recent-characters', this,
+        settings.bind('max-recent-characters', this,
             'max-recent-characters',
             Gio.SettingsBindFlags.DEFAULT);
 
@@ -90,7 +98,7 @@ var MainWindow = GObject.registerClass({
         this._searchButton.bind_property('active',
             this._search_bar,
             'search-mode-enabled',
-            GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL,
+            GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL
         );
 
         this._searchButton.connect('toggled', btn => {
@@ -211,7 +219,7 @@ var MainWindow = GObject.registerClass({
         this._searchButton.set_active(true);
     }
 
-    setPage(pageRow) {
+    async setPage(pageRow) {
         if (pageRow.name === 'recent') {
             // always draw a baseline for recent view
             this._charactersView.baseline = true;
@@ -222,7 +230,7 @@ var MainWindow = GObject.registerClass({
                 this._mainStack.visible_child_name = 'character-list';
             }
         } else {
-            this._charactersView.searchByCategory(pageRow.category);
+            await this._charactersView.searchByCategory(pageRow.category);
 
             this._mainStack.visible_child_name = 'character-list';
             // this._charactersView.model = pageRow.model;
@@ -236,7 +244,7 @@ var MainWindow = GObject.registerClass({
                 this.recentCharacters = this.recentCharacters.slice(
                     0, this._maxRecentCharacters);
             }
-            Main.settings.set_value(
+            settings.set_value(
                 'recent-characters',
                 GLib.Variant.new_strv(this.recentCharacters));
         }

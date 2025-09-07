@@ -17,11 +17,19 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, Gdk, Gio, GLib, GnomeDesktop, GObject, Gtk, Pango, Graphene } = imports.gi;
+import Gc from 'gi://Gc';
+import Gdk from 'gi://Gdk';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GnomeDesktop from 'gi://GnomeDesktop';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
+import Graphene from 'gi://Graphene';
 
 Gio._promisify(Gc.SearchContext.prototype, 'search', 'search_finish');
 
-const Util = imports.util;
+import * as Util from './util.js';
 
 const BASELINE_OFFSET = 0.85;
 const CELLS_PER_ROW = 5;
@@ -29,6 +37,11 @@ const NUM_ROWS = 5;
 const NUM_COLUMNS = 3;
 const CELL_SIZE = 50;
 
+/**
+ * Get the cell size for the given font description
+ *
+ * @param {Pango.FontDescription} fontDescription - The font description to use
+ */
 function getCellSize(fontDescription) {
     if (fontDescription === null || fontDescription.get_size() === 0)
         return CELL_SIZE;
@@ -37,8 +50,8 @@ function getCellSize(fontDescription) {
 
 const CharacterListRow = GObject.registerClass({
 }, class CharacterListRow extends GObject.Object {
-    _init(characters, fontDescription, overlayFontDescription) {
-        super._init({});
+    constructor(characters, fontDescription, overlayFontDescription) {
+        super();
 
         this._baseGlyphRect = null;
         this._characters = characters;
@@ -76,7 +89,6 @@ const CharacterListRow = GObject.registerClass({
 
                 let textColor = styleContext.get_color();
                 snapshot.append_layout(layout, textColor);
-
             } else {
                 this._drawBoundingBox(snapshot, layout, styleContext, cellRect);
                 this._drawCharacterName(snapshot, pangoContext, styleContext, cellRect, character);
@@ -137,7 +149,7 @@ const CharacterListRow = GObject.registerClass({
                     width: shapeRect.width + borderWidth * 2,
                     height: shapeRect.height + borderWidth * 2,
                 }),
-            }),
+            })
         );
         snapshot.restore();
     }
@@ -167,7 +179,7 @@ const CharacterListRow = GObject.registerClass({
     }
 });
 
-var CharactersView = GObject.registerClass({
+export const CharactersView = GObject.registerClass({
     Signals: {
         'character-selected': { param_types: [GObject.TYPE_STRING] },
     },
@@ -180,19 +192,19 @@ var CharactersView = GObject.registerClass({
             'loading',
             'Loading', 'Whether the category is still loading',
             GObject.ParamFlags.READWRITE,
-            false,
+            false
         ),
         'baseline': GObject.ParamSpec.boolean(
             'baseline',
             'Baseline', 'Whether to draw a baseline or not',
             GObject.ParamFlags.READWRITE,
-            true,
+            true
         ),
     },
     Implements: [Gtk.Scrollable],
 }, class CharactersView extends Gtk.Widget {
-    _init() {
-        super._init({
+    constructor() {
+        super({
             vadjustment: new Gtk.Adjustment(),
             hadjustment: new Gtk.Adjustment(),
             overflow: Gtk.Overflow.HIDDEN,
@@ -487,7 +499,8 @@ var CharactersView = GObject.registerClass({
         // Don't assume IBus is always available.
         let ibus;
         try {
-            ibus = imports.gi.IBus;
+            const IBus = await import('gi://IBus');
+            ibus = IBus.default;
         } catch (e) {
             this._finishBuildScriptList(sources);
             return;
@@ -508,7 +521,6 @@ var CharactersView = GObject.registerClass({
             } catch (e) {
                 log(`Failed to list engines: ${e.message}`);
             }
-
         }
         this._finishBuildScriptList(sources);
     }

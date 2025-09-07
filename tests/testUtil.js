@@ -1,9 +1,11 @@
-imports.gi.versions.Gdk = '4.0';
-imports.gi.versions.Gtk = '4.0';
+import Gc from 'gi://Gc';
+import GLib from 'gi://GLib';
+import Gsk from 'gi://Gsk?version=4.0';
+import Gtk from 'gi://Gtk?version=4.0';
 
-const { jsUnit: JsUnit } = imports;
-const { util: Util } = imports;
-const { Gc, GLib, Gsk, Gtk } = imports.gi;
+import * as Util from '../src/util.js';
+
+const JsUnit = imports.jsUnit;
 
 Gtk.init();
 

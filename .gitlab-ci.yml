@@ -38,16 +38,16 @@ nightly-aarch64:
     dependencies: ['flatpak-aarch64']
 
 eslint:
-    image: registry.gitlab.gnome.org/gnome/gnome-shell/fedora/36:2022-07-06.0
-
+    image: registry.gitlab.gnome.org/gnome/gnome-shell/fedora/42:2025-06-10.0
+    stage: test
     variables:
-        LINT_LOG: "eslint-report.txt"
+        LINT_LOG: "eslint-report.xml"
     script:
-        - eslint -o $LINT_LOG --no-color src || { cat $LINT_LOG; false; }
+        - ./tools/run-eslint.sh --output-file ${LINT_LOG} --format junit --stdout
     artifacts:
-        paths:
-            - ${LINT_LOG}
-        when: on_failure
+        reports:
+            junit: ${LINT_LOG}
+        when: always
 
 uncrustify:
     image: fedora:42

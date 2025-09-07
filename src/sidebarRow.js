@@ -17,33 +17,35 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Gc, GObject, Gtk } = imports.gi;
+import Gc from 'gi://Gc';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-var SidebarRow = GObject.registerClass({
+export const SidebarRow = GObject.registerClass({
     Properties: {
         'title': GObject.ParamSpec.string(
             'title',
             'Category title', 'Category title',
             GObject.ParamFlags.READWRITE,
-            '',
+            ''
         ),
         'category': GObject.ParamSpec.enum(
             'category',
             'Category', 'Category',
             GObject.ParamFlags.READWRITE,
             Gc.Category.$gtype,
-            Gc.Category.NONE,
+            Gc.Category.NONE
         ),
         'icon-name': GObject.ParamSpec.string(
             'icon-name',
             'Category Icon Name', 'Category Icon Name',
             GObject.ParamFlags.READWRITE,
-            '',
+            ''
         ),
     },
 }, class SidebarRow extends Gtk.ListBoxRow {
-    _init() {
-        super._init({
+    constructor() {
+        super({
             accessible_role: Gtk.AccessibleRole.ROW,
         });
         let hbox = new Gtk.Box({
@@ -57,14 +59,14 @@ var SidebarRow = GObject.registerClass({
 
         let image = new Gtk.Image();
         this.bind_property('icon-name', image, 'icon-name',
-            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
+            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE
         );
         image.set_icon_size(Gtk.IconSize.LARGE_TOOLBAR);
         hbox.append(image);
 
         let label = new Gtk.Label({ halign: Gtk.Align.START });
         this.bind_property('title', label, 'label',
-            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
+            GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE
         );
         // Because bind_property doesn't work with transform functions
         // TODO: is this really needed?

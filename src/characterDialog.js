@@ -17,11 +17,17 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-const { Adw, Gc, Gdk, Gio, GObject, Gtk, Pango } = imports.gi;
+import Adw from 'gi://Adw';
+import Gc from 'gi://Gc';
+import Gdk from 'gi://Gdk';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
 
-const Util = imports.util;
+import * as Util from './util.js';
 
-var CharacterDialog = GObject.registerClass({
+export const CharacterDialog = GObject.registerClass({
     Signals: {
         'character-copied': { param_types: [GObject.TYPE_STRING] },
     },
@@ -34,8 +40,8 @@ var CharacterDialog = GObject.registerClass({
         'toastOverlay',
     ],
 }, class CharacterDialog extends Adw.Dialog {
-    _init(character, fontDescription) {
-        super._init();
+    constructor(character, fontDescription) {
+        super();
         this._cancellable = new Gio.Cancellable();
         this._fontDescription = fontDescription;
 

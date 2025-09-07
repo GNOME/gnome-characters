@@ -1,6 +1,8 @@
-#!@GJS@
+#!@GJS@ --module
 imports.package.init({ name: "@appid@",
                        version: "@PACKAGE_VERSION@",
                        prefix: "@prefix@",
                        libdir: "@libdir@" });
-imports.package.run(imports.main);
+
+const {main} = await import('resource:///@resource_base_path@/js/main.js');
+main(ARGV);

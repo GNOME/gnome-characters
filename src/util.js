@@ -25,11 +25,26 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-const { Gc, Gio, Gdk, GLib, Graphene, Gsk, Gtk, PangoCairo, Pango } = imports.gi;
+import Gc from 'gi://Gc';
+import Gdk from 'gi://Gdk';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import Graphene from 'gi://Graphene';
+import Gsk from 'gi://Gsk';
+import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
+import PangoCairo from 'gi://PangoCairo';
 
-const System = imports.system;
+import * as System from 'system';
 
-function initActions(actionMap, simpleActionEntries, context) {
+/**
+ * Initialize actions on the action map
+ *
+ * @param {Gio.ActionMap} actionMap - The action map to add actions to
+ * @param {Array} simpleActionEntries - Array of action entries to initialize
+ * @param {object} context - The context for action callbacks
+ */
+export function initActions(actionMap, simpleActionEntries, context) {
     simpleActionEntries.forEach(({ name, parameterType, state, activate }) =>  {
         let action = new Gio.SimpleAction({
             name,
@@ -45,7 +60,13 @@ function initActions(actionMap, simpleActionEntries, context) {
 }
 
 
-function getSettings(schemaId, path) {
+/**
+ * Get GSettings for the given schema
+ *
+ * @param {string} schemaId - The schema ID to look up
+ * @param {string} path - The settings path
+ */
+export function getSettings(schemaId, path) {
     const GioSSS = Gio.SettingsSchemaSource;
     let schemaSource;
 
@@ -66,16 +87,25 @@ function getSettings(schemaId, path) {
         return new Gio.Settings({ settings_schema: schemaObj });
     else
         return Gio.Settings.new_full(schemaObj, null, path);
-
 }
 
-function capitalizeWord(w) {
+/**
+ * Capitalize the first letter of a word
+ *
+ * @param {string} w - The word to capitalize
+ */
+export function capitalizeWord(w) {
     if (w.length > 0)
         return w[0].toUpperCase() + w.slice(1).toLowerCase();
     return w;
 }
 
-function capitalize(s) {
+/**
+ * Capitalize words in a string
+ *
+ * @param {string} s - The string to capitalize
+ */
+export function capitalize(s) {
     return s.split(/\s+/).map(w => {
         let acronyms = ['CJK'];
         if (acronyms.indexOf(w) > -1)
@@ -90,7 +120,12 @@ function capitalize(s) {
     }).join(' ');
 }
 
-function toCodePoint(s) {
+/**
+ * Convert a character to its code point
+ *
+ * @param {string} s - The character string
+ */
+export function toCodePoint(s) {
     let codePoint = s.charCodeAt(0);
     if (codePoint >= 0xD800 && codePoint <= 0xDBFF) {
         let high = codePoint;
@@ -101,7 +136,12 @@ function toCodePoint(s) {
     return codePoint;
 }
 
-function searchResultToArray(result) {
+/**
+ * Convert search result to array of characters
+ *
+ * @param {Gc.SearchResult} result - The search result object
+ */
+export function searchResultToArray(result) {
     let characters = [];
     for (let index = 0; index < result.len; index++) {
         const c = Gc.search_result_get(result, index);
@@ -113,7 +153,12 @@ function searchResultToArray(result) {
     return characters;
 }
 
-function characterToIconData(character) {
+/**
+ * Convert character to icon data
+ *
+ * @param {string} character - The character to convert
+ */
+export function characterToIconData(character) {
     let size = 48.0;
 
     if (!character || !character.trim().length)

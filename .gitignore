@@ -2,3 +2,10 @@
 .flatpak-builder/
 _build/
 /build/
+
+node_modules
+.eslintcache
+lib/__pycache__
+
+.coverage
+coverage.xml

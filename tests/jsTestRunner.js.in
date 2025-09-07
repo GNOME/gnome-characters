@@ -1,5 +1,6 @@
-#!/usr/bin/env gjs
-const { GLib, Gio } = imports.gi;
+#!/usr/bin/env gjs --module
+import GLib from 'gi://GLib';
+import Gio from 'gi://Gio';
 
 const pkgName = '@pkgname@';
 imports.package.init({
@@ -21,9 +22,8 @@ imports.searchPath.unshift(loadResource(dataDir, pkgName, 'src'));
 
 loadResource(dataDir, pkgName, 'data');
 
-const currentPath = imports.gi.GLib.path_get_dirname(
+const currentPath = GLib.path_get_dirname(
     imports.system.programInvocationName);
 imports.searchPath.unshift(currentPath);
 
-// eslint-disable-next-line no-unused-expressions
-imports[ARGV[0]];
+await import('./' + ARGV[0] + '.js');

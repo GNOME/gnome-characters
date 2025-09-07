@@ -4,6 +4,7 @@ script_conf.set('PACKAGE_VERSION', characters_version)
 script_conf.set('appid', application_id)
 script_conf.set('libdir', characters_libdir)
 script_conf.set('prefix', characters_prefix)
+script_conf.set('resource_base_path', application_id.replace('.', '/'))
 
 configure_file(
     input: 'org.gnome.Characters.in',

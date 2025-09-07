@@ -18,19 +18,23 @@
 // with Gnome Weather; if not, write to the Free Software Foundation,
 // Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-const { Gc, Gio, GLib, GObject } = imports.gi;
+import Gc from 'gi://Gc';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
 
-const ByteArray = imports.byteArray;
-const Util = imports.util;
+import * as Util from './util.js';
 
 const MAX_SEARCH_RESULTS = 20;
 
-const SearchProviderInterface = ByteArray.toString(Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0).toArray());
+const resourceData = Gio.resources_lookup_data('/org/gnome/shell/ShellSearchProvider2.xml', 0);
+const SearchProviderInterface = new TextDecoder().decode(resourceData.toArray());
 
-var SearchProvider = GObject.registerClass({
+export const SearchProvider = GObject.registerClass({
     Name: 'CharactersSearchProvider',
 }, class SearchProvider extends GObject.Object {
-    _init(application) {
+    constructor(application) {
+        super();
         this._app = application;
 
         this._impl = Gio.DBusExportedObject.wrapJSObject(SearchProviderInterface, this);

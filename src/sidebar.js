@@ -17,11 +17,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+import Adw from 'gi://Adw';
+import GObject from 'gi://GObject';
 
-const { Adw, GObject } = imports.gi;
-const { SidebarRow } = imports.sidebarRow;
+import { SidebarRow } from './sidebarRow.js';
 
-var Sidebar = GObject.registerClass({
+export const Sidebar = GObject.registerClass({
     Template: 'resource:///org/gnome/Characters/sidebar.ui',
     InternalChildren: [
         'list',
@@ -33,9 +34,9 @@ var Sidebar = GObject.registerClass({
         'lettersCurrencyRow', 'lettersMathRow', 'lettersLatinRow',
     ],
 }, class Sidebar extends Adw.Bin {
-    _init() {
+    constructor() {
         GObject.type_ensure(SidebarRow.$gtype);
-        super._init({});
+        super();
 
         this.lastSelectedRow = null;
     }

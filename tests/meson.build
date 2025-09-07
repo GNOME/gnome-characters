@@ -41,7 +41,7 @@ foreach js_test: js_tests
 
   test(js_test,
     gjs_console,
-    args: test_file,
+    args: ['--module', test_file],
     depends: [
       gc_gir,
       settings_schemas,
@@ -60,7 +60,7 @@ foreach js_test: js_tests
           'env',
           'GSETTINGS_BACKEND=memory',
           'xvfb-run -a',
-          gjs_console.full_path(),
+          gjs_console.full_path() + ' --module',
           installed_tests_execdir / fs.name(js_test_runner),
           fs.stem(fs.name(test_file)),
         ]),
