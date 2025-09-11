@@ -168,12 +168,22 @@ get_character_name (const gunichar *uc,
       {
         static const gunichar cjk_block_starters[10] =
           {
-            0x4E00, 0x3400, 0x20000, 0x2A700, 0x2B740, 0x2B820, 0x2CEB0, 0x2EBF0, 0x30000, 0x31350
+            0x4E00,  /* CJK Unified Ideographs */
+            0x3400,  /* CJK Unified Ideographs Extension A */
+            0x20000, /* CJK Unified Ideographs Extension B */
+            0x2A700, /* CJK Unified Ideographs Extension C */
+            0x2B740, /* CJK Unified Ideographs Extension D */
+            0x2B820, /* CJK Unified Ideographs Extension E */
+            0x2CEB0, /* CJK Unified Ideographs Extension F */
+            0x2EBF0, /* CJK Unified Ideographs Extension I */
+            0x30000, /* CJK Unified Ideographs Extension G */
+            0x31350, /* CJK Unified Ideographs Extension H */
           };
 
         static const gunichar tangut_block_starters[2] =
           {
-            0x17000, 0x18D00
+            0x17000, /* Tangut */
+            0x18D00, /* Tangut Supplement */
           };
 
         for (i = 0; i < G_N_ELEMENTS (cjk_block_starters); i++)
