@@ -1,3 +1,9 @@
+49.0
+====
+* flatpak: Update noto emoji font (Alice Mikhaylenko)
+* New translations:
+  - Uighur (Abduqadir Abliz)
+
 49.rc
 =====
 * ci: Build flatpak for aarch64 (Alice Mikhaylenko)

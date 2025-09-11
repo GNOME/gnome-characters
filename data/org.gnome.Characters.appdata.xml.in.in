@@ -51,7 +51,7 @@
     <color type="primary" scheme_preference="dark">#26a269</color>
   </branding>
   <releases>
-    <release version="49.rc" date="2025-08-31" type="development">
+    <release version="49.0" date="2025-09-11">
       <description>
         <p>Characters 49.rc release.</p>
         <ul>
@@ -60,16 +60,18 @@
           <li>appdata: Add branding (Maximiliano Sandoval)</li>
           <li>appdata: Remove kudos (Maximiliano Sandoval)</li>
           <li>Update to CLDR 47 (Alice Mikhaylenko)</li>
+          <li>flatpak: Update noto emoji font (Alice Mikhaylenko)</li>
         </ul>
         <p>It also comes with translation updates for the following locales:</p>
         <ul>
           <li>Azerbaijani (Ramal Rəhimov)</li>
           <li>Chinese (Taiwan) (Yi-Jyun Pan)</li>
-          <li>Interlingua (International Auxiliary Language Association) (Emilio Spúlveda)</li>
+          <li>Interlingua (Emilio Spúlveda)</li>
           <li>Japanese (Takayuki KUSANO)</li>
           <li>Nepali (Pawan Chitrakar)</li>
           <li>Romanian (Antonio Marin)</li>
           <li>Uzbek (Baxrom Raxmatov)</li>
+          <li>Uighur (Abduqadir Abliz)</li>
         </ul>
       </description>
     </release>
