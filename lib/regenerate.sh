@@ -1,16 +1,15 @@
 #!/bin/bash
 
 CLDR_VERSION=47
-UCD_VERSION=16.0.0
-EMOJI_VERSION=16.0
+UNICODE_VERSION=17.0.0
 
-wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/Blocks.txt"
-wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/Jamo.txt"
-wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/PropertyValueAliases.txt"
-wget -c "https://www.unicode.org/Public/$UCD_VERSION/ucd/UnicodeData.txt"
+wget -c "https://www.unicode.org/Public/$UNICODE_VERSION/ucd/Blocks.txt"
+wget -c "https://www.unicode.org/Public/$UNICODE_VERSION/ucd/Jamo.txt"
+wget -c "https://www.unicode.org/Public/$UNICODE_VERSION/ucd/PropertyValueAliases.txt"
+wget -c "https://www.unicode.org/Public/$UNICODE_VERSION/ucd/UnicodeData.txt"
+wget -c "https://www.unicode.org/Public/$UNICODE_VERSION/emoji/emoji-test.txt"
+wget -c "https://www.unicode.org/Public/$UNICODE_VERSION/security/confusables.txt"
 wget -c "https://www.unicode.org/Public/cldr/$CLDR_VERSION/core.zip"
-wget -c "https://www.unicode.org/Public/emoji/$EMOJI_VERSION/emoji-test.txt"
-wget -c "https://www.unicode.org/Public/security/$UCD_VERSION/confusables.txt"
 
 unzip -jo core.zip common/supplemental/supplementalData.xml
 
