@@ -53,7 +53,7 @@
   <releases>
     <release version="49.0" date="2025-09-11">
       <description>
-        <p>Characters 49.rc release.</p>
+        <p>Characters 49.0 release.</p>
         <ul>
           <li>ci: Build flatpak for aarch64 (Alice Mikhaylenko)</li>
           <li>appdata: Set component to "desktop-application" (AsciiWolf)</li>
