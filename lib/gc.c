@@ -178,6 +178,7 @@ get_character_name (const gunichar *uc,
             0x2EBF0, /* CJK Unified Ideographs Extension I */
             0x30000, /* CJK Unified Ideographs Extension G */
             0x31350, /* CJK Unified Ideographs Extension H */
+            0x323B0, /* CJK Unified Ideographs Extension J */
           };
 
         static const gunichar tangut_block_starters[2] =
