@@ -37,4 +37,20 @@
       <gnome:userid>christopherdavis</gnome:userid>
     </foaf:Person>
   </maintainer>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Maximiliano Sandoval</foaf:name>
+      <foaf:mbox rdf:resource="mailto:msandova@gnome.org" />
+      <gnome:userid>msandova</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Alice Mikhaylenko</foaf:name>
+      <foaf:mbox rdf:resource="mailto:alicem@gnome.org" />
+      <gnome:userid>alicem</gnome:userid>
+    </foaf:Person>
+  </maintainer>
 </Project>
