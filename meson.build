@@ -49,7 +49,7 @@ dependency('gtk4', version: '>=4.6')
 libadwaita = dependency ('libadwaita-1', version: '>= 1.9.alpha')
 
 libgc_deps = [
-  dependency('gio-2.0', version: '>= 2.83.0'),
+  dependency('gio-2.0', version: '>= 2.87.0'),
   dependency('pango'),
   libadwaita,
 ]
