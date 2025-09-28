@@ -381,10 +381,6 @@ gc_character_iter_next (GcCharacterIter *iter)
 
           if (uc == -1)
             {
-              while (iter->block_index < iter->block_count
-                     && iter->blocks[iter->block_index].start
-                     == iter->blocks[iter->block_index].end)
-                iter->block_index++;
               if (iter->block_index == iter->block_count)
                 break;
               uc = iter->blocks[iter->block_index].start;
