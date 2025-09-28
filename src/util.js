@@ -1,4 +1,4 @@
-/* exported capitalize getSettings initActions searchResultToArray toCodePoint characterToIconData */
+/* exported capitalize getSettings getInputSources initActions searchResultToArray toCodePoint characterToIconData */
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (c) 2013 Giovanni Campagna <scampa.giovanni@gmail.com>
@@ -26,6 +26,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 const { Gc, Gio, Gdk, GLib, Graphene, Gsk, Gtk, PangoCairo, Pango } = imports.gi;
+
+Gio._promisify(Gio.DBusConnection.prototype, 'call', 'call_finish');
 
 const System = imports.system;
 
@@ -66,7 +68,42 @@ function getSettings(schemaId, path) {
         return new Gio.Settings({ settings_schema: schemaObj });
     else
         return Gio.Settings.new_full(schemaObj, null, path);
+}
 
+function isFlatpak() {
+    const file = Gio.File.new_for_path('/.flatpak-info');
+
+    return file.query_exists(null);
+}
+
+async function getInputSources() {
+    if (isFlatpak()) {
+        try {
+            let reply = await Gio.DBus.session.call(
+                'org.freedesktop.portal.Desktop',
+                '/org/freedesktop/portal/desktop',
+                'org.freedesktop.portal.Settings',
+                'ReadOne',
+                new GLib.Variant('(ss)', ['org.gnome.desktop.input-sources', 'sources']),
+                null,
+                Gio.DBusCallFlags.NONE,
+                -1,
+                null);
+            let sources = reply.get_child_value(0).get_variant();
+            return sources.deep_unpack();
+        } catch (e) {
+            log(`Failed to read settings from the settings portal: ${e.message}`);
+            return [];
+        }
+    }
+
+    let settings =
+        getSettings('org.gnome.desktop.input-sources',
+            '/org/gnome/desktop/input-sources/');
+    if (settings)
+        return settings.get_value('sources').deep_unpack();
+
+    return [];
 }
 
 function capitalizeWord(w) {

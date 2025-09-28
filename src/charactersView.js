@@ -463,19 +463,14 @@ var CharactersView = GObject.registerClass({
     // / and the input-sources settings.
     async populateScripts() {
         this.loading = true;
-        let settings =
-            Util.getSettings('org.gnome.desktop.input-sources',
-                '/org/gnome/desktop/input-sources/');
-        if (settings) {
-            let sources = settings.get_value('sources').deep_unpack();
-            let hasIBus = sources.some((current, _index, _array) => {
-                return current[0] === 'ibus';
-            });
-            if (hasIBus)
-                await this._ensureIBusLanguageList(sources);
-            else
-                this._finishBuildScriptList(sources);
-        }
+        let sources = await Util.getInputSources();
+        let hasIBus = sources.some((current, _index, _array) => {
+            return current[0] === 'ibus';
+        });
+        if (hasIBus)
+            await this._ensureIBusLanguageList(sources);
+        else
+            this._finishBuildScriptList(sources);
     }
 
     async _ensureIBusLanguageList(sources) {
