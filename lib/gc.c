@@ -13,6 +13,7 @@
 #include "confusables.h"
 #include "emoji.h"
 #include "hangul.h"
+#include "languages.h"
 #include "names.h"
 #include "scripts.h"
 
@@ -1756,6 +1757,32 @@ language_scripts_compare_ignore_territory (const void *a,
   return language_scripts_compare (a, b);
 }
 
+static int
+language_aliases_compare (const void *a,
+                          const void *b)
+{
+  const struct LanguageAlias *al = a, *bl = b;
+  return strcmp (al->alias, bl->alias);
+}
+
+static gchar *
+canonicalize_language (const gchar *language)
+{
+  struct LanguageAlias key, *res;
+
+  key.alias = language;
+
+  res = bsearch (&key, language_aliases,
+                 G_N_ELEMENTS (language_aliases),
+                 sizeof (*language_aliases),
+                 language_aliases_compare);
+
+  if (res)
+    return g_strdup (res->replacement);
+
+  return g_strdup (language);
+}
+
 /**
  * gc_get_scripts_for_language:
  * @language: a language name
@@ -1768,8 +1795,9 @@ gc_get_scripts_for_language (const gchar *language,
                              size_t      *n_scripts)
 {
   struct LanguageScripts key, *res;
+  gchar *canonicalized = canonicalize_language (language);
 
-  key.language = language;
+  key.language = canonicalized;
   res = bsearch (&key, language_scripts,
                  G_N_ELEMENTS (language_scripts),
                  sizeof (*language_scripts),
@@ -1779,6 +1807,8 @@ gc_get_scripts_for_language (const gchar *language,
                    G_N_ELEMENTS (language_scripts),
                    sizeof (*language_scripts),
                    language_scripts_compare_ignore_territory);
+
+  g_free (canonicalized);
 
   if (res)
     {
