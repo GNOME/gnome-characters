@@ -474,7 +474,7 @@ var CharactersView = GObject.registerClass({
     }
 
     async _ensureIBusLanguageList(sources) {
-        if (this._ibusLanguageList !== null)
+        if (this._ibusLanguageList !== undefined)
             return;
 
         this._ibusLanguageList = {};
