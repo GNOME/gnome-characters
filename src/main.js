@@ -60,10 +60,6 @@ var MyApplication = GObject.registerClass({
         this._searchProvider = new SearchProvider.SearchProvider(this);
     }
 
-    get window() {
-        return this._appwindow;
-    }
-
     _onQuit() {
         this.quit();
     }
@@ -96,13 +92,16 @@ var MyApplication = GObject.registerClass({
     }
 
     vfunc_activate() {
-        if (!this._appwindow)
-            this._appwindow = new MainWindow(this);
+        let window = this.active_window;
 
-        if (pkg.name.endsWith('Devel'))
-            this._appwindow.add_css_class('devel');
+        if (!window) {
+            window = new MainWindow(this);
 
-        this._appwindow.present();
+            if (pkg.name.endsWith('Devel'))
+                window.add_css_class('devel');
+        }
+
+        window.present();
         log('Characters Application activated');
     }
 
