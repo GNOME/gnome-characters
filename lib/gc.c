@@ -362,7 +362,7 @@ gc_character_iter_next (GcCharacterIter *iter)
     {
       while (TRUE)
         {
-          if (uc > iter->blocks[iter->block_index].end)
+          if (uc != -1 && uc > iter->blocks[iter->block_index].end)
             {
               iter->block_index++;
               uc = -1;
