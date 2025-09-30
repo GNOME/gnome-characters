@@ -124,7 +124,7 @@ var SearchProvider = GObject.registerClass({
 
     LaunchSearch(terms, timestamp) {
         this._app.activate();
-        const window = this._app.window;
+        const window = this._app.active_window;
         window.setSearchKeywords(terms);
         window.present_with_time(timestamp);
     }
