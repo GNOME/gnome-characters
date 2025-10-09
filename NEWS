@@ -1,3 +1,13 @@
+49.1
+====
+* metainfo: Update screenshots to GNOME 49 (Maximiliano Sandoval)
+* metainfo: Fix a typo
+* lib: Don't skip the first block
+* lib: Support language aliases
+* charactersView: Fix the IBus check
+* charactersView: Fix fetching the list of languages in Flatpak
+* main: Fix active window tracking
+
 49.0
 ====
 * flatpak: Update noto emoji font (Alice Mikhaylenko)

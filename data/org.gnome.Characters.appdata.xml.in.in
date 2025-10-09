@@ -51,6 +51,17 @@
     <color type="primary" scheme_preference="dark">#26a269</color>
   </branding>
   <releases>
+    <release version="49.1" date="2025-10-09">
+      <description>
+        <p>Characters 49.1 release.</p>
+        <ul>
+          <li>Fix an issue preventing various categories from showing the first section (Alice Mikhaylenko)</li>
+          <li>Fix language detection for the letters category (Alice Mikhaylenko)</li>
+          <li>Fix corrupted window when closed and quickly reopened (Alice Mikhaylenko)</li>
+          <li>Update appdata screenshots (Maximiliano Sandoval)</li>
+        </ul>
+      </description>
+    </release>
     <release version="49.0" date="2025-09-11">
       <description>
         <p>Characters 49.0 release.</p>
