@@ -32,7 +32,13 @@ const CELL_SIZE = 50;
 function getCellSize(fontDescription) {
     if (fontDescription === null || fontDescription.get_size() === 0)
         return CELL_SIZE;
-    return fontDescription.get_size() * 2 / Pango.SCALE;
+
+    let size = fontDescription.get_size();
+
+    if (fontDescription.get_size_is_absolute())
+        size *= 72 / 96;
+
+    return size * 2 / Pango.SCALE;
 }
 
 const CharacterListRow = GObject.registerClass({
@@ -203,7 +209,7 @@ var CharactersView = GObject.registerClass({
 
         let context = this.get_pango_context();
         this._fontDescription = context.get_font_description();
-        this._fontDescription.set_size(CELL_SIZE * Pango.SCALE);
+        this._fontDescription.set_absolute_size(CELL_SIZE * Pango.SCALE * 96 / 72);
 
         this._selectedCharacter = null;
         this._characters = [];
