@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CLDR_VERSION=47
+CLDR_VERSION=48
 UNICODE_VERSION=17.0.0
 
 wget -c "https://www.unicode.org/Public/$UNICODE_VERSION/ucd/Blocks.txt"
