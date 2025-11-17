@@ -1,4 +1,4 @@
-#define N_LANGUAGE_ALIASES 499
+#define N_LANGUAGE_ALIASES 500
 struct LanguageAlias
 {
   const gchar *alias;
@@ -89,6 +89,7 @@ struct LanguageAlias language_aliases[N_LANGUAGE_ALIASES] =
     { "daf", "dnj" },
     { "dan", "da" },
     { "dap", "njz" },
+    { "dek", "sqm" },
     { "deu", "de" },
     { "dgo", "doi" },
     { "dhd", "mwr" },
@@ -268,7 +269,6 @@ struct LanguageAlias language_aliases[N_LANGUAGE_ALIASES] =
     { "mkd", "mk" },
     { "mlg", "mg" },
     { "mlt", "mt" },
-    { "mnk", "man" },
     { "mnt", "wnn" },
     { "mo", "ro" },
     { "mof", "xnt" },
@@ -308,6 +308,7 @@ struct LanguageAlias language_aliases[N_LANGUAGE_ALIASES] =
     { "noo", "dtd" },
     { "nor", "no" },
     { "npi", "ne" },
+    { "nte", "eko" },
     { "nts", "pij" },
     { "nxu", "bpp" },
     { "nya", "ny" },
