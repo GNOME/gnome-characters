@@ -3,7 +3,6 @@
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "command" : "gnome-characters",
-    "branch" : "master",
     "sdk" : "org.gnome.Sdk",
     "finish-args" : [
         "--share=ipc",
