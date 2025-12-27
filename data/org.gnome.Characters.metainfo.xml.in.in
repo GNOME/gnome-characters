@@ -35,11 +35,11 @@
   <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-characters</url>
   <url type="donation">https://www.gnome.org/donate</url>
   <update_contact>dueno_at_src.gnome.org</update_contact>
-  <recommends>
+  <supports>
     <control>keyboard</control>
     <control>pointing</control>
     <control>touch</control>
-  </recommends>
+  </supports>
   <requires>
     <display_length>360</display_length>
   </requires>
