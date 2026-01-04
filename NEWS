@@ -1,3 +1,21 @@
+50.alpha
+========
+* Don't skip the first block when iterating (Alice Mikhaylenko)
+* Fix fetching the list of languages in Flatpak (Alice Mikhaylenko)
+* Fix the IBus check (Alice Mikhaylenko)
+* Fix wrong emoji size when font scaling is enabled (Alice Mikhaylenko)
+* Include the new CJK block from unicode 17.0 (Alice Mikhaylenko)
+* Port shortcuts to AdwShortcutsDialog (Maximiliano Sandoval)
+* Port to AdwSidebar (Alice Mikhaylenko)
+* Rename appdata to metainfo (AsciiWolf)
+* Support language aliases (Alice Mikhaylenko)
+* Update to Unicode 17.0.0 (Alice Mikhaylenko)
+* Fix active window tracking (Alice Mikhaylenko)
+* Fix a typo in the app metadata (Maximiliano Sandoval)
+* Update app screenshots to GNOME 49 (Maximiliano Sandoval)
+* Translations updates:
+  - Serbian (Latin) (Милош Поповић)
+
 49.0
 ====
 * flatpak: Update noto emoji font (Alice Mikhaylenko)

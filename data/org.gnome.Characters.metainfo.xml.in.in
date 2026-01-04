@@ -51,6 +51,23 @@
     <color type="primary" scheme_preference="dark">#26a269</color>
   </branding>
   <releases>
+    <release version="50.alpha" date="2026-01-04" type="development">
+      <description>
+        <p>Characters 50.alpha release.</p>
+        <ul>
+          <li>Fix wrong emoji size when font scaling is enabled (Alice Mikhaylenko)</li>
+          <li>Include the new CJK block from unicode 17.0 (Alice Mikhaylenko)</li>
+          <li>Port shortcuts to AdwShortcutsDialog (Maximiliano Sandoval)</li>
+          <li>Port to AdwSidebar (Alice Mikhaylenko)</li>
+          <li>Rename appdata to metainfo (AsciiWolf)</li>
+          <li>Update to Unicode 17.0.0 (Alice Mikhaylenko)</li>
+        </ul>
+        <p>It also comes with translation updates for the following locales:</p>
+        <ul>
+          <li>Serbian (Latin) (Милош Поповић)</li>
+        </ul>
+      </description>
+    </release>
     <release version="49.0" date="2025-09-11">
       <description>
         <p>Characters 49.0 release.</p>
