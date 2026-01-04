@@ -249,7 +249,7 @@
     <release version="43~beta" date="2022-08-07" type="development" />
     <release version="43~alpha" date="2022-07-13">
       <description>
-        <p>Characters 43.alpha comes with composite emoji support and a new adaptive aboud window.</p>
+        <p>Characters 43.alpha comes with composite emoji support and a new adaptive about window.</p>
         <p>It also comes with updated translations for the following locales:</p>
         <ul>
           <li>Dutch</li>
