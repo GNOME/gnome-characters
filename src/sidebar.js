@@ -75,7 +75,7 @@ var Sidebar = GObject.registerClass({
         case 'food':
             return this._emojiFoodRow;
         case 'activities':
-            return this._emojiActivitesRow;
+            return this._emojiActivitiesRow;
         case 'travel':
             return this._emojiTravelRow;
         case 'objects':
