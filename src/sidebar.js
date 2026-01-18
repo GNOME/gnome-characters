@@ -60,8 +60,10 @@ var Sidebar = GObject.registerClass({
      * Restore the latest selected item
      */
     restoreSelection() {
-        if (this.lastSelectedItem)
+        if (this.lastSelectedItem) {
             this._sidebar.selected = this.lastSelectedItem.get_index();
+            this.emit('activated');
+        }
     }
 
     itemByName(name) {
