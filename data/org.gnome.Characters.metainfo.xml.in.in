@@ -16,9 +16,11 @@
   <screenshots>
     <screenshot type="default">
       <image>https://static.gnome.org/appdata/gnome-49/org.gnome.Characters/main_window.png</image>
+      <caption>Characters's main interface</caption>
     </screenshot>
     <screenshot>
       <image>https://static.gnome.org/appdata/gnome-49/org.gnome.Characters/letters_page.png</image>
+      <caption>Letters page</caption>
     </screenshot>
   </screenshots>
   <project_group>GNOME</project_group>
