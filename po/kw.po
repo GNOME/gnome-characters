@@ -1,0 +1,266 @@
+# Cornish translation for gnome-characters.
+# Copyright (C) 2026 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Flynn Peck <cirilla@tuta.io>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues/\n"
+"POT-Creation-Date: 2026-01-04 16:22+0000\n"
+"PO-Revision-Date: 2026-01-26 16:53+0000\n"
+"Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
+"Language-Team: kw\n"
+"Language: kw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/gnome-characters/\n"
+"X-DL-Lang: kw\n"
+"X-DL-Module: gnome-characters\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
+
+#: data/character_dialog.ui:67
+msgid "_Copy Character"
+msgstr "_Kopia Lytheren"
+
+#: data/character_dialog.ui:88
+msgid "Unicode"
+msgstr "Unikod"
+
+#: data/character_dialog.ui:102
+msgid "_See Also"
+msgstr "_Gweles Keffrys"
+
+#: data/character_dialog.ui:131
+msgid "See Also"
+msgstr "Gweles Keffrys"
+
+#: data/sidebar.ui:13
+msgid "Recently Used"
+msgstr "Devnydhys A-Dhiwedhes"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Emojys"
+
+#: data/sidebar.ui:25
+msgid "Smileys & Emotion"
+msgstr "Gwenyow & Movyansow"
+
+#: data/sidebar.ui:32
+msgid "People & Body"
+msgstr "Tus & Korf"
+
+#: data/sidebar.ui:39
+msgid "Animals & Nature"
+msgstr "Miles & Natur"
+
+#: data/sidebar.ui:46
+msgid "Food & Drink"
+msgstr "Boos & Diwes"
+
+#: data/sidebar.ui:53
+msgid "Travel & Places"
+msgstr "Viajyans & Leow"
+
+#: data/sidebar.ui:60
+msgid "Activities"
+msgstr "Gwriansow"
+
+#: data/sidebar.ui:67
+msgid "Objects"
+msgstr "Taklow"
+
+#: data/sidebar.ui:74
+msgid "Symbols"
+msgstr "Arwodhyow"
+
+#: data/sidebar.ui:81
+msgid "Flags"
+msgstr "Banerow"
+
+#: data/sidebar.ui:89
+msgid "Letters & Symbols"
+msgstr "Lytherennow & Arwodhyow"
+
+#: data/sidebar.ui:93
+msgid "Punctuation"
+msgstr "Poyntyans"
+
+#: data/sidebar.ui:100
+msgid "Arrows"
+msgstr "Sethow"
+
+#: data/sidebar.ui:107
+msgid "Bullets"
+msgstr "Poyntys"
+
+#: data/sidebar.ui:114
+msgid "Pictures"
+msgstr "Imajys"
+
+#: data/sidebar.ui:121
+msgid "Currencies"
+msgstr "Arghansedh"
+
+#: data/sidebar.ui:128
+msgid "Math"
+msgstr "Mathematik"
+
+#: data/sidebar.ui:135
+msgid "Letters"
+msgstr "Lytherennow"
+
+#: data/shortcuts.ui:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ollgemmyn"
+
+#: data/shortcuts.ui:10
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Ygeri Rol Chif"
+
+#: data/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Hwilas"
+
+#: data/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Diskwedhes Kesunyansow Bysowek"
+
+#: data/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Kwytya"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Kesunyansow Bysowek"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "_A-dro Lytherennow"
+
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
+msgid "Characters"
+msgstr "Lytherennow"
+
+#: data/window.ui:32
+msgid "Search"
+msgstr "Hwilas"
+
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "Rol Chif"
+
+#: data/window.ui:49
+msgid "Search characters"
+msgstr "Hwilas lytherennow"
+
+#: data/window.ui:89
+msgid "No Recent Characters"
+msgstr "Lytherennow A-Dhiwedhes Vyth"
+
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr "Lytherennow a wra diskwedhes omma mar ty devnydhya y's"
+
+#: data/window.ui:117
+msgid "No Results"
+msgstr "Sewyansow Vyth"
+
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr "Assaya unn hwithrans aral"
+
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "App les rag kavos ha gorra a-bervedh lytherennow anusadow"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "lytherennow;unikod;poyntyans;mathematik;emoji;emotikon;arwodhyow;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Lytherennow a-dhiwedhes moyha"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "App mappa lytherennow"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Lytherennow yw unn app sempel les rag kavos ha gorra a-bervedh lytherennow "
+"anusadow. Yth ow gasa ty kavos snell an lytheren os ow hwilas gans ow hwilas "
+"rag geryow alhwedh."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"Ty gallos peuri lytherennow gans klassys maga ta, kepar ha Poyntyans, "
+"Imajys, h.e."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:26 src/window.js:162
+msgid "The GNOME Project"
+msgstr "An Ragdres GNOME"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
+msgid "Unknown character name"
+msgstr "Hanow lytheren ankoth"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:125
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s na komprehendys yn %s"
+
+#: src/characterDialog.js:156
+msgid "Character copied to clipboard"
+msgstr "Lytheren kopys war astell glypp"
+
+#: src/charactersView.js:162
+msgid "Unassigned"
+msgstr "Ancharjys"
+
+#: src/searchProvider.js:98
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:119
+msgid "Character copied"
+msgstr "Lytheren kopys"
+
+#: src/searchProvider.js:120
+msgid "Character was copied successfully"
+msgstr "Lytheren yw kopys yn sewen"
+
+#: src/window.js:139
+msgid "Search Result"
+msgstr "Sewyans Hwithrans"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:173
+msgid "translator-credits"
+msgstr "Flynn"
