@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-07-27 12:00+0300\n"
-"Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
+"issues/\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-02 13:07+0300\n"
+"Last-Translator: Artur So <Arturios2005@mail.ru>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -19,25 +19,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Копировать символ"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Юникод"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_См. также"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "См. также"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Недавно использованные"
 
@@ -45,95 +45,95 @@ msgstr "Недавно использованные"
 msgid "Emojis"
 msgstr "Эмодзи"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Смайлы и эмоции"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Люди и тело"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Животные и природа"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Еда и напитки"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Путешествие и места"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Занятия"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Объекты"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Символы"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Флаги"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Буквы и символы"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Пунктуация"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Стрелки"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Маркеры"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Картинки"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Валюты"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Математика"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Буквы"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Общие"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Открыть главное меню"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Поиск"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Показать комбинации клавиш"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Закрыть"
@@ -146,8 +146,9 @@ msgstr "_Комбинации клавиш"
 msgid "_About Characters"
 msgstr "_О приложении"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "Символы"
 
@@ -179,15 +180,24 @@ msgstr "Нет результатов"
 msgid "Try a different search"
 msgstr "Попробуйте другой поисковый запрос"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Загрузка…"
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "Простое приложение, для поиска и вставки необычных символов"
 
-#: data/org.gnome.Characters.appdata.xml.in:5
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "символы;юникод;пунктуация;математический;буквы;смайлики;emoji;emoticon;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Максимальное количество недавних символов"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Приложение карты символов"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -196,7 +206,7 @@ msgstr ""
 "Символы — это простое приложение, для поиска и вставки необычных символов. "
 "Оно позволяет быстро находить нужный символ по ключевым словам."
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -204,35 +214,34 @@ msgstr ""
 "Также можно просматривать символы по категориям, таким как знаки пунктуации, "
 "картинки и т.д."
 
-#: data/org.gnome.Characters.desktop.in.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr "Простое приложение, для поиска и вставки необычных символов"
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Основной интерфейс приложения"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr ""
-"символы;юникод;пунктуация;математический;буквы;смайлики;emoji;emoticon;"
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Страница с буквами"
 
-#: data/org.gnome.Characters.gschema.xml:8
-msgid "Maximum recent characters"
-msgstr "Максимальное количество недавних символов"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
+msgid "The GNOME Project"
+msgstr "Проект GNOME"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Неизвестное имя символа"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s не содержится в %s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Символ скопирован в буфер обмена"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Не назначено"
 
@@ -249,27 +258,25 @@ msgstr "Символ скопирован"
 msgid "Character was copied successfully"
 msgstr "Символ успешно скопирован"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "%s Строка боковой панели"
-
-#: src/window.js:144
+#: src/window.js:139
 msgid "Search Result"
 msgstr "Результат поиска"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "The GNOME Project"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:173
 msgid "translator-credits"
 msgstr ""
 "Станислав Соловей <whats_up@tut.by>, 2013-2019.\n"
 "Юрий Мясоедов <ymyasoedov@yandex.ru>, 2014.\n"
 "Alexey Rubtsov <rushills@gmail.com>, 2021\n"
 "Aleksandr Melman, 2023"
+
+#~ msgid "Loading…"
+#~ msgstr "Загрузка…"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "%s Строка боковой панели"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
