@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Adriannho <raziel_theripper@yahoo.com>, 2015.
 # Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2015, 2018.
-# Antonio Marin <gnmer.6qxyg@slmail.me>, 2025.
+# Antonio Marin <gnmer.6qxyg@slmail.me>, 2025-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters gnome-3-18\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
-"POT-Creation-Date: 2025-05-10 15:07+0000\n"
-"PO-Revision-Date: 2025-06-19 10:06+0200\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-02 10:19+0100\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -39,7 +39,7 @@ msgstr "V_ezi și"
 msgid "See Also"
 msgstr "Vezi și"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Folosite recent"
 
@@ -47,95 +47,95 @@ msgstr "Folosite recent"
 msgid "Emojis"
 msgstr "Emoji"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Emoticoane și emoție"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Oameni și corp"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Animale și natură"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Mâncare și băutură"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Călătorii și locuri"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Activități"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Obiecte"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Simboluri"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Steaguri"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Litere și simboluri"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Punctuație"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Săgeți"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Buline"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Imagini"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Valute"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Matematică"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Litere"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Generale"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Deschide opțiunile"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Caută"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Arată scurtăturile"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Închide"
@@ -148,8 +148,9 @@ msgstr "Scur_tături"
 msgid "_About Characters"
 msgstr "Despre C_aractere"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:163
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "Caractere"
 
@@ -181,11 +182,24 @@ msgstr "Niciun rezultat"
 msgid "Try a different search"
 msgstr "Încearcă o căutare diferită"
 
-#: data/org.gnome.Characters.appdata.xml.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "Aplicație de găsire și introducere a caracterelor rare"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;caractere;punctuație;matematică;litere;emoticoane;simboluri;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Număr maxim de caractere recente"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Aplicație cu tabel de caractere"
 
-#: data/org.gnome.Characters.appdata.xml.in.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -195,7 +209,7 @@ msgstr ""
 "caracterelor rare. Ea permite găsirea rapidă a caracterelor dorite prin "
 "căutarea cuvintelor cheie."
 
-#: data/org.gnome.Characters.appdata.xml.in.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -203,23 +217,18 @@ msgstr ""
 "Este posibilă explorarea caracterelor pe categorii, precum punctuație, poze, "
 "etc."
 
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Interfața principală"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Pagina cu litere"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Characters.appdata.xml.in.in:26 src/window.js:165
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
-
-#: data/org.gnome.Characters.desktop.in.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr "Aplicație de găsire și introducere a caracterelor rare"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;caractere;punctuație;matematică;litere;emoticoane;simboluri;"
-
-#: data/org.gnome.Characters.gschema.xml:8
-msgid "Maximum recent characters"
-msgstr "Număr maxim de caractere recente"
 
 #: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
@@ -235,7 +244,7 @@ msgstr "%s nu este inclus în %s"
 msgid "Character copied to clipboard"
 msgstr "Caracterul a fost copiat"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Nealocat"
 
@@ -252,20 +261,14 @@ msgstr "Caracter copiat"
 msgid "Character was copied successfully"
 msgstr "Caracterul a fost copiat cu succes"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "Rândul panoului lateral %s"
-
-#: src/window.js:142
+#: src/window.js:139
 msgid "Search Result"
 msgstr "Rezultatele căutării"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:175
+#: src/window.js:173
 msgid "translator-credits"
 msgstr ""
-"Adriannho,\n"
-"Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2018, 2021\n"
-"Florentina Mușat <florentina.musat.28 [at] gmail [dot] com>, 2019, 2023\n"
-"Antonio Marin <gnmer.6qxyg@slmail.me>, 2025"
+"Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
+"Florentina Mușat <florentina.musat.28 [at] gmail [dot] com>\n"
+"Antonio Marin <gnmer.6qxyg@slmail.me>"
