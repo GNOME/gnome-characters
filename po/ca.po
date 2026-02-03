@@ -8,9 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-09-16 11:05+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues/\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-01 22:28+0100\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -18,25 +19,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.6\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Copia el caràcter"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_Vegeu també"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Vegeu també"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Utilitzats recentment"
 
@@ -44,95 +45,95 @@ msgstr "Utilitzats recentment"
 msgid "Emojis"
 msgstr "Emojis"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Emoticones i emocions"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Persones i parts del cos"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Animals i natura"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Menjar i beure"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Viatges i llocs"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Activitats"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Objectes"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Símbols"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Banderes"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Lletres i símbols"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Puntuació"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Fletxes"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Pics"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Imatges"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Monedes"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Matemàtiques"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Lletres"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Obre el menú"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Cerca"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Mostra les dreceres de teclat"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Surt"
@@ -145,8 +146,9 @@ msgstr "_Dreceres de teclat"
 msgid "_About Characters"
 msgstr "_Quant al Caràcters"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "Caràcters"
 
@@ -178,39 +180,12 @@ msgstr "Sense resultats"
 msgid "Try a different search"
 msgstr "Proveu una cerca diferent"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "S'està carregant..."
-
-#: data/org.gnome.Characters.appdata.xml.in:5
-msgid "Character map application"
-msgstr "Aplicació per a mostrar caràcters"
-
-#: data/org.gnome.Characters.appdata.xml.in:9
-msgid ""
-"Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
-msgstr ""
-"Caràcters és una aplicació per a cercar i inserir caràcters inusuals. Us "
-"permet trobar ràpidament els caràcters que esteu cercant usant paraules "
-"clau."
-
-#: data/org.gnome.Characters.appdata.xml.in:12
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures,"
-" etc."
-msgstr ""
-"També podeu navegar els caràcters per categories, com ara puntuació, "
-"imatges, etc."
-
-#: data/org.gnome.Characters.desktop.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
 msgid "Utility application to find and insert unusual characters"
 msgstr "Una aplicació per a cercar i inserir caràcters inusuals"
 
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 msgstr "caràcters;unicode;puntuació;mates;lletres;emoji;emoticona;símbols;"
 
@@ -218,21 +193,55 @@ msgstr "caràcters;unicode;puntuació;mates;lletres;emoji;emoticona;símbols;"
 msgid "Maximum recent characters"
 msgstr "Màxim de caràcters recents"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "Aplicació per a mostrar caràcters"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"Caràcters és una aplicació per a cercar i inserir caràcters inusuals. Us "
+"permet trobar ràpidament els caràcters que esteu cercant usant paraules clau."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+"També podeu navegar els caràcters per categories, com ara puntuació, "
+"imatges, etc."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Interfície principal del Caràcters"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Pàgina de lletres"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
+msgid "The GNOME Project"
+msgstr "El projecte GNOME"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Nom de caràcter desconegut"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s no està inclòs a %s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "El caràcter s'ha copiat al porta-retalls"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "No assignat"
 
@@ -249,23 +258,21 @@ msgstr "S'ha copiat el caràcter"
 msgid "Character was copied successfully"
 msgstr "El caràcter s'ha copiat correctament"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "Fila de la barra lateral %s"
-
-#: src/window.js:144
+#: src/window.js:139
 msgid "Search Result"
 msgstr "Resultat de la cerca"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "El projecte GNOME"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:173
 msgid "translator-credits"
 msgstr ""
 "Jordi Mas i Hernàndez <jmas@softcatala.org>, 2015, 2022-2023\n"
-"Joan Mas Lloret <joan.mas.lloret@gmail.com>, 2022"
+"Joan Mas Lloret <joan.mas.lloret@gmail.com>, 2022\n"
+"Victor Dargallo <victordargallo@disroot.org>"
 
+#~ msgid "Loading…"
+#~ msgstr "S'està carregant..."
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "Fila de la barra lateral %s"
