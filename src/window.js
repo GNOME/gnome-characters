@@ -113,6 +113,10 @@ var MainWindow = GObject.registerClass({
             this.searchActive = false;
             this._searchButton.set_active(false);
         });
+        this._searchEntry.connect('activate', () => {
+            // Switch to search results page when pressing Enter on mobile
+            this._splitView.show_content = true;
+        });
 
         this._charactersView.connect('notify::loading', view => {
             if (view.loading) {
