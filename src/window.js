@@ -137,7 +137,9 @@ var MainWindow = GObject.registerClass({
         if (v) {
             this._sidebar.unselectAll();
             this._contentChild.title = _('Search Result');
-        } else {
+        } else if (this._sidebar.mode !== Adw.SidebarMode.PAGE) {
+            // Only restore selection on desktop, because sudden page change
+            // when deactivating the search on mobile is disorienting.
             this._sidebar.restoreSelection();
         }
     }
