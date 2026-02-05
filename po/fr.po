@@ -1,7 +1,7 @@
 # French translation for gnome-characters.
 # Copyright (C) 2015-2016 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Guillaume Bernard <translate@filorin.fr>, 2015.
+# Guillaume Bernard <translate@filorin.fr>, 2015-2026.
 # Alain Lojewski <allomervan@gmail.com>, 2017.
 # Charles Monzat <charles.monzat@free.fr>, 2017-2022.
 #
@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2023-10-24 03:55+0000\n"
-"PO-Revision-Date: 2024-03-19 14:01+0100\n"
+"issues/\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-03 12:52+0000\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -19,25 +19,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Copier le caractère"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_Voir aussi"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Voir aussi"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Récemment utilisé"
 
@@ -45,95 +45,95 @@ msgstr "Récemment utilisé"
 msgid "Emojis"
 msgstr "Émojis"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Émoticônes et émotions"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Personnages et corps"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Animaux et nature"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Nourriture et boisson"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Voyages et lieux"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Activités"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Objets"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Symboles"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Drapeaux"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Lettres et symboles"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Ponctuation"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Flèches"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Puces"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Images"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Monnaies"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Math"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Lettres"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Général"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Ouvrir le menu principal"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Rechercher"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Afficher les raccourcis clavier"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quitter"
@@ -146,8 +146,9 @@ msgstr "_Raccourcis clavier"
 msgid "_About Characters"
 msgstr "À _propos de Caractères"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "Caractères"
 
@@ -179,15 +180,24 @@ msgstr "Aucun résultat"
 msgid "Try a different search"
 msgstr "Essayez une autre recherche"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Chargement…"
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "Utilitaire pour chercher et insérer des caractères inhabituels"
 
-#: data/org.gnome.Characters.appdata.xml.in:5
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "caractères;unicode;ponctuation;math;lettres;émoji;émoticône;symboles;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Nombre maximal de caractères récents"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Application de la table de caractères"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -197,7 +207,7 @@ msgstr ""
 "inhabituels. Il vous permet de trouver rapidement le caractère que vous "
 "cherchez par le biais de mots-clés."
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -205,18 +215,18 @@ msgstr ""
 "Vous pouvez aussi naviguer dans les caractères par catégories, comme par "
 "Ponctuation, Images, etc."
 
-#: data/org.gnome.Characters.desktop.in.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr "Utilitaire pour chercher et insérer des caractères inhabituels"
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Interface principale de Caractères"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr "caractères;unicode;ponctuation;math;lettres;émoji;émoticône;symboles;"
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Page des lettres"
 
-#: data/org.gnome.Characters.gschema.xml:8
-msgid "Maximum recent characters"
-msgstr "Nombre maximal de caractères récents"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
+msgid "The GNOME Project"
+msgstr "Le projet GNOME"
 
 #: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
@@ -232,7 +242,7 @@ msgstr "%s n’est pas inclus dans %s"
 msgid "Character copied to clipboard"
 msgstr "Caractère copié dans le presse-papiers"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Non assigné"
 
@@ -249,27 +259,25 @@ msgstr "Caractère copié"
 msgid "Character was copied successfully"
 msgstr "Le caractère a été copié avec succès"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "Ligne du panneau latéral %s"
-
-#: src/window.js:144
+#: src/window.js:139
 msgid "Search Result"
 msgstr "Résultat de la recherche"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "Le projet GNOME"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:173
 msgid "translator-credits"
 msgstr ""
 "Guillaume Bernard <associations@guillaume-bernard.fr>\n"
 "Alain Lojewski <allomervan@gmail.com>\n"
 "Charles Monzat <charles.monzat@free.fr>\n"
 "Irénée Thirion <irenee.thirion@e.email>"
+
+#~ msgid "Loading…"
+#~ msgstr "Chargement…"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "Ligne du panneau latéral %s"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
@@ -323,9 +331,6 @@ msgstr ""
 
 #~ msgid "Characters Application"
 #~ msgstr "Application Caractères"
-
-#~ msgid "Characters Application started"
-#~ msgstr "Application Caractères démarrée"
 
 #~ msgid "Characters Application exiting"
 #~ msgstr "Fermeture de l’application Caractères"
