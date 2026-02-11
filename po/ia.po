@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the gnome-characters package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # FULL NAME <EMAIL@ADDRESS>, 2025.
-# Emilio Sepúlveda <emism.translations@gmail.com>, 2025.
+# Emilio Sepúlveda <emism.translations@gmail.com>, 2025-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
-"POT-Creation-Date: 2025-05-10 15:07+0000\n"
-"PO-Revision-Date: 2025-05-20 20:04-0400\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-10 22:00-0300\n"
 "Last-Translator: Emilio Sepúlveda <emism.translations@gmail.com>\n"
 "Language-Team: Interlingua <softinterlingua@gmail.com>\n"
 "Language: ia\n"
@@ -23,8 +23,9 @@ msgstr ""
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 49.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/gnome-characters/\n"
 
 #: data/character_dialog.ui:67
 msgid "_Copy Character"
@@ -42,7 +43,7 @@ msgstr "_Vider anque"
 msgid "See Also"
 msgstr "Vider anque"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Recentemente usate"
 
@@ -50,95 +51,95 @@ msgstr "Recentemente usate"
 msgid "Emojis"
 msgstr "Emojis"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Surrisos e emotiones"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Personas e corpore"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Animales e natura"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Alimentos e bibitas"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Viages e locos"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Activitates"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Objectos"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Symbolos"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Bandieras"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Litteras e symbolos"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Punctuation"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Flechas"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Punctas"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Imagines"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Monetas"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Mathematica"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Litteras"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Aperir menu principal"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Cercar"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Monstrar vias breve de claviero"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quitar"
@@ -151,8 +152,9 @@ msgstr "Vias breve de _claviero"
 msgid "_About Characters"
 msgstr "_A proposito de Characteres"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:163
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "Characteres"
 
@@ -184,11 +186,24 @@ msgstr "Necun resultatos"
 msgid "Try a different search"
 msgstr "Tenta un recerca differente"
 
-#: data/org.gnome.Characters.appdata.xml.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "Application utensile pro cercar e inserer characteres inusual"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "characteres;unicode;punctuation;math;litteras;emoji;emoticones;symbolos;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Maxime de characteres recente"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Application de mappa de characteres"
 
-#: data/org.gnome.Characters.appdata.xml.in.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -198,7 +213,7 @@ msgstr ""
 "characteres inusual. Iste application te permitte trovar rapidemente le "
 "character que tu cerca con parolas clave."
 
-#: data/org.gnome.Characters.appdata.xml.in.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -206,23 +221,18 @@ msgstr ""
 "Tu anque pote percurrer le characteres per categorias, como punctuation, "
 "imagines, etc."
 
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Interfacie principal de Characteres"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Pagina de litteras"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Characters.appdata.xml.in.in:26 src/window.js:165
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
 msgid "The GNOME Project"
 msgstr "Le projecto GNOME"
-
-#: data/org.gnome.Characters.desktop.in.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr "Application utensile pro cercar e inserer characteres inusual"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr "characteres;unicode;punctuation;math;litteras;emoji;emoticones;symbolos;"
-
-#: data/org.gnome.Characters.gschema.xml:8
-msgid "Maximum recent characters"
-msgstr "Maxime de characteres recente"
 
 #: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
@@ -238,7 +248,7 @@ msgstr "%s non es includite in %s"
 msgid "Character copied to clipboard"
 msgstr "Character copiate al area de transferentia"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Non assignate"
 
@@ -255,16 +265,15 @@ msgstr "Character copiate"
 msgid "Character was copied successfully"
 msgstr "Le character ha essite copiate correctemente"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "Fila de barra lateral %s"
-
-#: src/window.js:142
+#: src/window.js:139
 msgid "Search Result"
 msgstr "Resultato de recerca"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:175
+#: src/window.js:173
 msgid "translator-credits"
 msgstr "Emilio Sepúlveda <emism.translations@gmail.com>"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "Fila de barra lateral %s"
