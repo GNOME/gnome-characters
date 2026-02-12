@@ -6,15 +6,15 @@
 #
 # lcapalbo <lucas.capalbo@gmail.com>, 2016.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2022-2023.
-# Daniel Mustieles García <daniel.mustieles@gmail.com>, 2023.
+# Daniel Mustieles García <daniel.mustieles@gmail.com>, 2023-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2023-08-28 10:17+0000\n"
-"PO-Revision-Date: 2023-08-08 07:45+0200\n"
+"issues/\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-12 14:00+0100\n"
 "Last-Translator: Daniel Mustieles García <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -22,25 +22,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 42.0\n"
+"X-Generator: Gtranslator 49.0\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Copiar carácter"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "Consulte _también"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Consulte también"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Usados recientemente"
 
@@ -48,95 +48,95 @@ msgstr "Usados recientemente"
 msgid "Emojis"
 msgstr "Emojis"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Caritas y emojis"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Gente y cuerpo"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Animales y naturaleza"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Comida y bebida"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Viajes y lugares"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Actividades"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Objetos"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Símbolos"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Banderas"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Letras y símbolos"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Puntuación"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Flechas"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Topos"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Imágenes"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Monedas"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Matemáticas"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Letras"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Abrir el menú principal"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Buscar"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Mostrar los atajos del teclado"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Salir"
@@ -149,8 +149,9 @@ msgstr "Atajos del _teclado"
 msgid "_About Characters"
 msgstr "_Acerca de Caracteres"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "Caracteres"
 
@@ -182,15 +183,26 @@ msgstr "No se han encontrado resultados"
 msgid "Try a different search"
 msgstr "Pruebe a hacer una búsqueda diferente"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Cargando…"
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+"Aplicación de utilidad para buscar y encontrar caracteres poco habituales"
 
-#: data/org.gnome.Characters.appdata.xml.in:5
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "caracteres;unicode;puntuación;matemáticas;letras;emoji;emoji;símbolos;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Número máximo de caracteres recientes"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Aplicación de mapa de caracteres"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -200,7 +212,7 @@ msgstr ""
 "habituales. Le permite buscar rápidamente el carácter que está buscando "
 "usando palabras clave."
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -208,20 +220,18 @@ msgstr ""
 "Puede examinar los caracteres por categorías, tales como Puntuación, "
 "Imágenes, etc."
 
-#: data/org.gnome.Characters.desktop.in.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr ""
-"Aplicación de utilidad para buscar y encontrar caracteres poco habituales"
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Interfaz principal de Caracteres"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr ""
-"caracteres;unicode;puntuación;matemáticas;letras;emoji;emoji;símbolos;"
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Pagina de letras"
 
-#: data/org.gnome.Characters.gschema.xml:8
-msgid "Maximum recent characters"
-msgstr "Número máximo de caracteres recientes"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
+msgid "The GNOME Project"
+msgstr "El Proyecto GNOME"
 
 #: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
@@ -237,7 +247,7 @@ msgstr "%s no está incluido en %s"
 msgid "Character copied to clipboard"
 msgstr "Carácter copiado al portapapeles"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "No asignado"
 
@@ -254,109 +264,130 @@ msgstr "Carácter copiado"
 msgid "Character was copied successfully"
 msgstr "El carácter se ha copiado correctamente"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "Fila %s de la barra lateral"
-
-#: src/window.js:144
+#: src/window.js:139
 msgid "Search Result"
 msgstr "Buscar resultados"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "El Proyecto GNOME"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:173
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2015"
 
+#, fuzzy
+#~ msgid "Loading…"
+#~ msgstr "Cargando…"
+
+#, fuzzy, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "%s fila de la barra lateral"
+
+#, fuzzy
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
-#~ msgstr "Abrir menú"
+#~ msgstr "abrir menú"
 
+#, fuzzy
 #~ msgctxt "shortcut window"
 #~ msgid "Keyboard shortcuts"
-#~ msgstr "Atajos del teclado"
+#~ msgstr "Atajos de teclado"
 
+#, fuzzy
 #~ msgid "GNOME Characters"
-#~ msgstr "Caracteres de GNOME"
+#~ msgstr "Personajes de GNOME"
 
+#, fuzzy
 #~ msgid "Character Map"
-#~ msgstr "Mapa de caracteres"
+#~ msgstr "Mapa de personajes"
 
+#, fuzzy
 #~ msgid "U+%s, %s: %s"
 #~ msgstr "U+%s, %s: %s"
 
+#, fuzzy
 #~ msgid "Filter by Font"
-#~ msgstr "Filtrar por tipografía"
+#~ msgstr "Filtrar por fuente"
 
+#, fuzzy
 #~ msgid "Font to display characters"
-#~ msgstr "Tipografía para mostrar los caracteres"
+#~ msgstr "Fuente para mostrar caracteres"
 
+#, fuzzy
 #~ msgid "Use the font to render characters on the character list."
 #~ msgstr ""
-#~ "Usar la tipografía para renderizar los caracteres en la lista de "
-#~ "caracteres."
+#~ "Utilice la fuente para representar caracteres en la lista de caracteres."
 
+#, fuzzy
 #~ msgid "%s Category List Row"
-#~ msgstr "Fila de lista de categorías %s"
+#~ msgstr "%s fila de lista de categorías"
 
+#, fuzzy
 #~ msgid "None"
 #~ msgstr "Ninguno"
 
+#, fuzzy
 #~ msgid "%s (%s only)"
-#~ msgstr "%s (%s solo)"
+#~ msgstr "%s (solo %s)"
 
+#, fuzzy
 #~ msgid "%s Character List"
 #~ msgstr "Lista de caracteres %s"
 
+#, fuzzy
 #~ msgid "Recently Used %s Character List"
-#~ msgstr "Lista de caracteres de tipo %s usados recientemente"
+#~ msgstr "Lista de caracteres %s usados ​​recientemente"
 
+#, fuzzy
 #~ msgid "Search found no results"
-#~ msgstr "La búsqueda no ha producido resultados"
+#~ msgstr "La búsqueda no encontró resultados"
 
+#, fuzzy
 #~ msgid "Current page"
 #~ msgstr "Página actual"
 
+#, fuzzy
 #~ msgid "Characters Application"
-#~ msgstr "Aplicación Caracteres"
+#~ msgstr "Aplicación de personajes"
 
-#~ msgid "Characters Application started"
-#~ msgstr "Aplicación Caracteres iniciada"
-
-#~| msgid "Characters Application started"
+#, fuzzy
 #~ msgid "Characters Application activate"
-#~ msgstr "Aplicación Caracteres iniciada"
+#~ msgstr "Activación de la aplicación de personajes."
 
+#, fuzzy
 #~ msgid "Characters Application exiting"
-#~ msgstr "Saliendo de la aplicación Caracteres"
+#~ msgstr "Caracteres Aplicación saliendo"
 
+#, fuzzy
 #~ msgid "@appid@"
 #~ msgstr "@appid@"
 
+#, fuzzy
 #~ msgid "About"
 #~ msgstr "Acerca de"
 
+#, fuzzy
 #~ msgid "gnome-characters"
-#~ msgstr "gnome-characters"
+#~ msgstr "personajes-gnomos"
 
+#, fuzzy
 #~ msgid "Emoticons"
-#~ msgstr "Emojis"
+#~ msgstr "Emoticones"
 
+#, fuzzy
 #~ msgid "Try another search criteria."
-#~ msgstr "Pruebe otro criterio de búsqueda."
+#~ msgstr "Pruebe con otro criterio de búsqueda."
 
+#, fuzzy
 #~ msgid "characters;unicode;"
 #~ msgstr "caracteres;unicode;"
 
+#, fuzzy
 #~ msgid "Latin"
-#~ msgstr "Latín"
+#~ msgstr "latín"
 
+#, fuzzy
 #~ msgid "_New"
 #~ msgstr "_Nuevo"
 
+#, fuzzy
 #~ msgid "Type to Search"
-#~ msgstr "Escribir para buscar"
+#~ msgstr "Escriba para buscar"
