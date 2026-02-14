@@ -4,13 +4,14 @@
 #
 #
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2015, 2016, 2017.
-# Asier Sarasua Garmendia  <asier.sarasua@gmail.com>, 2019, 2020, 2021, 2022, 2023.
+# Asier Saratsua Garmendia  <asier.sarasua@gmail.com>, 2019, 2020, 2021, 2022, 2023.
+# Asier Saratsua Garmendia  <asiersarasua@ni.eus>, 2026.
 msgid ""
 msgstr "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-07-30 19:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-14 19:00+0100\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -18,23 +19,23 @@ msgstr "Project-Id-Version: gnome-characters master\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Kopiatu karakterea"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "Ikus _halaber"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Ikus halaber"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Azken aldian erabilia"
 
@@ -42,95 +43,95 @@ msgstr "Azken aldian erabilia"
 msgid "Emojis"
 msgstr "Emojiak"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Aurpegierak eta emozioa"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Jendea eta gorputza"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Animaliak eta izadia"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Janaria eta edaria"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Bidaiak eta lekuak"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Jarduerak"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Objektuak"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Ikurrak"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Banderak"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Hizkiak eta ikurrak"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Puntuazioa"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Geziak"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Buletak"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Argazkiak"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Dibisak"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Matematikak"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Hizkiak"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Orokorra"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Ireki menu nagusia"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Bilatu"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Erakutsi lasterbideak"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Irten"
@@ -143,8 +144,9 @@ msgstr "Las_ter-teklak"
 msgid "_About Characters"
 msgstr "Karaktereak aplikazioari _buruz"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "Karaktereak"
 
@@ -176,33 +178,12 @@ msgstr "Ez dago emaitzarik"
 msgid "Try a different search"
 msgstr "Saiatu bestelako bilaketa"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Kargatzen…"
-
-#: data/org.gnome.Characters.appdata.xml.in:5
-msgid "Character map application"
-msgstr "Karaktere-maparen aplikazioa"
-
-#: data/org.gnome.Characters.appdata.xml.in:9
-msgid ""
-"Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
-msgstr "Karaktereak aplikazio xume bat da ohikoak ez diren karaktereak bilatu eta txertatzeko. Gako-hitzen arabera bilatzea nahi duzun karakterea bizkor aurkitzen du."
-
-#: data/org.gnome.Characters.appdata.xml.in:12
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
-msgstr "Kategorien arabera ere araka ditzakezu karaktereak. Hala nola, puntuazioa, irudiak eta abar."
-
-#: data/org.gnome.Characters.desktop.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
 msgid "Utility application to find and insert unusual characters"
 msgstr "Aplikazio bat da ohikoak ez diren karaktereak bilatu eta txertatzeko"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
+#: data/org.gnome.Characters.desktop.in.in:12
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 msgstr "karaktereak;unicode;puntuazioa;matematika;hizkiak;aurpegierak;emotikonoak;ikurrak;"
 
@@ -210,21 +191,51 @@ msgstr "karaktereak;unicode;puntuazioa;matematika;hizkiak;aurpegierak;emotikonoa
 msgid "Maximum recent characters"
 msgstr "Gehieneko azken karaktereak"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "Karaktere-maparen aplikazioa"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr "Karaktereak aplikazio xume bat da ohikoak ez diren karaktereak bilatu eta txertatzeko. Gako-hitzen arabera bilatzea nahi duzun karakterea bizkor aurkitzen du."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "Kategorien arabera ere araka ditzakezu karaktereak. Hala nola, puntuazioa, irudiak eta abar."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Karaktereak aplikazioaren interfaze nagusia"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Letren orria"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
+msgid "The GNOME Project"
+msgstr "GNOME proiektua"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Karakterearen izena ezezaguna"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "'%s' ez dago '%s' letra-tipoan"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Karakterea arbelean kopiatuta"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Esleitu gabea"
 
@@ -241,23 +252,21 @@ msgstr "Karakterea kopiatu da"
 msgid "Character was copied successfully"
 msgstr "Karakterea ongi kopiatu da"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "%s alboko barraren errenkada"
-
-#: src/window.js:144
+#: src/window.js:139
 msgid "Search Result"
 msgstr "Bilaketaren emaitzak"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "GNOME proiektua"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:173
 msgid "translator-credits"
 msgstr "translator-credits"
+
+#~ msgid "Loading…"
+#~ msgstr "Kargatzen…"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "%s alboko barraren errenkada"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
@@ -308,9 +317,6 @@ msgstr "translator-credits"
 
 #~ msgid "Characters Application"
 #~ msgstr "Karaktereak aplikazioa"
-
-#~ msgid "Characters Application started"
-#~ msgstr "Karaktereak aplikazioa abiarazita"
 
 #~ msgid "Characters Application activate"
 #~ msgstr "Karaktereak aplikazioa aktibatuta"
