@@ -4,41 +4,41 @@
 # Jeff Bai <jeffbai@aosc.xyz>, 2015, 2016.
 # Bin Li <binli@gnome.org>, 2016.
 # Dingzhong Chen <wsxy162@gmail.com>, 2015, 2016, 2017, 2019.
-# lumingzh <lumingzh@qq.com>, 2022-2023.
+# lumingzh <lumingzh@qq.com>, 2022-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2023-07-02 10:39+0000\n"
-"PO-Revision-Date: 2023-08-05 16:16+0800\n"
+"issues/\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-14 16:15+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
-"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 42.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 49.0\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "复制字符(_C)"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "万国码（Unicode）"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "另见(_S)"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "另见"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "最近使用"
 
@@ -46,95 +46,95 @@ msgstr "最近使用"
 msgid "Emojis"
 msgstr "表情"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "笑脸与情绪"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "人物与身体"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "动物与自然"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "食物与饮料"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "旅游与地方"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "活动"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "物体"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "符号"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "标志"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "字母与符号"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "标点"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "箭头"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "项目符号"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "图片"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "货币"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "数学"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "字母"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "常规"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "打开主菜单"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "搜索"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "显示键盘快捷键"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "退出"
@@ -147,8 +147,9 @@ msgstr "键盘快捷键(_K)"
 msgid "_About Characters"
 msgstr "关于字符(_A)"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "字符"
 
@@ -180,35 +181,12 @@ msgstr "未找到结果"
 msgid "Try a different search"
 msgstr "尝试不同的搜索"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "正在加载…"
-
-#: data/org.gnome.Characters.appdata.xml.in:5
-msgid "Character map application"
-msgstr "字符映射应用程序"
-
-#: data/org.gnome.Characters.appdata.xml.in:9
-msgid ""
-"Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
-msgstr ""
-"字符 是一个简单的查找并插入特殊字符的实用程序。它可以让你通过通过搜索关键字快"
-"速找到你正在寻找的字符。"
-
-#: data/org.gnome.Characters.appdata.xml.in:12
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
-msgstr "你也可以按照目录浏览字符，比如 标点、图片等。"
-
-#: data/org.gnome.Characters.desktop.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
 msgid "Utility application to find and insert unusual characters"
 msgstr "查找和插入特殊字符的实用程序"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
+#: data/org.gnome.Characters.desktop.in.in:12
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 msgstr ""
 "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;字符;万国"
@@ -218,21 +196,53 @@ msgstr ""
 msgid "Maximum recent characters"
 msgstr "最近字符的最大数"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "字符映射应用程序"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"字符 是一个简单的查找并插入特殊字符的实用程序。它可以让你通过通过搜索关键字快"
+"速找到你正在寻找的字符。"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "你也可以按照目录浏览字符，比如 标点、图片等。"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "字符的主界面"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "字母页"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
+msgid "The GNOME Project"
+msgstr "GNOME 项目"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "未知的字符名称"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "字体 %2$s 不包含字符 %1$s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "字符已复制到剪贴板"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "未分配"
 
@@ -249,27 +259,25 @@ msgstr "字符已复制"
 msgid "Character was copied successfully"
 msgstr "字符已成功复制"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "%s 侧边栏行"
-
-#: src/window.js:144
+#: src/window.js:139
 msgid "Search Result"
 msgstr "搜索结果"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "GNOME 项目"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:173
 msgid "translator-credits"
 msgstr ""
 "Jeff Bai <jeffbai@aosc.xyz>, 2015, 2016.\n"
 "Bin Li <binli@gnome.org>, 2016.\n"
 "Dingzhong Chen <wsxy162@gmail.com>, 2015, 2016, 2017, 2019.\n"
-"lumingzh <lumingzh@qq.com>, 2022-2023."
+"lumingzh <lumingzh@qq.com>, 2022-2026."
+
+#~ msgid "Loading…"
+#~ msgstr "正在加载…"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "%s 侧边栏行"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
@@ -323,9 +331,6 @@ msgstr ""
 
 #~ msgid "Characters Application"
 #~ msgstr "字符 应用程序"
-
-#~ msgid "Characters Application started"
-#~ msgstr "字符 应用程序已打开"
 
 #~ msgid "Characters Application exiting"
 #~ msgstr "字符 应用程序正在退出"
