@@ -7,36 +7,35 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-08-07 18:27+0300\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-18 12:31+0200\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Kopioi merkki"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_Katso myös"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Katso myös"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Äskettäin käytetty"
 
@@ -44,95 +43,95 @@ msgstr "Äskettäin käytetty"
 msgid "Emojis"
 msgstr "Emojit"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Hymiöt ja tunteet"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Ihmiset ja hahmot"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Eläimet ja luonto"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Ruoka ja juoma"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Matkustaminen"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Aktiviteetit"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Objektit"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Symbolit"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Liput"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Kirjaimet ja symbolit"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Välimerkit"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Nuolet"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Luettelomerkit"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Kuvat"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Valuutat"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Matematiikka"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Kirjaimet"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Yleiset"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Avaa päävalikko"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Haku"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Näytä pikanäppäimet"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Lopeta"
@@ -145,8 +144,8 @@ msgstr "_Pikanäppäimet"
 msgid "_About Characters"
 msgstr "_Tietoja - Merkit"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3 data/org.gnome.Characters.metainfo.xml.in.in:4
+#: src/main.js:58 src/window.js:160
 msgid "Characters"
 msgstr "Merkit"
 
@@ -178,61 +177,63 @@ msgstr "Ei tuloksia"
 msgid "Try a different search"
 msgstr "Yritä eri hakuehdoilla"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Ladataan…"
-
-#: data/org.gnome.Characters.appdata.xml.in:5
-msgid "Character map application"
-msgstr "Merkkikarttasovellus"
-
-#: data/org.gnome.Characters.appdata.xml.in:9
-msgid ""
-"Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
-msgstr ""
-"Merkit on yksinkertainen sovellus, jonka avulla on mahdollista etsiä ja "
-"syöttää epätavallisia merkkejä. Voit etsiä merkkejä käyttäen hakusanoja."
-
-#: data/org.gnome.Characters.appdata.xml.in:12
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
-msgstr ""
-"Voit myös selata merkkejä luokkien perusteella, esimerkiksi välimerkkejä, "
-"kuvia jne."
-
-#: data/org.gnome.Characters.desktop.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
 msgid "Utility application to find and insert unusual characters"
 msgstr "Sovellus epätavallisten merkkien etsintään ja syöttämiseen"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
+#: data/org.gnome.Characters.desktop.in.in:12
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr ""
-"characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;merkit;"
-"kirjaimet;hymiöt;symbolit;"
+msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;merkit;kirjaimet;hymiöt;symbolit;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "Äskettäisten merkkien enimmäismäärä"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "Merkkikarttasovellus"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual characters. It allows you to quickly "
+"find the character you are looking for by searching for keywords."
+msgstr ""
+"Merkit on yksinkertainen sovellus, jonka avulla on mahdollista etsiä ja syöttää epätavallisia merkkejä. "
+"Voit etsiä merkkejä käyttäen hakusanoja."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid "You can also browse characters by categories, such as Punctuation, Pictures, etc."
+msgstr "Voit myös selata merkkejä luokkien perusteella, esimerkiksi välimerkkejä, kuvia jne."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Merkkisovelluksen käyttöliittymä"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Kirjainsivu"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
+msgid "The GNOME Project"
+msgstr "Gnome-projekti"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Tuntematon merkin nimi"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "Merkki %s ei sisälly fonttiin %s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Merkki kopioitu leikepöydälle"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Määrittämätön"
 
@@ -249,23 +250,21 @@ msgstr "Merkki kopioitu"
 msgid "Character was copied successfully"
 msgstr "Merkki kopioitiin onnistuneesti"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "Sivupalkin rivi %s"
-
-#: src/window.js:144
+#: src/window.js:139
 msgid "Search Result"
 msgstr "Hakutulos"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "Gnome-projekti"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:173
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
+
+#~ msgid "Loading…"
+#~ msgstr "Ladataan…"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "Sivupalkin rivi %s"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
@@ -316,9 +315,6 @@ msgstr "Jiri Grönroos"
 
 #~ msgid "Characters Application"
 #~ msgstr "Merkkisovellus"
-
-#~ msgid "Characters Application started"
-#~ msgstr "Merkkisovellus käynnistetty"
 
 #~ msgid "Characters Application activate"
 #~ msgstr "Merkkisovellus aktivoi"
