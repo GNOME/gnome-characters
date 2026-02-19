@@ -54,6 +54,7 @@ var MyApplication = GObject.registerClass({
             application_id: pkg.name,
             flags: Gio.ApplicationFlags.FLAGS_NONE,
             resource_base_path: '/org/gnome/Characters',
+            version: pkg.version,
         });
         GLib.set_application_name(_('Characters'));
 
