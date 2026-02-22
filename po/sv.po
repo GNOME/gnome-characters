@@ -1,17 +1,16 @@
 # Swedish translation for gnome-characters.
-# Copyright © 2015-2023 gnome-characters's COPYRIGHT HOLDER
+# Copyright © 2015-2026 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023, 2026.
 # Sebastian Rasmussen <sebras@gmail.com>, 2015.
 # Luna Jernberg <droidbittin@gmail.com>, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-06-20 16:28+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/\n"
+"POT-Creation-Date: 2026-02-19 17:26+0000\n"
+"PO-Revision-Date: 2026-02-22 11:21+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,25 +18,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Kopiera tecken"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_Se även"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Se även"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Nyligen använda"
 
@@ -45,96 +44,96 @@ msgstr "Nyligen använda"
 msgid "Emojis"
 msgstr "Emoji"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Humörsymboler och känslor"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Folk och kropp"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Djur och natur"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Mat och dryck"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Resande och platser"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Aktiviteter"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Föremål"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Symboler"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Flaggor"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Bokstäver och symboler"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Skiljetecken"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Pilar"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Punkter"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Bilder"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Valutor"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Matematik"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Bokstäver"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Allmänt"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Öppna huvudmeny"
 
 # accessible name
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Sök"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Visa tangentbordsgenvägar"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Avsluta"
@@ -147,8 +146,8 @@ msgstr "_Tangentbordsgenvägar"
 msgid "_About Characters"
 msgstr "_Om Tecken"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59 src/window.js:166
 msgid "Characters"
 msgstr "Tecken"
 
@@ -183,61 +182,63 @@ msgstr "Inga resultat"
 msgid "Try a different search"
 msgstr "Försök med en annan sökning"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Läser in…"
-
-#: data/org.gnome.Characters.appdata.xml.in:5
-msgid "Character map application"
-msgstr "Teckentabellprogram"
-
-#: data/org.gnome.Characters.appdata.xml.in:9
-msgid ""
-"Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
-msgstr ""
-"Tecken är ett enkelt nyttoprogram för att söka och infoga ovanliga tecken. "
-"Det låter dig snabbt hitta tecknet du söker genom att söka efter nyckelord."
-
-#: data/org.gnome.Characters.appdata.xml.in:12
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
-msgstr ""
-"Du kan också bläddra igenom tecken efter kategorier som skiljetecken, bilder "
-"o.s.v."
-
-#: data/org.gnome.Characters.desktop.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
 msgid "Utility application to find and insert unusual characters"
 msgstr "Nyttoprogram för att söka och infoga ovanliga tecken"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
+#: data/org.gnome.Characters.desktop.in.in:12
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr ""
-"tecken;unicode;skiljetecken;matematik;bokstäver;emoji;emoticon;humörsymbol;"
-"symboler;"
+msgstr "tecken;unicode;skiljetecken;matematik;bokstäver;emoji;emoticon;humörsymbol;symboler;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "Maximalt antal senaste tecken"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "Teckentabellprogram"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual characters. It "
+"allows you to quickly find the character you are looking for by searching for keywords."
+msgstr ""
+"Tecken är ett enkelt nyttoprogram för att söka och infoga ovanliga tecken. Det låter dig "
+"snabbt hitta tecknet du söker genom att söka efter nyckelord."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid "You can also browse characters by categories, such as Punctuation, Pictures, etc."
+msgstr "Du kan också bläddra igenom tecken efter kategorier som skiljetecken, bilder o.s.v."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Teckens huvudgränssnitt"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Bokstavssidan"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:168
+msgid "The GNOME Project"
+msgstr "GNOME-projektet"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Okänt teckennamn"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s är inte inkluderat i %s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Tecken kopierat till urklipp"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Otilldelad"
 
@@ -254,22 +255,13 @@ msgstr "Tecken kopierat"
 msgid "Character was copied successfully"
 msgstr "Lyckades kopiera tecken"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "%s-sidofältsrad"
-
 # accessible name
-#: src/window.js:144
+#: src/window.js:143
 msgid "Search Result"
 msgstr "Sökresultat"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "GNOME-projektet"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:179
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
@@ -277,6 +269,13 @@ msgstr ""
 "\n"
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
+
+#~ msgid "Loading…"
+#~ msgstr "Läser in…"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "%s-sidofältsrad"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
