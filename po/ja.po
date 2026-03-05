@@ -1,19 +1,20 @@
 # Japanese translations for org.gnome.Characters package.
-# Copyright (C) 2015, 2017, 2019-2020, 2022, 2025 THE org.gnome.Characters's COPYRIGHT HOLDER
+# Copyright (C) 2015, 2017, 2019-2020, 2022, 2025-2026 THE org.gnome.Characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the org.gnome.Characters package.
 # Daiki Ueno <ueno@gnu.org>, 2015.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2015, 2017.
 # sicklylife <translation@sicklylife.jp>, 2019-2020, 2022.
 # Kusano Takayuki <https://bsky.app/profile/tkusano.jp>, 2025.
+# 小山田 純 <oyamadajun@outlook.jp>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.gnome.Characters main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
-"POT-Creation-Date: 2025-05-13 06:29+0000\n"
-"PO-Revision-Date: 2025-05-14 17:46+0900\n"
-"Last-Translator: Kusano Takayuki <https://bsky.app/profile/tkusano.jp>\n"
+"POT-Creation-Date: 2026-02-19 17:26+0000\n"
+"PO-Revision-Date: 2026-03-05 21:36+0900\n"
+"Last-Translator: 小山田 純 <oyamadajun@outlook.jp>\n"
 "Language-Team: Japanese https://l10n.gnome.org/teams/ja/\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +38,7 @@ msgstr "関連項目(_S)"
 msgid "See Also"
 msgstr "関連項目"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "最近使用した文字"
 
@@ -45,95 +46,95 @@ msgstr "最近使用した文字"
 msgid "Emojis"
 msgstr "絵文字"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "顔文字と感情"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "人と体"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "動物と自然"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "食品と飲料"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "旅行と場所"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "活動"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "物体"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "シンボル"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "旗"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "文字とシンボル"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "句読点記号"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "矢印記号"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "見出し記号"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "絵文字"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "通貨記号"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "数学記号"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "文字記号"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "全般"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "メニューを開く"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "検索"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "キーボードショートカットを表示"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "終了"
@@ -146,8 +147,9 @@ msgstr "キーボードショートカット(_K)"
 msgid "_About Characters"
 msgstr "“文字”について(_A)"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:163
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
+#: src/window.js:166
 msgid "Characters"
 msgstr "文字"
 
@@ -182,36 +184,12 @@ msgstr "一致するものがありません"
 msgid "Try a different search"
 msgstr "他のキーワードを試してください"
 
-#: data/org.gnome.Characters.appdata.xml.in.in:5
-msgid "Character map application"
-msgstr "文字マップアプリケーション"
-
-#: data/org.gnome.Characters.appdata.xml.in.in:9
-msgid ""
-"Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for "
-"by searching for keywords."
-msgstr ""
-"“文字”は珍しい文字を探して挿入するためのシンプルなユーティリティです。キー"
-"ワード検索により、素早く文字を発見できます。"
-
-#: data/org.gnome.Characters.appdata.xml.in.in:12
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
-msgstr "また、句読点記号や絵文字のようなカテゴリー別に閲覧することもできます。"
-
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Characters.appdata.xml.in.in:26 src/window.js:165
-msgid "The GNOME Project"
-msgstr "The GNOME Project"
-
-#: data/org.gnome.Characters.desktop.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
 msgid "Utility application to find and insert unusual characters"
 msgstr "珍しい文字を探して挿入するためのユーティリティ"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
+#: data/org.gnome.Characters.desktop.in.in:12
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
 msgstr ""
 "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;文字;ユニ"
@@ -220,6 +198,38 @@ msgstr ""
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "最近使用した文字の最大記憶数"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "文字マップアプリケーション"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"“文字”は珍しい文字を探して挿入するためのシンプルなユーティリティです。キー"
+"ワード検索により、素早く文字を発見できます。"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "また、句読点記号や絵文字のようなカテゴリー別に閲覧することもできます。"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "「文字」アプリのメイン画面"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "文字ページ"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:168
+msgid "The GNOME Project"
+msgstr "The GNOME Project"
 
 #: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
@@ -235,7 +245,7 @@ msgstr "文字 %s はフォント %s に含まれていません"
 msgid "Character copied to clipboard"
 msgstr "クリップボードにコピーしました"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "未割り当て"
 
@@ -252,25 +262,25 @@ msgstr "文字をコピーしました"
 msgid "Character was copied successfully"
 msgstr "文字を正常にコピーしました"
 
-# ツールチップの文字列。%s はサイドバーの行のタイトル
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "%sカテゴリーの文字"
-
-#: src/window.js:142
+#: src/window.js:143
 msgid "Search Result"
 msgstr "検索結果"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:175
+#: src/window.js:179
 msgid "translator-credits"
 msgstr ""
 "松澤 二郎 <jmatsuzawa@gnome.org>\n"
 "Daiki Ueno <ueno@gnu.org>\n"
 "sicklylife <translation@sicklylife.jp>\n"
 "Japanese Translation Team https://l10n.gnome.org/teams/ja/\n"
-"Kusano Takayuki https://bsky.app/profile/tkusano.jp"
+"Kusano Takayuki https://bsky.app/profile/tkusano.jp\n"
+"小山田 純 <oyamadajun@outlook.jp>"
+
+# ツールチップの文字列。%s はサイドバーの行のタイトル
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "%sカテゴリーの文字"
 
 #~ msgid "Loading…"
 #~ msgstr "読み込み中…"
@@ -335,9 +345,6 @@ msgstr ""
 
 #~ msgid "Characters Application"
 #~ msgstr "Characters アプリケーション"
-
-#~ msgid "Characters Application started"
-#~ msgstr "Characters アプリケーションを開始しました"
 
 #~ msgid "Characters Application activate"
 #~ msgstr "Characters アプリケーションをアクティブにします"
