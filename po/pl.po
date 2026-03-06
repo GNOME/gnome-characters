@@ -3,40 +3,42 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Piotr Drąg <piotrdrag@gmail.com>, 2015-2023.
 # Aviary.pl <community-poland@mozilla.org>, 2015-2023.
+# Victoria <royal.victoria@proton.me>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
-"issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-08-06 17:21+0200\n"
-"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <community-poland@mozilla.org>\n"
+"issues/\n"
+"POT-Creation-Date: 2026-02-19 17:26+0000\n"
+"PO-Revision-Date: 2026-02-24 18:19+0100\n"
+"Last-Translator: Victoria <royal.victoria@proton.me>\n"
+"Language-Team: Polish\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 49.0\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "S_kopiuj znak"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_Podobne znaki"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Podobne znaki"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Ostatnio używane"
 
@@ -44,95 +46,95 @@ msgstr "Ostatnio używane"
 msgid "Emojis"
 msgstr "Emoji"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Uśmieszki i emocje"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Osoby i ciało"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Zwierzęta i przyroda"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Jedzenie i napoje"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Podróże i miejsca"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Święta i sport"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Rzeczy"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Symbole"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Flagi"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Litery i symbole"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Interpunkcja"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Strzałki"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Wypunktowanie"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Obrazki"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Waluty"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Symbole matematyczne"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Litery"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Ogólne"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Otwarcie menu głównego"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Wyszukiwanie"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Wyświetlenie skrótów klawiszowych"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Zakończenie działania"
@@ -145,8 +147,9 @@ msgstr "_Skróty klawiszowe"
 msgid "_About Characters"
 msgstr "_O programie"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
+#: src/window.js:166
 msgid "Characters"
 msgstr "Znaki"
 
@@ -178,15 +181,24 @@ msgstr "Brak wyników"
 msgid "Try a different search"
 msgstr "Proszę spróbować innych słów"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Wczytywanie…"
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "Narzędzie do wyszukiwania i wstawiania znaków specjalnych"
 
-#: data/org.gnome.Characters.appdata.xml.in:5
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "znak;znaki;czcionka;font;pismo;unicode;unikod;interpunkcja;interpunkcyjne;matematyka;matematyczne;litery;emoji;emotikony;emotikonki;emotki;symbole;mapa;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Maksymalna liczba ostatnio używanych znaków"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Tablica znaków"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -196,7 +208,7 @@ msgstr ""
 "specjalnych. Umożliwia ono szybkie znajdowanie znaków dzięki słowom "
 "kluczowym."
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -204,37 +216,34 @@ msgstr ""
 "Można także przeglądać znaki według kategorii, takich jak interpunkcja, "
 "obrazki itp."
 
-#: data/org.gnome.Characters.desktop.in.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr "Narzędzie do wyszukiwania i wstawiania znaków specjalnych"
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "Główny interfejs Tablicy znaków"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr ""
-"znak;znaki;czcionka;font;pismo;unicode;unikod;interpunkcja;interpunkcyjne;"
-"matematyka;matematyczne;litery;emoji;emotikony;emotikonki;emotki;symbole;"
-"mapa;"
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "Strona z literami"
 
-#: data/org.gnome.Characters.gschema.xml:8
-msgid "Maximum recent characters"
-msgstr "Maksymalna liczba ostatnio używanych znaków"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:168
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Nieznana nazwa znaku"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "Znaku „%s” nie ma w czcionce %s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Skopiowano znak do schowka"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Nieprzydzielone"
 
@@ -251,22 +260,20 @@ msgstr "Skopiowano znak"
 msgid "Character was copied successfully"
 msgstr "Pomyślnie skopiowano znak"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "Rząd „%s” paska bocznego"
-
-#: src/window.js:144
+#: src/window.js:143
 msgid "Search Result"
 msgstr "Wyniki wyszukiwania"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "Projekt GNOME"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:179
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2015-2023\n"
 "Aviary.pl <community-poland@mozilla.org>, 2015-2023"
+
+#~ msgid "Loading…"
+#~ msgstr "Wczytywanie…"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "Rząd „%s” paska bocznego"
