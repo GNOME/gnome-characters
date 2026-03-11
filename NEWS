@@ -1,3 +1,48 @@
+50.0
+====
+* Flatpak builds use the noto-emoji from the Freedesktop SDK
+* Switch to search results when the search entry is activated
+* Don't restore selection when deactivating search on mobile
+* Correctly show sidebar after finishing a search
+* Strip whitespaces in bundled GResources
+* Add --version cli option
+* Add captions to app screenshots
+* Translations updates:
+  - Basque
+  - Bulgarian
+  - Catalan
+  - Chinese (China)
+  - Cornish
+  - Czech
+  - Danish
+  - English (United Kingdom)
+  - Finnish
+  - French
+  - Galician
+  - Georgian
+  - Greek, Modern (1453-)
+  - Hebrew
+  - Hungarian
+  - Interlingua
+  - Japanese
+  - Kazakh
+  - Korean
+  - Lithuanian
+  - Nepali
+  - Norwegian Bokmål
+  - Occitan (post 1500)
+  - Polish
+  - Portuguese
+  - Portuguese (Brazil)
+  - Romanian
+  - Russian
+  - Slovenian
+  - Spanish
+  - Swedish
+  - Turkish
+  - Uighur
+  - Ukrainian
+
 50.alpha
 ========
 * Don't skip the first block when iterating (Alice Mikhaylenko)

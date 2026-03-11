@@ -53,20 +53,54 @@
     <color type="primary" scheme_preference="dark">#26a269</color>
   </branding>
   <releases>
-    <release version="50.alpha" date="2026-01-04" type="development">
+    <release version="50.0" date="2026-03-14">
       <description>
-        <p>Characters 50.alpha release.</p>
+        <p>Characters 50.0 release.</p>
         <ul>
-          <li>Fix wrong emoji size when font scaling is enabled (Alice Mikhaylenko)</li>
-          <li>Include the new CJK block from unicode 17.0 (Alice Mikhaylenko)</li>
-          <li>Port shortcuts to AdwShortcutsDialog (Maximiliano Sandoval)</li>
-          <li>Port to AdwSidebar (Alice Mikhaylenko)</li>
-          <li>Rename appdata to metainfo (AsciiWolf)</li>
-          <li>Update to Unicode 17.0.0 (Alice Mikhaylenko)</li>
+          <li>Improvements to sidebar and search experience</li>
+          <li>Add --version cli option</li>
+          <li>Fix wrong emoji size when font scaling is enabled</li>
+          <li>Include the new CJK block from unicode and update unicode to 17.0</li>
+          <li>Port shortcuts to AdwShortcutsDialog</li>
+          <li>Port to AdwSidebar</li>
         </ul>
         <p>It also comes with translation updates for the following locales:</p>
         <ul>
-          <li>Serbian (Latin) (Милош Поповић)</li>
+          <li>Basque</li>
+          <li>Bulgarian</li>
+          <li>Catalan</li>
+          <li>Chinese (China)</li>
+          <li>Cornish</li>
+          <li>Czech</li>
+          <li>Danish</li>
+          <li>English (United Kingdom)</li>
+          <li>Finnish</li>
+          <li>French</li>
+          <li>Galician</li>
+          <li>Georgian</li>
+          <li>Greek</li>
+          <li>Hebrew</li>
+          <li>Hungarian</li>
+          <li>Interlingua</li>
+          <li>Japanese</li>
+          <li>Kazakh</li>
+          <li>Korean</li>
+          <li>Lithuanian</li>
+          <li>Nepali</li>
+          <li>Norwegian Bokmål</li>
+          <li>Occitan</li>
+          <li>Polish</li>
+          <li>Portuguese (Brazil)</li>
+          <li>Portuguese</li>
+          <li>Romanian</li>
+          <li>Russian</li>
+          <li>Serbian (Latin)</li>
+          <li>Slovenian</li>
+          <li>Spanish</li>
+          <li>Swedish</li>
+          <li>Turkish</li>
+          <li>Uighur</li>
+          <li>Ukrainian</li>
         </ul>
       </description>
     </release>
