@@ -2,17 +2,17 @@
 # Copyright (C) 2024 gnome-characters's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-characters package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# ButterflyOfFire <ButterflyOfFire@protonmail.com>, 2024.
+# ButterflyOfFire <butterflyoffire@protonmail.com>, 2024-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
-"POT-Creation-Date: 2024-03-11 08:52+0000\n"
-"PO-Revision-Date: 2024-03-23 22:48+0100\n"
-"Last-Translator: sa\n"
-"Language-Team: Kabyle <ButterflyOfFire@protonmail.com>\n"
+"POT-Creation-Date: 2026-03-14 13:12+0000\n"
+"PO-Revision-Date: 2026-03-18 15:56+0100\n"
+"Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
+"Language-Team: Kabyle\n"
 "Language: kab\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,25 +23,27 @@ msgstr ""
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Gtranslator 49.0\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/gnome-characters/\n"
+"X-DL-Lang: kab\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "Nɣel asekkil (_C)"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "Wali daɣen (_S)"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Wali daɣen"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Yettwaseqdec melmi kan"
 
@@ -49,95 +51,95 @@ msgstr "Yettwaseqdec melmi kan"
 msgid "Emojis"
 msgstr "Imujiten"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Taḍsa é Iḥulfan"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Imdanen & Tafekka"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Iɣersiwen d ugama"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Učči d tissit"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Inig & Imukan"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Irmad"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Tiɣawsiwin"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Izamulen"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Tiɛellamin"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Isekkilen & Izamulen"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Asigez"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Tineccabin"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Tililac"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Tiwlafin"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Tadrimt"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Tusnakt"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Isekkilen"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Amatu"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Ldi umuɣ agejdan"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Nadi"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Sken-d inegzumen n unasiw"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Ffeɣ"
@@ -150,8 +152,9 @@ msgstr "Inegzumen n unasiw (_K)"
 msgid "_About Characters"
 msgstr "Γef yisekkilen (_A)"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
+#: src/window.js:166
 msgid "Characters"
 msgstr "Isekkilen"
 
@@ -183,15 +186,24 @@ msgstr "Ulac igmaḍ"
 msgid "Try a different search"
 msgstr "Ɛreḍ anadi niḍen"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Yessalay-d…"
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "Asnas n tanfa i tifin akked usekcem n yisekkilen ur nennum ara"
 
-#: data/org.gnome.Characters.appdata.xml.in:5
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "isekkilen;unicode;asigez;tasnamka;isekkilen;imujit;imentaḍen;izamulen;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Amḍan afellay n yisekkilen n melmi kan"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Asnas n tkarḍa n yisekkilen"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -201,30 +213,27 @@ msgstr ""
 "ara. Yessirig-ak tifin n yisekkilen iɣef tettnadiḍ s zzerb s unadi n wawalen "
 "n tsarut."
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
 "Tzemreḍ daɣen ad tinigeḍ deg yisekkilen s taggayin, am usigez, tugniwin, rtg."
 
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr ""
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+#, fuzzy
+#| msgid "Letters"
+msgid "Letters page"
+msgstr "Isekkilen"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Characters.appdata.xml.in:26 src/window.js:167
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:168
 msgid "The GNOME Project"
 msgstr "Asenfaṛ n GNOME"
-
-#: data/org.gnome.Characters.desktop.in.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr "Asnas n tanfa i tifin akked usekcem n yisekkilen ur nennum ara"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr "isekkilen;unicode;asigez;tasnamka;isekkilen;imujit;imentaḍen;izamulen;"
-
-#: data/org.gnome.Characters.gschema.xml:8
-msgid "Maximum recent characters"
-msgstr "Amḍan afellay n yisekkilen n melmi kan"
 
 #: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
@@ -240,7 +249,7 @@ msgstr "%s ur d-yeddi ara deg %s"
 msgid "Character copied to clipboard"
 msgstr "Asekkil yettwanɣel ɣer tecfawt"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Yettwamudd"
 
@@ -257,16 +266,11 @@ msgstr "Yettwanɣel usekkil"
 msgid "Character was copied successfully"
 msgstr "Yettwanɣel usekkil akken iwata"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "%s yizirig n ufeggag adisan"
-
-#: src/window.js:144
+#: src/window.js:143
 msgid "Search Result"
 msgstr "Igmaḍ n unadi"
 
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:179
 msgid "translator-credits"
 msgstr "amsuqqel-isemdan"
