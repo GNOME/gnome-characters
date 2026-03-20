@@ -1,13 +1,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Sveinn í Felli <sv1@fellsnet.is>, 2015, 2016, 2017, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2015, 2016, 2017, 2021, 2022, 2023, 2024, 2026 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2024-05-11 16:55+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/"
+"\n"
+"POT-Creation-Date: 2026-03-14 13:12+0000\n"
+"PO-Revision-Date: 2026-03-20 18:10+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -15,26 +16,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_Afrita staftákn"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "Unicode"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_Sjá einnig"
 
-#: data/character_dialog.ui:125
-#| msgid "_See Also"
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "Sjá einnig"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "Nýlega notað"
 
@@ -42,97 +42,95 @@ msgstr "Nýlega notað"
 msgid "Emojis"
 msgstr "Tjáningartákn"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "Brosmerki og tjáningartákn"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "Fólk og líkami"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "Dýr og náttúra"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "Matur og drykkur"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "Staðir og ferðalög"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "Athafnir"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "Hlutir"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "Táknmerki"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "Fánar"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "Stafir og tákn"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "Greinamerki"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "Örvar"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "Áherslumerki"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "Myndir"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "Gjaldmiðlar"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "Stærðfræði"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "Stafir"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Almennt"
 
-#: data/shortcuts.ui:15
-#| msgid "Main Menu"
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Opna aðalvalmynd"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Leita"
 
-#: data/shortcuts.ui:27
-#| msgid "_Keyboard Shortcuts"
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Birta flýtilykla"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Hætta"
@@ -145,8 +143,9 @@ msgstr "Flýtily_klar"
 msgid "_About Characters"
 msgstr "_Um hugbúnaðinn"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
+#: src/window.js:166
 msgid "Characters"
 msgstr "Stafir"
 
@@ -178,15 +177,26 @@ msgstr "Engar niðurstöður"
 msgid "Try a different search"
 msgstr "Reyna aðra leit"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "Hleð..."
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+"Nytjatól til að setja inn óvenjuleg staftákn (t.d. sem eru ekki á lyklaborði)"
 
-#: data/org.gnome.Characters.appdata.xml.in:5
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+"stafir;staftákn;unicode;greinamerki;stærðfræði;tjáningartákn;emoji;merki;tákn;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Hámarksfjöldi nýlegra stafa"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Stafatöfluforrit"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -196,44 +206,43 @@ msgstr ""
 "óvenjuleg staftákn. Fljótlegt er að finna táknið sem þú leitar að með því að "
 "setja inn stikkorð."
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
 msgstr ""
 "Þú getur skoðað staftákn eftir flokkum, eins og Myndir, Greinamerki o.s.frv."
 
-#: data/org.gnome.Characters.desktop.in.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr ""
-"Nytjatól til að setja inn óvenjuleg staftákn (t.d. sem eru ekki á lyklaborði)"
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+#| msgid "Characters Application started"
+msgid "Characters's main interface"
+msgstr "Aðalviðmót stafaforrits"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr ""
-"stafir;staftákn;unicode;greinamerki;stærðfræði;tjáningartákn;emoji;merki;"
-"tákn;"
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+#| msgid "Letters"
+msgid "Letters page"
+msgstr "Stafasíða"
 
-#: data/org.gnome.Characters.gschema.xml:8
-msgid "Maximum recent characters"
-msgstr "Hámarksfjöldi nýlegra stafa"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:168
+msgid "The GNOME Project"
+msgstr "GNOME-verkefnið"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "Óþekkt heiti á staftákni"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s er ekki innifalið í %s"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "Stafur afritaður á klippispjaldið"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "Ekki úthlutað"
 
@@ -250,26 +259,24 @@ msgstr "Stafur afritaður"
 msgid "Character was copied successfully"
 msgstr "Tókst að afrita staftákn"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "%s röð hliðarspjalds"
-
-#: src/window.js:144
+#: src/window.js:143
 msgid "Search Result"
 msgstr "Leitarniðurstöður"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "GNOME-verkefnið"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:179
 msgid "translator-credits"
 msgstr ""
 "Áki G. Karlsson  <aki@akademia.is>\n"
 "Samúel Jón Gunnarsson <sammi@techattack.nu>\n"
 "Sveinn í Felli <sv1@fellsnet.is>"
+
+#~ msgid "Loading…"
+#~ msgstr "Hleð..."
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "%s röð hliðarspjalds"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
@@ -327,9 +334,6 @@ msgstr ""
 #~ msgid "Characters Application"
 #~ msgstr "Stafaforrit"
 
-#~ msgid "Characters Application started"
-#~ msgstr "Stafaforrit ræsist"
-
 #~ msgid "Characters Application exiting"
 #~ msgstr "Stafaforrit hættir"
 
@@ -341,3 +345,4 @@ msgstr ""
 
 #~ msgid "characters;unicode;"
 #~ msgstr "stafir;staftákn;unicode;"
+
