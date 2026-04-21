@@ -6,9 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues/\n"
 "POT-Creation-Date: 2026-04-05 08:02+0000\n"
-"PO-Revision-Date: 2026-04-16 21:14+0200\n"
+"PO-Revision-Date: 2026-04-21 11:24+0200\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -144,7 +145,8 @@ msgid "_About Characters"
 msgstr "_O aplikácii Znaky"
 
 #: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
-#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59 src/window.js:166
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
+#: src/window.js:166
 msgid "Characters"
 msgstr "Znaky"
 
@@ -180,7 +182,7 @@ msgstr "Skúste vyhľadať niečo iné"
 
 #: data/org.gnome.Characters.desktop.in.in:4
 msgid "Utility application to find and insert unusual characters"
-msgstr "Užitočná aplikácia na nájdenie a vloženie neobvyklých znakov"
+msgstr "Pomocná aplikácia na nájdenie a vloženie neobvyklých znakov"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in.in:12
@@ -193,22 +195,25 @@ msgstr "Maximálny počet nedávnych znakov"
 
 #: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
-msgstr "Aplikácia mapa znakov"
+msgstr "Mapa znakov"
 
 #: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
-"Characters is a simple utility application to find and insert unusual characters. "
-"It allows you to quickly find the character you are looking for by searching for "
-"keywords."
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
 msgstr ""
-"Znaky je jednoduchá užitočná aplikácia na nájdenie a vloženie neobvyklých znakov. "
-"Umožňuje vám rýchlo nájsť znak, ktorý môžete vyhľadať pomocou kľúčových slov."
+"Znaky je jednoduchá užitočná aplikácia na nájdenie a vloženie neobvyklých "
+"znakov. Umožňuje vám rýchlo nájsť znak, ktorý môžete vyhľadať pomocou "
+"kľúčových slov."
 
 #: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, etc."
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
 msgstr ""
-"Môžete tiež prehliadať znaky podľa kategórií, ako sú napríklad Znaky, Obrázky, atď."
+"Môžete tiež prehliadať znaky podľa kategórií, ako sú napríklad Interpunkcia, "
+"Obrázky, atď."
 
 #: data/org.gnome.Characters.metainfo.xml.in.in:19
 msgid "Characters's main interface"
