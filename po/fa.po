@@ -3,38 +3,39 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Arash Mousavi <mousavi.arash@gmail.com>, 2015-2017.
 # Danial Behzadi <dani.behzi@ubuntu.com>, 2018-2023.
+# Goudarz Jafari <me@goudarzjafari.com>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues\n"
-"POT-Creation-Date: 2023-06-19 16:49+0000\n"
-"PO-Revision-Date: 2023-07-29 04:55+0330\n"
-"Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/\n"
+"POT-Creation-Date: 2026-02-01 20:26+0000\n"
+"PO-Revision-Date: 2026-02-02 23:21+0330\n"
+"Last-Translator: Goudarz Jafari <me@goudarzjafari.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/character_dialog.ui:63
+#: data/character_dialog.ui:67
 msgid "_Copy Character"
 msgstr "_رونوشت از نویسه"
 
-#: data/character_dialog.ui:84
+#: data/character_dialog.ui:88
 msgid "Unicode"
 msgstr "یونی‌کد"
 
-#: data/character_dialog.ui:98
+#: data/character_dialog.ui:102
 msgid "_See Also"
 msgstr "_همچنین ببینید"
 
-#: data/character_dialog.ui:125
+#: data/character_dialog.ui:131
 msgid "See Also"
 msgstr "همچنین ببینید"
 
-#: data/sidebar.ui:12
+#: data/sidebar.ui:13
 msgid "Recently Used"
 msgstr "به‌تازگی استفاده شده"
 
@@ -42,95 +43,95 @@ msgstr "به‌تازگی استفاده شده"
 msgid "Emojis"
 msgstr "ایموجی‌ها"
 
-#: data/sidebar.ui:35
+#: data/sidebar.ui:25
 msgid "Smileys & Emotion"
 msgstr "شکلک‌ها و احساسات"
 
-#: data/sidebar.ui:43
+#: data/sidebar.ui:32
 msgid "People & Body"
 msgstr "افراد و بدن"
 
-#: data/sidebar.ui:51
+#: data/sidebar.ui:39
 msgid "Animals & Nature"
 msgstr "حیوانات و طبعیت"
 
-#: data/sidebar.ui:59
+#: data/sidebar.ui:46
 msgid "Food & Drink"
 msgstr "غذا و نوشیدنی"
 
-#: data/sidebar.ui:67
+#: data/sidebar.ui:53
 msgid "Travel & Places"
 msgstr "سفر و مکان‌ها"
 
-#: data/sidebar.ui:75
+#: data/sidebar.ui:60
 msgid "Activities"
 msgstr "فعّالیت‌ها"
 
-#: data/sidebar.ui:83
+#: data/sidebar.ui:67
 msgid "Objects"
 msgstr "اشیا"
 
-#: data/sidebar.ui:91
+#: data/sidebar.ui:74
 msgid "Symbols"
 msgstr "نمادها"
 
-#: data/sidebar.ui:99
+#: data/sidebar.ui:81
 msgid "Flags"
 msgstr "پرچم‌ها"
 
-#: data/sidebar.ui:108
+#: data/sidebar.ui:89
 msgid "Letters & Symbols"
 msgstr "حروف و نشانه‌ها"
 
-#: data/sidebar.ui:122
+#: data/sidebar.ui:93
 msgid "Punctuation"
 msgstr "نقطه‌گذاری"
 
-#: data/sidebar.ui:130
+#: data/sidebar.ui:100
 msgid "Arrows"
 msgstr "پیکان‌ها"
 
-#: data/sidebar.ui:138
+#: data/sidebar.ui:107
 msgid "Bullets"
 msgstr "نقطه‌ها"
 
-#: data/sidebar.ui:146
+#: data/sidebar.ui:114
 msgid "Pictures"
 msgstr "نگاره‌ها"
 
-#: data/sidebar.ui:154
+#: data/sidebar.ui:121
 msgid "Currencies"
 msgstr "ارزها"
 
-#: data/sidebar.ui:162
+#: data/sidebar.ui:128
 msgid "Math"
 msgstr "ریاضی"
 
-#: data/sidebar.ui:170
+#: data/sidebar.ui:135
 msgid "Letters"
 msgstr "حروف"
 
-#: data/shortcuts.ui:11
+#: data/shortcuts.ui:6
 msgctxt "shortcut window"
 msgid "General"
 msgstr "عمومی"
 
-#: data/shortcuts.ui:15
+#: data/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "گشودن فهرست اصلی"
 
-#: data/shortcuts.ui:21
+#: data/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "جست‌وجو"
 
-#: data/shortcuts.ui:27
+#: data/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "نمایش میان‌برهای صفحه‌کلید"
 
-#: data/shortcuts.ui:33
+#: data/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "خروج"
@@ -143,8 +144,8 @@ msgstr "_میان‌برهای صفحه‌کلید"
 msgid "_About Characters"
 msgstr "_دربارهٔ نویسه‌ها"
 
-#: data/window.ui:24 data/org.gnome.Characters.appdata.xml.in:4
-#: data/org.gnome.Characters.desktop.in.in:4 src/main.js:58 src/window.js:165
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3 data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:58
+#: src/window.js:160
 msgid "Characters"
 msgstr "نویسه‌ها"
 
@@ -176,61 +177,63 @@ msgstr "بدون نتیجه"
 msgid "Try a different search"
 msgstr "جست‌وجویی دیگر را بیازمایید"
 
-#: data/window.ui:139
-msgid "Loading…"
-msgstr "درحال بار کردن…"
-
-#: data/org.gnome.Characters.appdata.xml.in:5
-msgid "Character map application"
-msgstr "برنامهٔ نقشهٔ نویسه‌ها"
-
-#: data/org.gnome.Characters.appdata.xml.in:9
-msgid ""
-"Characters is a simple utility application to find and insert unusual "
-"characters. It allows you to quickly find the character you are looking for by "
-"searching for keywords."
-msgstr ""
-"نویسه‌ها ابزاری ساده برای یافتن و درج نویسه‌های غیرمعمول است. این ابزار به شما "
-"امکان یافتن سریع نویسه‌ای که به دنبالش هستید را با جست‌وجو برای کلیدواژگان می‌دهد."
-
-#: data/org.gnome.Characters.appdata.xml.in:12
-msgid ""
-"You can also browse characters by categories, such as Punctuation, Pictures, "
-"etc."
-msgstr ""
-"همچنین می‌توانید نویسه‌ها را بر اساس دسته‌بندی‌هایی چون نقطه‌گذاری، نگاره‌ها و… "
-"بیابید."
-
-#: data/org.gnome.Characters.desktop.in.in:5
+#: data/org.gnome.Characters.desktop.in.in:4
 msgid "Utility application to find and insert unusual characters"
 msgstr "ابزاری برای یافتن و درج نویسه‌های غیرمعمول"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in.in:13
+#: data/org.gnome.Characters.desktop.in.in:12
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr ""
-"characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;نویسه‌ها;"
-"یونیکد;یونی‌کد;ریاضی;حروف;شکلک;نقطه‌گذاری;نمادها;"
+msgstr "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;نویسه‌ها;یونیکد;یونی‌کد;ریاضی;حروف;شکلک;نقطه‌گذاری;نمادها;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
 msgstr "بیشینهٔ نویسه‌های اخیر"
 
-#: src/characterDialog.js:95 src/searchProvider.js:89
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "برنامهٔ نقشهٔ نویسه‌ها"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual characters. It allows you to quickly find the character you "
+"are looking for by searching for keywords."
+msgstr ""
+"نویسه‌ها ابزاری ساده برای یافتن و درج نویسه‌های غیرمعمول است. این ابزار به شما امکان یافتن سریع نویسه‌ای که به دنبالش هستید را با "
+"جست‌وجو برای کلیدواژگان می‌دهد."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid "You can also browse characters by categories, such as Punctuation, Pictures, etc."
+msgstr "همچنین می‌توانید نویسه‌ها را بر اساس دسته‌بندی‌هایی چون نقطه‌گذاری، نگاره‌ها و… بیابید."
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "رابط کاربری اصلی نویسه‌ها"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "صفحهٔ حروف"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:162
+msgid "The GNOME Project"
+msgstr "پروژهٔ گنوم"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
 msgid "Unknown character name"
 msgstr "نام نویسهٔ ناشناخته"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/characterDialog.js:120
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s در %s وجود ندارد"
 
-#: src/characterDialog.js:151
+#: src/characterDialog.js:156
 msgid "Character copied to clipboard"
 msgstr "نویسه به تخته‌گیره رونوشت شد"
 
-#: src/charactersView.js:156
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "اختصاص نیافته"
 
@@ -247,25 +250,24 @@ msgstr "نویسه رونوشت شد"
 msgid "Character was copied successfully"
 msgstr "نویسه با موفّقیت رونوشت شد"
 
-#: src/sidebarRow.js:72
-#, javascript-format
-msgid "%s Sidebar Row"
-msgstr "%s ردیف کناری"
-
-#: src/window.js:144
+#: src/window.js:139
 msgid "Search Result"
 msgstr "نتیجهٔ جست‌وجو"
 
-#: src/window.js:167
-msgid "The GNOME Project"
-msgstr "پروژهٔ گنوم"
-
 #. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:177
+#: src/window.js:173
 msgid "translator-credits"
 msgstr ""
 "آرش موسوی <mousavi.arash@gmail.com>\n"
-"دانیال بهزادی<dani.behzi@ubuntu.com>"
+"دانیال بهزادی<dani.behzi@ubuntu.com>\n"
+"گودرز جعفری <me@goudarzjafari.com>"
+
+#~ msgid "Loading…"
+#~ msgstr "درحال بار کردن…"
+
+#, javascript-format
+#~ msgid "%s Sidebar Row"
+#~ msgstr "%s ردیف کناری"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Open menu"
@@ -316,9 +318,6 @@ msgstr ""
 
 #~ msgid "Characters Application"
 #~ msgstr "برنامهٔ نویسه‌ها"
-
-#~ msgid "Characters Application started"
-#~ msgstr "برنامهٔ نویسه‌ها شروع شد"
 
 #~ msgid "Characters Application activate"
 #~ msgstr "برنامهٔ نویسه‌ها به کار افتاد"
