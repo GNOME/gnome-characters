@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
 "POT-Creation-Date: 2026-04-05 08:02+0000\n"
-"PO-Revision-Date: 2026-04-22 13:41+0100\n"
+"PO-Revision-Date: 2026-05-29 17:29+0100\n"
 "Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
 "Language-Team: kw\n"
 "Language: kw\n"
@@ -175,7 +175,7 @@ msgstr "Nyns eus Lytherennow A-Dhiwedhes"
 
 #: data/window.ui:90
 msgid "Characters will appear here if you use them"
-msgstr "Lytherennow a wra diskwedhes omma mar devnydhyowgh"
+msgstr "Lytherennow a wra diskwedhes omma mar hwi a's devnydhya"
 
 #: data/window.ui:117
 msgid "No Results"
@@ -241,7 +241,7 @@ msgstr "Hanow lytheren ankoth"
 #: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
-msgstr "%s nyns yw synsys yn %s"
+msgstr "%s nag yw synsys yn %s"
 
 #: src/characterDialog.js:156
 msgid "Character copied to clipboard"
