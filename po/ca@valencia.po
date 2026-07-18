@@ -8,72 +8,210 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"characters&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-09-08 08:34+0000\n"
-"PO-Revision-Date: 2017-09-01 18:22+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/issues/"
+"\n"
+"POT-Creation-Date: 2026-04-05 08:02+0000\n"
+"PO-Revision-Date: 2026-07-18 11:54+0000\n"
 "Last-Translator: Xavi Ivars <xavi.ivars@gmail.com>\n"
 "Language-Team: \n"
-"Language: ca-valencia\n"
+"Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Minairó 0.1.0\n"
 
-#: data/app-menu.ui:6
-msgid "About"
-msgstr "Quant a"
+#: data/character_dialog.ui:67
+#| msgid "Copy Character"
+msgid "_Copy Character"
+msgstr "_Copia el caràcter"
 
-#: data/app-menu.ui:10
+#: data/character_dialog.ui:88
+#| msgid "Unicode U+%04s"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: data/character_dialog.ui:102
+#| msgid "See Also"
+msgid "_See Also"
+msgstr "_Vegeu també"
+
+#: data/character_dialog.ui:131
+msgid "See Also"
+msgstr "Vegeu també"
+
+#: data/sidebar.ui:13
+msgid "Recently Used"
+msgstr "Utilitzats recentment"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "Emojis"
+
+#: data/sidebar.ui:25
+#| msgid "Smileys & People"
+msgid "Smileys & Emotion"
+msgstr "Emoticones i emocions"
+
+#: data/sidebar.ui:32
+msgid "People & Body"
+msgstr "Persones i parts del cos"
+
+#: data/sidebar.ui:39
+msgid "Animals & Nature"
+msgstr "Animals i natura"
+
+#: data/sidebar.ui:46
+msgid "Food & Drink"
+msgstr "Menjar i beure"
+
+#: data/sidebar.ui:53
+msgid "Travel & Places"
+msgstr "Viatges i llocs"
+
+#: data/sidebar.ui:60
+msgid "Activities"
+msgstr "Activitats"
+
+#: data/sidebar.ui:67
+msgid "Objects"
+msgstr "Objectes"
+
+#: data/sidebar.ui:74
+msgid "Symbols"
+msgstr "Símbols"
+
+#: data/sidebar.ui:81
+msgid "Flags"
+msgstr "Banderes"
+
+#: data/sidebar.ui:89
+msgid "Letters & Symbols"
+msgstr "Lletres i símbols"
+
+#: data/sidebar.ui:93
+msgid "Punctuation"
+msgstr "Puntuació"
+
+#: data/sidebar.ui:100
+msgid "Arrows"
+msgstr "Fletxes"
+
+#: data/sidebar.ui:107
+msgid "Bullets"
+msgstr "Pics"
+
+#: data/sidebar.ui:114
+msgid "Pictures"
+msgstr "Imatges"
+
+#: data/sidebar.ui:121
+msgid "Currencies"
+msgstr "Monedes"
+
+#: data/sidebar.ui:128
+msgid "Math"
+msgstr "Matemàtiques"
+
+#: data/sidebar.ui:135
+msgid "Letters"
+msgstr "Lletres"
+
+#: data/shortcuts.ui:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/shortcuts.ui:10
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Obri el menú"
+
+#: data/shortcuts.ui:16
+#| msgid "Search Result"
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Cerca"
+
+#: data/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Mostra les dreceres de teclat"
+
+#: data/shortcuts.ui:28
+#| msgid "Quit"
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Ix"
 
-#: data/characterlist.ui:30
-msgid "Search found no results"
-msgstr "La busca no ha donat resultats"
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_Dreceres de teclat"
 
-#: data/characterlist.ui:41
-msgid "Try a different search."
-msgstr "Proveu una busca diferent. "
+#: data/window.ui:10
+#| msgid "About Characters"
+msgid "_About Characters"
+msgstr "_Quant al Caràcters"
 
-#: data/characterlist.ui:73
-msgid "Loading…"
-msgstr "S'està carregant..."
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
+#: src/window.js:166
+msgid "Characters"
+msgstr "Caràcters"
 
-#: data/character.ui:68
-msgid "Copy Character"
-msgstr "Copia caràcter"
+#: data/window.ui:32
+#| msgid "Search Result"
+msgid "Search"
+msgstr "Cerca"
 
-#: data/character.ui:86
-msgid "Character copied to clipboard"
-msgstr "El caràcter s'ha copiat al porta-retalls"
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "Menú principal"
 
-#: data/mainview.ui:30
-msgid "No recent characters found"
+#: data/window.ui:49
+#| msgid "Search Result Character List"
+msgid "Search characters"
+msgstr "Cerca caràcters"
+
+#: data/window.ui:89
+#| msgid "No recent characters found"
+msgid "No Recent Characters"
 msgstr "No s'han trobat caràcters recents"
 
-#: data/mainview.ui:41
-msgid "Characters will appear here if you use them."
-msgstr "Els caràcters apareixen ací si els utilitzeu."
+#: data/window.ui:90
+#| msgid "Characters will appear here if you use them."
+msgid "Characters will appear here if you use them"
+msgstr "Els caràcters apareixen ací si els utilitzeu"
 
-#: data/mainwindow.ui:12
-msgid "Current page"
-msgstr "Pàgina actual"
+#: data/window.ui:117
+#| msgid "Search Result"
+msgid "No Results"
+msgstr "Sense resultats"
 
-#: data/menu.ui:17
-msgid "Filter by Font"
-msgstr "Filtra per tipus de lletra"
+#: data/window.ui:118
+#| msgid "Try a different search."
+msgid "Try a different search"
+msgstr "Proveu una cerca diferent"
 
-#: data/org.gnome.Characters.appdata.xml.in:4 src/window.js:200
-msgid "GNOME Characters"
-msgstr "Caràcters del GNOME"
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "Una aplicació per buscar i inserir caràcters inusuals"
 
-#: data/org.gnome.Characters.appdata.xml.in:5
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+#| msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "caràcters;unicode;puntuació;mates;lletres;emoji;emoticona;símbols;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "Màxim de caràcters recents"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
 msgid "Character map application"
 msgstr "Aplicació per mostrar caràcters"
 
-#: data/org.gnome.Characters.appdata.xml.in:9
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
 msgid ""
 "Characters is a simple utility application to find and insert unusual "
 "characters. It allows you to quickly find the character you are looking for "
@@ -82,7 +220,7 @@ msgstr ""
 "Caràcters és una aplicació per buscar i inserir caràcters inusuals. Vos "
 "permet trobar ràpidament els caràcters que esteu cercant usant paraules clau."
 
-#: data/org.gnome.Characters.appdata.xml.in:12
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
 msgid ""
 "You can also browse characters by categories, such as Punctuation, Pictures, "
 "etc."
@@ -90,204 +228,59 @@ msgstr ""
 "També podeu navegar els caràcters per categories, com ara puntuació, "
 "imatges, etc. "
 
-#: data/org.gnome.Characters.desktop.in:4 src/service.js:51
-msgid "Characters"
-msgstr "Caràcters"
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+#| msgid "Characters Application started"
+msgid "Characters's main interface"
+msgstr "Interfície principal del Caràcters"
 
-#: data/org.gnome.Characters.desktop.in:5
-msgid "Utility application to find and insert unusual characters"
-msgstr "Una aplicació per buscar i inserir caràcters inusuals"
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+#| msgid "Letters"
+msgid "Letters page"
+msgstr "Pàgina de lletres"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Characters.desktop.in:7
-msgid "gnome-characters"
-msgstr "gnome-characters"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:168
+msgid "The GNOME Project"
+msgstr "El projecte GNOME"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Characters.desktop.in:13
-msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;"
-msgstr "caràcters;unicode;puntuació;mates;lletres;emoji;emoticona;"
-
-#: data/org.gnome.Characters.gschema.xml:5
-msgid "Font to display characters"
-msgstr "Tipus de lletra per a mostrar caràcters"
-
-#: data/org.gnome.Characters.gschema.xml:6
-msgid "Use the font to render characters on the character list."
-msgstr ""
-"Usa el tipus de lletra per mostrar els caràcters en la llista de caràcters."
-
-#: data/org.gnome.Characters.gschema.xml:15
-msgid "Maximum recent characters"
-msgstr "Màxim de caràcters recents"
-
-#: src/categoryList.js:33
-msgid "Emojis"
-msgstr "Emojis"
-
-#: src/categoryList.js:40 src/categoryList.js:390
-msgid "Letters & Symbols"
-msgstr "Lletres i símbols"
-
-#: src/categoryList.js:50
-msgid "Punctuation"
-msgstr "Puntuació"
-
-#: src/categoryList.js:57
-msgid "Arrows"
-msgstr "Fletxes"
-
-#: src/categoryList.js:64
-msgid "Bullets"
-msgstr "Pics"
-
-#: src/categoryList.js:71
-msgid "Pictures"
-msgstr "Imatges"
-
-#: src/categoryList.js:78
-msgid "Currencies"
-msgstr "Monedes"
-
-#: src/categoryList.js:85
-msgid "Math"
-msgstr "Matemàtiques"
-
-#: src/categoryList.js:92
-msgid "Letters"
-msgstr "Lletres"
-
-#: src/categoryList.js:102
-msgid "Smileys & People"
-msgstr "Emoticones i persones"
-
-#: src/categoryList.js:109
-msgid "Animals & Nature"
-msgstr "Animals i natura"
-
-#: src/categoryList.js:116
-msgid "Food & Drink"
-msgstr "Menjar i beure"
-
-#: src/categoryList.js:123
-msgid "Activities"
-msgstr "Activitats"
-
-#: src/categoryList.js:130
-msgid "Travel & Places"
-msgstr "Viatges i llocs"
-
-#: src/categoryList.js:137
-msgid "Objects"
-msgstr "Objectes"
-
-#: src/categoryList.js:144
-msgid "Symbols"
-msgstr "Símbols"
-
-#: src/categoryList.js:151
-msgid "Flags"
-msgstr "Banderes"
-
-#: src/categoryList.js:166
-#, javascript-format
-msgid "%s Category List Row"
-msgstr "%s fila de la llista de categories"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/categoryList.js:378 src/window.js:373
-msgid "Recently Used"
-msgstr "Utilitzats recentment"
-
-#: src/character.js:56
-msgid "See Also"
-msgstr "Vegeu també"
-
-#: src/character.js:122 src/character.js:144
-#, javascript-format
-msgid "Unicode U+%04s"
-msgstr "Unicode U+%04s"
+#: src/characterDialog.js:100 src/searchProvider.js:89
+msgid "Unknown character name"
+msgstr "Nom de caràcter desconegut"
 
 #. TRANSLATORS: the first variable is a character, the second is a font
-#: src/character.js:140
+#: src/characterDialog.js:125
 #, javascript-format
 msgid "%s is not included in %s"
 msgstr "%s no està inclòs a %s"
 
-#: src/characterList.js:178
+#: src/characterDialog.js:156
+msgid "Character copied to clipboard"
+msgstr "El caràcter s'ha copiat al porta-retalls"
+
+#: src/charactersView.js:162
 msgid "Unassigned"
 msgstr "No assignat"
 
-#: src/main.js:58
-msgid "Characters Application"
-msgstr "Aplicació Caràcters"
-
-#: src/main.js:95
-msgid "Characters Application started"
-msgstr "S'ha iniciat l'aplicació Caràcters"
-
-#: src/main.js:103
-msgid "Characters Application exiting"
-msgstr "S'està eixint de l'aplicació Caràcters"
-
-#: src/menu.js:50
-msgid "None"
-msgstr "Cap"
-
-#: src/searchProvider.js:95
-msgid "Unknown character name"
-msgstr "Nom de caràcter desconegut"
-
 #: src/searchProvider.js:98
 #, javascript-format
-msgid "U+%s, %s: %s"
-msgstr "U+%s, %s: %s"
+msgid "U+%s"
+msgstr "U+%s"
 
-#. TRANSLATORS: put your names here, one name per line.
-#: src/window.js:199
-msgid "translator-credits"
-msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>, 2015"
+#: src/searchProvider.js:119
+#| msgid "Character Map"
+msgid "Character copied"
+msgstr "S'ha copiat el caràcter"
 
-#: src/window.js:201
-msgid "Character Map"
-msgstr "Mapa de caràcters"
+#: src/searchProvider.js:120
+#| msgid "Character copied to clipboard"
+msgid "Character was copied successfully"
+msgstr "El caràcter s'ha copiat correctament"
 
-#: src/window.js:221
-#, javascript-format
-msgid "%s (%s only)"
-msgstr "%s (%s només)"
-
-#: src/window.js:350
-#, javascript-format
-msgid "%s Character List"
-msgstr "%s llista de caràcters"
-
-#. TRANSLATORS: %s will be either 'emojis' or 'letters'
-#: src/window.js:358
-#, javascript-format
-msgid "Recently Used %s Character List"
-msgstr "%s llista de caràcters utilitzats recentment"
-
-#: src/window.js:377
-msgid "Search Result Character List"
-msgstr "Busca el resultat a la llista de caràcters"
-
-#. FIXME: Can't use GtkContainer.child_get_property.
-#: src/window.js:379
+#: src/window.js:143
 msgid "Search Result"
 msgstr "Resultat de la busca"
 
-#~ msgid "Emoticons"
-#~ msgstr "Emoticones"
-
-#~ msgid "About Characters"
-#~ msgstr "Quant al Caràcters"
-
-#~ msgid "Try another search criteria."
-#~ msgstr "Proveu un altre criteri de cerca."
-
-#~ msgid "characters;unicode;"
-#~ msgstr "caràcters;unicode;"
-
-#~ msgid "Latin"
-#~ msgstr "Llatí"
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:179
+msgid "translator-credits"
+msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>, 2015"
