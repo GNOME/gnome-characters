@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
 "POT-Creation-Date: 2026-04-05 08:02+0000\n"
-"PO-Revision-Date: 2026-08-15 18:59+0530\n"
-"Last-Translator: Prasanta Hembram <prasantahembram720@gmail.com>\n"
+"PO-Revision-Date: 2026-08-16 23:48+0530\n"
+"Last-Translator: Basa\n"
 "Language-Team: Santali\n"
 "Language: sat\n"
 "MIME-Version: 1.0\n"
@@ -29,11 +29,11 @@ msgstr "ᱭᱩᱱᱤᱠᱳᱰ"
 
 #: data/character_dialog.ui:102
 msgid "_See Also"
-msgstr "_ᱧᱮᱞ ᱠᱟᱜ ᱢᱮ"
+msgstr "ᱦᱚᱸ _ᱧᱮᱞ ᱠᱟᱜ ᱢᱮ"
 
 #: data/character_dialog.ui:131
 msgid "See Also"
-msgstr "ᱧᱮᱞ ᱠᱟᱜ ᱢᱮ"
+msgstr "ᱦᱚᱸ ᱧᱮᱞ ᱠᱟᱜ ᱢᱮ"
 
 #: data/sidebar.ui:13
 msgid "Recently Used"
@@ -49,7 +49,7 @@ msgstr "ᱞᱟᱱᱫᱟ ᱠᱩᱜ ᱟᱨ ᱢᱚᱱᱮᱡᱚᱝ"
 
 #: data/sidebar.ui:32
 msgid "People & Body"
-msgstr "ᱦᱟᱲ ᱟᱨ ᱦᱚᱲᱢᱚ"
+msgstr "ᱦᱚᱲ ᱟᱨ ᱦᱚᱲᱢᱚ"
 
 #: data/sidebar.ui:39
 msgid "Animals & Nature"
@@ -57,7 +57,7 @@ msgstr "ᱡᱤᱣ ᱟᱨ ᱡᱟᱹ"
 
 #: data/sidebar.ui:46
 msgid "Food & Drink"
-msgstr "ᱡᱚᱢᱟᱜ ᱟᱨ ᱧᱩᱟᱜ"
+msgstr "ᱡᱚᱢᱟᱜ ᱟᱨ ᱧᱩᱣᱟᱜ"
 
 #: data/sidebar.ui:53
 msgid "Travel & Places"
@@ -109,7 +109,7 @@ msgstr "ᱮᱞᱠᱷᱟ"
 
 #: data/sidebar.ui:135
 msgid "Letters"
-msgstr "ᱟᱠᱷᱚᱨ ᱠᱚ"
+msgstr "ᱪᱤᱠᱤ ᱠᱚ"
 
 #: data/shortcuts.ui:6
 msgctxt "shortcut window"
