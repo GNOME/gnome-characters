@@ -3,24 +3,25 @@
 # This file is distributed under the same license as the gnome-characters package.
 # Piotr Drąg <piotrdrag@gmail.com>, 2015-2023.
 # Aviary.pl <community-poland@mozilla.org>, 2015-2023.
-# Victoria <royal.victoria@proton.me>, 2026.
+# Victoria Niedzielska <victorian@gnome.org>, 2026.
+# Marcel Mrówka <micro.mail88@gmail.com>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-characters\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
-"POT-Creation-Date: 2026-02-19 17:26+0000\n"
-"PO-Revision-Date: 2026-02-24 18:19+0100\n"
-"Last-Translator: Victoria <royal.victoria@proton.me>\n"
-"Language-Team: Polish\n"
+"POT-Creation-Date: 2026-04-05 08:02+0000\n"
+"PO-Revision-Date: 2026-08-22 16:54+0200\n"
+"Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
+"Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #: data/character_dialog.ui:67
 msgid "_Copy Character"
@@ -145,17 +146,17 @@ msgstr "_Skróty klawiszowe"
 
 #: data/window.ui:10
 msgid "_About Characters"
-msgstr "_O programie"
+msgstr "_O aplikacji"
 
 #: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
 #: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
 #: src/window.js:166
 msgid "Characters"
-msgstr "Znaki"
+msgstr "Tablica znaków"
 
 #: data/window.ui:32
 msgid "Search"
-msgstr "Wyszukuje"
+msgstr "Wyszukaj"
 
 #: data/window.ui:39
 msgid "Main Menu"
@@ -163,7 +164,7 @@ msgstr "Menu główne"
 
 #: data/window.ui:49
 msgid "Search characters"
-msgstr "Wyszukiwanie znaków"
+msgstr "Wyszukaj znaki"
 
 #: data/window.ui:89
 msgid "No Recent Characters"
@@ -188,7 +189,7 @@ msgstr "Narzędzie do wyszukiwania i wstawiania znaków specjalnych"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Characters.desktop.in.in:12
 msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
-msgstr "znak;znaki;czcionka;font;pismo;unicode;unikod;interpunkcja;interpunkcyjne;matematyka;matematyczne;litery;emoji;emotikony;emotikonki;emotki;symbole;mapa;"
+msgstr "znak;znaki;czcionka;font;pismo;unicode;unikod;interpunkcja;interpunkcyjne;matematyka;matematyczne;litery;emoji;emotikony;emotikonki;emotki;symbole;mapa;umlauty;diakryty;diakrytyczne;"
 
 #: data/org.gnome.Characters.gschema.xml:8
 msgid "Maximum recent characters"
@@ -204,8 +205,8 @@ msgid ""
 "characters. It allows you to quickly find the character you are looking for "
 "by searching for keywords."
 msgstr ""
-"Tablica znaków to proste narzędzie do wyszukiwania i wstawiania znaków "
-"specjalnych. Umożliwia ono szybkie znajdowanie znaków dzięki słowom "
+"Tablica znaków to prosta aplikacja do wyszukiwania i wstawiania znaków "
+"specjalnych. Umożliwia ona szybkie znajdowanie znaków dzięki słowom "
 "kluczowym."
 
 #: data/org.gnome.Characters.metainfo.xml.in.in:12
@@ -225,7 +226,8 @@ msgid "Letters page"
 msgstr "Strona z literami"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:168
+#: data/org.gnome.Characters.metainfo.xml.in.in:28
+#: data/org.gnome.Characters.metainfo.xml.in.in:30 src/window.js:168
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -270,10 +272,3 @@ msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2015-2023\n"
 "Aviary.pl <community-poland@mozilla.org>, 2015-2023"
-
-#~ msgid "Loading…"
-#~ msgstr "Wczytywanie…"
-
-#, javascript-format
-#~ msgid "%s Sidebar Row"
-#~ msgstr "Rząd „%s” paska bocznego"
