@@ -53,6 +53,34 @@
     <color type="primary" scheme_preference="dark">#26a269</color>
   </branding>
   <releases>
+    <release version="51~rc" date="2026-08-29" type="development">
+      <description>
+        <p>Characters 51.rc release.</p>
+        <p>New translations:</p>
+        <ul>
+          <li>Lao</li>
+          <li>Norwegian Bokmål</li>
+        </ul>
+        <p>The following translations have been updated:</p>
+        <ul>
+          <li>Belarusian</li>
+          <li>Catalan (Valencian)</li>
+          <li>Cornish</li>
+          <li>Dutch</li>
+          <li>German</li>
+          <li>Icelandic</li>
+          <li>Indonesian</li>
+          <li>Italian</li>
+          <li>Kabyle</li>
+          <li>Norwegian Nynorsk</li>
+          <li>Persian</li>
+          <li>Polish</li>
+          <li>Santali</li>
+          <li>Serbian</li>
+          <li>Slovak</li>
+        </ul>
+      </description>
+    </release>
     <release version="50.0" date="2026-03-14">
       <description>
         <p>Characters 50.0 release.</p>

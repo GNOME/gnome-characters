@@ -1,3 +1,28 @@
+51.rc
+=====
+* meson: Add check parameter to run_command
+* Stop using G_GNUC_CONST in _get_type functions
+* flatpak: Disable gnome-desktop's qr feature
+* New translations:
+  - Lao
+  - Norwegian Bokmål
+* Translation updates:
+  - Belarusian
+  - Catalan (Valencian)
+  - Cornish
+  - Dutch
+  - German
+  - Icelandic
+  - Indonesian
+  - Italian
+  - Kabyle
+  - Norwegian Nynorsk
+  - Persian
+  - Polish
+  - Santali
+  - Serbian
+  - Slovak
+
 50.0
 ====
 * Flatpak builds use the noto-emoji from the Freedesktop SDK
