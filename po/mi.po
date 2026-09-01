@@ -1,0 +1,265 @@
+# Māori translation of gnome-characters.
+# Copyright (C) 2026 the gnome-characters authors.
+# This file is distributed under the same licence as the gnome-characters package.
+# Arlewatyerre Tuhoro-Bell <aidan@ursa.nz>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues/\n"
+"POT-Creation-Date: 2026-08-29 06:37+0000\n"
+"PO-Revision-Date: 2026-09-01 12:30+1200\n"
+"Last-Translator: Arlewatyerre Tuhoro-Bell <aidan@ursa.nz>\n"
+"Language-Team: Māori <https://l10n.gnome.org/teams/mi/>\n"
+"Language: mi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: gnomi\n"
+
+#: data/character_dialog.ui:67
+msgid "_Copy Character"
+msgstr ""
+
+#: data/character_dialog.ui:88
+msgid "Unicode"
+msgstr ""
+
+#: data/character_dialog.ui:102
+msgid "_See Also"
+msgstr ""
+
+#: data/character_dialog.ui:131
+msgid "See Also"
+msgstr ""
+
+#: data/sidebar.ui:13
+msgid "Recently Used"
+msgstr ""
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr ""
+
+#: data/sidebar.ui:25
+msgid "Smileys & Emotion"
+msgstr ""
+
+#: data/sidebar.ui:32
+msgid "People & Body"
+msgstr ""
+
+#: data/sidebar.ui:39
+msgid "Animals & Nature"
+msgstr ""
+
+#: data/sidebar.ui:46
+msgid "Food & Drink"
+msgstr ""
+
+#: data/sidebar.ui:53
+msgid "Travel & Places"
+msgstr ""
+
+#: data/sidebar.ui:60
+msgid "Activities"
+msgstr ""
+
+#: data/sidebar.ui:67
+msgid "Objects"
+msgstr ""
+
+#: data/sidebar.ui:74
+msgid "Symbols"
+msgstr ""
+
+#: data/sidebar.ui:81
+msgid "Flags"
+msgstr "Kōwhiringa"
+
+#: data/sidebar.ui:89
+msgid "Letters & Symbols"
+msgstr ""
+
+#: data/sidebar.ui:93
+msgid "Punctuation"
+msgstr ""
+
+#: data/sidebar.ui:100
+msgid "Arrows"
+msgstr ""
+
+#: data/sidebar.ui:107
+msgid "Bullets"
+msgstr ""
+
+#: data/sidebar.ui:114
+msgid "Pictures"
+msgstr ""
+
+#: data/sidebar.ui:121
+msgid "Currencies"
+msgstr ""
+
+#: data/sidebar.ui:128
+msgid "Math"
+msgstr ""
+
+#: data/sidebar.ui:135
+msgid "Letters"
+msgstr ""
+
+#: data/shortcuts.ui:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ahuwhānui"
+
+#: data/shortcuts.ui:10
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr ""
+
+#: data/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Rapu"
+
+#: data/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr ""
+
+#: data/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Whakamutu"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "Ngā Pokatata _Papapātuhi"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr ""
+
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
+#: src/window.js:166
+msgid "Characters"
+msgstr ""
+
+#: data/window.ui:32
+msgid "Search"
+msgstr "Rapu"
+
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "Tahua Matua"
+
+#: data/window.ui:49
+msgid "Search characters"
+msgstr ""
+
+#: data/window.ui:89
+msgid "No Recent Characters"
+msgstr ""
+
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr ""
+
+#: data/window.ui:117
+msgid "No Results"
+msgstr ""
+
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr "Whakamātauria tētahi rapu rerekē"
+
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr ""
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr ""
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr ""
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr ""
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr ""
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr ""
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28
+#: data/org.gnome.Characters.metainfo.xml.in.in:30 src/window.js:168
+msgid "The GNOME Project"
+msgstr "Te Kaupapa GNOME"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
+msgid "Unknown character name"
+msgstr ""
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:125
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr ""
+
+#: src/characterDialog.js:156
+msgid "Character copied to clipboard"
+msgstr ""
+
+#: src/charactersView.js:162
+msgid "Unassigned"
+msgstr ""
+
+#: src/searchProvider.js:98
+#, javascript-format
+msgid "U+%s"
+msgstr ""
+
+#: src/searchProvider.js:119
+msgid "Character copied"
+msgstr ""
+
+#: src/searchProvider.js:120
+msgid "Character was copied successfully"
+msgstr ""
+
+#: src/window.js:143
+msgid "Search Result"
+msgstr ""
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:179
+msgid "translator-credits"
+msgstr ""
+"Arlewatyerre Tuhoro-Bell <aidan@ursa.nz>\n"
+"Te Rōpū Whakamāori GNOME https://gitlab.gnome.org/Teams/Translation/mi"
