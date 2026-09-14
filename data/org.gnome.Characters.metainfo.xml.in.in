@@ -53,12 +53,13 @@
     <color type="primary" scheme_preference="dark">#26a269</color>
   </branding>
   <releases>
-    <release version="51~rc" date="2026-08-29" type="development">
+    <release version="51.0" date="2026-09-14">
       <description>
-        <p>Characters 51.rc release.</p>
+        <p>Characters 51.0 release.</p>
         <p>New translations:</p>
         <ul>
           <li>Lao</li>
+          <li>Maori</li>
           <li>Norwegian Bokmål</li>
         </ul>
         <p>The following translations have been updated:</p>
