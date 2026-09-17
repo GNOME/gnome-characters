@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-characters main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
 "issues/\n"
-"POT-Creation-Date: 2026-03-14 13:12+0000\n"
-"PO-Revision-Date: 2026-03-18 15:56+0100\n"
+"POT-Creation-Date: 2026-09-14 15:26+0000\n"
+"PO-Revision-Date: 2026-09-17 18:31+0100\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: Kabyle\n"
 "Language: kab\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 51.0\n"
 "X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/gnome-characters/\n"
 "X-DL-Lang: kab\n"
 
@@ -150,7 +150,7 @@ msgstr "Inegzumen n unasiw (_K)"
 
 #: data/window.ui:10
 msgid "_About Characters"
-msgstr "Γef yisekkilen (_A)"
+msgstr "Ɣef yisekkilen (_A)"
 
 #: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
 #: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
@@ -222,16 +222,15 @@ msgstr ""
 
 #: data/org.gnome.Characters.metainfo.xml.in.in:19
 msgid "Characters's main interface"
-msgstr ""
+msgstr "Agrudem agejdan n yisekkilen"
 
 #: data/org.gnome.Characters.metainfo.xml.in.in:23
-#, fuzzy
-#| msgid "Letters"
 msgid "Letters page"
-msgstr "Isekkilen"
+msgstr "Asebter n yisekkilen"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Characters.metainfo.xml.in.in:28 src/window.js:168
+#: data/org.gnome.Characters.metainfo.xml.in.in:28
+#: data/org.gnome.Characters.metainfo.xml.in.in:30 src/window.js:168
 msgid "The GNOME Project"
 msgstr "Asenfaṛ n GNOME"
 
