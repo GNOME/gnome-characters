@@ -1,0 +1,274 @@
+# Burmese translation for gnome-characters.
+# Copyright (C) 2026 gnome-characters's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-characters package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Zayar Lwin <zyl.pol.mm@zohomail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-characters main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-characters/"
+"issues/\n"
+"POT-Creation-Date: 2026-09-14 15:26+0000\n"
+"PO-Revision-Date: 2026-10-22 17:20+0630\n"
+"Last-Translator: Zayar Lwin <zyl.pol.mm@zohomail.com>\n"
+"Language-Team: Burmese\n"
+"Language: my\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/gnome-characters/\n"
+"X-DL-Lang: my\n"
+"X-DL-Module: gnome-characters\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 51.0\n"
+
+#: data/character_dialog.ui:67
+msgid "_Copy Character"
+msgstr "အက္ခရာ_ကူးယူ"
+
+#: data/character_dialog.ui:88
+msgid "Unicode"
+msgstr "ယူနီကုတ်"
+
+#: data/character_dialog.ui:102
+msgid "_See Also"
+msgstr "ဆက်ကြ_ည့်ရန်"
+
+#: data/character_dialog.ui:131
+msgid "See Also"
+msgstr "ဆက်ကြည့်ရန်"
+
+#: data/sidebar.ui:13
+msgid "Recently Used"
+msgstr "လတ်တလောသုံး"
+
+#: data/sidebar.ui:21
+msgid "Emojis"
+msgstr "အီမိုဂျီများ"
+
+#: data/sidebar.ui:25
+msgid "Smileys & Emotion"
+msgstr "ပြုံးရုပ်များနှင့်ခံစားမှုပြရုပ်များ"
+
+#: data/sidebar.ui:32
+msgid "People & Body"
+msgstr "လူနှင့်ခန္ဓာကိုယ်"
+
+#: data/sidebar.ui:39
+msgid "Animals & Nature"
+msgstr "တိရစ္ဆာန်နှင့်သဘာဝ"
+
+#: data/sidebar.ui:46
+msgid "Food & Drink"
+msgstr "စားဖွယ်သောက်ဖွယ်"
+
+#: data/sidebar.ui:53
+msgid "Travel & Places"
+msgstr "အလည်အပတ်"
+
+#: data/sidebar.ui:60
+msgid "Activities"
+msgstr "အားကစားနှင့်လှုပ်ရှားမှုများ"
+
+#: data/sidebar.ui:67
+msgid "Objects"
+msgstr "အသုံးအဆောင်"
+
+#: data/sidebar.ui:74
+msgid "Symbols"
+msgstr "သင်္ကေတ"
+
+#: data/sidebar.ui:81
+msgid "Flags"
+msgstr "အလံ"
+
+#: data/sidebar.ui:89
+msgid "Letters & Symbols"
+msgstr "စာလုံးနှင့်သင်္ကေတ"
+
+#: data/sidebar.ui:93
+msgid "Punctuation"
+msgstr "ပုဒ်ဖြတ်ပုဒ်ရပ်များ"
+
+#: data/sidebar.ui:100
+msgid "Arrows"
+msgstr "မြှားသင်္ကေတများ"
+
+#: data/sidebar.ui:107
+msgid "Bullets"
+msgstr "အစက်အပြောက်"
+
+#: data/sidebar.ui:114
+msgid "Pictures"
+msgstr "ပုံများ"
+
+#: data/sidebar.ui:121
+msgid "Currencies"
+msgstr "ငွေကြေး"
+
+#: data/sidebar.ui:128
+msgid "Math"
+msgstr "သင်္ချာ"
+
+#: data/sidebar.ui:135
+msgid "Letters"
+msgstr "စာလုံး"
+
+#: data/shortcuts.ui:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "အထွေထွေ"
+
+#: data/shortcuts.ui:10
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "ပင်မမီနူးဖွင့်ရန်"
+
+#: data/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "ရှာရန်"
+
+#: data/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "ကီးဘုတ်ဖြတ်လမ်းခလုတ်များပြရန်"
+
+#: data/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "ထွက်ရန်"
+
+#: data/window.ui:6
+msgid "_Keyboard Shortcuts"
+msgstr "_ကီးဘုတ်ဖြတ်လမ်းခလုတ်"
+
+#: data/window.ui:10
+msgid "_About Characters"
+msgstr "အက္ခရာများ _အကြောင်း"
+
+#: data/window.ui:24 data/org.gnome.Characters.desktop.in.in:3
+#: data/org.gnome.Characters.metainfo.xml.in.in:4 src/main.js:59
+#: src/window.js:166
+msgid "Characters"
+msgstr "အက္ခရာများ"
+
+#: data/window.ui:32
+msgid "Search"
+msgstr "ရှာရန်"
+
+#: data/window.ui:39
+msgid "Main Menu"
+msgstr "ပင်မမီနူး"
+
+#: data/window.ui:49
+msgid "Search characters"
+msgstr "အက္ခရာများရှာရန်"
+
+#: data/window.ui:89
+msgid "No Recent Characters"
+msgstr "လတ်တလောအက္ခရာများမရှိ"
+
+#: data/window.ui:90
+msgid "Characters will appear here if you use them"
+msgstr "အက္ခရာများကို သုံးထာလျှင် ဤနေရာတွင် ပေါ်လာပါလိမ့်မည်"
+
+#: data/window.ui:117
+msgid "No Results"
+msgstr "မရှိပါ"
+
+#: data/window.ui:118
+msgid "Try a different search"
+msgstr "နောက်တစ်နည်းဖြင့်ရှာပါ"
+
+#: data/org.gnome.Characters.desktop.in.in:4
+msgid "Utility application to find and insert unusual characters"
+msgstr "ရှားပါးသင်္ကေတနှင့် အက္ခရာများ ရှာဖွေ၍ထည့်သွင်းရန်အတွက် အသုံးတည့်သော အပ္ပလီကေးရှင်း"
+
+# I have localized the list but I have to add the original list since Burmese user will most likely use english keyboard layout during the usage of GNOME
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Characters.desktop.in.in:12
+msgid "characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+msgstr "အက္ခရာများ;ယူနီကုတ်;ပုဒ်ဖြတ်ပုဒ်ရပ်;သင်္ချာ;စာလုံးများ;အီမိုဂျီ;ခံစားချက်ပြသင်္ကေတ;သင်္ကေတများ;characters;unicode;punctuation;math;letters;emoji;emoticon;symbols;"
+
+#: data/org.gnome.Characters.gschema.xml:8
+msgid "Maximum recent characters"
+msgstr "လတ်တလောအက္ခရာ အများဆုံးပမာဏ"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:5
+msgid "Character map application"
+msgstr "အက္ခရာပြဇယားအပ္ပလီကေးရှင်း"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:9
+msgid ""
+"Characters is a simple utility application to find and insert unusual "
+"characters. It allows you to quickly find the character you are looking for "
+"by searching for keywords."
+msgstr ""
+"\"အက္ခရာများ\" သည် ရှားပါးသင်္ကေတနှင့် အက္ခရာများ ရှာဖွေ၍ထည့်သွင်းရန်အတွက် အသုံးတည့်သော "
+"အပ္ပလီကေးရှင်းတစ်ခုဖြစ်သည်။ စာရိုက်ရှာလိုက်ရုံနှင့် သင်လိုချင်သော အက္ခရာနှင့်သင်္ကေတများကို လျင်မြန်စွာ "
+"ရှာပေးနိုင်ပါသည်။"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:12
+msgid ""
+"You can also browse characters by categories, such as Punctuation, Pictures, "
+"etc."
+msgstr "ပုဒ်ဖြတ်ပုဒ်ရပ်များ၊ ပုံများ စသည့် အမျိုးအစားများအလိုက်လည်း အက္ခရာများကို ရှာဖွေကြည့်ရှုနိုင်ပါသည်။"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:19
+msgid "Characters's main interface"
+msgstr "\"အက္ခရာများ\"၏ပင်မစာမျက်နှာ"
+
+#: data/org.gnome.Characters.metainfo.xml.in.in:23
+msgid "Letters page"
+msgstr "စာလုံးများ-စာမျက်နှာ"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Characters.metainfo.xml.in.in:28
+#: data/org.gnome.Characters.metainfo.xml.in.in:30 src/window.js:168
+msgid "The GNOME Project"
+msgstr "ဂနုန်းပရောဂျက်"
+
+#: src/characterDialog.js:100 src/searchProvider.js:89
+msgid "Unknown character name"
+msgstr "အမည်မသိ အက္ခရာ"
+
+#. TRANSLATORS: the first variable is a character, the second is a font
+#: src/characterDialog.js:125
+#, javascript-format
+msgid "%s is not included in %s"
+msgstr "%s သည် %sတွင် မပါဝင်ပါ"
+
+#: src/characterDialog.js:156
+msgid "Character copied to clipboard"
+msgstr "ကလစ်ဘုတ်သို့ အက္ခရာ ကူးပြီးပြီ"
+
+#: src/charactersView.js:162
+msgid "Unassigned"
+msgstr "သတ်မှတ်ထားခြင်း မရှိသေးပါ"
+
+#: src/searchProvider.js:98
+#, javascript-format
+msgid "U+%s"
+msgstr "U+%s"
+
+#: src/searchProvider.js:119
+msgid "Character copied"
+msgstr "အက္ခရာ ကူးပြီးပြီ"
+
+#: src/searchProvider.js:120
+msgid "Character was copied successfully"
+msgstr "အက္ခရာ ကူးပြီးပါပြီ"
+
+#: src/window.js:143
+msgid "Search Result"
+msgstr "ရှာဖွေမှုရလဒ်"
+
+#. TRANSLATORS: put your names here, one name per line.
+#: src/window.js:179
+msgid "translator-credits"
+msgstr "ဇေယျာလွင်"
